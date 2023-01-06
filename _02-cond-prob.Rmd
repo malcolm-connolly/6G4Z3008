@@ -1,0 +1,4 @@
+# Conditional Probability {#cond}
+
+
+This is the introduction to probability in week 2

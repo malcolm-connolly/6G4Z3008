@@ -1,13 +1,15 @@
 ---
 title: "Introduction to Probability Theory and Statistics"
 author: "Malcolm Connolly"
-date: "04/01/2023"
-output:
-  html_document:
-    toc: true
-    toc_float: true
-    theme: cerulean
-    highlight: kate
+date: "Semester 2, 2023"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: 6G4Z3008
+description: "These are the course notes for the first year BSc Mathematics course 'Introduction to Probability Theory and Statistics' at Manchester Metropolitan University"
 ---
 
 
@@ -16,7 +18,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+# R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
@@ -35,3 +37,10 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

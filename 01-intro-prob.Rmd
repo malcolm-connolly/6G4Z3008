@@ -1,0 +1,4 @@
+# Introduction to Probability {#intro}
+
+
+This is the introduction to probability in week 1
