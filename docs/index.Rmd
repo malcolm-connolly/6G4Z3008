@@ -10,14 +10,7 @@ output:
     highlight: kate
 ---
 
-```{css}
-html body.preload div.container-fluid.main-container div.row div.col-md-2 div#toc
-{
-max-height: 200px;
-overflow-y: auto;
-background-color: inherent;
-}
-```
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
