@@ -44,3 +44,13 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 ```
+
+<!--chapter:end:index.Rmd-->
+
+# Introduction to Probability {#intro}
+
+
+This is the introduction to probability in week 1
+
+<!--chapter:end:01-intro-prob.Rmd-->
+
