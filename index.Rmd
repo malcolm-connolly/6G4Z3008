@@ -9,7 +9,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: 6G4Z3008
-favicon: "cards.png"
+favicon: "cards.ico"
 description: "These are the course notes for the first year BSc Mathematics course 'Introduction to Probability Theory and Statistics' at Manchester Metropolitan University"
 ---
 
