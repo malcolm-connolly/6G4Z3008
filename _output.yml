@@ -10,7 +10,7 @@ bookdown::gitbook:
     download: ["pdf","epub"]
     info: false
     sharing: null
-    favicon: "cards.png"
+    favicon: "cards.ico"
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
