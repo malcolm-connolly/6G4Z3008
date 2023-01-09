@@ -28,10 +28,32 @@ knitr::write_bib(c(
 
 # Introduction to Probability {#intro}
 
+Some things that happen are entirely predictable. For example, if one drops a ball from a height, we know it will hit the ground. Things that happen like this can be decribed as _deterministic_. You may have heard people talk about things being written in the stars, or their fate, or destiny. The opinion that all things are pre-determined is called _determinism_. 
+
+However, even if are a determinist, you will have to live with uncertainty. In our everyday lives we can think of examples where things happen that we cannot predict; a bus may be late, it may rain, or one might win the lottery. To one living with uncertainty, it is reasonable to quantify this uncertainty and act assuming outcomes are not pre-determined. If the outcome is not pre-determined then it is called ***random***.
+
+The Mathematics of random phenomena is called Probability Theory. Most people have an intuitive idea of what is meant by probability or chance.  Unfortunately Probability Theory is a subject in which there are endless examples of seemingly simple questions that turn out to be very complicated or have severely counter-intuitive answers.
+
+<!-- What is the probability that the next person to walk through the door is exactly $176$cm tall? -->
+
+<!-- What is the probability that there was life on Mars? -->
+
+<!-- A tossed coin comes up tails at least once? -->
 
 ## What is probability?
 
+We need to start with some terminology.
+
+::: {.definition #experiment}
+An experiment is any procedure with a random outcome. For example rolling a die and observing the score is a statistical experiment
+:::
+
+Some events are repeatable, as in the example of rolling a die. By calculating the number of times an event occurs out of the number of trials one can come up with an estimate of the theoretical probability. 
+
+Probability is a measure of likelihood or chance, on a scale from $0$ to $1$. 
+
 ## Outcomes and counting
+
 
 ## Independence and mutual exclusivity
 
