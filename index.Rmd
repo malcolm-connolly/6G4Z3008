@@ -36,11 +36,11 @@ The Mathematics of random phenomena is called Probability Theory. Most people ha
 
 <!-- What is the probability that the next person to walk through the door is exactly $176$cm tall? -->
 
-<!-- What is the probability that there was life on Mars? -->
+
 
 <!-- A tossed coin comes up tails at least once? -->
 
-## What is probability?
+## Naive probability and Frequentism
 
 We need to start with some terminology.
 
@@ -48,12 +48,35 @@ We need to start with some terminology.
 An experiment is any procedure with a random outcome. For example rolling a die and observing the score is a statistical experiment
 :::
 
-Some events are repeatable, as in the example of rolling a die. By calculating the number of times an event occurs out of the number of trials one can come up with an estimate of the theoretical probability. 
+Some events are repeatable, or at least may be simulated, as in the example of rolling a die. By calculating the number of times an event occurs out of the number of trials one can come up with an estimate of the theoretical probability. The idea is that the relative cumulative frequency of outcomes will tend to the actual probability in the long run. This is perspective of probability is called ***Frequentist***, and is incredibly useful in practice.
+
+```{r freq, echo=FALSE}
+if (knitr:::is_latex_output()) {
+  knitr::asis_output('gganim_plot0100.png')
+} else {
+  knitr::include_graphics("FileName.gif")
+}
+
+```
+
+<!-- What is the probability that there was life on Mars? -->
+
+Sample space is the set of all possible outcomes of an experiment
+
+Example
+
+Event is a subset of the sample space
+
+Example
+
 
 Probability is a measure of likelihood or chance, on a scale from $0$ to $1$. 
 
+
+
 ## Outcomes and counting
 
+One might imagine that the finite situation is then, very simple. Well it becomes a complicated matter to 
 
 ## Independence and mutual exclusivity
 

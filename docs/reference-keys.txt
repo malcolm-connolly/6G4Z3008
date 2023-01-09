@@ -5,3 +5,4 @@ def:experiment
 what-is-probability
 outcomes-and-counting
 independence-and-mutual-exclusivity
+naive-probability-and-frequentism
