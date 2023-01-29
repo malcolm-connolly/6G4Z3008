@@ -30,7 +30,7 @@
   
   <link rel="shortcut icon" href="cards.ico" type="image/x-icon" />
 
-<link rel="next" href="cond.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -54,6 +54,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -73,12 +137,16 @@
 <li><a href="https://moodle.mmu.ac.uk/course/view.php?id=157842" target="blank" > 6G4Z3008 course notes </a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#naive-probability-and-frequentism"><i class="fa fa-check"></i><b>1.1</b> Naive probability and Frequentism</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#outcomes-and-counting"><i class="fa fa-check"></i><b>1.2</b> Outcomes and counting</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#independence-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Independence and mutual exclusivity</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="#intro"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="#frequentist-perspective"><i class="fa fa-check"></i><b>1.1</b> Frequentist perspective</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="#naive-probability"><i class="fa fa-check"></i><b>1.2</b> Naive probability</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="#complements-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Complements and mutual exclusivity</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="#outcomes-and-counting"><i class="fa fa-check"></i><b>1.4</b> Outcomes and counting</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="#factorials"><i class="fa fa-check"></i><b>1.4.1</b> Factorials</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="#permutations"><i class="fa fa-check"></i><b>1.4.2</b> Permutations</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="cond.html"><a href="cond.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="#exercises-week-1"><i class="fa fa-check"></i><b>1.5</b> Exercises (Week 1)</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -105,14 +173,14 @@
 <p class="date"><em>Semester 2, 2023</em></p>
 </div>
 <div id="intro" class="section level1 hasAnchor">
-<h1><span class="header-section-number">Chapter 1</span> Introduction to Probability<a href="index.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Chapter 1</span> Introduction to Probability<a href="#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Some things that happen are entirely predictable. For example, if one drops a ball from a height, we know it will hit the ground. Things that happen like this can be decribed as <em>deterministic</em>. You may have heard people talk about things being written in the stars, or their fate, or destiny. The opinion that all things are pre-determined is called <em>determinism</em>.</p>
 <p>However, even if are a determinist, you will have to live with uncertainty. In our everyday lives we can think of examples where things happen that we cannot predict; a bus may be late, it may rain, or one might win the lottery. To one living with uncertainty, it is reasonable to quantify this uncertainty and act assuming outcomes are not pre-determined. If the outcome is not pre-determined then it is called <strong><em>random</em></strong>.</p>
 <p>The Mathematics of random phenomena is called Probability Theory. Most people have an intuitive idea of what is meant by probability or chance. Unfortunately Probability Theory is a subject in which there are endless examples of seemingly simple questions that turn out to be very complicated or have severely counter-intuitive answers.</p>
 <!-- What is the probability that the next person to walk through the door is exactly $176$cm tall? -->
 <!-- A tossed coin comes up tails at least once? -->
-<div id="naive-probability-and-frequentism" class="section level2 hasAnchor">
-<h2><span class="header-section-number">1.1</span> Naive probability and Frequentism<a href="index.html#naive-probability-and-frequentism" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="frequentist-perspective" class="section level2 hasAnchor">
+<h2><span class="header-section-number">1.1</span> Frequentist perspective<a href="#frequentist-perspective" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We need to start with some terminology.</p>
 <div class="definition">
 <p><span id="def:experiment" class="definition"><strong>Definition 1.1  </strong></span>An <strong><em>experiment</em></strong> is any procedure which happens at random with at least two different outcomes. For example rolling a die and observing the score is a statistical experiment. If the experiment is repeatable then each repetition is called a <strong><em>run</em></strong>.</p>
@@ -206,12 +274,22 @@ Figure 1.1: The result of simulating rolling a die 6000 times, and counting how 
 </tbody>
 </table>
 </div>
-<!-- What is the probability that there was life on Mars? -->
+<p>In this course we will learn some R programming. R is a free open-source software language suitable for doing many probability and statistical calculations. The following R code will make a list of two outcomes Heads or Tails and create a sample of <span class="math inline">\(10\)</span> random outcomes.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>outcomes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Heads&quot;</span>,<span class="st">&quot;Tails&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">sample</span>(outcomes, <span class="dv">10</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;Heads&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Tails&quot;
+## [10] &quot;Tails&quot;</code></pre>
 <div class="definition">
 <p><span id="def:freq" class="definition"><strong>Definition 1.2  </strong></span>If a statistical experiment has <span class="math inline">\(n\)</span> runs, and the outcome <span class="math inline">\(A\)</span> happens a cumulative number of times depending on <span class="math inline">\(n\)</span> which we can call <span class="math inline">\(a_n\)</span>, then the <strong><em>frequentist probability</em></strong> of the outcome <span class="math inline">\(A\)</span>, written <span class="math inline">\(P(A)\)</span>, is the limit:</p>
 <p><span class="math display">\[P(A) = \lim_{n\to \infty} \frac{a_n}{n}\]</span></p>
 </div>
-<p>So if it is possible to repeatedly run an experiment, frequentist methods are very useful for finding an approximation of the true theoretical probability. Sometimes it is not possible to do so, and we may not have the time or resources to do many thousands of runs. Therefore we also need to be able to evaluate the theoretical probability directly and exactly.</p>
+<p>So if it is possible to repeatedly run an experiment, frequentist methods are very useful for finding an approximation of the true theoretical probability.</p>
+<p>Not all is so simple, consider the following questions. What is the probability that there is life on other planets? What is the probability that the Conservatives win the next general election?</p>
+<p>These events are not like flipping a coin, and so it is not possible to find a frequentist interpretation for their probability.</p>
+</div>
+<div id="naive-probability" class="section level2 hasAnchor">
+<h2><span class="header-section-number">1.2</span> Naive probability<a href="#naive-probability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We may not have the time or resources to do many thousands of runs. Therefore we also need to be able to evaluate the theoretical probability directly and exactly.</p>
 <div class="definition">
 <p><span id="def:samplespace" class="definition"><strong>Definition 1.3  </strong></span>The <strong><em>sample space</em></strong> is a set whose elements are outcomes of an experiment. The sample space is denoted by the greek letter <span class="math inline">\(\Omega\)</span>.</p>
 </div>
@@ -224,25 +302,292 @@ we can let
 <p><span id="def:event" class="definition"><strong>Definition 1.4  </strong></span>An <strong><em>event</em></strong> is a subset of the sample space <span class="math inline">\(\Omega\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:monthspace" class="example"><strong>Example 1.2  </strong></span>As in example <a href="index.html#exm:monthspace">1.2</a>, let <span class="math inline">\(\text{L}\)</span> be the <em>event</em> that the month is a long month (i.e. has 31 days). Then
+<p><span id="exm:landr" class="example"><strong>Example 1.3  </strong></span>As in example <a href="#exm:monthspace">1.2</a>, let <span class="math inline">\(\text{L}\)</span> be the <em>event</em> that the month is a long month (i.e. has 31 days). Then
 <span class="math display">\[\text{L} = \{\text{Jan}, \ \text{Mar}, \ \text{May},  \ \text{Jul}, \ \text{Aug},  \ \text{Oct}, \ \text{Dec} \}.\]</span></p>
 <p>Let <span class="math inline">\(R\)</span> be the <em>event</em> that there is a letter <strong><em>r</em></strong> in the name of the month when written fully. Here,</p>
 <p><span class="math display">\[\text{R} = \{\text{Jan}, \ \text{Feb}, \ \text{Mar}, \ \text{Apr},  \ \text{Sep}, \ \text{Oct}, \ \text{Nov}, \  \text{Dec} \}\]</span></p>
 </div>
-<p>As events are subsets of the sample space <span class="math inline">\(\Omega\)</span> the rules of set theory, and so it is important to know some set notation. First we notice that for these subsets we can tell what the probability is <span class="math inline">\(\text{P}(R) = \frac{8}{12} = \frac{2}{3}\)</span>, and <span class="math inline">\(\text{P}(L) = \frac{7}{12}\)</span>.</p>
-<p>In this way, the probability <span class="math inline">\(P\)</span> is a `measure’ function which maps the subsets of the sample space to the interval <span class="math inline">\(\left[0,1\right]\)</span>.</p>
 <div class="definition">
-<p><span id="def:probability" class="definition"><strong>Definition 1.5  </strong></span>Probability is a function whose input is a subset of the sample space <span class="math inline">\(A \subseteq \Omega\)</span> and whose range is the interval <span class="math inline">\(\left[0,1\right]\)</span>, such that the following two axioms hold
-(i) P() = 1
-(ii) For any collection of disjoint events the probability of the union is the sum of the probabilities</p>
+<p><span id="def:naiveprob" class="definition"><strong>Definition 1.5  </strong></span>Naively the the probability of an event <span class="math inline">\(A\)</span> should be the number of elements of the set <span class="math inline">\(A\)</span> divided by the size of the sample space <span class="math inline">\(\Omega\)</span>.That is,</p>
+<p><span class="math inline">\(\text{P} (A) = \frac{|A|}{|\Omega|}\)</span>.</p>
+</div>
+<p>In our example <a href="#exm:landr">1.3</a> above:</p>
+<p><span class="math display">\[\text{P}(R) = \frac{|R|}{|\Omega|} = \frac{8}{12} = \frac{2}{3},\]</span></p>
+<p>and,</p>
+<p><span class="math display">\[\text{P}(L) = \frac{|L|}{|\Omega|} =\frac{7}{12}.\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 1.4  (Coin Tossing) </strong></span>Toss a fair coin twice and record the possible outcomes. Let
+<span class="math display">\[A = \{\text{exactly one coin is Heads}\}\]</span>
+and
+<span class="math display">\[B = \{\text{neither coin is Heads}\}\]</span></p>
+<p>The sample space here is <span class="math inline">\(\Omega = \{HH, HT, TH, HH\}\)</span>.</p>
+<p>Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> correspond to:</p>
+<p><span class="math display">\[A = \{HT, TH\}\]</span>
+and
+<span class="math display">\[B = \{ TT \}\]</span>
+Hence <span class="math inline">\(\text{P}(A) = \frac{2}{4} = \frac{1}{2}\)</span>, and <span class="math inline">\(\text{P}(B)=\frac{1}{4}\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-2" class="example"><strong>Example 1.5  (Two dice) </strong></span>Two dice are thrown, what is the probability that the total number of dots is:</p>
+<ol style="list-style-type: lower-alpha">
+<li>equal to <span class="math inline">\(7\)</span></li>
+<li>equal to <span class="math inline">\(3\)</span></li>
+<li>greater than <span class="math inline">\(5\)</span></li>
+<li>an even number</li>
+</ol>
+<p><em>solution</em></p>
+<p>The sample space here is <span class="math inline">\(\Omega = \{ (n_1,n_2) : n_1 , n_2 \in \{1,2,3,4,5,6 \} \}\)</span>. However, not all sums are equally likely, which is best seen in a table.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">7</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">7</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">7</td>
+<td align="center">8</td>
+<td align="center">9</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">7</td>
+<td align="center">8</td>
+<td align="center">9</td>
+<td align="center">10</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">7</td>
+<td align="center">8</td>
+<td align="center">9</td>
+<td align="center">10</td>
+<td align="center">11</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">7</td>
+<td align="center">8</td>
+<td align="center">9</td>
+<td align="center">10</td>
+<td align="center">11</td>
+<td align="center">12</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(\frac{6}{36}\)</span></li>
+<li><span class="math inline">\(\frac{2}{36}\)</span></li>
+<li><span class="math inline">\(\frac{26}{36}\)</span></li>
+<li><span class="math inline">\(\frac{18}{36}\)</span></li>
+</ol>
+</div>
+<p>For infinite sets there is a problem with the naive definition <a href="#def:naiveprob">1.5</a>. Consider the following:</p>
+<div class="example">
+<p><span id="exm:randangle" class="example"><strong>Example 1.6  </strong></span>Suppose a random unit vector is rotated about the origin anticlockwise, making an angle <span class="math inline">\(\theta\)</span> with the positive <span class="math inline">\(x\)</span>-axis. What is the probability that this angle is acute?</p>
+<p>There are a continuum of infinitely many such angles. The naive definition says <span class="math inline">\(\frac{\infty}{\infty}\)</span>, which is absurd.</p>
+<p>Intuitively, the answer <em>should</em> be <span class="math inline">\(\frac{1}{4}\)</span>.</p>
+</div>
+</div>
+<div id="complements-and-mutual-exclusivity" class="section level2 hasAnchor">
+<h2><span class="header-section-number">1.3</span> Complements and mutual exclusivity<a href="#complements-and-mutual-exclusivity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In any case, as events are subsets of the sample space <span class="math inline">\(\Omega\)</span> and follow the rules of set theory, and so it is important to know some set notation, definitions and results. Below is a recap of the important definitions.</p>
+<div class="definition">
+<p><span id="def:union" class="definition"><strong>Definition 1.6  </strong></span>The <strong><em>union</em></strong> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is written:</p>
+<p><span class="math display">\[A\cup B = \{ x \in \Omega :  x \in A \ \text{or} \ x\in B \}.\]</span>
+In Mathematics or is inclusive, which means we do not need to say ``or both’’ as this is included in the union.</p>
+</div>
+<div class="definition">
+<p><span id="def:intersection" class="definition"><strong>Definition 1.7  </strong></span>The <strong><em>intersection</em></strong> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is written:
+<span class="math display">\[A\cap B = \{ x \in \Omega:  x \in A \ \text{and} \ x\in B \}.\]</span></p>
+</div>
+<div class="definition">
+<p><span id="def:mutex" class="definition"><strong>Definition 1.8  </strong></span>The empty set <span class="math inline">\(\varnothing\)</span> is the set of no elements. As sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are called disjoint if they have no elements in common, that is,</p>
+<p><span class="math inline">\(A \cap B = \varnothing.\)</span></p>
+<p>In Probability Theory disjoint events are called <strong><em>mutually exclusive</em></strong>.</p>
+</div>
+<div class="definition">
+<p><span id="def:complement" class="definition"><strong>Definition 1.9  </strong></span>The <strong><em>complement</em></strong> of an event <span class="math inline">\(A\)</span> is the event <span class="math inline">\(A^{c} = \{x \in \Omega : x\notin A\}.\)</span>
+Note $A A^{c} = . In words this means: any event is mutually exclusive with its complement.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-3" class="example"><strong>Example 1.7  </strong></span>Suppose the event is throwing a die. The event is that one throws an even number. The complement is that one throws an odd number.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-4" class="example"><strong>Example 1.8  </strong></span>Suppose the event is that a random student has no siblings. The complement is not that they have one sibling. The complement is that they have <em>at least</em> one sibling.</p>
+</div>
+<p>A theorem which we will not prove is De Morgan’s laws</p>
+<div class="theorem">
+<p><span id="thm:demorgan" class="theorem"><strong>Theorem 1.1  (DE MORGAN'S LAWS) </strong></span>The complement of a union is the intersection of the complements:
+<span class="math display">\[(A \cup B)^{c} = A^{c} \cap B^{c}\]</span></p>
+<p>The complement of an intersection is the union of the complements:
+<span class="math display">\[(A \cap B)^{c} = A^{c} \cup B^{c}\]</span></p>
+</div>
+<p>In this way <span class="math inline">\(P\)</span> is a `measure’ function which maps the subsets of the sample space to the interval <span class="math inline">\(\left[0,1\right]\)</span>.</p>
+<div class="definition">
+<p><span id="def:probability" class="definition"><strong>Definition 1.10  </strong></span><strong><em>Probability</em></strong> is a function whose input is a subset of the sample space <span class="math inline">\(A \subseteq \Omega\)</span> and whose range is the interval <span class="math inline">\(\left[0,1\right]\)</span>, such that the following two axioms hold:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>The probability of the whole set of possible events is unity. In the notation: <span class="math inline">\(\text{P}(\Omega ) =1\)</span>.</p></li>
+<li><p><em>(additivity)</em> For any collection of disjoint events <span class="math inline">\(A_1 , A_2, A_3, \dots\)</span> the probability of the union is the sum of the probabilities. In the notation this can be written as <span class="math display">\[\text{P}(A_1 \cup A_2 \cup \dots ) = \text{P}(A_1) + \text{P}(A_2)+\dots .\]</span></p></li>
+</ol>
+</div>
+<p>The above definition <a href="#def:probability">1.10</a> is due to the Russian Mathematician Kolmogorov. These axioms help make sense of the infinite case.</p>
+<p>Using this definition we can prove the following important results.</p>
+<div class="proposition">
+<p><span id="prp:sum" class="proposition"><strong>Proposition 1.1  (THE PROBABILITY OF A COMPLEMENT) </strong></span>For any event <span class="math inline">\(A\)</span> we have:
+<span class="math display">\[\text{P}(A^{c}) = 1 - \text{P}(A).\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-5" class="proof"><em>Proof</em>. </span>Write <span class="math inline">\(\Omega = A \cup A^{c}\)</span>, which is a disjoint union. Then by additivity,
+<span class="math display">\[\text{P}(\Omega) = \text{P}(A) + \text{P}(A^{c}) \]</span>
+Now by axiom (i) the LHS is <span class="math inline">\(1\)</span>.</p>
+</div>
+<div class="theorem">
+<p><span id="thm:sum" class="theorem"><strong>Theorem 1.2  (THE PROBABILITY OF A UNION) </strong></span>Given any two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> we have:</p>
+<p><span class="math display">\[\text{P}(A\cup B) = \text{P}(A) + \text{P}(B) - \text{P}(A \cap B)\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-6" class="proof"><em>Proof</em>. </span>The idea is to write <span class="math inline">\(A\)</span> as a disjoint union of the part that has intersection with <span class="math inline">\(B\)</span>, and that which does not: <span class="math inline">\(A=(A\cap B)\cup(A\cap B^{c})\)</span>. Hence,</p>
+<p><span class="math display">\[\text{P}(A) = \text{P}(A\cap B) + \text{P}(A\cap B^{c})\]</span></p>
+<p>If we split <span class="math inline">\(A\cup B\)</span> in the same way, we obtain <span class="math inline">\((A\cup B)\cap B\)</span> and <span class="math inline">\((A\cup B)\cap B^{c}\)</span>. The former is simply <span class="math inline">\(B\)</span>, and the latter is <span class="math inline">\(A \cap B^{c}\)</span>. Again by additivity,</p>
+<p><span class="math display">\[\text{P}(A \cup B) = P(B) + P(A\cap B^{c}).\]</span>
+Eliminating <span class="math inline">\(P(A\cap B^{c})\)</span> from the two equations above proves the rule.</p>
+</div>
+<p>We will not be proving all Theorems in this course, neither will I ask you to recount a proof in an exam. You will however have to know how to use these results in applied problems.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-7" class="example"><strong>Example 1.9  (Multiple Choice) </strong></span>Suppose a multiple choice test consists of three questions each of which has two options, the correct answer (C) or the wrong answer (W). What is the probability that a student who always randomly guesses the answers gets at least one correct?</p>
+<p><span class="math display">\[\begin{align}
+\text{P(at least one correct)} &amp;= 1 - \text{P(all wrong)} \\
+&amp;= 1- \frac{1}{8}  \\
+&amp;=\frac{7}{8}
+\end{align}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 1.10  (Mode of travel) </strong></span>The table shows the type of journey undertaken by a sample of commuters classified by where they live.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Town</th>
+<th align="center">Rural</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Car</td>
+<td align="center">40</td>
+<td align="center">30</td>
+<td>70</td>
+</tr>
+<tr class="even">
+<td>Bus</td>
+<td align="center">25</td>
+<td align="center">5</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="center">65</td>
+<td align="center">35</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<p>If an individual is selected at random from this group, find the probability that, they travel by car or live in the town</p>
+<p><em>solution</em></p>
+<p><span class="math inline">\(\text{P}(\text{Car}\cup \text{Town}) = \frac{25+40+30}{100}=0.95\)</span></p>
+<p><span class="math inline">\(\text{P}(\text{Car})+ \text{P}(\text{Town})-\text{P}(\text{Car}\cap \text{Town})= \frac{65}{100}+\frac{70}{100}-\frac{40}{100} =0.95\)</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 1.11  </strong></span>In a particular city <span class="math inline">\(60\%\)</span> of people watch the news in the morning, <span class="math inline">\(50\%\)</span> of people watch the news in the evening and <span class="math inline">\(30\%\)</span> watch both. What is the probability that an individual selected at random watches either the morning news or the evening news.</p>
+<p><em>solution</em></p>
+<p><span class="math inline">\(\text{P}(M\cup E) = 0.6 + 0.5 - 0.3 = 0.8\)</span></p>
 </div>
 </div>
 <div id="outcomes-and-counting" class="section level2 hasAnchor">
-<h2><span class="header-section-number">1.2</span> Outcomes and counting<a href="index.html#outcomes-and-counting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>One might imagine that the finite situation is then very simple. One simply counts how many ways an event can happen out of the total number of configurations. This can actually be quite complicated.</p>
+<h2><span class="header-section-number">1.4</span> Outcomes and counting<a href="#outcomes-and-counting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One might imagine that the finite situation is then very simple, and even then we have seen this is not the full picture. One simply counts how many ways an event can happen out of the total number of configurations. This can actually be quite complicated. We will learn some formulae to enable us to count them.</p>
+<div id="factorials" class="section level3 hasAnchor">
+<h3><span class="header-section-number">1.4.1</span> Factorials<a href="#factorials" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="example">
+<p><span id="exm:three" class="example"><strong>Example 1.12  (Three people in a line) </strong></span>In how many ways can three people <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> stand in a line?</p>
+<p><em>solution</em></p>
+<p><span class="math inline">\(ABC, ACB, BAC, BCA, CAB,CBA\)</span> there are <span class="math inline">\(6\)</span>.</p>
 </div>
-<div id="independence-and-mutual-exclusivity" class="section level2 hasAnchor">
-<h2><span class="header-section-number">1.3</span> Independence and mutual exclusivity<a href="index.html#independence-and-mutual-exclusivity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="definition">
+<p><span id="def:unlabeled-div-10" class="definition"><strong>Definition 1.11  </strong></span>For any non-negative integer, <span class="math inline">\(n\)</span> say, we define the factorial of <span class="math inline">\(n\)</span>, written <span class="math inline">\(n!\)</span> to be equal to the product of <span class="math inline">\(n\)</span> and all the numbers less than <span class="math inline">\(n\)</span> down to <span class="math inline">\(1\)</span>. That is,</p>
+<p><span class="math display">\[n! = n \times (n-1) \times (n-2) \times \dots 3 \times 2 \times 1\]</span></p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-11" class="definition"><strong>Definition 1.12  (Multiplication Rule) </strong></span>If there are <span class="math inline">\(n\)</span> ways for some operation to happen, and <span class="math inline">\(m\)</span> ways for something else to happen, then the total number of ways for the sequence to occur is <span class="math inline">\(n \times m\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-12" class="example"><strong>Example 1.13  (Rule 1) </strong></span>The number of ways of arranging <span class="math inline">\(n\)</span> distinct objects in a line is <span class="math inline">\(n!\)</span>.
+This is because there are <span class="math inline">\(n\)</span> choices for the first number in line, then one fewer choice <span class="math inline">\((n-1)\)</span> for the second, and so on, until the last one in the line there is only one choice remaining.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 1.14  </strong></span>MMU assigns each student an <span class="math inline">\(8\)</span> digit ID number. How many possible ID numbers are there?</p>
+<p><em>solution</em>
+The first digit is not zero, there are <span class="math inline">\(9\)</span> digits from which to choose.
+All the other digits have <span class="math inline">\(10\)</span> choices <span class="math inline">\(0,1,2,3,4,5,6,7,8,9\)</span>.</p>
+<p>Total = <span class="math inline">\(9 \times 10^7\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-14" class="definition"><strong>Definition 1.13  (rule of sum) </strong></span>Given two disjoint events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, then the size of the union is the sum of the sizes of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. That is,</p>
+<p><span class="math display">\[|A\cup B|=|A|+|B|\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-15" class="example"><strong>Example 1.15  </strong></span>How many possible MMU IDs start with a <span class="math inline">\(1\)</span> or a <span class="math inline">\(3\)</span>?</p>
+<p><em>solution</em></p>
+<p>The IDs are all of the form 1******* or 3*******. There is only 1 choice for the first digit and <span class="math inline">\(10^7\)</span> choices for the next digits in either case.</p>
+<p>The total number starting with a <span class="math inline">\(1\times 10^7 + 1\times 10^7 = 2\times 10^7.\)</span></p>
+</div>
+<p>::: {.definition name=“Rule 2”}</p>
+</div>
+<div id="permutations" class="section level3 hasAnchor">
+<h3><span class="header-section-number">1.4.2</span> Permutations<a href="#permutations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="example">
+<p><span id="exm:unlabeled-div-16" class="example"><strong>Example 1.16  </strong></span>Suppose I want to hack someone’s <span class="math inline">\(4\)</span> digit PIN, and they tell me the digits are all different. I need to choose <span class="math inline">\(4\)</span> numbers from <span class="math inline">\(10\)</span>, but for each <span class="math inline">\(4\)</span> that I choose they could happen in any order. For example <span class="math inline">\(1,2,3,4\)</span> could also occur as</p>
+</div>
+<p>The number of ways of choosing <span class="math inline">\(k\)</span> distinct items from <span class="math inline">\(n\)</span> when the order is relevant is
+<span class="math display">\[^n\text{P}_k = \frac{n!}{(n-k)!}\]</span>
+### Combinations</p>
+</div>
+</div>
+<div id="exercises-week-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">1.5</span> Exercises (Week 1)<a href="#exercises-week-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
@@ -252,7 +597,7 @@ we can let
         </div>
       </div>
 
-<a href="cond.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
