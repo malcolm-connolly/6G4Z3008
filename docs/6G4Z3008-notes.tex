@@ -122,6 +122,23 @@
 \author{Malcolm Connolly}
 \date{Semester 2, 2023}
 
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{definition}
+\newtheorem{hypothesis}{Hypothesis}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
 \begin{document}
 \maketitle
 
@@ -129,42 +146,557 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{r-markdown}{%
-\chapter{R Markdown}\label{r-markdown}}
+\hypertarget{intro}{%
+\chapter{Introduction to Probability}\label{intro}}
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see \url{http://rmarkdown.rstudio.com}.
+Some things that happen are entirely predictable. For example, if one drops a ball from a height, we know it will hit the ground. Things that happen like this can be decribed as \emph{deterministic}. You may have heard people talk about things being written in the stars, or their fate, or destiny. The opinion that all things are pre-determined is called \emph{determinism}.
 
-When you click the \textbf{Knit} button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+However, even if are a determinist, you will have to live with uncertainty. In our everyday lives we can think of examples where things happen that we cannot predict; a bus may be late, it may rain, or one might win the lottery. To one living with uncertainty, it is reasonable to quantify this uncertainty and act assuming outcomes are not pre-determined. If the outcome is not pre-determined then it is called \textbf{\emph{random}}.
+
+The Mathematics of random phenomena is called Probability Theory. Most people have an intuitive idea of what is meant by probability or chance. Unfortunately Probability Theory is a subject in which there are endless examples of seemingly simple questions that turn out to be very complicated or have severely counter-intuitive answers.
+
+\hypertarget{frequentist-perspective}{%
+\section{Frequentist perspective}\label{frequentist-perspective}}
+
+We need to start with some terminology.
+
+\begin{definition}
+\protect\hypertarget{def:experiment}{}\label{def:experiment}An \textbf{\emph{experiment}} is any procedure which happens at random with at least two different outcomes. For example rolling a die and observing the score is a statistical experiment. If the experiment is repeatable then each repetition is called a \textbf{\emph{run}}.
+\end{definition}
+
+By calculating the number of times an event occurs divided by the number of runs one can estimate the theoretical probability. The idea is that the relative cumulative frequency of outcomes will tend to the actual probability in the long run. This is perspective of probability is called \emph{Frequentist}, and is incredibly useful in practice.
+
+gganim\_plot0100.png
+
+We will recreate a plot like this in labs.
+
+\begin{example}
+\protect\hypertarget{exm:freq}{}\label{exm:freq}
+
+Suppose we toss a \(10\) coins \(10\) times and the results are recorded in the table below, draw the graph of relative frequency.
+
+\begin{longtable}[]{@{}lllllllllll@{}}
+\toprule
+Run & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\tabularnewline
+\midrule
+\endhead
+Outcome & 6H & 3H & 3H & 1H & 6H & 3H & 6H & 5H & 5H & 7H\tabularnewline
+\bottomrule
+\end{longtable}
+
+The cumulative relative frequencies are calculated as the cumulative number of flips divided by the cumulative number of heads:
+
+\begin{longtable}[]{@{}lllllllllll@{}}
+\toprule
+Cumulative flips \(n\) & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100\tabularnewline
+\midrule
+\endhead
+Cumulative heads \(a_n\) & 6 & 9 & 12 & 13 & 19 & 22 & 28 & 33 & 38 & 45\tabularnewline
+Relative Frequency & 0.6 & 0.45 & 0.4 & 0.325 & 0.38 & 0.367 & 0.4 & 0.413 & 0.422 & 0.45\tabularnewline
+\bottomrule
+\end{longtable}
+
+\end{example}
+
+In this course we will learn some R programming. R is a free open-source software language suitable for doing many probability and statistical calculations. The following R code will make a list of two outcomes Heads or Tails and create a sample of \(10\) random outcomes.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{summary}\NormalTok{(cars)}
+\NormalTok{outcomes <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Heads"}\NormalTok{,}\StringTok{"Tails"}\NormalTok{)}
+\KeywordTok{sample}\NormalTok{(outcomes, }\DecValTok{10}\NormalTok{, }\DataTypeTok{replace=}\OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
+##  [1] "Tails" "Tails" "Heads" "Heads" "Tails" "Tails" "Heads" "Tails" "Heads"
+## [10] "Heads"
 \end{verbatim}
 
-\hypertarget{including-plots}{%
-\section{Including Plots}\label{including-plots}}
+\begin{definition}
+\protect\hypertarget{def:freq}{}\label{def:freq}If a statistical experiment has \(n\) runs, and the outcome \(A\) happens a cumulative number of times depending on \(n\) which we can call \(a_n\), then the \textbf{\emph{frequentist probability}} of the outcome \(A\), written \(P(A)\), is the limit:
 
-You can also embed plots, for example:
+\[P(A) = \lim_{n\to \infty} \frac{a_n}{n}\]
+\end{definition}
 
-\includegraphics{6G4Z3008-notes_files/figure-latex/pressure-1.pdf}
+So if it is possible to repeatedly run an experiment, frequentist methods are very useful for finding an approximation of the true theoretical probability.
 
-Note that the \texttt{echo\ =\ FALSE} parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Not all is so simple, consider the following questions. What is the probability that there is life on other planets? What is the probability that the Conservatives win the next general election?
 
-\hypertarget{intro}{%
-\chapter{Introduction to Probability}\label{intro}}
+These events are not like flipping a coin, and so it is not possible to find a frequentist interpretation for their probability.
 
-This is the introduction to probability in week 1
+\hypertarget{naive-probability}{%
+\section{Naive probability}\label{naive-probability}}
+
+We may not have the time or resources to do many thousands of runs. Therefore we also need to be able to evaluate the theoretical probability directly and exactly.
+
+\begin{definition}
+\protect\hypertarget{def:samplespace}{}\label{def:samplespace}The \textbf{\emph{sample space}} is a set whose elements are outcomes of an experiment. The sample space is denoted by the greek letter \(\Omega\).
+\end{definition}
+
+\begin{example}
+\protect\hypertarget{exm:monthspace}{}\label{exm:monthspace}If we pick a person at random on the street and ask them the month of their birthday,
+we can let
+\[\Omega = \{\text{Jan}, \ \text{Feb}, \ \text{Mar},  \ \text{Apr}, \ \text{May}, \ \text{Jun}, \ \text{Jul}, \ \text{Aug}, \ \text{Sep}, \ \text{Oct}, \ \text{Nov}, \ \text{Dec} \}.\]
+\end{example}
+
+\begin{definition}
+\protect\hypertarget{def:event}{}\label{def:event}An \textbf{\emph{event}} is a subset of the sample space \(\Omega\).
+\end{definition}
+
+\begin{example}
+\protect\hypertarget{exm:landr}{}\label{exm:landr}As in example \ref{exm:monthspace}, let \(\text{L}\) be the \emph{event} that the month is a long month (i.e.~has 31 days). Then
+\[\text{L} = \{\text{Jan}, \ \text{Mar}, \ \text{May},  \ \text{Jul}, \ \text{Aug},  \ \text{Oct}, \ \text{Dec} \}.\]
+
+Let \(R\) be the \emph{event} that there is a letter \textbf{\emph{r}} in the name of the month when written fully. Here,
+
+\[\text{R} = \{\text{Jan}, \ \text{Feb}, \ \text{Mar}, \ \text{Apr},  \ \text{Sep}, \ \text{Oct}, \ \text{Nov}, \  \text{Dec} \}\]
+\end{example}
+
+\begin{definition}
+\protect\hypertarget{def:naiveprob}{}\label{def:naiveprob}Naively the the probability of an event \(A\) should be the number of elements of the set \(A\) divided by the size of the sample space \(\Omega\).That is,
+
+\(\text{P} (A) = \frac{|A|}{|\Omega|}\).
+\end{definition}
+
+In our example \ref{exm:landr} above:
+
+\[\text{P}(R) = \frac{|R|}{|\Omega|} = \frac{8}{12} = \frac{2}{3},\]
+
+and,
+
+\[\text{P}(L) = \frac{|L|}{|\Omega|} =\frac{7}{12}.\]
+
+\begin{example}[Coin Tossing]
+Toss a fair coin twice and record the possible outcomes. Let
+\[A = \{\text{exactly one coin is Heads}\}\]
+and
+\[B = \{\text{neither coin is Heads}\}\]
+
+The sample space here is \(\Omega = \{HH, HT, TH, HH\}\).
+
+Events \(A\) and \(B\) correspond to:
+
+\[A = \{HT, TH\}\]
+and
+\[B = \{ TT \}\]
+Hence \(\text{P}(A) = \frac{2}{4} = \frac{1}{2}\), and \(\text{P}(B)=\frac{1}{4}\).
+\end{example}
+
+\begin{example}[Two dice]
+
+Two dice are thrown, what is the probability that the total number of dots is:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  equal to \(7\)
+\item
+  equal to \(3\)
+\item
+  greater than \(5\)
+\item
+  an even number
+\end{enumerate}
+
+\emph{solution}
+
+The sample space here is \(\Omega = \{ (n_1,n_2) : n_1 , n_2 \in \{1,2,3,4,5,6 \} \}\). However, not all sums are equally likely, which is best seen in a table.
+
+\begin{longtable}[]{@{}ccccccc@{}}
+\toprule
+& 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
+\midrule
+\endhead
+1 & 2 & 3 & 4 & 5 & 6 & 7\tabularnewline
+2 & 3 & 4 & 5 & 6 & 7 & 8\tabularnewline
+3 & 4 & 5 & 6 & 7 & 8 & 9\tabularnewline
+4 & 5 & 6 & 7 & 8 & 9 & 10\tabularnewline
+5 & 6 & 7 & 8 & 9 & 10 & 11\tabularnewline
+6 & 7 & 8 & 9 & 10 & 11 & 12\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  \(\frac{6}{36}\)
+\item
+  \(\frac{2}{36}\)
+\item
+  \(\frac{26}{36}\)
+\item
+  \(\frac{18}{36}\)
+\end{enumerate}
+
+\end{example}
+
+For infinite sets there is a problem with the naive definition \ref{def:naiveprob}. Consider the following:
+
+\begin{example}
+\protect\hypertarget{exm:randangle}{}\label{exm:randangle}Suppose a random unit vector is rotated about the origin anticlockwise, making an angle \(\theta\) with the positive \(x\)-axis. What is the probability that this angle is acute?
+
+There are a continuum of infinitely many such angles. The naive definition says \(\frac{\infty}{\infty}\), which is absurd.
+
+Intuitively, the answer \emph{should} be \(\frac{1}{4}\).
+\end{example}
+
+\hypertarget{complements-and-mutual-exclusivity}{%
+\section{Complements and mutual exclusivity}\label{complements-and-mutual-exclusivity}}
+
+In any case, as events are subsets of the sample space \(\Omega\) and follow the rules of set theory, and so it is important to know some set notation, definitions and results. Below is a recap of the important definitions.
+
+\begin{definition}
+\protect\hypertarget{def:union}{}\label{def:union}The \textbf{\emph{union}} of \(A\) and \(B\) is written:
+
+\[A\cup B = \{ x \in \Omega :  x \in A \ \text{or} \ x\in B \}.\]
+In Mathematics or is inclusive, which means we do not need to say ``or both'' as this is included in the union.
+\end{definition}
+
+\begin{definition}
+\protect\hypertarget{def:intersection}{}\label{def:intersection}The \textbf{\emph{intersection}} of \(A\) and \(B\) is written:
+\[A\cap B = \{ x \in \Omega:  x \in A \ \text{and} \ x\in B \}.\]
+\end{definition}
+
+\begin{definition}
+\protect\hypertarget{def:mutex}{}\label{def:mutex}The empty set \(\varnothing\) is the set of no elements. As sets \(A\) and \(B\) are called disjoint if they have no elements in common, that is,
+
+\(A \cap B = \varnothing.\)
+
+In Probability Theory disjoint events are called \textbf{\emph{mutually exclusive}}.
+\end{definition}
+
+\begin{definition}
+\protect\hypertarget{def:complement}{}\label{def:complement}The \textbf{\emph{complement}} of an event \(A\) is the event \(A^{c} = \{x \in \Omega : x\notin A\}.\)
+Note \(A \cap A^{c} = \varnothing\). In words this means: any event is mutually exclusive with its complement.
+\end{definition}
+
+\begin{example}
+Suppose the event is throwing a die. The event is that one throws an even number. The complement is that one throws an odd number.
+\end{example}
+
+\begin{example}
+Suppose the event is that a random student has no siblings. The complement is not that they have one sibling. The complement is that they have \emph{at least} one sibling.
+\end{example}
+
+A theorem which we will not prove is De Morgan's laws
+
+\begin{theorem}[DE MORGAN'S LAWS]
+\protect\hypertarget{thm:demorgan}{}\label{thm:demorgan}The complement of a union is the intersection of the complements:
+\[(A \cup B)^{c} = A^{c} \cap B^{c}\]
+
+The complement of an intersection is the union of the complements:
+\[(A \cap B)^{c} = A^{c} \cup B^{c}\]
+\end{theorem}
+
+In this way \(P\) is a `measure' function which maps the subsets of the sample space to the interval \(\left[0,1\right]\).
+
+\begin{definition}
+\protect\hypertarget{def:probability}{}\label{def:probability}
+
+\textbf{\emph{Probability}} is a function whose input is a subset of the sample space \(A \subseteq \Omega\) and whose range is the interval \(\left[0,1\right]\), such that the following two axioms hold:
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\item
+  The probability of the whole set of possible events is unity. In the notation: \(\text{P}(\Omega ) =1\).
+\item
+  \emph{(additivity)} For any collection of disjoint events \(A_1 , A_2, A_3, \dots\) the probability of the union is the sum of the probabilities. In the notation this can be written as \[\text{P}(A_1 \cup A_2 \cup \dots ) = \text{P}(A_1) + \text{P}(A_2)+\dots .\]
+\end{enumerate}
+
+\end{definition}
+
+The above definition \ref{def:probability} is due to the Russian Mathematician Kolmogorov. These axioms help make sense of the infinite case.
+
+Using this definition we can prove the following important results.
+
+\begin{proposition}[THE PROBABILITY OF A COMPLEMENT]
+\protect\hypertarget{prp:sum}{}\label{prp:sum}For any event \(A\) we have:
+\[\text{P}(A^{c}) = 1 - \text{P}(A).\]
+\end{proposition}
+
+\begin{proof}
+Write \(\Omega = A \cup A^{c}\), which is a disjoint union. Then by additivity,
+\[\text{P}(\Omega) = \text{P}(A) + \text{P}(A^{c}) \]
+Now by axiom (i) the LHS is \(1\).
+\end{proof}
+
+\begin{theorem}[THE PROBABILITY OF A UNION]
+\protect\hypertarget{thm:sum}{}\label{thm:sum}Given any two events \(A\) and \(B\) we have:
+
+\[\text{P}(A\cup B) = \text{P}(A) + \text{P}(B) - \text{P}(A \cap B)\]
+\end{theorem}
+
+\begin{proof}
+The idea is to write \(A\) as a disjoint union of the part that has intersection with \(B\), and that which does not: \(A=(A\cap B)\cup(A\cap B^{c})\). Hence,
+
+\[\text{P}(A) = \text{P}(A\cap B) + \text{P}(A\cap B^{c})\]
+
+If we split \(A\cup B\) in the same way, we obtain \((A\cup B)\cap B\) and \((A\cup B)\cap B^{c}\). The former is simply \(B\), and the latter is \(A \cap B^{c}\). Again by additivity,
+
+\[\text{P}(A \cup B) = P(B) + P(A\cap B^{c}).\]
+Eliminating \(P(A\cap B^{c})\) from the two equations above proves the rule.
+\end{proof}
+
+We will not be proving all Theorems in this course, neither will I ask you to recount a proof in an exam. You will however have to know how to use these results in applied problems.
+
+\begin{example}[Multiple Choice]
+Suppose a multiple choice test consists of three questions each of which has two options, the correct answer (C) or the wrong answer (W). What is the probability that a student who always randomly guesses the answers gets at least one correct?
+
+\begin{align}
+\text{P(at least one correct)} &= 1 - \text{P(all wrong)} \\
+&= 1- \frac{1}{8}  \\
+&=\frac{7}{8}
+\end{align}
+\end{example}
+
+\begin{example}[Mode of travel]
+The table shows the type of journey undertaken by a sample of commuters classified by where they live.
+
+\begin{longtable}[]{@{}lccl@{}}
+\toprule
+& Town & Rural &\tabularnewline
+\midrule
+\endhead
+Car & 40 & 30 & 70\tabularnewline
+Bus & 25 & 5 & 30\tabularnewline
+& 65 & 35 & 100\tabularnewline
+\bottomrule
+\end{longtable}
+
+If an individual is selected at random from this group, find the probability that, they travel by car or live in the town
+
+\emph{solution}
+
+\(\text{P}(\text{Car}\cup \text{Town}) = \frac{25+40+30}{100}=0.95\)
+
+\(\text{P}(\text{Car})+ \text{P}(\text{Town})-\text{P}(\text{Car}\cap \text{Town})= \frac{65}{100}+\frac{70}{100}-\frac{40}{100} =0.95\)
+\end{example}
+
+\begin{example}
+In a particular city \(60\%\) of people watch the news in the morning, \(50\%\) of people watch the news in the evening and \(30\%\) watch both. What is the probability that an individual selected at random watches either the morning news or the evening news.
+
+\emph{solution}
+
+\(\text{P}(M\cup E) = 0.6 + 0.5 - 0.3 = 0.8\)
+\end{example}
+
+\hypertarget{outcomes-and-counting}{%
+\section{Outcomes and counting}\label{outcomes-and-counting}}
+
+One might imagine that the finite situation is then very simple, and even then we have seen this is not the full picture. One simply counts how many ways an event can happen out of the total number of configurations. This can actually be quite complicated. We will learn some formulae to enable us to count them.
+
+\hypertarget{factorials}{%
+\subsection{Factorials}\label{factorials}}
+
+\begin{example}[Three people in a line]
+\protect\hypertarget{exm:three}{}\label{exm:three}In how many ways can three people \(A\), \(B\) and \(C\) stand in a line?
+
+\emph{solution}
+
+\(ABC, ACB, BAC, BCA, CAB,CBA\) there are \(6\).
+\end{example}
+
+\begin{definition}
+For any non-negative integer, \(n\) say, we define the factorial of \(n\), written \(n!\) to be equal to the product of \(n\) and all the numbers less than \(n\) down to \(1\). That is,
+
+\[n! = n \times (n-1) \times (n-2) \times \dots 3 \times 2 \times 1\]
+\end{definition}
+
+\begin{definition}[Multiplication Rule]
+If there are \(n\) ways for some operation to happen, and \(m\) ways for something else to happen, then the total number of ways for the sequence to occur is \(n \times m\).
+\end{definition}
+
+\begin{example}
+MMU assigns each student an \(8\) digit ID number. How many possible ID numbers are there?
+
+\emph{solution}
+The first digit is not zero, there are \(9\) digits from which to choose.
+All the other digits have \(10\) choices \(0,1,2,3,4,5,6,7,8,9\).
+
+Total = \(9 \times 10^7\).
+\end{example}
+
+\begin{example}[objects in a line]
+The number of ways of arranging \(n\) distinct objects in a line is \(n!\).
+This is because there are \(n\) choices for the first number in line, then one fewer choice \((n-1)\) for the second, and so on, until the last one in the line there is only one choice remaining.
+\end{example}
+
+\begin{definition}[rule of division]
+The number of ways of arranging \(n\) objects in a line where \(p\) are the same is \(\frac{n!}{p!}\).
+\end{definition}
+
+\begin{example}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Suppose you have the letters \(A,A,A,B\) - how many `words' can be made?
+\item
+  Suppose you have the letters \(A,A,A,B,B\) - how many `words' can be made?
+\end{enumerate}
+
+\emph{solution}
+a)
+AAAB, AABA, ABAA, BAAA
+
+There are 4. How to find this number without having to write them down?
+
+You might think \(4!\) but this is thinking each A is different, and so overcounts the same word. By what factor does it overcount? Take one of the words such as ABAA and number each A, one finds rearrangements of 1,2,3:
+
+\(A_1BA_2A_3, A_1BA_3A_2, A_2BA_1A_3, A_2BA_3A_1, A_3BA_1A_2, A_3BA_2A_1.\)
+
+The upshot is that you need to divide by the factorial of number of letters that are the same, here \(\frac{4!}{3!} =4\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Here there are \(3\) of the same letter \(A\), and \(2\) of the same letter \(B\). The correct number is
+\end{enumerate}
+
+\[\frac{5!}{3!\times2!} = 10\]
+
+The words are AAABB, AABBA, ABBAA, BBAAA, BABAA, ABABA, AABAB, BAABA, ABAAB, BAAAB. (Here I can systematically list them by considering the number of A's between the B's).
+
+\end{example}
+
+\begin{definition}[rule of sum]
+Given two disjoint events \(A\) and \(B\), then the size of the union is the sum of the sizes of \(A\) and \(B\). That is,
+
+\[|A\cup B|=|A|+|B|\]
+\end{definition}
+
+\begin{example}
+How many possible MMU IDs start with a \(1\) or a \(3\)?
+
+\emph{solution}
+
+The IDs are all of the form 1******* or 3*******. There is only 1 choice for the first digit and \(10^7\) choices for the next digits in either case.
+
+The total number starting with a \(1\times 10^7 + 1\times 10^7 = 2\times 10^7.\)
+\end{example}
+
+\hypertarget{permutations}{%
+\subsection{Permutations}\label{permutations}}
+
+\begin{example}
+Consider the number of ways of placing three of the letters \(A,B,C,D,E,F G\) in three empty spaces. The first space can be filled in \(7\) ways, the second in \(6\) ways and the last in \(5\) ways.
+
+In total this is \(7\times 6\times 5 = 120\)
+
+This number can be written as
+\[\frac{7\times 6 \times 5\times 4\times 3\times 2\times 1}{4\times 3 \times 2\times 1}=\frac{7!}{(7-3)!}\]
+\end{example}
+
+\begin{definition}[Permutations]
+The number of ways of choosing \(k\) distinct items from \(n\) when the order is relevant is
+\[^n\text{P}_k = \frac{n!}{(n-k)!}\]
+Any way of choosing \(k\) distinct items from \(n\) when order matters is called a \textbf{\emph{permutation}}.
+\end{definition}
+
+\begin{example}
+My PIN has \(4\) different digits. How many different such PINs are there?
+
+\emph{solution}
+
+Order matters here - the guess 1234 is different from 4321, for example.
+
+\[^{10}\text{P}_4 = \frac{10!}{(10-4)!} = \frac{10\times 9 \times \dots 2 \times 1 }{6!} =10\times 9 \times 8 \times 7 =5040\]
+The expression \(10\times 9 \times 8 \times 7\) can be interpreted as saying there are \(10\) choices for the first digit, \(9\) or the second, and so on.
+\end{example}
+
+\begin{example}[The Birthday Problem]
+\protect\hypertarget{exm:birthday}{}\label{exm:birthday}Suppose there are \(k\) people in a room. What is the probability that at least one has the same birthday as someone else in the room?
+
+\emph{solution}
+
+\$\text{P}(\text{at least one birthday the same}) = 1 - \text{P}(\text{all birthdays different})
+
+The first person could be born on any day there are \(365\) such days, the second person has to have a different birthday so that is \(364\) and so on down to the \(k^{th}\) person.
+
+\(\text{P}(\text{all birthdays different}) = \frac{^{365}\text{P}_k}{365^k}\)
+
+This can be evaluated on a computer for different values of \(k\).
+
+When \(k=23\) one finds \(\text{P}(\text{all birthdays different}) = 0.493\).
+
+This implies that \(\text{P}(\text{at least one birthday the same}) = 1- 0.493 > 0.5\).
+
+There is a greater than evens chance of two people having the same birthday in a room of \(23\) people.
+\end{example}
+
+\hypertarget{combinations}{%
+\subsection{Combinations}\label{combinations}}
+
+\begin{definition}[Combinations]
+\protect\hypertarget{def:comb}{}\label{def:comb}The number of ways of choosing \(k\) distinct items from \(n\) when the order is not relevant is:
+
+\[^nC_k = \frac{n!}{(n-k)!k!}\]
+A way of choosing \(k\) distinct items from \(n\) when order does not matter is called a \textbf{\emph{combination}}.
+\end{definition}
+
+\begin{example}
+In how many ways can \(4\) cards be dealt from an ordinary pack of \(52\) playing cards?
+
+\emph{solution}
+
+Suppose one such hand is the Ace of spades, the king of clubs, the three of hearts and the Jack of diamonds. It does not matter which card you were given first, as the hand is all that matters to play.
+
+Here `order does not matter'.
+
+The number of hands is \(^{52}C_{4}=270725\).
+\end{example}
+
+\begin{example}
+In how many ways can \(4\) cards be dealt from an ordinary pack of \(52\) playing cards?
+
+\emph{solution}
+
+Suppose one such hand is the Ace of spades, the king of clubs, the three of hearts and the Jack of diamonds. It does not matter which card you were given first, as the hand is all that matters to play.
+
+Here `order does not matter'.
+
+The number of hands is \(^{52}C_{4}=270725\).
+\end{example}
+
+\begin{example}[The National Lottery]
+In the main National Lottery draw, six numbers are chosen from \(49\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  What is the probability of winning the jackpot on the lottery (i.e.~all \(6\) match)?
+\item
+  What is the probability that three of the winning numbers come up on a lottery ticket?
+\end{enumerate}
+
+\emph{solutions}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Total number of outcomes \(^{49}C_{6} = 13983816\).
+\end{enumerate}
+
+The probability is \(\frac{1}{^{49}C_{6}}\), which is about \(1\) in \(14\) million.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  The three winning numbers can be any three of the six winning numbers with \(^6C_3\) combinations. The other numbers on the ticket can be any three from the \(43\) losing numbers that week. The number of ways of choosing these is \(^{43}C_3\).
+\end{enumerate}
+
+Therefore the probability of three winning numbers is
+\[\text{P}(\text{three winning numbers}) = \frac{^{43}C_3 \times ^6C_3}{^{49}C_6} = 0.0177\]
+This is approximately \(1\) in \(56\).
+\end{example}
 
   \bibliography{book.bib,packages.bib}
 

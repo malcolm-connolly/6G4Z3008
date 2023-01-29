@@ -144,8 +144,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="#outcomes-and-counting"><i class="fa fa-check"></i><b>1.4</b> Outcomes and counting</a><ul>
 <li class="chapter" data-level="1.4.1" data-path="index.html"><a href="#factorials"><i class="fa fa-check"></i><b>1.4.1</b> Factorials</a></li>
 <li class="chapter" data-level="1.4.2" data-path="index.html"><a href="#permutations"><i class="fa fa-check"></i><b>1.4.2</b> Permutations</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="#combinations"><i class="fa fa-check"></i><b>1.4.3</b> Combinations</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="#exercises-week-1"><i class="fa fa-check"></i><b>1.5</b> Exercises (Week 1)</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -277,7 +277,7 @@ Figure 1.1: The result of simulating rolling a die 6000 times, and counting how 
 <p>In this course we will learn some R programming. R is a free open-source software language suitable for doing many probability and statistical calculations. The following R code will make a list of two outcomes Heads or Tails and create a sample of <span class="math inline">\(10\)</span> random outcomes.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>outcomes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Heads&quot;</span>,<span class="st">&quot;Tails&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">sample</span>(outcomes, <span class="dv">10</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>##  [1] &quot;Heads&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Tails&quot;
+<pre><code>##  [1] &quot;Heads&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Heads&quot;
 ## [10] &quot;Tails&quot;</code></pre>
 <div class="definition">
 <p><span id="def:freq" class="definition"><strong>Definition 1.2  </strong></span>If a statistical experiment has <span class="math inline">\(n\)</span> runs, and the outcome <span class="math inline">\(A\)</span> happens a cumulative number of times depending on <span class="math inline">\(n\)</span> which we can call <span class="math inline">\(a_n\)</span>, then the <strong><em>frequentist probability</em></strong> of the outcome <span class="math inline">\(A\)</span>, written <span class="math inline">\(P(A)\)</span>, is the limit:</p>
@@ -439,7 +439,7 @@ In Mathematics or is inclusive, which means we do not need to say ``or both’�
 </div>
 <div class="definition">
 <p><span id="def:complement" class="definition"><strong>Definition 1.9  </strong></span>The <strong><em>complement</em></strong> of an event <span class="math inline">\(A\)</span> is the event <span class="math inline">\(A^{c} = \{x \in \Omega : x\notin A\}.\)</span>
-Note $A A^{c} = . In words this means: any event is mutually exclusive with its complement.</p>
+Note <span class="math inline">\(A \cap A^{c} = \varnothing\)</span>. In words this means: any event is mutually exclusive with its complement.</p>
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-3" class="example"><strong>Example 1.7  </strong></span>Suppose the event is throwing a die. The event is that one throws an even number. The complement is that one throws an odd number.</p>
@@ -554,41 +554,122 @@ Eliminating <span class="math inline">\(P(A\cap B^{c})\)</span> from the two equ
 <p><span id="def:unlabeled-div-11" class="definition"><strong>Definition 1.12  (Multiplication Rule) </strong></span>If there are <span class="math inline">\(n\)</span> ways for some operation to happen, and <span class="math inline">\(m\)</span> ways for something else to happen, then the total number of ways for the sequence to occur is <span class="math inline">\(n \times m\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-12" class="example"><strong>Example 1.13  (Rule 1) </strong></span>The number of ways of arranging <span class="math inline">\(n\)</span> distinct objects in a line is <span class="math inline">\(n!\)</span>.
-This is because there are <span class="math inline">\(n\)</span> choices for the first number in line, then one fewer choice <span class="math inline">\((n-1)\)</span> for the second, and so on, until the last one in the line there is only one choice remaining.</p>
-</div>
-<div class="example">
-<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 1.14  </strong></span>MMU assigns each student an <span class="math inline">\(8\)</span> digit ID number. How many possible ID numbers are there?</p>
+<p><span id="exm:unlabeled-div-12" class="example"><strong>Example 1.13  </strong></span>MMU assigns each student an <span class="math inline">\(8\)</span> digit ID number. How many possible ID numbers are there?</p>
 <p><em>solution</em>
 The first digit is not zero, there are <span class="math inline">\(9\)</span> digits from which to choose.
 All the other digits have <span class="math inline">\(10\)</span> choices <span class="math inline">\(0,1,2,3,4,5,6,7,8,9\)</span>.</p>
 <p>Total = <span class="math inline">\(9 \times 10^7\)</span>.</p>
 </div>
+<div class="example">
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 1.14  (objects in a line) </strong></span>The number of ways of arranging <span class="math inline">\(n\)</span> distinct objects in a line is <span class="math inline">\(n!\)</span>.
+This is because there are <span class="math inline">\(n\)</span> choices for the first number in line, then one fewer choice <span class="math inline">\((n-1)\)</span> for the second, and so on, until the last one in the line there is only one choice remaining.</p>
+</div>
 <div class="definition">
-<p><span id="def:unlabeled-div-14" class="definition"><strong>Definition 1.13  (rule of sum) </strong></span>Given two disjoint events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, then the size of the union is the sum of the sizes of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. That is,</p>
+<p><span id="def:unlabeled-div-14" class="definition"><strong>Definition 1.13  (rule of division) </strong></span>The number of ways of arranging <span class="math inline">\(n\)</span> objects in a line where <span class="math inline">\(p\)</span> are the same is <span class="math inline">\(\frac{n!}{p!}\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-15" class="example"><strong>Example 1.15  </strong></span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Suppose you have the letters <span class="math inline">\(A,A,A,B\)</span> - how many `words’ can be made?</p></li>
+<li><p>Suppose you have the letters <span class="math inline">\(A,A,A,B,B\)</span> - how many `words’ can be made?</p></li>
+</ol>
+<p><em>solution</em>
+a)
+AAAB, AABA, ABAA, BAAA</p>
+<p>There are 4. How to find this number without having to write them down?</p>
+<p>You might think <span class="math inline">\(4!\)</span> but this is thinking each A is different, and so overcounts the same word. By what factor does it overcount? Take one of the words such as ABAA and number each A, one finds rearrangements of 1,2,3:</p>
+<p><span class="math inline">\(A_1BA_2A_3, A_1BA_3A_2, A_2BA_1A_3, A_2BA_3A_1, A_3BA_1A_2, A_3BA_2A_1.\)</span></p>
+<p>The upshot is that you need to divide by the factorial of number of letters that are the same, here <span class="math inline">\(\frac{4!}{3!} =4\)</span>.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Here there are <span class="math inline">\(3\)</span> of the same letter <span class="math inline">\(A\)</span>, and <span class="math inline">\(2\)</span> of the same letter <span class="math inline">\(B\)</span>. The correct number is</li>
+</ol>
+<p><span class="math display">\[\frac{5!}{3!\times2!} = 10\]</span></p>
+<p>The words are AAABB, AABBA, ABBAA, BBAAA, BABAA, ABABA, AABAB, BAABA, ABAAB, BAAAB. (Here I can systematically list them by considering the number of A’s between the B’s).</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-16" class="definition"><strong>Definition 1.14  (rule of sum) </strong></span>Given two disjoint events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, then the size of the union is the sum of the sizes of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. That is,</p>
 <p><span class="math display">\[|A\cup B|=|A|+|B|\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-15" class="example"><strong>Example 1.15  </strong></span>How many possible MMU IDs start with a <span class="math inline">\(1\)</span> or a <span class="math inline">\(3\)</span>?</p>
+<p><span id="exm:unlabeled-div-17" class="example"><strong>Example 1.16  </strong></span>How many possible MMU IDs start with a <span class="math inline">\(1\)</span> or a <span class="math inline">\(3\)</span>?</p>
 <p><em>solution</em></p>
 <p>The IDs are all of the form 1******* or 3*******. There is only 1 choice for the first digit and <span class="math inline">\(10^7\)</span> choices for the next digits in either case.</p>
 <p>The total number starting with a <span class="math inline">\(1\times 10^7 + 1\times 10^7 = 2\times 10^7.\)</span></p>
 </div>
-<p>::: {.definition name=“Rule 2”}</p>
 </div>
 <div id="permutations" class="section level3 hasAnchor">
 <h3><span class="header-section-number">1.4.2</span> Permutations<a href="#permutations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="example">
-<p><span id="exm:unlabeled-div-16" class="example"><strong>Example 1.16  </strong></span>Suppose I want to hack someone’s <span class="math inline">\(4\)</span> digit PIN, and they tell me the digits are all different. I need to choose <span class="math inline">\(4\)</span> numbers from <span class="math inline">\(10\)</span>, but for each <span class="math inline">\(4\)</span> that I choose they could happen in any order. For example <span class="math inline">\(1,2,3,4\)</span> could also occur as</p>
+<p><span id="exm:unlabeled-div-18" class="example"><strong>Example 1.17  </strong></span>Consider the number of ways of placing three of the letters <span class="math inline">\(A,B,C,D,E,F G\)</span> in three empty spaces. The first space can be filled in <span class="math inline">\(7\)</span> ways, the second in <span class="math inline">\(6\)</span> ways and the last in <span class="math inline">\(5\)</span> ways.</p>
+<p>In total this is <span class="math inline">\(7\times 6\times 5 = 120\)</span></p>
+<p>This number can be written as
+<span class="math display">\[\frac{7\times 6 \times 5\times 4\times 3\times 2\times 1}{4\times 3 \times 2\times 1}=\frac{7!}{(7-3)!}\]</span></p>
 </div>
-<p>The number of ways of choosing <span class="math inline">\(k\)</span> distinct items from <span class="math inline">\(n\)</span> when the order is relevant is
+<div class="definition">
+<p><span id="def:unlabeled-div-19" class="definition"><strong>Definition 1.15  (Permutations) </strong></span>The number of ways of choosing <span class="math inline">\(k\)</span> distinct items from <span class="math inline">\(n\)</span> when the order is relevant is
 <span class="math display">\[^n\text{P}_k = \frac{n!}{(n-k)!}\]</span>
-### Combinations</p>
+Any way of choosing <span class="math inline">\(k\)</span> distinct items from <span class="math inline">\(n\)</span> when order matters is called a <strong><em>permutation</em></strong>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-20" class="example"><strong>Example 1.18  </strong></span>My PIN has <span class="math inline">\(4\)</span> different digits. How many different such PINs are there?</p>
+<p><em>solution</em></p>
+<p>Order matters here - the guess 1234 is different from 4321, for example.</p>
+<p><span class="math display">\[^{10}\text{P}_4 = \frac{10!}{(10-4)!} = \frac{10\times 9 \times \dots 2 \times 1 }{6!} =10\times 9 \times 8 \times 7 =5040\]</span>
+The expression <span class="math inline">\(10\times 9 \times 8 \times 7\)</span> can be interpreted as saying there are <span class="math inline">\(10\)</span> choices for the first digit, <span class="math inline">\(9\)</span> or the second, and so on.</p>
+</div>
+<div class="example">
+<p><span id="exm:birthday" class="example"><strong>Example 1.19  (The Birthday Problem) </strong></span>Suppose there are <span class="math inline">\(k\)</span> people in a room. What is the probability that at least one has the same birthday as someone else in the room?</p>
+<p><em>solution</em></p>
+<p>$() = 1 - ()</p>
+<p>The first person could be born on any day there are <span class="math inline">\(365\)</span> such days, the second person has to have a different birthday so that is <span class="math inline">\(364\)</span> and so on down to the <span class="math inline">\(k^{th}\)</span> person.</p>
+<p><span class="math inline">\(\text{P}(\text{all birthdays different}) = \frac{^{365}\text{P}_k}{365^k}\)</span></p>
+<p>This can be evaluated on a computer for different values of <span class="math inline">\(k\)</span>.</p>
+<p>When <span class="math inline">\(k=23\)</span> one finds <span class="math inline">\(\text{P}(\text{all birthdays different}) = 0.493\)</span>.</p>
+<p>This implies that <span class="math inline">\(\text{P}(\text{at least one birthday the same}) = 1- 0.493 &gt; 0.5\)</span>.</p>
+<p>There is a greater than evens chance of two people having the same birthday in a room of <span class="math inline">\(23\)</span> people.</p>
 </div>
 </div>
-<div id="exercises-week-1" class="section level2 hasAnchor">
-<h2><span class="header-section-number">1.5</span> Exercises (Week 1)<a href="#exercises-week-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="combinations" class="section level3 hasAnchor">
+<h3><span class="header-section-number">1.4.3</span> Combinations<a href="#combinations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="definition">
+<p><span id="def:comb" class="definition"><strong>Definition 1.16  (Combinations) </strong></span>The number of ways of choosing <span class="math inline">\(k\)</span> distinct items from <span class="math inline">\(n\)</span> when the order is not relevant is:</p>
+<p><span class="math display">\[^nC_k = \frac{n!}{(n-k)!k!}\]</span>
+A way of choosing <span class="math inline">\(k\)</span> distinct items from <span class="math inline">\(n\)</span> when order does not matter is called a <strong><em>combination</em></strong>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-21" class="example"><strong>Example 1.20  </strong></span>In how many ways can <span class="math inline">\(4\)</span> cards be dealt from an ordinary pack of <span class="math inline">\(52\)</span> playing cards?</p>
+<p><em>solution</em></p>
+<p>Suppose one such hand is the Ace of spades, the king of clubs, the three of hearts and the Jack of diamonds. It does not matter which card you were given first, as the hand is all that matters to play.</p>
+<p>Here `order does not matter’.</p>
+<p>The number of hands is <span class="math inline">\(^{52}C_{4}=270725\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-22" class="example"><strong>Example 1.21  </strong></span>In how many ways can <span class="math inline">\(4\)</span> cards be dealt from an ordinary pack of <span class="math inline">\(52\)</span> playing cards?</p>
+<p><em>solution</em></p>
+<p>Suppose one such hand is the Ace of spades, the king of clubs, the three of hearts and the Jack of diamonds. It does not matter which card you were given first, as the hand is all that matters to play.</p>
+<p>Here `order does not matter’.</p>
+<p>The number of hands is <span class="math inline">\(^{52}C_{4}=270725\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-23" class="example"><strong>Example 1.22  (The National Lottery) </strong></span>In the main National Lottery draw, six numbers are chosen from <span class="math inline">\(49\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>What is the probability of winning the jackpot on the lottery (i.e. all <span class="math inline">\(6\)</span> match)?</p></li>
+<li><p>What is the probability that three of the winning numbers come up on a lottery ticket?</p></li>
+</ol>
+<p><em>solutions</em></p>
+<ol style="list-style-type: lower-alpha">
+<li>Total number of outcomes <span class="math inline">\(^{49}C_{6} = 13983816\)</span>.</li>
+</ol>
+<p>The probability is <span class="math inline">\(\frac{1}{^{49}C_{6}}\)</span>, which is about <span class="math inline">\(1\)</span> in <span class="math inline">\(14\)</span> million.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The three winning numbers can be any three of the six winning numbers with <span class="math inline">\(^6C_3\)</span> combinations. The other numbers on the ticket can be any three from the <span class="math inline">\(43\)</span> losing numbers that week. The number of ways of choosing these is <span class="math inline">\(^{43}C_3\)</span>.</li>
+</ol>
+<p>Therefore the probability of three winning numbers is
+<span class="math display">\[\text{P}(\text{three winning numbers}) = \frac{^{43}C_3 \times ^6C_3}{^{49}C_6} = 0.0177\]</span>
+This is approximately <span class="math inline">\(1\)</span> in <span class="math inline">\(56\)</span>.</p>
+</div>
 
+</div>
 </div>
 </div>
             </section>

@@ -227,7 +227,7 @@ In Probability Theory disjoint events are called ***mutually exclusive***.
 
 ::: {.definition #complement}
 The ***complement*** of an event $A$ is the event $A^{c} = \{x \in \Omega : x\notin A\}.$
-Note $A \cap A^{c} = \varnothing. In words this means: any event is mutually exclusive with its complement.
+Note $A \cap A^{c} = \varnothing$. In words this means: any event is mutually exclusive with its complement.
 :::
 
 ::: {.example }
