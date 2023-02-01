@@ -760,3 +760,6 @@ d) Using a) and c), describe in words why the following equality holds.
 $$2^n = \sum_{k=0}^n {^n}C_k$$
 
 5. Five office workers write their names on a piece of paper, fold the paper and put them in a hat. The names are mixed up and each person then selects a piece of paper from the hat. After everyone has selected a piece of paper from the hat, the staff look at the names drawn. What is the probability that no member of staff selected their own name?
+
+<!--chapter:end:index.Rmd-->
+

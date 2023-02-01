@@ -208,7 +208,7 @@ In this course we will learn some R programming. R is a free open-source softwar
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "Tails" "Tails" "Heads" "Heads" "Tails" "Tails" "Heads" "Tails" "Heads"
+##  [1] "Heads" "Heads" "Heads" "Tails" "Heads" "Tails" "Tails" "Heads" "Heads"
 ## [10] "Heads"
 \end{verbatim}
 
@@ -697,6 +697,329 @@ Therefore the probability of three winning numbers is
 \[\text{P}(\text{three winning numbers}) = \frac{^{43}C_3 \times ^6C_3}{^{49}C_6} = 0.0177\]
 This is approximately \(1\) in \(56\).
 \end{example}
+
+\hypertarget{exercises-week-1}{%
+\section{Exercises Week 1}\label{exercises-week-1}}
+
+\hypertarget{tutorial-exercises}{%
+\subsection{Tutorial exercises}\label{tutorial-exercises}}
+
+\begin{exercise}
+A letter is chosen at random from the word STATISTICS.
+a) What is the probability that it is a vowel?
+b) What is the complement of the event in a)?
+\end{exercise}
+
+\begin{exercise}
+Suppose you are eating in a restaurant with two friends. You agree to pay the bill as follows. Each person tosses a coin. The person who gets a result different from the other two will pay all the bill. If all three tosses are the same, the bill will be shared equally. Find the probability that:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Only you will pay the bill
+\item
+  All three will share the bill
+\end{enumerate}
+
+Do you think this is a \emph{fair} way to split the bill?
+\end{exercise}
+
+\begin{exercise}
+
+An investment can either; increase in value (I), break even (B) or make a loss (L). Suppose each outcome is equally likely. If two separate investments are made,
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  List the sample space by drawing a tree diagram.
+\item
+  Find the probability that:
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\tightlist
+\item
+  both investments increase in value.
+\item
+  both investments make a loss.
+\item
+  At least one of the investments increases in value.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Suppose both investments were in the same type of company. How might this model be unrealistic, and how could you improve it?
+\item
+  How big would the sample space be if three separate investments were made?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+A set of cards consists of the standard suits \(\clubsuit\), \(\spadesuit\), \(\diamondsuit\), \(\heartsuit\), with \(13\) cards in each suit.
+a) Suppose one card is drawn at random. Find the probability that it is a:
+(i) Ace of Hearts, \(A\heartsuit\)
+(ii) The King of Spades \(K\spadesuit\).
+(iii) Any picture card.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Suppose two cards are drawn at random, but with the first being replaced and the deck shuffled before the second is drawn ( this is called sampling with replacement). Find the probability that:
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\tightlist
+\item
+  Both cards are the King of Hearts, \(K\heartsuit\).
+\item
+  Both cards are Aces.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+Fifty male and fifty female students were asked whether they agreed with the statement ``Statistics are often misleading''. Seventy students, thirty of whom were male, agreed.
+a) Summarise this information in a two-way table.
+b) If a student is selected at random, find the probability that they:
+(i) Agree
+(ii) Are female
+(iii) Are male
+(iv) Are male and agree
+(v) Are female or agree
+\end{exercise}
+
+\begin{exercise}
+Interviews with \(120\) working people revealed that \(76\) were stressed, \(20\) were managers and \(14\) were both managers and stressed.
+a) Summarise this information in a two-way table.
+b) Assuming an individual is drawn at random, find the probability thatthey are
+(i) Stressed
+(ii) A shopfloor worker
+(iii) A manager who is stressed
+(iv) A shopfloor worker or is not stressed.
+\end{exercise}
+
+\begin{exercise}
+Evaluate a) \(^5\text{P}_3\), b) \(^7\text{P}_4\), c) \(^6\text{P}_4\).
+\end{exercise}
+
+\begin{exercise}
+For what value of \(n\) is the following equality true?
+\[ ^{n+1}\text{P}_3 = ^n\text{P}_4 \]
+\end{exercise}
+
+\begin{exercise}
+Four different Mathematics books, \(5\) different statistics books and \(3\) different computing books are to be arranged on a shelf. In how many ways can the books be arranged if,
+a) The books in each subject must stand together
+b) Only the statistics books must stand together
+\end{exercise}
+
+\begin{exercise}
+Four different Mathematics books, \(5\) different statistics books and \(3\) different computing books are to be arranged on a shelf. In how many ways can the books be arranged if,
+a) The books in each subject must stand together
+b) Only the statistics books must stand together
+\end{exercise}
+
+\begin{exercise}
+Evaluate a) \(^7\text{C}_6\), b) \(^5\text{C}_3\), c) \(^9\text{C}_5\), \(^9\text{C}_4\).
+\end{exercise}
+
+\begin{exercise}
+How many different committees can be formed from \(8\) men and \(6\) women if the committee consists of:
+a) \(1\) man and \(4\) women
+b) \(5\) men and \(3\) women
+c) \(4\) men and \(4\) women
+d) An equal number of men and women.
+\end{exercise}
+
+\begin{exercise}
+A council consists of \(10\) members, \(6\) from Party X and \(4\) from Party \(Y\).
+a) In how many ways can a committee of \(4\) be formed?
+b) In how many ways can a committee of \(4\) be formed so that:
+i) Party X has the majority
+ii) Party Y has the majority
+iii) Neither party has the majority
+\end{exercise}
+
+\begin{exercise}
+Ten equally qualified assistant managersare lined up for promotion. Seven are men and three are women. If the company promotes four of the ten at random, what is the probability that exactly two of the four chosen are women?
+\end{exercise}
+
+\begin{exercise}
+Suppose a library bookshelf contains an equal number, \(n\) each say, of Mathematics books and Physics books. If the bookshelf is emptied and the books placed back randomly, what is the probability that the books for each subject are separated?
+\end{exercise}
+
+\begin{exercise}
+Here are some miscellaneous questions on permutations and combinations:
+a) From a group of \(20\) employees, \(4\) are chosen for promotion. In how many ways can they be chosen?
+b) From a group of \(20\) employees, \(4\) are shosen for promotion, but each to a different role. In how many ways can they be chosen?
+c) A product code consists of \(4\) letters followed by \(3\) digits. How many codes are possible if repetitions are not allowed?
+d) A \(7\)-card hand is dealt from a normal pack of \(52\) cards. How many hands will contain \(4\) clubs and \(3\) hearts?
+e) How many ways can merit awards be allocated to a group of \(15\) students if there is one first prize, one second prize and \(4\) identical third prizes?
+f) Four students are to be chosen from a group of \(10\). If exactly \textbf{\emph{one}} of the first three students must be chosen, how many ways are there of choosing the four students?
+\end{exercise}
+
+\begin{exercise}
+In the game of poker, five cards from a standard deck of \(52\) cards are dealt in a hand. Find the probability that a hand contains,
+a) A royal flush (ace, king, queen, jack and \(10\) of the same suit)
+b) Four of a kind (e.g.~all four \(5\)s)
+c) Two pairs
+d) A full house (i.e.~three of one kind and two of another)
+e) One pair
+\end{exercise}
+
+\begin{exercise}
+If \(\text{P(A)}=0.6\) and \(\text{P(B)}=0.5\), can A and B be mutually exclusive?
+\end{exercise}
+
+\begin{exercise}
+
+The medical records of \(100\) male diabetic patients reported to a clinic their family history of diabetes (Yes or No), together with their symptoms as either mild or severe. This provided the following classification.
+
+\begin{longtable}[]{@{}crr@{}}
+\toprule
+Age & Mild and Yes & Mild and No\tabularnewline
+\midrule
+\endhead
+under 40 & 15 & 10\tabularnewline
+40 or over & 15 & 20\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}crr@{}}
+\toprule
+Age & Severe and Yes & Severe and No\tabularnewline
+\midrule
+\endhead
+under 40 & 15 & 10\tabularnewline
+40 or over & 15 & 20\tabularnewline
+\bottomrule
+\end{longtable}
+
+Suppose a patient is chosen at random from this clinic and the events A, B and C are defines as follows:
+
+A : He has a severe disease
+
+B : He is under \(40\)
+
+C : His parents are diabetic
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Find the probabilities P(A), P(B), P(A\(\cap\)B), P(B\(\cap\)C), P(A\(\cap\)B\(\cap\)C).
+\item
+  Describe the following events in words and calculate them: A\(^c\cap\)B\(^c\), A\(^c\cup\)C\(^c\), A\(^c\cap\)B\(^c\cap\)C\(^c\).
+\end{enumerate}
+
+\end{exercise}
+
+\hypertarget{exercises-for-feedback}{%
+\subsection{Exercises for feedback}\label{exercises-for-feedback}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  I cannot remember a phone number. It contains the following digits and is something like \(132 \ 747 \ 6965\).
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  What is the probability that the first number is even?
+\item
+  How many ways can the numbers above be rearranged?
+\item
+  In how many ways can the number be rearranged to start and end with an odd number?
+\end{enumerate}
+
+Suppose I am certain of the numbers in each of the blocks \(132\),\(747\) and \(6965\), but not am not sure of the order within each block.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\item
+  How many ways can the numbers be rearranged such that the numbers within each block are the same?
+\item
+  What is the probability that I wrote down the correct number originally?
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  In a lottery, \(6\) numbers are drawn from the numbers \(1\) to \(49\). Calculate the following probabilities.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  The numbers \(1\), \(2\), \(3\), \(4\), \(5\), \(6\) are all drawn.
+\item
+  The numbers \(4\), \(23\), \(24\), \(35\), \(40\), \(45\) are all drawn.
+\item
+  \(44\) is one of the numbers drawn.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Three dice are rolled. The sum of the numbers on the dice is the score.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Describe the sample space.
+\item
+  How many ways could the score equal \(5\)?
+\item
+  What is the most likely score?
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Suppose we have a finite set \(S\) of size \(n\).
+  (Hint: this question is general, but you could check your answers with concrete example S = \{ a,b,c,d \})
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  How many subsets are there of \(S\)?
+\item
+  How many subsets of S are there of size \(1\)?
+\item
+  How many subsets of S are there of size \(k\), where \(1\leq k\leq n\)
+\item
+  Using a) and c), describe in words why the following equality holds.
+\end{enumerate}
+
+\[2^n = \sum_{k=0}^n {^n}C_k\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Five office workers write their names on a piece of paper, fold the paper and put them in a hat. The names are mixed up and each person then selects a piece of paper from the hat. After everyone has selected a piece of paper from the hat, the staff look at the names drawn. What is the probability that no member of staff selected their own name?
+\end{enumerate}
 
   \bibliography{book.bib,packages.bib}
 
