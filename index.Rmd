@@ -470,7 +470,7 @@ Suppose there are $k$ people in a room. What is the probability that at least on
 
 _solution_
 
-$\text{P}(\text{at least one birthday the same}) = 1 - \text{P}(\text{all birthdays different})
+$$\text{P}(\text{at least one birthday the same}) = 1 - \text{P}(\text{all birthdays different})$$
 
 The first person could be born on any day there are $365$ such days, the second person has to have a different birthday so that is $364$ and so on down to the $k^{th}$ person.
 
@@ -496,17 +496,6 @@ $$^nC_k = \frac{n!}{(n-k)!k!}$$
 A way of choosing $k$ distinct items from $n$ when order does not matter is called a ***combination***.
 :::
 
-::: {.example}
-In how many ways can $4$ cards be dealt from an ordinary pack of $52$ playing cards?
-
-_solution_
-
-Suppose one such hand is the Ace of spades, the king of clubs, the three of hearts and the Jack of diamonds. It does not matter which card you were given first, as the hand is all that matters to play.
-
-Here `order does not matter'. 
-
-The number of hands is $^{52}C_{4}=270725$.
-:::
 
 ::: {.example }
 In how many ways can $4$ cards be dealt from an ordinary pack of $52$ playing cards?

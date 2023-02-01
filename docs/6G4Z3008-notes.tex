@@ -208,8 +208,8 @@ In this course we will learn some R programming. R is a free open-source softwar
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "Heads" "Heads" "Heads" "Tails" "Heads" "Tails" "Tails" "Heads" "Heads"
-## [10] "Heads"
+##  [1] "Heads" "Heads" "Tails" "Heads" "Tails" "Tails" "Tails" "Heads" "Tails"
+## [10] "Tails"
 \end{verbatim}
 
 \begin{definition}
@@ -614,7 +614,7 @@ The expression \(10\times 9 \times 8 \times 7\) can be interpreted as saying the
 
 \emph{solution}
 
-\$\text{P}(\text{at least one birthday the same}) = 1 - \text{P}(\text{all birthdays different})
+\[\text{P}(\text{at least one birthday the same}) = 1 - \text{P}(\text{all birthdays different})\]
 
 The first person could be born on any day there are \(365\) such days, the second person has to have a different birthday so that is \(364\) and so on down to the \(k^{th}\) person.
 
@@ -638,18 +638,6 @@ There is a greater than evens chance of two people having the same birthday in a
 \[^nC_k = \frac{n!}{(n-k)!k!}\]
 A way of choosing \(k\) distinct items from \(n\) when order does not matter is called a \textbf{\emph{combination}}.
 \end{definition}
-
-\begin{example}
-In how many ways can \(4\) cards be dealt from an ordinary pack of \(52\) playing cards?
-
-\emph{solution}
-
-Suppose one such hand is the Ace of spades, the king of clubs, the three of hearts and the Jack of diamonds. It does not matter which card you were given first, as the hand is all that matters to play.
-
-Here `order does not matter'.
-
-The number of hands is \(^{52}C_{4}=270725\).
-\end{example}
 
 \begin{example}
 In how many ways can \(4\) cards be dealt from an ordinary pack of \(52\) playing cards?

@@ -281,8 +281,8 @@ Figure 1.1: The result of simulating rolling a die 6000 times, and counting how 
 <p>In this course we will learn some R programming. R is a free open-source software language suitable for doing many probability and statistical calculations. The following R code will make a list of two outcomes Heads or Tails and create a sample of <span class="math inline">\(10\)</span> random outcomes.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>outcomes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Heads&quot;</span>,<span class="st">&quot;Tails&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">sample</span>(outcomes, <span class="dv">10</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>##  [1] &quot;Tails&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Tails&quot;
-## [10] &quot;Tails&quot;</code></pre>
+<pre><code>##  [1] &quot;Heads&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Tails&quot;
+## [10] &quot;Heads&quot;</code></pre>
 <div class="definition">
 <p><span id="def:freq" class="definition"><strong>Definition 1.2  </strong></span>If a statistical experiment has <span class="math inline">\(n\)</span> runs, and the outcome <span class="math inline">\(A\)</span> happens a cumulative number of times depending on <span class="math inline">\(n\)</span> which we can call <span class="math inline">\(a_n\)</span>, then the <strong><em>frequentist probability</em></strong> of the outcome <span class="math inline">\(A\)</span>, written <span class="math inline">\(P(A)\)</span>, is the limit:</p>
 <p><span class="math display">\[P(A) = \lim_{n\to \infty} \frac{a_n}{n}\]</span></p>
@@ -624,7 +624,7 @@ The expression <span class="math inline">\(10\times 9 \times 8 \times 7\)</span>
 <div class="example">
 <p><span id="exm:birthday" class="example"><strong>Example 1.19  (The Birthday Problem) </strong></span>Suppose there are <span class="math inline">\(k\)</span> people in a room. What is the probability that at least one has the same birthday as someone else in the room?</p>
 <p><em>solution</em></p>
-<p>$() = 1 - ()</p>
+<p><span class="math display">\[\text{P}(\text{at least one birthday the same}) = 1 - \text{P}(\text{all birthdays different})\]</span></p>
 <p>The first person could be born on any day there are <span class="math inline">\(365\)</span> such days, the second person has to have a different birthday so that is <span class="math inline">\(364\)</span> and so on down to the <span class="math inline">\(k^{th}\)</span> person.</p>
 <p><span class="math inline">\(\text{P}(\text{all birthdays different}) = \frac{^{365}\text{P}_k}{365^k}\)</span></p>
 <p>This can be evaluated on a computer for different values of <span class="math inline">\(k\)</span>.</p>
@@ -648,14 +648,7 @@ A way of choosing <span class="math inline">\(k\)</span> distinct items from <sp
 <p>The number of hands is <span class="math inline">\(^{52}C_{4}=270725\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-22" class="example"><strong>Example 1.21  </strong></span>In how many ways can <span class="math inline">\(4\)</span> cards be dealt from an ordinary pack of <span class="math inline">\(52\)</span> playing cards?</p>
-<p><em>solution</em></p>
-<p>Suppose one such hand is the Ace of spades, the king of clubs, the three of hearts and the Jack of diamonds. It does not matter which card you were given first, as the hand is all that matters to play.</p>
-<p>Here `order does not matter’.</p>
-<p>The number of hands is <span class="math inline">\(^{52}C_{4}=270725\)</span>.</p>
-</div>
-<div class="example">
-<p><span id="exm:unlabeled-div-23" class="example"><strong>Example 1.22  (The National Lottery) </strong></span>In the main National Lottery draw, six numbers are chosen from <span class="math inline">\(49\)</span>.</p>
+<p><span id="exm:unlabeled-div-22" class="example"><strong>Example 1.21  (The National Lottery) </strong></span>In the main National Lottery draw, six numbers are chosen from <span class="math inline">\(49\)</span>.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>What is the probability of winning the jackpot on the lottery (i.e. all <span class="math inline">\(6\)</span> match)?</p></li>
 <li><p>What is the probability that three of the winning numbers come up on a lottery ticket?</p></li>
@@ -679,12 +672,12 @@ This is approximately <span class="math inline">\(1\)</span> in <span class="mat
 <div id="tutorial-exercises" class="section level3 hasAnchor">
 <h3><span class="header-section-number">1.5.1</span> Tutorial exercises<a href="#tutorial-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-24" class="exercise"><strong>Exercise 1.1  </strong></span>A letter is chosen at random from the word STATISTICS.
+<p><span id="exr:unlabeled-div-23" class="exercise"><strong>Exercise 1.1  </strong></span>A letter is chosen at random from the word STATISTICS.
 a) What is the probability that it is a vowel?
 b) What is the complement of the event in a)?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-25" class="exercise"><strong>Exercise 1.2  </strong></span>Suppose you are eating in a restaurant with two friends. You agree to pay the bill as follows. Each person tosses a coin. The person who gets a result different from the other two will pay all the bill. If all three tosses are the same, the bill will be shared equally. Find the probability that:</p>
+<p><span id="exr:unlabeled-div-24" class="exercise"><strong>Exercise 1.2  </strong></span>Suppose you are eating in a restaurant with two friends. You agree to pay the bill as follows. Each person tosses a coin. The person who gets a result different from the other two will pay all the bill. If all three tosses are the same, the bill will be shared equally. Find the probability that:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Only you will pay the bill</li>
 <li>All three will share the bill</li>
@@ -692,7 +685,7 @@ b) What is the complement of the event in a)?</p>
 <p>Do you think this is a <em>fair</em> way to split the bill?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-26" class="exercise"><strong>Exercise 1.3  </strong></span>An investment can either; increase in value (I), break even (B) or make a loss (L). Suppose each outcome is equally likely. If two separate investments are made,</p>
+<p><span id="exr:unlabeled-div-25" class="exercise"><strong>Exercise 1.3  </strong></span>An investment can either; increase in value (I), break even (B) or make a loss (L). Suppose each outcome is equally likely. If two separate investments are made,</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>List the sample space by drawing a tree diagram.</p></li>
 <li><p>Find the probability that:</p></li>
@@ -708,7 +701,7 @@ b) What is the complement of the event in a)?</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-27" class="exercise"><strong>Exercise 1.4  </strong></span>A set of cards consists of the standard suits <span class="math inline">\(\clubsuit\)</span>, <span class="math inline">\(\spadesuit\)</span>, <span class="math inline">\(\diamondsuit\)</span>, <span class="math inline">\(\heartsuit\)</span>, with <span class="math inline">\(13\)</span> cards in each suit.
+<p><span id="exr:unlabeled-div-26" class="exercise"><strong>Exercise 1.4  </strong></span>A set of cards consists of the standard suits <span class="math inline">\(\clubsuit\)</span>, <span class="math inline">\(\spadesuit\)</span>, <span class="math inline">\(\diamondsuit\)</span>, <span class="math inline">\(\heartsuit\)</span>, with <span class="math inline">\(13\)</span> cards in each suit.
 a) Suppose one card is drawn at random. Find the probability that it is a:
 (i) Ace of Hearts, <span class="math inline">\(A\heartsuit\)</span>
 (ii) The King of Spades <span class="math inline">\(K\spadesuit\)</span>.
@@ -722,7 +715,7 @@ a) Suppose one card is drawn at random. Find the probability that it is a:
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-28" class="exercise"><strong>Exercise 1.5  </strong></span>Fifty male and fifty female students were asked whether they agreed with the statement “Statistics are often misleading”. Seventy students, thirty of whom were male, agreed.
+<p><span id="exr:unlabeled-div-27" class="exercise"><strong>Exercise 1.5  </strong></span>Fifty male and fifty female students were asked whether they agreed with the statement “Statistics are often misleading”. Seventy students, thirty of whom were male, agreed.
 a) Summarise this information in a two-way table.
 b) If a student is selected at random, find the probability that they:
 (i) Agree
@@ -732,7 +725,7 @@ b) If a student is selected at random, find the probability that they:
 (v) Are female or agree</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-29" class="exercise"><strong>Exercise 1.6  </strong></span>Interviews with <span class="math inline">\(120\)</span> working people revealed that <span class="math inline">\(76\)</span> were stressed, <span class="math inline">\(20\)</span> were managers and <span class="math inline">\(14\)</span> were both managers and stressed.
+<p><span id="exr:unlabeled-div-28" class="exercise"><strong>Exercise 1.6  </strong></span>Interviews with <span class="math inline">\(120\)</span> working people revealed that <span class="math inline">\(76\)</span> were stressed, <span class="math inline">\(20\)</span> were managers and <span class="math inline">\(14\)</span> were both managers and stressed.
 a) Summarise this information in a two-way table.
 b) Assuming an individual is drawn at random, find the probability thatthey are
 (i) Stressed
@@ -741,34 +734,34 @@ b) Assuming an individual is drawn at random, find the probability thatthey are
 (iv) A shopfloor worker or is not stressed.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-30" class="exercise"><strong>Exercise 1.7  </strong></span>Evaluate a) <span class="math inline">\(^5\text{P}_3\)</span>, b) <span class="math inline">\(^7\text{P}_4\)</span>, c) <span class="math inline">\(^6\text{P}_4\)</span>.</p>
+<p><span id="exr:unlabeled-div-29" class="exercise"><strong>Exercise 1.7  </strong></span>Evaluate a) <span class="math inline">\(^5\text{P}_3\)</span>, b) <span class="math inline">\(^7\text{P}_4\)</span>, c) <span class="math inline">\(^6\text{P}_4\)</span>.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-31" class="exercise"><strong>Exercise 1.8  </strong></span>For what value of <span class="math inline">\(n\)</span> is the following equality true?
+<p><span id="exr:unlabeled-div-30" class="exercise"><strong>Exercise 1.8  </strong></span>For what value of <span class="math inline">\(n\)</span> is the following equality true?
 <span class="math display">\[ ^{n+1}\text{P}_3 = ^n\text{P}_4 \]</span></p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-32" class="exercise"><strong>Exercise 1.9  </strong></span>Four different Mathematics books, <span class="math inline">\(5\)</span> different statistics books and <span class="math inline">\(3\)</span> different computing books are to be arranged on a shelf. In how many ways can the books be arranged if,
+<p><span id="exr:unlabeled-div-31" class="exercise"><strong>Exercise 1.9  </strong></span>Four different Mathematics books, <span class="math inline">\(5\)</span> different statistics books and <span class="math inline">\(3\)</span> different computing books are to be arranged on a shelf. In how many ways can the books be arranged if,
 a) The books in each subject must stand together
 b) Only the statistics books must stand together</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-33" class="exercise"><strong>Exercise 1.10  </strong></span>Four different Mathematics books, <span class="math inline">\(5\)</span> different statistics books and <span class="math inline">\(3\)</span> different computing books are to be arranged on a shelf. In how many ways can the books be arranged if,
+<p><span id="exr:unlabeled-div-32" class="exercise"><strong>Exercise 1.10  </strong></span>Four different Mathematics books, <span class="math inline">\(5\)</span> different statistics books and <span class="math inline">\(3\)</span> different computing books are to be arranged on a shelf. In how many ways can the books be arranged if,
 a) The books in each subject must stand together
 b) Only the statistics books must stand together</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-34" class="exercise"><strong>Exercise 1.11  </strong></span>Evaluate a) <span class="math inline">\(^7\text{C}_6\)</span>, b) <span class="math inline">\(^5\text{C}_3\)</span>, c) <span class="math inline">\(^9\text{C}_5\)</span>, <span class="math inline">\(^9\text{C}_4\)</span>.</p>
+<p><span id="exr:unlabeled-div-33" class="exercise"><strong>Exercise 1.11  </strong></span>Evaluate a) <span class="math inline">\(^7\text{C}_6\)</span>, b) <span class="math inline">\(^5\text{C}_3\)</span>, c) <span class="math inline">\(^9\text{C}_5\)</span>, <span class="math inline">\(^9\text{C}_4\)</span>.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-35" class="exercise"><strong>Exercise 1.12  </strong></span>How many different committees can be formed from <span class="math inline">\(8\)</span> men and <span class="math inline">\(6\)</span> women if the committee consists of:
+<p><span id="exr:unlabeled-div-34" class="exercise"><strong>Exercise 1.12  </strong></span>How many different committees can be formed from <span class="math inline">\(8\)</span> men and <span class="math inline">\(6\)</span> women if the committee consists of:
 a) <span class="math inline">\(1\)</span> man and <span class="math inline">\(4\)</span> women
 b) <span class="math inline">\(5\)</span> men and <span class="math inline">\(3\)</span> women
 c) <span class="math inline">\(4\)</span> men and <span class="math inline">\(4\)</span> women
 d) An equal number of men and women.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-36" class="exercise"><strong>Exercise 1.13  </strong></span>A council consists of <span class="math inline">\(10\)</span> members, <span class="math inline">\(6\)</span> from Party X and <span class="math inline">\(4\)</span> from Party <span class="math inline">\(Y\)</span>.
+<p><span id="exr:unlabeled-div-35" class="exercise"><strong>Exercise 1.13  </strong></span>A council consists of <span class="math inline">\(10\)</span> members, <span class="math inline">\(6\)</span> from Party X and <span class="math inline">\(4\)</span> from Party <span class="math inline">\(Y\)</span>.
 a) In how many ways can a committee of <span class="math inline">\(4\)</span> be formed?
 b) In how many ways can a committee of <span class="math inline">\(4\)</span> be formed so that:
 i) Party X has the majority
@@ -776,13 +769,13 @@ ii) Party Y has the majority
 iii) Neither party has the majority</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-37" class="exercise"><strong>Exercise 1.14  </strong></span>Ten equally qualified assistant managersare lined up for promotion. Seven are men and three are women. If the company promotes four of the ten at random, what is the probability that exactly two of the four chosen are women?</p>
+<p><span id="exr:unlabeled-div-36" class="exercise"><strong>Exercise 1.14  </strong></span>Ten equally qualified assistant managersare lined up for promotion. Seven are men and three are women. If the company promotes four of the ten at random, what is the probability that exactly two of the four chosen are women?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-38" class="exercise"><strong>Exercise 1.15  </strong></span>Suppose a library bookshelf contains an equal number, <span class="math inline">\(n\)</span> each say, of Mathematics books and Physics books. If the bookshelf is emptied and the books placed back randomly, what is the probability that the books for each subject are separated?</p>
+<p><span id="exr:unlabeled-div-37" class="exercise"><strong>Exercise 1.15  </strong></span>Suppose a library bookshelf contains an equal number, <span class="math inline">\(n\)</span> each say, of Mathematics books and Physics books. If the bookshelf is emptied and the books placed back randomly, what is the probability that the books for each subject are separated?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-39" class="exercise"><strong>Exercise 1.16  </strong></span>Here are some miscellaneous questions on permutations and combinations:
+<p><span id="exr:unlabeled-div-38" class="exercise"><strong>Exercise 1.16  </strong></span>Here are some miscellaneous questions on permutations and combinations:
 a) From a group of <span class="math inline">\(20\)</span> employees, <span class="math inline">\(4\)</span> are chosen for promotion. In how many ways can they be chosen?
 b) From a group of <span class="math inline">\(20\)</span> employees, <span class="math inline">\(4\)</span> are shosen for promotion, but each to a different role. In how many ways can they be chosen?
 c) A product code consists of <span class="math inline">\(4\)</span> letters followed by <span class="math inline">\(3\)</span> digits. How many codes are possible if repetitions are not allowed?
@@ -791,7 +784,7 @@ e) How many ways can merit awards be allocated to a group of <span class="math i
 f) Four students are to be chosen from a group of <span class="math inline">\(10\)</span>. If exactly <strong><em>one</em></strong> of the first three students must be chosen, how many ways are there of choosing the four students?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-40" class="exercise"><strong>Exercise 1.17  </strong></span>In the game of poker, five cards from a standard deck of <span class="math inline">\(52\)</span> cards are dealt in a hand. Find the probability that a hand contains,
+<p><span id="exr:unlabeled-div-39" class="exercise"><strong>Exercise 1.17  </strong></span>In the game of poker, five cards from a standard deck of <span class="math inline">\(52\)</span> cards are dealt in a hand. Find the probability that a hand contains,
 a) A royal flush (ace, king, queen, jack and <span class="math inline">\(10\)</span> of the same suit)
 b) Four of a kind (e.g. all four <span class="math inline">\(5\)</span>s)
 c) Two pairs
@@ -799,10 +792,10 @@ d) A full house (i.e. three of one kind and two of another)
 e) One pair</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-41" class="exercise"><strong>Exercise 1.18  </strong></span>If <span class="math inline">\(\text{P(A)}=0.6\)</span> and <span class="math inline">\(\text{P(B)}=0.5\)</span>, can A and B be mutually exclusive?</p>
+<p><span id="exr:unlabeled-div-40" class="exercise"><strong>Exercise 1.18  </strong></span>If <span class="math inline">\(\text{P(A)}=0.6\)</span> and <span class="math inline">\(\text{P(B)}=0.5\)</span>, can A and B be mutually exclusive?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-42" class="exercise"><strong>Exercise 1.19  </strong></span>The medical records of <span class="math inline">\(100\)</span> male diabetic patients reported to a clinic their family history of diabetes (Yes or No), together with their symptoms as either mild or severe. This provided the following classification.</p>
+<p><span id="exr:unlabeled-div-41" class="exercise"><strong>Exercise 1.19  </strong></span>The medical records of <span class="math inline">\(100\)</span> male diabetic patients reported to a clinic their family history of diabetes (Yes or No), together with their symptoms as either mild or severe. This provided the following classification.</p>
 <table>
 <thead>
 <tr class="header">
