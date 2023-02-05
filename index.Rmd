@@ -681,8 +681,8 @@ The medical records of $100$ male diabetic patients reported to a clinic their f
 
 |   Age      | Severe and Yes     | Severe and No      |
 |:----------:+---------:+---------:|
-| under 40   |   15     |   10     |  
-| 40 or over |   15     |   20     |
+| under 40   |   8     |   2     |  
+| 40 or over |   20     |   10     |
 
 
 Suppose a patient is chosen at random from this clinic and the events A, B and C are defines as follows:
