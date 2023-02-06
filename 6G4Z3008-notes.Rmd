@@ -749,3 +749,518 @@ d) Using a) and c), describe in words why the following equality holds.
 $$2^n = \sum_{k=0}^n {^n}C_k$$
 
 5. Five office workers write their names on a piece of paper, fold the paper and put them in a hat. The names are mixed up and each person then selects a piece of paper from the hat. After everyone has selected a piece of paper from the hat, the staff look at the names drawn. What is the probability that no member of staff selected their own name?
+
+<!--chapter:end:index.Rmd-->
+
+# Conditional Probability {#cond}
+
+
+In this chapter we will learn about conditional probability. This is the probability of an event, in the context of another event having happened or potentially happening. 
+
+## Independence
+
+Independence is a very important concept in Statistics, but one that is sometimes misused when it is assumed without justification. The basic idea is as follows:
+
+::: {.definition name="Independence"}
+Two events $\text{A}$ and $\text{B}$ are ***independent*** exactly when
+$$\text{P}(\text{A}\cap\text{B}) = \text{P}(\text{A})\times \text{P}(\text{B}).$$
+In words this means the probability that both $\text{A}$ and $\text{B}$ happen is the product of the individual probabilities of $\text{A}$ and $\text{B}$ respectively.
+:::
+
+::: {.example}
+Some events that can be modelled as ***independent*** include:
+- Outcomes on successive tosses of a coin or die. What happened on the previous throw does not affect what happens on subsequent throws.
+
+- The sex of babies. The sex of each baby is determined at random, notwithstanding the sexes of previous babies. 
+:::
+
+::: {.example}
+Suppose a power plant has two safety systems, a primary system which works with probability $0.999$, and a backup system which works with probability $0.89$ Assuming that the two systems operate independently, what is the reliability or safety of the power plant. 
+
+
+_solution_
+
+We can work out $\text{P}(\text{plant safe})$ using the complement:
+
+$$\text{P}(\text{plant safe}) = 1-\text{P}(\text{plant fails}).$$
+
+
+Let $F$ be the event that the plant fails, $F_1$ the event that the first system fails, and $F_2$ the backup fails.
+
+Then $F = F_1 \cap F_2$.
+
+\begin{align}
+\text{P}(F) &= \text{P}(F_1 \cap F_2) \\
+&= \text{P}(F_1) \times \text{P}(F_2) \\
+&= (1-0.999)\times (1-0.89) \\
+&= 0.00011
+\end{align}
+
+Then $1-0.00011 = 0.99989$. 
+:::
+
+Calculations such as these have often been used to arrive at unrealistic figures for the safety of complex operating processes, e.g. nuclear power plants. For example, it's easy to check that with three backup systems each with a reliability of $0.99$, the probability of failure assuming independence is $1\times 10^{-6}$ - a reassuringly small figure! However we can only make calculations _if_ we can justify the assumption of independence. For example it's not unusual to find that backup systems that are not used very often can be more unreliable than supposed when actually called upon.
+
+
+You might have to give a reason why a particular context is not a good example in which to assume independence. For example ***exercise*** \@ref(exr:invest) part (c) asks why two investments may not be independent. There are many reasonable answers. Similar companies are dependent - if the companies are both bakeries, they may both be affected by the price of wheat. The companies may be competitors, in which case one company doing better may cause the other to do worse. 
+
+
+
+
+::: {.example}
+Suppose you toss ten coins and coin how many are Heads. You could throw them all simultaneously. Or you could throw them one at a time, in some order. Does it matter?
+
+
+_solution_
+
+
+No, as these are independent coins. Let
+$$A_i =\{\text{The} \ i^{\text{th}} \ \text{coin is Heads} \}$$
+
+The probability that they are simultaneously all Heads is the product of all the probabilities of each individual coin being Heads.
+Notice that the order does not matter as 
+$$\text{P}(\text{A}_i)\times \text{P}(\text{A}_j) = \text{P}(\text{A}_j)\times \text{P}(\text{A}_i).$$
+:::
+
+Assuming independence allows us to consider simultaneous events separately one after another, complicated examples can be analysed easily using tree diagrams. Each path of a tree diagram from the root to the leaf is a distinct outcome of the sample space. 
+
+::: {.example}
+Vehicles approaching a crossroads must go in one of three directions - left, right or straight on. Observations by traffic engineers showed that of vehicles approaching from the north, $45\%$ turn left, $20\%$ turn right and $35\%$ go straight on. Assuming that the driver of each vehicle chooses direction independently, what is the probability that of the next three vehicles approaching from the north:
+
+a) all go straight on
+
+b) all go in the same direction
+
+c) two turn left and one turns right
+
+d) all go in different directions
+
+e) exactly two turn left.
+:::
+
+_solution_ 
+
+```{r tree, fig.align="center", fig.cap="A tree diagram representing the choices for the three vehicles", echo=FALSE}
+knitr::include_graphics("./figures/vehicles.jpg")
+```
+
+a) $0.35^3$
+
+b) $0.45^3+0.2^3+0.35^3$
+
+c) LLR can be rearranged in $3$ ways: LLR, LRL, RLL. $3\times 0.45^2 \times 0.2$.
+
+d) SRL can be rearranged in $3!$ ways. $3!\times 0.35 \times 0.45 \times 0.2$.
+
+e) LLR or LLS. Each can be rearranged in $3$ ways, then these are mutually exclusive outcomes so we can add the probabilities. $$3\times 0.45^2 \times 0.2 + 3\times 0.45^2 \times 0.35$$.
+
+
+
+## Conditional Probability
+
+We will consider the following examples to motivate the definition of conditional probability.
+
+:::{.example}
+The number of insurance claims in the previous $12$ months is cross tabulated with whether the driver involved was a young driver.
+
+|          | Under 25 | 25 and over  | Total |
+|:--------:+---------:+-------------:|------:|
+| No claim |   225    |   725        |  950  |
+| Claim    |   25     |   25         |  50   |
+|          |   250    |   750        |  1000 |
+:::
+
+The insurance company is interested in the claim rate. Overall the claim rate is,
+
+$$\text{P}(\text{Claim})=\frac{50}{1000} = 0.05$$
+
+An estimate for the probability of a driver claiming on the insurance is then $1$ in $20$. 
+
+However this figure hides a substantial difference in the claim rates for young and older drivers. 
+
+If we consider the $250$ young drivers separately we have,
+
+$$\text{P}(\text{Claim}|\text{Under}\ 25)=\frac{25}{250} = 0.1.$$
+Whereas for the $750$ older drivers we have,
+
+$$\text{P}(\text{Claim}| 25 \ \text{and over})=\frac{25}{750} = 0.03.$$
+
+The notation $|$ is read 'given that' and is a conditional statement. The conditional probabilities show that the claim rate is much higher for the younger drivers. One can compute the ratio of these probabilities to see how many times higher it is, $0.1/0.03 \approx 3.3$, so this is just over three times higher. This relative risk scoring is common in medical statistics.
+
+:::{.example #cancer}
+Consider the following data from a study on male lung cancer patients carried out in $1950$ in the UK. This was one of the earliest applications of epidemiology - the use of statistics to study disease patterns in populations. 
+ 
+|                 | Non-smoker | Smoker       | Total |
+|:---------------:+-----------:+-------------:|------:|
+| Lung cancer     |   2        |   647        |  649  |
+| No lung cancer  |   27       |   620        |  647  |
+|                 |   29       |   1267       |  1296 |
+
+Calculate the relative risk of having lung cancer for a smoker compared to a non-smoker. 
+
+
+_solution_
+
+$$\text{P}(\text{Lung cancer}|\text{Smoker}) = \frac{647}{1267}$$
+
+$$\text{P}(\text{Lung cancer}|\text{Non-smoker}) = \frac{2}{29}$$
+
+There is $\approx 7.4$ times higher relative risk of lung cancer in smokers.
+:::
+
+These examples motivate the definition of conditional probability.
+
+:::{.definition name="conditional probability"}
+The ***conditional probability*** $\text{P}(A|B)$ of an event $A$ given another event of non-zero probability $B$ is given by,
+
+$$\text{P}(A|B) = \frac{\text{P}(A\cap B)}{\text{P}(B)}.$$
+:::
+
+One should verify that the fraction on the left is precisely how the conditional probability was calculated in the previous two examples.
+
+::: {.theorem}
+The conditional probability $\text{P}(A|B)$ satisfies Kolmogorov's definition of probability.
+:::
+
+::: {.proof}
+Not lectured or examined, but here for completeness.
+
+Firstly need to check $P(A|B)\in[0,1]$. We have $P(A|B) \geq 0$ because $P(A\cap B)\geq0$ and $P(B)>0$. 
+
+Because the intersection of $B$ with another set is contained in $B$, we have $A\cap B \subseteq B$, and so
+$$P(A\cap B) \leq P(B).$$
+And dividing through by $P(B)$ gives $P(A|B) \leq 1$.
+
+Secondly, $$P(\Omega|B) = \frac{P(\Omega \cap B)}{P(B)} = \frac{P(B)}{P(B)}=1.$$
+
+Lastly, any given any two disjoint $A_1$,$A_2$ such that $A_1\cap A_2 = \varnothing$.
+
+We have that 
+
+\begin{align}
+P(A_1\cup A_2 |B) &= \frac{P((A_1\cup A_2)\cap B)}{P(B)} \\
+&= \frac{P((A_1\cap B)\cup (A_2\cap B))}{P(B)} \\
+&= \frac{P(A_1\cap B)}{P(B)} + \frac{P(A_2\cap B)}{P(B)}
+&= P(A_1|B) + P(A_2|B)
+\end{align}
+:::
+
+:::{.example}
+Note that $P(A|B) \neq P(B|A)$. Revisiting the driver's example gives,
+
+|          | Under 25 | 25 and over  | Total |
+|:--------:+---------:+-------------:|------:|
+| No claim |   225    |   725        |  950  |
+| Claim    |   25     |   25         |  50   |
+|          |   250    |   750        |  1000 |
+
+$$\text{P}(\text{Claim}|\text{Under}\ 25)=0.1.$$
+However,
+$$\text{P}(\text{Under}\ 25|\text{Claim})=\frac{25}{50} = 0.5$$
+:::
+
+:::{.theorem}
+Two events $A$ and $B$ are _independent_ if and only if 
+$$\text{P}(A|B) = \text{P}(A) \ \text{ or } \ \text{P}(B|A) = \text{P}(B)$$
+In other words, conditioning on either event does not affect the probability of the other event occurring.
+:::
+
+:::{.proof}
+Using the definition of conditional probability,
+$$\text{P}(A\cap B) = \text{P}(A|B)\text{P}(B)=\text{P}(B|A)\text{P}(A)$$
+If 
+$$\text{P}(A|B) = \text{P}(A) \ \text{ or } \ \text{P}(B|A) = \text{P}(B),$$
+substituting this in the former yields
+$$\text{P}(A\cap B) = \text{P}(A)\text{P}(B), $$
+which is the definition of independence. 
+Conversely if two events are independent, we have 
+$$\text{P}(A|B) = \frac{\text{P}(A\cap B)}{\text{P}(B)} = \frac{\text{P}(A)\text{P}(B)}{\text{P}(B)} = \text{P}(A), $$
+and likewise for $\text{P}(B|A)$. 
+:::
+
+When constructing tree diagrams the probabilities involved are usually conditional probabilities as there is a natural progression through the tree from left to right conditioning on what happened previously. In the diagram below, the events $A$ and $B$ may not be independent. 
+
+```{r tree2, fig.align="center", fig.cap="The second level of branches represent the conditional probabilities of B given A or its complement, which may be different numbers", echo=FALSE}
+knitr::include_graphics("./figures/condtree.jpg")
+```
+
+:::{.example}
+Jon always goes to campus by bike or takes a tram. If one day he goes to campus by bike, the probability that he goes to campus by tram the next day is $0.4$. If one day he goes to campus by tram, the probability that he goes to campus by bike the next day is $0.7$. 
+Given that Jon goes to campus on Monday by tram, find the probability that he takes a tram to campus on Wednesday. 
+
+_solution_
+
+This may be solved by considering a tree diagram with levels for Tuesday and Wednesday. The probabilities in the question are $\text{P}(\text{tram} \ |\ \text{bike})=0.4$ and $\text{P}(\text{bike} \ |\ \text{tram})=0.7$. 
+Monday's journey is done. Possible sequences are 'tram then tram', or 'bike then tram'. These are mutually exclusive outcomes. The calculation is then 
+
+$$0.3^2+0.7\times 0.4 = 0.37$$.
+:::
+
+Surveys with questions of a sensitive or delicate nature often result in respondents missing that question or lying about their answers. Conditional probability can be used to mask the awkward question and find the proportion who would answer a certain way.
+
+::: {.example}
+A company want to find the proportion of employees who have ever called in sick to work, when in fact they were not sick. The boss asks each employee to toss a coin and hide the result. 
+
+If the result is ***heads***, the  employee should answer the question 'is your age an odd number?'.
+
+If the result is ***tails***, they should answer 'Have you ever taken a day off when you should not have?'.
+
+Because the boss does not know which question people are answering, the employees can answer truthfully.
+
+Suppose that $40\%$ of employees mark 'yes' as their answer. Let,
+
+$$p= \text{P}(\text{taken a day off} \ | \ \text{tails})$$
+Assume that ages are randomly distributed so that the chance of an even or odd number of years old is $0.5$. How can we find $p$?
+:::
+
+
+_solution_
+
+  One can draw a tree diagram. 
+  
+```{r tree3, fig.align="center", fig.cap="The outcomes of the survey.", echo=FALSE}
+knitr::include_graphics("./figures/survey.jpg")
+```
+  
+
+  
+  The overall probability of answering 'yes' is $0.25+0.5p$, and in the survey $40\%$ answered 'yes'. We then have
+  
+  $$0.25+0.5p = 0.4, $$
+and hence $p=0.3$. This means we can estimate that $30\%$ of employees have taken a day of when they were not supposed to.
+
+
+## Bayes Theorem
+
+::: {.example}
+There are two coins in a bag. One coin is fair, while the other has heads on both sides (a double-header). 
+
+A coin is selected from the bag at random, and the selected coin is flipped three times. Unfortunately the coin which was selected is unknown to us.
+
+On each of three flips the coin comes up heads. 
+
+Without doing any calculations, how likely do you think it is to be the unfair coin?
+:::
+
+_solution_ 
+
+
+Let 
+$A =\left\{ \text{The double-header is selected} \right\}$ and
+$B =\left\{ \text{The coin lands heads up three times in a row} \right\}$
+
+```{r tree4, fig.align="center", fig.cap="A tree diagram for the double headed coin example.", echo=FALSE}
+knitr::include_graphics("./figures/doubleheader.jpg")
+```
+
+One can use the tree diagram to find $8/9$.
+
+We can generalise this picture and come up with a formula for the conditional probability called Bayes' formula.
+
+```{r tree5, fig.align="center", fig.cap="Tree showing Bayes' formula", echo=FALSE}
+knitr::include_graphics("./figures/condtree.jpg")
+```
+
+$$P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A)P(B|A)}{P(A)P(B|A)+P(A^{\mathsf{c}})P(B|A^{\mathsf{c}})}$$
+
+Previously, $A_1=A$ and $A_2 = A^{\mathsf{c}}$ are disjoint and their union gives the entire sample space. This situation is called a _partition_.
+
+
+This can be extended to a partition of $n$ events $A_1,A_2, \dots , A_n$.
+
+
+::: {.definition}
+A collection of events $A_1, A_2, \dots , A_n$ is a ***partition*** if their union is the entire sample space, that is _exhaustive_, and they are mutually exclusive. That is 
+
+i) $\Omega = A_1 \cup A_2 \cup \dots \cup A_n$.
+
+ii) $A_1 \cap A_2 \cap \dots \cap A_n = \varnothing$
+
+Any event and its complement form a partition.
+:::
+
+Here is a picture of a partition:
+
+```{r partition, fig.align="center", fig.cap="An example partition with five sets.", echo=FALSE}
+knitr::include_graphics("./figures/partition.jpg")
+```
+
+We can now extend the concept of conditional probability to a general situation in which we condition on the event of at least one event of a partition. 
+
+:::{.theorem name="Law of Total Probability"}
+Suppose we have a partition $A_1, A_2, \dots , A_n$ of the sample space $\Omega$. Then for any event $B \subseteq \Omega$, we have
+
+$$\text{P}(B) =P(A_1)P(B|A_1)+ \dots + P(A_n)P(B|A_n) $$
+:::
+
+An intuitive proof is to imagine a tree diagram with $n$ branches for each of the $A_i$ in the first layer, then $B$ and $B^{\mathsf{c}}$ in the next layer. As you multiply along all the branches the ways that $B$ can occur you end up with the sum in the RHS. 
+
+
+:::{.theorem name="Bayes' Theorem"}
+Suppose we have a partition $A_1, A_2, \dots , A_n$ of the sample space $\Omega$. Then the conditional probability of any one event of the partition $A_k$ for some $k$, given any other event $B$ can be written as,
+
+$$\text{P}(A_k |B) = \frac{\text{P}(B|A_k)\text{P}(A_k)}{\sum^{n}_{i=1}\text{P}(B|A_i)P(A_i)}$$
+:::
+
+:::{.proof}
+Note that $\text{P}(A_k\cap B) = \text{P}(B|A_k)\text{P}(A_k)$,
+
+and that the denominator is $\text{P}(B) using the law of total probability.
+:::
+
+
+
+
+## Tutorial Exercises
+
+:::{.exercise}
+I toss a fair coin and roll a die. 
+a) Are these events independent?
+
+b) What is the probability I obtain a head and a $6$?
+:::
+
+:::{.exercise}
+A torch uses two batteries in series. Each battery works with probability $0.95$, independently of the other. Work out the probability that:
+
+a) The torch will work.
+
+b) Both batteries fail
+
+c) Only one of the batteries will work.
+:::
+
+:::{.exercise}
+Whether a student gets up on time depends on whether or not he has remembered to set his alarm the night before. Some $90\%$ of the time he remembers, the other $10\%$ he forgets. When the clock is set, he will get up on time $95\%$ of occasions. If it is not set, the chance he will oversleep is $35\%$. Use a tree diagram to find the probability that he will oversleep.
+:::
+
+:::{.exercise}
+The following data shows the distribution of male and female students on various degree courses at a university.
+
+|        | Accountancy | Economics | Finance |
+|:------:+:-----------:+:---------:+:-------:|
+| Male   | 330         | 360       | 90      | 
+| Female | 120         | 390       | 60      | 
+
+Suppose a student is selected at random. Find the probability that they are,
+
+a) female
+
+b) studying Economics
+
+c) male and studying Economics
+
+d) male given that they are studying Economics
+
+e) female given that they are studying Economics
+
+f) studying Economics given that they are female
+
+Are the events 'student is male' and 'studying Economics' independent?
+:::
+
+
+::: {.exercise}
+The following table shows the lung cancer data for females in the same $1950$ study given in example \@ref(exm:cancer).
+
+|                 | Non-smoker | Smoker       | Total |
+|:---------------:+-----------:+-------------:|------:|
+| Lung cancer     |   19        |   41        |  60  |
+| No lung cancer  |   32       |   28        |  60 |
+|                 |   51       |   69       |  120 |
+
+a) Calculate the relative risk for female smokers compared to non-smokers.
+
+b) Can you suggest any reason for the difference in the figures between males and females?
+:::
+
+
+::: {.exercise}
+Two electrical components  $X$ and $Y$ have probabilities of working $\frac{3}{4}$ and $\frac{7}{8}$, respectively. They also function independently of each other. Two devices $D_1$ and $D_2$ are constructed. In $D_1$, $X$ and $Y$ are in series, and in $D_2$ they are wired in parallel.
+
+a) (i) Find the probability that $D_1$ works.
+(ii) Find the probability that $D_2$ works.
+
+b) Suppose that $D_1$ works, find the probability that;
+(i) $X$ is working.
+(ii) Only $X$ is working.
+(iii) both $X$ and $Y$ are working.
+
+c) Suppose that $D_2$ works, find the probability that;
+(i) $X$ is working.
+(ii) Only $X$ is working.
+(iii) both $X$ and $Y$ are working.
+:::
+
+:::{.exercise}
+An urn contains two green balls and three red bals. Supose two balls will be drawn at random one after another and without replacement. Draw a tree diagram, and find the probability that:
+
+a) a green ball appears on the first draw.
+
+b) a green ball appears in the second draw.
+:::
+
+::: {.exercise}
+The following table shows the _fear factor_ for children attending the dentist, cross tabulated with the School age of the child.
+
+|            | Infant | Primary | Secondary |
+|:-----------|:------:|:-------:|:---------:|
+| Afraid     | 0.12   | 0.08    |      0.05 |
+| Not afraid | 0.28   | 0.25    |      0.22 | 
+
+For a child selected at random define the events; $A = \{ \text{The child is afraid} \}$,
+
+with $N$ being not afraid, and $I$,$P$ and $S$ being the School age in the obvious fashion.
+
+Calculate the following probabilities,
+
+a) $\text{P}(A)$, $\text{P}(N)$, $\text{P}(A\cup I)$.
+
+b) $\text{P}(A| I)$ and $\text{P}(I| A)$.
+
+c) $\text{P}(A| S)$ and $\text{P}(N| S)$ - what do you notice about these two probabilities?
+
+Are $A$ and $I$ independent?
+:::
+
+::: {.exercise}
+A survey by an electrical retailer determines that $40\%$ of customers who seek advice from sales staff by an appliance and only $20\%$ who do not seek advice buy an appliance. If $30\%$ of customers seek advice, what is the probability that a customer entering the warehouse buys an appliance?
+:::
+
+::: {.exercise}
+Four cards are drawn at random without replacement from a deck of $52$ cards. What is the probability that the sequence is:
+
+a) $\heartsuit$ $\heartsuit$ $\spadesuit$ $\clubsuit$
+
+b) $\heartsuit$ $\heartsuit$ $\spadesuit$ $\spadesuit$
+
+:::
+
+::: {.exercise}
+ A student comes back from a night at the pub with a bunch of keys, only one of which works. They try one key at random in the lock and discard it if it doesn't fit. 
+ 
+a) Suppose the bunch contains $2$ keys. Find the probability they open the door on
+(i) the first attempt
+
+(ii) the second attempt
+
+b) Repeat for a bunch of three keys being successul at the first, second and third attempts.
+
+c) Suppose now that the bunch contains $n$ keys. Find the probability that the door is opened on the $r^{\text{th}}$ attempt (where $1\leq r \leq n$).
+:::
+
+
+::: {.exercise}
+ To ascertain the proportion of people who have had a sexually transmitted infection, the following survey pocedure was used on $1000$ individuals. 
+ 
+They were asked to think of the day of the week their most recent birthday fell on. 
+
+If their last birthday was on a Monday, Tuesday or Wednesday they were to answer the question 'Have you every had a sexually transmitted infection?'. 
+
+If their last birthday was on any other day of the week, they were to answer the question 'Is your age an even number?'.
+
+In the survey $290$ people answered 'yes'. Assuming that ages and birthdays are uniformly distributed, can you estimate the proportion of people who have had a sexually transmitted infection?
+:::
+
+<!--chapter:end:01-cond-prob.Rmd-->
+

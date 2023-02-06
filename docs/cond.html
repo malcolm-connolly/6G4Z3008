@@ -54,6 +54,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -74,11 +138,25 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#naive-probability-and-frequentism"><i class="fa fa-check"></i><b>1.1</b> Naive probability and Frequentism</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#outcomes-and-counting"><i class="fa fa-check"></i><b>1.2</b> Outcomes and counting</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#independence-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Independence and mutual exclusivity</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#frequentist-perspective"><i class="fa fa-check"></i><b>1.1</b> Frequentist perspective</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#naive-probability"><i class="fa fa-check"></i><b>1.2</b> Naive probability</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#complements-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Complements and mutual exclusivity</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#outcomes-and-counting"><i class="fa fa-check"></i><b>1.4</b> Outcomes and counting</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#factorials"><i class="fa fa-check"></i><b>1.4.1</b> Factorials</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#permutations"><i class="fa fa-check"></i><b>1.4.2</b> Permutations</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#combinations"><i class="fa fa-check"></i><b>1.4.3</b> Combinations</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="cond.html"><a href="cond.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#exercises-week-1"><i class="fa fa-check"></i><b>1.5</b> Exercises Week 1</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#tutorial-exercises"><i class="fa fa-check"></i><b>1.5.1</b> Tutorial exercises</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#exercises-for-feedback"><i class="fa fa-check"></i><b>1.5.2</b> Exercises for feedback</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cond.html"><a href="cond.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
+<li class="chapter" data-level="2.1" data-path="cond.html"><a href="cond.html#independence"><i class="fa fa-check"></i><b>2.1</b> Independence</a></li>
+<li class="chapter" data-level="2.2" data-path="cond.html"><a href="cond.html#conditional-probability"><i class="fa fa-check"></i><b>2.2</b> Conditional Probability</a></li>
+<li class="chapter" data-level="2.3" data-path="cond.html"><a href="cond.html#bayes-theorem"><i class="fa fa-check"></i><b>2.3</b> Bayes Theorem</a></li>
+<li class="chapter" data-level="2.4" data-path="cond.html"><a href="cond.html#tutorial-exercises-1"><i class="fa fa-check"></i><b>2.4</b> Tutorial Exercises</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -101,8 +179,528 @@
             <section class="normal" id="section-">
 <div id="cond" class="section level1 hasAnchor">
 <h1><span class="header-section-number">Chapter 2</span> Conditional Probability<a href="cond.html#cond" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is the introduction to probability in week 1</p>
+<p>In this chapter we will learn about conditional probability. This is the probability of an event, in the context of another event having happened or potentially happening.</p>
+<div id="independence" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.1</span> Independence<a href="cond.html#independence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Independence is a very important concept in Statistics, but one that is sometimes misused when it is assumed without justification. The basic idea is as follows:</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-41" class="definition"><strong>Definition 2.1  (Independence) </strong></span>Two events <span class="math inline">\(\text{A}\)</span> and <span class="math inline">\(\text{B}\)</span> are <strong><em>independent</em></strong> exactly when
+<span class="math display">\[\text{P}(\text{A}\cap\text{B}) = \text{P}(\text{A})\times \text{P}(\text{B}).\]</span>
+In words this means the probability that both <span class="math inline">\(\text{A}\)</span> and <span class="math inline">\(\text{B}\)</span> happen is the product of the individual probabilities of <span class="math inline">\(\text{A}\)</span> and <span class="math inline">\(\text{B}\)</span> respectively.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-42" class="example"><strong>Example 2.1  </strong></span>Some events that can be modelled as <strong><em>independent</em></strong> include:
+- Outcomes on successive tosses of a coin or die. What happened on the previous throw does not affect what happens on subsequent throws.</p>
+<ul>
+<li>The sex of babies. The sex of each baby is determined at random, notwithstanding the sexes of previous babies.</li>
+</ul>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-43" class="example"><strong>Example 2.2  </strong></span>Suppose a power plant has two safety systems, a primary system which works with probability <span class="math inline">\(0.999\)</span>, and a backup system which works with probability <span class="math inline">\(0.89\)</span> Assuming that the two systems operate independently, what is the reliability or safety of the power plant.</p>
+<p><em>solution</em></p>
+<p>We can work out <span class="math inline">\(\text{P}(\text{plant safe})\)</span> using the complement:</p>
+<p><span class="math display">\[\text{P}(\text{plant safe}) = 1-\text{P}(\text{plant fails}).\]</span></p>
+<p>Let <span class="math inline">\(F\)</span> be the event that the plant fails, <span class="math inline">\(F_1\)</span> the event that the first system fails, and <span class="math inline">\(F_2\)</span> the backup fails.</p>
+<p>Then <span class="math inline">\(F = F_1 \cap F_2\)</span>.</p>
+<p><span class="math display">\[\begin{align}
+\text{P}(F) &amp;= \text{P}(F_1 \cap F_2) \\
+&amp;= \text{P}(F_1) \times \text{P}(F_2) \\
+&amp;= (1-0.999)\times (1-0.89) \\
+&amp;= 0.00011
+\end{align}\]</span></p>
+<p>Then <span class="math inline">\(1-0.00011 = 0.99989\)</span>.</p>
+</div>
+<p>Calculations such as these have often been used to arrive at unrealistic figures for the safety of complex operating processes, e.g. nuclear power plants. For example, it’s easy to check that with three backup systems each with a reliability of <span class="math inline">\(0.99\)</span>, the probability of failure assuming independence is <span class="math inline">\(1\times 10^{-6}\)</span> - a reassuringly small figure! However we can only make calculations <em>if</em> we can justify the assumption of independence. For example it’s not unusual to find that backup systems that are not used very often can be more unreliable than supposed when actually called upon.</p>
+<p>You might have to give a reason why a particular context is not a good example in which to assume independence. For example <strong><em>exercise</em></strong> <a href="index.html#exr:invest">1.3</a> part (c) asks why two investments may not be independent. There are many reasonable answers. Similar companies are dependent - if the companies are both bakeries, they may both be affected by the price of wheat. The companies may be competitors, in which case one company doing better may cause the other to do worse.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-44" class="example"><strong>Example 2.3  </strong></span>Suppose you toss ten coins and coin how many are Heads. You could throw them all simultaneously. Or you could throw them one at a time, in some order. Does it matter?</p>
+<p><em>solution</em></p>
+<p>No, as these are independent coins. Let
+<span class="math display">\[A_i =\{\text{The} \ i^{\text{th}} \ \text{coin is Heads} \}\]</span></p>
+<p>The probability that they are simultaneously all Heads is the product of all the probabilities of each individual coin being Heads.
+Notice that the order does not matter as
+<span class="math display">\[\text{P}(\text{A}_i)\times \text{P}(\text{A}_j) = \text{P}(\text{A}_j)\times \text{P}(\text{A}_i).\]</span></p>
+</div>
+<p>Assuming independence allows us to consider simultaneous events separately one after another, complicated examples can be analysed easily using tree diagrams. Each path of a tree diagram from the root to the leaf is a distinct outcome of the sample space.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-45" class="example"><strong>Example 2.4  </strong></span>Vehicles approaching a crossroads must go in one of three directions - left, right or straight on. Observations by traffic engineers showed that of vehicles approaching from the north, <span class="math inline">\(45\%\)</span> turn left, <span class="math inline">\(20\%\)</span> turn right and <span class="math inline">\(35\%\)</span> go straight on. Assuming that the driver of each vehicle chooses direction independently, what is the probability that of the next three vehicles approaching from the north:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>all go straight on</p></li>
+<li><p>all go in the same direction</p></li>
+<li><p>two turn left and one turns right</p></li>
+<li><p>all go in different directions</p></li>
+<li><p>exactly two turn left.</p></li>
+</ol>
+</div>
+<p><em>solution</em></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tree"></span>
+<img src="figures/vehicles.JPG" alt="A tree diagram representing the choices for the three vehicles" width="442" />
+<p class="caption">
+Figure 2.1: A tree diagram representing the choices for the three vehicles
+</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(0.35^3\)</span></p></li>
+<li><p><span class="math inline">\(0.45^3+0.2^3+0.35^3\)</span></p></li>
+<li><p>LLR can be rearranged in <span class="math inline">\(3\)</span> ways: LLR, LRL, RLL. <span class="math inline">\(3\times 0.45^2 \times 0.2\)</span>.</p></li>
+<li><p>SRL can be rearranged in <span class="math inline">\(3!\)</span> ways. <span class="math inline">\(3!\times 0.35 \times 0.45 \times 0.2\)</span>.</p></li>
+<li><p>LLR or LLS. Each can be rearranged in <span class="math inline">\(3\)</span> ways, then these are mutually exclusive outcomes so we can add the probabilities. <span class="math display">\[3\times 0.45^2 \times 0.2 + 3\times 0.45^2 \times 0.35\]</span>.</p></li>
+</ol>
+</div>
+<div id="conditional-probability" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.2</span> Conditional Probability<a href="cond.html#conditional-probability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will consider the following examples to motivate the definition of conditional probability.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-46" class="example"><strong>Example 2.5  </strong></span>The number of insurance claims in the previous <span class="math inline">\(12\)</span> months is cross tabulated with whether the driver involved was a young driver.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="right">Under 25</th>
+<th align="right">25 and over</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">No claim</td>
+<td align="right">225</td>
+<td align="right">725</td>
+<td align="right">950</td>
+</tr>
+<tr class="even">
+<td align="center">Claim</td>
+<td align="right">25</td>
+<td align="right">25</td>
+<td align="right">50</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="right">250</td>
+<td align="right">750</td>
+<td align="right">1000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The insurance company is interested in the claim rate. Overall the claim rate is,</p>
+<p><span class="math display">\[\text{P}(\text{Claim})=\frac{50}{1000} = 0.05\]</span></p>
+<p>An estimate for the probability of a driver claiming on the insurance is then <span class="math inline">\(1\)</span> in <span class="math inline">\(20\)</span>.</p>
+<p>However this figure hides a substantial difference in the claim rates for young and older drivers.</p>
+<p>If we consider the <span class="math inline">\(250\)</span> young drivers separately we have,</p>
+<p><span class="math display">\[\text{P}(\text{Claim}|\text{Under}\ 25)=\frac{25}{250} = 0.1.\]</span>
+Whereas for the <span class="math inline">\(750\)</span> older drivers we have,</p>
+<p><span class="math display">\[\text{P}(\text{Claim}| 25 \ \text{and over})=\frac{25}{750} = 0.03.\]</span></p>
+<p>The notation <span class="math inline">\(|\)</span> is read ‘given that’ and is a conditional statement. The conditional probabilities show that the claim rate is much higher for the younger drivers. One can compute the ratio of these probabilities to see how many times higher it is, <span class="math inline">\(0.1/0.03 \approx 3.3\)</span>, so this is just over three times higher. This relative risk scoring is common in medical statistics.</p>
+<div class="example">
+<p><span id="exm:cancer" class="example"><strong>Example 2.6  </strong></span>Consider the following data from a study on male lung cancer patients carried out in <span class="math inline">\(1950\)</span> in the UK. This was one of the earliest applications of epidemiology - the use of statistics to study disease patterns in populations.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="right">Non-smoker</th>
+<th align="right">Smoker</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Lung cancer</td>
+<td align="right">2</td>
+<td align="right">647</td>
+<td align="right">649</td>
+</tr>
+<tr class="even">
+<td align="center">No lung cancer</td>
+<td align="right">27</td>
+<td align="right">620</td>
+<td align="right">647</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="right">29</td>
+<td align="right">1267</td>
+<td align="right">1296</td>
+</tr>
+</tbody>
+</table>
+<p>Calculate the relative risk of having lung cancer for a smoker compared to a non-smoker.</p>
+<p><em>solution</em></p>
+<p><span class="math display">\[\text{P}(\text{Lung cancer}|\text{Smoker}) = \frac{647}{1267}\]</span></p>
+<p><span class="math display">\[\text{P}(\text{Lung cancer}|\text{Non-smoker}) = \frac{2}{29}\]</span></p>
+<p>There is <span class="math inline">\(\approx 7.4\)</span> times higher relative risk of lung cancer in smokers.</p>
+</div>
+<p>These examples motivate the definition of conditional probability.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-47" class="definition"><strong>Definition 2.2  (conditional probability) </strong></span>The <strong><em>conditional probability</em></strong> <span class="math inline">\(\text{P}(A|B)\)</span> of an event <span class="math inline">\(A\)</span> given another event of non-zero probability <span class="math inline">\(B\)</span> is given by,</p>
+<p><span class="math display">\[\text{P}(A|B) = \frac{\text{P}(A\cap B)}{\text{P}(B)}.\]</span></p>
+</div>
+<p>One should verify that the fraction on the left is precisely how the conditional probability was calculated in the previous two examples.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-48" class="theorem"><strong>Theorem 2.1  </strong></span>The conditional probability <span class="math inline">\(\text{P}(A|B)\)</span> satisfies Kolmogorov’s definition of probability.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-49" class="proof"><em>Proof</em>. </span>Not lectured or examined, but here for completeness.</p>
+<p>Firstly need to check <span class="math inline">\(P(A|B)\in[0,1]\)</span>. We have <span class="math inline">\(P(A|B) \geq 0\)</span> because <span class="math inline">\(P(A\cap B)\geq0\)</span> and <span class="math inline">\(P(B)&gt;0\)</span>.</p>
+<p>Because the intersection of <span class="math inline">\(B\)</span> with another set is contained in <span class="math inline">\(B\)</span>, we have <span class="math inline">\(A\cap B \subseteq B\)</span>, and so
+<span class="math display">\[P(A\cap B) \leq P(B).\]</span>
+And dividing through by <span class="math inline">\(P(B)\)</span> gives <span class="math inline">\(P(A|B) \leq 1\)</span>.</p>
+<p>Secondly, <span class="math display">\[P(\Omega|B) = \frac{P(\Omega \cap B)}{P(B)} = \frac{P(B)}{P(B)}=1.\]</span></p>
+<p>Lastly, any given any two disjoint <span class="math inline">\(A_1\)</span>,<span class="math inline">\(A_2\)</span> such that <span class="math inline">\(A_1\cap A_2 = \varnothing\)</span>.</p>
+<p>We have that</p>
+<p><span class="math display">\[\begin{align}
+P(A_1\cup A_2 |B) &amp;= \frac{P((A_1\cup A_2)\cap B)}{P(B)} \\
+&amp;= \frac{P((A_1\cap B)\cup (A_2\cap B))}{P(B)} \\
+&amp;= \frac{P(A_1\cap B)}{P(B)} + \frac{P(A_2\cap B)}{P(B)}
+&amp;= P(A_1|B) + P(A_2|B)
+\end{align}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-50" class="example"><strong>Example 2.7  </strong></span>Note that <span class="math inline">\(P(A|B) \neq P(B|A)\)</span>. Revisiting the driver’s example gives,</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="right">Under 25</th>
+<th align="right">25 and over</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">No claim</td>
+<td align="right">225</td>
+<td align="right">725</td>
+<td align="right">950</td>
+</tr>
+<tr class="even">
+<td align="center">Claim</td>
+<td align="right">25</td>
+<td align="right">25</td>
+<td align="right">50</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="right">250</td>
+<td align="right">750</td>
+<td align="right">1000</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\text{P}(\text{Claim}|\text{Under}\ 25)=0.1.\]</span>
+However,
+<span class="math display">\[\text{P}(\text{Under}\ 25|\text{Claim})=\frac{25}{50} = 0.5\]</span></p>
+</div>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-51" class="theorem"><strong>Theorem 2.2  </strong></span>Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>independent</em> if and only if
+<span class="math display">\[\text{P}(A|B) = \text{P}(A) \ \text{ or } \ \text{P}(B|A) = \text{P}(B)\]</span>
+In other words, conditioning on either event does not affect the probability of the other event occurring.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-52" class="proof"><em>Proof</em>. </span>Using the definition of conditional probability,
+<span class="math display">\[\text{P}(A\cap B) = \text{P}(A|B)\text{P}(B)=\text{P}(B|A)\text{P}(A)\]</span>
+If
+<span class="math display">\[\text{P}(A|B) = \text{P}(A) \ \text{ or } \ \text{P}(B|A) = \text{P}(B),\]</span>
+substituting this in the former yields
+<span class="math display">\[\text{P}(A\cap B) = \text{P}(A)\text{P}(B), \]</span>
+which is the definition of independence.
+Conversely if two events are independent, we have
+<span class="math display">\[\text{P}(A|B) = \frac{\text{P}(A\cap B)}{\text{P}(B)} = \frac{\text{P}(A)\text{P}(B)}{\text{P}(B)} = \text{P}(A), \]</span>
+and likewise for <span class="math inline">\(\text{P}(B|A)\)</span>.</p>
+</div>
+<p>When constructing tree diagrams the probabilities involved are usually conditional probabilities as there is a natural progression through the tree from left to right conditioning on what happened previously. In the diagram below, the events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> may not be independent.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tree2"></span>
+<img src="figures/condtree.JPG" alt="The second level of branches represent the conditional probabilities of B given A or its complement, which may be different numbers" width="407" />
+<p class="caption">
+Figure 2.2: The second level of branches represent the conditional probabilities of B given A or its complement, which may be different numbers
+</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-53" class="example"><strong>Example 2.8  </strong></span>Jon always goes to campus by bike or takes a tram. If one day he goes to campus by bike, the probability that he goes to campus by tram the next day is <span class="math inline">\(0.4\)</span>. If one day he goes to campus by tram, the probability that he goes to campus by bike the next day is <span class="math inline">\(0.7\)</span>.
+Given that Jon goes to campus on Monday by tram, find the probability that he takes a tram to campus on Wednesday.</p>
+<p><em>solution</em></p>
+<p>This may be solved by considering a tree diagram with levels for Tuesday and Wednesday. The probabilities in the question are <span class="math inline">\(\text{P}(\text{tram} \ |\ \text{bike})=0.4\)</span> and <span class="math inline">\(\text{P}(\text{bike} \ |\ \text{tram})=0.7\)</span>.
+Monday’s journey is done. Possible sequences are ‘tram then tram’, or ‘bike then tram’. These are mutually exclusive outcomes. The calculation is then</p>
+<p><span class="math display">\[0.3^2+0.7\times 0.4 = 0.37\]</span>.</p>
+</div>
+<p>Surveys with questions of a sensitive or delicate nature often result in respondents missing that question or lying about their answers. Conditional probability can be used to mask the awkward question and find the proportion who would answer a certain way.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-54" class="example"><strong>Example 2.9  </strong></span>A company want to find the proportion of employees who have ever called in sick to work, when in fact they were not sick. The boss asks each employee to toss a coin and hide the result.</p>
+<p>If the result is <strong><em>heads</em></strong>, the employee should answer the question ‘is your age an odd number?’.</p>
+<p>If the result is <strong><em>tails</em></strong>, they should answer ‘Have you ever taken a day off when you should not have?’.</p>
+<p>Because the boss does not know which question people are answering, the employees can answer truthfully.</p>
+<p>Suppose that <span class="math inline">\(40\%\)</span> of employees mark ‘yes’ as their answer. Let,</p>
+<p><span class="math display">\[p= \text{P}(\text{taken a day off} \ | \ \text{tails})\]</span>
+Assume that ages are randomly distributed so that the chance of an even or odd number of years old is <span class="math inline">\(0.5\)</span>. How can we find <span class="math inline">\(p\)</span>?</p>
+</div>
+<p><em>solution</em></p>
+<p>One can draw a tree diagram.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tree3"></span>
+<img src="figures/survey.JPG" alt="The outcomes of the survey." width="416" />
+<p class="caption">
+Figure 2.3: The outcomes of the survey.
+</p>
+</div>
+<p>The overall probability of answering ‘yes’ is <span class="math inline">\(0.25+0.5p\)</span>, and in the survey <span class="math inline">\(40\%\)</span> answered ‘yes’. We then have</p>
+<p><span class="math display">\[0.25+0.5p = 0.4, \]</span>
+and hence <span class="math inline">\(p=0.3\)</span>. This means we can estimate that <span class="math inline">\(30\%\)</span> of employees have taken a day of when they were not supposed to.</p>
+</div>
+<div id="bayes-theorem" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.3</span> Bayes Theorem<a href="cond.html#bayes-theorem" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="example">
+<p><span id="exm:unlabeled-div-55" class="example"><strong>Example 2.10  </strong></span>There are two coins in a bag. One coin is fair, while the other has heads on both sides (a double-header).</p>
+<p>A coin is selected from the bag at random, and the selected coin is flipped three times. Unfortunately the coin which was selected is unknown to us.</p>
+<p>On each of three flips the coin comes up heads.</p>
+<p>Without doing any calculations, how likely do you think it is to be the unfair coin?</p>
+</div>
+<p><em>solution</em></p>
+<p>Let
+<span class="math inline">\(A =\left\{ \text{The double-header is selected} \right\}\)</span> and
+<span class="math inline">\(B =\left\{ \text{The coin lands heads up three times in a row} \right\}\)</span></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tree4"></span>
+<img src="figures/doubleheader.JPG" alt="A tree diagram for the double headed coin example." width="446" />
+<p class="caption">
+Figure 2.4: A tree diagram for the double headed coin example.
+</p>
+</div>
+<p>One can use the tree diagram to find <span class="math inline">\(8/9\)</span>.</p>
+<p>We can generalise this picture and come up with a formula for the conditional probability called Bayes’ formula.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tree5"></span>
+<img src="figures/condtree.JPG" alt="Tree showing Bayes' formula" width="407" />
+<p class="caption">
+Figure 2.5: Tree showing Bayes’ formula
+</p>
+</div>
+<p><span class="math display">\[P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A)P(B|A)}{P(A)P(B|A)+P(A^{\mathsf{c}})P(B|A^{\mathsf{c}})}\]</span></p>
+<p>Previously, <span class="math inline">\(A_1=A\)</span> and <span class="math inline">\(A_2 = A^{\mathsf{c}}\)</span> are disjoint and their union gives the entire sample space. This situation is called a <em>partition</em>.</p>
+<p>This can be extended to a partition of <span class="math inline">\(n\)</span> events <span class="math inline">\(A_1,A_2, \dots , A_n\)</span>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-56" class="definition"><strong>Definition 2.3  </strong></span>A collection of events <span class="math inline">\(A_1, A_2, \dots , A_n\)</span> is a <strong><em>partition</em></strong> if their union is the entire sample space, that is <em>exhaustive</em>, and they are mutually exclusive. That is</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(\Omega = A_1 \cup A_2 \cup \dots \cup A_n\)</span>.</p></li>
+<li><p><span class="math inline">\(A_1 \cap A_2 \cap \dots \cap A_n = \varnothing\)</span></p></li>
+</ol>
+<p>Any event and its complement form a partition.</p>
+</div>
+<p>Here is a picture of a partition:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:partition"></span>
+<img src="figures/partition.JPG" alt="An example partition with five sets." width="335" />
+<p class="caption">
+Figure 2.6: An example partition with five sets.
+</p>
+</div>
+<p>We can now extend the concept of conditional probability to a general situation in which we condition on the event of at least one event of a partition.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-57" class="theorem"><strong>Theorem 2.3  (Law of Total Probability) </strong></span>Suppose we have a partition <span class="math inline">\(A_1, A_2, \dots , A_n\)</span> of the sample space <span class="math inline">\(\Omega\)</span>. Then for any event <span class="math inline">\(B \subseteq \Omega\)</span>, we have</p>
+<p><span class="math display">\[\text{P}(B) =P(A_1)P(B|A_1)+ \dots + P(A_n)P(B|A_n) \]</span></p>
+</div>
+<p>An intuitive proof is to imagine a tree diagram with <span class="math inline">\(n\)</span> branches for each of the <span class="math inline">\(A_i\)</span> in the first layer, then <span class="math inline">\(B\)</span> and <span class="math inline">\(B^{\mathsf{c}}\)</span> in the next layer. As you multiply along all the branches the ways that <span class="math inline">\(B\)</span> can occur you end up with the sum in the RHS.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-58" class="theorem"><strong>Theorem 2.4  (Bayes' Theorem) </strong></span>Suppose we have a partition <span class="math inline">\(A_1, A_2, \dots , A_n\)</span> of the sample space <span class="math inline">\(\Omega\)</span>. Then the conditional probability of any one event of the partition <span class="math inline">\(A_k\)</span> for some <span class="math inline">\(k\)</span>, given any other event <span class="math inline">\(B\)</span> can be written as,</p>
+<p><span class="math display">\[\text{P}(A_k |B) = \frac{\text{P}(B|A_k)\text{P}(A_k)}{\sum^{n}_{i=1}\text{P}(B|A_i)P(A_i)}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-59" class="proof"><em>Proof</em>. </span>Note that <span class="math inline">\(\text{P}(A_k\cap B) = \text{P}(B|A_k)\text{P}(A_k)\)</span>,</p>
+<p>and that the denominator is $(B) using the law of total probability.</p>
+</div>
+</div>
+<div id="tutorial-exercises-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.4</span> Tutorial Exercises<a href="cond.html#tutorial-exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-60" class="exercise"><strong>Exercise 2.1  </strong></span>I toss a fair coin and roll a die.
+a) Are these events independent?</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>What is the probability I obtain a head and a <span class="math inline">\(6\)</span>?</li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-61" class="exercise"><strong>Exercise 2.2  </strong></span>A torch uses two batteries in series. Each battery works with probability <span class="math inline">\(0.95\)</span>, independently of the other. Work out the probability that:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>The torch will work.</p></li>
+<li><p>Both batteries fail</p></li>
+<li><p>Only one of the batteries will work.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-62" class="exercise"><strong>Exercise 2.3  </strong></span>Whether a student gets up on time depends on whether or not he has remembered to set his alarm the night before. Some <span class="math inline">\(90\%\)</span> of the time he remembers, the other <span class="math inline">\(10\%\)</span> he forgets. When the clock is set, he will get up on time <span class="math inline">\(95\%\)</span> of occasions. If it is not set, the chance he will oversleep is <span class="math inline">\(35\%\)</span>. Use a tree diagram to find the probability that he will oversleep.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-63" class="exercise"><strong>Exercise 2.4  </strong></span>The following data shows the distribution of male and female students on various degree courses at a university.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">Accountancy</th>
+<th align="center">Economics</th>
+<th align="center">Finance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Male</td>
+<td align="center">330</td>
+<td align="center">360</td>
+<td align="center">90</td>
+</tr>
+<tr class="even">
+<td align="center">Female</td>
+<td align="center">120</td>
+<td align="center">390</td>
+<td align="center">60</td>
+</tr>
+</tbody>
+</table>
+<p>Suppose a student is selected at random. Find the probability that they are,</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>female</p></li>
+<li><p>studying Economics</p></li>
+<li><p>male and studying Economics</p></li>
+<li><p>male given that they are studying Economics</p></li>
+<li><p>female given that they are studying Economics</p></li>
+<li><p>studying Economics given that they are female</p></li>
+</ol>
+<p>Are the events ‘student is male’ and ‘studying Economics’ independent?</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-64" class="exercise"><strong>Exercise 2.5  </strong></span>The following table shows the lung cancer data for females in the same <span class="math inline">\(1950\)</span> study given in example <a href="cond.html#exm:cancer">2.6</a>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="right">Non-smoker</th>
+<th align="right">Smoker</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Lung cancer</td>
+<td align="right">19</td>
+<td align="right">41</td>
+<td align="right">60</td>
+</tr>
+<tr class="even">
+<td align="center">No lung cancer</td>
+<td align="right">32</td>
+<td align="right">28</td>
+<td align="right">60</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="right">51</td>
+<td align="right">69</td>
+<td align="right">120</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Calculate the relative risk for female smokers compared to non-smokers.</p></li>
+<li><p>Can you suggest any reason for the difference in the figures between males and females?</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-65" class="exercise"><strong>Exercise 2.6  </strong></span>Two electrical components <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have probabilities of working <span class="math inline">\(\frac{3}{4}\)</span> and <span class="math inline">\(\frac{7}{8}\)</span>, respectively. They also function independently of each other. Two devices <span class="math inline">\(D_1\)</span> and <span class="math inline">\(D_2\)</span> are constructed. In <span class="math inline">\(D_1\)</span>, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are in series, and in <span class="math inline">\(D_2\)</span> they are wired in parallel.</p>
+<ol style="list-style-type: lower-alpha">
+<li><ol style="list-style-type: lower-roman">
+<li>Find the probability that <span class="math inline">\(D_1\)</span> works.</li>
+</ol></li>
+</ol>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Find the probability that <span class="math inline">\(D_2\)</span> works.</li>
+</ol>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Suppose that <span class="math inline">\(D_1\)</span> works, find the probability that;</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li><span class="math inline">\(X\)</span> is working.</li>
+<li>Only <span class="math inline">\(X\)</span> is working.</li>
+<li>both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are working.</li>
+</ol>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Suppose that <span class="math inline">\(D_2\)</span> works, find the probability that;</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li><span class="math inline">\(X\)</span> is working.</li>
+<li>Only <span class="math inline">\(X\)</span> is working.</li>
+<li>both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are working.</li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-66" class="exercise"><strong>Exercise 2.7  </strong></span>An urn contains two green balls and three red bals. Supose two balls will be drawn at random one after another and without replacement. Draw a tree diagram, and find the probability that:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>a green ball appears on the first draw.</p></li>
+<li><p>a green ball appears in the second draw.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-67" class="exercise"><strong>Exercise 2.8  </strong></span>The following table shows the <em>fear factor</em> for children attending the dentist, cross tabulated with the School age of the child.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">Infant</th>
+<th align="center">Primary</th>
+<th align="center">Secondary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Afraid</td>
+<td align="center">0.12</td>
+<td align="center">0.08</td>
+<td align="center">0.05</td>
+</tr>
+<tr class="even">
+<td align="left">Not afraid</td>
+<td align="center">0.28</td>
+<td align="center">0.25</td>
+<td align="center">0.22</td>
+</tr>
+</tbody>
+</table>
+<p>For a child selected at random define the events; <span class="math inline">\(A = \{ \text{The child is afraid} \}\)</span>,</p>
+<p>with <span class="math inline">\(N\)</span> being not afraid, and <span class="math inline">\(I\)</span>,<span class="math inline">\(P\)</span> and <span class="math inline">\(S\)</span> being the School age in the obvious fashion.</p>
+<p>Calculate the following probabilities,</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(\text{P}(A)\)</span>, <span class="math inline">\(\text{P}(N)\)</span>, <span class="math inline">\(\text{P}(A\cup I)\)</span>.</p></li>
+<li><p><span class="math inline">\(\text{P}(A| I)\)</span> and <span class="math inline">\(\text{P}(I| A)\)</span>.</p></li>
+<li><p><span class="math inline">\(\text{P}(A| S)\)</span> and <span class="math inline">\(\text{P}(N| S)\)</span> - what do you notice about these two probabilities?</p></li>
+</ol>
+<p>Are <span class="math inline">\(A\)</span> and <span class="math inline">\(I\)</span> independent?</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-68" class="exercise"><strong>Exercise 2.9  </strong></span>A survey by an electrical retailer determines that <span class="math inline">\(40\%\)</span> of customers who seek advice from sales staff by an appliance and only <span class="math inline">\(20\%\)</span> who do not seek advice buy an appliance. If <span class="math inline">\(30\%\)</span> of customers seek advice, what is the probability that a customer entering the warehouse buys an appliance?</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-69" class="exercise"><strong>Exercise 2.10  </strong></span>Four cards are drawn at random without replacement from a deck of <span class="math inline">\(52\)</span> cards. What is the probability that the sequence is:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(\heartsuit\)</span> <span class="math inline">\(\heartsuit\)</span> <span class="math inline">\(\spadesuit\)</span> <span class="math inline">\(\clubsuit\)</span></p></li>
+<li><p><span class="math inline">\(\heartsuit\)</span> <span class="math inline">\(\heartsuit\)</span> <span class="math inline">\(\spadesuit\)</span> <span class="math inline">\(\spadesuit\)</span></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-70" class="exercise"><strong>Exercise 2.11  </strong></span>A student comes back from a night at the pub with a bunch of keys, only one of which works. They try one key at random in the lock and discard it if it doesn’t fit.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Suppose the bunch contains <span class="math inline">\(2\)</span> keys. Find the probability they open the door on</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li><p>the first attempt</p></li>
+<li><p>the second attempt</p></li>
+</ol>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Repeat for a bunch of three keys being successul at the first, second and third attempts.</p></li>
+<li><p>Suppose now that the bunch contains <span class="math inline">\(n\)</span> keys. Find the probability that the door is opened on the <span class="math inline">\(r^{\text{th}}\)</span> attempt (where <span class="math inline">\(1\leq r \leq n\)</span>).</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-71" class="exercise"><strong>Exercise 2.12  </strong></span>To ascertain the proportion of people who have had a sexually transmitted infection, the following survey pocedure was used on <span class="math inline">\(1000\)</span> individuals.</p>
+<p>They were asked to think of the day of the week their most recent birthday fell on.</p>
+<p>If their last birthday was on a Monday, Tuesday or Wednesday they were to answer the question ‘Have you every had a sexually transmitted infection?’.</p>
+<p>If their last birthday was on any other day of the week, they were to answer the question ‘Is your age an even number?’.</p>
+<p>In the survey <span class="math inline">\(290\)</span> people answered ‘yes’. Assuming that ages and birthdays are uniformly distributed, can you estimate the proportion of people who have had a sexually transmitted infection?</p>
+</div>
 
+</div>
 </div>
             </section>
 
