@@ -186,7 +186,7 @@ We have that
 \begin{align}
 P(A_1\cup A_2 |B) &= \frac{P((A_1\cup A_2)\cap B)}{P(B)} \\
 &= \frac{P((A_1\cap B)\cup (A_2\cap B))}{P(B)} \\
-&= \frac{P(A_1\cap B)}{P(B)} + \frac{P(A_2\cap B)}{P(B)}
+&= \frac{P(A_1\cap B)}{P(B)} + \frac{P(A_2\cap B)}{P(B)} \\
 &= P(A_1|B) + P(A_2|B)
 \end{align}
 :::

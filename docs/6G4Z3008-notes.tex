@@ -209,7 +209,7 @@ In this course we will learn some R programming. R is a free open-source softwar
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "Heads" "Heads" "Heads" "Tails" "Heads" "Tails" "Heads" "Tails" "Tails"
+##  [1] "Tails" "Tails" "Heads" "Tails" "Heads" "Tails" "Heads" "Tails" "Heads"
 ## [10] "Heads"
 \end{verbatim}
 
@@ -1223,7 +1223,7 @@ We have that
 \begin{align}
 P(A_1\cup A_2 |B) &= \frac{P((A_1\cup A_2)\cap B)}{P(B)} \\
 &= \frac{P((A_1\cap B)\cup (A_2\cap B))}{P(B)} \\
-&= \frac{P(A_1\cap B)}{P(B)} + \frac{P(A_2\cap B)}{P(B)}
+&= \frac{P(A_1\cap B)}{P(B)} + \frac{P(A_2\cap B)}{P(B)} \\
 &= P(A_1|B) + P(A_2|B)
 \end{align}
 \end{proof}
@@ -1417,6 +1417,70 @@ Note that \(\text{P}(A_k\cap B) = \text{P}(B|A_k)\text{P}(A_k)\),
 
 and that the denominator is \$\text{P}(B) using the law of total probability.
 \end{proof}
+
+\begin{example}
+A company produces electrical components using three shifts. During the first shift \(50%
+\) of components are produced with \(20\%\) and \(30\%\) being produced during shifts \(2\) and \(3\) respectively. The proportion of defective components produced during shift \(1\) is \(6\%\). For shifts \(2\) and \(34\) the proportions are \(8\%\) and \(12\%\) respectively.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Find the percentage of defective components.
+\item
+  If a component is defective, what is the probability that itcame from shift \(3\)?
+\end{enumerate}
+
+\emph{solution}
+
+Let \(D\) be the event that the component is defective and \(S_1,S_2,S_3\) denotethat it was produced during shifts \(1,2\) or \(3\) respectively.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Use the theorem of total probability, as follows:
+  \begin{align}
+  \text{P}(D)  &= \text{P}(D|S_1)P(S_1)+\text{P}(D|S_2)\text{P}(S_2)+\text{P}(D|S_3)\text{P}(S_3) \\
+  &= 0.06\times 0.5 + 0.08\times 0.2 + 0.12\times 0.3 \\
+  &= 0.082
+  \end{align}
+\item
+  Using Bayes' theorem,
+\end{enumerate}
+
+\[\text{P}(S_3|D) = \frac{\text{P}(D|S_3)\text{P}(S_3)}{\text{P}(D)}\]
+The denominator was worked out in part a), this gives \(\frac{0.12\times 0.3}{0.082}=0.439\).
+\end{example}
+
+Bayes' theorem allows us to update the probability of an event in the light of new evidence. This is in fact the main practical use of the theorem, and leads to a whole branch of Bayesian Statistics.
+
+\begin{example}
+Gary is suspected of committing a crime. The evidence so far points to a probability of guilt being \(0.9\). To `prove his innocence' Gary undergoes a lie detector test, which has a \(70\%\) accuracy rate. The test will say positive to indicate guilt, and negative to indicate not guilty. The test is such that
+\[\text{P}(\text{Positive}|\text{Guilty}) = 0.7\]
+\[\text{P}(\text{Negative}|\text{Innocent})=0.7\]
+
+If Gary's test comes back \textbf{\emph{negative}}, what is then the probability of his guilt?
+
+\emph{solution}
+
+One can directly apply Bayes' theorem.
+\[\text{P}(\text{Guilt}|\text{Negative})=\frac{\text{P}(\text{Negative}|\text{Guilt})\text{P}(\text{Guilt})}{\text{P}(\text{Negative}|\text{Guilt})\text{P}(\text{Guilt})+\text{P}(\text{Negative}|\text{Innocent})\text{P}(\text{Innocent})}\]
+and so
+\[\text{P}(\text{Guilt}|\text{Negative})=\frac{0.3\times 0.9}{0.3\times 0.9 \ + \ 0.7\times 0.1}=0.794 \ \text{(3 d.p.)}\]
+\end{example}
+
+Beware of having extreme prior beliefs, for no evidence can then change your mind. Believing something to be true \(100\%\) or \(0\%\), will mean that no reason or evidence will change this position.
+
+\begin{example}[Cromwell's Rule]
+If we believe Gary is \(100\%\) guilty at the start then
+\[\text{P}(\text{Guilt}|\text{Negative})=\frac{0.3\times 1}{0.3\times 1 \ + \ 0.7\times 0}=1\]
+So we would still believe Gary to be \(100\%\) guilty.
+
+If we believe Gary is \(0\%\) guilty at the start then
+\[\text{P}(\text{Guilt}|\text{Negative})=\frac{0.3\times 0}{0.3\times 0 \ + \ 0.7\times 1}=0\]
+So we would still believe Gary to be \(0\%\) guilty.
+\end{example}
+
+As educated people we should always consider the opposing opinion and update our own beliefs according to the evidence available. If you have a strong opinion about something, consider what would change your mind. Always leave some room to doubt yourself, because you could be wrong.
 
 \hypertarget{tutorial-exercises-1}{%
 \section{Tutorial Exercises}\label{tutorial-exercises-1}}
@@ -1682,6 +1746,46 @@ If their last birthday was on a Monday, Tuesday or Wednesday they were to answer
 If their last birthday was on any other day of the week, they were to answer the question `Is your age an even number?'.
 
 In the survey \(290\) people answered `yes'. Assuming that ages and birthdays are uniformly distributed, can you estimate the proportion of people who have had a sexually transmitted infection?
+\end{exercise}
+
+\begin{exercise}
+Suppose two events \(A\) and \(B\) are independent. Show that \(A\) and \(B^{\mathsf{c}}\) are also independent. Show also that \(A^{\mathsf{c}}\) and \(B^{\mathsf{c}}\) are independent.
+\end{exercise}
+
+\begin{exercise}
+
+Forty percent of new employees hired by a large company have a degree. Seventy percent of employees with degrees are promoted within two years.Of those without degrees, only \(30\%\) arepromoted within two years.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  What is the probability that a new empoyee will be promoted?
+\item
+  If an employee has been promoted, what is the probability that they have a degree?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+A bag contains \(3\) coins; two are normal unbiased coins while the third is double headed. A coin is chosen at random from the bag and tossed. The coin is tossed \(4\) times and came up heads each time. What is the probability that it is the double header?
+\end{exercise}
+
+\begin{exercise}
+Approximately \(25\%\) of males over \(50\) have some form of heart problem. A clinic has observed that males with a heart problem are three times more likely to be smokers as males with no heart problem. What is the probability that a male over \(50\) has a heart problem given that he is a smoker?
+\end{exercise}
+
+\begin{exercise}
+
+Cage A contains five hens with disease and six hens without disease. Cage B contains two diseased hens and five hens without the disease. Two hens are chosen at random from cage A and transferred to cage B. A hen is now chosen at random from cage B and found to be diseased. Find the probability that the two hens that were transferred were,
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  both diseased
+\item
+  both without disease.
+\end{enumerate}
+
 \end{exercise}
 
   \bibliography{book.bib,packages.bib}
