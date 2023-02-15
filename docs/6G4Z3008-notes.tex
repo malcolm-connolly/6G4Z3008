@@ -209,7 +209,7 @@ In this course we will learn some R programming. R is a free open-source softwar
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "Tails" "Tails" "Heads" "Tails" "Heads" "Tails" "Heads" "Tails" "Heads"
+##  [1] "Heads" "Heads" "Heads" "Tails" "Tails" "Tails" "Heads" "Tails" "Tails"
 ## [10] "Heads"
 \end{verbatim}
 
@@ -1393,7 +1393,7 @@ Here is a picture of a partition:
 
 }
 
-\caption{An example partition with five sets.}\label{fig:partition}
+\caption{An example partition with six sets.}\label{fig:partition}
 \end{figure}
 
 We can now extend the concept of conditional probability to a general situation in which we condition on the event of at least one event of a partition.
@@ -1420,14 +1420,14 @@ and that the denominator is \$\text{P}(B) using the law of total probability.
 
 \begin{example}
 A company produces electrical components using three shifts. During the first shift \(50%
-\) of components are produced with \(20\%\) and \(30\%\) being produced during shifts \(2\) and \(3\) respectively. The proportion of defective components produced during shift \(1\) is \(6\%\). For shifts \(2\) and \(34\) the proportions are \(8\%\) and \(12\%\) respectively.
+\) of components are produced, with \(20\%\) and \(30\%\) being produced during shifts \(2\) and \(3\) respectively. The proportion of defective components produced during shift \(1\) is \(6\%\). For shifts \(2\) and \(3\) the proportions are \(8\%\) and \(12\%\) respectively.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \item
   Find the percentage of defective components.
 \item
-  If a component is defective, what is the probability that itcame from shift \(3\)?
+  If a component is defective, what is the probability that it came from shift \(3\)?
 \end{enumerate}
 
 \emph{solution}
@@ -1482,8 +1482,8 @@ So we would still believe Gary to be \(0\%\) guilty.
 
 As educated people we should always consider the opposing opinion and update our own beliefs according to the evidence available. If you have a strong opinion about something, consider what would change your mind. Always leave some room to doubt yourself, because you could be wrong.
 
-\hypertarget{tutorial-exercises-1}{%
-\section{Tutorial Exercises}\label{tutorial-exercises-1}}
+\hypertarget{exercises-week-2}{%
+\section{Exercises Week 2}\label{exercises-week-2}}
 
 \begin{exercise}
 
@@ -1784,6 +1784,995 @@ Cage A contains five hens with disease and six hens without disease. Cage B cont
   both diseased
 \item
   both without disease.
+\end{enumerate}
+
+\end{exercise}
+
+\hypertarget{drv}{%
+\chapter{Discrete Random Variables}\label{drv}}
+
+In most practical situations in which we encounter uncertainty, the random outcome of interest is a numerical quantity. This could be the number of minutes you end up waiting for that bus, how much you win on the lottery this week, or even the number of times you try to catch a fly with chopsticks before you eventually manage to do so.
+
+\hypertarget{random-variables}{%
+\section{Random Variables}\label{random-variables}}
+
+In this chapter you will learn the concept of a discrete random variable.
+
+\begin{example}
+Suppose we roll two dice and find the sum of the numbers on the two dice. Let \(X\) be the sum of the numbers on the two dice. We know the sample space here is:
+\[\Omega = \{ (n_1,n_2) : n_1,n_2 \in \mathbb{N}, \ 1 \leq n_1 , n_2 \leq 6 \},\]
+Given an outcome \((n_1,n_2)\), the `variable' \(X\) takes a particular whole numbered value from \(x=2, \dots , 12\). We have seen that these particular values are not equally likely.
+\end{example}
+
+\begin{definition}
+A \textbf{\emph{random variable}} \(X\) is a set function which maps the potential outcomes of a statistical experiment to (some subset of) the real number line.
+
+A random variable is written with a capital letter (here \(X\)), and the particular values it takes are written with a lowercase of the same letter (here \(x\)). The probability that \(X\) takes a particular value is written \(\text{P}(X=x)\).
+\end{definition}
+
+Just as with data analysis there is a difference between \emph{discrete} and \emph{continuous} random variables. One can think of \emph{discrete} random variables arising from a process which involves counting and can take integer values. The \emph{continuous} random variables can be thought of as arising from a measuring process.
+
+\begin{example}
+Let \$R = \$ result of spinning a roulette wheel. The roulette wheel can take particular values
+\[\Omega = \{0,1,2, \dots,36\}.\]
+In number ranges from 1 to 10 and 19 to 28, odd numbers are red and even are black. In ranges from 11 to 18 and 29 to 36, odd numbers are black and even are red. There is a green pocket numbered 0 (zero). Then \(R\) is a discrete random variable, as it takes only particular discrete values.
+
+Let \(T =\) the time spent waiting for a bus. Here \(T\) could be any positive number from when you arrive at the bus stop (if it were time after the timetabled arrival time, it could be negative for an early bus). Then \(T\) is a continuous random variable.
+\end{example}
+
+We will consider discrete random variables first, but will study both types in this course.
+
+\hypertarget{discrete-probability-distributions}{%
+\section{Discrete probability distributions}\label{discrete-probability-distributions}}
+
+In order to understand how a random variable is likely to behave, and thus be able to predict its possible future values, we clearly need to consider the probability with which it will take on particular values. This set of probability values is known as a probability distribution. We will develop the theory with some examples.
+
+\begin{definition}
+The \textbf{\emph{distribution}} function, also known as a \textbf{\emph{probability mass function}}, of a random variable \(X\) is the function that outputs the probability of \(X\) attaining any particular value. That is,
+
+\[f(x) = \text{P}(X=x)\]
+In some texts, or if there are two variables in play, we may also write the variable in subscript \(f_X(x)\) to be clear to which mass function we are referring.
+\end{definition}
+
+\begin{example}[discrete uniform distribution]
+
+Consider rolling a fair die and let the discrete random variable \(X\) be the score observed on the die. We know that the probability of getting any of the particular values in the set \(\{1,2, \dots 6\}\) is \(\frac{1}{6}\) and this is the probability distribution. We may tabulate the values as follows
+
+\begin{longtable}[]{@{}cllllll@{}}
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering
+\(x\)\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+5\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+6\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering
+\(\text{P}(X=x)\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{1}{6}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{1}{6}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{1}{6}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{1}{6}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{1}{6}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{1}{6}\)\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\end{example}
+
+Alternatively we may use a formula:
+\begin{equation*}
+  f(x)=\begin{cases}
+    \frac{1}{6}, & \text{if } x = 1, 2, \dots , 6.\\
+    0 & \text{otherwise}.
+  \end{cases}
+\end{equation*}
+
+Or a graph:
+
+\begin{figure}
+
+{\centering \includegraphics[width=17.82in]{./figures/uni_pdf} 
+
+}
+
+\caption{Probability mass function for a fair die}\label{fig:uniformdice}
+\end{figure}
+
+Clearly the graph is a very useful way to visualise how the probability is distributed. You can also see why this is called a discrete \emph{uniform} distribution - it's because the values are all the same.
+
+Some questions to consider:
+
+\begin{itemize}
+\item
+  Suppose your die had \(n\) sides, where \(n\) is some whole number greater than \(1\), and the faces numbered \(1,2,\dots n\). What does the distribution look like now?
+\item
+  Can you represent the distribution in each of the three ways above?
+\end{itemize}
+
+\begin{example}[Urn problem]
+An urn contains five balls numbered \(1\) to \(5\). Two balls are drawn simultaneously.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Let \(X\) be the larger of the two numbers.
+\item
+  Let \(Y\) be the sum of the two numbers.
+\end{enumerate}
+
+Find the probability distributions of \(X\) and \(Y\).
+
+\emph{solution}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  We proceed as follows by enumerating all the possibilities and noting that there are \(^5C_2=10\) ways of drawing the balls from the urn. Note here that as the balls are drawn simultaneously, order does not matter here.
+\end{enumerate}
+
+To find the distribution of \(X\) one can list the outcomes systematically by the largest value.
+
+\begin{longtable}[]{@{}cccccc@{}}
+\toprule
+\(x\) & & & & & \(\text{P}(X=x)\)\tabularnewline
+\midrule
+\endhead
+2 & \((1,2)\) & & & & \(\frac{1}{10}\)\tabularnewline
+3 & \((1,3)\) & \((2,3)\) & & & \(\frac{2}{10}\)\tabularnewline
+4 & \((1,4)\) & \((2,4)\) & \((3,4)\) & & \(\frac{3}{10}\)\tabularnewline
+5 & \((1,5)\) & \((2,5)\) & \((3,5)\) & \((4,5)\) & \(\frac{4}{10}\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  To find the distribution of \(Y\) one can list the outcomes systematically by the sum.
+\end{enumerate}
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\(y\) & & & \(\text{P}(Y=y)\)\tabularnewline
+\midrule
+\endhead
+3 & (1,2) & & \(\frac{1}{10}\)\tabularnewline
+4 & (1,3) & & \(\frac{1}{10}\)\tabularnewline
+5 & (1,4) & (2,3) & \(\frac{2}{10}\)\tabularnewline
+6 & (1,5) & (2,4) & \(\frac{2}{10}\)\tabularnewline
+7 & (2,5) & (3,4) & \(\frac{2}{10}\)\tabularnewline
+8 & (3,5) & & \(\frac{1}{10}\)\tabularnewline
+9 & (4,5) & & \(\frac{1}{10}\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+In either case you should check that each individual probability is between \(0\) and \(1\) and that over all possible particular values the sum is \(1\).
+\end{example}
+
+\begin{example}[a geometric distribution]
+\protect\hypertarget{exm:archer}{}\label{exm:archer}An archer hits a target rather randomly. Let's suppose that each time he takes aim \(\text{P}(\text{Hit})=\frac{1}{4}\), and so the complement \(\text{P}(\text{Miss})=\frac{3}{4}\). Let \(Y\) be the number of attempts required until he hits the target. Find the distribution of \(Y\).
+\end{example}
+
+\emph{solution}
+
+We can consider the number of attempts separately.
+
+\(Y=1\), first attempt is a hit, so \(\text{P}(Y=1)=\frac{1}{4}.\)
+
+\(Y=2\), first attempt is a miss, second is a hit, so
+\[\text{P}(Y=2)=\frac{3}{4}\times \frac{1}{4} = \frac{3}{16}.\]
+
+\(Y=3\), first attempt is a miss, second is a miss, and third is a hit so
+\[\text{P}(Y=3)=\frac{3}{4}\times \frac{3}{4}\times \frac{1}{4} = \frac{9}{64}.\]
+\(Y=4\), the sequence is miss, miss, miss then hit:
+\[\text{P}(Y=3)=\frac{3}{4}\times \frac{3}{4}\times \frac{3}{4}\times \frac{1}{4} = \frac{27}{256}.\]
+And so on.
+
+Notice that for the archer to hit the target on the \(y^{\text{th}}\) attempt, he must have missed on each of the previous \(y-1\) attempts, and so there is a formula for the mass function as follows.
+
+\begin{equation*}
+  f(Y=y)=\begin{cases}
+    \left( \frac{3}{4} \right)^{y-1}\frac{1}{4} \ , & \text{if } y = 1, 2, 3, \dots \\
+    \ 0 \ & \text{otherwise}.
+  \end{cases}
+\end{equation*}
+
+Clearly these probabilities are quickly getting very small - you may recognise these terms as being in a geometric sequence with common ration \(\frac{3}{4}\).
+
+A graph of this distribution looks like:
+
+\begin{figure}
+
+{\centering \includegraphics[width=17.81in]{./figures/geo_pdf} 
+
+}
+
+\caption{A geometric distribution}\label{fig:geomdriving}
+\end{figure}
+
+The choice of \(\frac{1}{4}\) is infact arbitrary. In general you can have `success' probability \(\pi\) and `failure' probability \(1-\pi\).
+
+\begin{definition}
+A random variable \(X\) representing the number of independent trials until the first success follows a geometric distribution with success probability \(\pi\), written as \(X \thicksim \text{Geom}(\pi)\), defined by the probability mass function
+
+\begin{equation*}
+  f(x)=\begin{cases}
+    \left( 1-\pi \right)^{x-1}\pi , & x = 1, 2, 3, \dots \\
+    \ 0 \ & \text{otherwise}.
+  \end{cases}
+\end{equation*}
+\end{definition}
+
+Of course the trials for the archer are arguably not independent - why?
+
+\hypertarget{properties-of-probability-mass-functions}{%
+\section{Properties of probability mass functions}\label{properties-of-probability-mass-functions}}
+
+For a random variable \(X\) with probability distribution \(f(x)\) we have the following two properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The probability of any particular value is between \(0\) and \(1\). That is,
+  \[ 0 \leq f(x) \leq 1, \ \forall x\]
+\item
+  The probabilities sum to unity. That is,
+\end{enumerate}
+
+\[ \sum_{x} f(x)= 1\]
+
+Probability distributions can be represented in a variety of different ways. In practice we use tables of distributions or use computer functions to evaluate them.
+
+In R we can use the following functions to evaluate the probabilities from example \ref{exm:archer}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y <-}\StringTok{ }\KeywordTok{dgeom}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\CommentTok{#these are the particular values 1,2,3 and 4}
+           \DataTypeTok{prob =} \DecValTok{1}\OperatorTok{/}\DecValTok{4}\NormalTok{ ) }\CommentTok{#This is the probability of success}
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.18750000 0.14062500 0.10546875 0.07910156
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#You can output these as fractions using the MASS library}
+\NormalTok{MASS}\OperatorTok{::}\KeywordTok{fractions}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]    3/16    9/64  27/256 81/1024
+\end{verbatim}
+
+The important function is \(\texttt{dgeom()}\), the \(\texttt{d}\) stands for distribution and \(\texttt{geom}\) for the geometric distribution.
+
+Another way to represent a probability distribution is as a cumulative sum.
+
+\begin{definition}[Cumulative distribution function]
+Given a random variable \(X\) and its probability mass function \(f(x)\), the cumulative distribution function (abbreviated CDF) denoted with a capital letter \(F(x)\) is defined as the sum of the probabilities less than or equal to the value \(x\). That is,
+
+\[ F(x) = \text{P}(X\leq x) = \sum_{t\leq x}f(t)\]
+\end{definition}
+
+\begin{example}[another urn problem]
+Consider the setup previously where two balls numbered \(1\) through \(5\) are drawn and the maximum of two numbers is taken.
+We found the probability distribution to be,
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\(x\) & \(\text{P}(X=x)\)\tabularnewline
+\midrule
+\endhead
+2 & \(\frac{1}{10}\)\tabularnewline
+3 & \(\frac{2}{10}\)\tabularnewline
+4 & \(\frac{3}{10}\)\tabularnewline
+5 & \(\frac{4}{10}\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+Work out the CDF \(F(x)\).
+
+\emph{solution}
+
+If \(x<2\) we have \(F(x)=0\).
+If \(2\leq x < 3\) we have \(F(x) = \frac{1}{10}\).
+If \(3\leq x < 4\) we have \(F(x) = \frac{1}{10} + \frac{2}{10}\).
+If \(4\leq x < 5\) we have \[F(x) = \frac{1}{10} + \frac{2}{10} + \frac{3}{10}.\]
+If \(5\leq x\) we have \[F(x) = \frac{1}{10} + \frac{2}{10} + \frac{3}{10} + \frac{4}{10}.\]
+
+Altogether,
+
+\begin{equation*}
+  F(x)=\begin{cases}
+  0  \ \ \ \ \ \ \ \ \ \ \   x<2 \\
+  \frac{1}{10} \  \  2\leq x < 3 \\
+  \frac{3}{10} \ \  3\leq x < 4 \\
+  \frac{6}{10} \ \ \ 4\leq x < 5 \\
+  1 \ \ \  \ \ \  5\leq x
+  \end{cases}
+\end{equation*}
+\end{example}
+
+\begin{example}
+The CDF of a geometric distribution is given by
+\[F(x) = 1- (1-\pi)^{x}.\]
+\end{example}
+
+\emph{solution}
+
+\[F(x) = \sum_{t\leq x}f(t)\]
+Sum from \(t=1\) to \(t=x\).
+
+\[  = \pi + \pi(1-\pi) + \pi(1-\pi)^2 + \dots +  \pi(1-\pi)^{x-1} \]
+You might recognise a geometric series here, with \(a=\pi\) and \(r=(1-\pi)\), so this can be collected as:
+
+\[F(x) = \frac{\pi (1-(1-\pi)^x)}{1-(1-\pi)} \]
+Evaluating the denominator and cancelling gives the result.
+
+The CDF is more useful than the mass function since if we are given the CDF we can calculate the mass function directly as the difference.
+
+\[f(x) = F(x)-F(x-1)\]
+
+\begin{example}
+Calculate \(f(4)\) given the CDF
+
+\begin{equation*}
+  F(x)=\begin{cases}
+  0  \ \ \ \ \ \ \ \ \ \ \   x<2 \\
+  \frac{1}{10} \  \  2\leq x < 3 \\
+  \frac{3}{10} \ \  3\leq x < 4 \\
+  \frac{6}{10} \ \ \ 4\leq x < 5 \\
+  1 \ \ \  \ \ \  5\leq x
+  \end{cases}
+\end{equation*}
+
+\emph{solution}
+
+\(f(4) = F(4)-F(3) = \frac{6}{10}-\frac{3}{10} = \frac{3}{10}\)
+\end{example}
+
+Due to the fact that the mass function can be calculated from the CDF, statistical tables often prioritise tabulating the CDF for various different types of distribution.
+
+We finish this section with an example of how this theory may be used in applied calculations.
+
+\begin{example}
+
+Assuming the archer's attempts to hit a target follows a geometric distribution with success parameter \(\frac{1}{4}\) calculate the probability that he
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Hits on the \(10^{\text{th}}\) attempt.
+\item
+  Takes fewer than \(4\) attempts to hit the target.
+\item
+  Takes at least \(8\) attempts to hit the target.
+\item
+  Takes between \(4\) and \(8\) attempts inclusive.
+\end{enumerate}
+
+\end{example}
+
+\emph{solution}
+
+Let \(Y\) be the number of attempts to hit the target. We know that
+
+\[f(y) = \left( \frac{3}{4} \right) ^{y-1}\frac{1}{4}\]
+
+and
+
+\[ F(y) = 1- \left(1-\frac{1}{4}\right)^y = 1-\left( \frac{3}{4}\right)^y.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\text{P}(Y=10) = f(10) = \left( \frac{3}{4}\right)^9\times \frac{1}{4} = 0.0188\) (\(3\) s.f.).
+\item
+  \(\text{P}(Y<4) = \text{P}(Y\leq 3) = F(3) =1 - \left( \frac{3}{4}\right)^3 = 0.578\), (\(3\) s.f.).
+\item
+  Using the complement, \(\text{P}(Y\geq 8) = 1 - \text{P}(Y\leq 7)\). Now using the CDF:
+\end{enumerate}
+
+\[1-F(7) = 1- \left( 1-\left(\frac{3}{4}\right)^7\right) = 0.134.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Rewrite the required range as a difference of two CDF values as follows:
+\end{enumerate}
+
+\[\text{P}(4\leq Y\leq 8) = \text{P}(Y\leq 8) - \text{P}(Y\leq 3)\]
+
+\[ = F(8) - F(3)\]
+
+\[ = \left[ 1-\left(\frac{3}{4}\right)^8\right] -  \left[ 1-\left(\frac{3}{4}\right)^3\right]\]
+\[ = 0.322\]
+You should be careful when evaluating the CDF to ensure that you have the correct values in the given inequality. A small diagram or list can be invaluable here.
+
+\hypertarget{mean-variance-and-moments}{%
+\section{Mean, variance and moments}\label{mean-variance-and-moments}}
+
+The mean and variance of a random variable essentially mirror the definitions of mean and variance for samples.The mean or expected value is the \emph{average} value of the variable if it were observed repeatedly. The variance indicates the likely spread of values of the variable.
+
+\begin{example}
+If you toss a coin \(2\) times how many heads would you expect to turn up?
+
+\emph{solution}
+
+Your would expect \(1\) intuitively. Let \(X\) be the number of heads.
+The outcomes are \((T,T),(H,T),(T,H),(H,H)\). The average number of heads is then
+
+\[ \frac{0+1+1+2}{4} = 1\]
+We can relate this to the probability of each number of heads. We have,
+
+\[\text{P}(X=0) = \frac{1}{4}\]
+\[\text{P}(X=1) = \frac{2}{4}\]
+\[\text{P}(X=2) = \frac{1}{4}\]
+
+The sum of the possible \(x\) values weighted by the probability is:
+\[0\times \frac{1}{4} + 1\times \frac{2}{4} + 2\times \frac{1}{4} = 1.\]
+\end{example}
+
+\begin{definition}
+The \textbf{\emph{expectation}}, or \textbf{\emph{expected value}} of a random variable \(X\) is defined as the sum of the possible values of the random variable weighted by the probability of that value.
+
+\[ \text{E}[X] = \sum_x x\times\text{P}(X=x)\]
+This is just a number once it is calculated is called the \textbf{\emph{mean}}, and so is written as a constant \(\text{E}[X]=\mu\) to omit the random quantity \(X\).
+
+The expected value of any function of a discrete random variable \(g(X)\) is defined similarly by
+\[ \text{E}[X] = \sum_x g(x)\times\text{P}(X=x)\]
+\end{definition}
+
+\begin{definition}
+The \textbf{\emph{variance}} of a random variable \(X\) is defined as:
+
+\[ \text{Var}[X] = \text{E}[(X-\mu)^2]\]
+\end{definition}
+
+The following is a very useful in practice for actually computing the variance.
+
+\begin{theorem}
+Given a random variable \(X\) we have that the variance is equal to the difference between the expectation of \(X^2\) and the squared expectation of \(X\). That is,
+
+\[ \text{Var}[X]=\text{E}[X^2]-\text{E}[X]^2 \]
+\end{theorem}
+
+We omit the proof for now and see some examples, leaving this for the interested reader.
+
+\begin{proof}
+The expectation is a sum, so behaves linearly. By definition,
+
+\[\text{Var}[X] = \text{E}[(X-\mu)^2]\]
+Expanding out the bracket on the inside gives,
+\[ = \text{E}[X^2 - 2\mu X +\mu^2] \]
+Using linearity,
+
+\[= \text{E}[X^2]-2\mu\text{E}[X]+\mu^2.\]
+\[= \text{E}[X^2]-2\mu^2+\mu^2.\]
+Hence the result.
+\end{proof}
+
+\begin{example}
+
+A discrete random variable \(X\) representing the score on a loaded die has the following probability mass function.
+
+\begin{longtable}[]{@{}cllllll@{}}
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering
+\(x\)\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+5\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+6\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering
+\(\text{P}(X=x)\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{1}{21}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{2}{21}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{3}{21}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{4}{21}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{5}{21}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{6}{21}\)\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Calculate:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \(\text{E}[X]\)
+\item
+  \(\text{E}[X^2]\)
+\item
+  \(\text{Var}[X]\)
+\item
+  \(\text{E}[e^X]\)
+\end{enumerate}
+
+\end{example}
+
+\emph{solution}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Using the definition of expectation:
+\end{enumerate}
+
+\[ \text{E}[X] = 1\times \frac{1}{21}+2\times \frac{2}{21}+3\times \frac{3}{21}+4\times \frac{4}{21}+5\times \frac{5}{21}+6\times \frac{6}{21},\]
+\[ = 4.33 \ \ \ (3 \ \text{s. f.})\]
+Compared to a fair die, the mean of the loaded die is higher.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \[ \text{E}[X^2] = 1^2\times \frac{1}{21}+2^2\times \frac{2}{21}+3^2\times \frac{3}{21}+4^2\times \frac{4}{21}+5^2\times \frac{5}{21}+6^2\times \frac{6}{21},\]
+\end{enumerate}
+
+\[ = 21\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  The variance is then,
+\end{enumerate}
+
+\[\text{Var}[X]=\text{E}[X^2]-\mu^2 = 21-(4.33\dots)^2= 2.22 \ \ \ (3 \ \text{s. f.})\]
+4. \(e^X\) is just a function of \(X\).
+
+\[ \text{E}[X] = e^1\times \frac{1}{21}+e^2\times \frac{2}{21}+e^3\times \frac{3}{21}+e^4\times \frac{4}{21}+e^5\times \frac{5}{21}+e^6\times \frac{6}{21},\]
+
+\[ = 164.622 \ (3 \ \text{d. p.}) \]
+
+\begin{example}
+Let \(X\) be a random variable whose value is a constant, that is the particular values it can take are all the same, \(x=a\). Show that \(\text{E}[X]=a\) and \(\text{Var}[X]=0\)
+
+\emph{solution}
+
+\[\text{E}[X]=\sum_{x}x\times\text{P}(X=x)= \sum a\times\text{P}(X=a)=a\times \sum \text{P}(X=a) = a \times 1 = a\]
+
+For the variance,
+
+\[ \text{Var}[X] = \text{E}[(X-\mu)^2]=\text{E}[(a-a)^2]=0 \]
+\end{example}
+
+We will now proceed to find the mean and variance of a Geometric distribution. We will need a fact about series first.
+
+\begin{proposition}
+Suppose \(|r|<1\) and recall the infinite geometric series is given by the following formula:
+
+\[g(r) = \sum_{k=0}^{\infty}ar^{k} = \frac{a}{1-r}\]
+For a convergent series such as this we can differentiate term by term with respect to \(r\), and equate this to what we would get from differentiating the RHS likewise. Doing so results in the following two formulae:
+
+\[g'(r) = \sum_{k=0}^{\infty}akr^{k-1} = \frac{a}{(1-r)^2}\]
+
+\[g''(r) = \sum_{k=0}^{\infty}ak(k-1)r^{k-2} = \frac{2a}{(1-r)^3}\]
+\end{proposition}
+
+\begin{theorem}
+Let \(X\) be a random variable which follows a geometric distribution, \(X \thicksim \text{Geom}(\pi)\), then we have:
+
+\[\text{E}[X] = \frac{1}{\pi}\]
+and
+\[ \text{Var}[X]=\frac{1-\pi}{\pi^2}\]
+\end{theorem}
+
+\begin{proof}
+By definition,
+\[\text{E}[X] = \sum_{x=1}^{\infty}x(1-\pi)^{x-1}\pi\]
+\[ = \pi + 2\pi(1-\pi) + 3\pi(1-\pi)^2+4\pi(1-\pi)^3+ \dots \]
+The latter sum can be seen as \(g'(1-\pi)\), with \(a=\pi\). Using the RHS result from the previous proposition we have,
+\[\text{E}[X] = \frac{\pi}{[1-(1-\pi)]^2} = \frac{1}{\pi}\]
+For the variance we first find the expectation of a function of \(X\) called a factorial moment.
+
+\[\text{E}[X(X-1)] = \sum_{x=1}^{\infty}x(x-1)\pi(1-\pi)^{x-1}\]
+\[ = (1-\pi)\sum_{x=2}^{\infty}x(x-1)\pi(1-\pi)^{x-2}\]
+The infinite series turns out to be \(g''(1-\pi)\) with \(a=\pi\). Substituting this in gives,
+
+\[\text{E}[X(X-1)]=(1-\pi)\frac{2\pi}{[1-(1-\pi)]^3} = \frac{2(1-\pi)}{\pi^2}.\]
+Now we can use this to find the variance as follows,
+
+\[\text{Var}[X] = \text{E}[X^2]-\text{E}[X]^2 \]
+\[ = \text{E}[X(X-1)]+\text{E}[X]-\text{E}[X]^2 \]
+\[ = \frac{2(1-\pi)}{\pi^2} + \frac{1}{\pi} - \frac{1}{\pi^2} \]
+\[ = \frac{1-\pi}{\pi^2}\]
+as required.
+\end{proof}
+
+If you are given two random variables \(X\) and \(Y\) a \emph{linear combination} means an expression of the form \(aX+bY\).
+
+\begin{theorem}[Linear Combinations]
+For any random variables \(X\) and \(Y\) and constants \(a\) and \(b\) we have that the expectation of a linear combination is a linear combination of the expectations.
+
+\[\text{E}[aX\pm bY] = a\text{E}[X]\pm b\text{E}[Y]\]
+However the variance is a nonlinear sum of the variances.\\
+\[\text{Var}[aX\pm bY] = a^2\text{Var}[X]+b^2\text{Var}[Y] \]
+\end{theorem}
+
+\begin{proof}
+This is omitted, but follows from properties of summations and mass functions.
+\end{proof}
+
+\begin{example}
+Recall the loaded die had mass function given by,
+
+\begin{longtable}[]{@{}cllllll@{}}
+\toprule
+\begin{minipage}[b]{0.28\columnwidth}\centering
+\(x\)\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+5\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+6\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.28\columnwidth}\centering
+\(\text{P}(X=x)\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{1}{21}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{2}{21}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{3}{21}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{4}{21}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{5}{21}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(\frac{6}{21}\)\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Suppose you win \(W\) is an amount depending on the number that you roll on the loaded die.
+
+If \(W = 3X-10\) find \(\text{E}[W]\) and \(\text{Var}[W]\)
+
+\emph{solution}
+
+\[\text{E}[W] = 3\times (4.333\dots) -10 = £3\]
+
+\[\text{Var}[W] = 3^2\times(2.22\dots) = 19.99\dots = 20.0 \  (3 \ \text{s.f.})\]
+\end{example}
+
+\hypertarget{exercises-week-3}{%
+\section{Exercises Week 3}\label{exercises-week-3}}
+
+\begin{exercise}
+
+An urn contains two yellow balls and three red balls. Three balls are drawn at random from the urn without replacement.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Draw a tree diagram to represent the sample space for this experiment and find the probabilities of each outcome.
+\item
+  Let the random variable \(X\) denote the number of red balls drawn.
+\item
+  Write down the probability distribtion of \(X\).
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Find the mean and variance of \(X\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+Let \(X\) be the value observed from rolling an \(8\)-sided die
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  What is the probability distribution of \(X\).
+\item
+  Draw a graph of the probability distribution.
+\item
+  Find the mean and variance of \(X\).
+\item
+  Find the expected value of:
+\item
+  \(3X+5\)
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \(\ln(X)\)
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+A game consists of tossing a coin until the first head appears. The score recorded is the number of tosses required.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  If the random variable \(Y\) is the number of tosses, what is the distribution of \(Y\)?
+\item
+  Write down the first \(6\) values of the probability distribution, and draw a sketch.
+\item
+  Find the mean and variance of \(Y\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+Two fair dice are rolled and the \emph{total} score observed.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Write down the probability distribution of the total score.
+\item
+  Find the mean and variance of the total score.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+Two fair dice are rolled and the \emph{maximum} score observed.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Write down the probability distribution of the maximum score.
+\item
+  Find the mean and variance of the maximum score.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+A fair coin is tossed three times. Let \(X\) be the number of heads in the tosses minus the number of tails.
+a) Find the probability distribution of \(X\)
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Find the mean and variance of \(X\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+The game of simple \emph{Chuck-a-luck} is played by a single player against the house. The game is conducted as follows:
+
+The player chooses any number between \(1\) and \(6\) inclusive and places a bet of £\(1\). The banker then rolls \(2\) fair dice. If the player's number occurs \(1\) or \(2\) times, he wins £\(1\) or £\(2\) respectively. If the player's numberdoes not appear on any of the dice, he loses his £\(1\) stake. Let the random variable \(X\) denote the player's winnings in the game.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Find the probability mass function of \(X\).
+\item
+  Find the expected value of the winnings, \(\text{E}[X]\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+The random variable \(X\) has the following probability mass function:
+
+\begin{longtable}[]{@{}cccccc@{}}
+\toprule
+\(x\) & 1 & 2 & 3 & 4 & 5\tabularnewline
+\midrule
+\endhead
+\(\text{P}(X=x)\) & \(7c\) & \(5c\) & \(4c\) & \(3c\) & \(c\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Find the value of \(c\) which makes this a valid probability mass function.
+\item
+  Find \(\text{E}[X]\) and \(\text{Var}[X]\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+The random variable \(X\) has the following probability mass function:
+
+\begin{longtable}[]{@{}cccccc@{}}
+\toprule
+\(y\) & 2 & 3 & 5 & 7 & 11\tabularnewline
+\midrule
+\endhead
+\(\text{P}(Y=y)\) & \(\frac{1}{6}\) & \(\frac{1}{3}\) & \(\frac{1}{4}\) & \(a\) & \(b\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+and \(\text{E}[Y]=\frac{14}{3}\)
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Find the values of \(a\) and \(b\).
+\item
+  Find \(\text{Var}[Y]\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+A fair six-sided die has `\(1\)' on one face, `\(2\)' on two faces and `\(3\)' on the remaining three faces.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Let \(Y\) denote the score on a single roll of the die. Tabulate the mass function and calculate the mean and variance of \(Y\).
+\item
+  Let \(X\) be the total score on two rolls of the die. Tabulate the mass function and calculate the mean and variance of \(X\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+An urn contains \(n\) balls numbered \(1\) to \(n\) from which two balls are drawn simultaneously. Find the probability distribution of \(X\), the larger of the two numbers drawn. Calculate the expected value of \(X\).
+\end{exercise}
+
+\begin{exercise}
+
+\(A\) and \(B\) play a game that involves each rolling a fair die simultaneously. Let \(X\) be the absolute difference in their scores.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Tabulate the probability mass function of \(X\).
+\item
+  Find the mean and variance of \(X\).
+\item
+  If the value of \(X\) is \(1\) or \(2\) then \(A\) wins. If \(X\) is \(3\),\(4\) or \(5\) then \(B\) wins. If \(X\) is zero then they roll again. Find the probability that \(A\) wins on the first go. Find the probability that \(A\) wins on the second go. Find the probability that \(A\) wins on the \(r^{\text{th}}\) go.
+\item
+  Find the probability that \(A\) wins.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+A discrete random variable has the following mass function
+
+\begin{equation*}
+  f(y)=\begin{cases}
+    \pi \ \ \ \ \ \ \ \ \ \  y = 1 \\
+    1-\pi \ \  \ y = 0 .
+  \end{cases}
+\end{equation*}
+
+Where \(0<\pi<1\).This is known as the Bernoulli distribution.Find \(\text{E}[Y]\) and \(\text{Var}[Y]\)
+\end{exercise}
+
+\hypertarget{exercises-for-feedback-1}{%
+\subsection{Exercises for feedback}\label{exercises-for-feedback-1}}
+
+\begin{exercise}
+
+Scrabble tiles for the letters of the word EXERCISES are in a bag.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  A random tile is drawn, what is the probability that it is the letter is E?
+\item
+  Given that the letter that is drawn from the bag is a vowel, what is the probability that it is an E?
+\item
+  Explain how the two questions are different in your own words, and compare the size of the probabilities in either part.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+There are \(40\) students in a Maths class, and each are given a number \(1\) to \(40\). Separately the numbers \(1-40\) are placed in a hat and mixed randomly. The teacher will give three random students a prize. Three numbers are selected from the hat without replacement. Before the numbers are drawn the teacher guesses three numbers and writes them on the board.
+
+\begin{itemize}
+\tightlist
+\item
+  Work out the probability of the teacher matching \(0\), \(1\), \(2\) or \(3\) of the numbers that are drawn from the hat.
+\end{itemize}
+
+On a different occasion, the teacher has \(5\) students in his tutor group. He wants to give two prizes to the Maths students, and one to his tutor group. He will draw two numbers from his hat, and separately he will draw one of the numbers \(1-5\) from his shoe (he only has one hat). Again he writes his prediction on the board before the selection.
+
+\begin{itemize}
+\tightlist
+\item
+  Work out the probability of the teacher predicting \(0\), \(1\) or \(2\) Maths students, but not getting the tutee correct, and the probability of predicting \(0\), \(1\) or \(2\) Maths students and getting the tutee correct.
+\end{itemize}
+
+\end{exercise}
+
+\begin{exercise}
+
+A fairground game is played with \(5\) dice. The player pays £1 to play, and for every \(6\) that appears on the dice the player is rewarded with £\(6\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Work out the probabilities of getting \(0\),\(1\),\(2\),\(\dots\),\(5\) sixes when rolling the five dice.
+\item
+  If \(X\) is the profit of for the player of this game, work out the expected profit \(\text{E}[X]\).
+\item
+  Work out also the variance \(\text{Var}[X]\).
+\item
+  Explain if you think this is a good game or not.
 \end{enumerate}
 
 \end{exercise}

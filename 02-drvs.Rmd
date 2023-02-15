@@ -42,7 +42,7 @@ $$f(x) = \text{P}(X=x)$$
 In some texts, or if there are two variables in play, we may also write the variable in subscript  $f_X(x)$  to be clear to which mass function we are referring.
 :::
 
-::: {.example name="(discrete uniform distribution)"}
+::: {.example name="discrete uniform distribution"}
 Consider rolling a fair die and let the discrete random variable $X$ be the score observed on the die. We know that the probability of getting any of the particular values in the set $\{1,2, \dots 6\}$  is $\frac{1}{6}$ and this is the probability distribution. We may tabulate the values as follows 
 
 |    $x$    | 1 | 2 | 3 | 4 | 5 | 6 |
@@ -223,7 +223,7 @@ If $x<2$ we have $F(x)=0$.
 If $2\leq x < 3$ we have $F(x) = \frac{1}{10}$.
 If $3\leq x < 4$ we have $F(x) = \frac{1}{10} + \frac{2}{10}$.
 If $4\leq x < 5$ we have $$F(x) = \frac{1}{10} + \frac{2}{10} + \frac{3}{10}.$$
-If $5\leq x $ we have $$F(x) = \frac{1}{10} + \frac{2}{10} + \frac{3}{10} + \frac{4}{10}.$$
+If $5\leq x$ we have $$F(x) = \frac{1}{10} + \frac{2}{10} + \frac{3}{10} + \frac{4}{10}.$$
 
 Altogether,
 
@@ -445,7 +445,7 @@ $$\text{E}[X]=\sum_{x}x\times\text{P}(X=x)= \sum a\times\text{P}(X=a)=a\times \s
 
 For the variance,
 
-$$ \text{Var}[X] = \text{E}[X^2]-\mu^2 $$
+$$ \text{Var}[X] = \text{E}[(X-\mu)^2]=\text{E}[(a-a)^2]=0 $$
 :::
 
 We will now proceed to find the mean and variance of a Geometric distribution. We will need a fact about series first.
