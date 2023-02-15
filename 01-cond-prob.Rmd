@@ -327,7 +327,7 @@ Any event and its complement form a partition.
 
 Here is a picture of a partition:
 
-```{r partition, fig.align="center", fig.cap="An example partition with five sets.", echo=FALSE}
+```{r partition, fig.align="center", fig.cap="An example partition with six sets.", echo=FALSE}
 knitr::include_graphics("./figures/partition.jpg")
 ```
 
@@ -355,11 +355,11 @@ and that the denominator is $\text{P}(B) using the law of total probability.
 :::
 
 ::: {.example}
-A company produces electrical components using three shifts. During the first shift $50%$ of components are produced with $20\%$ and $30\%$ being produced during shifts $2$ and $3$ respectively. The proportion of defective components produced during shift $1$ is $6\%$. For shifts $2$ and $34$ the proportions are $8\%$ and $12\%$ respectively. 
+A company produces electrical components using three shifts. During the first shift $50%$ of components are produced, with $20\%$ and $30\%$ being produced during shifts $2$ and $3$ respectively. The proportion of defective components produced during shift $1$ is $6\%$. For shifts $2$ and $3$ the proportions are $8\%$ and $12\%$ respectively. 
 
 a) Find the percentage of defective components.
 
-b) If a component is defective, what is the probability that itcame from shift $3$?
+b) If a component is defective, what is the probability that it came from shift $3$?
 
 _solution_
 
@@ -409,7 +409,7 @@ So we would still believe Gary to be $0\%$ guilty.
 
 As educated people we should always consider the opposing opinion and update our own beliefs according to the evidence available. If you have a strong opinion about something, consider what would change your mind. Always leave some room to doubt yourself, because you could be wrong.
 
-## Tutorial Exercises
+## Exercises Week 2
 
 :::{.exercise}
 I toss a fair coin and roll a die. 
