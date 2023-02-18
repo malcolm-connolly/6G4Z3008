@@ -715,8 +715,9 @@ c) Work out also the variance $\text{Var}[X]$.
 d) Explain if you think this is a good game or not.
 :::
 
-
-
+:::{.exercise name="Extension / Challenge"}
+You play a game with a standard pack of $52$ cards. You are dealt a hand of $3$ cards. If your hand contains a pair, you get $3$ points. If your hand contains $3$ of a kind, you get $10$ points. If your hand contains neither a pair nor $3$ of a kind you lose a point. What is the expected number of points you will score in this game?
+:::
 
 
 

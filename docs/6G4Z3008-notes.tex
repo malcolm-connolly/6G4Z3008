@@ -209,8 +209,8 @@ In this course we will learn some R programming. R is a free open-source softwar
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "Heads" "Heads" "Heads" "Tails" "Tails" "Tails" "Heads" "Tails" "Tails"
-## [10] "Heads"
+##  [1] "Tails" "Heads" "Heads" "Heads" "Tails" "Tails" "Tails" "Tails" "Heads"
+## [10] "Tails"
 \end{verbatim}
 
 \begin{definition}
@@ -1889,7 +1889,7 @@ Or a graph:
 
 \begin{figure}
 
-{\centering \includegraphics[width=17.82in]{./figures/uni_pdf} 
+{\centering \includegraphics[width=0.75\linewidth]{./figures/uni_pdf} 
 
 }
 
@@ -2003,7 +2003,7 @@ A graph of this distribution looks like:
 
 \begin{figure}
 
-{\centering \includegraphics[width=17.81in]{./figures/geo_pdf} 
+{\centering \includegraphics[width=0.75\linewidth]{./figures/geo_pdf} 
 
 }
 
@@ -2372,6 +2372,26 @@ Compared to a fair die, the mean of the loaded die is higher.
 \[ \text{E}[X] = e^1\times \frac{1}{21}+e^2\times \frac{2}{21}+e^3\times \frac{3}{21}+e^4\times \frac{4}{21}+e^5\times \frac{5}{21}+e^6\times \frac{6}{21},\]
 
 \[ = 164.622 \ (3 \ \text{d. p.}) \]
+
+\begin{example}[expected profit]
+Consider the following game. A spinning wheel is divided into three equal sections numbered \(1\), \(2\) and \(3\). You pay £\(1\) to play the game, and you have to guess the number that will show when the wheel is spun. If you guess correctly, you get £\(2\). If you do not then you get nothing. What is the expected profit from playing the game?
+
+\emph{solution}
+
+The profit is the winnings minus the stake. Let the profit be the random variable \(X\). The distribution of \(X\) is:
+
+\begin{longtable}[]{@{}cllllll@{}}
+\toprule
+\(x\) & -1 & 1 & & & &\tabularnewline
+\midrule
+\endhead
+\(\text{P}(X=x)\) & \(\frac{2}{3}\) & \(\frac{1}{3}\) & & & &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\[\text{E}[X] = -1 \times \frac{2}{3} + 1 \times \frac{1}{3} = -\frac{1}{3}\]
+So we would expect on average to make a loss playing this game. For any gambling game to be profitable for the house, it is necessary that the expectation of the players winnings be negative.
+\end{example}
 
 \begin{example}
 Let \(X\) be a random variable whose value is a constant, that is the particular values it can take are all the same, \(x=a\). Show that \(\text{E}[X]=a\) and \(\text{Var}[X]=0\)
@@ -2775,6 +2795,10 @@ A fairground game is played with \(5\) dice. The player pays £1 to play, and fo
   Explain if you think this is a good game or not.
 \end{enumerate}
 
+\end{exercise}
+
+\begin{exercise}[Extension / Challenge]
+You play a game with a standard pack of \(52\) cards. You are dealt a hand of \(3\) cards. If your hand contains a pair, you get \(3\) points. If your hand contains \(3\) of a kind, you get \(10\) points. If your hand contains neither a pair nor \(3\) of a kind you lose a point. What is the expected number of points you will score in this game?
 \end{exercise}
 
   \bibliography{book.bib,packages.bib}
