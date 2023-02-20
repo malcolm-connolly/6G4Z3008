@@ -608,7 +608,7 @@ $$ ^{n+1}\text{P}_3 = ^n\text{P}_4 $$
 :::
 
 ::: {.exercise}
-Four different Mathematics books, $5$ different statistics books and $3$ different computing books are to be arranged on a shelf. In how many ways can the books be arranged if,
+Three different Mathematics books and $5$ different statistics books are to be arranged on a shelf. In how many ways can the books be arranged if,
 a) The books in each subject must stand together
 b) Only the statistics books must stand together
 :::

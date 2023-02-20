@@ -296,7 +296,7 @@ Figure 1.1: The result of simulating rolling a die 6000 times, and counting how 
 <p>In this course we will learn some R programming. R is a free open-source software language suitable for doing many probability and statistical calculations. The following R code will make a list of two outcomes Heads or Tails and create a sample of <span class="math inline">\(10\)</span> random outcomes.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>outcomes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Heads&quot;</span>,<span class="st">&quot;Tails&quot;</span>)</span>
 <span id="cb1-2"><a href="index.html#cb1-2"></a><span class="kw">sample</span>(outcomes, <span class="dv">10</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>##  [1] &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Heads&quot;
+<pre><code>##  [1] &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Tails&quot;
 ## [10] &quot;Heads&quot;</code></pre>
 <div class="definition">
 <p><span id="def:freq" class="definition"><strong>Definition 1.2  </strong></span>If a statistical experiment has <span class="math inline">\(n\)</span> runs, and the outcome <span class="math inline">\(A\)</span> happens a cumulative number of times depending on <span class="math inline">\(n\)</span> which we can call <span class="math inline">\(a_n\)</span>, then the <strong><em>frequentist probability</em></strong> of the outcome <span class="math inline">\(A\)</span>, written <span class="math inline">\(P(A)\)</span>, is the limit:</p>
@@ -756,7 +756,7 @@ b) Assuming an individual is drawn at random, find the probability thatthey are
 <span class="math display">\[ ^{n+1}\text{P}_3 = ^n\text{P}_4 \]</span></p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-30" class="exercise"><strong>Exercise 1.9  </strong></span>Four different Mathematics books, <span class="math inline">\(5\)</span> different statistics books and <span class="math inline">\(3\)</span> different computing books are to be arranged on a shelf. In how many ways can the books be arranged if,
+<p><span id="exr:unlabeled-div-30" class="exercise"><strong>Exercise 1.9  </strong></span>Three different Mathematics books and <span class="math inline">\(5\)</span> different statistics books are to be arranged on a shelf. In how many ways can the books be arranged if,
 a) The books in each subject must stand together
 b) Only the statistics books must stand together</p>
 </div>

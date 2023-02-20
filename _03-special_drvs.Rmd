@@ -1,4 +1,5 @@
-# Conditional Probability {#cond}
+# Special discrete random variables {#binpois}
 
 
-This is the introduction to probability in week 2
+In this chapter you should be able to recognise contexts in which Binomial distributions arise. Calculate binomial probabilities using formulae. Use binomial tables, calculators and R to look up probabilities.
+
