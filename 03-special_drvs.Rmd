@@ -294,7 +294,7 @@ d) $\text{P}(4\leq Y \leq 9 ) = \text{P}(Y\leq 9) - \text{P}(Y\leq 3) = 0.9889 -
 
 An important aspect of the Poisson model is the uniform average rate. This means that we assume events occur at the same rate over the interval. If the size of the interval changes, then we must change the mean rate in direct proportion with that change of size. 
 
-:::{.example, name="hotline continued"}
+:::{.example name="hotline continued"}
 Again assume calls to the hotline are incoming with rate $3.5$ per minute. Find the probability that
 
 a) at least $20$ calls arrive at the exchange in a $4$ minute period.
@@ -339,10 +339,11 @@ In this section we consider the mean and variance of the Poisson distribution.
 
 We need a few Mathematical preliminaries from Calculus. 
 
-:::{.proposition name = "characterisations of Euler's number"}
+:::{.proposition name="characterisations of Euler's number"}
 A) For any real number $x \in \mathbb{R}$ we have 
 
 $$e^x = \sum_{k=0}^{\infty} \frac{x^k}{k!}$$
+
 B) 
 $$ \lim_{n\to \infty} \left( 1+\frac{x}{n} \right)^n = e^x$$
 :::

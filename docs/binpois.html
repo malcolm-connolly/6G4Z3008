@@ -408,8 +408,8 @@ where <span class="math inline">\(x=0,1,2, \dots\)</span>, and <span class="math
 <div id="further-properties" class="section level3 hasAnchor">
 <h3><span class="header-section-number">4.4.1</span> Further properties<a href="binpois.html#further-properties" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>An important aspect of the Poisson model is the uniform average rate. This means that we assume events occur at the same rate over the interval. If the size of the interval changes, then we must change the mean rate in direct proportion with that change of size.</p>
-<p>:::{.example, name=“hotline continued”}
-Again assume calls to the hotline are incoming with rate <span class="math inline">\(3.5\)</span> per minute. Find the probability that</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-11" class="example"><strong>Example 4.7  (hotline continued) </strong></span>Again assume calls to the hotline are incoming with rate <span class="math inline">\(3.5\)</span> per minute. Find the probability that</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>at least <span class="math inline">\(20\)</span> calls arrive at the exchange in a <span class="math inline">\(4\)</span> minute period.</p></li>
 <li><p>at most <span class="math inline">\(1\)</span> call arrives in a <span class="math inline">\(12\)</span> second period.</p></li>
@@ -424,18 +424,18 @@ Again assume calls to the hotline are incoming with rate <span class="math inlin
 <li>As <span class="math inline">\(12\)</span> seconds is one fifth of a minute, so we would expect a rate of <span class="math inline">\(3.5\div 5 = 0.7\)</span> calls.</li>
 </ol>
 <p>Let <span class="math inline">\(Z\)</span> be the number of calls in a <span class="math inline">\(12\)</span> second period. Then,</p>
-<p><span class="math display">\[\text{P}(Z\leq 1) = 0.8442\]</span>
-:::</p>
+<p><span class="math display">\[\text{P}(Z\leq 1) = 0.8442\]</span></p>
+</div>
 <p>The second useful property is that different Poisson variables can be added together and yield another Poisson distribution whose rate parameter is the sum of the individual rates.</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-11" class="theorem"><strong>Theorem 4.3  </strong></span>That is, if <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span> and <span class="math inline">\(Y\sim \text{Pois}(\mu)\)</span> then
+<p><span id="thm:unlabeled-div-12" class="theorem"><strong>Theorem 4.3  </strong></span>That is, if <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span> and <span class="math inline">\(Y\sim \text{Pois}(\mu)\)</span> then
 <span class="math display">\[X+Y \sim \text{Pois}(\lambda+\mu)\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-12" class="proof"><em>Proof</em>. </span>Omitted for now. In your second year course you will learn moment generating functions which makes the proof very easy.</p>
+<p><span id="unlabeled-div-13" class="proof"><em>Proof</em>. </span>Omitted for now. In your second year course you will learn moment generating functions which makes the proof very easy.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 4.7  </strong></span>Suppose in a game of football the home team scores goals at a rate of <span class="math inline">\(2\)</span> per match, and the away team scores goals at a rate of <span class="math inline">\(3\)</span> per match. Then you would expect the total number of goals between these two teams to occur at a rate of <span class="math inline">\(5\)</span> per match.</p>
+<p><span id="exm:unlabeled-div-14" class="example"><strong>Example 4.8  </strong></span>Suppose in a game of football the home team scores goals at a rate of <span class="math inline">\(2\)</span> per match, and the away team scores goals at a rate of <span class="math inline">\(3\)</span> per match. Then you would expect the total number of goals between these two teams to occur at a rate of <span class="math inline">\(5\)</span> per match.</p>
 <p>In this context for a particular pair of teams this may not be a realistic model. Why?</p>
 </div>
 </div>
@@ -444,20 +444,24 @@ Again assume calls to the hotline are incoming with rate <span class="math inlin
 <h2><span class="header-section-number">4.5</span> Mean and Variance<a href="binpois.html#mean-and-variance-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this section we consider the mean and variance of the Poisson distribution.</p>
 <p>We need a few Mathematical preliminaries from Calculus.</p>
-<p>:::{.proposition name = “characterisations of Euler’s number”}
-A) For any real number <span class="math inline">\(x \in \mathbb{R}\)</span> we have</p>
-<p><span class="math display">\[e^x = \sum_{k=0}^{\infty} \frac{x^k}{k!}\]</span>
-B)
-<span class="math display">\[ \lim_{n\to \infty} \left( 1+\frac{x}{n} \right)^n = e^x\]</span>
-:::</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-15" class="proposition"><strong>Proposition 4.1  (characterisations of Euler's number) </strong></span></p>
+<ol style="list-style-type: upper-alpha">
+<li>For any real number <span class="math inline">\(x \in \mathbb{R}\)</span> we have</li>
+</ol>
+<p><span class="math display">\[e^x = \sum_{k=0}^{\infty} \frac{x^k}{k!}\]</span></p>
+<ol start="2" style="list-style-type: upper-alpha">
+<li><span class="math display">\[ \lim_{n\to \infty} \left( 1+\frac{x}{n} \right)^n = e^x\]</span></li>
+</ol>
+</div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-14" class="theorem"><strong>Theorem 4.4  </strong></span>Let <span class="math inline">\(X\)</span> be a Poisson distributed random variable with rate <span class="math inline">\(\lambda\)</span>, that is <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span>. Then</p>
+<p><span id="thm:unlabeled-div-16" class="theorem"><strong>Theorem 4.4  </strong></span>Let <span class="math inline">\(X\)</span> be a Poisson distributed random variable with rate <span class="math inline">\(\lambda\)</span>, that is <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span>. Then</p>
 <p><span class="math display">\[\text{E}[X]  = \lambda\]</span>
 and
 <span class="math display">\[\text{Var}[X] = \lambda\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-15" class="proof"><em>Proof</em>. </span><span class="math display">\[\text{E}[X] = \sum_{x=0}^{\infty}x\frac{\lambda^x e^{-\lambda}}{x!}\]</span>
+<p><span id="unlabeled-div-17" class="proof"><em>Proof</em>. </span><span class="math display">\[\text{E}[X] = \sum_{x=0}^{\infty}x\frac{\lambda^x e^{-\lambda}}{x!}\]</span>
 <span class="math display">\[ =\lambda e^{-\lambda} \sum_{x=1}^{\infty}\frac{\lambda^{(x-1)}}{(x-1)!} \]</span>
 <span class="math display">\[=\lambda e^{-\lambda} \sum_{y=0}^{\infty}\frac{\lambda^{y}}{y!} \]</span>
 <span class="math display">\[=\lambda e^{-\lambda} e^{\lambda}  \]</span>
@@ -497,7 +501,7 @@ And all of these limits are <span class="math inline">\(1\)</span>.</p>
 This is the probability of observing <span class="math inline">\(x\)</span> events in the whole time interval.</p>
 <p>The other side of this relationship is that a Poisson distribution can be used to approximate the binomial distribution.</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-16" class="theorem"><strong>Theorem 4.5  </strong></span>If <span class="math inline">\(\pi\)</span> is small and <span class="math inline">\(n\)</span> is large then, a binomial distribution can be approximated by a Poisson distribution with rate parameter equal to the mean of the binomial distribution.</p>
+<p><span id="thm:unlabeled-div-18" class="theorem"><strong>Theorem 4.5  </strong></span>If <span class="math inline">\(\pi\)</span> is small and <span class="math inline">\(n\)</span> is large then, a binomial distribution can be approximated by a Poisson distribution with rate parameter equal to the mean of the binomial distribution.</p>
 <p><span class="math display">\[\text{Binom}(n,\pi) \approx \text{Pois} (\lambda)\]</span>
 Where we set <span class="math inline">\(\lambda = n\pi.\)</span></p>
 <p><em>proof</em>
@@ -507,10 +511,10 @@ Omitted.</p>
 <div id="exercises-week-4" class="section level2 hasAnchor">
 <h2><span class="header-section-number">4.7</span> Exercises week 4<a href="binpois.html#exercises-week-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-17" class="exercise"><strong>Exercise 4.1  </strong></span>Ropes are tested at a certain breaking strain. According to past experience a quarter of all ropes break at this strain. If <span class="math inline">\(4\)</span> identical ropes are tested, write down the probability distribution of the number of ropes breaking.</p>
+<p><span id="exr:unlabeled-div-19" class="exercise"><strong>Exercise 4.1  </strong></span>Ropes are tested at a certain breaking strain. According to past experience a quarter of all ropes break at this strain. If <span class="math inline">\(4\)</span> identical ropes are tested, write down the probability distribution of the number of ropes breaking.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-18" class="exercise"><strong>Exercise 4.2  </strong></span>If it estimated that <span class="math inline">\(20\%\)</span> of all individuals carry anibodies to a particular virus. What is the probability that in a group of <span class="math inline">\(20\)</span> randomly selected individuals:</p>
+<p><span id="exr:unlabeled-div-20" class="exercise"><strong>Exercise 4.2  </strong></span>If it estimated that <span class="math inline">\(20\%\)</span> of all individuals carry anibodies to a particular virus. What is the probability that in a group of <span class="math inline">\(20\)</span> randomly selected individuals:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>More than <span class="math inline">\(8\)</span> have antibodies.</p></li>
 <li><p>Exactly <span class="math inline">\(6\)</span> have antibodies.</p></li>
@@ -519,7 +523,7 @@ Omitted.</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-19" class="exercise"><strong>Exercise 4.3  </strong></span>A car salesperson knows from past experience that she will make a sale to <span class="math inline">\(30\%\)</span> of her customers. Find the probability that in <span class="math inline">\(20\)</span> randomly selected sales pitches she makes a sale to</p>
+<p><span id="exr:unlabeled-div-21" class="exercise"><strong>Exercise 4.3  </strong></span>A car salesperson knows from past experience that she will make a sale to <span class="math inline">\(30\%\)</span> of her customers. Find the probability that in <span class="math inline">\(20\)</span> randomly selected sales pitches she makes a sale to</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>More than 4 customers</p></li>
 <li><p>Fewer than <span class="math inline">\(7\)</span> customers</p></li>
@@ -528,7 +532,7 @@ Omitted.</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-20" class="exercise"><strong>Exercise 4.4  </strong></span>A footballer takes a free kick and scores a goal on <span class="math inline">\(10\%\)</span> of occasions. Find the probability that in a match in which <span class="math inline">\(10\)</span> free kicks are taken</p>
+<p><span id="exr:unlabeled-div-22" class="exercise"><strong>Exercise 4.4  </strong></span>A footballer takes a free kick and scores a goal on <span class="math inline">\(10\%\)</span> of occasions. Find the probability that in a match in which <span class="math inline">\(10\)</span> free kicks are taken</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>She scores at least two goals</p></li>
 <li><p>She scores exactly two goals</p></li>
@@ -537,10 +541,10 @@ Omitted.</p>
 <p>These are goals from free kicks alone. What assumptions do you need to make, and to what extent do you think these are reasonable?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-21" class="exercise"><strong>Exercise 4.5  </strong></span>A statistics lecturer sets a test involving <span class="math inline">\(20\)</span> multiple choice questions. They want to choose a pass mark so that the chance of passing a student who guesses every question is less than <span class="math inline">\(5/%\)</span>. What should the pass mark be?</p>
+<p><span id="exr:unlabeled-div-23" class="exercise"><strong>Exercise 4.5  </strong></span>A statistics lecturer sets a test involving <span class="math inline">\(20\)</span> multiple choice questions. They want to choose a pass mark so that the chance of passing a student who guesses every question is less than <span class="math inline">\(5/%\)</span>. What should the pass mark be?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-22" class="exercise"><strong>Exercise 4.6  </strong></span>The game of <em>advanced Chuck-a-luck</em> is an extension of the simple game from last week’s exercises. The banker rolls <span class="math inline">\(n\)</span> dice and the player wins £<span class="math inline">\(x\)</span> if the number that the player guesses appears on <span class="math inline">\(x\)</span> of the <span class="math inline">\(n\)</span> dice. As before he loses his £<span class="math inline">\(1\)</span> stake if the number does not come up on any of the dice.</p>
+<p><span id="exr:unlabeled-div-24" class="exercise"><strong>Exercise 4.6  </strong></span>The game of <em>advanced Chuck-a-luck</em> is an extension of the simple game from last week’s exercises. The banker rolls <span class="math inline">\(n\)</span> dice and the player wins £<span class="math inline">\(x\)</span> if the number that the player guesses appears on <span class="math inline">\(x\)</span> of the <span class="math inline">\(n\)</span> dice. As before he loses his £<span class="math inline">\(1\)</span> stake if the number does not come up on any of the dice.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Write down the probability mass function of <span class="math inline">\(X\)</span>.</p></li>
 <li><p>Show that <span class="math inline">\(\text{E}[X] = \frac{n}{6} - \left(\frac{5}{6}\right)^n\)</span></p></li>
@@ -548,7 +552,7 @@ Omitted.</p>
 <p>(Hint you might want to build up to part (a) in particular by picking values of <span class="math inline">\(n=1,2,3,\dots\)</span> and pattern spotting.)</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-23" class="exercise"><strong>Exercise 4.7  </strong></span>A biologist on a field trip is studying biodiversity and has found that the number of plant species in a <span class="math inline">\(1 \  \text{m}^2\)</span> quadrat follows a Poisson distribution with mean <span class="math inline">\(6\)</span>.</p>
+<p><span id="exr:unlabeled-div-25" class="exercise"><strong>Exercise 4.7  </strong></span>A biologist on a field trip is studying biodiversity and has found that the number of plant species in a <span class="math inline">\(1 \  \text{m}^2\)</span> quadrat follows a Poisson distribution with mean <span class="math inline">\(6\)</span>.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Find the probability that the number of plant species in any given <span class="math inline">\(1 \  \text{m}^2\)</span> quadrat is;</li>
 </ol>
@@ -569,7 +573,7 @@ Omitted.</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-24" class="exercise"><strong>Exercise 4.8  </strong></span>When a car leaves a roduction line it is carefully examined for any signs of imperfection in the paintwork. Previous experience has shown the number of blemishes per car follows a Poisson distribution with mean <span class="math inline">\(0.4\)</span>.
+<p><span id="exr:unlabeled-div-26" class="exercise"><strong>Exercise 4.8  </strong></span>When a car leaves a roduction line it is carefully examined for any signs of imperfection in the paintwork. Previous experience has shown the number of blemishes per car follows a Poisson distribution with mean <span class="math inline">\(0.4\)</span>.
 a) Find the probability that a car has</p>
 <ol style="list-style-type: lower-roman">
 <li><p>at least one blemish</p></li>
@@ -587,7 +591,7 @@ a) Find the probability that a car has</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-25" class="exercise"><strong>Exercise 4.9  </strong></span>A traffic survey found that buses pass a checkpoint at an average rate of <span class="math inline">\(4.5\)</span> per hour. Lorries pass the same checkpoint at the rate <span class="math inline">\(5\)</span> per hour and coaches at the rate of <span class="math inline">\(1.5\)</span> per hour.</p>
+<p><span id="exr:unlabeled-div-27" class="exercise"><strong>Exercise 4.9  </strong></span>A traffic survey found that buses pass a checkpoint at an average rate of <span class="math inline">\(4.5\)</span> per hour. Lorries pass the same checkpoint at the rate <span class="math inline">\(5\)</span> per hour and coaches at the rate of <span class="math inline">\(1.5\)</span> per hour.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Find the probability that in <span class="math inline">\(1\)</span> hour</li>
 </ol>
@@ -607,21 +611,21 @@ a) Find the probability that a car has</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-26" class="exercise"><strong>Exercise 4.10  </strong></span>The numbers of emissions per minute from two radioactive rocks <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent Poisson variables with means <span class="math inline">\(0.65\)</span> and <span class="math inline">\(0.45\)</span> respectively. Find the probability that</p>
+<p><span id="exr:unlabeled-div-28" class="exercise"><strong>Exercise 4.10  </strong></span>The numbers of emissions per minute from two radioactive rocks <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent Poisson variables with means <span class="math inline">\(0.65\)</span> and <span class="math inline">\(0.45\)</span> respectively. Find the probability that</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>In a period of three minutes there are at least three emissions from <span class="math inline">\(A\)</span>.</p></li>
 <li><p>In a period of two minutes there is a total of less than four emissions from <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> combined.</p></li>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-27" class="exercise"><strong>Exercise 4.11  </strong></span>In a particular form of cancer, deformed blood corpuscles occur at random at the rate of <span class="math inline">\(10\)</span> per <span class="math inline">\(1000\)</span> corpuscles.</p>
+<p><span id="exr:unlabeled-div-29" class="exercise"><strong>Exercise 4.11  </strong></span>In a particular form of cancer, deformed blood corpuscles occur at random at the rate of <span class="math inline">\(10\)</span> per <span class="math inline">\(1000\)</span> corpuscles.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Use an appropriate approximation to determine the probability that a random sample of <span class="math inline">\(200\)</span> corpuscles taken from a cancerous area will contain no deformed corpuscles.</p></li>
 <li><p>How large a sample should be taken in order to be <span class="math inline">\(99\%\)</span> certain of there being at least one deformed corpuscle in the sample?</p></li>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-28" class="exercise"><strong>Exercise 4.12  (counting practice) </strong></span>A box contains <span class="math inline">\(12\)</span> golf balls, <span class="math inline">\(3\)</span> of which are substandard. A random sample of <span class="math inline">\(4\)</span> balls is selected, without replacement, from the box. The random variable <span class="math inline">\(R\)</span> denotes the number of balls in the sample that are substandard.</p>
+<p><span id="exr:unlabeled-div-30" class="exercise"><strong>Exercise 4.12  (counting practice) </strong></span>A box contains <span class="math inline">\(12\)</span> golf balls, <span class="math inline">\(3\)</span> of which are substandard. A random sample of <span class="math inline">\(4\)</span> balls is selected, without replacement, from the box. The random variable <span class="math inline">\(R\)</span> denotes the number of balls in the sample that are substandard.</p>
 <ol style="list-style-type: lower-alpha">
 <li></li>
 </ol>
@@ -645,7 +649,7 @@ a) Find the probability that a car has</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-29" class="exercise"><strong>Exercise 4.13  </strong></span>The independent random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>have means <span class="math inline">\(2.5\)</span> and <span class="math inline">\(1.5\)</span> respectively. Obtain the mean and variance of the random variables below, and hence give a reason why they are not Poisson.
+<p><span id="exr:unlabeled-div-31" class="exercise"><strong>Exercise 4.13  </strong></span>The independent random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>have means <span class="math inline">\(2.5\)</span> and <span class="math inline">\(1.5\)</span> respectively. Obtain the mean and variance of the random variables below, and hence give a reason why they are not Poisson.
 a) <span class="math inline">\(X-Y\)</span>
 b) <span class="math inline">\(2X+5\)</span></p>
 </div>
