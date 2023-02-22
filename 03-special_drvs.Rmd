@@ -1,0 +1,595 @@
+# Special discrete random variables {#binpois}
+
+
+In this chapter you should be able to recognise contexts in which Binomial distributions arise. Calculate binomial probabilities using formulae. Use binomial tables, calculators and R to look up probabilities.
+
+## The Binomial Distribution
+
+The binomial distribution is one of the most important discrete distributions and finds application in a wide number of areas. 
+
+The example to have in mind is the following:
+
+:::{.example name="coin tossing"}
+Suppose you toss a coin $10$ times and count the number of heads that are observed. 
+
+- There is fixed number of trials, here $10$, and so a maximal number of heads we can observe.
+
+- The coin is the same, and so the probability of heads is the same throughout the process. For a fair coin this is $\frac{1}{2}$.
+
+- The coin tosses are independent. There is no physical reason why any previous outcome may make heads more or less likely on subsequent tosses.
+
+- There are only two outcomes for a coin toss: heads or tails.
+:::
+
+
+The binomial distribution can be used to find probabilities whenever the following conditions are met:
+
+- The probability of observing a success in a single experiment is a fixed quantity, that is the probability is a constant $\text{P}(\text{success}) = \pi$. (P for constant probability)
+
+- The trials are independent. (I)
+
+- The number of experiments, or trials, is a fixed number and so there is a maximum value attainable. (N for maximum number)
+
+- There are only two outcomes.(T for two outcomes)
+
+The list of assumptions underlying the binomial model above can be summarised in the mnemonic PINT.
+
+Although you can check the mnemonic is satisfied, it may in practicebe easier in a given situation to make an analogy with the coin tossing example. In a particular context the number could well vary, as could the definition of 'success'. For example, suppose you are considering how many out of a number of men over $50$, will suffer a heart attack in the next year. Then a 'success' is a heart attack!
+
+## The binomial mass function
+
+:::{.example}
+You throw five drawing pins in the air and note if they land pin up or pin down. How many ways can two of the pins land facing up and the others land face down?
+
+Suppose the probability a single pin lands facing up is $0.3$, what is the probability that exactly two land facing up?
+
+_solution_ 
+
+Consider this problem as a word UUDDD, how many different words can be obtained by rearrangement? The number of ways of rearranging this is $\frac{5!}{2!}{3!} = 10$. 
+
+Note that this is one of the choice numbers $^5C_2$. We are choosing from $5$ things, two to be face up and so the remaining ones to be face down.
+
+For any choice of two pins we have the same calculation for the probability. That is, $0.3^2 \times 0.7^3$.
+
+Altogether the probability is $^5C_2 \times 0.3^2 \times 0.7^3$.
+:::
+
+We can derive the binomial mass function in a similar way as this example.
+
+:::{.theorem}
+Suppose the random variable $X$ satisfies the conditions of a binomial random variable, so that there are $n$ trials with success probability $\pi$. The mass function is given by:
+$$\text{P}(X=x) = {}^nC_x \pi^{x}(1-\pi)^{n-x}$$
+:::
+
+
+:::{.proof}
+If the $n$ trials result in $x$ successes, each with probability $\pi$, there must have also been $n-x$ failures each with probability $(1-\pi)$. Using independence, the probability of this happening is 
+
+$$\pi ^x (1-\pi)^{n-x} $$
+There are a number of ways this can happen, equal to $^nC_x$. Hence result.
+:::
+
+:::{.example #fourfairdice}
+Suppose a fair die is rolled four times. What is the probability of getting,
+
+a) exactly one six?
+
+b) at most $1$ six?
+
+_solution_
+
+a) A common mistake is $ \frac{1}{6}\times \left( \frac{5}{6} \right)^3$. This is not correct - why? Because it can happen in $^4C_1=4$ ways,
+
+$$4\times \frac{1}{6}\times \left( \frac{5}{6} \right)^3 = 0.386 \text{ (3 s.f.)}$$
+
+
+b) if $X$ is the number of sixes, at most one means $X \leq 1$. You could work this out by adding the two cases $X=0$ and $X=1$ together. One could calculate directly from the mass function as follows:
+
+$$^4C_0 \times \left( \frac{1}{6} \right)^0 \times \left( \frac{5}{6} \right)^4+ ^4C_1 \times \left( \frac{1}{6} \right)^1 \times \left( \frac{5}{6} \right)^3$$
+Obtaining $0.868\text{ (3 s.f.)}$.
+:::
+
+Some examples of binomial probability distributions are given in the following figures. 
+
+```{r bin1, fig.align="center",out.width = "75%", fig.cap="Probability mass function for B(9,0.2)", echo=FALSE}
+knitr::include_graphics("./figures/binomial1.jpg")
+```
+
+
+```{r bin2, fig.align="center",out.width = "75%", fig.cap="Probability mass function for B(8,0.5)", echo=FALSE}
+knitr::include_graphics("./figures/binomial2.jpg")
+```
+
+How can we account for the seemingly different shape?
+
+If the success probability is close to $0.5$ the distribution has a symmetrical shape, otherwise it is skewed. 
+
+
+:::{.example}
+A train station has $5$ self-service ticket machines. The probability of a machine not working at any time is $0.15$. Let $X$ be the number of machines not working.
+
+a) Comment on whether a binomial distribution is a suitable model for $X$.
+
+Assuming a binomial distribution for X, evaluate the probability of the following number of machines not working. 
+
+b) exactly $2$.
+
+c) at least $4$.
+
+d) at most $2$.
+
+_solution_
+
+a) Checking the mnemonic PINT here works. Here a 'success' is a ticket machine not working. Independence might not hold if for example one machine not working caused the others to also fail somehow, but here the probability is the same _at any time_ including at a time when others have failed.
+
+b) $\text{P}(X=2) = ^5C_2 \times 0.15^2 \times (1-0.15)^{5-2} = 0.138$.
+
+c) $\text{P}(X\geq 4) = \text{P}(X=4) + \text{P}(X=5)$. Evaluating the formulae gives:
+
+$$= {}^5C_4 \times 0.15^4 \times (1-0.15)^{5-4}+ ^5C_5 \times 0.15^5 \times (1-0.15)^{5-5}$$
+$$= 0.0022$$
+
+d) $\text{P}(X\leq 2) = \text{P}(X=0) + \text{P}(X=1) + \text{P}(X=2)$. Again evaluating the formula for each term in the sum gives:
+
+$$= {}^5C_0 \times 0.15^0 \times (1-0.15)^{5-0}+ {}^5C_1 \times 0.15^1 \times (1-0.15)^{5-1}+ {}^5C_2 \times 0.15^2 \times (1-0.15)^{5-2}$$
+$$ = 0.973 $$
+:::
+
+
+Alternatively, if the number of cases to add is large enough to be tedious by hand calculation (here we only need to add a few cases together), one may consult statistical tables of the CDF.
+
+Because the binomial distribution is so widely applied and is so important, almost every book of statistical tables will contain some pages of the binomial CDF. The tables used at MMU give probabilities for selected values of $n$ and $\pi$ in the form $\text{P}(X\leq x)$. Any probability can be calculated from these tables using rules like the following:
+
+- $\text{P}(X\leq x)$, directly from table.
+
+- $\text{P}(X\geq x) = 1- \text{P}(X\leq x-1)$, using complements.
+
+- $\text{P}(X = x) = \text{P}(X\leq x) - \text{P}(X\leq x-1) $, as with getting the mass function from the CDF in the usual way.
+
+You can the probability of $X$ lying in a range too, but one must be careful about whether the inequality is strict or not.
+
+- $\text{P}(a\leq X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a-1) $
+
+- $\text{P}(a< X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a) $
+
+- $\text{P}(a\leq X < b) = \text{P}(X\leq b-1) - \text{P}(X\leq a-1) $
+
+- $\text{P}(a< X < b) = \text{P}(X\leq b-1) - \text{P}(X\leq a) $
+
+Graphing the inequality or listing the required values of $X$ helps improve accuracy here, and I would not recommend learning just the rules here. 
+
+In modern times we more commonly would consult a calculator, which has the tables recorded in its memory. For example, in R we can do the calculation for \@ref(exm:fourfairdice) using the following commands.
+
+```{r binomial1, fig.cap="using the geometric distribution function in R"}
+
+y <- dbinom(x=0:1, size = 4, prob = 1/6 ) # putting x=0:1 makes y take the two values we want
+sum(y) # working out the sum is easy now
+
+```
+
+As with the geometric distribution, the binomial distribution function is called in R by $\texttt{dbinom()}$, the $\texttt{d}$  stands for distribution and $\texttt{binom}$ for the binomial distribution.
+
+## Mean and variance
+
+The goal here is to find simple expressions for the mean and variance of a binomial distribution. We choose to do this directly, though there are other methods which you may see next year.
+
+:::{.theorem}
+For a binomially distributed random variable $X\sim \text{Bin}(n,\pi)$ we have the mean is the product of the number of trials and the success probability. That is,
+
+$$\text{E}[X] = n\pi $$
+
+And the variance of $X$ is the product of the mean and the failure probability. That is,
+
+$$ \text{Var}[X] = n\pi (1-\pi)$$
+:::
+
+
+:::{.proof}
+Starting with the definition,
+
+$$ \text{E}[X] = \sum_{x=0}^{n}x\times \text{P}(X=x)$$
+Combining this with the mass function gives
+
+$$ \text{E}[X] = \sum_{x=0}^{n}x\times ^{n}C_{x} \pi^x (1-\pi)^{n-x} $$
+And then the definition of the numbers $^{n}C_{x}$,
+
+$$ \text{E}[X] = \sum_{x=0}^{n}x\times \frac{n!}{x!\times(n-x)!} \pi^x (1-\pi)^{n-x} $$
+Now the first term of the sum $x=0$, but $x$ is a factor of this so the sum actually starts from $x=1$. 
+$$  = \sum_{x=1}^{n} \frac{n!}{(x-1)!\times(n-x)!} \pi^x (1-\pi)^{n-x} $$
+$$  = n\pi\sum_{x=1}^{n} \frac{(n-1)!}{(x-1)!\times(n-x)!} \pi^{x-1} (1-\pi)^{n-x} $$
+Now letting $m=n-1$ and $y=x-1$ the sum becomes,
+
+$$  = n\pi\sum_{y=0}^{m} \frac{m!}{y!\times(m-y)!} \pi^{y} (1-\pi)^{m-y} $$
+Each term in the sum is a binomial probability for some $Y\sim \text{Bin}(m,\pi)$, and so altogether their sum will be equal to $1$.
+
+Hence $\text{E}[X] = n\pi$.
+
+For the variance we omit this proof as it is no longer instructive. 
+
+The interested reader could consider $\text{E}[X(X-1)]$ and $\text{E}[X^2]$, and the manipulations with the sums is similar to above.
+:::
+
+## The Poisson distribution
+
+This distribution was invented by the French mathematician Simeon Poisson, and as the distribution bears his namesake it appears capitalised unlike the binomial distribution. 
+
+The Poisson distribution can be applied in a remarkable number of areas involving counting processes. Some examples include.
+
+- The number of 'goals' scored in a sports game.
+
+- The number of sales per week.
+
+- The number of Website visitors per hour.
+
+- The number of arrivals to the A&E of Manchester Royal Infirmary in a day.
+
+- The number of bacterial growths in a given area, such as on a Petri dish.
+
+
+The Poisson distribution may be applied whenever the random variable of interest counts the number of events in a given interval, which could be any number without bound (though larger counts are less likely). The events occur one at a time, independently and randomly in the given interval. The events occur uniformly in a given interval, such that the mean number of events is proportional to the size of the interval - the events occur at a constant average rate. 
+
+The mnemonic SIR/MR can be used to summarise this paragraph. 
+
+S - not ***simultaneously***
+
+I - Independent
+
+R - Randomly
+
+M - no ***maximum*** number of events
+
+R - at a constant average ***rate***
+
+
+
+:::{.example name="telephone calls"}
+Let the number of telephone calls arriving at a switchboard in a minute be the random variable $X$. Then $X$ satisfies the assumptions to be modelled with a Poisson distribution.
+:::
+
+A Poisson distribution depends on one parameter only - its mean rate $\lambda$. Here are some pictures of Poisson distribution functions for different values of the mean rate.
+
+
+```{r pois1, fig.align="center",out.width = "75%", fig.cap="Probability mass function for Pois(3)", echo=FALSE}
+knitr::include_graphics("./figures/poisson1.jpg")
+```
+
+```{r pois2, fig.align="center",out.width = "75%", fig.cap="Probability mass function for Pois(6)", echo=FALSE}
+knitr::include_graphics("./figures/poisson2.jpg")
+```
+
+:::{.definition}
+Given a random variable following a Poisson distribution $X\sim \text{Pois}(\lambda)$ has mass function given by:
+
+$$\text{P}(X=x) = \frac{\lambda^x e^{-\lambda}}{x!} $$
+where $x=0,1,2, \dots$, and $\lambda>0$.
+:::
+
+Although the probabilities attached to higher values of $x$ are positive, they quickly become very small. The mean rate $\lambda$ does not need to be a whole number, even though the count in any given interval does need to be a whole number. As with the binomial distribution, tables are given of the CDF of the Poisson distribution.
+
+:::{.example}
+A company operates a helpdesk hotline service. Incoming calls to the hotline arrive at a mean rate of $3.5$ per minute and outgoing calls are made at a rate of $4.2$ per minute. Find the probability that
+
+a) at least five calls arrive in one minute.
+
+b) exactly five calls arrive in one minute.
+
+c) at most 7 calls are outgoing in one minute.
+
+d) between $4$ and $9$ calls inclusive are outgoing in one minute.
+
+
+_solution_ 
+
+a) $\text{P}(X\geq 5) = 1 - \text{P}(X\leq 4) = 1-0.7254 = 0.2746$
+
+b) $\text{P}(X=5) = \text{P}(X\leq 5) - \text{P}(X\leq 4) = 0.8576 - 0.7254 = 0.1322$
+
+c) $\text{P}(Y\leq 7) = 0.9361$
+
+d) $\text{P}(4\leq Y \leq 9 ) = \text{P}(Y\leq 9) - \text{P}(Y\leq 3) = 0.9889 - 0.3954 = 0.5935$.
+
+:::
+
+### Further properties
+
+An important aspect of the Poisson model is the uniform average rate. This means that we assume events occur at the same rate over the interval. If the size of the interval changes, then we must change the mean rate in direct proportion with that change of size. 
+
+:::{.example, name="hotline continued"}
+Again assume calls to the hotline are incoming with rate $3.5$ per minute. Find the probability that
+
+a) at least $20$ calls arrive at the exchange in a $4$ minute period.
+
+b) at most $1$ call arrives in a $12$ second period.
+
+_solution_
+
+a) If there are $3.5$ calls per minute, then in a $4$ minute period one expects a rate of $3.5\times 4=14$ calls.
+
+Let $W$ be the number of calls in a $4$ minute period. Then $W\sim\text{Pois}(14)$. Then,
+
+$$\text{P}(W\geq 20) = 1- \text{P}(W\leq 19) = 1-0.9235 = 0.0765.$$
+
+b) As $12$ seconds is one fifth of a minute, so we would expect a rate of $3.5\div 5 = 0.7$ calls.
+
+Let $Z$ be the number of calls in a $12$ second period. Then,
+
+$$\text{P}(Z\leq 1) = 0.8442$$
+:::
+
+The second useful property is that different Poisson variables can be added together and yield another Poisson distribution whose rate parameter is the sum of the individual rates. 
+
+:::{.theorem}
+That is, if $X\sim \text{Pois}(\lambda)$ and $Y\sim \text{Pois}(\mu)$ then 
+$$X+Y \sim \text{Pois}(\lambda+\mu)$$
+:::
+
+:::{.proof}
+Omitted for now. In your second year course you will learn moment generating functions which makes the proof very easy.
+:::
+
+:::{.example}
+Suppose in a game of football the home team scores goals at a rate of $2$ per match, and the away team scores goals at a rate of $3$ per match. Then you would expect the total number of goals between these two teams to occur at a rate of $5$ per match. 
+
+In this context for a particular pair of teams this may not be a realistic model. Why?
+:::
+
+## Mean and Variance
+
+In this section we consider the mean and variance of the Poisson distribution. 
+
+We need a few Mathematical preliminaries from Calculus. 
+
+:::{.proposition name = "characterisations of Euler's number"}
+A) For any real number $x \in \mathbb{R}$ we have 
+
+$$e^x = \sum_{k=0}^{\infty} \frac{x^k}{k!}$$
+B) 
+$$ \lim_{n\to \infty} \left( 1+\frac{x}{n} \right)^n = e^x$$
+:::
+
+:::{.theorem}
+Let $X$ be a Poisson distributed random variable with rate $\lambda$, that is $X\sim \text{Pois}(\lambda)$. Then 
+
+$$\text{E}[X]  = \lambda$$
+and 
+$$\text{Var}[X] = \lambda$$
+:::
+
+:::{.proof}
+$$\text{E}[X] = \sum_{x=0}^{\infty}x\frac{\lambda^x e^{-\lambda}}{x!}$$
+$$ =\lambda e^{-\lambda} \sum_{x=1}^{\infty}\frac{\lambda^{(x-1)}}{(x-1)!} $$
+$$=\lambda e^{-\lambda} \sum_{y=0}^{\infty}\frac{\lambda^{y}}{y!} $$
+$$=\lambda e^{-\lambda} e^{\lambda}  $$
+$$ = \lambda .$$
+For the variance consider 
+
+$$\text{E}[X(X-1)] = \sum_{x=0}^{\infty}x(x-1)\frac{\lambda^x e^{-\lambda}}{x!}$$
+$$ =\lambda^2e^{-\lambda} \sum_{x=2}^{\infty}\frac{\lambda^{x-2}}{(x-2)!}$$
+$$ =\lambda^2e^{-\lambda} \sum_{y=0}^{\infty}\frac{\lambda^y}{y!}$$
+$$ =\lambda^2e^{-\lambda} e^{\lambda}$$
+$$ =\lambda^2$$
+As $\text{E}[X(X-1)] = \text{E}[X^2] - \text{E}[X^2]$, we can rearrange and find that 
+
+$$\text{E}[X^2] = \lambda^2 + \lambda $$ 
+
+And as the variance $\text{Var}[X] = \text{E}[X^2] - \text{E}[X]^2$, we have:
+
+$$\text{Var}[X] = \lambda^2 + \lambda - \lambda ^2 = \lambda .$$ 
+:::
+
+## Deriving the Poisson mass function
+
+The Poisson distribution is intimately linked to the binomial distribution. The aim of this section is to show you why the mass function has the form given in the definition.
+
+Suppose events occur as a result of a Poisson process independently and at a uniform rate $\lambda$ in a given time interval. Divide up the time period into a large number of smaller intervals, $n$ say, such that the chance of two events happening in one interval in negligible. The probability of an event happening in one of the small intervals is $\lambda / n$.
+
+Letting $X$ be the random variable representing the number of small intervals that contain an event, then we can see that this is on the one hand binomially distributed for fixed $n$. We have
+
+$$ \text{P}(X=x) = {}^nC_{x} \left(\frac{\lambda}{n}\right)^x \left( 1- \frac{\lambda}{n}\right)^{n-x}$$
+
+$$ = \lambda^{x} \underbrace{\frac{^nC_{x}}{n^x}}_{1} \underbrace{\left( 1- \frac{\lambda}{n}\right)^{n}}_{2}\underbrace{\left( 1- \frac{\lambda}{n}\right)^{-x}}_{3} $$
+
+We consider what happens when we increase $n$, and consider each term separately (which we are allowed to do for convergent sequences).
+
+For term $2$, as $n$ gets larger the number inside the bracket gets close to $1$, and so overall the limit is $1$. 
+
+For term $3$ this can be seen to be equal to $e^{-\lambda}$ by the proposition (B).
+
+The first term $1$, can be manipulated as follows:
+
+$$\lim_{n\to \infty}\frac{^nC_{x}}{n^x} = \lim_{n\to \infty} \frac{n!}{(n-x)!x!n^x}$$
+
+$$ =\frac{1}{x!}  \lim_{n\to \infty} \frac{n(n-1)(n-2)\dots(n-x+1)}{n^x}$$
+
+$$ =\frac{1}{x!}  \lim_{n\to \infty} \frac{n}{n}\frac{(n-1)}{n}\frac{(n-2)}{n}\dots \frac{(n-x+1)}{n}$$
+$$ =\frac{1}{x!}  \lim_{n\to \infty} \frac{n}{n}\frac{(n-1)}{n}\frac{(n-2)}{n}\dots \frac{(n-x+1)}{n}$$
+$$ =\frac{1}{x!}  \lim_{n\to \infty} \frac{(n-1)}{n}\frac{(n-2)}{n}\dots \frac{(n-x+1)}{n}$$
+$$ =\frac{1}{x!}  \lim_{n\to \infty} \left(1 - \frac{1}{n}\right)\lim_{n\to \infty}\left(1 - \frac{2}{n}\right)\dots \lim_{n\to \infty} \left(1 - \frac{x-1}{n}\right)$$
+And all of these limits are $1$. 
+
+Altogether then, 
+
+$$lim_{n\to \infty} {}^nC_{x} \left(\frac{\lambda}{n}\right)^x \left( 1- \frac{\lambda}{n}\right)^{n-x}  = \lambda^x \times \frac{1}{x!} \times e^{-\lambda}\times 1 = \frac{\lambda^xe^{-\lambda}}{x!}.$$
+This is the probability of observing $x$ events in the whole time interval. 
+
+
+The other side of this relationship is that a Poisson distribution can be used to approximate the binomial distribution. 
+
+:::{.theorem}
+If $\pi$ is small and $n$ is large then, a binomial distribution can be approximated by a Poisson distribution with rate parameter equal to the mean of the binomial distribution.
+
+$$\text{Binom}(n,\pi) \approx \text{Pois} (\lambda)$$
+Where we set $\lambda = n\pi.$ 
+
+_proof_
+Omitted.
+:::
+
+## Exercises week 4
+
+:::{.exercise}
+Ropes are tested at a certain breaking strain. According to past experience a quarter of all ropes break at this strain. If $4$ identical ropes are tested, write down the probability distribution of the number of ropes breaking.
+:::
+
+
+:::{.exercise}
+If it estimated that $20\%$ of all individuals carry anibodies to a particular virus. What is the probability that in a group of $20$ randomly selected individuals:
+
+a) More than $8$ have antibodies.
+
+b) Exactly $6$ have antibodies.
+
+c) Fewer than $4$ have antibodies.
+
+d) Between $3$ and $6$ inclusive have antibodies.
+
+:::
+
+:::{.exercise}
+A car salesperson knows from past experience that she will make a sale to $30\%$ of her customers. Find the probability that in $20$ randomly selected sales pitches she makes a sale to
+
+a) More than 4 customers
+
+b) Fewer than $7$ customers
+
+c) Exactly $6$ customers
+
+d) between $4$ and $10$ exclusive.
+:::
+
+:::{.exercise}
+A footballer takes a free kick and scores a goal on $10\%$ of occasions. Find the probability that in a match in which $10$ free kicks are taken
+
+a) She scores at least two goals
+
+b) She scores exactly two goals
+
+c) She scores $3$ goals or fewer. 
+
+
+These are goals from free kicks alone. What assumptions do you need to make, and to what extent do you think these are reasonable?
+:::
+
+:::{.exercise}
+A statistics lecturer sets a test involving $20$ multiple choice questions. They want to choose a pass mark so that the chance of passing a student who guesses every question is less than $5/%$. What should the pass mark be?
+:::
+
+:::{.exercise}
+The game of _advanced Chuck-a-luck_ is an extension of the simple game from last week's exercises. The banker rolls $n$ dice and the player wins £$x$ if the number that the player guesses appears on $x$ of the $n$ dice. As before he loses his £$1$ stake if the number does not come up on any of the dice. 
+
+a) Write down the probability mass function of $X$.
+
+b) Show that $\text{E}[X] = \frac{n}{6} - \left(\frac{5}{6}\right)^n$
+
+(Hint you might want to build up to part (a) in particular by picking values of $n=1,2,3,\dots$ and pattern spotting.)
+:::
+
+:::{.exercise}
+A biologist on a field trip is studying biodiversity and has found that the number of plant species in a $1 \  \text{m}^2$ quadrat follows a Poisson distribution with mean $6$.
+
+a) Find the probability that the number of plant species in any given $1 \  \text{m}^2$ quadrat is;
+  
+  (i) at least 8
+  
+  (ii) less than or equal to $8$
+  
+  (iii) exactly $8$
+  
+  (iv) between $6$ and $12$ inclusive
+  
+b) Find the probability that in a quadrat of area $0.5 \  \text{m}^2$, the number of plant species is
+  
+  (i) at least $3$
+  
+  (ii) fewer than $5$
+  
+  (iii) exactly $4$
+  
+  (iv) between $3$ and $6$ inclusive
+:::
+
+:::{.exercise}
+ When a car leaves a roduction line it is carefully examined for any signs of imperfection in the paintwork. Previous experience has shown the number of blemishes per car follows a Poisson distribution with mean $0.4$. 
+a) Find the probability that a car has
+
+  (i) at least one blemish
+  
+  (ii) more than one blemish
+  
+  (iii) exactly one blemish
+  
+  (iv) no blemishes
+  
+b) In $1$ hour an inspector can examine $20$ cars. Assuming that blemishes occur independently, find the probability that the inspector finds
+
+  (i) fewer than $5$ blemishes
+  
+  (ii) exactly five blemishes
+  
+  (iii) at least one blemish
+:::
+
+
+:::{.exercise}
+A traffic survey found that buses pass a checkpoint at an average rate of $4.5$ per hour. Lorries pass the same checkpoint at the rate $5$ per hour and coaches at the rate of $1.5$ per hour. 
+
+a) Find the probability that in $1$ hour
+
+  (i) $5$ or more buses pass the checkpoint
+  
+  (ii) between $10$ and $15$ lorries inclusive pass the checkpoint
+  
+  (iii) fewer than $3$ buses pass the checkpoint
+
+b) (i) At least $8$ buses or coaches pass the checkpoint in an hour
+
+  (ii) exactly $15$ buses or coaches will pass the checkpoint in an hour
+  
+  (iii) ten or fewer buses, lorries or coaches will pass the checkpoint in half an hour. 
+:::
+
+:::{.exercise}
+The numbers of emissions per minute from two radioactive rocks $A$ and $B$ are independent Poisson variables with means $0.65$ and $0.45$ respectively. Find the probability that
+
+(a) In a period of three minutes there are at least three emissions from $A$.
+
+(b) In a period of two minutes there is a total of less than four emissions from $A$ and $B$ combined.
+:::
+
+
+:::{.exercise}
+In a particular form of cancer, deformed blood corpuscles occur at random at the rate of $10$ per $1000$ corpuscles. 
+
+a) Use an appropriate approximation to determine the probability that a random sample of $200$ corpuscles taken from a cancerous area will contain no deformed corpuscles. 
+
+
+b) How large a sample should be taken in order to be $99\%$ certain of there being at least one deformed corpuscle in the sample?
+:::
+
+
+:::{.exercise name="counting practice"}
+A box contains $12$ golf balls, $3$ of which are substandard. A random sample of $4$ balls is selected, without replacement, from the box.  The random variable $R$ denotes the number of balls in the sample that are substandard.
+
+a) 
+  (i) Show that the probability mass function of $R$ satisfies
+
+$$\text{P}(R=r) = \frac{{}^3C_r \times {}^9C_{4-r}}{^{12}C_{4}} $$
+  (ii) Determine the probability that $R=0$
+  
+  (iii) Determine the probability that there are fewer than two substandard balls. 
+  
+b) A large bin contains $5000$ used golf balls, $1500$ of which are defective. The random variable $X$ denotes the number of defective balls in a random sample of 20balls selected, without replacement,from the bin. Explain why $X$ may be approximated as a binomial variable with parameters $20$ and $0.3$. Using the binomial model, calculate the probability that this sample contains
+  
+  (i) fewer than $5$ defective balls
+  
+  (ii) at least $7$ defective balls
+  
+c) The random variable $Y$ denotes the number of defective golf balls in a sample of $2000$, selected from a batch of $200,000$ and of which $3250$ are defective. Completely specify an approximate distribution for $Y$ other than a binomial model. 
+
+:::
+
+:::{.exercise}
+The independent random variables $X$ and $Y$have means $2.5$ and $1.5$ respectively. Obtain the mean and variance of the random variables below, and hence give a reason why they are not Poisson.
+a) $X-Y$
+b) $2X+5$
+:::

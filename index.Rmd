@@ -492,7 +492,7 @@ There is a greater than evens chance of two people having the same birthday in a
 :::{.definition name="Combinations" #comb}
 The number of ways of choosing $k$ distinct items from $n$ when the order is not relevant is: 
 
-$$^nC_k = \frac{n!}{(n-k)!k!}$$
+$${}^nC_k = \frac{n!}{(n-k)!k!}$$
 A way of choosing $k$ distinct items from $n$ when order does not matter is called a ***combination***.
 :::
 
@@ -506,7 +506,7 @@ Suppose one such hand is the Ace of spades, the king of clubs, the three of hear
 
 Here `order does not matter'. 
 
-The number of hands is $^{52}C_{4}=270725$.
+The number of hands is ${}^{52}C_{4}=270725$.
 :::
 
 ::: {.example name="The National Lottery"}
@@ -518,7 +518,7 @@ b) What is the probability that three of the winning numbers come up on a lotter
 
 _solutions_
 
-a) Total number of outcomes $^{49}C_{6} = 13983816$.
+a) Total number of outcomes ${}^{49}C_{6} = 13983816$.
 
 The probability is $\frac{1}{^{49}C_{6}}$, which is about $1$ in $14$ million.
 

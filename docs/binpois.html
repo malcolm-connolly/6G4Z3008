@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Special discrete random variables | Probability Theory and Statistics</title>
+  <meta name="description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Special discrete random variables | Probability Theory and Statistics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  <meta name="github-repo" content="6G4Z3008" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Special discrete random variables | Probability Theory and Statistics" />
+  
+  <meta name="twitter:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  
+
+<meta name="author" content="Malcolm Connolly" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="cards.ico" type="image/x-icon" />
+<link rel="prev" href="drv.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><a href="./"><img src="logo.svg"></a></li>
+<li><a href="https://moodle.mmu.ac.uk/course/view.php?id=157842" target="blank" > 6G4Z3008 course notes </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#frequentist-perspective"><i class="fa fa-check"></i><b>1.1</b> Frequentist perspective</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#naive-probability"><i class="fa fa-check"></i><b>1.2</b> Naive probability</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#complements-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Complements and mutual exclusivity</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#outcomes-and-counting"><i class="fa fa-check"></i><b>1.4</b> Outcomes and counting</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#factorials"><i class="fa fa-check"></i><b>1.4.1</b> Factorials</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#permutations"><i class="fa fa-check"></i><b>1.4.2</b> Permutations</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#combinations"><i class="fa fa-check"></i><b>1.4.3</b> Combinations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#exercises-week-1"><i class="fa fa-check"></i><b>1.5</b> Exercises Week 1</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#tutorial-exercises"><i class="fa fa-check"></i><b>1.5.1</b> Tutorial exercises</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#exercises-for-feedback"><i class="fa fa-check"></i><b>1.5.2</b> Exercises for feedback</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cond.html"><a href="cond.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
+<li class="chapter" data-level="2.1" data-path="cond.html"><a href="cond.html#independence"><i class="fa fa-check"></i><b>2.1</b> Independence</a></li>
+<li class="chapter" data-level="2.2" data-path="cond.html"><a href="cond.html#conditional-probability"><i class="fa fa-check"></i><b>2.2</b> Conditional Probability</a></li>
+<li class="chapter" data-level="2.3" data-path="cond.html"><a href="cond.html#bayes-theorem"><i class="fa fa-check"></i><b>2.3</b> Bayes Theorem</a></li>
+<li class="chapter" data-level="2.4" data-path="cond.html"><a href="cond.html#exercises-week-2"><i class="fa fa-check"></i><b>2.4</b> Exercises Week 2</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="drv.html"><a href="drv.html"><i class="fa fa-check"></i><b>3</b> Discrete Random Variables</a><ul>
+<li class="chapter" data-level="3.1" data-path="drv.html"><a href="drv.html#random-variables"><i class="fa fa-check"></i><b>3.1</b> Random Variables</a></li>
+<li class="chapter" data-level="3.2" data-path="drv.html"><a href="drv.html#discrete-probability-distributions"><i class="fa fa-check"></i><b>3.2</b> Discrete probability distributions</a></li>
+<li class="chapter" data-level="3.3" data-path="drv.html"><a href="drv.html#properties-of-probability-mass-functions"><i class="fa fa-check"></i><b>3.3</b> Properties of probability mass functions</a></li>
+<li class="chapter" data-level="3.4" data-path="drv.html"><a href="drv.html#mean-variance-and-moments"><i class="fa fa-check"></i><b>3.4</b> Mean, variance and moments</a></li>
+<li class="chapter" data-level="3.5" data-path="drv.html"><a href="drv.html#exercises-week-3"><i class="fa fa-check"></i><b>3.5</b> Exercises Week 3</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="drv.html"><a href="drv.html#exercises-for-feedback-1"><i class="fa fa-check"></i><b>3.5.1</b> Exercises for feedback</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="binpois.html"><a href="binpois.html"><i class="fa fa-check"></i><b>4</b> Special discrete random variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="binpois.html"><a href="binpois.html#the-binomial-distribution"><i class="fa fa-check"></i><b>4.1</b> The Binomial Distribution</a></li>
+<li class="chapter" data-level="4.2" data-path="binpois.html"><a href="binpois.html#the-binomial-mass-function"><i class="fa fa-check"></i><b>4.2</b> The binomial mass function</a></li>
+<li class="chapter" data-level="4.3" data-path="binpois.html"><a href="binpois.html#mean-and-variance"><i class="fa fa-check"></i><b>4.3</b> Mean and variance</a></li>
+<li class="chapter" data-level="4.4" data-path="binpois.html"><a href="binpois.html#the-poisson-distribution"><i class="fa fa-check"></i><b>4.4</b> The Poisson distribution</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="binpois.html"><a href="binpois.html#further-properties"><i class="fa fa-check"></i><b>4.4.1</b> Further properties</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="binpois.html"><a href="binpois.html#mean-and-variance-1"><i class="fa fa-check"></i><b>4.5</b> Mean and Variance</a></li>
+<li class="chapter" data-level="4.6" data-path="binpois.html"><a href="binpois.html#deriving-the-poisson-mass-function"><i class="fa fa-check"></i><b>4.6</b> Deriving the Poisson mass function</a></li>
+<li class="chapter" data-level="4.7" data-path="binpois.html"><a href="binpois.html#exercises-week-4"><i class="fa fa-check"></i><b>4.7</b> Exercises week 4</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability Theory and Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="binpois" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 4</span> Special discrete random variables<a href="binpois.html#binpois" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this chapter you should be able to recognise contexts in which Binomial distributions arise. Calculate binomial probabilities using formulae. Use binomial tables, calculators and R to look up probabilities.</p>
+<div id="the-binomial-distribution" class="section level2 hasAnchor">
+<h2><span class="header-section-number">4.1</span> The Binomial Distribution<a href="binpois.html#the-binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The binomial distribution is one of the most important discrete distributions and finds application in a wide number of areas.</p>
+<p>The example to have in mind is the following:</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 4.1  (coin tossing) </strong></span>Suppose you toss a coin <span class="math inline">\(10\)</span> times and count the number of heads that are observed.</p>
+<ul>
+<li><p>There is fixed number of trials, here <span class="math inline">\(10\)</span>, and so a maximal number of heads we can observe.</p></li>
+<li><p>The coin is the same, and so the probability of heads is the same throughout the process. For a fair coin this is <span class="math inline">\(\frac{1}{2}\)</span>.</p></li>
+<li><p>The coin tosses are independent. There is no physical reason why any previous outcome may make heads more or less likely on subsequent tosses.</p></li>
+<li><p>There are only two outcomes for a coin toss: heads or tails.</p></li>
+</ul>
+</div>
+<p>The binomial distribution can be used to find probabilities whenever the following conditions are met:</p>
+<ul>
+<li><p>The probability of observing a success in a single experiment is a fixed quantity, that is the probability is a constant <span class="math inline">\(\text{P}(\text{success}) = \pi\)</span>. (P for constant probability)</p></li>
+<li><p>The trials are independent. (I)</p></li>
+<li><p>The number of experiments, or trials, is a fixed number and so there is a maximum value attainable. (N for maximum number)</p></li>
+<li><p>There are only two outcomes.(T for two outcomes)</p></li>
+</ul>
+<p>The list of assumptions underlying the binomial model above can be summarised in the mnemonic PINT.</p>
+<p>Although you can check the mnemonic is satisfied, it may in practicebe easier in a given situation to make an analogy with the coin tossing example. In a particular context the number could well vary, as could the definition of ‘success’. For example, suppose you are considering how many out of a number of men over <span class="math inline">\(50\)</span>, will suffer a heart attack in the next year. Then a ‘success’ is a heart attack!</p>
+</div>
+<div id="the-binomial-mass-function" class="section level2 hasAnchor">
+<h2><span class="header-section-number">4.2</span> The binomial mass function<a href="binpois.html#the-binomial-mass-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="example">
+<p><span id="exm:unlabeled-div-2" class="example"><strong>Example 4.2  </strong></span>You throw five drawing pins in the air and note if they land pin up or pin down. How many ways can two of the pins land facing up and the others land face down?</p>
+<p>Suppose the probability a single pin lands facing up is <span class="math inline">\(0.3\)</span>, what is the probability that exactly two land facing up?</p>
+<p><em>solution</em></p>
+<p>Consider this problem as a word UUDDD, how many different words can be obtained by rearrangement? The number of ways of rearranging this is <span class="math inline">\(\frac{5!}{2!}{3!} = 10\)</span>.</p>
+<p>Note that this is one of the choice numbers <span class="math inline">\(^5C_2\)</span>. We are choosing from <span class="math inline">\(5\)</span> things, two to be face up and so the remaining ones to be face down.</p>
+<p>For any choice of two pins we have the same calculation for the probability. That is, <span class="math inline">\(0.3^2 \times 0.7^3\)</span>.</p>
+<p>Altogether the probability is <span class="math inline">\(^5C_2 \times 0.3^2 \times 0.7^3\)</span>.</p>
+</div>
+<p>We can derive the binomial mass function in a similar way as this example.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-3" class="theorem"><strong>Theorem 4.1  </strong></span>Suppose the random variable <span class="math inline">\(X\)</span> satisfies the conditions of a binomial random variable, so that there are <span class="math inline">\(n\)</span> trials with success probability <span class="math inline">\(\pi\)</span>. The mass function is given by:
+<span class="math display">\[\text{P}(X=x) = {}^nC_x \pi^{x}(1-\pi)^{n-x}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-4" class="proof"><em>Proof</em>. </span>If the <span class="math inline">\(n\)</span> trials result in <span class="math inline">\(x\)</span> successes, each with probability <span class="math inline">\(\pi\)</span>, there must have also been <span class="math inline">\(n-x\)</span> failures each with probability <span class="math inline">\((1-\pi)\)</span>. Using independence, the probability of this happening is</p>
+<p><span class="math display">\[\pi ^x (1-\pi)^{n-x} \]</span>
+There are a number of ways this can happen, equal to <span class="math inline">\(^nC_x\)</span>. Hence result.</p>
+</div>
+<div class="example">
+<p><span id="exm:fourfairdice" class="example"><strong>Example 4.3  </strong></span>Suppose a fair die is rolled four times. What is the probability of getting,</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>exactly one six?</p></li>
+<li><p>at most <span class="math inline">\(1\)</span> six?</p></li>
+</ol>
+<p><em>solution</em></p>
+<ol style="list-style-type: lower-alpha">
+<li>A common mistake is $ (  )^3$. This is not correct - why? Because it can happen in <span class="math inline">\(^4C_1=4\)</span> ways,</li>
+</ol>
+<p><span class="math display">\[4\times \frac{1}{6}\times \left( \frac{5}{6} \right)^3 = 0.386 \text{ (3 s.f.)}\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>if <span class="math inline">\(X\)</span> is the number of sixes, at most one means <span class="math inline">\(X \leq 1\)</span>. You could work this out by adding the two cases <span class="math inline">\(X=0\)</span> and <span class="math inline">\(X=1\)</span> together. One could calculate directly from the mass function as follows:</li>
+</ol>
+<p><span class="math display">\[^4C_0 \times \left( \frac{1}{6} \right)^0 \times \left( \frac{5}{6} \right)^4+ ^4C_1 \times \left( \frac{1}{6} \right)^1 \times \left( \frac{5}{6} \right)^3\]</span>
+Obtaining <span class="math inline">\(0.868\text{ (3 s.f.)}\)</span>.</p>
+</div>
+<p>Some examples of binomial probability distributions are given in the following figures.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bin1"></span>
+<img src="figures/binomial1.JPG" alt="Probability mass function for B(9,0.2)" width="75%" />
+<p class="caption">
+Figure 4.1: Probability mass function for B(9,0.2)
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bin2"></span>
+<img src="figures/binomial2.JPG" alt="Probability mass function for B(8,0.5)" width="75%" />
+<p class="caption">
+Figure 4.2: Probability mass function for B(8,0.5)
+</p>
+</div>
+<p>How can we account for the seemingly different shape?</p>
+<p>If the success probability is close to <span class="math inline">\(0.5\)</span> the distribution has a symmetrical shape, otherwise it is skewed.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 4.4  </strong></span>A train station has <span class="math inline">\(5\)</span> self-service ticket machines. The probability of a machine not working at any time is <span class="math inline">\(0.15\)</span>. Let <span class="math inline">\(X\)</span> be the number of machines not working.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Comment on whether a binomial distribution is a suitable model for <span class="math inline">\(X\)</span>.</li>
+</ol>
+<p>Assuming a binomial distribution for X, evaluate the probability of the following number of machines not working.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>exactly <span class="math inline">\(2\)</span>.</p></li>
+<li><p>at least <span class="math inline">\(4\)</span>.</p></li>
+<li><p>at most <span class="math inline">\(2\)</span>.</p></li>
+</ol>
+<p><em>solution</em></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Checking the mnemonic PINT here works. Here a ‘success’ is a ticket machine not working. Independence might not hold if for example one machine not working caused the others to also fail somehow, but here the probability is the same <em>at any time</em> including at a time when others have failed.</p></li>
+<li><p><span class="math inline">\(\text{P}(X=2) = ^5C_2 \times 0.15^2 \times (1-0.15)^{5-2} = 0.138\)</span>.</p></li>
+<li><p><span class="math inline">\(\text{P}(X\geq 4) = \text{P}(X=4) + \text{P}(X=5)\)</span>. Evaluating the formulae gives:</p></li>
+</ol>
+<p><span class="math display">\[= {}^5C_4 \times 0.15^4 \times (1-0.15)^{5-4}+ ^5C_5 \times 0.15^5 \times (1-0.15)^{5-5}\]</span>
+<span class="math display">\[= 0.0022\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><span class="math inline">\(\text{P}(X\leq 2) = \text{P}(X=0) + \text{P}(X=1) + \text{P}(X=2)\)</span>. Again evaluating the formula for each term in the sum gives:</li>
+</ol>
+<p><span class="math display">\[= {}^5C_0 \times 0.15^0 \times (1-0.15)^{5-0}+ {}^5C_1 \times 0.15^1 \times (1-0.15)^{5-1}+ {}^5C_2 \times 0.15^2 \times (1-0.15)^{5-2}\]</span>
+<span class="math display">\[ = 0.973 \]</span></p>
+</div>
+<p>Alternatively, if the number of cases to add is large enough to be tedious by hand calculation (here we only need to add a few cases together), one may consult statistical tables of the CDF.</p>
+<p>Because the binomial distribution is so widely applied and is so important, almost every book of statistical tables will contain some pages of the binomial CDF. The tables used at MMU give probabilities for selected values of <span class="math inline">\(n\)</span> and <span class="math inline">\(\pi\)</span> in the form <span class="math inline">\(\text{P}(X\leq x)\)</span>. Any probability can be calculated from these tables using rules like the following:</p>
+<ul>
+<li><p><span class="math inline">\(\text{P}(X\leq x)\)</span>, directly from table.</p></li>
+<li><p><span class="math inline">\(\text{P}(X\geq x) = 1- \text{P}(X\leq x-1)\)</span>, using complements.</p></li>
+<li><p>$(X = x) = (Xx) - (Xx-1) $, as with getting the mass function from the CDF in the usual way.</p></li>
+</ul>
+<p>You can the probability of <span class="math inline">\(X\)</span> lying in a range too, but one must be careful about whether the inequality is strict or not.</p>
+<ul>
+<li><p>$(aXb) = (Xb) - (Xa-1) $</p></li>
+<li><p>$(a&lt; Xb) = (Xb) - (Xa) $</p></li>
+<li><p>$(aX &lt; b) = (Xb-1) - (Xa-1) $</p></li>
+<li><p>$(a&lt; X &lt; b) = (Xb-1) - (Xa) $</p></li>
+</ul>
+<p>Graphing the inequality or listing the required values of <span class="math inline">\(X\)</span> helps improve accuracy here, and I would not recommend learning just the rules here.</p>
+<p>In modern times we more commonly would consult a calculator, which has the tables recorded in its memory. For example, in R we can do the calculation for <a href="binpois.html#exm:fourfairdice">4.3</a> using the following commands.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="binpois.html#cb1-1"></a>y &lt;-<span class="st"> </span><span class="kw">dbinom</span>(<span class="dt">x=</span><span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">prob =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">6</span> ) <span class="co"># putting x=0:1 makes y take the two values we want</span></span>
+<span id="cb1-2"><a href="binpois.html#cb1-2"></a><span class="kw">sum</span>(y) <span class="co"># working out the sum is easy now</span></span></code></pre></div>
+<pre><code>## [1] 0.8680556</code></pre>
+<p>As with the geometric distribution, the binomial distribution function is called in R by <span class="math inline">\(\texttt{dbinom()}\)</span>, the <span class="math inline">\(\texttt{d}\)</span> stands for distribution and <span class="math inline">\(\texttt{binom}\)</span> for the binomial distribution.</p>
+</div>
+<div id="mean-and-variance" class="section level2 hasAnchor">
+<h2><span class="header-section-number">4.3</span> Mean and variance<a href="binpois.html#mean-and-variance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The goal here is to find simple expressions for the mean and variance of a binomial distribution. We choose to do this directly, though there are other methods which you may see next year.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-6" class="theorem"><strong>Theorem 4.2  </strong></span>For a binomially distributed random variable <span class="math inline">\(X\sim \text{Bin}(n,\pi)\)</span> we have the mean is the product of the number of trials and the success probability. That is,</p>
+<p><span class="math display">\[\text{E}[X] = n\pi \]</span></p>
+<p>And the variance of <span class="math inline">\(X\)</span> is the product of the mean and the failure probability. That is,</p>
+<p><span class="math display">\[ \text{Var}[X] = n\pi (1-\pi)\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-7" class="proof"><em>Proof</em>. </span>Starting with the definition,</p>
+<p><span class="math display">\[ \text{E}[X] = \sum_{x=0}^{n}x\times \text{P}(X=x)\]</span>
+Combining this with the mass function gives</p>
+<p><span class="math display">\[ \text{E}[X] = \sum_{x=0}^{n}x\times ^{n}C_{x} \pi^x (1-\pi)^{n-x} \]</span>
+And then the definition of the numbers <span class="math inline">\(^{n}C_{x}\)</span>,</p>
+<p><span class="math display">\[ \text{E}[X] = \sum_{x=0}^{n}x\times \frac{n!}{x!\times(n-x)!} \pi^x (1-\pi)^{n-x} \]</span>
+Now the first term of the sum <span class="math inline">\(x=0\)</span>, but <span class="math inline">\(x\)</span> is a factor of this so the sum actually starts from <span class="math inline">\(x=1\)</span>.
+<span class="math display">\[  = \sum_{x=1}^{n} \frac{n!}{(x-1)!\times(n-x)!} \pi^x (1-\pi)^{n-x} \]</span>
+<span class="math display">\[  = n\pi\sum_{x=1}^{n} \frac{(n-1)!}{(x-1)!\times(n-x)!} \pi^{x-1} (1-\pi)^{n-x} \]</span>
+Now letting <span class="math inline">\(m=n-1\)</span> and <span class="math inline">\(y=x-1\)</span> the sum becomes,</p>
+<p><span class="math display">\[  = n\pi\sum_{y=0}^{m} \frac{m!}{y!\times(m-y)!} \pi^{y} (1-\pi)^{m-y} \]</span>
+Each term in the sum is a binomial probability for some <span class="math inline">\(Y\sim \text{Bin}(m,\pi)\)</span>, and so altogether their sum will be equal to <span class="math inline">\(1\)</span>.</p>
+<p>Hence <span class="math inline">\(\text{E}[X] = n\pi\)</span>.</p>
+<p>For the variance we omit this proof as it is no longer instructive.</p>
+<p>The interested reader could consider <span class="math inline">\(\text{E}[X(X-1)]\)</span> and <span class="math inline">\(\text{E}[X^2]\)</span>, and the manipulations with the sums is similar to above.</p>
+</div>
+</div>
+<div id="the-poisson-distribution" class="section level2 hasAnchor">
+<h2><span class="header-section-number">4.4</span> The Poisson distribution<a href="binpois.html#the-poisson-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This distribution was invented by the French mathematician Simeon Poisson, and as the distribution bears his namesake it appears capitalised unlike the binomial distribution.</p>
+<p>The Poisson distribution can be applied in a remarkable number of areas involving counting processes. Some examples include.</p>
+<ul>
+<li><p>The number of ‘goals’ scored in a sports game.</p></li>
+<li><p>The number of sales per week.</p></li>
+<li><p>The number of Website visitors per hour.</p></li>
+<li><p>The number of arrivals to the A&amp;E of Manchester Royal Infirmary in a day.</p></li>
+<li><p>The number of bacterial growths in a given area, such as on a Petri dish.</p></li>
+</ul>
+<p>The Poisson distribution may be applied whenever the random variable of interest counts the number of events in a given interval, which could be any number without bound (though larger counts are less likely). The events occur one at a time, independently and randomly in the given interval. The events occur uniformly in a given interval, such that the mean number of events is proportional to the size of the interval - the events occur at a constant average rate.</p>
+<p>The mnemonic SIR/MR can be used to summarise this paragraph.</p>
+<p>S - not <strong><em>simultaneously</em></strong></p>
+<p>I - Independent</p>
+<p>R - Randomly</p>
+<p>M - no <strong><em>maximum</em></strong> number of events</p>
+<p>R - at a constant average <strong><em>rate</em></strong></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 4.5  (telephone calls) </strong></span>Let the number of telephone calls arriving at a switchboard in a minute be the random variable <span class="math inline">\(X\)</span>. Then <span class="math inline">\(X\)</span> satisfies the assumptions to be modelled with a Poisson distribution.</p>
+</div>
+<p>A Poisson distribution depends on one parameter only - its mean rate <span class="math inline">\(\lambda\)</span>. Here are some pictures of Poisson distribution functions for different values of the mean rate.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pois1"></span>
+<img src="figures/poisson1.JPG" alt="Probability mass function for Pois(3)" width="75%" />
+<p class="caption">
+Figure 4.3: Probability mass function for Pois(3)
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pois2"></span>
+<img src="figures/poisson2.JPG" alt="Probability mass function for Pois(6)" width="75%" />
+<p class="caption">
+Figure 4.4: Probability mass function for Pois(6)
+</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-9" class="definition"><strong>Definition 4.1  </strong></span>Given a random variable following a Poisson distribution <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span> has mass function given by:</p>
+<p><span class="math display">\[\text{P}(X=x) = \frac{\lambda^x e^{-\lambda}}{x!} \]</span>
+where <span class="math inline">\(x=0,1,2, \dots\)</span>, and <span class="math inline">\(\lambda&gt;0\)</span>.</p>
+</div>
+<p>Although the probabilities attached to higher values of <span class="math inline">\(x\)</span> are positive, they quickly become very small. The mean rate <span class="math inline">\(\lambda\)</span> does not need to be a whole number, even though the count in any given interval does need to be a whole number. As with the binomial distribution, tables are given of the CDF of the Poisson distribution.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 4.6  </strong></span>A company operates a helpdesk hotline service. Incoming calls to the hotline arrive at a mean rate of <span class="math inline">\(3.5\)</span> per minute and outgoing calls are made at a rate of <span class="math inline">\(4.2\)</span> per minute. Find the probability that</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>at least five calls arrive in one minute.</p></li>
+<li><p>exactly five calls arrive in one minute.</p></li>
+<li><p>at most 7 calls are outgoing in one minute.</p></li>
+<li><p>between <span class="math inline">\(4\)</span> and <span class="math inline">\(9\)</span> calls inclusive are outgoing in one minute.</p></li>
+</ol>
+<p><em>solution</em></p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(\text{P}(X\geq 5) = 1 - \text{P}(X\leq 4) = 1-0.7254 = 0.2746\)</span></p></li>
+<li><p><span class="math inline">\(\text{P}(X=5) = \text{P}(X\leq 5) - \text{P}(X\leq 4) = 0.8576 - 0.7254 = 0.1322\)</span></p></li>
+<li><p><span class="math inline">\(\text{P}(Y\leq 7) = 0.9361\)</span></p></li>
+<li><p><span class="math inline">\(\text{P}(4\leq Y \leq 9 ) = \text{P}(Y\leq 9) - \text{P}(Y\leq 3) = 0.9889 - 0.3954 = 0.5935\)</span>.</p></li>
+</ol>
+</div>
+<div id="further-properties" class="section level3 hasAnchor">
+<h3><span class="header-section-number">4.4.1</span> Further properties<a href="binpois.html#further-properties" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>An important aspect of the Poisson model is the uniform average rate. This means that we assume events occur at the same rate over the interval. If the size of the interval changes, then we must change the mean rate in direct proportion with that change of size.</p>
+<p>:::{.example, name=“hotline continued”}
+Again assume calls to the hotline are incoming with rate <span class="math inline">\(3.5\)</span> per minute. Find the probability that</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>at least <span class="math inline">\(20\)</span> calls arrive at the exchange in a <span class="math inline">\(4\)</span> minute period.</p></li>
+<li><p>at most <span class="math inline">\(1\)</span> call arrives in a <span class="math inline">\(12\)</span> second period.</p></li>
+</ol>
+<p><em>solution</em></p>
+<ol style="list-style-type: lower-alpha">
+<li>If there are <span class="math inline">\(3.5\)</span> calls per minute, then in a <span class="math inline">\(4\)</span> minute period one expects a rate of <span class="math inline">\(3.5\times 4=14\)</span> calls.</li>
+</ol>
+<p>Let <span class="math inline">\(W\)</span> be the number of calls in a <span class="math inline">\(4\)</span> minute period. Then <span class="math inline">\(W\sim\text{Pois}(14)\)</span>. Then,</p>
+<p><span class="math display">\[\text{P}(W\geq 20) = 1- \text{P}(W\leq 19) = 1-0.9235 = 0.0765.\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>As <span class="math inline">\(12\)</span> seconds is one fifth of a minute, so we would expect a rate of <span class="math inline">\(3.5\div 5 = 0.7\)</span> calls.</li>
+</ol>
+<p>Let <span class="math inline">\(Z\)</span> be the number of calls in a <span class="math inline">\(12\)</span> second period. Then,</p>
+<p><span class="math display">\[\text{P}(Z\leq 1) = 0.8442\]</span>
+:::</p>
+<p>The second useful property is that different Poisson variables can be added together and yield another Poisson distribution whose rate parameter is the sum of the individual rates.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-11" class="theorem"><strong>Theorem 4.3  </strong></span>That is, if <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span> and <span class="math inline">\(Y\sim \text{Pois}(\mu)\)</span> then
+<span class="math display">\[X+Y \sim \text{Pois}(\lambda+\mu)\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-12" class="proof"><em>Proof</em>. </span>Omitted for now. In your second year course you will learn moment generating functions which makes the proof very easy.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 4.7  </strong></span>Suppose in a game of football the home team scores goals at a rate of <span class="math inline">\(2\)</span> per match, and the away team scores goals at a rate of <span class="math inline">\(3\)</span> per match. Then you would expect the total number of goals between these two teams to occur at a rate of <span class="math inline">\(5\)</span> per match.</p>
+<p>In this context for a particular pair of teams this may not be a realistic model. Why?</p>
+</div>
+</div>
+</div>
+<div id="mean-and-variance-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">4.5</span> Mean and Variance<a href="binpois.html#mean-and-variance-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this section we consider the mean and variance of the Poisson distribution.</p>
+<p>We need a few Mathematical preliminaries from Calculus.</p>
+<p>:::{.proposition name = “characterisations of Euler’s number”}
+A) For any real number <span class="math inline">\(x \in \mathbb{R}\)</span> we have</p>
+<p><span class="math display">\[e^x = \sum_{k=0}^{\infty} \frac{x^k}{k!}\]</span>
+B)
+<span class="math display">\[ \lim_{n\to \infty} \left( 1+\frac{x}{n} \right)^n = e^x\]</span>
+:::</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-14" class="theorem"><strong>Theorem 4.4  </strong></span>Let <span class="math inline">\(X\)</span> be a Poisson distributed random variable with rate <span class="math inline">\(\lambda\)</span>, that is <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span>. Then</p>
+<p><span class="math display">\[\text{E}[X]  = \lambda\]</span>
+and
+<span class="math display">\[\text{Var}[X] = \lambda\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-15" class="proof"><em>Proof</em>. </span><span class="math display">\[\text{E}[X] = \sum_{x=0}^{\infty}x\frac{\lambda^x e^{-\lambda}}{x!}\]</span>
+<span class="math display">\[ =\lambda e^{-\lambda} \sum_{x=1}^{\infty}\frac{\lambda^{(x-1)}}{(x-1)!} \]</span>
+<span class="math display">\[=\lambda e^{-\lambda} \sum_{y=0}^{\infty}\frac{\lambda^{y}}{y!} \]</span>
+<span class="math display">\[=\lambda e^{-\lambda} e^{\lambda}  \]</span>
+<span class="math display">\[ = \lambda .\]</span>
+For the variance consider</p>
+<p><span class="math display">\[\text{E}[X(X-1)] = \sum_{x=0}^{\infty}x(x-1)\frac{\lambda^x e^{-\lambda}}{x!}\]</span>
+<span class="math display">\[ =\lambda^2e^{-\lambda} \sum_{x=2}^{\infty}\frac{\lambda^{x-2}}{(x-2)!}\]</span>
+<span class="math display">\[ =\lambda^2e^{-\lambda} \sum_{y=0}^{\infty}\frac{\lambda^y}{y!}\]</span>
+<span class="math display">\[ =\lambda^2e^{-\lambda} e^{\lambda}\]</span>
+<span class="math display">\[ =\lambda^2\]</span>
+As <span class="math inline">\(\text{E}[X(X-1)] = \text{E}[X^2] - \text{E}[X^2]\)</span>, we can rearrange and find that</p>
+<p><span class="math display">\[\text{E}[X^2] = \lambda^2 + \lambda \]</span></p>
+<p>And as the variance <span class="math inline">\(\text{Var}[X] = \text{E}[X^2] - \text{E}[X]^2\)</span>, we have:</p>
+<p><span class="math display">\[\text{Var}[X] = \lambda^2 + \lambda - \lambda ^2 = \lambda .\]</span></p>
+</div>
+</div>
+<div id="deriving-the-poisson-mass-function" class="section level2 hasAnchor">
+<h2><span class="header-section-number">4.6</span> Deriving the Poisson mass function<a href="binpois.html#deriving-the-poisson-mass-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Poisson distribution is intimately linked to the binomial distribution. The aim of this section is to show you why the mass function has the form given in the definition.</p>
+<p>Suppose events occur as a result of a Poisson process independently and at a uniform rate <span class="math inline">\(\lambda\)</span> in a given time interval. Divide up the time period into a large number of smaller intervals, <span class="math inline">\(n\)</span> say, such that the chance of two events happening in one interval in negligible. The probability of an event happening in one of the small intervals is <span class="math inline">\(\lambda / n\)</span>.</p>
+<p>Letting <span class="math inline">\(X\)</span> be the random variable representing the number of small intervals that contain an event, then we can see that this is on the one hand binomially distributed for fixed <span class="math inline">\(n\)</span>. We have</p>
+<p><span class="math display">\[ \text{P}(X=x) = {}^nC_{x} \left(\frac{\lambda}{n}\right)^x \left( 1- \frac{\lambda}{n}\right)^{n-x}\]</span></p>
+<p><span class="math display">\[ = \lambda^{x} \underbrace{\frac{^nC_{x}}{n^x}}_{1} \underbrace{\left( 1- \frac{\lambda}{n}\right)^{n}}_{2}\underbrace{\left( 1- \frac{\lambda}{n}\right)^{-x}}_{3} \]</span></p>
+<p>We consider what happens when we increase <span class="math inline">\(n\)</span>, and consider each term separately (which we are allowed to do for convergent sequences).</p>
+<p>For term <span class="math inline">\(2\)</span>, as <span class="math inline">\(n\)</span> gets larger the number inside the bracket gets close to <span class="math inline">\(1\)</span>, and so overall the limit is <span class="math inline">\(1\)</span>.</p>
+<p>For term <span class="math inline">\(3\)</span> this can be seen to be equal to <span class="math inline">\(e^{-\lambda}\)</span> by the proposition (B).</p>
+<p>The first term <span class="math inline">\(1\)</span>, can be manipulated as follows:</p>
+<p><span class="math display">\[\lim_{n\to \infty}\frac{^nC_{x}}{n^x} = \lim_{n\to \infty} \frac{n!}{(n-x)!x!n^x}\]</span></p>
+<p><span class="math display">\[ =\frac{1}{x!}  \lim_{n\to \infty} \frac{n(n-1)(n-2)\dots(n-x+1)}{n^x}\]</span></p>
+<p><span class="math display">\[ =\frac{1}{x!}  \lim_{n\to \infty} \frac{n}{n}\frac{(n-1)}{n}\frac{(n-2)}{n}\dots \frac{(n-x+1)}{n}\]</span>
+<span class="math display">\[ =\frac{1}{x!}  \lim_{n\to \infty} \frac{n}{n}\frac{(n-1)}{n}\frac{(n-2)}{n}\dots \frac{(n-x+1)}{n}\]</span>
+<span class="math display">\[ =\frac{1}{x!}  \lim_{n\to \infty} \frac{(n-1)}{n}\frac{(n-2)}{n}\dots \frac{(n-x+1)}{n}\]</span>
+<span class="math display">\[ =\frac{1}{x!}  \lim_{n\to \infty} \left(1 - \frac{1}{n}\right)\lim_{n\to \infty}\left(1 - \frac{2}{n}\right)\dots \lim_{n\to \infty} \left(1 - \frac{x-1}{n}\right)\]</span>
+And all of these limits are <span class="math inline">\(1\)</span>.</p>
+<p>Altogether then,</p>
+<p><span class="math display">\[lim_{n\to \infty} {}^nC_{x} \left(\frac{\lambda}{n}\right)^x \left( 1- \frac{\lambda}{n}\right)^{n-x}  = \lambda^x \times \frac{1}{x!} \times e^{-\lambda}\times 1 = \frac{\lambda^xe^{-\lambda}}{x!}.\]</span>
+This is the probability of observing <span class="math inline">\(x\)</span> events in the whole time interval.</p>
+<p>The other side of this relationship is that a Poisson distribution can be used to approximate the binomial distribution.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-16" class="theorem"><strong>Theorem 4.5  </strong></span>If <span class="math inline">\(\pi\)</span> is small and <span class="math inline">\(n\)</span> is large then, a binomial distribution can be approximated by a Poisson distribution with rate parameter equal to the mean of the binomial distribution.</p>
+<p><span class="math display">\[\text{Binom}(n,\pi) \approx \text{Pois} (\lambda)\]</span>
+Where we set <span class="math inline">\(\lambda = n\pi.\)</span></p>
+<p><em>proof</em>
+Omitted.</p>
+</div>
+</div>
+<div id="exercises-week-4" class="section level2 hasAnchor">
+<h2><span class="header-section-number">4.7</span> Exercises week 4<a href="binpois.html#exercises-week-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-17" class="exercise"><strong>Exercise 4.1  </strong></span>Ropes are tested at a certain breaking strain. According to past experience a quarter of all ropes break at this strain. If <span class="math inline">\(4\)</span> identical ropes are tested, write down the probability distribution of the number of ropes breaking.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-18" class="exercise"><strong>Exercise 4.2  </strong></span>If it estimated that <span class="math inline">\(20\%\)</span> of all individuals carry anibodies to a particular virus. What is the probability that in a group of <span class="math inline">\(20\)</span> randomly selected individuals:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>More than <span class="math inline">\(8\)</span> have antibodies.</p></li>
+<li><p>Exactly <span class="math inline">\(6\)</span> have antibodies.</p></li>
+<li><p>Fewer than <span class="math inline">\(4\)</span> have antibodies.</p></li>
+<li><p>Between <span class="math inline">\(3\)</span> and <span class="math inline">\(6\)</span> inclusive have antibodies.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-19" class="exercise"><strong>Exercise 4.3  </strong></span>A car salesperson knows from past experience that she will make a sale to <span class="math inline">\(30\%\)</span> of her customers. Find the probability that in <span class="math inline">\(20\)</span> randomly selected sales pitches she makes a sale to</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>More than 4 customers</p></li>
+<li><p>Fewer than <span class="math inline">\(7\)</span> customers</p></li>
+<li><p>Exactly <span class="math inline">\(6\)</span> customers</p></li>
+<li><p>between <span class="math inline">\(4\)</span> and <span class="math inline">\(10\)</span> exclusive.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-20" class="exercise"><strong>Exercise 4.4  </strong></span>A footballer takes a free kick and scores a goal on <span class="math inline">\(10\%\)</span> of occasions. Find the probability that in a match in which <span class="math inline">\(10\)</span> free kicks are taken</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>She scores at least two goals</p></li>
+<li><p>She scores exactly two goals</p></li>
+<li><p>She scores <span class="math inline">\(3\)</span> goals or fewer.</p></li>
+</ol>
+<p>These are goals from free kicks alone. What assumptions do you need to make, and to what extent do you think these are reasonable?</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-21" class="exercise"><strong>Exercise 4.5  </strong></span>A statistics lecturer sets a test involving <span class="math inline">\(20\)</span> multiple choice questions. They want to choose a pass mark so that the chance of passing a student who guesses every question is less than <span class="math inline">\(5/%\)</span>. What should the pass mark be?</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-22" class="exercise"><strong>Exercise 4.6  </strong></span>The game of <em>advanced Chuck-a-luck</em> is an extension of the simple game from last week’s exercises. The banker rolls <span class="math inline">\(n\)</span> dice and the player wins £<span class="math inline">\(x\)</span> if the number that the player guesses appears on <span class="math inline">\(x\)</span> of the <span class="math inline">\(n\)</span> dice. As before he loses his £<span class="math inline">\(1\)</span> stake if the number does not come up on any of the dice.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Write down the probability mass function of <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Show that <span class="math inline">\(\text{E}[X] = \frac{n}{6} - \left(\frac{5}{6}\right)^n\)</span></p></li>
+</ol>
+<p>(Hint you might want to build up to part (a) in particular by picking values of <span class="math inline">\(n=1,2,3,\dots\)</span> and pattern spotting.)</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-23" class="exercise"><strong>Exercise 4.7  </strong></span>A biologist on a field trip is studying biodiversity and has found that the number of plant species in a <span class="math inline">\(1 \  \text{m}^2\)</span> quadrat follows a Poisson distribution with mean <span class="math inline">\(6\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Find the probability that the number of plant species in any given <span class="math inline">\(1 \  \text{m}^2\)</span> quadrat is;</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li><p>at least 8</p></li>
+<li><p>less than or equal to <span class="math inline">\(8\)</span></p></li>
+<li><p>exactly <span class="math inline">\(8\)</span></p></li>
+<li><p>between <span class="math inline">\(6\)</span> and <span class="math inline">\(12\)</span> inclusive</p></li>
+</ol>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Find the probability that in a quadrat of area <span class="math inline">\(0.5 \  \text{m}^2\)</span>, the number of plant species is</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li><p>at least <span class="math inline">\(3\)</span></p></li>
+<li><p>fewer than <span class="math inline">\(5\)</span></p></li>
+<li><p>exactly <span class="math inline">\(4\)</span></p></li>
+<li><p>between <span class="math inline">\(3\)</span> and <span class="math inline">\(6\)</span> inclusive</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-24" class="exercise"><strong>Exercise 4.8  </strong></span>When a car leaves a roduction line it is carefully examined for any signs of imperfection in the paintwork. Previous experience has shown the number of blemishes per car follows a Poisson distribution with mean <span class="math inline">\(0.4\)</span>.
+a) Find the probability that a car has</p>
+<ol style="list-style-type: lower-roman">
+<li><p>at least one blemish</p></li>
+<li><p>more than one blemish</p></li>
+<li><p>exactly one blemish</p></li>
+<li><p>no blemishes</p></li>
+</ol>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>In <span class="math inline">\(1\)</span> hour an inspector can examine <span class="math inline">\(20\)</span> cars. Assuming that blemishes occur independently, find the probability that the inspector finds</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li><p>fewer than <span class="math inline">\(5\)</span> blemishes</p></li>
+<li><p>exactly five blemishes</p></li>
+<li><p>at least one blemish</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-25" class="exercise"><strong>Exercise 4.9  </strong></span>A traffic survey found that buses pass a checkpoint at an average rate of <span class="math inline">\(4.5\)</span> per hour. Lorries pass the same checkpoint at the rate <span class="math inline">\(5\)</span> per hour and coaches at the rate of <span class="math inline">\(1.5\)</span> per hour.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Find the probability that in <span class="math inline">\(1\)</span> hour</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(5\)</span> or more buses pass the checkpoint</p></li>
+<li><p>between <span class="math inline">\(10\)</span> and <span class="math inline">\(15\)</span> lorries inclusive pass the checkpoint</p></li>
+<li><p>fewer than <span class="math inline">\(3\)</span> buses pass the checkpoint</p></li>
+</ol>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><ol style="list-style-type: lower-roman">
+<li>At least <span class="math inline">\(8\)</span> buses or coaches pass the checkpoint in an hour</li>
+</ol></li>
+</ol>
+<ol start="2" style="list-style-type: lower-roman">
+<li><p>exactly <span class="math inline">\(15\)</span> buses or coaches will pass the checkpoint in an hour</p></li>
+<li><p>ten or fewer buses, lorries or coaches will pass the checkpoint in half an hour.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-26" class="exercise"><strong>Exercise 4.10  </strong></span>The numbers of emissions per minute from two radioactive rocks <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent Poisson variables with means <span class="math inline">\(0.65\)</span> and <span class="math inline">\(0.45\)</span> respectively. Find the probability that</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>In a period of three minutes there are at least three emissions from <span class="math inline">\(A\)</span>.</p></li>
+<li><p>In a period of two minutes there is a total of less than four emissions from <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> combined.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-27" class="exercise"><strong>Exercise 4.11  </strong></span>In a particular form of cancer, deformed blood corpuscles occur at random at the rate of <span class="math inline">\(10\)</span> per <span class="math inline">\(1000\)</span> corpuscles.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Use an appropriate approximation to determine the probability that a random sample of <span class="math inline">\(200\)</span> corpuscles taken from a cancerous area will contain no deformed corpuscles.</p></li>
+<li><p>How large a sample should be taken in order to be <span class="math inline">\(99\%\)</span> certain of there being at least one deformed corpuscle in the sample?</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-28" class="exercise"><strong>Exercise 4.12  (counting practice) </strong></span>A box contains <span class="math inline">\(12\)</span> golf balls, <span class="math inline">\(3\)</span> of which are substandard. A random sample of <span class="math inline">\(4\)</span> balls is selected, without replacement, from the box. The random variable <span class="math inline">\(R\)</span> denotes the number of balls in the sample that are substandard.</p>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li>Show that the probability mass function of <span class="math inline">\(R\)</span> satisfies</li>
+</ol>
+<p><span class="math display">\[\text{P}(R=r) = \frac{{}^3C_r \times {}^9C_{4-r}}{^{12}C_{4}} \]</span>
+(ii) Determine the probability that <span class="math inline">\(R=0\)</span></p>
+<ol start="3" style="list-style-type: lower-roman">
+<li>Determine the probability that there are fewer than two substandard balls.</li>
+</ol>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>A large bin contains <span class="math inline">\(5000\)</span> used golf balls, <span class="math inline">\(1500\)</span> of which are defective. The random variable <span class="math inline">\(X\)</span> denotes the number of defective balls in a random sample of 20balls selected, without replacement,from the bin. Explain why <span class="math inline">\(X\)</span> may be approximated as a binomial variable with parameters <span class="math inline">\(20\)</span> and <span class="math inline">\(0.3\)</span>. Using the binomial model, calculate the probability that this sample contains</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li><p>fewer than <span class="math inline">\(5\)</span> defective balls</p></li>
+<li><p>at least <span class="math inline">\(7\)</span> defective balls</p></li>
+</ol>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>The random variable <span class="math inline">\(Y\)</span> denotes the number of defective golf balls in a sample of <span class="math inline">\(2000\)</span>, selected from a batch of <span class="math inline">\(200,000\)</span> and of which <span class="math inline">\(3250\)</span> are defective. Completely specify an approximate distribution for <span class="math inline">\(Y\)</span> other than a binomial model.</li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-29" class="exercise"><strong>Exercise 4.13  </strong></span>The independent random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>have means <span class="math inline">\(2.5\)</span> and <span class="math inline">\(1.5\)</span> respectively. Obtain the mean and variance of the random variables below, and hence give a reason why they are not Poisson.
+a) <span class="math inline">\(X-Y\)</span>
+b) <span class="math inline">\(2X+5\)</span></p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="drv.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["6G4Z3008-notes.pdf", "6G4Z3008-notes.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
