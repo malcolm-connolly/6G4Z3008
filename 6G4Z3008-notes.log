@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  22 FEB 2023 20:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  27 FEB 2023 09:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -661,7 +661,7 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 206.
 
 Overfull \hbox (69.7488pt too wide) in paragraph at lines 214--214
-[]\T1/lmtt/m/n/10 ##  [1] "Tails" "Tails" "Heads" "Tails" "Heads" "Heads" "Tails" "Tails" "Tails"[] 
+[]\T1/lmtt/m/n/10 ##  [1] "Heads" "Tails" "Heads" "Tails" "Heads" "Tails" "Tails" "Heads" "Heads"[] 
  []
 
 [6]

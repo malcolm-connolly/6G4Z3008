@@ -205,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The binomial distribution is one of the most important discrete distributions and finds application in a wide number of areas.</p>
 <p>The example to have in mind is the following:</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 4.1  (coin tossing) </strong></span>Suppose you toss a coin <span class="math inline">\(10\)</span> times and count the number of heads that are observed.</p>
+<p><span id="exm:unlabeled-div-123" class="example"><strong>Example 4.1  (coin tossing) </strong></span>Suppose you toss a coin <span class="math inline">\(10\)</span> times and count the number of heads that are observed.</p>
 <ul>
 <li><p>There is fixed number of trials, here <span class="math inline">\(10\)</span>, and so a maximal number of heads we can observe.</p></li>
 <li><p>The coin is the same, and so the probability of heads is the same throughout the process. For a fair coin this is <span class="math inline">\(\frac{1}{2}\)</span>.</p></li>
@@ -226,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-binomial-mass-function" class="section level2 hasAnchor">
 <h2><span class="header-section-number">4.2</span> The binomial mass function<a href="binpois.html#the-binomial-mass-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="example">
-<p><span id="exm:unlabeled-div-2" class="example"><strong>Example 4.2  </strong></span>You throw five drawing pins in the air and note if they land pin up or pin down. How many ways can two of the pins land facing up and the others land face down?</p>
+<p><span id="exm:unlabeled-div-124" class="example"><strong>Example 4.2  </strong></span>You throw five drawing pins in the air and note if they land pin up or pin down. How many ways can two of the pins land facing up and the others land face down?</p>
 <p>Suppose the probability a single pin lands facing up is <span class="math inline">\(0.3\)</span>, what is the probability that exactly two land facing up?</p>
 <p><em>solution</em></p>
 <p>Consider this problem as a word UUDDD, how many different words can be obtained by rearrangement? The number of ways of rearranging this is <span class="math inline">\(\frac{5!}{2!}{3!} = 10\)</span>.</p>
@@ -236,11 +236,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>We can derive the binomial mass function in a similar way as this example.</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-3" class="theorem"><strong>Theorem 4.1  </strong></span>Suppose the random variable <span class="math inline">\(X\)</span> satisfies the conditions of a binomial random variable, so that there are <span class="math inline">\(n\)</span> trials with success probability <span class="math inline">\(\pi\)</span>. The mass function is given by:
+<p><span id="thm:unlabeled-div-125" class="theorem"><strong>Theorem 4.1  </strong></span>Suppose the random variable <span class="math inline">\(X\)</span> satisfies the conditions of a binomial random variable, so that there are <span class="math inline">\(n\)</span> trials with success probability <span class="math inline">\(\pi\)</span>. The mass function is given by:
 <span class="math display">\[\text{P}(X=x) = {}^nC_x \pi^{x}(1-\pi)^{n-x}\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-4" class="proof"><em>Proof</em>. </span>If the <span class="math inline">\(n\)</span> trials result in <span class="math inline">\(x\)</span> successes, each with probability <span class="math inline">\(\pi\)</span>, there must have also been <span class="math inline">\(n-x\)</span> failures each with probability <span class="math inline">\((1-\pi)\)</span>. Using independence, the probability of this happening is</p>
+<p><span id="unlabeled-div-126" class="proof"><em>Proof</em>. </span>If the <span class="math inline">\(n\)</span> trials result in <span class="math inline">\(x\)</span> successes, each with probability <span class="math inline">\(\pi\)</span>, there must have also been <span class="math inline">\(n-x\)</span> failures each with probability <span class="math inline">\((1-\pi)\)</span>. Using independence, the probability of this happening is</p>
 <p><span class="math display">\[\pi ^x (1-\pi)^{n-x} \]</span>
 There are a number of ways this can happen, equal to <span class="math inline">\(^nC_x\)</span>. Hence result.</p>
 </div>
@@ -277,7 +277,7 @@ Figure 4.2: Probability mass function for B(8,0.5)
 <p>How can we account for the seemingly different shape?</p>
 <p>If the success probability is close to <span class="math inline">\(0.5\)</span> the distribution has a symmetrical shape, otherwise it is skewed.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 4.4  </strong></span>A train station has <span class="math inline">\(5\)</span> self-service ticket machines. The probability of a machine not working at any time is <span class="math inline">\(0.15\)</span>. Let <span class="math inline">\(X\)</span> be the number of machines not working.</p>
+<p><span id="exm:unlabeled-div-127" class="example"><strong>Example 4.4  </strong></span>A train station has <span class="math inline">\(5\)</span> self-service ticket machines. The probability of a machine not working at any time is <span class="math inline">\(0.15\)</span>. Let <span class="math inline">\(X\)</span> be the number of machines not working.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Comment on whether a binomial distribution is a suitable model for <span class="math inline">\(X\)</span>.</li>
 </ol>
@@ -306,19 +306,19 @@ Figure 4.2: Probability mass function for B(8,0.5)
 <ul>
 <li><p><span class="math inline">\(\text{P}(X\leq x)\)</span>, directly from table.</p></li>
 <li><p><span class="math inline">\(\text{P}(X\geq x) = 1- \text{P}(X\leq x-1)\)</span>, using complements.</p></li>
-<li><p>$(X = x) = (Xx) - (Xx-1) $, as with getting the mass function from the CDF in the usual way.</p></li>
+<li><p><span class="math inline">\(\text{P}(X = x) = \text{P}(X\leq x) - \text{P}(X\leq x-1)\)</span>, as with getting the mass function from the CDF in the usual way.</p></li>
 </ul>
 <p>You can the probability of <span class="math inline">\(X\)</span> lying in a range too, but one must be careful about whether the inequality is strict or not.</p>
 <ul>
-<li><p>$(aXb) = (Xb) - (Xa-1) $</p></li>
-<li><p>$(a&lt; Xb) = (Xb) - (Xa) $</p></li>
-<li><p>$(aX &lt; b) = (Xb-1) - (Xa-1) $</p></li>
-<li><p>$(a&lt; X &lt; b) = (Xb-1) - (Xa) $</p></li>
+<li><p><span class="math inline">\(\text{P}(a\leq X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a-1)\)</span></p></li>
+<li><p><span class="math inline">\(\text{P}(a&lt; X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a)\)</span></p></li>
+<li><p><span class="math inline">\(\text{P}(a\leq X &lt; b) = \text{P}(X\leq b-1) - \text{P}(X\leq a-1)\)</span></p></li>
+<li><p><span class="math inline">\(\text{P}(a&lt; X &lt; b) = \text{P}(X\leq b-1) - \text{P}(X\leq a)\)</span></p></li>
 </ul>
 <p>Graphing the inequality or listing the required values of <span class="math inline">\(X\)</span> helps improve accuracy here, and I would not recommend learning just the rules here.</p>
 <p>In modern times we more commonly would consult a calculator, which has the tables recorded in its memory. For example, in R we can do the calculation for <a href="binpois.html#exm:fourfairdice">4.3</a> using the following commands.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="binpois.html#cb1-1"></a>y &lt;-<span class="st"> </span><span class="kw">dbinom</span>(<span class="dt">x=</span><span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">prob =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">6</span> ) <span class="co"># putting x=0:1 makes y take the two values we want</span></span>
-<span id="cb1-2"><a href="binpois.html#cb1-2"></a><span class="kw">sum</span>(y) <span class="co"># working out the sum is easy now</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="binpois.html#cb7-1"></a>y &lt;-<span class="st"> </span><span class="kw">dbinom</span>(<span class="dt">x=</span><span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">prob =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">6</span> ) <span class="co"># putting x=0:1 makes y take the two values we want</span></span>
+<span id="cb7-2"><a href="binpois.html#cb7-2"></a><span class="kw">sum</span>(y) <span class="co"># working out the sum is easy now</span></span></code></pre></div>
 <pre><code>## [1] 0.8680556</code></pre>
 <p>As with the geometric distribution, the binomial distribution function is called in R by <span class="math inline">\(\texttt{dbinom()}\)</span>, the <span class="math inline">\(\texttt{d}\)</span> stands for distribution and <span class="math inline">\(\texttt{binom}\)</span> for the binomial distribution.</p>
 </div>
@@ -326,13 +326,13 @@ Figure 4.2: Probability mass function for B(8,0.5)
 <h2><span class="header-section-number">4.3</span> Mean and variance<a href="binpois.html#mean-and-variance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The goal here is to find simple expressions for the mean and variance of a binomial distribution. We choose to do this directly, though there are other methods which you may see next year.</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-6" class="theorem"><strong>Theorem 4.2  </strong></span>For a binomially distributed random variable <span class="math inline">\(X\sim \text{Bin}(n,\pi)\)</span> we have the mean is the product of the number of trials and the success probability. That is,</p>
+<p><span id="thm:unlabeled-div-128" class="theorem"><strong>Theorem 4.2  </strong></span>For a binomially distributed random variable <span class="math inline">\(X\sim \text{Bin}(n,\pi)\)</span> we have the mean is the product of the number of trials and the success probability. That is,</p>
 <p><span class="math display">\[\text{E}[X] = n\pi \]</span></p>
 <p>And the variance of <span class="math inline">\(X\)</span> is the product of the mean and the failure probability. That is,</p>
 <p><span class="math display">\[ \text{Var}[X] = n\pi (1-\pi)\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-7" class="proof"><em>Proof</em>. </span>Starting with the definition,</p>
+<p><span id="unlabeled-div-129" class="proof"><em>Proof</em>. </span>Starting with the definition,</p>
 <p><span class="math display">\[ \text{E}[X] = \sum_{x=0}^{n}x\times \text{P}(X=x)\]</span>
 Combining this with the mass function gives</p>
 <p><span class="math display">\[ \text{E}[X] = \sum_{x=0}^{n}x\times ^{n}C_{x} \pi^x (1-\pi)^{n-x} \]</span>
@@ -368,7 +368,7 @@ Each term in the sum is a binomial probability for some <span class="math inline
 <p>M - no <strong><em>maximum</em></strong> number of events</p>
 <p>R - at a constant average <strong><em>rate</em></strong></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 4.5  (telephone calls) </strong></span>Let the number of telephone calls arriving at a switchboard in a minute be the random variable <span class="math inline">\(X\)</span>. Then <span class="math inline">\(X\)</span> satisfies the assumptions to be modelled with a Poisson distribution.</p>
+<p><span id="exm:unlabeled-div-130" class="example"><strong>Example 4.5  (telephone calls) </strong></span>Let the number of telephone calls arriving at a switchboard in a minute be the random variable <span class="math inline">\(X\)</span>. Then <span class="math inline">\(X\)</span> satisfies the assumptions to be modelled with a Poisson distribution.</p>
 </div>
 <p>A Poisson distribution depends on one parameter only - its mean rate <span class="math inline">\(\lambda\)</span>. Here are some pictures of Poisson distribution functions for different values of the mean rate.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:pois1"></span>
@@ -384,13 +384,13 @@ Figure 4.4: Probability mass function for Pois(6)
 </p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-9" class="definition"><strong>Definition 4.1  </strong></span>Given a random variable following a Poisson distribution <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span> has mass function given by:</p>
+<p><span id="def:unlabeled-div-131" class="definition"><strong>Definition 4.1  </strong></span>Given a random variable following a Poisson distribution <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span> has mass function given by:</p>
 <p><span class="math display">\[\text{P}(X=x) = \frac{\lambda^x e^{-\lambda}}{x!} \]</span>
 where <span class="math inline">\(x=0,1,2, \dots\)</span>, and <span class="math inline">\(\lambda&gt;0\)</span>.</p>
 </div>
 <p>Although the probabilities attached to higher values of <span class="math inline">\(x\)</span> are positive, they quickly become very small. The mean rate <span class="math inline">\(\lambda\)</span> does not need to be a whole number, even though the count in any given interval does need to be a whole number. As with the binomial distribution, tables are given of the CDF of the Poisson distribution.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 4.6  </strong></span>A company operates a helpdesk hotline service. Incoming calls to the hotline arrive at a mean rate of <span class="math inline">\(3.5\)</span> per minute and outgoing calls are made at a rate of <span class="math inline">\(4.2\)</span> per minute. Find the probability that</p>
+<p><span id="exm:unlabeled-div-132" class="example"><strong>Example 4.6  </strong></span>A company operates a helpdesk hotline service. Incoming calls to the hotline arrive at a mean rate of <span class="math inline">\(3.5\)</span> per minute and outgoing calls are made at a rate of <span class="math inline">\(4.2\)</span> per minute. Find the probability that</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>at least five calls arrive in one minute.</p></li>
 <li><p>exactly five calls arrive in one minute.</p></li>
@@ -409,7 +409,7 @@ where <span class="math inline">\(x=0,1,2, \dots\)</span>, and <span class="math
 <h3><span class="header-section-number">4.4.1</span> Further properties<a href="binpois.html#further-properties" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>An important aspect of the Poisson model is the uniform average rate. This means that we assume events occur at the same rate over the interval. If the size of the interval changes, then we must change the mean rate in direct proportion with that change of size.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-11" class="example"><strong>Example 4.7  (hotline continued) </strong></span>Again assume calls to the hotline are incoming with rate <span class="math inline">\(3.5\)</span> per minute. Find the probability that</p>
+<p><span id="exm:unlabeled-div-133" class="example"><strong>Example 4.7  (hotline continued) </strong></span>Again assume calls to the hotline are incoming with rate <span class="math inline">\(3.5\)</span> per minute. Find the probability that</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>at least <span class="math inline">\(20\)</span> calls arrive at the exchange in a <span class="math inline">\(4\)</span> minute period.</p></li>
 <li><p>at most <span class="math inline">\(1\)</span> call arrives in a <span class="math inline">\(12\)</span> second period.</p></li>
@@ -428,14 +428,14 @@ where <span class="math inline">\(x=0,1,2, \dots\)</span>, and <span class="math
 </div>
 <p>The second useful property is that different Poisson variables can be added together and yield another Poisson distribution whose rate parameter is the sum of the individual rates.</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-12" class="theorem"><strong>Theorem 4.3  </strong></span>That is, if <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span> and <span class="math inline">\(Y\sim \text{Pois}(\mu)\)</span> then
+<p><span id="thm:unlabeled-div-134" class="theorem"><strong>Theorem 4.3  </strong></span>That is, if <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span> and <span class="math inline">\(Y\sim \text{Pois}(\mu)\)</span> then
 <span class="math display">\[X+Y \sim \text{Pois}(\lambda+\mu)\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-13" class="proof"><em>Proof</em>. </span>Omitted for now. In your second year course you will learn moment generating functions which makes the proof very easy.</p>
+<p><span id="unlabeled-div-135" class="proof"><em>Proof</em>. </span>Omitted for now. In your second year course you will learn moment generating functions which makes the proof very easy.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-14" class="example"><strong>Example 4.8  </strong></span>Suppose in a game of football the home team scores goals at a rate of <span class="math inline">\(2\)</span> per match, and the away team scores goals at a rate of <span class="math inline">\(3\)</span> per match. Then you would expect the total number of goals between these two teams to occur at a rate of <span class="math inline">\(5\)</span> per match.</p>
+<p><span id="exm:unlabeled-div-136" class="example"><strong>Example 4.8  </strong></span>Suppose in a game of football the home team scores goals at a rate of <span class="math inline">\(2\)</span> per match, and the away team scores goals at a rate of <span class="math inline">\(3\)</span> per match. Then you would expect the total number of goals between these two teams to occur at a rate of <span class="math inline">\(5\)</span> per match.</p>
 <p>In this context for a particular pair of teams this may not be a realistic model. Why?</p>
 </div>
 </div>
@@ -445,7 +445,7 @@ where <span class="math inline">\(x=0,1,2, \dots\)</span>, and <span class="math
 <p>In this section we consider the mean and variance of the Poisson distribution.</p>
 <p>We need a few Mathematical preliminaries from Calculus.</p>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-15" class="proposition"><strong>Proposition 4.1  (characterisations of Euler's number) </strong></span></p>
+<p><span id="prp:unlabeled-div-137" class="proposition"><strong>Proposition 4.1  (characterisations of Euler's number) </strong></span></p>
 <ol style="list-style-type: upper-alpha">
 <li>For any real number <span class="math inline">\(x \in \mathbb{R}\)</span> we have</li>
 </ol>
@@ -455,13 +455,13 @@ where <span class="math inline">\(x=0,1,2, \dots\)</span>, and <span class="math
 </ol>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-16" class="theorem"><strong>Theorem 4.4  </strong></span>Let <span class="math inline">\(X\)</span> be a Poisson distributed random variable with rate <span class="math inline">\(\lambda\)</span>, that is <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span>. Then</p>
+<p><span id="thm:unlabeled-div-138" class="theorem"><strong>Theorem 4.4  </strong></span>Let <span class="math inline">\(X\)</span> be a Poisson distributed random variable with rate <span class="math inline">\(\lambda\)</span>, that is <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span>. Then</p>
 <p><span class="math display">\[\text{E}[X]  = \lambda\]</span>
 and
 <span class="math display">\[\text{Var}[X] = \lambda\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-17" class="proof"><em>Proof</em>. </span><span class="math display">\[\text{E}[X] = \sum_{x=0}^{\infty}x\frac{\lambda^x e^{-\lambda}}{x!}\]</span>
+<p><span id="unlabeled-div-139" class="proof"><em>Proof</em>. </span><span class="math display">\[\text{E}[X] = \sum_{x=0}^{\infty}x\frac{\lambda^x e^{-\lambda}}{x!}\]</span>
 <span class="math display">\[ =\lambda e^{-\lambda} \sum_{x=1}^{\infty}\frac{\lambda^{(x-1)}}{(x-1)!} \]</span>
 <span class="math display">\[=\lambda e^{-\lambda} \sum_{y=0}^{\infty}\frac{\lambda^{y}}{y!} \]</span>
 <span class="math display">\[=\lambda e^{-\lambda} e^{\lambda}  \]</span>
@@ -472,7 +472,7 @@ For the variance consider</p>
 <span class="math display">\[ =\lambda^2e^{-\lambda} \sum_{y=0}^{\infty}\frac{\lambda^y}{y!}\]</span>
 <span class="math display">\[ =\lambda^2e^{-\lambda} e^{\lambda}\]</span>
 <span class="math display">\[ =\lambda^2\]</span>
-As <span class="math inline">\(\text{E}[X(X-1)] = \text{E}[X^2] - \text{E}[X^2]\)</span>, we can rearrange and find that</p>
+As <span class="math inline">\(\text{E}[X(X-1)] = \text{E}[X^2] - \text{E}[X]\)</span>, we can rearrange and find that</p>
 <p><span class="math display">\[\text{E}[X^2] = \lambda^2 + \lambda \]</span></p>
 <p>And as the variance <span class="math inline">\(\text{Var}[X] = \text{E}[X^2] - \text{E}[X]^2\)</span>, we have:</p>
 <p><span class="math display">\[\text{Var}[X] = \lambda^2 + \lambda - \lambda ^2 = \lambda .\]</span></p>
@@ -501,7 +501,7 @@ And all of these limits are <span class="math inline">\(1\)</span>.</p>
 This is the probability of observing <span class="math inline">\(x\)</span> events in the whole time interval.</p>
 <p>The other side of this relationship is that a Poisson distribution can be used to approximate the binomial distribution.</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-18" class="theorem"><strong>Theorem 4.5  </strong></span>If <span class="math inline">\(\pi\)</span> is small and <span class="math inline">\(n\)</span> is large then, a binomial distribution can be approximated by a Poisson distribution with rate parameter equal to the mean of the binomial distribution.</p>
+<p><span id="thm:unlabeled-div-140" class="theorem"><strong>Theorem 4.5  </strong></span>If <span class="math inline">\(\pi\)</span> is small and <span class="math inline">\(n\)</span> is large then, a binomial distribution can be approximated by a Poisson distribution with rate parameter equal to the mean of the binomial distribution.</p>
 <p><span class="math display">\[\text{Binom}(n,\pi) \approx \text{Pois} (\lambda)\]</span>
 Where we set <span class="math inline">\(\lambda = n\pi.\)</span></p>
 <p><em>proof</em>
@@ -511,10 +511,10 @@ Omitted.</p>
 <div id="exercises-week-4" class="section level2 hasAnchor">
 <h2><span class="header-section-number">4.7</span> Exercises week 4<a href="binpois.html#exercises-week-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-19" class="exercise"><strong>Exercise 4.1  </strong></span>Ropes are tested at a certain breaking strain. According to past experience a quarter of all ropes break at this strain. If <span class="math inline">\(4\)</span> identical ropes are tested, write down the probability distribution of the number of ropes breaking.</p>
+<p><span id="exr:unlabeled-div-141" class="exercise"><strong>Exercise 4.1  </strong></span>Ropes are tested at a certain breaking strain. According to past experience a quarter of all ropes break at this strain. If <span class="math inline">\(4\)</span> identical ropes are tested, write down the probability distribution of the number of ropes breaking.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-20" class="exercise"><strong>Exercise 4.2  </strong></span>If it estimated that <span class="math inline">\(20\%\)</span> of all individuals carry anibodies to a particular virus. What is the probability that in a group of <span class="math inline">\(20\)</span> randomly selected individuals:</p>
+<p><span id="exr:unlabeled-div-142" class="exercise"><strong>Exercise 4.2  </strong></span>If it estimated that <span class="math inline">\(20\%\)</span> of all individuals carry anibodies to a particular virus. What is the probability that in a group of <span class="math inline">\(20\)</span> randomly selected individuals:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>More than <span class="math inline">\(8\)</span> have antibodies.</p></li>
 <li><p>Exactly <span class="math inline">\(6\)</span> have antibodies.</p></li>
@@ -523,7 +523,7 @@ Omitted.</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-21" class="exercise"><strong>Exercise 4.3  </strong></span>A car salesperson knows from past experience that she will make a sale to <span class="math inline">\(30\%\)</span> of her customers. Find the probability that in <span class="math inline">\(20\)</span> randomly selected sales pitches she makes a sale to</p>
+<p><span id="exr:unlabeled-div-143" class="exercise"><strong>Exercise 4.3  </strong></span>A car salesperson knows from past experience that she will make a sale to <span class="math inline">\(30\%\)</span> of her customers. Find the probability that in <span class="math inline">\(20\)</span> randomly selected sales pitches she makes a sale to</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>More than 4 customers</p></li>
 <li><p>Fewer than <span class="math inline">\(7\)</span> customers</p></li>
@@ -532,7 +532,7 @@ Omitted.</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-22" class="exercise"><strong>Exercise 4.4  </strong></span>A footballer takes a free kick and scores a goal on <span class="math inline">\(10\%\)</span> of occasions. Find the probability that in a match in which <span class="math inline">\(10\)</span> free kicks are taken</p>
+<p><span id="exr:unlabeled-div-144" class="exercise"><strong>Exercise 4.4  </strong></span>A footballer takes a free kick and scores a goal on <span class="math inline">\(10\%\)</span> of occasions. Find the probability that in a match in which <span class="math inline">\(10\)</span> free kicks are taken</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>She scores at least two goals</p></li>
 <li><p>She scores exactly two goals</p></li>
@@ -541,10 +541,10 @@ Omitted.</p>
 <p>These are goals from free kicks alone. What assumptions do you need to make, and to what extent do you think these are reasonable?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-23" class="exercise"><strong>Exercise 4.5  </strong></span>A statistics lecturer sets a test involving <span class="math inline">\(20\)</span> multiple choice questions. They want to choose a pass mark so that the chance of passing a student who guesses every question is less than <span class="math inline">\(5/%\)</span>. What should the pass mark be?</p>
+<p><span id="exr:unlabeled-div-145" class="exercise"><strong>Exercise 4.5  </strong></span>A statistics lecturer sets a test involving <span class="math inline">\(20\)</span> multiple choice questions, where there are four possible answers for each question. They want to choose a pass mark so that the chance of passing a student who guesses every question is less than <span class="math inline">\(5\%\)</span>. What should the pass mark be?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-24" class="exercise"><strong>Exercise 4.6  </strong></span>The game of <em>advanced Chuck-a-luck</em> is an extension of the simple game from last week’s exercises. The banker rolls <span class="math inline">\(n\)</span> dice and the player wins £<span class="math inline">\(x\)</span> if the number that the player guesses appears on <span class="math inline">\(x\)</span> of the <span class="math inline">\(n\)</span> dice. As before he loses his £<span class="math inline">\(1\)</span> stake if the number does not come up on any of the dice.</p>
+<p><span id="exr:unlabeled-div-146" class="exercise"><strong>Exercise 4.6  </strong></span>The game of <em>advanced Chuck-a-luck</em> is an extension of the simple game from last week’s exercises. The banker rolls <span class="math inline">\(n\)</span> dice and the player wins £<span class="math inline">\(x\)</span> if the number that the player guesses appears on <span class="math inline">\(x\)</span> of the <span class="math inline">\(n\)</span> dice. As before he loses his £<span class="math inline">\(1\)</span> stake if the number does not come up on any of the dice.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Write down the probability mass function of <span class="math inline">\(X\)</span>.</p></li>
 <li><p>Show that <span class="math inline">\(\text{E}[X] = \frac{n}{6} - \left(\frac{5}{6}\right)^n\)</span></p></li>
@@ -552,7 +552,7 @@ Omitted.</p>
 <p>(Hint you might want to build up to part (a) in particular by picking values of <span class="math inline">\(n=1,2,3,\dots\)</span> and pattern spotting.)</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-25" class="exercise"><strong>Exercise 4.7  </strong></span>A biologist on a field trip is studying biodiversity and has found that the number of plant species in a <span class="math inline">\(1 \  \text{m}^2\)</span> quadrat follows a Poisson distribution with mean <span class="math inline">\(6\)</span>.</p>
+<p><span id="exr:unlabeled-div-147" class="exercise"><strong>Exercise 4.7  </strong></span>A biologist on a field trip is studying biodiversity and has found that the number of plant species in a <span class="math inline">\(1 \  \text{m}^2\)</span> quadrat follows a Poisson distribution with mean <span class="math inline">\(6\)</span>.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Find the probability that the number of plant species in any given <span class="math inline">\(1 \  \text{m}^2\)</span> quadrat is;</li>
 </ol>
@@ -573,7 +573,7 @@ Omitted.</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-26" class="exercise"><strong>Exercise 4.8  </strong></span>When a car leaves a roduction line it is carefully examined for any signs of imperfection in the paintwork. Previous experience has shown the number of blemishes per car follows a Poisson distribution with mean <span class="math inline">\(0.4\)</span>.
+<p><span id="exr:unlabeled-div-148" class="exercise"><strong>Exercise 4.8  </strong></span>When a car leaves a production line it is carefully examined for any signs of imperfection in the paintwork. Previous experience has shown the number of blemishes per car follows a Poisson distribution with mean <span class="math inline">\(0.4\)</span>.
 a) Find the probability that a car has</p>
 <ol style="list-style-type: lower-roman">
 <li><p>at least one blemish</p></li>
@@ -591,7 +591,7 @@ a) Find the probability that a car has</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-27" class="exercise"><strong>Exercise 4.9  </strong></span>A traffic survey found that buses pass a checkpoint at an average rate of <span class="math inline">\(4.5\)</span> per hour. Lorries pass the same checkpoint at the rate <span class="math inline">\(5\)</span> per hour and coaches at the rate of <span class="math inline">\(1.5\)</span> per hour.</p>
+<p><span id="exr:unlabeled-div-149" class="exercise"><strong>Exercise 4.9  </strong></span>A traffic survey found that buses pass a checkpoint at an average rate of <span class="math inline">\(4.5\)</span> per hour. Lorries pass the same checkpoint at the rate <span class="math inline">\(5\)</span> per hour and coaches at the rate of <span class="math inline">\(1.5\)</span> per hour.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Find the probability that in <span class="math inline">\(1\)</span> hour</li>
 </ol>
@@ -611,21 +611,21 @@ a) Find the probability that a car has</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-28" class="exercise"><strong>Exercise 4.10  </strong></span>The numbers of emissions per minute from two radioactive rocks <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent Poisson variables with means <span class="math inline">\(0.65\)</span> and <span class="math inline">\(0.45\)</span> respectively. Find the probability that</p>
+<p><span id="exr:unlabeled-div-150" class="exercise"><strong>Exercise 4.10  </strong></span>The numbers of emissions per minute from two radioactive rocks <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent Poisson variables with means <span class="math inline">\(0.65\)</span> and <span class="math inline">\(0.45\)</span> respectively. Find the probability that</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>In a period of three minutes there are at least three emissions from <span class="math inline">\(A\)</span>.</p></li>
 <li><p>In a period of two minutes there is a total of less than four emissions from <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> combined.</p></li>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-29" class="exercise"><strong>Exercise 4.11  </strong></span>In a particular form of cancer, deformed blood corpuscles occur at random at the rate of <span class="math inline">\(10\)</span> per <span class="math inline">\(1000\)</span> corpuscles.</p>
+<p><span id="exr:unlabeled-div-151" class="exercise"><strong>Exercise 4.11  </strong></span>In a particular form of cancer, deformed blood corpuscles occur at random at the rate of <span class="math inline">\(10\)</span> per <span class="math inline">\(1000\)</span> corpuscles.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Use an appropriate approximation to determine the probability that a random sample of <span class="math inline">\(200\)</span> corpuscles taken from a cancerous area will contain no deformed corpuscles.</p></li>
 <li><p>How large a sample should be taken in order to be <span class="math inline">\(99\%\)</span> certain of there being at least one deformed corpuscle in the sample?</p></li>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-30" class="exercise"><strong>Exercise 4.12  (counting practice) </strong></span>A box contains <span class="math inline">\(12\)</span> golf balls, <span class="math inline">\(3\)</span> of which are substandard. A random sample of <span class="math inline">\(4\)</span> balls is selected, without replacement, from the box. The random variable <span class="math inline">\(R\)</span> denotes the number of balls in the sample that are substandard.</p>
+<p><span id="exr:unlabeled-div-152" class="exercise"><strong>Exercise 4.12  (counting practice) </strong></span>A box contains <span class="math inline">\(12\)</span> golf balls, <span class="math inline">\(3\)</span> of which are substandard. A random sample of <span class="math inline">\(4\)</span> balls is selected, without replacement, from the box. The random variable <span class="math inline">\(R\)</span> denotes the number of balls in the sample that are substandard.</p>
 <ol style="list-style-type: lower-alpha">
 <li></li>
 </ol>
@@ -649,7 +649,7 @@ a) Find the probability that a car has</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-31" class="exercise"><strong>Exercise 4.13  </strong></span>The independent random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>have means <span class="math inline">\(2.5\)</span> and <span class="math inline">\(1.5\)</span> respectively. Obtain the mean and variance of the random variables below, and hence give a reason why they are not Poisson.
+<p><span id="exr:unlabeled-div-153" class="exercise"><strong>Exercise 4.13  </strong></span>The independent random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>have means <span class="math inline">\(2.5\)</span> and <span class="math inline">\(1.5\)</span> respectively. Obtain the mean and variance of the random variables below, and hence give a reason why they are not Poisson.
 a) <span class="math inline">\(X-Y\)</span>
 b) <span class="math inline">\(2X+5\)</span></p>
 </div>

@@ -209,7 +209,7 @@ In this course we will learn some R programming. R is a free open-source softwar
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "Tails" "Tails" "Heads" "Tails" "Heads" "Heads" "Tails" "Tails" "Tails"
+##  [1] "Heads" "Tails" "Heads" "Tails" "Heads" "Tails" "Tails" "Heads" "Heads"
 ## [10] "Tails"
 \end{verbatim}
 
@@ -2998,20 +2998,20 @@ Because the binomial distribution is so widely applied and is so important, almo
 \item
   \(\text{P}(X\geq x) = 1- \text{P}(X\leq x-1)\), using complements.
 \item
-  \$\text{P}(X = x) = \text{P}(X\leq x) - \text{P}(X\leq x-1) \$, as with getting the mass function from the CDF in the usual way.
+  \(\text{P}(X = x) = \text{P}(X\leq x) - \text{P}(X\leq x-1)\), as with getting the mass function from the CDF in the usual way.
 \end{itemize}
 
 You can the probability of \(X\) lying in a range too, but one must be careful about whether the inequality is strict or not.
 
 \begin{itemize}
 \item
-  \$\text{P}(a\leq X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a-1) \$
+  \(\text{P}(a\leq X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a-1)\)
 \item
-  \$\text{P}(a\textless{} X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a) \$
+  \(\text{P}(a< X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a)\)
 \item
-  \$\text{P}(a\leq X \textless{} b) = \text{P}(X\leq b-1) - \text{P}(X\leq a-1) \$
+  \(\text{P}(a\leq X < b) = \text{P}(X\leq b-1) - \text{P}(X\leq a-1)\)
 \item
-  \$\text{P}(a\textless{} X \textless{} b) = \text{P}(X\leq b-1) - \text{P}(X\leq a) \$
+  \(\text{P}(a< X < b) = \text{P}(X\leq b-1) - \text{P}(X\leq a)\)
 \end{itemize}
 
 Graphing the inequality or listing the required values of \(X\) helps improve accuracy here, and I would not recommend learning just the rules here.
@@ -3236,13 +3236,27 @@ In this section we consider the mean and variance of the Poisson distribution.
 
 We need a few Mathematical preliminaries from Calculus.
 
-:::\{.proposition name = ``characterisations of Euler's number''\}
-A) For any real number \(x \in \mathbb{R}\) we have
+\begin{proposition}[characterisations of Euler's number]
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\tightlist
+\item
+  For any real number \(x \in \mathbb{R}\) we have
+\end{enumerate}
 
 \[e^x = \sum_{k=0}^{\infty} \frac{x^k}{k!}\]
-B)
-\[ \lim_{n\to \infty} \left( 1+\frac{x}{n} \right)^n = e^x\]
-:::
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \[ \lim_{n\to \infty} \left( 1+\frac{x}{n} \right)^n = e^x\]
+\end{enumerate}
+
+\end{proposition}
 
 \begin{theorem}
 Let \(X\) be a Poisson distributed random variable with rate \(\lambda\), that is \(X\sim \text{Pois}(\lambda)\). Then
@@ -3265,7 +3279,7 @@ For the variance consider
 \[ =\lambda^2e^{-\lambda} \sum_{y=0}^{\infty}\frac{\lambda^y}{y!}\]
 \[ =\lambda^2e^{-\lambda} e^{\lambda}\]
 \[ =\lambda^2\]
-As \(\text{E}[X(X-1)] = \text{E}[X^2] - \text{E}[X^2]\), we can rearrange and find that
+As \(\text{E}[X(X-1)] = \text{E}[X^2] - \text{E}[X]\), we can rearrange and find that
 
 \[\text{E}[X^2] = \lambda^2 + \lambda \]
 
@@ -3382,8 +3396,7 @@ These are goals from free kicks alone. What assumptions do you need to make, and
 \end{exercise}
 
 \begin{exercise}
-A statistics lecturer sets a test involving \(20\) multiple choice questions. They want to choose a pass mark so that the chance of passing a student who guesses every question is less than \(5/%
-\). What should the pass mark be?
+A statistics lecturer sets a test involving \(20\) multiple choice questions, where there are four possible answers for each question. They want to choose a pass mark so that the chance of passing a student who guesses every question is less than \(5\%\). What should the pass mark be?
 \end{exercise}
 
 \begin{exercise}
@@ -3447,7 +3460,7 @@ A biologist on a field trip is studying biodiversity and has found that the numb
 
 \begin{exercise}
 
-When a car leaves a roduction line it is carefully examined for any signs of imperfection in the paintwork. Previous experience has shown the number of blemishes per car follows a Poisson distribution with mean \(0.4\).
+When a car leaves a production line it is carefully examined for any signs of imperfection in the paintwork. Previous experience has shown the number of blemishes per car follows a Poisson distribution with mean \(0.4\).
 a) Find the probability that a car has
 
 \begin{enumerate}

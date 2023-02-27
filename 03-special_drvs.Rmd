@@ -144,17 +144,17 @@ Because the binomial distribution is so widely applied and is so important, almo
 
 - $\text{P}(X\geq x) = 1- \text{P}(X\leq x-1)$, using complements.
 
-- $\text{P}(X = x) = \text{P}(X\leq x) - \text{P}(X\leq x-1) $, as with getting the mass function from the CDF in the usual way.
+- $\text{P}(X = x) = \text{P}(X\leq x) - \text{P}(X\leq x-1)$, as with getting the mass function from the CDF in the usual way.
 
 You can the probability of $X$ lying in a range too, but one must be careful about whether the inequality is strict or not.
 
-- $\text{P}(a\leq X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a-1) $
+- $\text{P}(a\leq X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a-1)$
 
-- $\text{P}(a< X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a) $
+- $\text{P}(a< X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a)$
 
-- $\text{P}(a\leq X < b) = \text{P}(X\leq b-1) - \text{P}(X\leq a-1) $
+- $\text{P}(a\leq X < b) = \text{P}(X\leq b-1) - \text{P}(X\leq a-1)$
 
-- $\text{P}(a< X < b) = \text{P}(X\leq b-1) - \text{P}(X\leq a) $
+- $\text{P}(a< X < b) = \text{P}(X\leq b-1) - \text{P}(X\leq a)$
 
 Graphing the inequality or listing the required values of $X$ helps improve accuracy here, and I would not recommend learning just the rules here. 
 
@@ -369,7 +369,7 @@ $$ =\lambda^2e^{-\lambda} \sum_{x=2}^{\infty}\frac{\lambda^{x-2}}{(x-2)!}$$
 $$ =\lambda^2e^{-\lambda} \sum_{y=0}^{\infty}\frac{\lambda^y}{y!}$$
 $$ =\lambda^2e^{-\lambda} e^{\lambda}$$
 $$ =\lambda^2$$
-As $\text{E}[X(X-1)] = \text{E}[X^2] - \text{E}[X^2]$, we can rearrange and find that 
+As $\text{E}[X(X-1)] = \text{E}[X^2] - \text{E}[X]$, we can rearrange and find that 
 
 $$\text{E}[X^2] = \lambda^2 + \lambda $$ 
 
@@ -472,7 +472,7 @@ These are goals from free kicks alone. What assumptions do you need to make, and
 :::
 
 :::{.exercise}
-A statistics lecturer sets a test involving $20$ multiple choice questions. They want to choose a pass mark so that the chance of passing a student who guesses every question is less than $5/%$. What should the pass mark be?
+A statistics lecturer sets a test involving $20$ multiple choice questions, where there are four possible answers for each question. They want to choose a pass mark so that the chance of passing a student who guesses every question is less than $5\%$. What should the pass mark be?
 :::
 
 :::{.exercise}
@@ -510,7 +510,7 @@ b) Find the probability that in a quadrat of area $0.5 \  \text{m}^2$, the numbe
 :::
 
 :::{.exercise}
- When a car leaves a roduction line it is carefully examined for any signs of imperfection in the paintwork. Previous experience has shown the number of blemishes per car follows a Poisson distribution with mean $0.4$. 
+ When a car leaves a production line it is carefully examined for any signs of imperfection in the paintwork. Previous experience has shown the number of blemishes per car follows a Poisson distribution with mean $0.4$. 
 a) Find the probability that a car has
 
   (i) at least one blemish
