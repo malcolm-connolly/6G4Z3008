@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Continuous random variables | Probability Theory and Statistics</title>
+  <meta name="description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Continuous random variables | Probability Theory and Statistics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  <meta name="github-repo" content="6G4Z3008" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Continuous random variables | Probability Theory and Statistics" />
+  
+  <meta name="twitter:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  
+
+<meta name="author" content="Malcolm Connolly" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="cards.ico" type="image/x-icon" />
+<link rel="prev" href="binpois.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><a href="./"><img src="logo.svg"></a></li>
+<li><a href="https://moodle.mmu.ac.uk/course/view.php?id=157842" target="blank" > 6G4Z3008 course notes </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#frequentist-perspective"><i class="fa fa-check"></i><b>1.1</b> Frequentist perspective</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#naive-probability"><i class="fa fa-check"></i><b>1.2</b> Naive probability</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#complements-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Complements and mutual exclusivity</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#outcomes-and-counting"><i class="fa fa-check"></i><b>1.4</b> Outcomes and counting</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#factorials"><i class="fa fa-check"></i><b>1.4.1</b> Factorials</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#permutations"><i class="fa fa-check"></i><b>1.4.2</b> Permutations</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#combinations"><i class="fa fa-check"></i><b>1.4.3</b> Combinations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#exercises-week-1"><i class="fa fa-check"></i><b>1.5</b> Exercises Week 1</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#tutorial-exercises"><i class="fa fa-check"></i><b>1.5.1</b> Tutorial exercises</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#exercises-for-feedback"><i class="fa fa-check"></i><b>1.5.2</b> Exercises for feedback</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cond.html"><a href="cond.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
+<li class="chapter" data-level="2.1" data-path="cond.html"><a href="cond.html#independence"><i class="fa fa-check"></i><b>2.1</b> Independence</a></li>
+<li class="chapter" data-level="2.2" data-path="cond.html"><a href="cond.html#conditional-probability"><i class="fa fa-check"></i><b>2.2</b> Conditional Probability</a></li>
+<li class="chapter" data-level="2.3" data-path="cond.html"><a href="cond.html#bayes-theorem"><i class="fa fa-check"></i><b>2.3</b> Bayes Theorem</a></li>
+<li class="chapter" data-level="2.4" data-path="cond.html"><a href="cond.html#exercises-week-2"><i class="fa fa-check"></i><b>2.4</b> Exercises Week 2</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="drv.html"><a href="drv.html"><i class="fa fa-check"></i><b>3</b> Discrete Random Variables</a><ul>
+<li class="chapter" data-level="3.1" data-path="drv.html"><a href="drv.html#random-variables"><i class="fa fa-check"></i><b>3.1</b> Random Variables</a></li>
+<li class="chapter" data-level="3.2" data-path="drv.html"><a href="drv.html#discrete-probability-distributions"><i class="fa fa-check"></i><b>3.2</b> Discrete probability distributions</a></li>
+<li class="chapter" data-level="3.3" data-path="drv.html"><a href="drv.html#properties-of-probability-mass-functions"><i class="fa fa-check"></i><b>3.3</b> Properties of probability mass functions</a></li>
+<li class="chapter" data-level="3.4" data-path="drv.html"><a href="drv.html#mean-variance-and-moments"><i class="fa fa-check"></i><b>3.4</b> Mean, variance and moments</a></li>
+<li class="chapter" data-level="3.5" data-path="drv.html"><a href="drv.html#exercises-week-3"><i class="fa fa-check"></i><b>3.5</b> Exercises Week 3</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="drv.html"><a href="drv.html#exercises-for-feedback-1"><i class="fa fa-check"></i><b>3.5.1</b> Exercises for feedback</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="binpois.html"><a href="binpois.html"><i class="fa fa-check"></i><b>4</b> Special discrete random variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="binpois.html"><a href="binpois.html#the-binomial-distribution"><i class="fa fa-check"></i><b>4.1</b> The Binomial Distribution</a></li>
+<li class="chapter" data-level="4.2" data-path="binpois.html"><a href="binpois.html#the-binomial-mass-function"><i class="fa fa-check"></i><b>4.2</b> The binomial mass function</a></li>
+<li class="chapter" data-level="4.3" data-path="binpois.html"><a href="binpois.html#mean-and-variance"><i class="fa fa-check"></i><b>4.3</b> Mean and variance</a></li>
+<li class="chapter" data-level="4.4" data-path="binpois.html"><a href="binpois.html#the-poisson-distribution"><i class="fa fa-check"></i><b>4.4</b> The Poisson distribution</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="binpois.html"><a href="binpois.html#further-properties"><i class="fa fa-check"></i><b>4.4.1</b> Further properties</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="binpois.html"><a href="binpois.html#mean-and-variance-1"><i class="fa fa-check"></i><b>4.5</b> Mean and Variance</a></li>
+<li class="chapter" data-level="4.6" data-path="binpois.html"><a href="binpois.html#deriving-the-poisson-mass-function"><i class="fa fa-check"></i><b>4.6</b> Deriving the Poisson mass function</a></li>
+<li class="chapter" data-level="4.7" data-path="binpois.html"><a href="binpois.html#exercises-week-4"><i class="fa fa-check"></i><b>4.7</b> Exercises week 4</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cont.html"><a href="cont.html"><i class="fa fa-check"></i><b>5</b> Continuous random variables</a><ul>
+<li class="chapter" data-level="5.1" data-path="cont.html"><a href="cont.html#relation-to-histograms"><i class="fa fa-check"></i><b>5.1</b> Relation to histograms</a></li>
+<li class="chapter" data-level="5.2" data-path="cont.html"><a href="cont.html#two-students"><i class="fa fa-check"></i><b>5.2</b> Two students</a></li>
+<li class="chapter" data-level="5.3" data-path="cont.html"><a href="cont.html#the-probability-density-function"><i class="fa fa-check"></i><b>5.3</b> The probability density function</a></li>
+<li class="chapter" data-level="5.4" data-path="cont.html"><a href="cont.html#expectation-and-variance"><i class="fa fa-check"></i><b>5.4</b> Expectation and variance</a></li>
+<li class="chapter" data-level="5.5" data-path="cont.html"><a href="cont.html#mode"><i class="fa fa-check"></i><b>5.5</b> Mode</a></li>
+<li class="chapter" data-level="5.6" data-path="cont.html"><a href="cont.html#cdf"><i class="fa fa-check"></i><b>5.6</b> CDF</a></li>
+<li class="chapter" data-level="5.7" data-path="cont.html"><a href="cont.html#median-quartiles-and-percentiles"><i class="fa fa-check"></i><b>5.7</b> median, quartiles and percentiles</a></li>
+<li class="chapter" data-level="5.8" data-path="cont.html"><a href="cont.html#uniform-distribution"><i class="fa fa-check"></i><b>5.8</b> Uniform distribution</a></li>
+<li class="chapter" data-level="5.9" data-path="cont.html"><a href="cont.html#exponential-distribution"><i class="fa fa-check"></i><b>5.9</b> Exponential distribution</a></li>
+<li class="chapter" data-level="5.10" data-path="cont.html"><a href="cont.html#exercises-week-5"><i class="fa fa-check"></i><b>5.10</b> Exercises week 5</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="cont.html"><a href="cont.html#exercises-for-feedback-week-5"><i class="fa fa-check"></i><b>5.10.1</b> Exercises for feedback week 5</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability Theory and Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cont" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 5</span> Continuous random variables<a href="cont.html#cont" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this chapter we will learn about continuous random variables. Here the random variable may arise from a measurement process.</p>
+<p>In real life many observations are assumed to take real numbered values. We could in principle observe any value on a <em>continuum</em>. For example:</p>
+<ul>
+<li><p>The lifetime of a lithium-ion battery</p></li>
+<li><p>The weight of a baby</p></li>
+<li><p>The height of a random person</p></li>
+</ul>
+<p>In practice we are constrained by the accuracy of our measuring device (heights are often quoted to the nearest inch, or centimeter) and the distinction between discrete and continuous is sometimes blurred.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-154" class="example"><strong>Example 5.1  </strong></span>Consider a class of undergraduates at MMU. Each of the following is a measurement of age:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Age to the nearest decade</p></li>
+<li><p>Age in years</p></li>
+<li><p>Age in months</p></li>
+<li><p>Age in days</p></li>
+<li><p>Age in seconds</p></li>
+</ol>
+</div>
+<p>Although none of the variables is strictly measured on a continuous scale, we would measure these variables differently. The decades would only take at most a few particular values and could be modelled as discrete, whereas age in seconds could take so many different values it’s almost continuous.</p>
+<div id="relation-to-histograms" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.1</span> Relation to histograms<a href="cont.html#relation-to-histograms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Given some actual continuous data, one could make a plot how frequently the data lies within certain intervals. The resulting plot is called a histogram. These intervals need not be equal, but in modern practice they are. In most computer implementations the intervals are called bins and the interval size the bin width.</p>
+<p>A classic example built into R is the Old Faithful geyser data. Here the waiting times between eruptions and the duration of the eruption were recorded for the Old Faithful geyser in Yellowstone National Park, Wyoming, USA.</p>
+<p>Suppose you want to estimate a proportion or probability of a particularly long waiting time. Then instead of the bar height being equal to the frequency we can set the area to be proportional to the frequency. This can be done in such a way as to make the total area under the histogram equal to <span class="math inline">\(1\)</span>.</p>
+<div class="figure"><span style="display:block;" id="fig:faithful"></span>
+<img src="6G4Z3008-notes_files/figure-html/faithful-1.png" alt="Waiting time between eruptions, one sees the data in more precision with smaller bin width" width="672" />
+<p class="caption">
+Figure 5.1: Waiting time between eruptions, one sees the data in more precision with smaller bin width
+</p>
+</div>
+<p>To find the proportion between two values one could total the area of the bars. One can see the limit of this idea, perhaps for a very large sample is that we would have a smooth curve like the plot titled ‘estimated density’, and find the area under the curve.</p>
+</div>
+<div id="two-students" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.2</span> Two students<a href="cont.html#two-students" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consider two students who have an appointment with their tutor at <span class="math inline">\(12\)</span>-noon.</p>
+<p>The first student makes an effort to get there on time, so is more likely to be a little late than very late, as they live far from the university. They may be late but will certainly be there before <span class="math inline">\(1\)</span> o’clock.
+The second student has forgotten the appointment, but lives close to the university, so may arrive at any time before <span class="math inline">\(1\)</span> o’clock, as soon as they remember.</p>
+<p>What is the sample space here?</p>
+<p>Take <span class="math inline">\(\Omega = [0,1]\)</span> to be the delay measured in hours. An event here is an interval in which the student arrives. For example <span class="math inline">\([0,\frac{1}{2}]\)</span> is the event that the student is no more than half an hour late.</p>
+<p>The probability of arriving in a given interval is the area under the curve <span class="math display">\[f(x) = 2-2x \ ,\ \text{for all } x\in[0,1].\]</span></p>
+<p>This is shown in the image below:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:student1"></span>
+<img src="figures/student1.JPG" alt="density function for first student" width="75%" />
+<p class="caption">
+Figure 5.2: density function for first student
+</p>
+</div>
+<p>The probability of the student arriving in the first half an hour, between <span class="math inline">\(12:00\)</span> and <span class="math inline">\(12:30\)</span>, is <span class="math inline">\(\frac{3}{4}\)</span>, whereas the probability of arriving in the last half an hour, between <span class="math inline">\(12:30\)</span> and <span class="math inline">\(13:00\)</span>, is <span class="math inline">\(\frac{1}{4}\)</span>.</p>
+<p>The time until the second student arrives may be modelled by the function</p>
+<p><span class="math display">\[f(x) = 1\ ,\ \text{for all } x\in[0,1].\]</span></p>
+<p>This is called a <em>uniform density</em> and reflects the fact that any time is equally likely.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:student2"></span>
+<img src="figures/student2.JPG" alt="density function for second student" width="75%" />
+<p class="caption">
+Figure 5.3: density function for second student
+</p>
+</div>
+<p>The probability related to this function is <span class="math inline">\(\text{P}([a,b]) = b-a\)</span>.</p>
+<p>Can you find an expression for <span class="math inline">\(\text{P}([a,b])\)</span> for the first student?</p>
+</div>
+<div id="the-probability-density-function" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.3</span> The probability density function<a href="cont.html#the-probability-density-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For continuous random variables the equivalent of the probability mass function is called the <strong><em>probability density function</em></strong>.</p>
+<p>While for discrete random variables it makes sense to ask what is the probability that <span class="math inline">\(X\)</span> takes some particular value <span class="math inline">\(\text{P}(X=x)\)</span>, this is always zero in the continuous setting. Instead we as what is the probability of <span class="math inline">\(X\)</span> lying in an interval <span class="math inline">\(\text{P}(a&lt;X&lt;b)\)</span>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-155" class="definition"><strong>Definition 5.1  </strong></span>The <strong><em>probability density function</em></strong>of a continuous random variable <span class="math inline">\(X\)</span> is a function such that</p>
+<ul>
+<li><p>The function is everywhere non-negative
+<span class="math display">\[f(x) \geq 0 \text{ for all } \ x\in \mathbb{R}\]</span></p></li>
+<li><p>The probability of <span class="math inline">\(X\)</span> taking a value in the interval <span class="math inline">\((a,b)\)</span> is given by the corresponding integral of that curve with respect to <span class="math inline">\(x\)</span>.</p></li>
+</ul>
+<p><span class="math display">\[\text{P}(a&lt;X&lt;b) = \int_{a}^{b} f(x) \  dx\]</span></p>
+<ul>
+<li>The total area under the graph over the domain of <span class="math inline">\(f(x)\)</span> is unity. Let the domain of <span class="math inline">\(f(x)\)</span> be <span class="math inline">\(x\in (c,d)\)</span>.</li>
+</ul>
+<p><span class="math display">\[ \int_{c}^{d} f(x) \  dx = 1\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-156" class="example"><strong>Example 5.2  </strong></span>The continuous random variable <span class="math inline">\(X\)</span> has probability density function given by</p>
+<p><span class="math display">\[\begin{equation*}
+  f(x)=\begin{cases}
+    \frac{1}{2}x, &amp;  0&lt; x &lt; 2\\
+    0 &amp; \text{otherwise}.
+  \end{cases}
+\end{equation*}\]</span></p>
+<p>Calculate <span class="math inline">\(\text{P}(X&gt;1)\)</span>.</p>
+<p><em>solution</em></p>
+<p>you should do a sketch to get an intuition for whether the probability will be more than a half.</p>
+<p>You could use calculus here, but if you draw a picture the area required is a trapezium.</p>
+<p>The area is therefore <span class="math inline">\(\frac{(\frac{1}{2}+1)\times 1}{2}=\frac{3}{4}\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-157" class="example"><strong>Example 5.3  </strong></span>A continuous random variable has probability density function <span class="math inline">\(f(x) = kx^2\)</span> for <span class="math inline">\(0\leq x\leq 4\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find the value of the constant <span class="math inline">\(k\)</span></p></li>
+<li><p>Find <span class="math inline">\(\text{P}(1\leq X \leq 3)\)</span></p></li>
+</ol>
+<p><em>solution</em></p>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<p>We need to use calculus here as we have a curve.</p>
+<p>To find <span class="math inline">\(k\)</span>, we use the fact that <span class="math inline">\(f\)</span> integrates to <span class="math inline">\(1\)</span> over the domain.</p>
+<p><span class="math display">\[ \int_{0}^{4}kx^2 \ dx = \left[ \frac{kx^3}{3}\right]^{x=4}_{x=0}\]</span></p>
+<p><span class="math display">\[ 1= \frac{k}{3} (64-0)\]</span>
+<span class="math display">\[ 1= \frac{64k}{3} \]</span>
+Hence <span class="math inline">\(k=\frac{3}{64}\)</span>.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><span class="math display">\[\text{P}(1\leq X \leq 3) = \int_{1}^{3} \frac{3}{64}x^2 \ dx\]</span></li>
+</ol>
+<p>Evaluating this numerically gives <span class="math inline">\(0.406\)</span> to <span class="math inline">\(3\)</span> significant figures.</p>
+</div>
+<p>Notice that if the inequality were <span class="math inline">\(1&lt;X&lt;3\)</span> or any combination of <span class="math inline">\(&lt;\)</span> and <span class="math inline">\(\leq\)</span> the calculation would be the same, so we do not need to worry about the inequality being strict or not for continuous random variables.</p>
+<p>This is because the area at a single <span class="math inline">\(x\)</span> value has zero width, so does not contribute to the integral.</p>
+</div>
+<div id="expectation-and-variance" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.4</span> Expectation and variance<a href="cont.html#expectation-and-variance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The expectation is defined similarly to the case of discrete random variables, but here we use the integral rather than a sum.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-158" class="definition"><strong>Definition 5.2  </strong></span>The <strong><em>expectation</em></strong>, or <strong><em>expected value</em></strong> or <strong><em>mean value</em></strong> of a continuous random variable <span class="math inline">\(X\)</span> is given by</p>
+<p><span class="math display">\[ \text{E}[X] = \int_{-\infty}^{\infty}x f(x) \ dx\]</span>
+Where the limits indicate that the integral is over the smallest and largest attainable values of <span class="math inline">\(X\)</span>. The mean value is often denotes <span class="math inline">\(\text{E}[X] = \mu\)</span>.</p>
+<p>More generally we define</p>
+<p><span class="math display">\[ \text{E}[g(X)] = \int_{-\infty}^{\infty}g(x) f(x) \ dx\]</span></p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-159" class="definition"><strong>Definition 5.3  </strong></span>The variance of a continuous random variable is given by</p>
+<p><span class="math display">\[\text{Var}[X] = \text{E}[(X-\mu)^2] = \text{E}[X^2]-\mu^2\]</span>
+The standard deviation <span class="math inline">\(\sigma\)</span> of <span class="math inline">\(X\)</span> is the square root of the variance. That is</p>
+<p><span class="math display">\[\sigma = \sqrt{\text{Var}[X]}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-160" class="example"><strong>Example 5.4  (marathon times) </strong></span>The times in excess of <span class="math inline">\(2\)</span> hours taken to complete a marathon road race are modelled by the continuous random variable <span class="math inline">\(T\)</span> hours, where <span class="math inline">\(T\)</span> has the probability density function</p>
+<p><span class="math display">\[\begin{equation*}
+  f(t)=\begin{cases}
+    \frac{4}{27}t^2(3-t), &amp;  0&lt; x &lt; 3\\
+    0 &amp; \ \ \ \  \text{otherwise}.
+  \end{cases}
+\end{equation*}\]</span></p>
+<p>Find the <em>mean</em> and <em>standard deviation</em> of the times taken to complete the race.</p>
+</div>
+<p><em>solution</em></p>
+<p>For the mean</p>
+<p><span class="math display">\[ \text{E}[T] = \int_{0}^{3} t\times \frac{4}{27}t^2(3-t) \ dt\]</span></p>
+<p>This can be evaluated (for example numerically) as <span class="math inline">\(\frac{9}{5}\)</span>. This can be interpreted as <span class="math inline">\(1\)</span> hour and <span class="math inline">\(48\)</span> minutes excess of <span class="math inline">\(2\)</span> hours, so the mean time is <span class="math inline">\(3\)</span> hours and <span class="math inline">\(48\)</span> minutes.</p>
+<p>The variance use <span class="math inline">\(\text{Var}[T]=\text{E}[X^2]-\text{E}[X]^2 = \frac{18}{5} - (\frac{9}{5})^2 =\frac{9}{25}\)</span>. The interpretation is <span class="math inline">\(21.6\)</span> minutes variance, and so <span class="math inline">\(\sigma = \sqrt{21.6} = 4.65\)</span> minutes (<span class="math inline">\(3\)</span> s.f.) standard deviation</p>
+</div>
+<div id="mode" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.5</span> Mode<a href="cont.html#mode" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If the probability density function has a unique maximum then the value of <span class="math inline">\(X\)</span> at the maximum is called the mode. To locate the mode it is a good idea to draw a sketch. Sometimes the mode can be deduced immediately. Other times one may need to differentiate.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-161" class="example"><strong>Example 5.5  </strong></span>Deduce the mode in the following cases</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math display">\[f(x) = \frac{1}{8}x , 0\leq x \leq 4\]</span></p></li>
+<li><p><span class="math display">\[\begin{equation*}
+  f(x)=\begin{cases}
+ \frac{1}{4}x, &amp;  0&lt; x \leq 2 \\
+ 1-\frac{1}{4}x &amp; \ \  2&lt; x \leq 4
+ 0&amp; \ \ \ \ \  \ \ \text{otherwise}
+  \end{cases}
+\end{equation*}\]</span></p></li>
+<li><p><span class="math display">\[f(x) = \frac{3}{80}(2+x)(4-x) , \ \  0\leq x \leq 4.\]</span></p></li>
+</ol>
+<p><em>solution</em></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>mode is 4</p></li>
+<li><p>mode is 2</p></li>
+<li><p>One could differentiate or complete the square here to show the mode is <span class="math inline">\(1\)</span>.</p></li>
+</ol>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-162" class="example"><strong>Example 5.6  (marathon times) </strong></span>The times in excess of <span class="math inline">\(2\)</span> hours taken to complete a marathon road race are modelled by the continuous random variable <span class="math inline">\(T\)</span> hours, where <span class="math inline">\(T\)</span> has the probability density function</p>
+<p><span class="math display">\[\begin{equation*}
+  f(t)=\begin{cases}
+    \frac{4}{27}t^2(3-t), &amp;  0&lt; x &lt; 3\\
+    0 &amp; \ \ \ \  \text{otherwise}.
+  \end{cases}
+\end{equation*}\]</span></p>
+<p>Find the modal time taken to complete the race.</p>
+</div>
+<p><em>solution</em></p>
+<p>Differentiating gives</p>
+<p><span class="math display">\[f&#39;(t) = \frac{4}{27}(2t \times(3-t) + t^2\times(-1)) = \frac{4}{27}(6t -3t^2)\]</span></p>
+<p>Setting <span class="math inline">\(f&#39;(t)=0\)</span> yields</p>
+<p><span class="math display">\[0 = 3t(2 - t) \]</span>
+So either<span class="math inline">\(t=0\)</span> or <span class="math inline">\(2\)</span>. So the modal excess is <span class="math inline">\(2\)</span> hours, and the modal total time is <span class="math inline">\(2+2=4\)</span> hours.</p>
+</div>
+<div id="cdf" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.6</span> CDF<a href="cont.html#cdf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The cumulative distribution function can be defined in a similar way to discrete random variables.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-163" class="definition"><strong>Definition 5.4  </strong></span>The <strong><em>distribution function</em></strong> or more simply the <strong><em>CDF</em></strong> of a continuous random variable is the function defined by</p>
+<p><span class="math display">\[F(x) = \text{P}(X\leq x) = \text{P}(X&lt; x).\]</span></p>
+<p>The function <span class="math inline">\(F\)</span> is related to the density via</p>
+<p><span class="math display">\[F(x) = \int_{-\infty}^{x}f(u) \ du\]</span>
+Where the lower limit <span class="math inline">\(-\infty\)</span> is in practice the lowest attainable value of <span class="math inline">\(X\)</span>.</p>
+<p>On the other hand,</p>
+<p><span class="math display">\[ f(x) = \frac{d}{dx} F(x)\]</span></p>
+</div>
+<p>These are some facts about the CDF.</p>
+<ul>
+<li><p>Since it is always impossible to have a value smaller than <span class="math inline">\(-\infty\)</span> or larger than <span class="math inline">\(\infty\)</span> we have <span class="math inline">\(F(-\infty)=0\)</span> and <span class="math inline">\(F(\infty)=1\)</span></p></li>
+<li><p><span class="math inline">\(F\)</span> is called <em>monotonically increasing</em> which means it either increases or remains constant but never decreases.</p></li>
+<li><p><span class="math inline">\(F\)</span> is a continuous function, even if <span class="math inline">\(f\)</span> is not.</p></li>
+<li><p>Useful relations are
+<span class="math display">\[\text{P}(c&lt;X&lt;d) = F(d) - F(c)\]</span></p></li>
+</ul>
+<p>and</p>
+<p><span class="math display">\[ \text{P}(X&gt;x) = 1-F(x)\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-164" class="example"><strong>Example 5.7  </strong></span>For a continuous random variable <span class="math inline">\(X\)</span> with density</p>
+<p><span class="math display">\[f(x) = \frac{1}{8}x, \ 0\leq x\leq 4\]</span>
+a) Find the distribution function <span class="math inline">\(F(x)\)</span> and sketch it.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Evaluate <span class="math inline">\(\text{P}(0.3\leq X\leq 1.8)\)</span></li>
+</ol>
+<p><em>solution</em></p>
+<p>For values between <span class="math inline">\(0\)</span> and <span class="math inline">\(4\)</span> we have</p>
+<p><span class="math display">\[F(t) = \int_{0}^{t} \frac{1}{8}x \ dx = \left[ \frac{x^2}{16}\right]^{t}_{0}= \frac{t^2}{16}\]</span></p>
+<p>Altogether</p>
+<p><span class="math display">\[\begin{equation*}
+  F(x)=\begin{cases}
+        0 \ \ \ \ x\leq 0 \\
+        \frac{x^2}{16} \ \ \   0\leq x \leq 4\\
+        1 \ \ \ \ x\geq 4
+  \end{cases}
+\end{equation*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-165" class="example"><strong>Example 5.8  </strong></span>For a continuous random variable <span class="math inline">\(X\)</span> with density</p>
+<p><span class="math display">\[\begin{equation*}
+  f(x)=\begin{cases}
+        \frac{x}{3} \ \ \ \ \ \ \ \ \ \ \ \ 0\leq x\leq 2  \\
+        -\frac{2}{3}x+2 \ \ \   2\leq x \leq 3\\
+        0 \ \ \ \ \ \ \ \ \ \ \ \  \ \ \ \text{otherwise}
+  \end{cases}
+\end{equation*}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Find the CDF F(x) and sketch it.</li>
+</ol>
+<p><em>solution</em></p>
+<p>The CDF must be found in two stages as <span class="math inline">\(f\)</span> is a piecewise function.</p>
+<p>Integrating over the interval <span class="math inline">\(0\leq x\leq 2\)</span> gives <span class="math inline">\(\frac{x^2}{6}\)</span></p>
+<p>Integrating over the interval <span class="math inline">\(2\leq x \leq 3\)</span> gives <span class="math inline">\(-\frac{x^2}{3} +2x -2\)</span></p>
+<p>Altogether</p>
+<p><span class="math display">\[\begin{equation*}
+  F(x)=\begin{cases}
+        \frac{x^2}{6} \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\leq x\leq 2  \\
+        -\frac{x^2}{3} +2x -2 \ \ \   2\leq x \leq 3\\
+        0 \ \ \ \ \ \ \ \ \ \  \ \ \ \ \  \ \ \ x\geq 3
+  \end{cases}
+\end{equation*}\]</span></p>
+</div>
+<p>Generally speaking a plot or sketch of <span class="math inline">\(F\)</span> will look vaguely S-shaped.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cum1"></span>
+<img src="figures/cum1.JPG" alt="cumulative distribution function is S shaped" width="75%" />
+<p class="caption">
+Figure 5.4: cumulative distribution function is S shaped
+</p>
+</div>
+<p>For discrete random variables we sometimes called <span class="math inline">\(f\)</span> the distribution function and called <span class="math inline">\(F\)</span> the cumulative distribution function. However for continuous random variables <span class="math inline">\(f\)</span> is never called the distribution function, and only called the density function, and <span class="math inline">\(F\)</span> is called the distribution function exclusively.</p>
+</div>
+<div id="median-quartiles-and-percentiles" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.7</span> median, quartiles and percentiles<a href="cont.html#median-quartiles-and-percentiles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The median, quartiles and percentiles are best expressed in terms of the CDF.</p>
+<p>The median is the value <span class="math inline">\(50\%\)</span> of the way through the distribution. It splits the area under the curve <span class="math inline">\(y=f(x)\)</span> into two halves.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-166" class="definition"><strong>Definition 5.5  </strong></span>The <strong><em>median</em></strong> of a continuous random variable <span class="math inline">\(X\)</span> is the value <span class="math inline">\(m\)</span> that satisfies either of</p>
+<p><span class="math display">\[F(m) = 0.5 , \ \ \ \ \int_{-\infty}^{m}f(x) \ dx = 0.5\]</span></p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-167" class="definition"><strong>Definition 5.6  </strong></span>The <strong><em>lower quartile</em></strong> <span class="math inline">\(Q_1\)</span> satisfies <span class="math inline">\(F(Q_1) = 0.25\)</span>.
+The <strong><em>upper quartile</em></strong> <span class="math inline">\(Q_3\)</span> satisfies <span class="math inline">\(F(Q_3) = 0.75\)</span>.
+The median is the second quartile <span class="math inline">\(m=Q_2\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-168" class="definition"><strong>Definition 5.7  </strong></span>More generally one may define a <strong><em>percentile</em></strong> <span class="math inline">\(P_{\alpha}\)</span> at <span class="math inline">\(\alpha \%\)</span> to be the value such that <span class="math inline">\(F(P_{\alpha})= \alpha \%\)</span>. The median is the <span class="math inline">\(50^{\text{th}}\)</span> percentile <span class="math inline">\(m = P_{50}\)</span>, and <span class="math inline">\(Q_1 = P_{25}\)</span>, <span class="math inline">\(Q_3 = P_{75}\)</span></p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-169" class="definition"><strong>Definition 5.8  </strong></span>More generally still is the <strong><em>quantile</em></strong> which is the value <span class="math inline">\(q\)</span> such that <span class="math inline">\(F(q)=p\)</span> for any <span class="math inline">\(p\in(0,1)\)</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-170" class="example"><strong>Example 5.9  </strong></span>Let’s find the median for the marathon example.</p>
+<p><span class="math display">\[\begin{equation*}
+  f(t)=\begin{cases}
+    \frac{4}{27}t^2(3-t), &amp;  0&lt; t &lt; 3\\
+    0 &amp; \ \ \ \  \text{otherwise}.
+  \end{cases}
+\end{equation*}\]</span></p>
+<p>First find the CDF.</p>
+<p>In the range <span class="math inline">\(0&lt; t &lt; 3\)</span>
+<span class="math display">\[F(t) = \frac{4}{27}\int_{0}^{t} u^2(3-u) \ du\]</span></p>
+<p><span class="math display">\[= \frac{4}{27}\left[\frac{3u^3}{3}-\frac{u^4}{4}\right]^{t}_{0} =\frac{4}{27}\left( t^3 - \frac{t^4}{4} \right)\]</span></p>
+<p>Then solving <span class="math inline">\(F(t)=0.5\)</span>,</p>
+<p><span class="math display">\[\frac{4}{27}\left(t^3 - \frac{t^4}{4} \right)= 0.5\]</span>
+this can be evaluated numerically and there are two values <span class="math inline">\(t=3.74\)</span> and <span class="math inline">\(t= 1.84\)</span> the first one is outside the range of <span class="math inline">\(0&lt; t &lt; 3\)</span> so is discarded. And so the median time is <span class="math inline">\(2+1.84 = 3.84\)</span> hours to complete the marathon. This is just under the mean.</p>
+</div>
+<p>The marathon example shows that mode, median and mean are not the same number usually. The mode was <span class="math inline">\(4\)</span>, the median was <span class="math inline">\(3.84\)</span> and the mean was <span class="math inline">\(3.8\)</span> hours.</p>
+</div>
+<div id="uniform-distribution" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.8</span> Uniform distribution<a href="cont.html#uniform-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We encountered a uniform random variable in the example of the forgetful student. Its characteristic is that for its entire domain of values of <span class="math inline">\(X\)</span> the density is constant.</p>
+<p>If the density is a constant on some interval, that means <span class="math inline">\(f(x) = k\)</span> for <span class="math inline">\(a\leq x \leq b\)</span>. What is the value of <span class="math inline">\(k\)</span>?</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-171" class="definition"><strong>Definition 5.9  </strong></span>A continuous random variable follows a continuous <strong><em>uniform distribution</em></strong> (sometimes called <strong><em>rectangular</em></strong>) with support <span class="math inline">\([a,b]\)</span>, denoted <span class="math inline">\(X\sim U(a,b)\)</span> has probability density function given by</p>
+<p><span class="math display">\[\begin{equation*}
+  f(x)=\begin{cases}
+    \frac{1}{b-a}, &amp;  a&lt; x &lt; b\\
+    0 &amp; \ \ \ \  \text{otherwise}.
+  \end{cases}
+\end{equation*}\]</span></p>
+</div>
+<p>The uniform distribution is symmetrical so the mean is equal to the median, but there is no mode here.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-172" class="theorem"><strong>Theorem 5.1  </strong></span>For a continuous uniform distribution <span class="math inline">\(X\sim U(a,b)\)</span></p>
+<p><span class="math display">\[\text{E}[X] = \frac{a+b}{2}\]</span></p>
+<p>and</p>
+<p><span class="math display">\[\text{Var}[X]= \frac{(b-a)^2}{12}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-173" class="proof"><em>Proof</em>. </span><span class="math display">\[\text{E}[X] = \int_a^b x \times \frac{1}{b-a} dx  =\frac{1}{b-a} \left[ \frac{x^2}{2} \right]^{b}_{a}\]</span></p>
+<p>Now</p>
+<p><span class="math display">\[= \frac{1}{b-a} \left( \frac{b^2-a^2}{2} \right)\]</span>
+And using the difference of two squares</p>
+<p><span class="math display">\[= \frac{1}{b-a} \left( \frac{(b-a)(b+a)}{2} \right)\]</span>
+Hence the result, upon cancelling <span class="math inline">\((b-a)\)</span>.</p>
+<p>For the variance consider</p>
+<p><span class="math display">\[\text{E}[X^2] = \int_a^b x^2 \times \frac{1}{b-a} dx  =\frac{1}{b-a} \left[ \frac{x^3}{3} \right]^{b}_{a}\]</span></p>
+<p><span class="math display">\[= \frac{1}{b-a} \left( \frac{b^3-a^3}{3} \right)\]</span></p>
+<p>And using the difference of cubes</p>
+<p><span class="math display">\[= \frac{1}{b-a} \left( \frac{(b-a)(b^2+ab+a^2)}{3} \right)\]</span></p>
+<p>Hence <span class="math inline">\(\text{E}[X^2] = \frac{b^2+ab+a^2}{3}\)</span>.</p>
+<p>Now</p>
+<p><span class="math display">\[\text{Var}[X] = \text{E}[X^2] - \text{E}[X]^2 = \frac{b^2+ab+a^2}{3} - \left(\frac{a+b}{2} \right)^2\]</span></p>
+<p><span class="math display">\[ = \frac{4(b^2+ab+a^2)- 3(a^2 + 2ab +b^2)}{12}\]</span>
+<span class="math display">\[= \frac{a^2-2ab +b^2}{12}\]</span>
+Hence result by factorising the numerator.</p>
+</div>
+<p>The CDF of the continuous uniform distribution can also be found.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-174" class="proposition"><strong>Proposition 5.1  </strong></span>The CDF of a continuous uniform distribution <span class="math inline">\(X\sim U(a,b)\)</span> has the form</p>
+<p><span class="math display">\[\begin{equation*}
+  F(x)=\begin{cases}
+        0 &amp; x \leq a \\
+    \frac{x-a}{b-a}, &amp;  a&lt; x &lt; b\\
+    1 &amp; \ \ x \geq b.
+  \end{cases}
+\end{equation*}\]</span></p>
+</div>
+<p><em>proof</em></p>
+<p>Find the equation of the line between <span class="math inline">\((a,0)\)</span> and <span class="math inline">\((b,1)\)</span>.</p>
+</div>
+<div id="exponential-distribution" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.9</span> Exponential distribution<a href="cont.html#exponential-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The exponential distribution is like the continuous version of a geometric distribution. Instead of counting how many attempts until some event happens, we instead measure the time until an event occurs that would ordinarily occur at some rate.</p>
+<p>Consider a sequence of independent events occuring at random points in time at a rate <span class="math inline">\(\lambda\)</span>. We learned last week how the number of events that occur could be modelled by a discrete random variable called a Poisson distribution.</p>
+<p>Instead of counting how many events occur, we could consider measuring how long we wait until the next event.</p>
+<p>We set a starting time <span class="math inline">\(x=0\)</span> and denote the random variable ‘the time to the first event’ by <span class="math inline">\(X\)</span>.</p>
+<p><span class="math display">\[\text{P}(X&gt;x) = \text{P}( \{\text{No events occur in the time interval (0,x)}\})\]</span></p>
+<p>The mean number of events that occur per unit interval is <span class="math inline">\(\lambda\)</span>. So the number of events that occur in the interval <span class="math inline">\((0,x)\)</span> of length <span class="math inline">\(x-0 = x\)</span> is scaled proportionally so equals <span class="math inline">\(\lambda \times x\)</span>.</p>
+<p>The probability of obtaining <span class="math inline">\(0\)</span> events from a Poisson distribution with mean <span class="math inline">\(\lambda x\)</span> is</p>
+<p><span class="math display">\[\frac{(\lambda x)^0 e^{-\lambda x}}{0!} = e^{-\lambda x}\]</span>
+So</p>
+<p><span class="math display">\[\text{P}(X&gt;x) =  e^{-\lambda x}\]</span>
+And the cumulative distribution equals</p>
+<p><span class="math display">\[F(x) = 1-\text{P(X&gt;x)}=1-e^{-\lambda x}\]</span></p>
+<p>Differentiating this with respect to <span class="math inline">\(x\)</span> we obtain</p>
+<p><span class="math display">\[f(x) = \lambda e^{-\lambda x}\]</span>
+:::{.definition}
+A continuous random variable <span class="math inline">\(X\)</span> is said to have an <strong><em>exponential distribution</em></strong>, denoted <span class="math inline">\(X\sim \text{Exp}(\lambda)\)</span> if it has the density function</p>
+<p><span class="math display">\[f(x) = \lambda e^{-\lambda x} , x &gt;0\]</span>
+:::</p>
+<p>Now we will consider the shape of the exponential distribution.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-175" class="theorem"><strong>Theorem 5.2  </strong></span>For an exponential distribution <span class="math inline">\(X\sim \text{Exp}(\lambda)\)</span>, we have</p>
+<p><span class="math display">\[\text{E}[X] = \frac{1}{\lambda}\]</span>
+and</p>
+<p><span class="math display">\[\text{Var}[X] = \frac{1}{\lambda ^2}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-176" class="proof"><em>Proof</em>. </span>This can be verified by using integration.</p>
+</div>
+</div>
+<div id="exercises-week-5" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.10</span> Exercises week 5<a href="cont.html#exercises-week-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-177" class="exercise"><strong>Exercise 5.1  </strong></span>A random variable <span class="math inline">\(Y\)</span> has density function</p>
+<p><span class="math display">\[\begin{equation*}
+  f(x)=\begin{cases}
+        ky &amp; 0 \leq y \leq 4 \\
+        0 &amp;  \text{     Otherwise}
+  \end{cases}
+\end{equation*}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Show that <span class="math inline">\(k = \frac{1}{8}\)</span> that makes this a valid density function</p></li>
+<li><p>Find the cumulative distribution function <span class="math inline">\(F(y)\)</span></p></li>
+<li><p>Sketch the density <span class="math inline">\(f\)</span> and <span class="math inline">\(F\)</span> on the same axes</p></li>
+<li><p>Calculate <span class="math inline">\(\text{P}(1\leq Y \leq 3)\)</span> in two ways, one with <span class="math inline">\(f\)</span> and one with <span class="math inline">\(F\)</span>.</p></li>
+<li><p>Calculate the mean <span class="math inline">\(\text{E}[X]\)</span> and variance <span class="math inline">\(\text{Var}[X]\)</span> of <span class="math inline">\(X\)</span>.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-178" class="exercise"><strong>Exercise 5.2  </strong></span>The length of time in minutes to serve a customer at a fast food restaurant is a random variable <span class="math inline">\(T\)</span> with density</p>
+<p><span class="math display">\[\begin{equation*}
+  f(x)=\begin{cases}
+        k(3t^2 + t) &amp; 0 \leq t \leq 2 \\
+        0 &amp;  \text{     Otherwise}
+  \end{cases}
+\end{equation*}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Show that <span class="math inline">\(k = \frac{1}{10}\)</span> that makes this a valid density function</p></li>
+<li><p>Find the cumulative distribution function <span class="math inline">\(F(t)\)</span></p></li>
+<li><p>Sketch the density <span class="math inline">\(f\)</span> and the distribution <span class="math inline">\(F\)</span>.</p></li>
+<li><p>Use the graph of <span class="math inline">\(F\)</span> to find the median.</p></li>
+<li><p>Calculate the probability that the time to serve a customer is one minute or less.</p></li>
+<li><p>Calculate the mean <span class="math inline">\(\text{E}[T]\)</span> and variance <span class="math inline">\(\text{Var}[T]\)</span> of the serving times.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-179" class="exercise"><strong>Exercise 5.3  </strong></span>Suppose the profit that a certain contractor will make on any one job, in thousands of pounds, is a random variable <span class="math inline">\(X\)</span> with density function given by</p>
+<p><span class="math display">\[\begin{equation*}
+  f(x)=\begin{cases}
+        c(4x -x^3) &amp; 0 \leq x \leq 2 \\
+        0 &amp;  \text{     Otherwise}
+  \end{cases}
+\end{equation*}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Show that <span class="math inline">\(k =\frac{1}{4}\)</span> that makes this a valid density function</p></li>
+<li><p>Find the expected profit and the variance of the profit per contract.</p></li>
+<li><p>Find the cumulative distribution function <span class="math inline">\(F(t)\)</span> and hence the median profit level.</p></li>
+<li><p>What is the probability that the contractor makes a profit of less than £<span class="math inline">\(600\)</span> on a contract?</p></li>
+<li><p>Assuming that the profit levels for each contract are independent, what is the probability that the profit level is less than £<span class="math inline">\(600\)</span> on
+i) each of the next <span class="math inline">\(10\)</span> jobs?
+ii) exactly <span class="math inline">\(4\)</span> of the next <span class="math inline">\(10\)</span> jobs?</p></li>
+</ol>
+<p>(Hint: for part (e) you should use your answer from (d) and an appropriate binomial distribution)</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-180" class="exercise"><strong>Exercise 5.4  </strong></span>The lifetime of a mobile phone batters (in hundreds of hours) is a random variable <span class="math inline">\(X\)</span> with density function</p>
+<p><span class="math display">\[\begin{equation*}
+  f(x)=\begin{cases}
+        2xe^{-x^2} &amp;  x \geq 0 \\
+        0 &amp;  \text{     Otherwise}
+  \end{cases}
+\end{equation*}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Show that this is a valid density function (integrate by substitution)</p></li>
+<li><p>Find the cumulative distribution function.</p></li>
+<li><p>Find the median lifetime of the battery</p></li>
+<li><p>Evaluate <span class="math inline">\(\text{P}(X\geq 2)\)</span></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-181" class="exercise"><strong>Exercise 5.5  </strong></span>Bacteria grow on a Petri dish in a circular disk. The radius of a circle <span class="math inline">\(R\)</span> can be modelled by a uniform distribution in the interval between <span class="math inline">\(1\)</span> and <span class="math inline">\(3\)</span> cm.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Write down the density ad distribution functions of <span class="math inline">\(R\)</span></p></li>
+<li><p>Work out the expected value of R and the variance of <span class="math inline">\(R\)</span>.</p></li>
+<li><p>If the area of the circle is the random variable <span class="math inline">\(A\)</span>, determine the distribution function of <span class="math inline">\(A\)</span>.
+(Start by considering what <span class="math inline">\(\text{P}(A\leq a)\)</span> means in terms of <span class="math inline">\(R\)</span>.)</p></li>
+<li><p>Determine the density function of <span class="math inline">\(A\)</span>.</p></li>
+<li><p>Calculate the expected value of the area <span class="math inline">\(A\)</span> and the variance of <span class="math inline">\(A\)</span>.</p></li>
+</ol>
+</div>
+<div id="exercises-for-feedback-week-5" class="section level3 hasAnchor">
+<h3><span class="header-section-number">5.10.1</span> Exercises for feedback week 5<a href="cont.html#exercises-for-feedback-week-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>An archer continues to shoot at a target until he hits the bullseye.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Give a reason why it may be possible to model X with a geometric
+distribution.</li>
+</ol>
+<p>The archer shoots the target around <span class="math inline">\(100\)</span> times and <span class="math inline">\(5\%\)</span> of the shots hit the bullseye.
+Suppose <span class="math inline">\(X ∼ Geom(p)\)</span> with <span class="math inline">\(p =5\%\)</span>.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Calculate the probability that he shoots the target in at least ten attempts.</p></li>
+<li><p>Give a reason why a geometric distribution may not be appropriate here, and how you could improve the model.</p></li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>A continuous random variable <span class="math inline">\(X\)</span> has the density function</li>
+</ol>
+<p><span class="math display">\[\begin{equation*}
+  f(x)=\begin{cases}
+        kx(1-x^2) &amp; 0\leq x \leq 1 \\
+        0 , &amp;  \text{   otherwise}\\
+  \end{cases}
+\end{equation*}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find the value of the constant <span class="math inline">\(k\)</span></p></li>
+<li><p>Calculate the mean and variance of <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Find an expression for the cumulative distribution <span class="math inline">\(F_X(x)\)</span> and sketch this function.</p></li>
+<li><p>Hence or otherwise calculate <span class="math inline">\(\text{P}(X\leq \frac{1}{3})\)</span>.</p></li>
+</ol>
+<ol start="3" style="list-style-type: decimal">
+<li>(counting practice)</li>
+</ol>
+<p>A box contains <span class="math inline">\(12\)</span> golf balls, <span class="math inline">\(3\)</span> of which are substandard. A random sample of <span class="math inline">\(4\)</span> balls is selected, without replacement, from the box. The random variable <span class="math inline">\(R\)</span> denotes the number of balls in the sample that are substandard.</p>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li>Show that the probability mass function of <span class="math inline">\(R\)</span> satisfies</li>
+</ol>
+<p><span class="math display">\[\text{P}(R=r) = \frac{{}^3C_r \times {}^9C_{4-r}}{^{12}C_{4}}\]</span></p>
+<p>(hint: count the number of choices out of the total number of ways. You may find it helpful to do the cases <span class="math inline">\(r=0,1,2,3\)</span> separately.)</p>
+<ol start="2" style="list-style-type: lower-roman">
+<li><p>Determine the probability that <span class="math inline">\(R=0\)</span></p></li>
+<li><p>Determine the probability that there are fewer than two substandard balls.</p></li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="binpois.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["6G4Z3008-notes.pdf", "6G4Z3008-notes.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

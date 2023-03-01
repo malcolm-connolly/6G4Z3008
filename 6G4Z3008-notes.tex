@@ -209,8 +209,8 @@ In this course we will learn some R programming. R is a free open-source softwar
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "Heads" "Tails" "Heads" "Tails" "Heads" "Tails" "Tails" "Heads" "Heads"
-## [10] "Tails"
+##  [1] "Heads" "Heads" "Tails" "Heads" "Tails" "Heads" "Tails" "Heads" "Tails"
+## [10] "Heads"
 \end{verbatim}
 
 \begin{definition}
@@ -2897,7 +2897,7 @@ There are a number of ways this can happen, equal to \(^nC_x\). Hence result.
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  A common mistake is \$ \frac{1}{6}\times \left( \frac{5}{6} \right)\^{}3\$. This is not correct - why? Because it can happen in \(^4C_1=4\) ways,
+  A common mistake is \(\frac{1}{6}\times \left( \frac{5}{6} \right)^3\). This is not correct - why? Because it can happen in \(^4C_1=4\) ways,
 \end{enumerate}
 
 \[4\times \frac{1}{6}\times \left( \frac{5}{6} \right)^3 = 0.386 \text{ (3 s.f.)}\]
@@ -3625,6 +3625,839 @@ The independent random variables \(X\) and \(Y\)have means \(2.5\) and \(1.5\) r
 a) \(X-Y\)
 b) \(2X+5\)
 \end{exercise}
+
+\hypertarget{cont}{%
+\chapter{Continuous random variables}\label{cont}}
+
+In this chapter we will learn about continuous random variables. Here the random variable may arise from a measurement process.
+
+In real life many observations are assumed to take real numbered values. We could in principle observe any value on a \emph{continuum}. For example:
+
+\begin{itemize}
+\item
+  The lifetime of a lithium-ion battery
+\item
+  The weight of a baby
+\item
+  The height of a random person
+\end{itemize}
+
+In practice we are constrained by the accuracy of our measuring device (heights are often quoted to the nearest inch, or centimeter) and the distinction between discrete and continuous is sometimes blurred.
+
+\begin{example}
+
+Consider a class of undergraduates at MMU. Each of the following is a measurement of age:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  Age to the nearest decade
+\item
+  Age in years
+\item
+  Age in months
+\item
+  Age in days
+\item
+  Age in seconds
+\end{enumerate}
+
+\end{example}
+
+Although none of the variables is strictly measured on a continuous scale, we would measure these variables differently. The decades would only take at most a few particular values and could be modelled as discrete, whereas age in seconds could take so many different values it's almost continuous.
+
+\hypertarget{relation-to-histograms}{%
+\section{Relation to histograms}\label{relation-to-histograms}}
+
+Given some actual continuous data, one could make a plot how frequently the data lies within certain intervals. The resulting plot is called a histogram. These intervals need not be equal, but in modern practice they are. In most computer implementations the intervals are called bins and the interval size the bin width.
+
+A classic example built into R is the Old Faithful geyser data. Here the waiting times between eruptions and the duration of the eruption were recorded for the Old Faithful geyser in Yellowstone National Park, Wyoming, USA.
+
+Suppose you want to estimate a proportion or probability of a particularly long waiting time. Then instead of the bar height being equal to the frequency we can set the area to be proportional to the frequency. This can be done in such a way as to make the total area under the histogram equal to \(1\).
+
+\begin{figure}
+\centering
+\includegraphics{6G4Z3008-notes_files/figure-latex/faithful-1.pdf}
+\caption{\label{fig:faithful}Waiting time between eruptions, one sees the data in more precision with smaller bin width}
+\end{figure}
+
+To find the proportion between two values one could total the area of the bars. One can see the limit of this idea, perhaps for a very large sample is that we would have a smooth curve like the plot titled `estimated density', and find the area under the curve.
+
+\hypertarget{two-students}{%
+\section{Two students}\label{two-students}}
+
+Consider two students who have an appointment with their tutor at \(12\)-noon.
+
+The first student makes an effort to get there on time, so is more likely to be a little late than very late, as they live far from the university. They may be late but will certainly be there before \(1\) o'clock.
+The second student has forgotten the appointment, but lives close to the university, so may arrive at any time before \(1\) o'clock, as soon as they remember.
+
+What is the sample space here?
+
+Take \(\Omega = [0,1]\) to be the delay measured in hours. An event here is an interval in which the student arrives. For example \([0,\frac{1}{2}]\) is the event that the student is no more than half an hour late.
+
+The probability of arriving in a given interval is the area under the curve \[f(x) = 2-2x \ ,\ \text{for all } x\in[0,1].\]
+
+This is shown in the image below:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/student1} 
+
+}
+
+\caption{density function for first student}\label{fig:student1}
+\end{figure}
+
+The probability of the student arriving in the first half an hour, between \(12:00\) and \(12:30\), is \(\frac{3}{4}\), whereas the probability of arriving in the last half an hour, between \(12:30\) and \(13:00\), is \(\frac{1}{4}\).
+
+The time until the second student arrives may be modelled by the function
+
+\[f(x) = 1\ ,\ \text{for all } x\in[0,1].\]
+
+This is called a \emph{uniform density} and reflects the fact that any time is equally likely.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/student2} 
+
+}
+
+\caption{density function for second student}\label{fig:student2}
+\end{figure}
+
+The probability related to this function is \(\text{P}([a,b]) = b-a\).
+
+Can you find an expression for \(\text{P}([a,b])\) for the first student?
+
+\hypertarget{the-probability-density-function}{%
+\section{The probability density function}\label{the-probability-density-function}}
+
+For continuous random variables the equivalent of the probability mass function is called the \textbf{\emph{probability density function}}.
+
+While for discrete random variables it makes sense to ask what is the probability that \(X\) takes some particular value \(\text{P}(X=x)\), this is always zero in the continuous setting. Instead we as what is the probability of \(X\) lying in an interval \(\text{P}(a<X<b)\).
+
+\begin{definition}
+The \textbf{\emph{probability density function}}of a continuous random variable \(X\) is a function such that
+
+\begin{itemize}
+\item
+  The function is everywhere non-negative
+  \[f(x) \geq 0 \text{ for all } \ x\in \mathbb{R}\]
+\item
+  The probability of \(X\) taking a value in the interval \((a,b)\) is given by the corresponding integral of that curve with respect to \(x\).
+\end{itemize}
+
+\[\text{P}(a<X<b) = \int_{a}^{b} f(x) \  dx\]
+
+\begin{itemize}
+\tightlist
+\item
+  The total area under the graph over the domain of \(f(x)\) is unity. Let the domain of \(f(x)\) be \(x\in (c,d)\).
+\end{itemize}
+
+\[ \int_{c}^{d} f(x) \  dx = 1\]
+\end{definition}
+
+\begin{example}
+The continuous random variable \(X\) has probability density function given by
+
+\begin{equation*}
+  f(x)=\begin{cases}
+    \frac{1}{2}x, &  0< x < 2\\
+    0 & \text{otherwise}.
+  \end{cases}
+\end{equation*}
+
+Calculate \(\text{P}(X>1)\).
+
+\emph{solution}
+
+you should do a sketch to get an intuition for whether the probability will be more than a half.
+
+You could use calculus here, but if you draw a picture the area required is a trapezium.
+
+The area is therefore \(\frac{(\frac{1}{2}+1)\times 1}{2}=\frac{3}{4}\).
+\end{example}
+
+\begin{example}
+A continuous random variable has probability density function \(f(x) = kx^2\) for \(0\leq x\leq 4\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Find the value of the constant \(k\)
+\item
+  Find \(\text{P}(1\leq X \leq 3)\)
+\end{enumerate}
+
+\emph{solution}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+\end{enumerate}
+
+We need to use calculus here as we have a curve.
+
+To find \(k\), we use the fact that \(f\) integrates to \(1\) over the domain.
+
+\[ \int_{0}^{4}kx^2 \ dx = \left[ \frac{kx^3}{3}\right]^{x=4}_{x=0}\]
+
+\[ 1= \frac{k}{3} (64-0)\]
+\[ 1= \frac{64k}{3} \]
+Hence \(k=\frac{3}{64}\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \[\text{P}(1\leq X \leq 3) = \int_{1}^{3} \frac{3}{64}x^2 \ dx\]
+\end{enumerate}
+
+Evaluating this numerically gives \(0.406\) to \(3\) significant figures.
+\end{example}
+
+Notice that if the inequality were \(1<X<3\) or any combination of \(<\) and \(\leq\) the calculation would be the same, so we do not need to worry about the inequality being strict or not for continuous random variables.
+
+This is because the area at a single \(x\) value has zero width, so does not contribute to the integral.
+
+\hypertarget{expectation-and-variance}{%
+\section{Expectation and variance}\label{expectation-and-variance}}
+
+The expectation is defined similarly to the case of discrete random variables, but here we use the integral rather than a sum.
+
+\begin{definition}
+The \textbf{\emph{expectation}}, or \textbf{\emph{expected value}} or \textbf{\emph{mean value}} of a continuous random variable \(X\) is given by
+
+\[ \text{E}[X] = \int_{-\infty}^{\infty}x f(x) \ dx\]
+Where the limits indicate that the integral is over the smallest and largest attainable values of \(X\). The mean value is often denotes \(\text{E}[X] = \mu\).
+
+More generally we define
+
+\[ \text{E}[g(X)] = \int_{-\infty}^{\infty}g(x) f(x) \ dx\]
+\end{definition}
+
+\begin{definition}
+The variance of a continuous random variable is given by
+
+\[\text{Var}[X] = \text{E}[(X-\mu)^2] = \text{E}[X^2]-\mu^2\]
+The standard deviation \(\sigma\) of \(X\) is the square root of the variance. That is
+
+\[\sigma = \sqrt{\text{Var}[X]}\]
+\end{definition}
+
+\begin{example}[marathon times]
+The times in excess of \(2\) hours taken to complete a marathon road race are modelled by the continuous random variable \(T\) hours, where \(T\) has the probability density function
+
+\begin{equation*}
+  f(t)=\begin{cases}
+    \frac{4}{27}t^2(3-t), &  0< x < 3\\
+    0 & \ \ \ \  \text{otherwise}.
+  \end{cases}
+\end{equation*}
+
+Find the \emph{mean} and \emph{standard deviation} of the times taken to complete the race.
+\end{example}
+
+\emph{solution}
+
+For the mean
+
+\[ \text{E}[T] = \int_{0}^{3} t\times \frac{4}{27}t^2(3-t) \ dt\]
+
+This can be evaluated (for example numerically) as \(\frac{9}{5}\). This can be interpreted as \(1\) hour and \(48\) minutes excess of \(2\) hours, so the mean time is \(3\) hours and \(48\) minutes.
+
+The variance use \(\text{Var}[T]=\text{E}[X^2]-\text{E}[X]^2 = \frac{18}{5} - (\frac{9}{5})^2 =\frac{9}{25}\). The interpretation is \(21.6\) minutes variance, and so \(\sigma = \sqrt{21.6} = 4.65\) minutes (\(3\) s.f.) standard deviation
+
+\hypertarget{mode}{%
+\section{Mode}\label{mode}}
+
+If the probability density function has a unique maximum then the value of \(X\) at the maximum is called the mode. To locate the mode it is a good idea to draw a sketch. Sometimes the mode can be deduced immediately. Other times one may need to differentiate.
+
+\begin{example}
+
+Deduce the mode in the following cases
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \[f(x) = \frac{1}{8}x , 0\leq x \leq 4\]
+\item
+  \begin{equation*}
+    f(x)=\begin{cases}
+   \frac{1}{4}x, &  0< x \leq 2 \\
+   1-\frac{1}{4}x & \ \  2< x \leq 4
+   0& \ \ \ \ \  \ \ \text{otherwise}
+    \end{cases}
+  \end{equation*}
+\item
+  \[f(x) = \frac{3}{80}(2+x)(4-x) , \ \  0\leq x \leq 4.\]
+\end{enumerate}
+
+\emph{solution}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  mode is 4
+\item
+  mode is 2
+\item
+  One could differentiate or complete the square here to show the mode is \(1\).
+\end{enumerate}
+
+\end{example}
+
+\begin{example}[marathon times]
+The times in excess of \(2\) hours taken to complete a marathon road race are modelled by the continuous random variable \(T\) hours, where \(T\) has the probability density function
+
+\begin{equation*}
+  f(t)=\begin{cases}
+    \frac{4}{27}t^2(3-t), &  0< x < 3\\
+    0 & \ \ \ \  \text{otherwise}.
+  \end{cases}
+\end{equation*}
+
+Find the modal time taken to complete the race.
+\end{example}
+
+\emph{solution}
+
+Differentiating gives
+
+\[f'(t) = \frac{4}{27}(2t \times(3-t) + t^2\times(-1)) = \frac{4}{27}(6t -3t^2)\]
+
+Setting \(f'(t)=0\) yields
+
+\[0 = 3t(2 - t) \]
+So either\(t=0\) or \(2\). So the modal excess is \(2\) hours, and the modal total time is \(2+2=4\) hours.
+
+\hypertarget{cdf}{%
+\section{CDF}\label{cdf}}
+
+The cumulative distribution function can be defined in a similar way to discrete random variables.
+
+\begin{definition}
+The \textbf{\emph{distribution function}} or more simply the \textbf{\emph{CDF}} of a continuous random variable is the function defined by
+
+\[F(x) = \text{P}(X\leq x) = \text{P}(X< x).\]
+
+The function \(F\) is related to the density via
+
+\[F(x) = \int_{-\infty}^{x}f(u) \ du\]
+Where the lower limit \(-\infty\) is in practice the lowest attainable value of \(X\).
+
+On the other hand,
+
+\[ f(x) = \frac{d}{dx} F(x)\]
+\end{definition}
+
+These are some facts about the CDF.
+
+\begin{itemize}
+\item
+  Since it is always impossible to have a value smaller than \(-\infty\) or larger than \(\infty\) we have \(F(-\infty)=0\) and \(F(\infty)=1\)
+\item
+  \(F\) is called \emph{monotonically increasing} which means it either increases or remains constant but never decreases.
+\item
+  \(F\) is a continuous function, even if \(f\) is not.
+\item
+  Useful relations are
+  \[\text{P}(c<X<d) = F(d) - F(c)\]
+\end{itemize}
+
+and
+
+\[ \text{P}(X>x) = 1-F(x)\]
+
+\begin{example}
+For a continuous random variable \(X\) with density
+
+\[f(x) = \frac{1}{8}x, \ 0\leq x\leq 4\]
+a) Find the distribution function \(F(x)\) and sketch it.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Evaluate \(\text{P}(0.3\leq X\leq 1.8)\)
+\end{enumerate}
+
+\emph{solution}
+
+For values between \(0\) and \(4\) we have
+
+\[F(t) = \int_{0}^{t} \frac{1}{8}x \ dx = \left[ \frac{x^2}{16}\right]^{t}_{0}= \frac{t^2}{16}\]
+
+Altogether
+
+\begin{equation*}
+  F(x)=\begin{cases}
+        0 \ \ \ \ x\leq 0 \\
+        \frac{x^2}{16} \ \ \   0\leq x \leq 4\\
+        1 \ \ \ \ x\geq 4
+  \end{cases}
+\end{equation*}
+\end{example}
+
+\begin{example}
+For a continuous random variable \(X\) with density
+
+\begin{equation*}
+  f(x)=\begin{cases}
+        \frac{x}{3} \ \ \ \ \ \ \ \ \ \ \ \ 0\leq x\leq 2  \\
+        -\frac{2}{3}x+2 \ \ \   2\leq x \leq 3\\
+        0 \ \ \ \ \ \ \ \ \ \ \ \  \ \ \ \text{otherwise}
+  \end{cases}
+\end{equation*}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Find the CDF F(x) and sketch it.
+\end{enumerate}
+
+\emph{solution}
+
+The CDF must be found in two stages as \(f\) is a piecewise function.
+
+Integrating over the interval \(0\leq x\leq 2\) gives \(\frac{x^2}{6}\)
+
+Integrating over the interval \(2\leq x \leq 3\) gives \(-\frac{x^2}{3} +2x -2\)
+
+Altogether
+
+\begin{equation*}
+  F(x)=\begin{cases}
+        \frac{x^2}{6} \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\leq x\leq 2  \\
+        -\frac{x^2}{3} +2x -2 \ \ \   2\leq x \leq 3\\
+        0 \ \ \ \ \ \ \ \ \ \  \ \ \ \ \  \ \ \ x\geq 3
+  \end{cases}
+\end{equation*}
+\end{example}
+
+Generally speaking a plot or sketch of \(F\) will look vaguely S-shaped.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/cum1} 
+
+}
+
+\caption{cumulative distribution function is S shaped}\label{fig:cum1}
+\end{figure}
+
+For discrete random variables we sometimes called \(f\) the distribution function and called \(F\) the cumulative distribution function. However for continuous random variables \(f\) is never called the distribution function, and only called the density function, and \(F\) is called the distribution function exclusively.
+
+\hypertarget{median-quartiles-and-percentiles}{%
+\section{median, quartiles and percentiles}\label{median-quartiles-and-percentiles}}
+
+The median, quartiles and percentiles are best expressed in terms of the CDF.
+
+The median is the value \(50\%\) of the way through the distribution. It splits the area under the curve \(y=f(x)\) into two halves.
+
+\begin{definition}
+The \textbf{\emph{median}} of a continuous random variable \(X\) is the value \(m\) that satisfies either of
+
+\[F(m) = 0.5 , \ \ \ \ \int_{-\infty}^{m}f(x) \ dx = 0.5\]
+\end{definition}
+
+\begin{definition}
+The \textbf{\emph{lower quartile}} \(Q_1\) satisfies \(F(Q_1) = 0.25\).
+The \textbf{\emph{upper quartile}} \(Q_3\) satisfies \(F(Q_3) = 0.75\).
+The median is the second quartile \(m=Q_2\).
+\end{definition}
+
+\begin{definition}
+More generally one may define a \textbf{\emph{percentile}} \(P_{\alpha}\) at \(\alpha \%\) to be the value such that \(F(P_{\alpha})= \alpha \%\). The median is the \(50^{\text{th}}\) percentile \(m = P_{50}\), and \(Q_1 = P_{25}\), \(Q_3 = P_{75}\)
+\end{definition}
+
+\begin{definition}
+More generally still is the \textbf{\emph{quantile}} which is the value \(q\) such that \(F(q)=p\) for any \(p\in(0,1)\)
+\end{definition}
+
+\begin{example}
+Let's find the median for the marathon example.
+
+\begin{equation*}
+  f(t)=\begin{cases}
+    \frac{4}{27}t^2(3-t), &  0< t < 3\\
+    0 & \ \ \ \  \text{otherwise}.
+  \end{cases}
+\end{equation*}
+
+First find the CDF.
+
+In the range \(0< t < 3\)
+\[F(t) = \frac{4}{27}\int_{0}^{t} u^2(3-u) \ du\]
+
+\[= \frac{4}{27}\left[\frac{3u^3}{3}-\frac{u^4}{4}\right]^{t}_{0} =\frac{4}{27}\left( t^3 - \frac{t^4}{4} \right)\]
+
+Then solving \(F(t)=0.5\),
+
+\[\frac{4}{27}\left(t^3 - \frac{t^4}{4} \right)= 0.5\]
+this can be evaluated numerically and there are two values \(t=3.74\) and \(t= 1.84\) the first one is outside the range of \(0< t < 3\) so is discarded. And so the median time is \(2+1.84 = 3.84\) hours to complete the marathon. This is just under the mean.
+\end{example}
+
+The marathon example shows that mode, median and mean are not the same number usually. The mode was \(4\), the median was \(3.84\) and the mean was \(3.8\) hours.
+
+\hypertarget{uniform-distribution}{%
+\section{Uniform distribution}\label{uniform-distribution}}
+
+We encountered a uniform random variable in the example of the forgetful student. Its characteristic is that for its entire domain of values of \(X\) the density is constant.
+
+If the density is a constant on some interval, that means \(f(x) = k\) for \(a\leq x \leq b\). What is the value of \(k\)?
+
+\begin{definition}
+A continuous random variable follows a continuous \textbf{\emph{uniform distribution}} (sometimes called \textbf{\emph{rectangular}}) with support \([a,b]\), denoted \(X\sim U(a,b)\) has probability density function given by
+
+\begin{equation*}
+  f(x)=\begin{cases}
+    \frac{1}{b-a}, &  a< x < b\\
+    0 & \ \ \ \  \text{otherwise}.
+  \end{cases}
+\end{equation*}
+\end{definition}
+
+The uniform distribution is symmetrical so the mean is equal to the median, but there is no mode here.
+
+\begin{theorem}
+For a continuous uniform distribution \(X\sim U(a,b)\)
+
+\[\text{E}[X] = \frac{a+b}{2}\]
+
+and
+
+\[\text{Var}[X]= \frac{(b-a)^2}{12}\]
+\end{theorem}
+
+\begin{proof}
+\[\text{E}[X] = \int_a^b x \times \frac{1}{b-a} dx  =\frac{1}{b-a} \left[ \frac{x^2}{2} \right]^{b}_{a}\]
+
+Now
+
+\[= \frac{1}{b-a} \left( \frac{b^2-a^2}{2} \right)\]
+And using the difference of two squares
+
+\[= \frac{1}{b-a} \left( \frac{(b-a)(b+a)}{2} \right)\]
+Hence the result, upon cancelling \((b-a)\).
+
+For the variance consider
+
+\[\text{E}[X^2] = \int_a^b x^2 \times \frac{1}{b-a} dx  =\frac{1}{b-a} \left[ \frac{x^3}{3} \right]^{b}_{a}\]
+
+\[= \frac{1}{b-a} \left( \frac{b^3-a^3}{3} \right)\]
+
+And using the difference of cubes
+
+\[= \frac{1}{b-a} \left( \frac{(b-a)(b^2+ab+a^2)}{3} \right)\]
+
+Hence \(\text{E}[X^2] = \frac{b^2+ab+a^2}{3}\).
+
+Now
+
+\[\text{Var}[X] = \text{E}[X^2] - \text{E}[X]^2 = \frac{b^2+ab+a^2}{3} - \left(\frac{a+b}{2} \right)^2\]
+
+\[ = \frac{4(b^2+ab+a^2)- 3(a^2 + 2ab +b^2)}{12}\]
+\[= \frac{a^2-2ab +b^2}{12}\]
+Hence result by factorising the numerator.
+\end{proof}
+
+The CDF of the continuous uniform distribution can also be found.
+
+\begin{proposition}
+The CDF of a continuous uniform distribution \(X\sim U(a,b)\) has the form
+
+\begin{equation*}
+  F(x)=\begin{cases}
+        0 & x \leq a \\
+    \frac{x-a}{b-a}, &  a< x < b\\
+    1 & \ \ x \geq b.
+  \end{cases}
+\end{equation*}
+\end{proposition}
+
+\emph{proof}
+
+Find the equation of the line between \((a,0)\) and \((b,1)\).
+
+\hypertarget{exponential-distribution}{%
+\section{Exponential distribution}\label{exponential-distribution}}
+
+The exponential distribution is like the continuous version of a geometric distribution. Instead of counting how many attempts until some event happens, we instead measure the time until an event occurs that would ordinarily occur at some rate.
+
+Consider a sequence of independent events occuring at random points in time at a rate \(\lambda\). We learned last week how the number of events that occur could be modelled by a discrete random variable called a Poisson distribution.
+
+Instead of counting how many events occur, we could consider measuring how long we wait until the next event.
+
+We set a starting time \(x=0\) and denote the random variable `the time to the first event' by \(X\).
+
+\[\text{P}(X>x) = \text{P}( \{\text{No events occur in the time interval (0,x)}\})\]
+
+The mean number of events that occur per unit interval is \(\lambda\). So the number of events that occur in the interval \((0,x)\) of length \(x-0 = x\) is scaled proportionally so equals \(\lambda \times x\).
+
+The probability of obtaining \(0\) events from a Poisson distribution with mean \(\lambda x\) is
+
+\[\frac{(\lambda x)^0 e^{-\lambda x}}{0!} = e^{-\lambda x}\]
+So
+
+\[\text{P}(X>x) =  e^{-\lambda x}\]
+And the cumulative distribution equals
+
+\[F(x) = 1-\text{P(X>x)}=1-e^{-\lambda x}\]
+
+Differentiating this with respect to \(x\) we obtain
+
+\[f(x) = \lambda e^{-\lambda x}\]
+:::\{.definition\}
+A continuous random variable \(X\) is said to have an \textbf{\emph{exponential distribution}}, denoted \(X\sim \text{Exp}(\lambda)\) if it has the density function
+
+\[f(x) = \lambda e^{-\lambda x} , x >0\]
+:::
+
+Now we will consider the shape of the exponential distribution.
+
+\begin{theorem}
+For an exponential distribution \(X\sim \text{Exp}(\lambda)\), we have
+
+\[\text{E}[X] = \frac{1}{\lambda}\]
+and
+
+\[\text{Var}[X] = \frac{1}{\lambda ^2}\]
+\end{theorem}
+
+\begin{proof}
+This can be verified by using integration.
+\end{proof}
+
+\hypertarget{exercises-week-5}{%
+\section{Exercises week 5}\label{exercises-week-5}}
+
+\begin{exercise}
+
+A random variable \(Y\) has density function
+
+\begin{equation*}
+  f(x)=\begin{cases}
+        ky & 0 \leq y \leq 4 \\
+        0 &  \text{     Otherwise}
+  \end{cases}
+\end{equation*}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Show that \(k = \frac{1}{8}\) that makes this a valid density function
+\item
+  Find the cumulative distribution function \(F(y)\)
+\item
+  Sketch the density \(f\) and \(F\) on the same axes
+\item
+  Calculate \(\text{P}(1\leq Y \leq 3)\) in two ways, one with \(f\) and one with \(F\).
+\item
+  Calculate the mean \(\text{E}[X]\) and variance \(\text{Var}[X]\) of \(X\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+The length of time in minutes to serve a customer at a fast food restaurant is a random variable \(T\) with density
+
+\begin{equation*}
+  f(x)=\begin{cases}
+        k(3t^2 + t) & 0 \leq t \leq 2 \\
+        0 &  \text{     Otherwise}
+  \end{cases}
+\end{equation*}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Show that \(k = \frac{1}{10}\) that makes this a valid density function
+\item
+  Find the cumulative distribution function \(F(t)\)
+\item
+  Sketch the density \(f\) and the distribution \(F\).
+\item
+  Use the graph of \(F\) to find the median.
+\item
+  Calculate the probability that the time to serve a customer is one minute or less.
+\item
+  Calculate the mean \(\text{E}[T]\) and variance \(\text{Var}[T]\) of the serving times.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+Suppose the profit that a certain contractor will make on any one job, in thousands of pounds, is a random variable \(X\) with density function given by
+
+\begin{equation*}
+  f(x)=\begin{cases}
+        c(4x -x^3) & 0 \leq x \leq 2 \\
+        0 &  \text{     Otherwise}
+  \end{cases}
+\end{equation*}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Show that \(k =\frac{1}{4}\) that makes this a valid density function
+\item
+  Find the expected profit and the variance of the profit per contract.
+\item
+  Find the cumulative distribution function \(F(t)\) and hence the median profit level.
+\item
+  What is the probability that the contractor makes a profit of less than £\(600\) on a contract?
+\item
+  Assuming that the profit levels for each contract are independent, what is the probability that the profit level is less than £\(600\) on
+  i) each of the next \(10\) jobs?
+  ii) exactly \(4\) of the next \(10\) jobs?
+\end{enumerate}
+
+(Hint: for part (e) you should use your answer from (d) and an appropriate binomial distribution)
+\end{exercise}
+
+\begin{exercise}
+
+The lifetime of a mobile phone batters (in hundreds of hours) is a random variable \(X\) with density function
+
+\begin{equation*}
+  f(x)=\begin{cases}
+        2xe^{-x^2} &  x \geq 0 \\
+        0 &  \text{     Otherwise}
+  \end{cases}
+\end{equation*}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Show that this is a valid density function (integrate by substitution)
+\item
+  Find the cumulative distribution function.
+\item
+  Find the median lifetime of the battery
+\item
+  Evaluate \(\text{P}(X\geq 2)\)
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+Bacteria grow on a Petri dish in a circular disk. The radius of a circle \(R\) can be modelled by a uniform distribution in the interval between \(1\) and \(3\) cm.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Write down the density ad distribution functions of \(R\)
+\item
+  Work out the expected value of R and the variance of \(R\).
+\item
+  If the area of the circle is the random variable \(A\), determine the distribution function of \(A\).
+  (Start by considering what \(\text{P}(A\leq a)\) means in terms of \(R\).)
+\item
+  Determine the density function of \(A\).
+\item
+  Calculate the expected value of the area \(A\) and the variance of \(A\).
+\end{enumerate}
+
+\end{exercise}
+
+\hypertarget{exercises-for-feedback-week-5}{%
+\subsection{Exercises for feedback week 5}\label{exercises-for-feedback-week-5}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  An archer continues to shoot at a target until he hits the bullseye.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Give a reason why it may be possible to model X with a geometric
+  distribution.
+\end{enumerate}
+
+The archer shoots the target around \(100\) times and \(5\%\) of the shots hit the bullseye.
+Suppose \(X ∼ Geom(p)\) with \(p =5\%\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\item
+  Calculate the probability that he shoots the target in at least ten attempts.
+\item
+  Give a reason why a geometric distribution may not be appropriate here, and how you could improve the model.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  A continuous random variable \(X\) has the density function
+\end{enumerate}
+
+\begin{equation*}
+  f(x)=\begin{cases}
+        kx(1-x^2) & 0\leq x \leq 1 \\
+        0 , &  \text{   otherwise}\\
+  \end{cases}
+\end{equation*}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Find the value of the constant \(k\)
+\item
+  Calculate the mean and variance of \(X\).
+\item
+  Find an expression for the cumulative distribution \(F_X(x)\) and sketch this function.
+\item
+  Hence or otherwise calculate \(\text{P}(X\leq \frac{1}{3})\).
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  (counting practice)
+\end{enumerate}
+
+A box contains \(12\) golf balls, \(3\) of which are substandard. A random sample of \(4\) balls is selected, without replacement, from the box. The random variable \(R\) denotes the number of balls in the sample that are substandard.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\tightlist
+\item
+  Show that the probability mass function of \(R\) satisfies
+\end{enumerate}
+
+\[\text{P}(R=r) = \frac{{}^3C_r \times {}^9C_{4-r}}{^{12}C_{4}}\]
+
+(hint: count the number of choices out of the total number of ways. You may find it helpful to do the cases \(r=0,1,2,3\) separately.)
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\setcounter{enumi}{1}
+\item
+  Determine the probability that \(R=0\)
+\item
+  Determine the probability that there are fewer than two substandard balls.
+\end{enumerate}
 
   \bibliography{book.bib,packages.bib}
 

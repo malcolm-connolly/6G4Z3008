@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  27 FEB 2023 09:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.27)  1 MAR 2023 19:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **6G4Z3008-notes.tex
 (./6G4Z3008-notes.tex
 LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2023-02-07> (c:/Users/Malcolm/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/book.cls
+L3 programming layer <2023-02-22> (c:/Users/Malcolm/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2022/07/02 v1.4n Standard LaTeX document class
 (c:/Users/Malcolm/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/bk10.clo
 File: bk10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
@@ -661,7 +661,7 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 206.
 
 Overfull \hbox (69.7488pt too wide) in paragraph at lines 214--214
-[]\T1/lmtt/m/n/10 ##  [1] "Heads" "Tails" "Heads" "Tails" "Heads" "Tails" "Tails" "Heads" "Heads"[] 
+[]\T1/lmtt/m/n/10 ##  [1] "Heads" "Heads" "Tails" "Heads" "Tails" "Heads" "Tails" "Heads" "Tails"[] 
  []
 
 [6]
@@ -906,16 +906,69 @@ Package longtable Warning: Column widths have changed
 ]
 Chapter 4.
 [61] [62]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.2900   A common mistake is \$ \frac{1}{6}
-                                           \times \left( \frac{5}{6} \right)... 
+<./figures/binomial1.jpg, id=726, 661.2705pt x 472.164pt>
+File: ./figures/binomial1.jpg Graphic file (type jpg)
+<use ./figures/binomial1.jpg>
+Package pdftex.def Info: ./figures/binomial1.jpg  used on input line 2921.
+(pdftex.def)             Requested size: 258.75212pt x 184.7556pt.
+<./figures/binomial2.jpg, id=727, 660.066pt x 457.71pt>
+File: ./figures/binomial2.jpg Graphic file (type jpg)
+<use ./figures/binomial2.jpg>
+Package pdftex.def Info: ./figures/binomial2.jpg  used on input line 2930.
+(pdftex.def)             Requested size: 258.7441pt x 179.4211pt.
+[63] [64 <./figures/binomial1.JPG> <./figures/binomial2.JPG>]
+Overfull \hbox (2.09422pt too wide) detected at line 2987
+\OT1/lmr/m/n/10 = [][]\OML/lmm/m/it/10 C[] \OMS/lmsy/m/n/10 ^^B \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 15[] \OMS/lmsy/m/n/10 ^^B \OT1/lmr/m/n/10 (1 \OMS/lmsy/m/n/10 ^^@ \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 15)[] + [][]\OML/lmm/m/it/10 C[] \OMS/lmsy/m/n/10 ^^B \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 15[] \OMS/lmsy/m/n/10 ^^B \OT1/lmr/m/n/10 (1 \OMS/lmsy/m/n/10 ^^@ \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 15)[] + [][]\OML/lmm/m/it/10 C[] \OMS/lmsy/m/n/10 ^^B \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 15[] \OMS/lmsy/m/n/10 ^^B \OT1/lmr/m/n/10 (1 \OMS/lmsy/m/n/10 ^^@ \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 15)[]
+ []
+
+[65]
+
+LaTeX Warning: Reference `exm:fourfairdice' on page 66 undefined on input line 3019.
+
+[66] [67]
+<./figures/poisson1.jpg, id=770, 794.97pt x 458.31226pt>
+File: ./figures/poisson1.jpg Graphic file (type jpg)
+<use ./figures/poisson1.jpg>
+Package pdftex.def Info: ./figures/poisson1.jpg  used on input line 3116.
+(pdftex.def)             Requested size: 258.75035pt x 149.1735pt.
+<./figures/poisson2.jpg, id=771, 787.14075pt x 467.94826pt>
+File: ./figures/poisson2.jpg Graphic file (type jpg)
+<use ./figures/poisson2.jpg>
+Package pdftex.def Info: ./figures/poisson2.jpg  used on input line 3125.
+(pdftex.def)             Requested size: 258.74834pt x 153.82361pt.
+[68] [69 <./figures/poisson1.JPG> <./figures/poisson2.JPG>] [70] [71] [72] [73] [74] [75] [76] [77] [78]
+Chapter 5.
+[79
+
+]
+<6G4Z3008-notes_files/figure-latex/faithful-1.pdf, id=928, 469.755pt x 325.215pt>
+File: 6G4Z3008-notes_files/figure-latex/faithful-1.pdf Graphic file (type pdf)
+<use 6G4Z3008-notes_files/figure-latex/faithful-1.pdf>
+Package pdftex.def Info: 6G4Z3008-notes_files/figure-latex/faithful-1.pdf  used on input line 3680.
+(pdftex.def)             Requested size: 344.997pt x 238.84406pt.
+[80 <./6G4Z3008-notes_files/figure-latex/faithful-1.pdf>]
+<./figures/student1.jpg, id=942, 532.389pt x 417.9615pt>
+File: ./figures/student1.jpg Graphic file (type jpg)
+<use ./figures/student1.jpg>
+Package pdftex.def Info: ./figures/student1.jpg  used on input line 3704.
+(pdftex.def)             Requested size: 258.75262pt x 203.13838pt.
+[81 <./figures/student1.JPG>]
+<./figures/student2.jpg, id=951, 528.17325pt x 426.99525pt>
+File: ./figures/student2.jpg Graphic file (type jpg)
+<use ./figures/student2.jpg>
+Package pdftex.def Info: ./figures/student2.jpg  used on input line 3721.
+(pdftex.def)             Requested size: 258.75073pt x 209.1839pt.
+[82 <./figures/student2.JPG>] [83] [84]
+! Extra alignment tab has been changed to \cr.
+<template> $\hfil $$\endtemplate 
+                                 
+l.3891    0&
+             \ \ \ \ \  \ \ \text{otherwise} 
 Here is how much of TeX's memory you used:
- 22275 strings out of 477989
- 413955 string characters out of 5837725
- 1867340 words of memory out of 5000000
- 41556 multiletter control sequences out of 15000+600000
+ 22529 strings out of 477984
+ 418026 string characters out of 5837577
+ 1867382 words of memory out of 5000000
+ 41640 multiletter control sequences out of 15000+600000
  605789 words of font info for 90 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,10n,80p,642b,640s stack positions out of 10000i,1000n,20000p,200000b,200000s
