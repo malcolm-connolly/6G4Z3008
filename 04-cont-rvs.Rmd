@@ -369,7 +369,7 @@ The CDF must be found in two stages as $f$ is a piecewise function.
 
 Integrating over the interval $0\leq x\leq 2$ gives $\frac{x^2}{6}$
 
-Integrating over the interval $2\leq x \leq 3$ gives $-\frac{x^2}{3} +2x -2$
+Integrating over the interval $2\leq x \leq 3$, and adding the integral over the previous interval, gives $-\frac{x^2}{3} +2x -2$
 
 Altogether 
 
@@ -377,7 +377,7 @@ Altogether
   F(x)=\begin{cases}
         \frac{x^2}{6} \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\leq x\leq 2  \\
         -\frac{x^2}{3} +2x -2 \ \ \   2\leq x \leq 3\\
-        0 \ \ \ \ \ \ \ \ \ \  \ \ \ \ \  \ \ \ x\geq 3
+        1 \ \ \ \ \ \ \ \ \ \  \ \ \ \ \  \ \ \ x\geq 3
   \end{cases}
 \end{equation*}
 
