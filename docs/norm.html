@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Normal distribution | Probability Theory and Statistics</title>
+  <meta name="description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Normal distribution | Probability Theory and Statistics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  <meta name="github-repo" content="6G4Z3008" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Normal distribution | Probability Theory and Statistics" />
+  
+  <meta name="twitter:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  
+
+<meta name="author" content="Malcolm Connolly" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="cards.ico" type="image/x-icon" />
+<link rel="prev" href="cont.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><a href="./"><img src="logo.svg"></a></li>
+<li><a href="https://moodle.mmu.ac.uk/course/view.php?id=157842" target="blank" > 6G4Z3008 course notes </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#frequentist-perspective"><i class="fa fa-check"></i><b>1.1</b> Frequentist perspective</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#naive-probability"><i class="fa fa-check"></i><b>1.2</b> Naive probability</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#complements-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Complements and mutual exclusivity</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#outcomes-and-counting"><i class="fa fa-check"></i><b>1.4</b> Outcomes and counting</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#factorials"><i class="fa fa-check"></i><b>1.4.1</b> Factorials</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#permutations"><i class="fa fa-check"></i><b>1.4.2</b> Permutations</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#combinations"><i class="fa fa-check"></i><b>1.4.3</b> Combinations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#exercises-week-1"><i class="fa fa-check"></i><b>1.5</b> Exercises Week 1</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#tutorial-exercises"><i class="fa fa-check"></i><b>1.5.1</b> Tutorial exercises</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#exercises-for-feedback"><i class="fa fa-check"></i><b>1.5.2</b> Exercises for feedback</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cond.html"><a href="cond.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
+<li class="chapter" data-level="2.1" data-path="cond.html"><a href="cond.html#independence"><i class="fa fa-check"></i><b>2.1</b> Independence</a></li>
+<li class="chapter" data-level="2.2" data-path="cond.html"><a href="cond.html#conditional-probability"><i class="fa fa-check"></i><b>2.2</b> Conditional Probability</a></li>
+<li class="chapter" data-level="2.3" data-path="cond.html"><a href="cond.html#bayes-theorem"><i class="fa fa-check"></i><b>2.3</b> Bayes Theorem</a></li>
+<li class="chapter" data-level="2.4" data-path="cond.html"><a href="cond.html#exercises-week-2"><i class="fa fa-check"></i><b>2.4</b> Exercises Week 2</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="drv.html"><a href="drv.html"><i class="fa fa-check"></i><b>3</b> Discrete Random Variables</a><ul>
+<li class="chapter" data-level="3.1" data-path="drv.html"><a href="drv.html#random-variables"><i class="fa fa-check"></i><b>3.1</b> Random Variables</a></li>
+<li class="chapter" data-level="3.2" data-path="drv.html"><a href="drv.html#discrete-probability-distributions"><i class="fa fa-check"></i><b>3.2</b> Discrete probability distributions</a></li>
+<li class="chapter" data-level="3.3" data-path="drv.html"><a href="drv.html#properties-of-probability-mass-functions"><i class="fa fa-check"></i><b>3.3</b> Properties of probability mass functions</a></li>
+<li class="chapter" data-level="3.4" data-path="drv.html"><a href="drv.html#mean-variance-and-moments"><i class="fa fa-check"></i><b>3.4</b> Mean, variance and moments</a></li>
+<li class="chapter" data-level="3.5" data-path="drv.html"><a href="drv.html#exercises-week-3"><i class="fa fa-check"></i><b>3.5</b> Exercises Week 3</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="drv.html"><a href="drv.html#exercises-for-feedback-1"><i class="fa fa-check"></i><b>3.5.1</b> Exercises for feedback</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="binpois.html"><a href="binpois.html"><i class="fa fa-check"></i><b>4</b> Special discrete random variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="binpois.html"><a href="binpois.html#the-binomial-distribution"><i class="fa fa-check"></i><b>4.1</b> The Binomial Distribution</a></li>
+<li class="chapter" data-level="4.2" data-path="binpois.html"><a href="binpois.html#the-binomial-mass-function"><i class="fa fa-check"></i><b>4.2</b> The binomial mass function</a></li>
+<li class="chapter" data-level="4.3" data-path="binpois.html"><a href="binpois.html#mean-and-variance"><i class="fa fa-check"></i><b>4.3</b> Mean and variance</a></li>
+<li class="chapter" data-level="4.4" data-path="binpois.html"><a href="binpois.html#the-poisson-distribution"><i class="fa fa-check"></i><b>4.4</b> The Poisson distribution</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="binpois.html"><a href="binpois.html#further-properties"><i class="fa fa-check"></i><b>4.4.1</b> Further properties</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="binpois.html"><a href="binpois.html#mean-and-variance-1"><i class="fa fa-check"></i><b>4.5</b> Mean and Variance</a></li>
+<li class="chapter" data-level="4.6" data-path="binpois.html"><a href="binpois.html#deriving-the-poisson-mass-function"><i class="fa fa-check"></i><b>4.6</b> Deriving the Poisson mass function</a></li>
+<li class="chapter" data-level="4.7" data-path="binpois.html"><a href="binpois.html#exercises-week-4"><i class="fa fa-check"></i><b>4.7</b> Exercises week 4</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cont.html"><a href="cont.html"><i class="fa fa-check"></i><b>5</b> Continuous random variables</a><ul>
+<li class="chapter" data-level="5.1" data-path="cont.html"><a href="cont.html#relation-to-histograms"><i class="fa fa-check"></i><b>5.1</b> Relation to histograms</a></li>
+<li class="chapter" data-level="5.2" data-path="cont.html"><a href="cont.html#two-students"><i class="fa fa-check"></i><b>5.2</b> Two students</a></li>
+<li class="chapter" data-level="5.3" data-path="cont.html"><a href="cont.html#the-probability-density-function"><i class="fa fa-check"></i><b>5.3</b> The probability density function</a></li>
+<li class="chapter" data-level="5.4" data-path="cont.html"><a href="cont.html#expectation-and-variance"><i class="fa fa-check"></i><b>5.4</b> Expectation and variance</a></li>
+<li class="chapter" data-level="5.5" data-path="cont.html"><a href="cont.html#mode"><i class="fa fa-check"></i><b>5.5</b> Mode</a></li>
+<li class="chapter" data-level="5.6" data-path="cont.html"><a href="cont.html#cdf"><i class="fa fa-check"></i><b>5.6</b> CDF</a></li>
+<li class="chapter" data-level="5.7" data-path="cont.html"><a href="cont.html#median-quartiles-and-percentiles"><i class="fa fa-check"></i><b>5.7</b> median, quartiles and percentiles</a></li>
+<li class="chapter" data-level="5.8" data-path="cont.html"><a href="cont.html#uniform-distribution"><i class="fa fa-check"></i><b>5.8</b> Uniform distribution</a></li>
+<li class="chapter" data-level="5.9" data-path="cont.html"><a href="cont.html#exponential-distribution"><i class="fa fa-check"></i><b>5.9</b> Exponential distribution</a></li>
+<li class="chapter" data-level="5.10" data-path="cont.html"><a href="cont.html#exercises-week-5"><i class="fa fa-check"></i><b>5.10</b> Exercises week 5</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="cont.html"><a href="cont.html#exercises-for-feedback-week-5"><i class="fa fa-check"></i><b>5.10.1</b> Exercises for feedback week 5</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="norm.html"><a href="norm.html"><i class="fa fa-check"></i><b>6</b> Normal distribution</a><ul>
+<li class="chapter" data-level="6.1" data-path="norm.html"><a href="norm.html#relation-to-data"><i class="fa fa-check"></i><b>6.1</b> Relation to data</a></li>
+<li class="chapter" data-level="6.2" data-path="norm.html"><a href="norm.html#cauchy-density"><i class="fa fa-check"></i><b>6.2</b> Cauchy density</a></li>
+<li class="chapter" data-level="6.3" data-path="norm.html"><a href="norm.html#normal-density"><i class="fa fa-check"></i><b>6.3</b> Normal density</a></li>
+<li class="chapter" data-level="6.4" data-path="norm.html"><a href="norm.html#standard-normal"><i class="fa fa-check"></i><b>6.4</b> Standard normal</a></li>
+<li class="chapter" data-level="6.5" data-path="norm.html"><a href="norm.html#evaluating-the-standard-normal-distribution"><i class="fa fa-check"></i><b>6.5</b> Evaluating the standard normal distribution</a></li>
+<li class="chapter" data-level="6.6" data-path="norm.html"><a href="norm.html#standardising"><i class="fa fa-check"></i><b>6.6</b> Standardising</a></li>
+<li class="chapter" data-level="6.7" data-path="norm.html"><a href="norm.html#inverse-cdf"><i class="fa fa-check"></i><b>6.7</b> Inverse CDF</a></li>
+<li class="chapter" data-level="6.8" data-path="norm.html"><a href="norm.html#sampling-total"><i class="fa fa-check"></i><b>6.8</b> Sampling Total</a></li>
+<li class="chapter" data-level="6.9" data-path="norm.html"><a href="norm.html#sampling-distribution-of-the-mean"><i class="fa fa-check"></i><b>6.9</b> Sampling distribution of the mean</a></li>
+<li class="chapter" data-level="6.10" data-path="norm.html"><a href="norm.html#exercises-week-6"><i class="fa fa-check"></i><b>6.10</b> Exercises week 6</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability Theory and Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="norm" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 6</span> Normal distribution<a href="norm.html#norm" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>We have already seen some examples of continuous random variables including the <em>uniform</em> distribution and the <em>exponential</em> distribution. From one point of view, the normal distribution is just another example of a continuous random variable. However the normal distribution is the most important distribution in all of probability and statistics.</p>
+<div id="relation-to-data" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.1</span> Relation to data<a href="norm.html#relation-to-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suppose we weighed <span class="math inline">\(1000\)</span> apples at harvest. The average weight may be <span class="math inline">\(100\)</span> grams, and the apples may have a relatively small spread about this value with a standard deviation of <span class="math inline">\(10\)</span> grams.</p>
+<p>We know how to draw a histogram of such data in R. One can imagine that with a larger sample the histogram may resemble more closely the <em>bell curve</em> in the left plot.</p>
+<div class="figure"><span style="display:block;" id="fig:rnormhist"></span>
+<img src="6G4Z3008-notes_files/figure-html/rnormhist-1.png" alt="A bell-shaped curve" width="672" />
+<p class="caption">
+Figure 6.1: A bell-shaped curve
+</p>
+</div>
+</div>
+<div id="cauchy-density" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.2</span> Cauchy density<a href="norm.html#cauchy-density" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To study curves like the normal distribution it can be useful to consider what kinds of graphs could produce a curve with a single peak (unimodal) which are zero asymptotically.</p>
+<p>Consider the curve</p>
+<p><span class="math display">\[f(x) = \frac{1}{x^2+1}\]</span>
+Note <span class="math inline">\(f(0)=1\)</span>, and the square ensures it is everywhere positive. Notice the denominator cannot be zero, for <span class="math inline">\(x^2+1=0\)</span> has no real roots.</p>
+<p>When <span class="math inline">\(x\to \infty\)</span>, we divide by a larger and larger denominator so <span class="math inline">\(f(x)\to 0\)</span>. Similarly for <span class="math inline">\(x\to -\infty\)</span>.</p>
+<p>People thought this curve looked like a witch’s hat and is named after Italian Mathematician Maria Agnesi. The curve is called the ‘Witch of Agnesi’. Here is a graph of this curve:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cauchy"></span>
+<img src="figures/cauchy.JPG" alt="The Cauchy distribution" width="75%" />
+<p class="caption">
+Figure 6.2: The Cauchy distribution
+</p>
+</div>
+<p>However for this to be a density we need the integral to equal <span class="math inline">\(1\)</span>.</p>
+<p>We can consider the integral</p>
+<p><span class="math display">\[\int_{\mathbb{R}}\frac{1}{x^2+1} \ dx\]</span>
+You can use a trigonometric substitution here, for example <span class="math inline">\(x=\tan \theta\)</span>. Then</p>
+<p><span class="math display">\[\frac{dx}{d\theta} = \sec^2\theta,\]</span>
+and <span class="math inline">\(1+x^2 = 1+\tan^2\theta = \sec^2 \theta\)</span>.</p>
+<p>Then</p>
+<p><span class="math display">\[\int_{\mathbb{R}}\frac{1}{x^2+1} \ dx = \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}1 \ d\theta \]</span></p>
+<p><span class="math display">\[ = \left[\frac{\pi}{2} - \left(- \frac{\pi}{2}\right)\right] = \pi\]</span></p>
+<p>The point of this example is that unexpectedly the number <span class="math inline">\(\pi\)</span> crops up and we must divide by this <em>normalising constant</em> so that the function</p>
+<p><span class="math display">\[f(x) = \frac{1}{\pi(x^2+1)} ,\]</span>
+is a valid density function as it has integral <span class="math inline">\(1\)</span>.</p>
+</div>
+<div id="normal-density" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.3</span> Normal density<a href="norm.html#normal-density" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will consider a function similar in shape to the above, namely</p>
+<p><span class="math display">\[f(x) = e^{-\frac{1}{2}x^2} \]</span>
+It turns out that</p>
+<p><span class="math display">\[\int _{-\infty}^{\infty} e^{-\frac{1}{2}x^2} \ dx = \sqrt{2\pi}\]</span>
+A Mathematical curiosity is that you can integrate <span class="math inline">\(e^{-\frac{1}{2}x^2}\)</span> over the whole real line and get this result, but there exists no closed form (without integrals) antiderivative.</p>
+<p>The upshot is that the integral involves <span class="math inline">\(\pi\)</span> and so to make this a valid density we must have a factor involving <span class="math inline">\(1/{\sqrt{\pi}}.\)</span> This should give you some intuition for the following definition.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-183" class="definition"><strong>Definition 6.1  </strong></span>A continuous random variable <span class="math inline">\(X\)</span> is said to have a normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, written <span class="math inline">\(X\sim \text{N}(\mu,\sigma^2)\)</span> if it has the density function given by</p>
+<p><span class="math display">\[ f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}\text{exp}\left\{ -\frac{(x-\mu)^2}{2\sigma^2}\right\}, \]</span>
+where <span class="math inline">\(x, \mu\in \mathbb{R}\)</span> and <span class="math inline">\(\sigma^2 &gt; 0\)</span>.</p>
+</div>
+<p>The density <span class="math inline">\(f(x)\)</span> is a valid density, with the fraction <span class="math inline">\(\frac{1}{\sqrt{2\pi}\sigma}\)</span> called the <em>normalising constant</em> to ensure that the integral is <span class="math inline">\(1\)</span> over the real line. The mean <span class="math inline">\(\text{E}(X)\)</span> of this distribution is <span class="math inline">\(\mu\)</span>. The variance <span class="math inline">\(\text{Var}(X)\)</span> is <span class="math inline">\(\sigma^2\)</span>. These three facts can be shown after studying <strong><em>multi-variable calculus</em></strong> in second year.</p>
+<p>The density of a normal distribution is a bell-shaped curve which is symmetric about the mean value <span class="math inline">\(\mu\)</span>. Most of the area under the curve is concentrated about the mean value with a relatively small amount at values a long way from <span class="math inline">\(\mu\)</span>. In general the density looks like the following picture, with a bell-shaped bump which tails off the zero at infinity either side. The curve is symmetrical about the line <span class="math inline">\(x=\mu\)</span>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:norm1"></span>
+<img src="figures/norm1.JPG" alt="a normal density curve is bell shaped" width="75%" />
+<p class="caption">
+Figure 6.3: a normal density curve is bell shaped
+</p>
+</div>
+<p>Changing the value of <span class="math inline">\(\mu\)</span>, will perform a translation along the <span class="math inline">\(x\)</span> axis, and thereby the position of the centre of the curve.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:norm2"></span>
+<img src="figures/norm2.JPG" alt="three normal densities with the same standard deviation = 10, but means 90, 100 and 115" width="75%" />
+<p class="caption">
+Figure 6.4: three normal densities with the same standard deviation = 10, but means 90, 100 and 115
+</p>
+</div>
+<p>Changing the value of the standard deviation, or equivalently the variance, parameter determines how spread out the curve is about the mean. A smaller standard deviation results in a higher peak, as the model is less spread out and so is more mass around the mean value.</p>
+<p>Conversely a larger standard deviation results in a lower peak, and more mass is spread out from the mean value towards the tails of the density.</p>
+<p>We can view the</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:norm3"></span>
+<img src="figures/norm3.JPG" alt="three normal densities with the same mean, but standard deviations equal to 7.5, 10 and 15" width="75%" />
+<p class="caption">
+Figure 6.5: three normal densities with the same mean, but standard deviations equal to 7.5, 10 and 15
+</p>
+</div>
+<p>One can access the normal density in R with the function <span class="math inline">\(\texttt{dnorm}()\)</span>, which we will see in labs.</p>
+</div>
+<div id="standard-normal" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.4</span> Standard normal<a href="norm.html#standard-normal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="definition">
+<p><span id="def:unlabeled-div-184" class="definition"><strong>Definition 6.2  </strong></span>The normal distribution with <span class="math inline">\(\mu=0\)</span> and <span class="math inline">\(\sigma =1\)</span> is called the standard normal distribution and is denoted by the letter <span class="math inline">\(Z\)</span>. Instead of <span class="math inline">\(f\)</span> the density is denoted with the letter <span class="math inline">\(\phi\)</span> and we have</p>
+<p><span class="math display">\[\phi (z) = \frac{1}{\sqrt{2\pi}} \exp \left( -\frac{1}{2}z^2 \right) , z\in \mathbb{R}\]</span></p>
+<p>The cumulative distribution function of the normal distribution is denoted with the capital <span class="math inline">\(\Phi(z) = \text{P}(Z\leq z)\)</span>.</p>
+</div>
+<p>A graph of the density of the standard normal distribution <span class="math inline">\(Z\)</span> is given below.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:norm4"></span>
+<img src="figures/znorm.JPG" alt="the standard normal density" width="75%" />
+<p class="caption">
+Figure 6.6: the standard normal density
+</p>
+</div>
+<p>Notice that the majority of the area is between <span class="math inline">\(-3\)</span> and <span class="math inline">\(3\)</span>. The distribution function of the standard normal is given in all statistical tables. We will see how problems involving any normal distribution can be recast in terms of the standard normal distribution.</p>
+</div>
+<div id="evaluating-the-standard-normal-distribution" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.5</span> Evaluating the standard normal distribution<a href="norm.html#evaluating-the-standard-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The MMU tables give areas, i.e. probabilities, in the <em>tail</em> of the distribution for <span class="math inline">\(z&gt;0\)</span>. Tables vary, some giving the left tail <span class="math inline">\(\text{P}(Z\leq z)\)</span> (cumulative distribution <span class="math inline">\(\Phi\)</span>), others give the upper tail <span class="math inline">\(\text{P}(Z\geq z)\)</span>, and if you are using tables you should read carefully the top-matter that describes the tabulation. The tables will only display the positive values of <span class="math inline">\(z\)</span> in either format.</p>
+<p>However, using tables we can find any area by observing:</p>
+<ol style="list-style-type: decimal">
+<li><p>The area under the whole graph is 1. The law of complements applies so that <span class="math inline">\(\text{P}(Z\geq z)= 1-\text{P}(Z\leq z)\)</span>.</p></li>
+<li><p>The graph is symmetric about <span class="math inline">\(0\)</span>. Lower tail areas with negative <span class="math inline">\(z\)</span> value, are equal to the corresponding upper tail area with positive <span class="math inline">\(z\)</span> value. In particular this implies that the areas above and below <span class="math inline">\(0\)</span> are both <span class="math inline">\(0.5\)</span>.</p></li>
+</ol>
+<p>It is generally advised to draw a sketch of the density which shows the values required for the particular problem and the areas representing the probabilities.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-185" class="example"><strong>Example 6.1  </strong></span>Use tables to find the following probabilities for a standard Normal random variable <span class="math inline">\(Z\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\text{P}(Z\geq 2.45)\)</span></p></li>
+<li><p><span class="math inline">\(\text{P}(Z\leq -2.45)\)</span></p></li>
+<li><p><span class="math inline">\(\text{P}(Z\leq 1.73)\)</span></p></li>
+<li><p><span class="math inline">\(\text{P}(Z\geq -0.5)\)</span></p></li>
+<li><p><span class="math inline">\(\text{P}(0.35\leq Z\leq 1.68)\)</span></p></li>
+</ol>
+</div>
+<p><em>solutions</em></p>
+<ol style="list-style-type: decimal">
+<li><p>If the upper tail values are tabulated, we find this directly.
+<span class="math inline">\(\text{P}(Z\geq 2.45) = 0.0071\)</span></p></li>
+<li><p>By symmetry we can argue that this is the same as the previous value.
+<span class="math inline">\(\text{P}(Z\geq 2.45) = 0.0071\)</span></p></li>
+<li><p>Using complements <span class="math inline">\(\text{P}(Z\leq 1.73)= 1-\text{P}(Z\geq 1.73)\)</span>. From tables <span class="math inline">\(\text{P}(Z\geq 1.73)= 0.0418\)</span>, so <span class="math inline">\(\text{P}(Z\leq 1.73)= 1- 0.0418 = 0.9582\)</span>.</p></li>
+<li><p>We have <span class="math inline">\(\text{P}(Z\geq -0.5) = 1 - \text{P}(Z\leq -0.5)\)</span> by complements. Now also we have <span class="math inline">\(\text{P}(Z\leq -0.5) = \text{P}(Z\geq 0.5) = 0.3085\)</span> by symmetry. Hence <span class="math display">\[\text{P}(Z\geq -0.5) = 1 - 0.3085 = 0.6915 \]</span></p></li>
+<li><p>We have <span class="math inline">\(\text{P}(0.35\leq Z\leq 1.68) = \text{P}(Z\geq 0.35)-\text{P}(Z\geq 1.68)\)</span>, looking up the latter two values gives <span class="math inline">\(0.3632 - 0.0465 = 0.3167.\)</span></p></li>
+</ol>
+<p>It is an important skill to be able to use statistical tables, and to familiarise yourself with their format. There may be other means of getting these numbers for particular distributions, for example using R or a calculator.</p>
+<p>However later in the course some distributions will only appear in tables and you will be expected to use the tables in an exam.</p>
+</div>
+<div id="standardising" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.6</span> Standardising<a href="norm.html#standardising" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the previous section we only considered the special case of a standard normal distribution (with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(1\)</span>) for evaluating probabilities. We know that a normal distribution can be defined in general for any mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. It is not possible to produce a table of values for every possible value of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. Fortunately it is also unnecessary.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-186" class="theorem"><strong>Theorem 6.1  </strong></span>Suppose <span class="math inline">\(X\)</span> follows a normal distribution with some mean and variance, so that <span class="math inline">\(X\sim \text{N}(\mu,\sigma^2)\)</span>, then subtracting the mean and dividing by the standard deviation results in a standard normal distrbution. That is,</p>
+<p><span class="math display">\[\frac{X-\mu}{\sigma} \sim \text{N}(0,1) \]</span>
+Because of this result we write <span class="math inline">\(Z=\frac{X-\mu}{\sigma}\)</span>.</p>
+</div>
+<p><em>intuition</em></p>
+<p><span class="math display">\[\text{E}\left(\frac{X-\mu}{\sigma}\right)=\frac{1}{\sigma}\text{E}(X-\mu) \]</span>
+by linearity of the expectation, and,</p>
+<p><span class="math display">\[ = \frac{1}{\sigma}(\text{E}(X) - \text{E}(\mu)) = \frac{1}{\sigma}(\mu-\mu)=0\]</span>
+as the expectation of a contant is just that constant.</p>
+<p>For the variance,</p>
+<p><span class="math display">\[ \text{Var} \left( \frac{X-\mu}{\sigma} \right) = \frac{1}{\sigma^2}\text{Var}(X-\mu)\]</span>
+By the the rule <span class="math inline">\(\text{Var}(aX)=a^2\text{Var}(X)\)</span>. Now the variance of a constant is zero so we have,</p>
+<p><span class="math display">\[= \frac{1}{\sigma^2}\left( \text{Var}(X) - \text{Var}(\mu) \right) = \frac{1}{\sigma^2}\left( \sigma^2 - 0\right) = 1\]</span>
+Hence <span class="math inline">\(\frac{X-\mu}{\sigma}\)</span> has the correct mean and variance. It remains to formally show it has the same density function as <span class="math inline">\(Z\)</span>, and so is normal.</p>
+<p>An important consequence of the theorem which enables us to work out any probability is the following corollary.</p>
+<div class="corollary">
+<p><span id="cor:unlabeled-div-187" class="corollary"><strong>Corollary 6.1  </strong></span>Suppose <span class="math inline">\(X\)</span> follows a normal distribution with some mean and variance, so that <span class="math inline">\(X\sim \text{N}(\mu,\sigma^2)\)</span> then</p>
+<p><span class="math display">\[\text{P}(a\leq X \leq b) = \Phi\left(\frac{b-\mu}{\sigma}\right) - \Phi\left(\frac{a-\mu}{\sigma}\right)\]</span></p>
+</div>
+<p><em>proof</em>
+<span class="math display">\[\text{P}(a\leq X \leq b) = \text{P}\left(\frac{a-\mu}{\sigma} \leq \frac{X-\mu}{\sigma}  \leq  \frac{b-\mu}{\sigma}\right) = \text{P}\left(\frac{a-\mu}{\sigma} \leq Z  \leq  \frac{b-\mu}{\sigma}\right) \]</span>
+Where the last equality is by the theorem. Now recall <span class="math inline">\(\Phi\)</span> is the CDF of <span class="math inline">\(Z\)</span>, so the result follows.</p>
+<p>This formula has a very simple geometric interpretation. Recall that we can represent probabilities for continuous random variables as the area, between specified limits, under the distribution curve. This theorem just says that the area under <em>any</em> Normal curve between limits <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> is always the same as the area under the standard Normal
+curve between the <em>transformed</em> limits <span class="math inline">\(\frac{a-\mu}{\sigma}\)</span> and <span class="math inline">\(\frac{b-\mu}{\sigma}\)</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-188" class="example"><strong>Example 6.2  </strong></span>Suppose that the weight of a particular grade of apples is Normally distributed with mean 100g and standard deviation 8g. Let <span class="math inline">\(X\)</span> denote the weight of a randomly selected apple, i.e. <span class="math inline">\(X\sim\text{N}(100,{8^2})\)</span>, find:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(P(X&gt;115)\)</span></p></li>
+<li><p><span class="math inline">\(P(X&lt; 80)\)</span></p></li>
+<li><p><span class="math inline">\(P(105&lt;X&lt;112)\)</span></p></li>
+<li><p><span class="math inline">\(P(95&lt;X&lt;112)\)</span></p></li>
+</ol>
+</div>
+<p><em>solution</em></p>
+<ol style="list-style-type: decimal">
+<li><span class="math display">\[P(X&gt;115)  =  P\left(Z&gt;\frac{115-100}{8}\right)
+        =  P(Z&gt;1.88)\]</span></li>
+</ol>
+<p>This quantity can be found directly from tables, i.e.
+<span class="math inline">\(P(Z&gt;1.88)=0.0301\)</span>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><span class="math display">\[P(X&lt;80)  =  P\left(Z&lt;\frac{80-100}{8}\right)
+        =  P(Z&lt;-2.5)
+        =  P(Z&gt;2.5)\]</span></li>
+</ol>
+<p>From tables, <span class="math inline">\(P(Z&gt;2.5)=0.0062\)</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol>
+<p><span class="math display">\[P(105&lt;X&lt;112)  =  P\left(\frac{105-100}{8}&lt;Z&lt;\frac{112-100}{8}\right)\]</span></p>
+<p><span class="math display">\[= P(0.63&lt;Z&lt;1.5)\]</span>
+<span class="math display">\[=P(Z&gt;0.63)-P(Z&gt;1.5)\]</span>
+<span class="math display">\[= 0.2643-0.0668=0.1975\]</span>
+4.
+There are several ways in which this problem could be approached - a sketch or diagram will help. We have,</p>
+<p><span class="math display">\[P(95&lt;X&lt;112) =  P\left(\frac{95-100}{8}&lt;Z&lt;\frac{112-100}{8}\right)
+          =  P(-0.63&lt;Z&lt;1.5)\]</span></p>
+<p>But,</p>
+<p><span class="math display">\[P(Z&lt;-0.63)+P(-0.63&lt;Z&lt;1.5)+P(Z&gt;1.5)=1\]</span></p>
+<ul>
+<li>the three areas comprise the whole distribution. We also have,
+<span class="math display">\[P(Z&lt;-0.63)=P(Z&gt;0.63)\]</span>
+by symmetry, so that</li>
+</ul>
+<p><span class="math display">\[P(-0.63&lt;Z&lt;1.5) =  1-P(Z&gt;0.63)-P(Z&gt;1.5)\]</span></p>
+<p><span class="math display">\[=  1-0.2643-0.0668=0.6689\]</span></p>
+</div>
+<div id="inverse-cdf" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.7</span> Inverse CDF<a href="norm.html#inverse-cdf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We saw how to solve problems which involved finding the probability that a Normally distributed
+random variable lay in a certain range. The solution to this problem consisted of two steps:</p>
+<ul>
+<li>standardising the the value of the original variable to get a standard Normal variable.</li>
+<li>using tables of the standard Normal distribution to find the required probability, recognising that the process of
+standardisation preserves areas, i.e. probabilities.</li>
+</ul>
+<p>We may think of the process as follows:
+<span class="math display">\[ \mbox{Original Value,
+}X\stackrel{\frac{x-\mu}{\sigma}}{\longrightarrow} Z
+\longrightarrow \mbox{Probability ?}
+\]</span>
+The inverse problem, as the name suggests, is simply the same
+process but applied backwards. We start out with a probability and seek to find
+the value of the random variable corresponding to that probability. Thus, since</p>
+<p><span class="math display">\[Z  =  \frac{X-\mu}{\sigma} \]</span>
+<span class="math display">\[\Rightarrow \sigma Z = X-\mu \]</span>
+<span class="math display">\[\Rightarrow X  =  \mu+\sigma Z\]</span></p>
+<p>The inverse problem can be thought of as working through
+the following process,
+<span class="math display">\[ \mbox{Original Value,
+}X\mbox{? }\stackrel{\sigma Z+\mu}{\longleftarrow} Z
+\longleftarrow \mbox{Probability}
+\]</span>
+As before a simple sketch graph of the problem is invaluable.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-189" class="example"><strong>Example 6.3  </strong></span>The weights of eggs laid by a particular breed of hens are
+Normally distributed with mean <span class="math inline">\(50\)</span>g and standard deviation <span class="math inline">\(5\)</span>g. An
+egg producer wants to classify eggs so that the heaviest <span class="math inline">\(10\)</span>% are
+classified as large and the lightest <span class="math inline">\(30\)</span>% classified as small. The
+remaining <span class="math inline">\(60\)</span>% are classified as medium. What weights should be
+used to distinguish the three classes?</p>
+</div>
+<p>If we let the random variable <span class="math inline">\(X\)</span> denote the weight of an egg,
+we need to find the values of <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> indicated in the
+following diagram,</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:eggs"></span>
+<img src="figures/eggs.JPG" alt="proportions of eggs by weight" width="75%" />
+<p class="caption">
+Figure 6.7: proportions of eggs by weight
+</p>
+</div>
+<p>Common sense, and our knowledge of the Normal distribution, tells us that the value of <span class="math inline">\(x_1\)</span> is a <em>little</em> below the mean value of <span class="math inline">\(50\)</span>g and the value of <span class="math inline">\(x_2\)</span> somewhat higher than the mean value of <span class="math inline">\(50\)</span>g. In fact, we can usually make a reasonably accurate guess if we use the result that virtually all the curve (99.7%) is contained within the limits <span class="math inline">\(\pm\)</span> 3 standard deviations either side of the mean. In case, virtually all the eggs will lie in the range <span class="math inline">\([50-3\times 5,50+3\times5]\)</span>=<span class="math inline">\([35,65]\)</span>g.</p>
+<p>In order to solve the problem, we have to find the values of a standard normal variable corresponding to the same probabilities indicated on the diagram above.</p>
+<p>The <span class="math inline">\(z\)</span> value exceeded with a probability 0.1 is found to be 1.2816, i.e. <span class="math display">\[P(Z\geq 1.2816)=0.1\]</span>.</p>
+<p>At the other end of the distribution we find the probability a <span class="math inline">\(Z\)</span> value is less than 0.3 is -0.5244, i.e. 
+<span class="math display">\[P(Z\leq -0.5244)=0.3\]</span>.</p>
+<p>Note that this last value was found using the symmetry of the distribution. You should check that these are the <span class="math inline">\(z\)</span> values you would have obtained if you had been working the other way round.</p>
+<p>Note that, if the required probability is not in the <em>inverse</em> tables, you have to use the main table backwards. To do this, look for the required probability (or as close as you can get to it) in the body of the table, and then read off the corresponding <span class="math inline">\(z\)</span>-value.</p>
+<p>For example, scanning through the body of the table, we find that a probability of 0.1003 corresponds to a <span class="math inline">\(z\)</span> value of 1.28 and a probability of 0.0985 corresponds to a z-value of 1.29. Clearly, the actual value corresponding to a probability of 0.10 (which we know is 1.2816) is somewhere between 1.28 and 1.29. In practice, a good estimate can be found using interpolation.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:inveggs"></span>
+<img src="figures/inverseeggs.JPG" alt="Standardised values of the egg weight distribution give the same area in the tails" width="75%" />
+<p class="caption">
+Figure 6.8: Standardised values of the egg weight distribution give the same area in the tails
+</p>
+</div>
+<p>The final stage of the problem is to apply the inverse transformation to get the appropriate values on the original
+scale. Recall, the inverse transformation is, <span class="math inline">\(X=\sigma Z+\mu\)</span>.
+Thus we, have,</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>The weight which will be exceeded by the largest 10% of eggs is given
+by, <span class="math inline">\(X = 5\times 1.2816+50 = 56.41\)</span>g.</p></li>
+<li><p>The weight which the smallest 30% of eggs will lie below is
+given by, <span class="math inline">\(X = 5\times -0.5244+50 = 47.38\)</span>g</p></li>
+</ol>
+<div class="example">
+<p><span id="exm:unlabeled-div-190" class="example"><strong>Example 6.4  </strong></span>A vending machine discharges hot chocolate. The volume of liquid the machine discharges may be modelled by a normal distribution. With probability <span class="math inline">\(5\%\)</span>, the volume discharged is greater than <span class="math inline">\(475\)</span>ml. While the probability of the volume being less than <span class="math inline">\(460\)</span>ml is one percent.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Sketch a picture to show this information</p></li>
+<li><p>Find <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p></li>
+</ol>
+</div>
+</div>
+<div id="sampling-total" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.8</span> Sampling Total<a href="norm.html#sampling-total" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+<p>Suppose we have an independent random sample of size <span class="math inline">\(n\)</span> from a Normal distribution,
+e.g. <span class="math inline">\(X_1,\ldots,X_n\sim \text{N}(\mu,\sigma^2)\)</span>.</p>
+<p>Define the random variable <span class="math inline">\(T=\sum_{i=1}^n X_i\)</span>, then,
+<span class="math display">\[ T \sim \text{N}(n\mu,n\sigma^2). \]</span></p>
+<p>That is, the <em>sampling distribution</em> of the total, <span class="math inline">\(T\)</span>, is also Normally distributed with <span class="math inline">\(\text{E}(T)=n\mu\)</span> and <span class="math inline">\(\text{Var}(T)=n\sigma^2\)</span>.</p>
+<p>:::{.example name=“apples revisited”}
+Earlier we assumed that the weight of
+individual apples sold by a supermarket were Normally distributed
+with mean 100g and standard deviation 8g, i.e. if the random variable <span class="math inline">\(X\)</span>
+represents the weight then <span class="math inline">\(X \sim \text{N}(100,{8^2})\)</span>.</p>
+<p>Let the random variable <span class="math inline">\(T\)</span> denote the total weight of a carton of 4 apples. Find the probability that the total weight of a carton is,</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>more than 450g</p></li>
+<li><p>between 375g and 425g</p></li>
+</ol>
+<p><em>solution</em></p>
+<p>Here <span class="math inline">\(n=4\)</span>, <span class="math inline">\(\mu=100\)</span> and <span class="math inline">\(\sigma=8\)</span> so that, the total weight,
+<span class="math display">\[ T\sim \text{N}({4\times 100},{4\times 8^2})\sim \text{N}({400},{16^2}) \]</span>
+We answer the problem by converting to a standard Normal as before,</p>
+<ol style="list-style-type: lower-alpha">
+<li>We have,</li>
+</ol>
+<p><span class="math display">\[P(T&gt;450)  =  P\left(Z&gt;\frac{450-400}{16}\right)\]</span>
+<span class="math display">\[=  P(Z&gt;3.13)\]</span>
+<span class="math display">\[ =  0.0009\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>We have,</li>
+</ol>
+<p><span class="math display">\[P(375&lt;T&lt;425)  =  P\left(\frac{375-400}{16}&lt;Z&lt;\frac{425-400}{16}\right) \]</span>
+<span class="math display">\[=  P(-1.56&lt;Z&lt;1.56)=1-2\times P(Z&gt;1.56)\]</span>
+<span class="math display">\[=  1-2\times 0.0594=0.8812\]</span></p>
+</div>
+<div id="sampling-distribution-of-the-mean" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.9</span> Sampling distribution of the mean<a href="norm.html#sampling-distribution-of-the-mean" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>All the problems considered so far have supposed that a single
+measurement is randomly drawn from some population in which the
+possible values of the measurement follow a Normal distribution.
+We now consider what happens if we,</p>
+<ul>
+<li><p>Take a random sample of size <span class="math inline">\(n\)</span> from a population whose
+values follow a Normal distribution. We will denote the random sample of
+values by <span class="math inline">\(X_1,X_2,\ldots,X_n\)</span>. For example, we might
+randomly select <span class="math inline">\(n=10\)</span> people and measure their height.</p></li>
+<li><p>Calculate the <strong><em>mean</em></strong> value of the sample, i.e. 
+<span class="math display">\[\bar{X}=\frac{X_1+X_2+\ldots+X_n}{n}=\frac{1}{n}\sum_i X_i\]</span></p></li>
+<li><p>Calculate the <strong><em>total</em></strong> value of the sample, i.e. 
+<span class="math display">\[T = X_1+X_2+\ldots+X_n =\sum_i X_i\]</span></p></li>
+</ul>
+<p>Now, since each member of the sample is a random variable, the sample mean must also be a random variable.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-191" class="example"><strong>Example 6.5  </strong></span>The heights of two randomly selected MMU students are <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>. Given a particular sample, i.e. two actual students say <span class="math inline">\(x_1=170\)</span>cm and <span class="math inline">\(x_2=158\)</span>cm, we can calculate their mean <span class="math inline">\(\bar{x}=164\)</span>cm. However until we pick the sample, the quantity <span class="math inline">\((X_1+X_2)/2\)</span> is random. So we can treat this mean as a random variable and denote it with a capital letter <span class="math inline">\(\bar{X}\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-192" class="definition"><strong>Definition 6.3  </strong></span>A <strong><em>statistic</em></strong> is a random variable whose particular values can be calculated from a particular sample. For example the statistic <span class="math inline">\(\bar{X}\)</span> is calculated as <span class="math inline">\(\frac{X_1+X_2+\ldots+X_n}{n}\)</span>.</p>
+</div>
+<p>Given a random variable one can always ask ‘what is its distribution?’.</p>
+<p>The following result can only be quoted.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-193" class="theorem"><strong>Theorem 6.2  </strong></span>Suppose that random variables <span class="math inline">\(X_1,X_2,\ldots,X_n\)</span> each follow a
+Normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, i.e.
+<span class="math inline">\(X_i\sim \text{N}({\mu},{\sigma^2})\)</span>. Then, for the sample mean <span class="math inline">\(\bar{X}\)</span>, we
+have the <em>sampling distribution</em> of that statistic is
+<span class="math display">\[\bar{X}\sim \text{N}(\mu,\frac{\sigma^2}{n})\]</span></p>
+</div>
+<p><em>proof</em>
+This proof is beyond the scope of the course, however we can check the mean and variance are as described.</p>
+<p>What this result says is that the sample mean has the same theoretical population mean, <span class="math inline">\(\mu\)</span>, as any single value drawn from the population, but that its variance is reduced by a factor <span class="math inline">\(n\)</span>. Given our knowledge of the role of the variance in the Normal distribution, the result suggests that sample mean ought to lie closer to the true population mean <span class="math inline">\(\mu\)</span> as the sample size increases.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-194" class="example"><strong>Example 6.6  </strong></span>Suppose I take <span class="math inline">\(10\)</span> samples of bamboo shoots and measure their lengths. The length of these particular bamboo shoots are normally distributed with mean <span class="math inline">\(74\)</span>mm and standard deviation <span class="math inline">\(5\)</span>mm.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Sample</th>
+<th align="center">Shoot lengths(mm)</th>
+<th align="center">Sample mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">76,73,75,73,74,74,74,74,74,77</td>
+<td align="center">74.4</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">74,72,75,76,73,71,73,80,75,75</td>
+<td align="center">74.4</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">68,72,78,74,75,74,69,77,77,72</td>
+<td align="center">73.6</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">72,76,76,77,70,77,72,74,77,76</td>
+<td align="center">74.7</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">78,72,70,74,76,72,73,71,74,74</td>
+<td align="center">73.4</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">75,79,75,74,75,74,71,73,75,73</td>
+<td align="center">74.4</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">75,70,73,75,70,72,72,71,76,73</td>
+<td align="center">72.7</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">74,76,74,75,74,76,75,75,73,73</td>
+<td align="center">74.5</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">78,74,73,75,74,73,72,76,73,76</td>
+<td align="center">74.4</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">74,71,72,71,79,78,69,77,73,71</td>
+<td align="center">73.5</td>
+</tr>
+</tbody>
+</table>
+<p>The range in values of the shoot lengths is from <span class="math inline">\(68\)</span> to <span class="math inline">\(80\)</span>. The values of the statistic <span class="math inline">\(\bar{X}\)</span> vary noticably less, are close to the original mean value of <span class="math inline">\(74\)</span>mm.</p>
+</div>
+<p>Now we have two variances <span class="math inline">\(\sigma^2\)</span> and <span class="math inline">\(\sigma^2/n\)</span> or equivalently standard deviations <span class="math inline">\(\sigma\)</span> and <span class="math inline">\(\sigma / \sqrt{n}\)</span> we need to be clear which one we are talking about.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-195" class="definition"><strong>Definition 6.4  </strong></span>The quantity <span class="math inline">\(\sigma/\sqrt{n}\)</span> is called the <strong><em>standard error of the
+mean</em></strong>. This is the standard deviation of <span class="math inline">\(\bar{X}\)</span> - the sampling distribution of the mean. It is essentially the same as the standard deviation for a single observation but reflects the fact that the variance of
+the mean depends on the sample size <span class="math inline">\(n\)</span>.</p>
+</div>
+<p>As <span class="math inline">\(n\)</span> gets larger and larger, the distribution of the sample mean
+gets more and more concentrated around the value of the population
+mean <span class="math inline">\(\mu\)</span>.In practice, this suggests that, if the true
+population mean were unknown, the sample mean ought to be a good
+estimate of its value.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-196" class="example"><strong>Example 6.7  </strong></span>Apple weights (revisited)
+Recall we assumed that the weight of individual apples sold by a supermarket were Normally distributed
+with mean 100g and standard deviation 8g, i.e. if the random variable <span class="math inline">\(X\)</span>
+represents the weight then <span class="math inline">\(X \sim \text{N}({100},{8^2})\)</span>.</p>
+<p>The supermarket also sells apples in cartons of four. What is the
+probability that the mean weight of the apples in a randomly
+selected carton is,</p>
+<ol style="list-style-type: lower-alpha">
+<li>more than 105g</li>
+<li>less than 98g</li>
+<li>between 98 and 102g</li>
+</ol>
+</div>
+<p><em>solution</em>
+Here <span class="math inline">\(n=4\)</span>, <span class="math inline">\(\mu=100\)</span> and <span class="math inline">\(\sigma=8\)</span>. If we denote the mean weight
+of the apples in a carton by <span class="math inline">\(\bar{X}\)</span>, then,
+<span class="math display">\[ \bar{X} \sim \text{N}({100},8^2/4) \sim \text{N}(100,16)\]</span></p>
+<p>In this case the standard error of the mean is
+<span class="math inline">\(8/\sqrt{4}=\sqrt{16}=4\)</span>. Having calculated the standard error, we
+answer such problems in the same way as before by converting the
+problem to one involving the standard Normal distribution.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math display">\[P(\bar{X} \geq 105)  =  P\left ( Z \geq \dfrac{105-100}{4}\right) \]</span>
+<span class="math display">\[=  P(Z\geq 1.25)\]</span>
+<span class="math display">\[=  0.1056\]</span></p></li>
+<li></li>
+</ol>
+<p><span class="math display">\[P(\bar{X} \leq 98)  =  P\left ( Z \leq \dfrac{98-100}{4}\right)\]</span></p>
+<p><span class="math display">\[=  P(Z\leq -0.5)=P(Z\geq 0.5)\]</span>
+<span class="math display">\[= 0.3085\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><span class="math display">\[P(98\leq \bar{X} \leq 102)  = P\left (\dfrac{98-100}{4} \leq Z \leq \dfrac{102-100}{4}\right)\]</span></li>
+</ol>
+<p><span class="math display">\[=  P(-0.5\leq Z\leq 0.5)=1-2\times P(Z\geq 0.5)\]</span>
+<span class="math display">\[=  0.3830\]</span></p>
+</div>
+<div id="exercises-week-6" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.10</span> Exercises week 6<a href="norm.html#exercises-week-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-197" class="exercise"><strong>Exercise 6.1  </strong></span>Suppose the lifetime of an electrical component follows
+a uniform distribution on the range <span class="math inline">\([0,2000]\)</span> hours.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Draw a sketch of the distribution.</p></li>
+<li><p>Find the probability that the lifetime will be,</p></li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li>at least 1000 hours</li>
+<li>less than 250 hours</li>
+<li>between 500 and 1500 hours</li>
+</ol>
+<p>(draw a sketch of the distribution and the area under the
+distribution representing the probability)</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-198" class="exercise"><strong>Exercise 6.2  </strong></span>The time taken (in minutes) to serve a customer in a fast food
+restaurant is a continuous random variable, <span class="math inline">\(X\)</span>, with probability
+distribution,
+<span class="math display">\[ f(x) = \left \{\begin{array}{ll}
+  \dfrac{x}{2}&amp; 0\leq x \leq 2 \\
+  0 &amp; \mbox{otherwise}
+\end{array} \right .
+\]</span></p>
+<ul>
+<li>Sketch the density.</li>
+<li>Show that the area under the distribution is one.</li>
+<li>You only need to use the areas of triangles to answer these
+questions. Find the probability that the time taken to serve a
+customer will be,</li>
+</ul>
+<ol style="list-style-type: lower-roman">
+<li>less than one minute</li>
+<li>more than one minute</li>
+<li>more than 30 seconds</li>
+<li>between 30 seconds and 1 minute.</li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-199" class="exercise"><strong>Exercise 6.3  </strong></span>Use standard Normal tables to find the following
+probabilities, (draw a sketch diagram in each case)</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(P(Z&gt;1.7)\)</span></p></li>
+<li><p><span class="math inline">\(P(Z&gt;2.35)\)</span></p></li>
+<li><p><span class="math inline">\(P(Z&lt;-0.92)\)</span></p></li>
+<li><p><span class="math inline">\(P(Z&lt;-2.33)\)</span></p></li>
+<li><p><span class="math inline">\(P(0.78&lt;Z&lt;2.56)\)</span></p></li>
+<li><p><span class="math inline">\(P(-1.99&lt;Z&lt;-0.34)\)</span></p></li>
+<li><p><span class="math inline">\(P(-1.67&lt;Z&lt;2.58)\)</span></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-200" class="exercise"><strong>Exercise 6.4  </strong></span>The lifetime of a certain brand of lightbulb is Normally distributed with
+mean 2000 hours and standard deviation 75 hours. Find the probability that a
+randomly selected bulb will have lifetime,</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>greater than 2100 hours</p></li>
+<li><p>greater than 2200 hours</p></li>
+<li><p>less than 2050 hours</p></li>
+<li><p>less than 1950 hours</p></li>
+<li><p>between 1950 and 2100 hours</p></li>
+<li><p>between 2050 and 2200 hours</p></li>
+<li><p>between 1900 and 1950 hours</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-201" class="exercise"><strong>Exercise 6.5  </strong></span>Bags of sugar packed by a machine have a mean weight of 2kg and a
+standard deviation of 0.02kg. Find the probability that the weight of a
+bag will be</p>
+<ol style="list-style-type: lower-roman">
+<li><p>greater than 2.05kg</p></li>
+<li><p>less than 1.96kg</p></li>
+<li><p>between 1.95 and 2.05kg</p></li>
+<li><p>less than 2.03kg</p></li>
+<li><p>between 1.95 and 1.98 kg</p></li>
+<li><p>between 2.01 and 2.05 kg</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-202" class="exercise"><strong>Exercise 6.6  </strong></span>A type of laboratory mouse has weight which is Normally distributed with mean
+30g and standard deviation 2.5g. Find the probability that the weight of a randomly
+selected mouse is,</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>at least 33g</p></li>
+<li><p>less than 33.5g</p></li>
+<li><p>more than 29g</p></li>
+<li><p>less than 28g</p></li>
+<li><p>between 27g and 33g</p></li>
+<li><p>between 31g and 33.5g</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-203" class="exercise"><strong>Exercise 6.7  </strong></span>Eggs are classified as standard, if they weigh less than
+46.0g, medium if they weigh between 46.0g and 56.0g, or large if
+they weigh over 56.0g. Suppose the eggs laid by a particular
+breed of hen have weight which is Normally distributed with mean
+50.0g and standard deviation 5.0g. What percentage of eggs laid by
+these hens falls into the three classes?</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-204" class="exercise"><strong>Exercise 6.8  </strong></span>A manufactured item requires a fuse which can be supplied by one
+of two suppliers. Supplier 1’s fuses have a lifetime which is Normally distributed
+with mean 1000 hours and standard deviation 30 hours. Supplier 2’s fuses have a
+lifetime which is Normally distributed with mean 990 hours and standard deviation
+10 hours. Your product specification requires that fuses should last at least 980
+hours. Which of the two suppliers would you choose and why.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-205" class="exercise"><strong>Exercise 6.9  </strong></span>Marks in a statistics examination are Normally
+distributed with mean 50 and standard deviation 10. What is the
+probability that</p>
+<ol style="list-style-type: lower-roman">
+<li><p>the mean mark of a group of 5 students will be above 60?</p></li>
+<li><p>the mean mark of a group of 20 students will be between 44
+and 48?</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-206" class="exercise"><strong>Exercise 6.10  </strong></span>A ski-lift is designed with a load limit of 18,000lbs and claims a
+capacity of 100 people. If the weight of people using the lift is Normally
+distributed with mean 175lbs and standard deviation 30lbs, what is the
+probability that a group of 100 randomly selected people will exceed the load
+limit of the lift? Would you be willing to use the lift?</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-207" class="exercise"><strong>Exercise 6.11  </strong></span>Lengths of bicycle chain links are Normally distributed with mean
+0.5cm and standard deviation 0.04cm. The finished chains must be between 49
+and 50cm long.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>If the chains are made of 100 links, what proportion meets the
+standard?</p></li>
+<li><p>If chains are made instead of 99 links what proportion meets the
+standard?</p></li>
+<li><p>Using 99 links, to what value must the standard deviation be reduced in
+order to have the following percentages meet the standard?</p></li>
+<li><p>90%<br />
+</p></li>
+</ol>
+<ol start="2" style="list-style-type: lower-roman">
+<li>95%<br />
+</li>
+<li>99%<br />
+</li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-208" class="exercise"><strong>Exercise 6.12  </strong></span>Bags of sugar packed by a machine have a mean weight of 2kg and a standard
+deviation of 0.02kg. What weights will</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>be exceeded by 15% of bags</p></li>
+<li><p>be exceeded by 90% of bags</p></li>
+<li><p>20% of bags contain less than</p></li>
+<li><p>90% of bags be between</p></li>
+<li><p>A multipack contains 5 bags of sugar. What is the probability that</p></li>
+<li><p>All the bags contain less than 1.992 kg</p></li>
+</ol>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Exactly four bags contain less than 1.992kg</li>
+</ol>
+<p>(Hint: Consider using the normal distribution and then the Binomial
+with the appropriate probability.)</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-209" class="exercise"><strong>Exercise 6.13  </strong></span>The weight of a child can be modelled as normally distributed with mean <span class="math inline">\(30\)</span>kg and standard deviation <span class="math inline">\(5\)</span>kg.</p>
+<p>A fairground ride has a total carrying capacity of <span class="math inline">\(2.8\)</span> metric tons (thousand kilograms).</p>
+<p><span class="math inline">\(k\)</span> children are admitted to the ride and their total weight <span class="math inline">\(X_1+X_2+ \ldots + X_k\)</span>.</p>
+<p>What is the maximum number of children that could be admitted to the ride, to ensure that the total weight is within the carrying capacity with probability <span class="math inline">\(99\%\)</span>?</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-210" class="exercise"><strong>Exercise 6.14  </strong></span>The masses of penguins on an island are found to be normally distributed with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>. Given that <span class="math inline">\(10\%\)</span> of the penguins have mass less than <span class="math inline">\(18\)</span>kg and <span class="math inline">\(5\%\)</span> have mass greater than <span class="math inline">\(30\)</span>kg,</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Sketch a diagram to represent this information</p></li>
+<li><p>Find <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p></li>
+</ol>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cont.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["6G4Z3008-notes.pdf", "6G4Z3008-notes.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

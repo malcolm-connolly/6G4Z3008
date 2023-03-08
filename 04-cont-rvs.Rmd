@@ -265,7 +265,7 @@ The times in excess of $2$ hours taken to complete a marathon road race are mode
 
 \begin{equation*}
   f(t)=\begin{cases}
-    \frac{4}{27}t^2(3-t), &  0< x < 3\\
+    \frac{4}{27}t^2(3-t), &  0< t < 3\\
     0 & \ \ \ \  \text{otherwise}.
   \end{cases}
 \end{equation*}
@@ -703,7 +703,7 @@ a) Give a reason why it may be possible to model X with a geometric
 distribution.
 
 The archer shoots the target around $100$ times and $5\%$ of the shots hit the bullseye.
-Suppose $X ∼ Geom(p)$ with $p =5\%$. 
+Suppose $X \sim Geom(p)$ with $p =5\%$. 
 
 b) Calculate the probability that he shoots the target in at least ten attempts.
 
