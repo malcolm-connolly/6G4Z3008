@@ -404,6 +404,7 @@ Let the random variable $T$ denote the total weight of a carton of 4 apples. Fin
 a) more than 450g
 
 b) between 375g and 425g
+:::
 
 _solution_
 

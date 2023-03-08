@@ -54,70 +54,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
-<style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -273,7 +209,7 @@ It turns out that</p>
 A Mathematical curiosity is that you can integrate <span class="math inline">\(e^{-\frac{1}{2}x^2}\)</span> over the whole real line and get this result, but there exists no closed form (without integrals) antiderivative.</p>
 <p>The upshot is that the integral involves <span class="math inline">\(\pi\)</span> and so to make this a valid density we must have a factor involving <span class="math inline">\(1/{\sqrt{\pi}}.\)</span> This should give you some intuition for the following definition.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-183" class="definition"><strong>Definition 6.1  </strong></span>A continuous random variable <span class="math inline">\(X\)</span> is said to have a normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, written <span class="math inline">\(X\sim \text{N}(\mu,\sigma^2)\)</span> if it has the density function given by</p>
+<p><span id="def:unlabeled-div-1" class="definition"><strong>Definition 6.1  </strong></span>A continuous random variable <span class="math inline">\(X\)</span> is said to have a normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, written <span class="math inline">\(X\sim \text{N}(\mu,\sigma^2)\)</span> if it has the density function given by</p>
 <p><span class="math display">\[ f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}\text{exp}\left\{ -\frac{(x-\mu)^2}{2\sigma^2}\right\}, \]</span>
 where <span class="math inline">\(x, \mu\in \mathbb{R}\)</span> and <span class="math inline">\(\sigma^2 &gt; 0\)</span>.</p>
 </div>
@@ -306,7 +242,7 @@ Figure 6.5: three normal densities with the same mean, but standard deviations e
 <div id="standard-normal" class="section level2 hasAnchor">
 <h2><span class="header-section-number">6.4</span> Standard normal<a href="norm.html#standard-normal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="definition">
-<p><span id="def:unlabeled-div-184" class="definition"><strong>Definition 6.2  </strong></span>The normal distribution with <span class="math inline">\(\mu=0\)</span> and <span class="math inline">\(\sigma =1\)</span> is called the standard normal distribution and is denoted by the letter <span class="math inline">\(Z\)</span>. Instead of <span class="math inline">\(f\)</span> the density is denoted with the letter <span class="math inline">\(\phi\)</span> and we have</p>
+<p><span id="def:unlabeled-div-2" class="definition"><strong>Definition 6.2  </strong></span>The normal distribution with <span class="math inline">\(\mu=0\)</span> and <span class="math inline">\(\sigma =1\)</span> is called the standard normal distribution and is denoted by the letter <span class="math inline">\(Z\)</span>. Instead of <span class="math inline">\(f\)</span> the density is denoted with the letter <span class="math inline">\(\phi\)</span> and we have</p>
 <p><span class="math display">\[\phi (z) = \frac{1}{\sqrt{2\pi}} \exp \left( -\frac{1}{2}z^2 \right) , z\in \mathbb{R}\]</span></p>
 <p>The cumulative distribution function of the normal distribution is denoted with the capital <span class="math inline">\(\Phi(z) = \text{P}(Z\leq z)\)</span>.</p>
 </div>
@@ -329,7 +265,7 @@ Figure 6.6: the standard normal density
 </ol>
 <p>It is generally advised to draw a sketch of the density which shows the values required for the particular problem and the areas representing the probabilities.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-185" class="example"><strong>Example 6.1  </strong></span>Use tables to find the following probabilities for a standard Normal random variable <span class="math inline">\(Z\)</span>.</p>
+<p><span id="exm:unlabeled-div-3" class="example"><strong>Example 6.1  </strong></span>Use tables to find the following probabilities for a standard Normal random variable <span class="math inline">\(Z\)</span>.</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\text{P}(Z\geq 2.45)\)</span></p></li>
 <li><p><span class="math inline">\(\text{P}(Z\leq -2.45)\)</span></p></li>
@@ -355,7 +291,7 @@ Figure 6.6: the standard normal density
 <h2><span class="header-section-number">6.6</span> Standardising<a href="norm.html#standardising" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the previous section we only considered the special case of a standard normal distribution (with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(1\)</span>) for evaluating probabilities. We know that a normal distribution can be defined in general for any mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. It is not possible to produce a table of values for every possible value of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. Fortunately it is also unnecessary.</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-186" class="theorem"><strong>Theorem 6.1  </strong></span>Suppose <span class="math inline">\(X\)</span> follows a normal distribution with some mean and variance, so that <span class="math inline">\(X\sim \text{N}(\mu,\sigma^2)\)</span>, then subtracting the mean and dividing by the standard deviation results in a standard normal distrbution. That is,</p>
+<p><span id="thm:unlabeled-div-4" class="theorem"><strong>Theorem 6.1  </strong></span>Suppose <span class="math inline">\(X\)</span> follows a normal distribution with some mean and variance, so that <span class="math inline">\(X\sim \text{N}(\mu,\sigma^2)\)</span>, then subtracting the mean and dividing by the standard deviation results in a standard normal distrbution. That is,</p>
 <p><span class="math display">\[\frac{X-\mu}{\sigma} \sim \text{N}(0,1) \]</span>
 Because of this result we write <span class="math inline">\(Z=\frac{X-\mu}{\sigma}\)</span>.</p>
 </div>
@@ -371,7 +307,7 @@ By the the rule <span class="math inline">\(\text{Var}(aX)=a^2\text{Var}(X)\)</s
 Hence <span class="math inline">\(\frac{X-\mu}{\sigma}\)</span> has the correct mean and variance. It remains to formally show it has the same density function as <span class="math inline">\(Z\)</span>, and so is normal.</p>
 <p>An important consequence of the theorem which enables us to work out any probability is the following corollary.</p>
 <div class="corollary">
-<p><span id="cor:unlabeled-div-187" class="corollary"><strong>Corollary 6.1  </strong></span>Suppose <span class="math inline">\(X\)</span> follows a normal distribution with some mean and variance, so that <span class="math inline">\(X\sim \text{N}(\mu,\sigma^2)\)</span> then</p>
+<p><span id="cor:unlabeled-div-5" class="corollary"><strong>Corollary 6.1  </strong></span>Suppose <span class="math inline">\(X\)</span> follows a normal distribution with some mean and variance, so that <span class="math inline">\(X\sim \text{N}(\mu,\sigma^2)\)</span> then</p>
 <p><span class="math display">\[\text{P}(a\leq X \leq b) = \Phi\left(\frac{b-\mu}{\sigma}\right) - \Phi\left(\frac{a-\mu}{\sigma}\right)\]</span></p>
 </div>
 <p><em>proof</em>
@@ -380,7 +316,7 @@ Where the last equality is by the theorem. Now recall <span class="math inline">
 <p>This formula has a very simple geometric interpretation. Recall that we can represent probabilities for continuous random variables as the area, between specified limits, under the distribution curve. This theorem just says that the area under <em>any</em> Normal curve between limits <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> is always the same as the area under the standard Normal
 curve between the <em>transformed</em> limits <span class="math inline">\(\frac{a-\mu}{\sigma}\)</span> and <span class="math inline">\(\frac{b-\mu}{\sigma}\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-188" class="example"><strong>Example 6.2  </strong></span>Suppose that the weight of a particular grade of apples is Normally distributed with mean 100g and standard deviation 8g. Let <span class="math inline">\(X\)</span> denote the weight of a randomly selected apple, i.e. <span class="math inline">\(X\sim\text{N}(100,{8^2})\)</span>, find:</p>
+<p><span id="exm:unlabeled-div-6" class="example"><strong>Example 6.2  </strong></span>Suppose that the weight of a particular grade of apples is Normally distributed with mean 100g and standard deviation 8g. Let <span class="math inline">\(X\)</span> denote the weight of a randomly selected apple, i.e. <span class="math inline">\(X\sim\text{N}(100,{8^2})\)</span>, find:</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(P(X&gt;115)\)</span></p></li>
 <li><p><span class="math inline">\(P(X&lt; 80)\)</span></p></li>
@@ -450,7 +386,7 @@ the following process,
 \]</span>
 As before a simple sketch graph of the problem is invaluable.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-189" class="example"><strong>Example 6.3  </strong></span>The weights of eggs laid by a particular breed of hens are
+<p><span id="exm:unlabeled-div-7" class="example"><strong>Example 6.3  </strong></span>The weights of eggs laid by a particular breed of hens are
 Normally distributed with mean <span class="math inline">\(50\)</span>g and standard deviation <span class="math inline">\(5\)</span>g. An
 egg producer wants to classify eggs so that the heaviest <span class="math inline">\(10\)</span>% are
 classified as large and the lightest <span class="math inline">\(30\)</span>% classified as small. The
@@ -490,7 +426,7 @@ by, <span class="math inline">\(X = 5\times 1.2816+50 = 56.41\)</span>g.</p></li
 given by, <span class="math inline">\(X = 5\times -0.5244+50 = 47.38\)</span>g</p></li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-190" class="example"><strong>Example 6.4  </strong></span>A vending machine discharges hot chocolate. The volume of liquid the machine discharges may be modelled by a normal distribution. With probability <span class="math inline">\(5\%\)</span>, the volume discharged is greater than <span class="math inline">\(475\)</span>ml. While the probability of the volume being less than <span class="math inline">\(460\)</span>ml is one percent.</p>
+<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 6.4  </strong></span>A vending machine discharges hot chocolate. The volume of liquid the machine discharges may be modelled by a normal distribution. With probability <span class="math inline">\(5\%\)</span>, the volume discharged is greater than <span class="math inline">\(475\)</span>ml. While the probability of the volume being less than <span class="math inline">\(460\)</span>ml is one percent.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Sketch a picture to show this information</p></li>
 <li><p>Find <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p></li>
@@ -505,8 +441,8 @@ e.g. <span class="math inline">\(X_1,\ldots,X_n\sim \text{N}(\mu,\sigma^2)\)</s
 <p>Define the random variable <span class="math inline">\(T=\sum_{i=1}^n X_i\)</span>, then,
 <span class="math display">\[ T \sim \text{N}(n\mu,n\sigma^2). \]</span></p>
 <p>That is, the <em>sampling distribution</em> of the total, <span class="math inline">\(T\)</span>, is also Normally distributed with <span class="math inline">\(\text{E}(T)=n\mu\)</span> and <span class="math inline">\(\text{Var}(T)=n\sigma^2\)</span>.</p>
-<p>:::{.example name=“apples revisited”}
-Earlier we assumed that the weight of
+<div class="example">
+<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 6.5  (apples revisited) </strong></span>Earlier we assumed that the weight of
 individual apples sold by a supermarket were Normally distributed
 with mean 100g and standard deviation 8g, i.e. if the random variable <span class="math inline">\(X\)</span>
 represents the weight then <span class="math inline">\(X \sim \text{N}(100,{8^2})\)</span>.</p>
@@ -515,6 +451,7 @@ represents the weight then <span class="math inline">\(X \sim \text{N}(100,{8^2}
 <li><p>more than 450g</p></li>
 <li><p>between 375g and 425g</p></li>
 </ol>
+</div>
 <p><em>solution</em></p>
 <p>Here <span class="math inline">\(n=4\)</span>, <span class="math inline">\(\mu=100\)</span> and <span class="math inline">\(\sigma=8\)</span> so that, the total weight,
 <span class="math display">\[ T\sim \text{N}({4\times 100},{4\times 8^2})\sim \text{N}({400},{16^2}) \]</span>
@@ -550,15 +487,15 @@ randomly select <span class="math inline">\(n=10\)</span> people and measure the
 </ul>
 <p>Now, since each member of the sample is a random variable, the sample mean must also be a random variable.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-191" class="example"><strong>Example 6.5  </strong></span>The heights of two randomly selected MMU students are <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>. Given a particular sample, i.e. two actual students say <span class="math inline">\(x_1=170\)</span>cm and <span class="math inline">\(x_2=158\)</span>cm, we can calculate their mean <span class="math inline">\(\bar{x}=164\)</span>cm. However until we pick the sample, the quantity <span class="math inline">\((X_1+X_2)/2\)</span> is random. So we can treat this mean as a random variable and denote it with a capital letter <span class="math inline">\(\bar{X}\)</span>.</p>
+<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 6.6  </strong></span>The heights of two randomly selected MMU students are <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>. Given a particular sample, i.e. two actual students say <span class="math inline">\(x_1=170\)</span>cm and <span class="math inline">\(x_2=158\)</span>cm, we can calculate their mean <span class="math inline">\(\bar{x}=164\)</span>cm. However until we pick the sample, the quantity <span class="math inline">\((X_1+X_2)/2\)</span> is random. So we can treat this mean as a random variable and denote it with a capital letter <span class="math inline">\(\bar{X}\)</span>.</p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-192" class="definition"><strong>Definition 6.3  </strong></span>A <strong><em>statistic</em></strong> is a random variable whose particular values can be calculated from a particular sample. For example the statistic <span class="math inline">\(\bar{X}\)</span> is calculated as <span class="math inline">\(\frac{X_1+X_2+\ldots+X_n}{n}\)</span>.</p>
+<p><span id="def:unlabeled-div-11" class="definition"><strong>Definition 6.3  </strong></span>A <strong><em>statistic</em></strong> is a random variable whose particular values can be calculated from a particular sample. For example the statistic <span class="math inline">\(\bar{X}\)</span> is calculated as <span class="math inline">\(\frac{X_1+X_2+\ldots+X_n}{n}\)</span>.</p>
 </div>
 <p>Given a random variable one can always ask ‘what is its distribution?’.</p>
 <p>The following result can only be quoted.</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-193" class="theorem"><strong>Theorem 6.2  </strong></span>Suppose that random variables <span class="math inline">\(X_1,X_2,\ldots,X_n\)</span> each follow a
+<p><span id="thm:unlabeled-div-12" class="theorem"><strong>Theorem 6.2  </strong></span>Suppose that random variables <span class="math inline">\(X_1,X_2,\ldots,X_n\)</span> each follow a
 Normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, i.e.
 <span class="math inline">\(X_i\sim \text{N}({\mu},{\sigma^2})\)</span>. Then, for the sample mean <span class="math inline">\(\bar{X}\)</span>, we
 have the <em>sampling distribution</em> of that statistic is
@@ -568,7 +505,7 @@ have the <em>sampling distribution</em> of that statistic is
 This proof is beyond the scope of the course, however we can check the mean and variance are as described.</p>
 <p>What this result says is that the sample mean has the same theoretical population mean, <span class="math inline">\(\mu\)</span>, as any single value drawn from the population, but that its variance is reduced by a factor <span class="math inline">\(n\)</span>. Given our knowledge of the role of the variance in the Normal distribution, the result suggests that sample mean ought to lie closer to the true population mean <span class="math inline">\(\mu\)</span> as the sample size increases.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-194" class="example"><strong>Example 6.6  </strong></span>Suppose I take <span class="math inline">\(10\)</span> samples of bamboo shoots and measure their lengths. The length of these particular bamboo shoots are normally distributed with mean <span class="math inline">\(74\)</span>mm and standard deviation <span class="math inline">\(5\)</span>mm.</p>
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 6.7  </strong></span>Suppose I take <span class="math inline">\(10\)</span> samples of bamboo shoots and measure their lengths. The length of these particular bamboo shoots are normally distributed with mean <span class="math inline">\(74\)</span>mm and standard deviation <span class="math inline">\(5\)</span>mm.</p>
 <table>
 <thead>
 <tr class="header">
@@ -634,7 +571,7 @@ This proof is beyond the scope of the course, however we can check the mean and 
 </div>
 <p>Now we have two variances <span class="math inline">\(\sigma^2\)</span> and <span class="math inline">\(\sigma^2/n\)</span> or equivalently standard deviations <span class="math inline">\(\sigma\)</span> and <span class="math inline">\(\sigma / \sqrt{n}\)</span> we need to be clear which one we are talking about.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-195" class="definition"><strong>Definition 6.4  </strong></span>The quantity <span class="math inline">\(\sigma/\sqrt{n}\)</span> is called the <strong><em>standard error of the
+<p><span id="def:unlabeled-div-14" class="definition"><strong>Definition 6.4  </strong></span>The quantity <span class="math inline">\(\sigma/\sqrt{n}\)</span> is called the <strong><em>standard error of the
 mean</em></strong>. This is the standard deviation of <span class="math inline">\(\bar{X}\)</span> - the sampling distribution of the mean. It is essentially the same as the standard deviation for a single observation but reflects the fact that the variance of
 the mean depends on the sample size <span class="math inline">\(n\)</span>.</p>
 </div>
@@ -644,7 +581,7 @@ mean <span class="math inline">\(\mu\)</span>.In practice, this suggests that, i
 population mean were unknown, the sample mean ought to be a good
 estimate of its value.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-196" class="example"><strong>Example 6.7  </strong></span>Apple weights (revisited)
+<p><span id="exm:unlabeled-div-15" class="example"><strong>Example 6.8  </strong></span>Apple weights (revisited)
 Recall we assumed that the weight of individual apples sold by a supermarket were Normally distributed
 with mean 100g and standard deviation 8g, i.e. if the random variable <span class="math inline">\(X\)</span>
 represents the weight then <span class="math inline">\(X \sim \text{N}({100},{8^2})\)</span>.</p>
@@ -683,7 +620,7 @@ problem to one involving the standard Normal distribution.</p>
 <div id="exercises-week-6" class="section level2 hasAnchor">
 <h2><span class="header-section-number">6.10</span> Exercises week 6<a href="norm.html#exercises-week-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-197" class="exercise"><strong>Exercise 6.1  </strong></span>Suppose the lifetime of an electrical component follows
+<p><span id="exr:unlabeled-div-16" class="exercise"><strong>Exercise 6.1  </strong></span>Suppose the lifetime of an electrical component follows
 a uniform distribution on the range <span class="math inline">\([0,2000]\)</span> hours.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Draw a sketch of the distribution.</p></li>
@@ -698,7 +635,7 @@ a uniform distribution on the range <span class="math inline">\([0,2000]\)</span
 distribution representing the probability)</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-198" class="exercise"><strong>Exercise 6.2  </strong></span>The time taken (in minutes) to serve a customer in a fast food
+<p><span id="exr:unlabeled-div-17" class="exercise"><strong>Exercise 6.2  </strong></span>The time taken (in minutes) to serve a customer in a fast food
 restaurant is a continuous random variable, <span class="math inline">\(X\)</span>, with probability
 distribution,
 <span class="math display">\[ f(x) = \left \{\begin{array}{ll}
@@ -721,7 +658,7 @@ customer will be,</li>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-199" class="exercise"><strong>Exercise 6.3  </strong></span>Use standard Normal tables to find the following
+<p><span id="exr:unlabeled-div-18" class="exercise"><strong>Exercise 6.3  </strong></span>Use standard Normal tables to find the following
 probabilities, (draw a sketch diagram in each case)</p>
 <ol style="list-style-type: lower-roman">
 <li><p><span class="math inline">\(P(Z&gt;1.7)\)</span></p></li>
@@ -734,7 +671,7 @@ probabilities, (draw a sketch diagram in each case)</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-200" class="exercise"><strong>Exercise 6.4  </strong></span>The lifetime of a certain brand of lightbulb is Normally distributed with
+<p><span id="exr:unlabeled-div-19" class="exercise"><strong>Exercise 6.4  </strong></span>The lifetime of a certain brand of lightbulb is Normally distributed with
 mean 2000 hours and standard deviation 75 hours. Find the probability that a
 randomly selected bulb will have lifetime,</p>
 <ol style="list-style-type: lower-alpha">
@@ -748,7 +685,7 @@ randomly selected bulb will have lifetime,</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-201" class="exercise"><strong>Exercise 6.5  </strong></span>Bags of sugar packed by a machine have a mean weight of 2kg and a
+<p><span id="exr:unlabeled-div-20" class="exercise"><strong>Exercise 6.5  </strong></span>Bags of sugar packed by a machine have a mean weight of 2kg and a
 standard deviation of 0.02kg. Find the probability that the weight of a
 bag will be</p>
 <ol style="list-style-type: lower-roman">
@@ -761,7 +698,7 @@ bag will be</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-202" class="exercise"><strong>Exercise 6.6  </strong></span>A type of laboratory mouse has weight which is Normally distributed with mean
+<p><span id="exr:unlabeled-div-21" class="exercise"><strong>Exercise 6.6  </strong></span>A type of laboratory mouse has weight which is Normally distributed with mean
 30g and standard deviation 2.5g. Find the probability that the weight of a randomly
 selected mouse is,</p>
 <ol style="list-style-type: lower-alpha">
@@ -774,7 +711,7 @@ selected mouse is,</p>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-203" class="exercise"><strong>Exercise 6.7  </strong></span>Eggs are classified as standard, if they weigh less than
+<p><span id="exr:unlabeled-div-22" class="exercise"><strong>Exercise 6.7  </strong></span>Eggs are classified as standard, if they weigh less than
 46.0g, medium if they weigh between 46.0g and 56.0g, or large if
 they weigh over 56.0g. Suppose the eggs laid by a particular
 breed of hen have weight which is Normally distributed with mean
@@ -782,7 +719,7 @@ breed of hen have weight which is Normally distributed with mean
 these hens falls into the three classes?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-204" class="exercise"><strong>Exercise 6.8  </strong></span>A manufactured item requires a fuse which can be supplied by one
+<p><span id="exr:unlabeled-div-23" class="exercise"><strong>Exercise 6.8  </strong></span>A manufactured item requires a fuse which can be supplied by one
 of two suppliers. Supplier 1’s fuses have a lifetime which is Normally distributed
 with mean 1000 hours and standard deviation 30 hours. Supplier 2’s fuses have a
 lifetime which is Normally distributed with mean 990 hours and standard deviation
@@ -790,7 +727,7 @@ lifetime which is Normally distributed with mean 990 hours and standard deviatio
 hours. Which of the two suppliers would you choose and why.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-205" class="exercise"><strong>Exercise 6.9  </strong></span>Marks in a statistics examination are Normally
+<p><span id="exr:unlabeled-div-24" class="exercise"><strong>Exercise 6.9  </strong></span>Marks in a statistics examination are Normally
 distributed with mean 50 and standard deviation 10. What is the
 probability that</p>
 <ol style="list-style-type: lower-roman">
@@ -800,14 +737,14 @@ and 48?</p></li>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-206" class="exercise"><strong>Exercise 6.10  </strong></span>A ski-lift is designed with a load limit of 18,000lbs and claims a
+<p><span id="exr:unlabeled-div-25" class="exercise"><strong>Exercise 6.10  </strong></span>A ski-lift is designed with a load limit of 18,000lbs and claims a
 capacity of 100 people. If the weight of people using the lift is Normally
 distributed with mean 175lbs and standard deviation 30lbs, what is the
 probability that a group of 100 randomly selected people will exceed the load
 limit of the lift? Would you be willing to use the lift?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-207" class="exercise"><strong>Exercise 6.11  </strong></span>Lengths of bicycle chain links are Normally distributed with mean
+<p><span id="exr:unlabeled-div-26" class="exercise"><strong>Exercise 6.11  </strong></span>Lengths of bicycle chain links are Normally distributed with mean
 0.5cm and standard deviation 0.04cm. The finished chains must be between 49
 and 50cm long.</p>
 <ol style="list-style-type: lower-alpha">
@@ -828,7 +765,7 @@ order to have the following percentages meet the standard?</p></li>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-208" class="exercise"><strong>Exercise 6.12  </strong></span>Bags of sugar packed by a machine have a mean weight of 2kg and a standard
+<p><span id="exr:unlabeled-div-27" class="exercise"><strong>Exercise 6.12  </strong></span>Bags of sugar packed by a machine have a mean weight of 2kg and a standard
 deviation of 0.02kg. What weights will</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>be exceeded by 15% of bags</p></li>
@@ -845,13 +782,13 @@ deviation of 0.02kg. What weights will</p>
 with the appropriate probability.)</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-209" class="exercise"><strong>Exercise 6.13  </strong></span>The weight of a child can be modelled as normally distributed with mean <span class="math inline">\(30\)</span>kg and standard deviation <span class="math inline">\(5\)</span>kg.</p>
+<p><span id="exr:unlabeled-div-28" class="exercise"><strong>Exercise 6.13  </strong></span>The weight of a child can be modelled as normally distributed with mean <span class="math inline">\(30\)</span>kg and standard deviation <span class="math inline">\(5\)</span>kg.</p>
 <p>A fairground ride has a total carrying capacity of <span class="math inline">\(2.8\)</span> metric tons (thousand kilograms).</p>
 <p><span class="math inline">\(k\)</span> children are admitted to the ride and their total weight <span class="math inline">\(X_1+X_2+ \ldots + X_k\)</span>.</p>
 <p>What is the maximum number of children that could be admitted to the ride, to ensure that the total weight is within the carrying capacity with probability <span class="math inline">\(99\%\)</span>?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-210" class="exercise"><strong>Exercise 6.14  </strong></span>The masses of penguins on an island are found to be normally distributed with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>. Given that <span class="math inline">\(10\%\)</span> of the penguins have mass less than <span class="math inline">\(18\)</span>kg and <span class="math inline">\(5\%\)</span> have mass greater than <span class="math inline">\(30\)</span>kg,</p>
+<p><span id="exr:unlabeled-div-29" class="exercise"><strong>Exercise 6.14  </strong></span>The masses of penguins on an island are found to be normally distributed with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>. Given that <span class="math inline">\(10\%\)</span> of the penguins have mass less than <span class="math inline">\(18\)</span>kg and <span class="math inline">\(5\%\)</span> have mass greater than <span class="math inline">\(30\)</span>kg,</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Sketch a diagram to represent this information</p></li>
 <li><p>Find <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p></li>
