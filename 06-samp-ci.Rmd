@@ -536,7 +536,7 @@ The approximation is better for sufficiently large $n$, and $\pi$ close to $\fra
 
 _intuitive idea_
 
-Recall the mean of a binomial distribution $ \text{E}(X)=n\pi$, and the variance is $\text{Var}(X)=n\pi(1-\pi)$. The theorem says one can approximate the discrete distribution for the normal distribution with the same mean and variance. 
+Recall the mean of a binomial distribution $\text{E}(X)=n\pi$, and the variance is $\text{Var}(X)=n\pi(1-\pi)$. The theorem says one can approximate the discrete distribution for the normal distribution with the same mean and variance. 
 
 In the image below one can see the pmf of a $\text{Bin}(20,0.5)$ distribution (red) and a normal approximation (green). As the probabilities are calculated as the area under the curve, adding the probabilities corresponds to adding the areas of the rectangles. For this reason the convention is to apply a continuity correction when using the normal approximation to calculate probabilities. The red rectangles extend $0.5$ in either direction from the particular value of $x$. 
 
