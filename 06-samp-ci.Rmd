@@ -515,7 +515,11 @@ $$\frac{(n-1)s^2}{\chi^2_{n-1}(0.025)}= \frac{7\times 14.2679}{16.013} = 6.2371\
 
 and,
 
-$$\frac{(n-1)s^2}{\chi^2_{n-1}(0.025)}= \frac{7\times 14.2679}{16.013} = 6.2371\ldots$$
+$$\frac{(n-1)s^2}{\chi^2_{n-1}(0.025)}= \frac{7\times 14.2679}{1.690} = 59.097\ldots$$
+$$(6.24,59.1)$$
+To get an interval for the standard deviation we may take the square root of the end points.
+
+
 ## Interval for a proportion
 
 We will derive an approximate confidence interval for an unknown population proportion $\pi$ based on using a suitable normal distribution.
