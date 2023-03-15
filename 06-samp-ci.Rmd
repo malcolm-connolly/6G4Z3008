@@ -1,0 +1,631 @@
+# Sampling and confidence intervals 
+
+
+This week we begin the Statistical applications of the theory we have learned so far.
+
+We will learn the basis of (Frequentist) statistical inference. We will construct and interpret confidence intervals for a mean and a proportion. We will then introduce hypothesis testing.
+
+If Mathematics is a deductive process, Statistics is an inferential one. Given imperfect information (usually data), we make (sensible) inferences about models of the real world.
+
+Most modelling situations involve estimating the value of a population parameter or characteristic, and one of the main tasks in Statistics is to estimate the values of the parameters from sample data. 
+
+:::{.example}
+Suppose we are interested in the average height of an adult man in the UK. The ***population*** of interest is then all UK adult men (approximately $33$ million). A _model_ for the height of men may be a normal distribution:
+
+$$X\sim \text{N}(\mu,\sigma^2),$$
+
+where $\mu$ and $\sigma^2$ are the ***population parameters*** of the distribution.
+
+Why might it not be possible to measure the height of every UK man? Instead we take a smaller number of men to measure, say $100$ or $1000$. This is called a ***sample***.
+
+From the sample we can calculate the sample mean $\bar{x}$ and the sample standard deviation $s$.
+:::
+
+Population parameters like $\mu$ are in practice unknowable with certainty. Typically in statistics we may specifically want to 
+
+- Estimate the value of $\mu$.
+
+- Determine a range or interval of plausible values for $\mu$.
+
+- Decide whether a particular value of $\mu$ appears to be reasonable. 
+
+We distinguish between real world, or population parameters, and sample statistics in the following table:
+
+| Characteristic | Population parameter   | Sample statistic / estimator |
+|---+----+----|
+| Mean | $\mu$ | $\bar{x}$ |
+| Standard deviation | $\sigma$ | $s$ |
+| Proportion | $\pi$ | $\hat{p}$,$p$ |
+
+It is intuitively obvious that we can use the sample mean to estimate the true value of the population mean. However we must recognise that when drawing a random sample, from a normal distribution in this case, any statistic calculated from the sample will also have a probability distribution. 
+
+Recall ***Theorem 6.2*** from last week. The sampling distribution of the mean $\bar{X}$ is normally distributed with the same mean but with variance divided by a factor given by the sample size $n$. That is
+
+$$\overline{X} \sim \text{N} (\mu, \sigma^2/{n})$$
+
+With larger values of $n$ we can compare the proportion of the density about the mean. 
+
+:::{.example}
+Suppose we assume the percentage of glucose in bars of toffee is normally distributed with mean $20\%$ and standard deviation $2\%$. Find the probability that:
+
+a) One bar of toffee selected at random has glucose level between $19.5\%$ and $20.5\%$.
+
+b) The mean percentage glucose in $20$ randomly selected toffee bars is between $19.5\%$ and $20.5\%$.
+
+c) The mean percentage glucose in $100$ randomly selected toffee bars is between $19.5\%$ and $20.5\%$.
+:::
+
+_solution_
+
+a) $$\text{P}(19.5<X<20.5)= \text{P}\left(\frac{19.5-20}{2}<Z<\frac{20.5-20}{2}\right)$$
+
+$$= \text{P}(-0.25<Z<0.25)=1-2\times\text{P}(Z>0.25)$$
+
+$$=1-2\times 0.4013=0.20$$
+
+b) $$\text{P}(19.5<\overline{X}<20.5)= \text{P}\left(\frac{19.5-20}{\sqrt{2^2 / 20}}<Z<\frac{20.5-20}{\sqrt{2^2 / 20}}\right)$$
+
+$$= \text{P}(-1.12<Z<1.12)=1-2\times\text{P}(Z>1.12)$$
+
+$$=1-2\times 0.1314=0.74 \approx 75\%$$
+
+c) $$\text{P}(19.5<\overline{X}<20.5)= \text{P}\left(\frac{19.5-20}{\sqrt{2^2 / 100}}<Z<\frac{20.5-20}{\sqrt{2^2 / 100}}\right)$$
+
+$$= \text{P}(-2.5<Z<2.5)=1-2\times\text{P}(Z>2.5)$$
+
+$$=1-2\times 0.0062=0.99\ldots \approx 99\%$$
+
+We can summarise this example with the following table:
+
+| Sample size $n$ | $\text{P}(19.5 <\overline{X} < 20.5)$ |
+|:---:+:--------:|
+| 1 | $20$ |
+| 20 | $75\%$ |
+| 100 | $99\%$ | 
+
+
+We can use the sampling distribution in various ways to make inferences about the true population mean glucose content. For example, in a samle of $100$ toffee bars, and assuming the true mean is $\mu=20\%$, a value of $\bar{x}$ outside the range $19.5 - 20.5\%$ would appear very unusual. 
+
+## Confidence Intervals
+
+This specifies a range of plausible values for the parameter of interest.
+
+Recall we can find a particular value of $Z\sim \text{N}(0,1)$ within which the distribution has a specified probability - using the inverse CDF of the normal distribution. 
+
+:::{.example}
+Calculate the $z$-value containing the middle $95\%$ of density. In other words find $z$ such that $\text{P}(|Z|\leq z)=0.95$.
+
+_solution_
+
+ Recall $|x|<1$ means $-1<x<1$.
+ 
+ The inequality $|Z|\leq z$ means $-z\leq Z\leq z$.
+ 
+$$\text{P}(-z\leq Z \leq z)=0.95$$
+$$\iff  \text{P}(Z\geq z) = P(Z\leq -z) =0.025$$
+From tables:
+
+$$\Phi^{-1}(0.025) = -1.96$$
+Or alternatively $$\Phi^{-1}(0.975) = 1.96$$
+
+So $z=1.96$, and $\text{P}(|Z|<1.96) =0.95$
+:::
+
+Note that $95\% = 100(1-0.05)\%$. The $z$ value we calculated corresponded to $\alpha / 2$.
+
+
+:::{.definition}
+A confidence interval for the population mean $\mu$ of level $100(1-\alpha)\%$ is given by the following expression.
+
+$$\left( \bar{x}-z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}},\bar{x}+z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} \right)$$
+:::
+
+The confidence interval is derived from standardisation of the sampling distribution of the mean. That is,
+
+$$\overline{X} \sim \text{N} (\mu, \sigma^2/{n}),$$
+implies
+
+$$Z = \frac{\overline{X} - \mu}{\sigma / \sqrt{n}} \sim \text{N}(0,1).$$
+
+$$\text{P}\left( |Z| <z_{\frac{1}{2}\alpha} \right) = 1-\alpha$$
+
+Now by standardisation replace $Z$ with the expression involving $\overline{X}$.
+
+$$\text{P}\left( \left|\frac{\overline{X} - \mu}{\sigma / \sqrt{n}} \right| <z_{\frac{1}{2}\alpha} \right) = 1-\alpha$$
+The denominator is positive so this is equivalent to:
+$$\text{P}\left( |\overline{X} - \mu| <z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}}  \right) = 1-\alpha$$
+
+$$\text{P}\left( |\mu - \overline{X} | <z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}}  \right) = 1-\alpha$$
+
+$$\text{P}\left(z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}} < \mu - \overline{X} <z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}}  \right) =1-\alpha$$
+$$\text{P}\left( \overline{X}+ z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}} < \mu <\overline{X} + z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}}  \right) =1-\alpha$$
+
+:::{.example}
+The milligrams of fat in a sample of hotdogs were measured as 
+$$25.2, \ 21.3,\ 22.8,\ 17.0,\ 29.8,\ 21.0,\ 25.5,\ 16.0,\ 20.9, \ 19.5$$
+Supposing that the fat content is normally distributed, that this is a random sample of hotdogs, and the population standard deviation $\sigma = 5$, calculate a $90/%$ confidence interval for the mean fat content $\mu$.
+:::
+
+_solution_
+
+With $90\%$ centrally, we must have $5\%$ in either tail. One can look up the $z$ value as $z_{0.95}= 1.6449$.
+
+In R we could get this value with the quantile command $\texttt{qnorm(0.95,mean=0,sd=1)}$.
+
+Then, 
+$$\bar{x} \ \pm \ z\frac{\sigma}{\sqrt{n}} = 21.9 \ \pm 1.6449\times\frac{5}{\sqrt{10}}$$
+
+$$=[19.3 , 24.5] \text{   (to 3 s.f.)}$$
+
+
+
+Warning - there are many incorrect interpretations of confidence intervals, and it is contentious how meaningful such an interval is.
+
+Note that while $\mu$ is unknown, it is a constant rather than a random quantity. We cannot say "with $95/%$ chance $\mu$ will lie inside the interval", because there is no chance associated to a constant quantity. 
+
+The random part of the interval comes from $\overline{X}$, so rather we must say that with repeated samples, and in the long run, approximately $95/%$ of intervals will contain $\mu$. 
+
+Another misconception is to say that if there were 100 such intervals, exactly 95 would contain the interval, but this is a general error about the interpretation of probability. 
+
+Below is some R code to simulate this process.
+
+```{r ci_sim, out.width="75%"}
+library(plotrix)
+
+z<-qnorm(0.975,0,1) # this is the z-value 
+sigma <- 5
+x<- 1:100
+
+set.seed(1234) #ensures the code is reproducible
+
+#100 samples of 10 hotdogs each
+hotdogs <- replicate(100, rnorm(10,mean=20,sd=5))
+
+#Calculate the mean of each sample
+xbar <- vector(length = 100)
+for (i in 1:100){
+xbar[i] <- mean(hotdogs[seq(10*(i-1),10*i,1)])
+}
+
+#lower end of interval L
+L <- xbar - z*sigma/sqrt(10)
+
+#upper end of interval U
+U <- xbar + z*sigma/sqrt(10)
+
+plotCI(x, xbar, ui=U, li=L,ylab="hotdog fat content")
+abline(a=20, b=0,col="red", lwd=3, lty=2)
+
+```
+
+In this example it turns out that $5\%$ of intervals did not contain the mean. However setting a different seed shows this is not fixed, just a long term probability.
+
+In many scientific studies all the data is pooled in a single sample, and one calculates a single confidence interval. There is no way of knowing if the interval contains the mean. What 'confidence' do we really have here? 
+
+If $\bar{x}$ is a single-valued or _point estimate_, the C.I. is just by convention just an _interval estimate_.
+
+## Unknown variance
+
+What do we do if we do not know $\sigma$? Well we have to estimate it.
+
+### Estimating the variance
+
+Recall we estimate the population parameters such as $\mu$ with statistics like $\bar{X}$. 
+
+We can ask what the expected value of a statistic is
+
+$$\text{E}(\overline{X})= \text{E}\left( \frac{1}{n}\sum_{i=1}^{n}X_i \right)$$
+
+$$=\frac{1}{n}\sum_{i=1}^{n}\text{E}(X_i) = \frac{1}{n}\sum_{i=1}^{n}\mu =\frac{1}{n}n\mu=\mu$$
+
+We can see that $\text{E}(\bar{X})=\mu$. 
+
+:::{.definition}
+When a statistic is used to estimate a parameter, if the expectation of the estimator is equal to the parameter, then the statistic is called ***unbiased***. 
+
+Hence $\bar{X}$ is an unbiased estimator for $\mu$.
+:::
+
+It turns out that the obvious choice to estimate $\sigma^2$ is not unbiased. 
+
+$$\text{E}\left( \frac{1}{n}\sum_{i=1}^{n}(X_i-\bar{X})^2 \right) = \frac{1}{n}\text{E}\left( \sum_{i=1}^n (X_i^2-2\bar{X} X_i +\bar{X}^2)\right) $$
+
+
+$$=\frac{1}{n}\text{E}\left( \sum_{i=1}^n X_i^2 -2\bar{X}\sum_{i=1}^n{X_i} +\sum_{i=1}^n \bar{X}^2 \right) $$
+
+
+$$=\frac{1}{n}\text{E}\left( \sum_{i=1}^n X_i^2 -2n\bar{X}^2 +n \bar{X}^2 \right) =\frac{1}{n}\text{E}\left( \sum_{i=1}^n X_i^2 -n\bar{X}^2  \right)  $$
+
+$$=\frac{1}{n}\left( \sum_{i=1}^n \text{E}(X_i^2) -n\text{E}(\bar{X}^2)  \right) $$
+Using the identity $\text{Var}(X)= \text{E}(X^2)=\text{E}(X)^2$ gives:
+
+$$=\frac{1}{n}\left( \sum_{i=1}^n [\text{Var}(X_i)+\text{E}(X_i)^2] -n[\text{Var}(\bar{X})+\text{E}(\bar{X})^2]  \right) $$
+And now we have $\text{Var}(X_i) = \sigma^2$, $\text{E}(X_i)^2 = \mu^2$, $\text{E}(\bar{X}) = \mu$, and  $\text{Var}(\bar{X})=\frac{\sigma^2}{n}$. Putting this together gives.
+
+$$=\frac{1}{n}\left( \sum_{i=1}^n [\sigma^2+\mu^2] -n\left[\frac{\sigma^2}{n}+\mu^2\right]  \right) =\frac{1}{n}\left( n\sigma^2+n\mu^2-n\left[\frac{\sigma^2}{n}+\mu^2\right]\right)$$
+
+Altogether
+
+$$\text{E}\left( \frac{1}{n}\sum_{i=1}^{n}(X_i-\bar{X})^2 \right) = \frac{(n-1)\sigma^2}{n} $$
+
+To make a statistic that is an unbiased estimator for $\sigma^2$, we could rescale by multiplying by $n$ and dividing by $(n-1)$.
+
+If the variance $\sigma$ is unknown, an unbiased estimate of $\sigma$ is 
+
+$$s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i-\bar{x})^2$$
+
+This has the property that $\text{E}(S^2) = \sigma^2$.
+
+
+It may in practice be easier to compute:
+
+$$s^2= \frac{1}{n-1}\left(\sum_{i=1}^n x_i^2 - n\bar{x}^2\right) = \frac{1}{n-1}\left(\sum x_i^2 - \frac{(\sum x_i)^2}{n}\right).$$
+Check which appears in the formula booklet.
+
+### The t distribution
+
+When we do not know the population variance $\sigma^2$, we have more uncertainty. The more data we have the less uncertainty we have, but for small samples we need to account for this and use a distribution with more mass in the tails.
+
+
+
+To deal with this we use the quantiles of the $t$-distribution instead of the quantiles of the $Z\sim \text{N}(0,1)$. Below is a picture of a $t$-distribution,
+
+
+```{r t1, fig.align="center",out.width = "75%", fig.cap="fat tails of the t-distribution", echo=FALSE}
+knitr::include_graphics("./figures/tdist.jpg")
+```
+
+The $t$-distribution has a number of degrees of freedom to account for the decreased uncertainty in the tails with more data. As the number of degrees of freedom increases we can see the distribution approaches the standard normal density.
+
+```{r t2, fig.align="center",out.width = "75%", fig.cap="t distributions with 1, 5 and 20 degrees of freedom", echo=FALSE}
+knitr::include_graphics("./figures/df.jpg")
+```
+
+:::{.definition}
+For the $t$-distribution, the number of ***degrees of freedom*** $\nu$ is one less than the number of data points.
+
+$$\nu = n-1$$
+:::
+
+:::{.definition}
+Given a random sample of size $n$ from a normally distributed population with unknown population variance a $100(1-\alpha)\%$ confidence interval for the population mean $\mu$ is given by 
+
+$$\left( \bar{x} - t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}\right)$$
+The quantiles of the $t$-distribution need to be obtained from the table in the formula booklet, or from the R function $\texttt{qt()}$.
+:::
+
+:::{.example}
+A sample of $6$ trout taken from a fish farm were caught and their lengths in centimetres were measured. the lengths of the fish were as follows:
+
+$$ 26.8, \ 26.0, \ 25.8, \ 25.5, \ 24.3, \ 24.6 $$
+
+Assuming the lengths of the trout are normally distributed:
+
+- Calculate unbiased estimates for the mean and variance. 
+
+- Find a $90\%$ confidence interval for the mean length of trout in the fish farm. 
+:::
+
+_solution_
+Using a calculator gives $\bar{x}=25.5$ and $s^2 = 0.8560$.
+
+The $90\%$ confidence limits for $\bar{x}$ are:
+
+$$\bar{x} \pm t_{5}(5\%)\frac{s}{\sqrt{n}} = 25.5 \pm 2.015\times \frac{0.9252}{\sqrt{6}}$$
+
+$$=(24.7,26.3)$$
+
+:::{.example name="exam-style"}
+The masses in grams of ten packets of biscuits of a particular brand were weighed. The results are summarised by a computerised weighing machine as:
+
+$$\sum x_i = 3978.8 \ , \ \sum x_i^2 = 1583098.3 $$
+
+a) What assumptions and requirements are necessary to produce a
+confidence interval for the mean weight of a packet of biscuits? Explain these in context.
+
+b) Calculate unbiased estimates for the mean and variance.
+
+c) Calculate a $95\%$ confidence interval.
+
+d) The weight on the packet says $400$g, does the data support this labelling?
+:::
+
+
+_solution_
+
+a) The sample is assumed to be random. The weights are assumed to follow a normal distribution.
+
+b) 
+$$\bar{x} = 3978.8/10 = 397.88\text{g}$$
+$$s^2 = \frac{1}{10-1}\left(1583098.3-\frac{3978.8^2}{10}\right) =1.484\text{g}$$
+
+c) The required interval is:
+
+$$\bar{x} \pm t_{9}(2.5\%)\frac{s}{\sqrt{n}} = 397.88 \pm 2.2622\times \frac{1.484}{\sqrt{10}}$$
+$$(396.8,398.9 ) $$
+
+d) As $400$ lies outside the interval, this sample does not support the labelling. 
+
+## Required sample sizes
+
+Note that the width of the confidence interval is determined by the required level of confidence and the sample size as long as we know or can estimate the standard deviation. We can use this to decide in advance how many observations are needed to estimate the mean with of a given degree of precision.
+
+
+:::{.example name="Ikea"}
+From time to time a firm manufacturing pre-packed furniture needs to check the mean distance between pairs of holes drilled by a machine in pieces of chipboard to ensure that no change has occurred. It is known from experience that the standard deviation of the distance is $0.43$mm. The first intends to take a random sample of size $n$, and to calculate a $99\%$ confidence interval for the mean of the population. The width of this interval must be no more than $0.60$mm. Calculate the minimum value of $n$.
+:::
+
+_solution_
+
+The width is the difference between the end points of the interval, and so is twice the term that is added (and subtracted) from $\bar{x}$ in the formula.
+
+$$2z\frac{\sigma}{\sqrt{n}} <0.6$$
+$$2\times 2.576\times \frac{0.43}{\sqrt{n}}<0.6$$
+$$2\times 2.576\times {0.43}<0.6\sqrt{n}$$
+$$\frac{2\times 2.576\times {0.43}}{0.6}<\sqrt{n}$$
+$$\sqrt{n} > 3.69\ldots $$
+$$n > 13.6\ldots $$
+The smallest value of $n$ is therefore $14$.
+
+
+## Interval for a population variance
+
+We have shown earlier that the sampling distribution of the sample variance has expectation $\sigma^2$. That is, the random variable $S^2$ given by:
+
+$$S^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X})^2 ,$$ 
+
+is such that,
+
+$$\text{E}(S^2) = \sigma^2$$
+But as yet we do not know the distribution of $S^2$.
+
+We introduce the relevant distributions, prove a proposition and derive use this to derive a confidence interval for the variance.
+
+:::{.definition}
+A random variable $Y$ is said to have a ***chi-squared distribution*** with one degree of freedom, written $Y\sim\chi^2(1)$ if it has density function:
+
+$$f_Y(y) = \frac{1}{\sqrt{2\pi y}}e^{-y/2} $$
+:::
+
+
+
+:::{.proposition}
+The square of a standard normal distribution $Z^2$ follows a $\chi^2(1)$ distribution. That is, if $Z\sim N(0,1)$ then $Z^2\sim \chi^2(1)$
+:::
+
+_proof_
+
+Recall the density and distribution functions of the standard normal are written in greek letters $f_Z = \phi$ and $F_Z = \Phi$. We will also need to remember from last week that $\phi$ takes the form
+
+$$\phi(z) =  \frac{1}{\sqrt{2\pi}} \exp \left( -\frac{1}{2}z^2 \right)$$
+
+Consider the distribution function of $Y=Z^2$.
+$$ F_Y(z) = \text{P}(Z^2<z)$$
+$$= \text{P}\left(-\sqrt{z}<Z<\sqrt{z}\right)$$
+$$=\int_{-\sqrt{z}}^{\sqrt{z}}\phi(x) \ dx $$
+
+$$=\int_{-\infty}^{\sqrt{z}}\phi(x) \ dx - \int_{\infty}^{-\sqrt{z}}\phi(x) \ dx$$
+$$=\Phi(\sqrt{z})- \Phi(-\sqrt{z})$$
+$$=\Phi(\sqrt{z})-(1-\Phi(\sqrt{z})), \text{ by symmetry}$$
+
+$$=2\Phi(\sqrt{z})-1. $$
+
+So $F_Y(z) = 2\Phi(\sqrt{z})-1$. We can find the density by differentiating,
+
+$$f_Y (z)= \frac{d}{dz}F_Y(z)$$
+$$=\frac{d}{dz}\left[2\Phi(\sqrt{z})-1\right] $$
+
+$$=2\Phi'(\sqrt{z})\times\frac{1}{2}z^{-\frac{1}{2}} , \text{by the chain rule}$$
+$$=\Phi'(\sqrt{z})\times\frac{1}{\sqrt{z}}$$
+But differentiating a distribution gives you the density, that is $\Phi' = \phi$. Hence
+
+$$=\phi(\sqrt{z})\times\frac{1}{\sqrt{z}}$$
+$$=\frac{1}{\sqrt{2\pi}} \exp \left( -\frac{1}{2}(\sqrt{z})^2 \right) \times \frac{1}{\sqrt{z}}$$
+$$=\frac{1}{2\pi z} e^{-z/2}. $$
+But this is the density function of $\chi^2(1)$, and if two random variables have the same density they must be equal, so we must have 
+$$Z^2 = \chi^2(1).$$
+With this result it will not be hard to believe the following
+
+:::{.proposition}
+If $Z_1 ,Z_2, \ldots, Z_k$ are independent standard normal random variables then a sum of squares these random variables is a chi-squared distribution with $k$ degrees of freedom.
+
+$$Z_1^2+Z_2^2+\ldots+ Z_k^2 \sim \chi^2(k) $$
+:::
+
+proof: omitted.
+
+:::{.theorem}
+We can scale the sampling distribution of the sample variance to be a chi-squared distribution on $n-1$ degrees of freedom.
+
+$$\frac{(n-1)S^2}{\sigma^2} \sim\chi^2_{n-1}$$
+:::
+
+_proof_
+
+$$S^2 =\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X})^2 $$
+
+$$(n-1)S^2 =\sum_{i=1}^n(X_i-\overline{X})^2 $$
+$$\frac{(n-1)S^2}{\sigma^2} =\frac{1}{\sigma^2}\sum_{i=1}^n(X_i-\overline{X})^2 $$
+\begin{equation}
+\frac{(n-1)S^2}{\sigma^2} =\sum_{i=1}^n\left(\frac{X_i-\overline{X}}{\sigma}\right)^2
+(\#eq:var)
+\end{equation}
+If $\bar{X}$ were $\mu$ we could view the RHS as a sum of squares of standardised variables. Let $Q$ be the expression we wanted it to be
+
+$$Q = \sum_{i=1}^n\left(\frac{X_i-\mu}{\sigma}\right)^2 $$
+
+Then $Q\sim \chi^2(n)$. Now we can manipulate
+
+$$Q=\sum_{i=1}^n\left(\frac{(X_i- \bar{X}) + (\bar{X}-\mu)}{\sigma}\right)^2$$
+Splitting this up gives:
+$$=\sum_{i=1}^n\left(\frac{X_i - \bar{X}}{\sigma}\right)^2+2\left(\frac{\bar{X}-\mu}{\sigma}\right)\sum_{i=1}^n \left(\frac{X_i-\bar{X}}{\sigma}\right) + \sum_{i=1}^n\left(\frac{\bar{X} - \mu}{\sigma}\right)^2$$
+
+$$=\underbrace{\sum_{i=1}^n\left(\frac{X_i - \bar{X}}{\sigma}\right)^2}_{(7.1)}+2\left(\frac{\bar{X}-\mu}{\sigma^2}\right)\underbrace{\sum_{i=1}^n \left(X_i-\bar{X}\right)}_{=0} + n\left(\frac{\bar{X} - \mu}{\sigma}\right)^2$$
+\begin{equation}
+Q =\frac{(n-1)S^2}{\sigma^2}+n\left(\frac{\bar{X} - \mu}{\sigma}\right)^2
+(\#eq:Q)
+\end{equation}
+
+We now think about the latter term on the RHS. Last week we learned that 
+
+$$\bar{X}\sim N(\mu,\sigma^2/n)$$
+Which is equivalent to 
+
+$$\frac{\bar{X}-\mu}{\sigma / \sqrt{n}} \sim \text{N}(0,1),$$
+squaring this gives
+
+$$n\left(\frac{\bar{X} - \mu}{\sigma}\right)^2 \sim\chi^2(1) $$
+
+So equation (7.2) yields
+
+$$\chi^2(n) = \frac{(n-1)S^2}{\sigma^2}+\chi^2(1)$$
+And the result is shown. 
+
+This will all be a lot cleaner with the theory of moment generating functions and transformations of random variables in your second year course. I have included this derivation for the interested reader.
+
+:::{.definition}
+If $x_1,\ldots,x_n$ is a random sample of observations from a normal distribution with mean $\mu$ and variance $\sigma^2$, both of which unknown. Then a confidence interval for the variance is given by 
+
+$$\left[ \frac{(n-1)s^2}{\chi^2_{n-1}(\alpha / 2)},\frac{(n-1)s^2}{\chi^2_{n-1}(1-\alpha / 2)}\right]$$
+:::
+
+_proof_
+
+$$\text{P}\left( \chi^2(\alpha / 2)<\frac{(n-1)S^2}{\sigma^2} < \chi^2(1-\alpha/2) \right) = 1-\alpha $$
+Rearranging the inequality gives:
+
+$$\text{P}\left( \frac{(n-1)S^2}{\chi^2_{n-1}(\alpha / 2)}<\sigma^2 < \frac{(n-1)S^2}{\chi^2_{n-1}(1-\alpha / 2)} \right) = 1-\alpha $$
+
+:::{.example}
+In order to determine the accuracy of a new rifle, $8$ marksmen were selected at random to fire the
+rifle at a target. The distances $x$, in mm, of the $8$ shots from the centre of the target were as follows:
+$$10, \ \ 14, \ \ 12,\ \ 8, \\ 6,  \ \ 11,  \ \ 18, \ 14.$$
+Assuming that the distances are normally distributed, find a 95% confidence interval for the variance.
+:::
+
+_solution_
+
+Calculating the unbiased estimators gives $\bar{x}=11.625$ and $s^2 = 14.2679$.
+
+There are $8$ data, so $\nu = 7$. For $95\%$ in the middle, we require 
+
+$$\chi^2_7 (0.975) = 1.690 \ \ \ ,\ \ \ \chi^2_7(0.025)=16.013$$
+Calculating the endpoints gives,
+$$\frac{(n-1)s^2}{\chi^2_{n-1}(0.025)}= \frac{7\times 14.2679}{16.013} = 6.2371\ldots$$
+
+and,
+
+$$\frac{(n-1)s^2}{\chi^2_{n-1}(0.025)}= \frac{7\times 14.2679}{16.013} = 6.2371\ldots$$
+## Interval for a proportion
+
+We will derive an approximate confidence interval for an unknown population proportion $\pi$ based on using a suitable normal distribution.
+
+### Approximating the binomial distribution.
+
+The normal distribution is really so important in statistics because under very mild conditions the distribution of the sample mean $\overline{X}$ is a normal distribution, for ***any*** distribution of the original $X_i$ (in particular, not necessarily normal themselves). This result is called the Central Limit Theorem (CLT).
+
+Due to the CLT a normal distribution can be used to approximate various discrete distributions, the most important is the binomial distribution.
+
+This result shows that even in a world full of chaotic randomness there is some underlying statistical order.
+
+:::{.theorem}
+If $X\sim \text{Bin}(n,\pi)$ then $X\approx N(n\pi,n\pi(1-\pi))$. 
+
+The approximation is better for sufficiently large $n$, and $\pi$ close to $\frac{1}{2}$.
+:::
+
+_intuitive idea_
+
+Recall the mean of a binomial distribution $ \text{E}(X)=n\pi$, and the variance is $\text{Var}(X)=n\pi(1-\pi)$. The theorem says one can approximate the discrete distribution for the normal distribution with the same mean and variance. 
+
+In the image below one can see the pmf of a $\text{Bin}(20,0.5)$ distribution (red) and a normal approximation (green). As the probabilities are calculated as the area under the curve, adding the probabilities corresponds to adding the areas of the rectangles. For this reason the convention is to apply a continuity correction when using the normal approximation to calculate probabilities. The red rectangles extend $0.5$ in either direction from the particular value of $x$. 
+
+```{r napprox, fig.align="center",out.width = "75%", fig.cap="t distributions with 1, 5 and 20 degrees of freedom", echo=FALSE}
+knitr::include_graphics("./figures/normapprox.jpg")
+```
+
+:::{.example}
+Approximate the probability of getting between $8$ and $12$ heads when tossing $20$ fair coins. 
+
+_solution_
+$$Y \sim \text{Bin}(20,0.5) \approx X\sim \text{N}(10,0.5)$$
+
+The exact probability is $\text{P}(Y\leq 12) - \text{P}(Y\leq 7) = 0.7368$
+
+With a continuity correction: 
+
+$$\text{P}(8\leq X\leq12) = \text{P}\left(\frac{8-0.5-10}{\sqrt{5}} \leq Z \leq \frac{12+0.5-10}{\sqrt{5}} \right) $$
+$$=\text{P}(-1.118\leq Z \leq 1.118)$$
+$$=0.7364$$
+:::
+
+:::{.example}
+A galton board has small ball bearings that are released from an internal cavity to roll down a board. The board has small pins and when the ball bearing hits a pin, it will move to the left or the right of that pin. The distribution of the pins at the base of the instrument can be seen to follow a bell-curve empirically.
+:::
+
+
+
+### Proportions
+
+Rather than using the normal approximation for $X$ directly, we often want to estimate a proportion. This is the number out of the total number $\frac{X}{n}$.
+
+If $X\sim \text{Bin}(n,\pi)$ is approximated by $\text{N}(n\pi,n\pi(1-\pi))$, then what happens to the mean and variance if we want an approximation for $X/n$?
+
+$$\text{E}\left(\frac{X}{n}\right) = \frac{1}{n}\text{E}(X)=\frac{1}{n}\times n\pi = \pi$$
+
+$$\text{Var}\left(\frac{X}{n}\right) = \frac{1}{n^2}\text{Var}(X)$$
+
+$$= \frac{1}{n^2}\times n\pi(1-\pi) = \frac{\pi(1-\pi)}{n}$$
+So to approximate a proportion we use $\text{N}(\pi,\frac{\pi(1-\pi)}{n})$
+
+:::{.definition}
+A confidence interval for the population proportion $\pi$ is given by the following expression
+
+$$\left(p - z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}, p + z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}\right)$$
+Where $p$ is the observed proportion.
+:::
+
+This can be seen as 
+
+:::{.example}
+An importer has ordered a large consignment of tomatoes. When it arrives he examines a randomly chosen sample of $50$ boxes and finds that $12$ contain at least one bad tomato. Assuming that these boxes may be regarded as being a random sample from the boxes in the consignment, obtain an approximate $99\%$ confidence interval for the proportion of boxes containing at least one bad tomato, giving your confidence limits to three decimal places.
+:::
+
+_solution_
+
+We have $p=0.24$ and $1-p = 0.76$. The relevant quantile is $2.576$, so the confidence interval is 
+
+$$0.24 \pm 2.576\sqrt{\frac{0.24\times 0.76}{50}} = (0.084,0.396) $$
+
+So approximately $8\%$ to $40\%$.
+
+
+
+## Summary
+
+
+A confidence interval can be constructed from a sample or summary statistics. There are four types of confidence interval we have considered this week:
+
+1) confidence interval for the mean with variance known.
+$$\left( \bar{x}-z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}},\bar{x}+z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} \right) $$
+
+2) confidence interval for the mean with variance _unknown_.
+$$\left( \bar{x} - t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}\right)  $$
+
+3) confidence interval for an unknown variance.
+$$\left( \frac{(n-1)s^2}{\chi^2_{n-1}(\alpha / 2)} \ , \ \frac{(n-1)s^2}{\chi^2_{n-1}(1-\alpha / 2)}\right) $$
+
+You can take the square root endpoints for standard deviation.
+
+4) confidence interval for a population proportion.
+
+$$\left(p - z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}, p + z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}\right)$$
+
+We used _unbiased estimates_ for the mean and variance
+
+1. $$\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$$
+
+2. $$s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2 $$
+
+$$=\frac{1}{n-1}\left\{\sum_{i=1}^nx_i^2 - \frac{\left(\sum_{i=1}^n x_i\right)^2}{n} \right\} $$
+- A binomial distribution $\text{Bin}(n,p) \approx \text{N}(np, np(1-p))$.

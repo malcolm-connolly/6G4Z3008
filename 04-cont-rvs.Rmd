@@ -603,7 +603,7 @@ c) Sketch the density $f$ and $F$ on the same axes
 
 d) Calculate $\text{P}(1\leq Y \leq 3)$ in two ways, one with $f$ and one with $F$.
 
-e) Calculate the mean $\text{E}[X]$ and variance $\text{Var}[X]$ of $X$.
+e) Calculate the mean $\text{E}[Y]$ and variance $\text{Var}[Y]$ of $Y$.
 
 :::
 
@@ -611,7 +611,7 @@ e) Calculate the mean $\text{E}[X]$ and variance $\text{Var}[X]$ of $X$.
 The length of time in minutes to serve a customer at a fast food restaurant is a random variable $T$ with density
 
 \begin{equation*}
-  f(x)=\begin{cases}
+  f(t)=\begin{cases}
         k(3t^2 + t) & 0 \leq t \leq 2 \\
         0 &  \text{     Otherwise}
   \end{cases}
@@ -645,7 +645,7 @@ a) Show that $k =\frac{1}{4}$ that makes this a valid density function
 
 b) Find the expected profit and the variance of the profit per contract.
 
-c) Find the cumulative distribution function $F(t)$ and hence the median profit level.
+c) Find the cumulative distribution function $F(x)$ and hence the median profit level.
 
 d) What is the probability that the contractor makes a profit of less than £$600$ on a contract?
 
@@ -680,7 +680,7 @@ d) Evaluate $\text{P}(X\geq 2)$
 :::{.exercise}
 Bacteria grow on a Petri dish in a circular disk. The radius of a circle $R$ can be modelled by a uniform distribution in the interval between $1$ and $3$ cm. 
 
-a) Write down the density ad distribution functions of $R$
+a) Write down the density and distribution functions of $R$
 
 b) Work out the expected value of R and the variance of $R$.
 
@@ -689,7 +689,7 @@ c) If the area of the circle is the random variable $A$, determine the distribut
 
 d) Determine the density function of $A$. 
 
-e) Calculate the expected value of the area $A$ and the variance of $A$.
+e) Calculate the expected value of the area $A$.
 
 :::
 

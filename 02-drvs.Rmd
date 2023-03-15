@@ -152,7 +152,7 @@ knitr::include_graphics("./figures/geo_pdf.jpg")
 The choice of $\frac{1}{4}$ is infact arbitrary. In general you can have 'success' probability $\pi$ and 'failure' probability $1-\pi$.
 
 :::{.definition}
-A random variable $X$ representing the number of independent trials until the first success follows a geometric distribution with success probability $\pi$, written as $X \thicksim \text{Geom}(\pi)$, defined by the probability mass function
+A random variable $X$ representing the number of independent trials until the first success follows a geometric distribution with success probability $\pi$, written as $X \sim \text{Geom}(\pi)$, defined by the probability mass function
 
 \begin{equation*}
   f(x)=\begin{cases}

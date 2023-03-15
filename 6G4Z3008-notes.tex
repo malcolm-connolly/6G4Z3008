@@ -209,8 +209,8 @@ In this course we will learn some R programming. R is a free open-source softwar
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "Tails" "Tails" "Tails" "Tails" "Heads" "Tails" "Heads" "Heads" "Tails"
-## [10] "Heads"
+##  [1] "Tails" "Heads" "Tails" "Tails" "Tails" "Heads" "Heads" "Tails" "Heads"
+## [10] "Tails"
 \end{verbatim}
 
 \begin{definition}
@@ -2013,7 +2013,7 @@ A graph of this distribution looks like:
 The choice of \(\frac{1}{4}\) is infact arbitrary. In general you can have `success' probability \(\pi\) and `failure' probability \(1-\pi\).
 
 \begin{definition}
-A random variable \(X\) representing the number of independent trials until the first success follows a geometric distribution with success probability \(\pi\), written as \(X \sim \text{Geom}(\pi)\), defined by the probability mass function
+A random variable \(X\) representing the number of independent trials until the first success follows a geometric distribution with success probability \(\pi\), written as \(X \thicksim \text{Geom}(\pi)\), defined by the probability mass function
 
 \begin{equation*}
   f(x)=\begin{cases}
@@ -6011,7 +6011,7 @@ The approximation is better for sufficiently large \(n\), and \(\pi\) close to \
 
 \emph{intuitive idea}
 
-Recall the mean of a binomial distribution \(\text{E}(X)=n\pi\), and the variance is \(\text{Var}(X)=n\pi(1-\pi)\). The theorem says one can approximate the discrete distribution for the normal distribution with the same mean and variance.
+Recall the mean of a binomial distribution \$ \text{E}(X)=n\pi\$, and the variance is \(\text{Var}(X)=n\pi(1-\pi)\). The theorem says one can approximate the discrete distribution for the normal distribution with the same mean and variance.
 
 In the image below one can see the pmf of a \(\text{Bin}(20,0.5)\) distribution (red) and a normal approximation (green). As the probabilities are calculated as the area under the curve, adding the probabilities corresponds to adding the areas of the rectangles. For this reason the convention is to apply a continuity correction when using the normal approximation to calculate probabilities. The red rectangles extend \(0.5\) in either direction from the particular value of \(x\).
 

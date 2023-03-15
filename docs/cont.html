@@ -203,6 +203,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.9" data-path="norm.html"><a href="norm.html#sampling-distribution-of-the-mean"><i class="fa fa-check"></i><b>6.9</b> Sampling distribution of the mean</a></li>
 <li class="chapter" data-level="6.10" data-path="norm.html"><a href="norm.html#exercises-week-6"><i class="fa fa-check"></i><b>6.10</b> Exercises week 6</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html"><i class="fa fa-check"></i><b>7</b> Sampling and confidence intervals</a><ul>
+<li class="chapter" data-level="7.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#confidence-intervals"><i class="fa fa-check"></i><b>7.1</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="7.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#unknown-variance"><i class="fa fa-check"></i><b>7.2</b> Unknown variance</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#estimating-the-variance"><i class="fa fa-check"></i><b>7.2.1</b> Estimating the variance</a></li>
+<li class="chapter" data-level="7.2.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#the-t-distribution"><i class="fa fa-check"></i><b>7.2.2</b> The t distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#required-sample-sizes"><i class="fa fa-check"></i><b>7.3</b> Required sample sizes</a></li>
+<li class="chapter" data-level="7.4" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#interval-for-a-population-variance"><i class="fa fa-check"></i><b>7.4</b> Interval for a population variance</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#approximating-the-binomial-distribution."><i class="fa fa-check"></i><b>7.4.1</b> Approximating the binomial distribution.</a></li>
+<li class="chapter" data-level="7.4.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#proportions"><i class="fa fa-check"></i><b>7.4.2</b> Proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -623,13 +636,13 @@ and</p>
 <li><p>Find the cumulative distribution function <span class="math inline">\(F(y)\)</span></p></li>
 <li><p>Sketch the density <span class="math inline">\(f\)</span> and <span class="math inline">\(F\)</span> on the same axes</p></li>
 <li><p>Calculate <span class="math inline">\(\text{P}(1\leq Y \leq 3)\)</span> in two ways, one with <span class="math inline">\(f\)</span> and one with <span class="math inline">\(F\)</span>.</p></li>
-<li><p>Calculate the mean <span class="math inline">\(\text{E}[X]\)</span> and variance <span class="math inline">\(\text{Var}[X]\)</span> of <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Calculate the mean <span class="math inline">\(\text{E}[Y]\)</span> and variance <span class="math inline">\(\text{Var}[Y]\)</span> of <span class="math inline">\(Y\)</span>.</p></li>
 </ol>
 </div>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-179" class="exercise"><strong>Exercise 5.2  </strong></span>The length of time in minutes to serve a customer at a fast food restaurant is a random variable <span class="math inline">\(T\)</span> with density</p>
 <p><span class="math display">\[\begin{equation*}
-  f(x)=\begin{cases}
+  f(t)=\begin{cases}
         k(3t^2 + t) &amp; 0 \leq t \leq 2 \\
         0 &amp;  \text{     Otherwise}
   \end{cases}
@@ -654,7 +667,7 @@ and</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Show that <span class="math inline">\(k =\frac{1}{4}\)</span> that makes this a valid density function</p></li>
 <li><p>Find the expected profit and the variance of the profit per contract.</p></li>
-<li><p>Find the cumulative distribution function <span class="math inline">\(F(t)\)</span> and hence the median profit level.</p></li>
+<li><p>Find the cumulative distribution function <span class="math inline">\(F(x)\)</span> and hence the median profit level.</p></li>
 <li><p>What is the probability that the contractor makes a profit of less than £<span class="math inline">\(600\)</span> on a contract?</p></li>
 <li><p>Assuming that the profit levels for each contract are independent, what is the probability that the profit level is less than £<span class="math inline">\(600\)</span> on
 i) each of the next <span class="math inline">\(10\)</span> jobs?
@@ -680,12 +693,12 @@ ii) exactly <span class="math inline">\(4\)</span> of the next <span class="math
 <div class="exercise">
 <p><span id="exr:unlabeled-div-182" class="exercise"><strong>Exercise 5.5  </strong></span>Bacteria grow on a Petri dish in a circular disk. The radius of a circle <span class="math inline">\(R\)</span> can be modelled by a uniform distribution in the interval between <span class="math inline">\(1\)</span> and <span class="math inline">\(3\)</span> cm.</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>Write down the density ad distribution functions of <span class="math inline">\(R\)</span></p></li>
+<li><p>Write down the density and distribution functions of <span class="math inline">\(R\)</span></p></li>
 <li><p>Work out the expected value of R and the variance of <span class="math inline">\(R\)</span>.</p></li>
 <li><p>If the area of the circle is the random variable <span class="math inline">\(A\)</span>, determine the distribution function of <span class="math inline">\(A\)</span>.
 (Start by considering what <span class="math inline">\(\text{P}(A\leq a)\)</span> means in terms of <span class="math inline">\(R\)</span>.)</p></li>
 <li><p>Determine the density function of <span class="math inline">\(A\)</span>.</p></li>
-<li><p>Calculate the expected value of the area <span class="math inline">\(A\)</span> and the variance of <span class="math inline">\(A\)</span>.</p></li>
+<li><p>Calculate the expected value of the area <span class="math inline">\(A\)</span>.</p></li>
 </ol>
 </div>
 <div id="exercises-for-feedback-week-5" class="section level3 hasAnchor">

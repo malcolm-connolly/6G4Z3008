@@ -1,0 +1,4919 @@
+---
+title: "Probability Theory and Statistics"
+author: "Malcolm Connolly"
+date: "Semester 2, 2023"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: 6G4Z3008
+favicon: "cards.ico"
+description: "These are the course notes for the first year BSc Mathematics course 'Introduction to Probability Theory and Statistics' at Manchester Metropolitan University"
+---
+
+
+
+
+
+
+
+# Introduction to Probability {#intro}
+
+Some things that happen are entirely predictable. For example, if one drops a ball from a height, we know it will hit the ground. Things that happen like this can be decribed as _deterministic_. You may have heard people talk about things being written in the stars, or their fate, or destiny. The opinion that all things are pre-determined is called _determinism_. 
+
+However, even if are a determinist, you will have to live with uncertainty. In our everyday lives we can think of examples where things happen that we cannot predict; a bus may be late, it may rain, or one might win the lottery. To one living with uncertainty, it is reasonable to quantify this uncertainty and act assuming outcomes are not pre-determined. If the outcome is not pre-determined then it is called ***random***.
+
+The Mathematics of random phenomena is called Probability Theory. Most people have an intuitive idea of what is meant by probability or chance.  Unfortunately Probability Theory is a subject in which there are endless examples of seemingly simple questions that turn out to be very complicated or have severely counter-intuitive answers.
+
+<!-- What is the probability that the next person to walk through the door is exactly $176$cm tall? -->
+
+
+
+<!-- A tossed coin comes up tails at least once? -->
+
+## Frequentist perspective
+
+We need to start with some terminology.
+
+::: {.definition #experiment}
+An ***experiment*** is any procedure which happens at random with at least two different outcomes. For example rolling a die and observing the score is a statistical experiment. If the experiment is repeatable then each repetition is called a ***run***.
+:::
+
+By calculating the number of times an event occurs divided by the number of runs one can estimate the theoretical probability. The idea is that the relative cumulative frequency of outcomes will tend to the actual probability in the long run. This is perspective of probability is called _Frequentist_, and is incredibly useful in practice.
+
+gganim_plot0100.png
+
+We will recreate a plot like this in labs. 
+
+::: {.example #freq}
+Suppose we toss a $10$ coins $10$ times and the results are recorded in the table below, draw the graph of relative frequency.
+
+|   Run   | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10 |
+|---------+----+----+----+----+----+----+----+----+----+----|
+| Outcome | 6H | 3H | 3H | 1H | 6H | 3H | 6H | 5H | 5H | 7H |
+
+The cumulative relative frequencies are calculated as the cumulative number of flips divided by the cumulative number of heads: 
+
+|   Cumulative flips $n$  | 10  | 20  | 30  | 40  | 50  | 60  | 70  | 80  | 90  | 100 |
+|---------------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+|  Cumulative heads $a_n$  |  6  |  9  | 12  | 13  | 19  | 22  | 28  | 33  | 38  | 45  |
+|  Relative Frequency |  0.6  |  0.45  | 0.4  | 0.325  | 0.38  | 0.367  | 0.4  | 0.413  | 0.422  | 0.45  |
+
+:::
+
+In this course we will learn some R programming. R is a free open-source software language suitable for doing many probability and statistical calculations. The following R code will make a list of two outcomes Heads or Tails and create a sample of $10$ random outcomes. 
+
+
+```r
+outcomes <- c("Heads","Tails")
+sample(outcomes, 10, replace=TRUE)
+```
+
+```
+##  [1] "Tails" "Heads" "Tails" "Tails" "Tails" "Heads" "Heads" "Tails" "Heads"
+## [10] "Tails"
+```
+
+
+
+::: {.definition #freq}
+If a statistical experiment has $n$ runs, and the outcome $A$ happens a cumulative number of times depending on $n$ which we can call $a_n$, then the ***frequentist probability*** of the outcome $A$, written $P(A)$, is the limit:
+
+$$P(A) = \lim_{n\to \infty} \frac{a_n}{n}$$
+:::
+
+So if it is possible to repeatedly run an experiment, frequentist methods are very useful for finding an approximation of the true theoretical probability. 
+
+Not all is so simple, consider the following questions. What is the probability that there is life on other planets? What is the probability that the Conservatives win the next general election? 
+
+These events are not like flipping a coin, and so it is not possible to find a frequentist interpretation for their probability. 
+
+
+## Naive probability
+
+ We may not have the time or resources to do many thousands of runs. Therefore we also need to be able to evaluate the theoretical probability directly and exactly.
+
+::: {.definition #samplespace}
+The ***sample space*** is a set whose elements are outcomes of an experiment. The sample space is denoted by the greek letter $\Omega$.
+:::
+
+::: {.example #monthspace}
+If we pick a person at random on the street and ask them the month of their birthday, 
+we can let 
+$$\Omega = \{\text{Jan}, \ \text{Feb}, \ \text{Mar},  \ \text{Apr}, \ \text{May}, \ \text{Jun}, \ \text{Jul}, \ \text{Aug}, \ \text{Sep}, \ \text{Oct}, \ \text{Nov}, \ \text{Dec} \}.$$
+:::
+
+::: {.definition #event}
+An ***event*** is a subset of the sample space $\Omega$.
+:::
+
+::: {.example #landr}
+As in example \@ref(exm:monthspace), let $\text{L}$ be the _event_ that the month is a long month (i.e. has 31 days). Then
+$$\text{L} = \{\text{Jan}, \ \text{Mar}, \ \text{May},  \ \text{Jul}, \ \text{Aug},  \ \text{Oct}, \ \text{Dec} \}.$$
+
+Let $R$ be the _event_ that there is a letter ***r*** in the name of the month when written fully. Here,
+
+$$\text{R} = \{\text{Jan}, \ \text{Feb}, \ \text{Mar}, \ \text{Apr},  \ \text{Sep}, \ \text{Oct}, \ \text{Nov}, \  \text{Dec} \}$$
+:::
+
+
+::: {.definition #naiveprob}
+Naively the the probability of an event $A$ should be the number of elements of the set $A$ divided by the size of the sample space $\Omega$.That is,
+
+$\text{P} (A) = \frac{|A|}{|\Omega|}$.
+:::
+
+In our example \@ref(exm:landr) above:
+
+$$\text{P}(R) = \frac{|R|}{|\Omega|} = \frac{8}{12} = \frac{2}{3},$$ 
+
+and,
+
+$$\text{P}(L) = \frac{|L|}{|\Omega|} =\frac{7}{12}.$$ 
+
+::: {.example name="Coin Tossing"}
+Toss a fair coin twice and record the possible outcomes. Let 
+$$A = \{\text{exactly one coin is Heads}\}$$ 
+and 
+$$B = \{\text{neither coin is Heads}\}$$
+
+The sample space here is $\Omega = \{HH, HT, TH, HH\}$.
+
+Events $A$ and $B$ correspond to:
+
+$$A = \{HT, TH\}$$
+and 
+$$B = \{ TT \}$$
+Hence $\text{P}(A) = \frac{2}{4} = \frac{1}{2}$, and $\text{P}(B)=\frac{1}{4}$.
+:::
+
+
+::: {.example name="Two dice"}
+Two dice are thrown, what is the probability that the total number of dots is:
+
+a) equal to $7$
+b) equal to $3$
+c) greater than $5$
+d) an even number
+
+_solution_
+
+The sample space here is $\Omega = \{ (n_1,n_2) : n_1 , n_2 \in \{1,2,3,4,5,6 \} \}$. However, not all sums are equally likely, which is best seen in a table.
+
+|   | 1 | 2 | 3 | 4 | 5 | 6 |
+|:-:+:-:+:-:+:-:+:-:+:-:+:-:|
+| 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+| 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+| 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+| 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+
+a) $\frac{6}{36}$
+b) $\frac{2}{36}$
+c) $\frac{26}{36}$
+d) $\frac{18}{36}$
+:::
+
+For infinite sets there is a problem with the naive definition \@ref(def:naiveprob). Consider the following:
+
+::: {.example #randangle}
+Suppose a random unit vector is rotated about the origin anticlockwise, making an angle $\theta$ with the positive $x$-axis. What is the probability that this angle is acute?
+
+There are a continuum of infinitely many such angles. The naive definition says $\frac{\infty}{\infty}$, which is absurd.
+
+Intuitively, the answer _should_ be $\frac{1}{4}$.
+:::
+
+
+
+## Complements and mutual exclusivity 
+
+In any case, as events are subsets of the sample space $\Omega$ and follow the rules of set theory, and so it is important to know some set notation, definitions and results. Below is a recap of the important definitions.
+
+
+::: {.definition #union}
+The ***union*** of $A$ and $B$ is written:
+
+$$A\cup B = \{ x \in \Omega :  x \in A \ \text{or} \ x\in B \}.$$
+In Mathematics or is inclusive, which means we do not need to say ``or both'' as this is included in the union.
+:::
+
+::: {.definition #intersection}
+
+The ***intersection*** of $A$ and $B$ is written:
+$$A\cap B = \{ x \in \Omega:  x \in A \ \text{and} \ x\in B \}.$$
+:::
+
+::: {.definition #mutex}
+
+The empty set $\varnothing$ is the set of no elements. As sets $A$ and $B$ are called disjoint if they have no elements in common, that is,
+
+$A \cap B = \varnothing.$
+
+In Probability Theory disjoint events are called ***mutually exclusive***.
+:::
+
+::: {.definition #complement}
+The ***complement*** of an event $A$ is the event $A^{c} = \{x \in \Omega : x\notin A\}.$
+Note $A \cap A^{c} = \varnothing$. In words this means: any event is mutually exclusive with its complement.
+:::
+
+::: {.example }
+Suppose the event is throwing a die. The event is that one throws an even number. The complement is that one throws an odd number.
+:::
+
+::: {.example }
+Suppose the event is that a random student has no siblings. The complement is not that they have one sibling. The complement is that they have _at least_ one sibling.
+:::
+
+A theorem which we will not prove is De Morgan's laws
+
+::: {.theorem #demorgan name="DE MORGAN'S LAWS"}
+The complement of a union is the intersection of the complements:
+$$(A \cup B)^{c} = A^{c} \cap B^{c}$$
+
+The complement of an intersection is the union of the complements:
+$$(A \cap B)^{c} = A^{c} \cup B^{c}$$
+:::
+
+
+In this way $P$ is a `measure' function which maps the subsets of the sample space to the interval $\left[0,1\right]$.
+
+::: {.definition #probability}
+***Probability*** is a function whose input is a subset of the sample space $A \subseteq \Omega$ and whose range is the interval $\left[0,1\right]$, such that the following two axioms hold:
+
+(i) The probability of the whole set of possible events is unity. In the notation: $\text{P}(\Omega ) =1$.
+
+(ii) _(additivity)_ For any collection of disjoint events $A_1 , A_2, A_3, \dots$ the probability of the union is the sum of the probabilities. In the notation this can be written as $$\text{P}(A_1 \cup A_2 \cup \dots ) = \text{P}(A_1) + \text{P}(A_2)+\dots .$$
+
+:::
+
+The above definition \@ref(def:probability) is due to the Russian Mathematician Kolmogorov. These axioms help make sense of the infinite case.
+
+Using this definition we can prove the following important results.
+
+::: {.proposition #sum name="THE PROBABILITY OF A COMPLEMENT"}
+For any event $A$ we have:
+$$\text{P}(A^{c}) = 1 - \text{P}(A).$$
+:::
+
+:::{.proof}
+Write $\Omega = A \cup A^{c}$, which is a disjoint union. Then by additivity,
+$$\text{P}(\Omega) = \text{P}(A) + \text{P}(A^{c}) $$
+Now by axiom (i) the LHS is $1$.
+:::
+
+::: {.theorem #sum name="THE PROBABILITY OF A UNION"} 
+Given any two events $A$ and $B$ we have:
+
+$$\text{P}(A\cup B) = \text{P}(A) + \text{P}(B) - \text{P}(A \cap B)$$
+:::
+
+::: {.proof }
+The idea is to write $A$ as a disjoint union of the part that has intersection with $B$, and that which does not: $A=(A\cap B)\cup(A\cap B^{c})$. Hence,
+
+
+$$\text{P}(A) = \text{P}(A\cap B) + \text{P}(A\cap B^{c})$$
+
+If we split $A\cup B$ in the same way, we obtain $(A\cup B)\cap B$ and $(A\cup B)\cap B^{c}$. The former is simply $B$, and the latter is $A \cap B^{c}$. Again by additivity,
+
+$$\text{P}(A \cup B) = P(B) + P(A\cap B^{c}).$$
+Eliminating $P(A\cap B^{c})$ from the two equations above proves the rule.
+
+:::
+
+
+
+We will not be proving all Theorems in this course, neither will I ask you to recount a proof in an exam. You will however have to know how to use these results in applied problems.
+
+::: {.example name="Multiple Choice"}
+Suppose a multiple choice test consists of three questions each of which has two options, the correct answer (C) or the wrong answer (W). What is the probability that a student who always randomly guesses the answers gets at least one correct?
+
+\begin{align}
+\text{P(at least one correct)} &= 1 - \text{P(all wrong)} \\
+&= 1- \frac{1}{8}  \\
+&=\frac{7}{8}
+\end{align}
+:::
+
+::: {.example name="Mode of travel"}
+The table shows the type of journey undertaken by a sample of commuters classified by where they live.
+
+
+|   | Town | Rural |     |
+|---+:------:+:-------:+-----|
+|Car|  40  |  30   | 70  |
+|Bus|  25  |  5    | 30  |
+|   |  65  |  35   | 100 |
+
+If an individual is selected at random from this group, find the probability that, they travel by car or live in the town
+
+
+_solution_
+
+$\text{P}(\text{Car}\cup \text{Town}) = \frac{25+40+30}{100}=0.95$
+
+$\text{P}(\text{Car})+ \text{P}(\text{Town})-\text{P}(\text{Car}\cap \text{Town})= \frac{65}{100}+\frac{70}{100}-\frac{40}{100} =0.95$
+
+:::
+
+::: {.example }
+In a particular city $60\%$ of people watch the news in the morning, $50\%$ of people watch the news in the evening and $30\%$ watch both. What is the probability that an individual selected at random watches either the morning news or the evening news. 
+
+_solution_
+
+$\text{P}(M\cup E) = 0.6 + 0.5 - 0.3 = 0.8$
+:::
+
+
+## Outcomes and counting
+
+One might imagine that the finite situation is then very simple, and even then we have seen this is not the full picture. One simply counts how many ways an event can happen out of the total number of configurations. This can actually be quite complicated. We will learn some formulae to enable us to count them.
+
+### Factorials
+
+:::{.example name="Three people in a line" #three}
+In how many ways can three people $A$, $B$ and $C$ stand in a line?
+
+_solution_
+
+$ABC, ACB, BAC, BCA, CAB,CBA$ there are $6$.
+:::
+
+::: {.definition} 
+For any non-negative integer, $n$ say, we define the factorial of $n$, written $n!$ to be equal to the product of $n$ and all the numbers less than $n$ down to $1$. That is,
+
+$$n! = n \times (n-1) \times (n-2) \times \dots 3 \times 2 \times 1$$
+
+
+:::
+
+
+
+:::{.definition name="Multiplication Rule"}
+If there are $n$ ways for some operation to happen, and $m$ ways for something else to happen, then the total number of ways for the sequence to occur is $n \times m$.
+:::
+
+::: {.example }
+MMU assigns each student an $8$ digit ID number. How many possible ID numbers are there?
+
+_solution_
+The first digit is not zero, there are $9$ digits from which to choose.
+All the other digits have $10$ choices $0,1,2,3,4,5,6,7,8,9$. 
+
+Total = $9 \times 10^7$.
+:::
+
+:::{.example name="objects in a line"}
+The number of ways of arranging $n$ distinct objects in a line is $n!$.
+This is because there are $n$ choices for the first number in line, then one fewer choice $(n-1)$ for the second, and so on, until the last one in the line there is only one choice remaining. 
+:::
+
+
+
+::: {.definition name="rule of division"}
+The number of ways of arranging $n$ objects in a line where $p$ are the same is $\frac{n!}{p!}$.
+:::
+
+::: {.example}
+a) Suppose you have the letters $A,A,A,B$ - how many `words' can be made?
+
+b) Suppose you have the letters $A,A,A,B,B$ - how many `words' can be made?
+
+
+
+_solution_
+a)
+AAAB, AABA, ABAA, BAAA
+
+There are 4. How to find this number without having to write them down?
+
+You might think $4!$ but this is thinking each A is different, and so overcounts the same word. By what factor does it overcount? Take one of the words such as ABAA and number each A, one finds rearrangements of 1,2,3:
+
+$A_1BA_2A_3, A_1BA_3A_2, A_2BA_1A_3, A_2BA_3A_1, A_3BA_1A_2, A_3BA_2A_1.$
+
+The upshot is that you need to divide by the factorial of number of letters that are the same, here $\frac{4!}{3!} =4$.
+
+b) Here there are $3$ of the same letter $A$, and $2$ of the same letter $B$. The correct number is 
+
+$$\frac{5!}{3!\times2!} = 10$$
+
+The words are AAABB, AABBA, ABBAA, BBAAA, BABAA, ABABA, AABAB, BAABA, ABAAB, BAAAB. (Here I can systematically list them by considering the number of A's between the B's).
+
+:::
+
+:::{.definition name="rule of sum"}
+Given two disjoint events $A$ and $B$, then the size of the union is the sum of the sizes of $A$ and $B$. That is,
+
+$$|A\cup B|=|A|+|B|$$
+:::
+
+::: {.example}
+How many possible MMU IDs start with a $1$ or a $3$?
+
+_solution_
+
+The IDs are all of the form 1\*\*\*\*\*\*\* or 3\*\*\*\*\*\*\*. There is only 1 choice for the first digit and $10^7$ choices for the next digits in either case.
+
+The total number starting with a $1\times 10^7 + 1\times 10^7 = 2\times 10^7.$ 
+:::
+
+
+
+
+
+
+### Permutations
+
+::: {.example }
+Consider the number of ways of placing three of the letters $A,B,C,D,E,F G$ in three empty spaces. The first space can be filled in $7$ ways, the second in $6$ ways and the last in $5$ ways. 
+
+In total this is $7\times 6\times 5 = 120$
+
+This number can be written as 
+$$\frac{7\times 6 \times 5\times 4\times 3\times 2\times 1}{4\times 3 \times 2\times 1}=\frac{7!}{(7-3)!}$$
+
+:::
+
+::: {.definition name="Permutations"}
+The number of ways of choosing $k$ distinct items from $n$ when the order is relevant is 
+$$^n\text{P}_k = \frac{n!}{(n-k)!}$$
+Any way of choosing $k$ distinct items from $n$ when order matters is called a ***permutation***.
+:::
+
+::: {.example}
+My PIN has $4$ different digits. How many different such PINs are there?
+
+_solution_
+
+Order matters here - the guess 1234 is different from 4321, for example.
+
+$$^{10}\text{P}_4 = \frac{10!}{(10-4)!} = \frac{10\times 9 \times \dots 2 \times 1 }{6!} =10\times 9 \times 8 \times 7 =5040$$
+The expression $10\times 9 \times 8 \times 7$ can be interpreted as saying there are $10$ choices for the first digit, $9$ or the second, and so on.
+:::
+
+::: {.example name="The Birthday Problem" #birthday} 
+Suppose there are $k$ people in a room. What is the probability that at least one has the same birthday as someone else in the room?
+
+
+_solution_
+
+$$\text{P}(\text{at least one birthday the same}) = 1 - \text{P}(\text{all birthdays different})$$
+
+The first person could be born on any day there are $365$ such days, the second person has to have a different birthday so that is $364$ and so on down to the $k^{th}$ person.
+
+$\text{P}(\text{all birthdays different}) = \frac{^{365}\text{P}_k}{365^k}$
+
+This can be evaluated on a computer for different values of $k$.
+
+When $k=23$ one finds $\text{P}(\text{all birthdays different}) = 0.493$.
+
+This implies that $\text{P}(\text{at least one birthday the same}) = 1- 0.493 > 0.5$. 
+
+There is a greater than evens chance of two people having the same birthday in a room of $23$ people. 
+
+:::
+
+
+### Combinations
+
+:::{.definition name="Combinations" #comb}
+The number of ways of choosing $k$ distinct items from $n$ when the order is not relevant is: 
+
+$${}^nC_k = \frac{n!}{(n-k)!k!}$$
+A way of choosing $k$ distinct items from $n$ when order does not matter is called a ***combination***.
+:::
+
+
+::: {.example }
+In how many ways can $4$ cards be dealt from an ordinary pack of $52$ playing cards?
+
+_solution_
+
+Suppose one such hand is the Ace of spades, the king of clubs, the three of hearts and the Jack of diamonds. It does not matter which card you were given first, as the hand is all that matters to play.
+
+Here `order does not matter'. 
+
+The number of hands is ${}^{52}C_{4}=270725$.
+:::
+
+::: {.example name="The National Lottery"}
+In the main National Lottery draw, six numbers are chosen from $49$.
+
+a) What is the probability of winning the jackpot on the lottery (i.e. all $6$ match)?
+
+b) What is the probability that three of the winning numbers come up on a lottery ticket?
+
+_solutions_
+
+a) Total number of outcomes ${}^{49}C_{6} = 13983816$.
+
+The probability is $\frac{1}{^{49}C_{6}}$, which is about $1$ in $14$ million.
+
+b) The three winning numbers can be any three of the six winning numbers with $^6C_3$ combinations. The other numbers on the ticket can be any three from the $43$ losing numbers that week. The number of ways of choosing these is $^{43}C_3$.
+
+Therefore the probability of three winning numbers is 
+$$\text{P}(\text{three winning numbers}) = \frac{^{43}C_3 \times ^6C_3}{^{49}C_6} = 0.0177$$
+This is approximately $1$ in $56$.
+:::
+
+
+## Exercises Week 1
+
+
+
+
+### Tutorial exercises
+::: {.exercise}
+A letter is chosen at random from the word STATISTICS.
+a) What is the probability that it is a vowel?
+b) What is the complement of the event in a)?
+:::
+
+::: {.exercise}
+Suppose you are eating in a restaurant with two friends. You agree to pay the bill as follows. Each person tosses a coin. The person who gets a result different from the other two will pay all the bill. If all three tosses are the same, the bill will be shared equally. Find the probability that:
+
+a) Only you will pay the bill
+b) All three will share the bill
+
+Do you think this is a _fair_ way to split the bill?
+:::
+
+::: {.exercise #invest}
+An investment can either; increase in value (I), break even (B) or make a loss (L). Suppose each outcome is equally likely. If two separate investments are made,
+
+a) List the sample space by drawing a tree diagram.
+
+b) Find the probability that:
+ (i) both investments increase in value.
+ (ii) both investments make a loss.
+ (iii) At least one of the investments increases in value.
+ 
+c) Suppose both investments were in the same type of company. How might this model be unrealistic, and how could you improve it?
+d) How big would the sample space be if three separate investments were made?
+:::
+
+::: {.exercise}
+A set of cards consists of the standard suits $\clubsuit$, $\spadesuit$, $\diamondsuit$, $\heartsuit$, with $13$ cards in each suit. 
+a) Suppose one card is drawn at random. Find the probability that it is a:
+ (i) Ace of Hearts, $A\heartsuit$
+ (ii) The King of Spades $K\spadesuit$.
+ (iii) Any picture card.
+ 
+b) Suppose two cards are drawn at random, but with the first being replaced and the deck shuffled before the second is drawn ( this is called sampling with replacement). Find the probability that:
+ (i) Both cards are the King of Hearts, $K\heartsuit$.
+ (ii) Both cards are Aces. 
+:::
+
+:::{.exercise}
+ Fifty male and fifty female students were asked whether they agreed with the statement "Statistics are often misleading". Seventy students, thirty of whom were male, agreed. 
+ a) Summarise this information in a two-way table.
+ b) If a student is selected at random, find the probability that they:
+  (i) Agree
+  (ii) Are female
+  (iii) Are male
+  (iv) Are male and agree
+  (v) Are female or agree
+:::
+
+:::{.exercise}
+ Interviews with $120$ working people revealed that $76$ were stressed, $20$ were managers and $14$ were both managers and stressed. 
+ a) Summarise this information in a two-way table.
+ b) Assuming an individual is drawn at random, find the probability thatthey are
+  (i) Stressed
+  (ii) A shopfloor worker
+  (iii) A manager who is stressed
+  (iv) A shopfloor worker or is not stressed.
+:::
+
+::: {.exercise}
+Evaluate a) $^5\text{P}_3$, b) $^7\text{P}_4$, c) $^6\text{P}_4$.
+:::
+
+::: {.exercise}
+For what value of $n$ is the following equality true?
+$$ ^{n+1}\text{P}_3 = ^n\text{P}_4 $$
+:::
+
+::: {.exercise}
+Three different Mathematics books and $5$ different statistics books are to be arranged on a shelf. In how many ways can the books be arranged if,
+a) The books in each subject must stand together
+b) Only the statistics books must stand together
+:::
+
+::: {.exercise}
+Four different Mathematics books, $5$ different statistics books and $3$ different computing books are to be arranged on a shelf. In how many ways can the books be arranged if,
+a) The books in each subject must stand together
+b) Only the statistics books must stand together
+:::
+
+::: {.exercise}
+Evaluate a) $^7\text{C}_6$, b) $^5\text{C}_3$, c) $^9\text{C}_5$, $^9\text{C}_4$.
+:::
+
+::: {.exercise}
+How many different committees can be formed from $8$ men and $6$ women if the committee consists of:
+a) $1$ man and $4$ women
+b) $5$ men and $3$ women 
+c) $4$ men and $4$ women
+d) An equal number of men and women. 
+:::
+
+::: {.exercise}
+A council consists of $10$ members, $6$ from Party X and $4$ from Party $Y$. 
+a) In how many ways can a committee of $4$ be formed?
+b) In how many ways can a committee of $4$ be formed so that:
+ i) Party X has the majority
+ ii) Party Y has the majority
+ iii) Neither party has the majority
+:::
+
+::: {.exercise}
+Ten equally qualified assistant managersare lined up for promotion. Seven are men and three are women. If the company promotes four of the ten at random, what is the probability that exactly two of the four chosen are women?
+:::
+
+::: {.exercise}
+Suppose a library bookshelf contains an equal number, $n$ each say, of Mathematics books and Physics books. If the bookshelf is emptied and the books placed back randomly, what is the probability that the books for each subject are separated?
+:::
+
+::: {.exercise}
+Here are some miscellaneous questions on permutations and combinations:
+a) From a group of $20$ employees, $4$ are chosen for promotion. In how many ways can they be chosen?
+b) From a group of $20$ employees, $4$ are shosen for promotion, but each to a different role. In how many ways can they be chosen?
+c) A product code consists of $4$ letters followed by $3$ digits. How many codes are possible if repetitions are not allowed?
+d) A $7$-card hand is dealt from a normal pack of $52$ cards. How many hands will contain $4$ clubs and $3$ hearts?
+e) How many ways can merit awards be allocated to a group of $15$ students if there is one first prize, one second prize and $4$ identical third prizes?
+f) Four students are to be chosen from a group of $10$. If exactly ***one*** of the first three students must be chosen, how many ways are there of choosing the four students?
+:::
+
+::: {.exercise}
+In the game of poker, five cards from a standard deck of $52$ cards are dealt in a hand. Find the probability that a hand contains,
+a) A royal flush (ace, king, queen, jack and $10$ of the same suit)
+b) Four of a kind (e.g. all four $5$s)
+c) Two pairs
+d) A full house (i.e. three of one kind and two of another)
+e) One pair
+:::
+
+:::{.exercise}
+If $\text{P(A)}=0.6$ and $\text{P(B)}=0.5$, can A and B be mutually exclusive?
+:::
+
+:::{.exercise}
+The medical records of $100$ male diabetic patients reported to a clinic their family history of diabetes (Yes or No), together with their symptoms as either mild or severe. This provided the following classification.
+
+|   Age      | Mild and Yes     | Mild and No          |
+|:----------:+---------:+---------:|
+| under 40   |   15     |   10     |  
+| 40 or over |   15     |   20     |
+
+|   Age      | Severe and Yes     | Severe and No      |
+|:----------:+---------:+---------:|
+| under 40   |   8     |   2     |  
+| 40 or over |   20     |   10     |
+
+
+Suppose a patient is chosen at random from this clinic and the events A, B and C are defines as follows:
+
+A : He has a severe disease
+
+
+B : He is under $40$ 
+
+
+C : His parents are diabetic
+
+a) Find the probabilities P(A), P(B), P(A$\cap$B),  P(B$\cap$C), P(A$\cap$B$\cap$C).
+
+b) Describe the following events in words and calculate them: A$^c\cap$B$^c$, A$^c\cup$C$^c$, A$^c\cap$B$^c\cap$C$^c$.
+:::
+
+### Exercises for feedback
+
+1. I cannot remember a phone number. It contains the following digits and is something like $132 \ 747 \ 6965$.
+ 
+ a) What is the probability that the first number is even?
+ 
+ b) How many ways can the numbers above be rearranged? 
+ 
+ c) In how many ways can the number be rearranged to start and end with an odd number?
+ 
+ Suppose I am certain of the numbers in each of the blocks $132$,$747$ and $6965$, but not am not sure of the order within each block.
+ 
+ c) How many ways can the numbers be rearranged such that the numbers within each block are the same?
+ 
+ d) What is the probability that I wrote down the correct number originally?
+ 
+
+2. In a lottery, $6$ numbers are drawn from the numbers $1$ to $49$. Calculate the following probabilities.
+ 
+ a) The numbers $1$, $2$, $3$, $4$, $5$, $6$ are all drawn. 
+ 
+ b) The numbers $4$, $23$, $24$, $35$, $40$, $45$ are all drawn. 
+ 
+ c) $44$ is one of the numbers drawn.
+ 
+ 
+3. Three dice are rolled. The sum of the numbers on the dice is the score. 
+
+a) Describe the sample space.
+
+b) How many ways could the score equal $5$?
+
+c) What is the most likely score? 
+ 
+
+4. Suppose we have a finite set $S$ of size $n$.
+(Hint: this question is general, but you could check your answers with concrete example S = \{ a,b,c,d \})
+
+a) How many subsets are there of $S$?
+
+b) How many subsets of S are there of size $1$?
+
+c) How many subsets of S are there of size $k$, where $1\leq k\leq n$
+
+d) Using a) and c), describe in words why the following equality holds.
+
+$$2^n = \sum_{k=0}^n {^n}C_k$$
+
+5. Five office workers write their names on a piece of paper, fold the paper and put them in a hat. The names are mixed up and each person then selects a piece of paper from the hat. After everyone has selected a piece of paper from the hat, the staff look at the names drawn. What is the probability that no member of staff selected their own name?
+
+<!--chapter:end:index.Rmd-->
+
+# Conditional Probability {#cond}
+
+
+In this chapter we will learn about conditional probability. This is the probability of an event, in the context of another event having happened or potentially happening. 
+
+## Independence
+
+Independence is a very important concept in Statistics, but one that is sometimes misused when it is assumed without justification. The basic idea is as follows:
+
+::: {.definition name="Independence"}
+Two events $\text{A}$ and $\text{B}$ are ***independent*** exactly when
+$$\text{P}(\text{A}\cap\text{B}) = \text{P}(\text{A})\times \text{P}(\text{B}).$$
+In words this means the probability that both $\text{A}$ and $\text{B}$ happen is the product of the individual probabilities of $\text{A}$ and $\text{B}$ respectively.
+:::
+
+::: {.example}
+Some events that can be modelled as ***independent*** include:
+- Outcomes on successive tosses of a coin or die. What happened on the previous throw does not affect what happens on subsequent throws.
+
+- The sex of babies. The sex of each baby is determined at random, notwithstanding the sexes of previous babies. 
+:::
+
+::: {.example}
+Suppose a power plant has two safety systems, a primary system which works with probability $0.999$, and a backup system which works with probability $0.89$ Assuming that the two systems operate independently, what is the reliability or safety of the power plant. 
+
+
+_solution_
+
+We can work out $\text{P}(\text{plant safe})$ using the complement:
+
+$$\text{P}(\text{plant safe}) = 1-\text{P}(\text{plant fails}).$$
+
+
+Let $F$ be the event that the plant fails, $F_1$ the event that the first system fails, and $F_2$ the backup fails.
+
+Then $F = F_1 \cap F_2$.
+
+\begin{align}
+\text{P}(F) &= \text{P}(F_1 \cap F_2) \\
+&= \text{P}(F_1) \times \text{P}(F_2) \\
+&= (1-0.999)\times (1-0.89) \\
+&= 0.00011
+\end{align}
+
+Then $1-0.00011 = 0.99989$. 
+:::
+
+Calculations such as these have often been used to arrive at unrealistic figures for the safety of complex operating processes, e.g. nuclear power plants. For example, it's easy to check that with three backup systems each with a reliability of $0.99$, the probability of failure assuming independence is $1\times 10^{-6}$ - a reassuringly small figure! However we can only make calculations _if_ we can justify the assumption of independence. For example it's not unusual to find that backup systems that are not used very often can be more unreliable than supposed when actually called upon.
+
+
+You might have to give a reason why a particular context is not a good example in which to assume independence. For example ***exercise*** \@ref(exr:invest) part (c) asks why two investments may not be independent. There are many reasonable answers. Similar companies are dependent - if the companies are both bakeries, they may both be affected by the price of wheat. The companies may be competitors, in which case one company doing better may cause the other to do worse. 
+
+
+
+
+::: {.example}
+Suppose you toss ten coins and coin how many are Heads. You could throw them all simultaneously. Or you could throw them one at a time, in some order. Does it matter?
+
+
+_solution_
+
+
+No, as these are independent coins. Let
+$$A_i =\{\text{The} \ i^{\text{th}} \ \text{coin is Heads} \}$$
+
+The probability that they are simultaneously all Heads is the product of all the probabilities of each individual coin being Heads.
+Notice that the order does not matter as 
+$$\text{P}(\text{A}_i)\times \text{P}(\text{A}_j) = \text{P}(\text{A}_j)\times \text{P}(\text{A}_i).$$
+:::
+
+Assuming independence allows us to consider simultaneous events separately one after another, complicated examples can be analysed easily using tree diagrams. Each path of a tree diagram from the root to the leaf is a distinct outcome of the sample space. 
+
+::: {.example}
+Vehicles approaching a crossroads must go in one of three directions - left, right or straight on. Observations by traffic engineers showed that of vehicles approaching from the north, $45\%$ turn left, $20\%$ turn right and $35\%$ go straight on. Assuming that the driver of each vehicle chooses direction independently, what is the probability that of the next three vehicles approaching from the north:
+
+a) all go straight on
+
+b) all go in the same direction
+
+c) two turn left and one turns right
+
+d) all go in different directions
+
+e) exactly two turn left.
+:::
+
+_solution_ 
+
+\begin{figure}
+
+{\centering \includegraphics[width=12.26in]{./figures/vehicles} 
+
+}
+
+\caption{A tree diagram representing the choices for the three vehicles}(\#fig:tree)
+\end{figure}
+
+a) $0.35^3$
+
+b) $0.45^3+0.2^3+0.35^3$
+
+c) LLR can be rearranged in $3$ ways: LLR, LRL, RLL. $3\times 0.45^2 \times 0.2$.
+
+d) SRL can be rearranged in $3!$ ways. $3!\times 0.35 \times 0.45 \times 0.2$.
+
+e) LLR or LLS. Each can be rearranged in $3$ ways, then these are mutually exclusive outcomes so we can add the probabilities. $$3\times 0.45^2 \times 0.2 + 3\times 0.45^2 \times 0.35$$.
+
+
+
+## Conditional Probability
+
+We will consider the following examples to motivate the definition of conditional probability.
+
+:::{.example}
+The number of insurance claims in the previous $12$ months is cross tabulated with whether the driver involved was a young driver.
+
+|          | Under 25 | 25 and over  | Total |
+|:--------:+---------:+-------------:|------:|
+| No claim |   225    |   725        |  950  |
+| Claim    |   25     |   25         |  50   |
+|          |   250    |   750        |  1000 |
+:::
+
+The insurance company is interested in the claim rate. Overall the claim rate is,
+
+$$\text{P}(\text{Claim})=\frac{50}{1000} = 0.05$$
+
+An estimate for the probability of a driver claiming on the insurance is then $1$ in $20$. 
+
+However this figure hides a substantial difference in the claim rates for young and older drivers. 
+
+If we consider the $250$ young drivers separately we have,
+
+$$\text{P}(\text{Claim}|\text{Under}\ 25)=\frac{25}{250} = 0.1.$$
+Whereas for the $750$ older drivers we have,
+
+$$\text{P}(\text{Claim}| 25 \ \text{and over})=\frac{25}{750} = 0.03.$$
+
+The notation $|$ is read 'given that' and is a conditional statement. The conditional probabilities show that the claim rate is much higher for the younger drivers. One can compute the ratio of these probabilities to see how many times higher it is, $0.1/0.03 \approx 3.3$, so this is just over three times higher. This relative risk scoring is common in medical statistics.
+
+:::{.example #cancer}
+Consider the following data from a study on male lung cancer patients carried out in $1950$ in the UK. This was one of the earliest applications of epidemiology - the use of statistics to study disease patterns in populations. 
+ 
+|                 | Non-smoker | Smoker       | Total |
+|:---------------:+-----------:+-------------:|------:|
+| Lung cancer     |   2        |   647        |  649  |
+| No lung cancer  |   27       |   620        |  647  |
+|                 |   29       |   1267       |  1296 |
+
+Calculate the relative risk of having lung cancer for a smoker compared to a non-smoker. 
+
+
+_solution_
+
+$$\text{P}(\text{Lung cancer}|\text{Smoker}) = \frac{647}{1267}$$
+
+$$\text{P}(\text{Lung cancer}|\text{Non-smoker}) = \frac{2}{29}$$
+
+There is $\approx 7.4$ times higher relative risk of lung cancer in smokers.
+:::
+
+These examples motivate the definition of conditional probability.
+
+:::{.definition name="conditional probability"}
+The ***conditional probability*** $\text{P}(A|B)$ of an event $A$ given another event of non-zero probability $B$ is given by,
+
+$$\text{P}(A|B) = \frac{\text{P}(A\cap B)}{\text{P}(B)}.$$
+:::
+
+One should verify that the fraction on the left is precisely how the conditional probability was calculated in the previous two examples.
+
+::: {.theorem}
+The conditional probability $\text{P}(A|B)$ satisfies Kolmogorov's definition of probability.
+:::
+
+::: {.proof}
+Not lectured or examined, but here for completeness.
+
+Firstly need to check $P(A|B)\in[0,1]$. We have $P(A|B) \geq 0$ because $P(A\cap B)\geq0$ and $P(B)>0$. 
+
+Because the intersection of $B$ with another set is contained in $B$, we have $A\cap B \subseteq B$, and so
+$$P(A\cap B) \leq P(B).$$
+And dividing through by $P(B)$ gives $P(A|B) \leq 1$.
+
+Secondly, $$P(\Omega|B) = \frac{P(\Omega \cap B)}{P(B)} = \frac{P(B)}{P(B)}=1.$$
+
+Lastly, any given any two disjoint $A_1$,$A_2$ such that $A_1\cap A_2 = \varnothing$.
+
+We have that 
+
+\begin{align}
+P(A_1\cup A_2 |B) &= \frac{P((A_1\cup A_2)\cap B)}{P(B)} \\
+&= \frac{P((A_1\cap B)\cup (A_2\cap B))}{P(B)} \\
+&= \frac{P(A_1\cap B)}{P(B)} + \frac{P(A_2\cap B)}{P(B)} \\
+&= P(A_1|B) + P(A_2|B)
+\end{align}
+:::
+
+:::{.example}
+Note that $P(A|B) \neq P(B|A)$. Revisiting the driver's example gives,
+
+|          | Under 25 | 25 and over  | Total |
+|:--------:+---------:+-------------:|------:|
+| No claim |   225    |   725        |  950  |
+| Claim    |   25     |   25         |  50   |
+|          |   250    |   750        |  1000 |
+
+$$\text{P}(\text{Claim}|\text{Under}\ 25)=0.1.$$
+However,
+$$\text{P}(\text{Under}\ 25|\text{Claim})=\frac{25}{50} = 0.5$$
+:::
+
+:::{.theorem}
+Two events $A$ and $B$ are _independent_ if and only if 
+$$\text{P}(A|B) = \text{P}(A) \ \text{ or } \ \text{P}(B|A) = \text{P}(B)$$
+In other words, conditioning on either event does not affect the probability of the other event occurring.
+:::
+
+:::{.proof}
+Using the definition of conditional probability,
+$$\text{P}(A\cap B) = \text{P}(A|B)\text{P}(B)=\text{P}(B|A)\text{P}(A)$$
+If 
+$$\text{P}(A|B) = \text{P}(A) \ \text{ or } \ \text{P}(B|A) = \text{P}(B),$$
+substituting this in the former yields
+$$\text{P}(A\cap B) = \text{P}(A)\text{P}(B), $$
+which is the definition of independence. 
+Conversely if two events are independent, we have 
+$$\text{P}(A|B) = \frac{\text{P}(A\cap B)}{\text{P}(B)} = \frac{\text{P}(A)\text{P}(B)}{\text{P}(B)} = \text{P}(A), $$
+and likewise for $\text{P}(B|A)$. 
+:::
+
+When constructing tree diagrams the probabilities involved are usually conditional probabilities as there is a natural progression through the tree from left to right conditioning on what happened previously. In the diagram below, the events $A$ and $B$ may not be independent. 
+
+\begin{figure}
+
+{\centering \includegraphics[width=11.31in]{./figures/condtree} 
+
+}
+
+\caption{The second level of branches represent the conditional probabilities of B given A or its complement, which may be different numbers}(\#fig:tree2)
+\end{figure}
+
+:::{.example}
+Jon always goes to campus by bike or takes a tram. If one day he goes to campus by bike, the probability that he goes to campus by tram the next day is $0.4$. If one day he goes to campus by tram, the probability that he goes to campus by bike the next day is $0.7$. 
+Given that Jon goes to campus on Monday by tram, find the probability that he takes a tram to campus on Wednesday. 
+
+_solution_
+
+This may be solved by considering a tree diagram with levels for Tuesday and Wednesday. The probabilities in the question are $\text{P}(\text{tram} \ |\ \text{bike})=0.4$ and $\text{P}(\text{bike} \ |\ \text{tram})=0.7$. 
+Monday's journey is done. Possible sequences are 'tram then tram', or 'bike then tram'. These are mutually exclusive outcomes. The calculation is then 
+
+$$0.3^2+0.7\times 0.4 = 0.37$$.
+:::
+
+Surveys with questions of a sensitive or delicate nature often result in respondents missing that question or lying about their answers. Conditional probability can be used to mask the awkward question and find the proportion who would answer a certain way.
+
+::: {.example}
+A company want to find the proportion of employees who have ever called in sick to work, when in fact they were not sick. The boss asks each employee to toss a coin and hide the result. 
+
+If the result is ***heads***, the  employee should answer the question 'is your age an odd number?'.
+
+If the result is ***tails***, they should answer 'Have you ever taken a day off when you should not have?'.
+
+Because the boss does not know which question people are answering, the employees can answer truthfully.
+
+Suppose that $40\%$ of employees mark 'yes' as their answer. Let,
+
+$$p= \text{P}(\text{taken a day off} \ | \ \text{tails})$$
+Assume that ages are randomly distributed so that the chance of an even or odd number of years old is $0.5$. How can we find $p$?
+:::
+
+
+_solution_
+
+  One can draw a tree diagram. 
+  
+\begin{figure}
+
+{\centering \includegraphics[width=11.54in]{./figures/survey} 
+
+}
+
+\caption{The outcomes of the survey.}(\#fig:tree3)
+\end{figure}
+  
+
+  
+  The overall probability of answering 'yes' is $0.25+0.5p$, and in the survey $40\%$ answered 'yes'. We then have
+  
+  $$0.25+0.5p = 0.4, $$
+and hence $p=0.3$. This means we can estimate that $30\%$ of employees have taken a day of when they were not supposed to.
+
+
+## Bayes Theorem
+
+::: {.example}
+There are two coins in a bag. One coin is fair, while the other has heads on both sides (a double-header). 
+
+A coin is selected from the bag at random, and the selected coin is flipped three times. Unfortunately the coin which was selected is unknown to us.
+
+On each of three flips the coin comes up heads. 
+
+Without doing any calculations, how likely do you think it is to be the unfair coin?
+:::
+
+_solution_ 
+
+
+Let 
+$A =\left\{ \text{The double-header is selected} \right\}$ and
+$B =\left\{ \text{The coin lands heads up three times in a row} \right\}$
+
+\begin{figure}
+
+{\centering \includegraphics[width=12.38in]{./figures/doubleheader} 
+
+}
+
+\caption{A tree diagram for the double headed coin example.}(\#fig:tree4)
+\end{figure}
+
+One can use the tree diagram to find $8/9$.
+
+We can generalise this picture and come up with a formula for the conditional probability called Bayes' formula.
+
+\begin{figure}
+
+{\centering \includegraphics[width=11.31in]{./figures/condtree} 
+
+}
+
+\caption{Tree showing Bayes' formula}(\#fig:tree5)
+\end{figure}
+
+$$P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A)P(B|A)}{P(A)P(B|A)+P(A^{\mathsf{c}})P(B|A^{\mathsf{c}})}$$
+
+Previously, $A_1=A$ and $A_2 = A^{\mathsf{c}}$ are disjoint and their union gives the entire sample space. This situation is called a _partition_.
+
+
+This can be extended to a partition of $n$ events $A_1,A_2, \dots , A_n$.
+
+
+::: {.definition}
+A collection of events $A_1, A_2, \dots , A_n$ is a ***partition*** if their union is the entire sample space, that is _exhaustive_, and they are mutually exclusive. That is 
+
+i) $\Omega = A_1 \cup A_2 \cup \dots \cup A_n$.
+
+ii) $A_1 \cap A_2 \cap \dots \cap A_n = \varnothing$
+
+Any event and its complement form a partition.
+:::
+
+Here is a picture of a partition:
+
+\begin{figure}
+
+{\centering \includegraphics[width=9.31in]{./figures/partition} 
+
+}
+
+\caption{An example partition with six sets.}(\#fig:partition)
+\end{figure}
+
+We can now extend the concept of conditional probability to a general situation in which we condition on the event of at least one event of a partition. 
+
+:::{.theorem name="Law of Total Probability"}
+Suppose we have a partition $A_1, A_2, \dots , A_n$ of the sample space $\Omega$. Then for any event $B \subseteq \Omega$, we have
+
+$$\text{P}(B) =P(A_1)P(B|A_1)+ \dots + P(A_n)P(B|A_n) $$
+:::
+
+An intuitive proof is to imagine a tree diagram with $n$ branches for each of the $A_i$ in the first layer, then $B$ and $B^{\mathsf{c}}$ in the next layer. As you multiply along all the branches the ways that $B$ can occur you end up with the sum in the RHS. 
+
+
+:::{.theorem name="Bayes' Theorem"}
+Suppose we have a partition $A_1, A_2, \dots , A_n$ of the sample space $\Omega$. Then the conditional probability of any one event of the partition $A_k$ for some $k$, given any other event $B$ can be written as,
+
+$$\text{P}(A_k |B) = \frac{\text{P}(B|A_k)\text{P}(A_k)}{\sum^{n}_{i=1}\text{P}(B|A_i)P(A_i)}$$
+:::
+
+:::{.proof}
+Note that $\text{P}(A_k\cap B) = \text{P}(B|A_k)\text{P}(A_k)$,
+
+and that the denominator is $\text{P}(B) using the law of total probability.
+:::
+
+::: {.example}
+A company produces electrical components using three shifts. During the first shift $50%$ of components are produced, with $20\%$ and $30\%$ being produced during shifts $2$ and $3$ respectively. The proportion of defective components produced during shift $1$ is $6\%$. For shifts $2$ and $3$ the proportions are $8\%$ and $12\%$ respectively. 
+
+a) Find the percentage of defective components.
+
+b) If a component is defective, what is the probability that it came from shift $3$?
+
+_solution_
+
+Let $D$ be the event that the component is defective and $S_1,S_2,S_3$ denotethat it was produced during shifts $1,2$ or $3$ respectively. 
+
+a) Use the theorem of total probability, as follows:
+\begin{align}
+\text{P}(D)  &= \text{P}(D|S_1)P(S_1)+\text{P}(D|S_2)\text{P}(S_2)+\text{P}(D|S_3)\text{P}(S_3) \\
+&= 0.06\times 0.5 + 0.08\times 0.2 + 0.12\times 0.3 \\
+&= 0.082
+\end{align}
+
+b) Using Bayes' theorem,
+
+$$\text{P}(S_3|D) = \frac{\text{P}(D|S_3)\text{P}(S_3)}{\text{P}(D)}$$
+The denominator was worked out in part a), this gives $\frac{0.12\times 0.3}{0.082}=0.439$.
+:::
+
+Bayes' theorem allows us to update the probability of an event in the light of new evidence. This is in fact the main practical use of the theorem, and leads to a whole branch of Bayesian Statistics.
+
+::: {.example}
+Gary is suspected of committing a crime. The evidence so far points to a probability of guilt being $0.9$. To 'prove his innocence' Gary undergoes a lie detector test, which has a $70\%$ accuracy rate. The test will say positive to indicate guilt, and negative to indicate not guilty. The test is such that 
+$$\text{P}(\text{Positive}|\text{Guilty}) = 0.7$$
+$$\text{P}(\text{Negative}|\text{Innocent})=0.7$$
+
+If Gary's test comes back ***negative***, what is then the probability of his guilt?
+
+_solution_
+
+One can directly apply Bayes' theorem.
+$$\text{P}(\text{Guilt}|\text{Negative})=\frac{\text{P}(\text{Negative}|\text{Guilt})\text{P}(\text{Guilt})}{\text{P}(\text{Negative}|\text{Guilt})\text{P}(\text{Guilt})+\text{P}(\text{Negative}|\text{Innocent})\text{P}(\text{Innocent})}$$
+and so 
+$$\text{P}(\text{Guilt}|\text{Negative})=\frac{0.3\times 0.9}{0.3\times 0.9 \ + \ 0.7\times 0.1}=0.794 \ \text{(3 d.p.)}$$
+:::
+
+Beware of having extreme prior beliefs, for no evidence can then change your mind. Believing something to be true $100\%$ or $0\%$, will mean that no reason or evidence will change this position. 
+
+:::{.example name="Cromwell's Rule"}
+If we believe Gary is $100\%$ guilty at the start then
+$$\text{P}(\text{Guilt}|\text{Negative})=\frac{0.3\times 1}{0.3\times 1 \ + \ 0.7\times 0}=1$$
+So we would still believe Gary to be $100\%$ guilty.
+
+If we believe Gary is $0\%$ guilty at the start then
+$$\text{P}(\text{Guilt}|\text{Negative})=\frac{0.3\times 0}{0.3\times 0 \ + \ 0.7\times 1}=0$$
+So we would still believe Gary to be $0\%$ guilty.
+:::
+
+As educated people we should always consider the opposing opinion and update our own beliefs according to the evidence available. If you have a strong opinion about something, consider what would change your mind. Always leave some room to doubt yourself, because you could be wrong.
+
+## Exercises Week 2
+
+:::{.exercise}
+I toss a fair coin and roll a die. 
+a) Are these events independent?
+
+b) What is the probability I obtain a head and a $6$?
+:::
+
+:::{.exercise}
+A torch uses two batteries in series. Each battery works with probability $0.95$, independently of the other. Work out the probability that:
+
+a) The torch will work.
+
+b) Both batteries fail
+
+c) Only one of the batteries will work.
+:::
+
+:::{.exercise}
+Whether a student gets up on time depends on whether or not he has remembered to set his alarm the night before. Some $90\%$ of the time he remembers, the other $10\%$ he forgets. When the clock is set, he will get up on time $95\%$ of occasions. If it is not set, the chance he will oversleep is $35\%$. Use a tree diagram to find the probability that he will oversleep.
+:::
+
+:::{.exercise}
+The following data shows the distribution of male and female students on various degree courses at a university.
+
+|        | Accountancy | Economics | Finance |
+|:------:+:-----------:+:---------:+:-------:|
+| Male   | 330         | 360       | 90      | 
+| Female | 120         | 390       | 60      | 
+
+Suppose a student is selected at random. Find the probability that they are,
+
+a) female
+
+b) studying Economics
+
+c) male and studying Economics
+
+d) male given that they are studying Economics
+
+e) female given that they are studying Economics
+
+f) studying Economics given that they are female
+
+Are the events 'student is male' and 'studying Economics' independent?
+:::
+
+
+::: {.exercise}
+The following table shows the lung cancer data for females in the same $1950$ study given in example \@ref(exm:cancer).
+
+|                 | Non-smoker | Smoker       | Total |
+|:---------------:+-----------:+-------------:|------:|
+| Lung cancer     |   19        |   41        |  60  |
+| No lung cancer  |   32       |   28        |  60 |
+|                 |   51       |   69       |  120 |
+
+a) Calculate the relative risk for female smokers compared to non-smokers.
+
+b) Can you suggest any reason for the difference in the figures between males and females?
+:::
+
+
+::: {.exercise}
+Two electrical components  $X$ and $Y$ have probabilities of working $\frac{3}{4}$ and $\frac{7}{8}$, respectively. They also function independently of each other. Two devices $D_1$ and $D_2$ are constructed. In $D_1$, $X$ and $Y$ are in series, and in $D_2$ they are wired in parallel.
+
+a) (i) Find the probability that $D_1$ works.
+(ii) Find the probability that $D_2$ works.
+
+b) Suppose that $D_1$ works, find the probability that;
+(i) $X$ is working.
+(ii) Only $X$ is working.
+(iii) both $X$ and $Y$ are working.
+
+c) Suppose that $D_2$ works, find the probability that;
+(i) $X$ is working.
+(ii) Only $X$ is working.
+(iii) both $X$ and $Y$ are working.
+:::
+
+:::{.exercise}
+An urn contains two green balls and three red bals. Supose two balls will be drawn at random one after another and without replacement. Draw a tree diagram, and find the probability that:
+
+a) a green ball appears on the first draw.
+
+b) a green ball appears in the second draw.
+:::
+
+::: {.exercise}
+The following table shows the _fear factor_ for children attending the dentist, cross tabulated with the School age of the child.
+
+|            | Infant | Primary | Secondary |
+|:-----------|:------:|:-------:|:---------:|
+| Afraid     | 0.12   | 0.08    |      0.05 |
+| Not afraid | 0.28   | 0.25    |      0.22 | 
+
+For a child selected at random define the events; $A = \{ \text{The child is afraid} \}$,
+
+with $N$ being not afraid, and $I$,$P$ and $S$ being the School age in the obvious fashion.
+
+Calculate the following probabilities,
+
+a) $\text{P}(A)$, $\text{P}(N)$, $\text{P}(A\cup I)$.
+
+b) $\text{P}(A| I)$ and $\text{P}(I| A)$.
+
+c) $\text{P}(A| S)$ and $\text{P}(N| S)$ - what do you notice about these two probabilities?
+
+Are $A$ and $I$ independent?
+:::
+
+::: {.exercise}
+A survey by an electrical retailer determines that $40\%$ of customers who seek advice from sales staff by an appliance and only $20\%$ who do not seek advice buy an appliance. If $30\%$ of customers seek advice, what is the probability that a customer entering the warehouse buys an appliance?
+:::
+
+::: {.exercise}
+Four cards are drawn at random without replacement from a deck of $52$ cards. What is the probability that the sequence is:
+
+a) $\heartsuit$ $\heartsuit$ $\spadesuit$ $\clubsuit$
+
+b) $\heartsuit$ $\heartsuit$ $\spadesuit$ $\spadesuit$
+
+:::
+
+::: {.exercise}
+ A student comes back from a night at the pub with a bunch of keys, only one of which works. They try one key at random in the lock and discard it if it doesn't fit. 
+ 
+a) Suppose the bunch contains $2$ keys. Find the probability they open the door on
+(i) the first attempt
+
+(ii) the second attempt
+
+b) Repeat for a bunch of three keys being successul at the first, second and third attempts.
+
+c) Suppose now that the bunch contains $n$ keys. Find the probability that the door is opened on the $r^{\text{th}}$ attempt (where $1\leq r \leq n$).
+:::
+
+
+::: {.exercise}
+ To ascertain the proportion of people who have had a sexually transmitted infection, the following survey pocedure was used on $1000$ individuals. 
+ 
+They were asked to think of the day of the week their most recent birthday fell on. 
+
+If their last birthday was on a Monday, Tuesday or Wednesday they were to answer the question 'Have you every had a sexually transmitted infection?'. 
+
+If their last birthday was on any other day of the week, they were to answer the question 'Is your age an even number?'.
+
+In the survey $290$ people answered 'yes'. Assuming that ages and birthdays are uniformly distributed, can you estimate the proportion of people who have had a sexually transmitted infection?
+:::
+
+:::{.exercise}
+ Suppose two events $A$ and $B$ are independent. Show that $A$ and $B^{\mathsf{c}}$ are also independent. Show also that $A^{\mathsf{c}}$ and $B^{\mathsf{c}}$ are independent.
+:::
+
+:::{.exercise}
+Forty percent of new employees hired by a large company have a degree. Seventy percent of employees with degrees are promoted within two years.Of those without degrees, only $30\%$ arepromoted within two years.
+
+a) What is the probability that a new empoyee will be promoted?
+
+b) If an employee has been promoted, what is the probability that they have a degree?
+:::
+
+::: {.exercise}
+A bag contains $3$ coins; two are normal unbiased coins while the third is double headed. A coin is chosen at random from the bag and tossed. The coin is tossed $4$ times and came up heads each time. What is the probability that it is the double header?
+:::
+
+::: {.exercise}
+Approximately $25\%$ of males over $50$ have some form of heart problem. A clinic has observed that  males with a heart problem are three times more likely to be smokers as males with no heart problem. What is the probability that a male over $50$ has a heart problem given that he is a smoker?
+:::
+
+::: {.exercise}
+Cage A contains five hens with disease and six hens without disease. Cage B contains two diseased hens and five hens without the disease. Two hens are chosen at random from cage A and transferred to cage B. A hen is now chosen at random from cage B and found to be diseased. Find the probability that the two hens that were transferred were,
+
+a) both diseased
+
+b) both without disease.
+:::
+
+<!--chapter:end:01-cond-prob.Rmd-->
+
+# Discrete Random Variables {#drv}
+
+In most practical situations in which we encounter uncertainty, the random outcome of interest is a numerical quantity. This could be the number of minutes you end up waiting for that bus, how much you win on the lottery this week, or even the number of times you try to catch a fly with chopsticks before you eventually manage to do so.
+
+## Random Variables
+
+In this chapter you will learn the concept of a discrete random variable. 
+
+::: {.example}
+Suppose we roll two dice and find the sum of the numbers on the two dice. Let $X$ be the sum of the numbers on the two dice. We know the sample space here is:
+$$\Omega = \{ (n_1,n_2) : n_1,n_2 \in \mathbb{N}, \ 1 \leq n_1 , n_2 \leq 6 \},$$
+Given an outcome $(n_1,n_2)$, the 'variable' $X$ takes a particular whole numbered value from $x=2, \dots , 12$. We have seen that these particular values are not equally likely.
+:::
+
+
+::: {.definition}
+A ***random variable*** $X$ is a set function which maps the potential outcomes of a statistical experiment to (some subset of) the real number line. 
+
+A random variable is written with a capital letter (here $X$), and the particular values it takes are written with a lowercase of the same letter (here $x$). The probability that $X$ takes a particular value is written $\text{P}(X=x)$.
+:::
+
+Just as with data analysis there is a difference between _discrete_ and _continuous_ random variables. One can think of _discrete_ random variables arising from a process which involves counting and can take integer values. The _continuous_ random variables can be thought of as arising from a measuring process.
+
+::: {.example}
+Let $R = $ result of spinning a roulette wheel. The roulette wheel can take particular values 
+$$\Omega = \{0,1,2, \dots,36\}.$$
+In number ranges from 1 to 10 and 19 to 28, odd numbers are red and even are black. In ranges from 11 to 18 and 29 to 36, odd numbers are black and even are red. There is a green pocket numbered 0 (zero). Then $R$ is a discrete random variable, as it takes only particular discrete values.
+
+Let $T =$ the time spent waiting for a bus. Here $T$ could be any positive number from when you arrive at the bus stop (if it were time after the timetabled arrival time, it could be negative for an early bus). Then $T$ is a continuous random variable.
+:::
+
+We will consider discrete random variables first, but will study both types in this course. 
+
+## Discrete probability distributions
+
+In order to understand how a random variable is likely to behave, and thus be able to predict its possible future values, we clearly need to consider the probability with which it will take on particular values. This set of probability values is known as a probability distribution. We will develop the theory with some examples. 
+
+:::{.definition}
+The ***distribution*** function, also known as a ***probability mass function***, of a random variable $X$ is the function that outputs the probability of $X$ attaining any particular value. That is,
+
+$$f(x) = \text{P}(X=x)$$
+In some texts, or if there are two variables in play, we may also write the variable in subscript  $f_X(x)$  to be clear to which mass function we are referring.
+:::
+
+::: {.example name="discrete uniform distribution"}
+Consider rolling a fair die and let the discrete random variable $X$ be the score observed on the die. We know that the probability of getting any of the particular values in the set $\{1,2, \dots 6\}$  is $\frac{1}{6}$ and this is the probability distribution. We may tabulate the values as follows 
+
+|    $x$    | 1 | 2 | 3 | 4 | 5 | 6 |
+|:-----------:+:---+:---+:---+:---+:---+:---|
+| $\text{P}(X=x)$  | $\frac{1}{6}$  | $\frac{1}{6}$ |  $\frac{1}{6}$  | $\frac{1}{6}$ | $\frac{1}{6}$  | $\frac{1}{6}$ |
+:::
+
+Alternatively we may use a formula:
+\begin{equation*}
+  f(x)=\begin{cases}
+    \frac{1}{6}, & \text{if } x = 1, 2, \dots , 6.\\
+    0 & \text{otherwise}.
+  \end{cases}
+\end{equation*}
+
+Or a graph:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/uni_pdf} 
+
+}
+
+\caption{Probability mass function for a fair die}(\#fig:uniformdice)
+\end{figure}
+
+Clearly the graph is a very useful way to visualise how the probability is distributed. You can also see why this is called a discrete _uniform_ distribution - it's because the values are all the same.
+
+Some questions to consider:
+
+- Suppose your die had $n$ sides, where $n$ is some whole number greater than $1$, and the faces numbered $1,2,\dots n$. What does the distribution look like now?
+
+- Can you represent the distribution in each of the three ways above?
+
+::: {.example name="Urn problem"}
+An urn contains five balls numbered $1$ to $5$. Two balls are drawn simultaneously. 
+
+1. Let $X$ be the larger of the two numbers.
+
+2. Let $Y$ be the sum of the two numbers.
+
+Find the probability distributions of $X$ and $Y$.
+
+_solution_ 
+
+1. We proceed as follows by enumerating all the possibilities and noting that there are $^5C_2=10$ ways of drawing the balls from the urn. Note here that as the balls are drawn simultaneously, order does not matter here. 
+
+To find the distribution of $X$ one can list the outcomes systematically by the largest value.
+
+| $x$ |         |         |         |         | $\text{P}(X=x)$ | 
+|:---:+:-------:+:-------:+:-------:+:-------:+:---------------:|
+| 2   | $(1,2)$ |         |         |         | $\frac{1}{10}$  |
+| 3   | $(1,3)$ | $(2,3)$ |         |         | $\frac{2}{10}$  |
+| 4   | $(1,4)$ | $(2,4)$ | $(3,4)$ |         | $\frac{3}{10}$  |
+| 5   | $(1,5)$ | $(2,5)$ | $(3,5)$ | $(4,5)$ | $\frac{4}{10}$  |
+
+
+2. To find the distribution of $Y$ one can list the outcomes systematically by the sum.
+
+| $y$ | | | $\text{P}(Y=y)$ | 
+|:---:|:-:|:-:|:-:|
+| 3 | (1,2) | | $\frac{1}{10}$ |
+| 4 | (1,3) | | $\frac{1}{10}$ |
+| 5 | (1,4) | (2,3) | $\frac{2}{10}$ |
+| 6 | (1,5) | (2,4) | $\frac{2}{10}$ |
+| 7 | (2,5) | (3,4) | $\frac{2}{10}$|
+| 8 | (3,5) | | $\frac{1}{10}$ |
+| 9 | (4,5) | | $\frac{1}{10}$ |
+
+
+In either case you should check that each individual probability is between $0$ and $1$ and that over all possible particular values the sum is $1$.
+:::
+
+
+::: {.example name="a geometric distribution" #archer}
+An archer hits a target rather randomly. Let's suppose that each time he takes aim $\text{P}(\text{Hit})=\frac{1}{4}$, and so the complement $\text{P}(\text{Miss})=\frac{3}{4}$. Let $Y$ be the number of attempts required until he hits the target. Find the distribution of $Y$.
+:::
+
+
+_solution_ 
+
+We can consider the number of attempts separately.
+
+$Y=1$, first attempt is a hit, so $\text{P}(Y=1)=\frac{1}{4}.$
+
+$Y=2$, first attempt is a miss, second is a hit, so 
+$$\text{P}(Y=2)=\frac{3}{4}\times \frac{1}{4} = \frac{3}{16}.$$
+
+$Y=3$, first attempt is a miss, second is a miss, and third is a hit so 
+$$\text{P}(Y=3)=\frac{3}{4}\times \frac{3}{4}\times \frac{1}{4} = \frac{9}{64}.$$
+$Y=4$, the sequence is miss, miss, miss then hit:
+$$\text{P}(Y=3)=\frac{3}{4}\times \frac{3}{4}\times \frac{3}{4}\times \frac{1}{4} = \frac{27}{256}.$$
+And so on.
+
+Notice that for the archer to hit the target on the $y^{\text{th}}$ attempt, he must have missed on each of the previous $y-1$ attempts, and so there is a formula for the mass function as follows.
+
+\begin{equation*}
+  f(Y=y)=\begin{cases}
+    \left( \frac{3}{4} \right)^{y-1}\frac{1}{4} \ , & \text{if } y = 1, 2, 3, \dots \\
+    \ 0 \ & \text{otherwise}.
+  \end{cases}
+\end{equation*}
+
+Clearly these probabilities are quickly getting very small - you may recognise these terms as being in a geometric sequence with common ration $\frac{3}{4}$. 
+
+A graph of this distribution looks like:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/geo_pdf} 
+
+}
+
+\caption{A geometric distribution}(\#fig:geomdriving)
+\end{figure}
+
+The choice of $\frac{1}{4}$ is infact arbitrary. In general you can have 'success' probability $\pi$ and 'failure' probability $1-\pi$.
+
+:::{.definition}
+A random variable $X$ representing the number of independent trials until the first success follows a geometric distribution with success probability $\pi$, written as $X \thicksim \text{Geom}(\pi)$, defined by the probability mass function
+
+\begin{equation*}
+  f(x)=\begin{cases}
+    \left( 1-\pi \right)^{x-1}\pi , & x = 1, 2, 3, \dots \\
+    \ 0 \ & \text{otherwise}.
+  \end{cases}
+\end{equation*}
+
+:::
+
+Of course the trials for the archer are arguably not independent - why?
+
+
+
+## Properties of probability mass functions
+
+For a random variable $X$ with probability distribution $f(x)$ we have the following two properties:
+
+1. The probability of any particular value is between  $0$ and $1$. That is, 
+$$ 0 \leq f(x) \leq 1, \ \forall x$$
+
+2. The probabilities sum to unity. That is,
+
+$$ \sum_{x} f(x)= 1$$
+
+Probability distributions can be represented in a variety of different ways. In practice we use tables of distributions or use computer functions to evaluate them.
+
+In R we can use the following functions to evaluate the probabilities from example \@ref(exm:archer).
+
+
+```r
+y <- dgeom(x = 1:4, #these are the particular values 1,2,3 and 4
+           prob = 1/4 ) #This is the probability of success
+y
+```
+
+```
+## [1] 0.18750000 0.14062500 0.10546875 0.07910156
+```
+
+```r
+#You can output these as fractions using the MASS library
+MASS::fractions(y)
+```
+
+```
+## [1]    3/16    9/64  27/256 81/1024
+```
+
+The important function is $\texttt{dgeom()}$, the $\texttt{d}$  stands for distribution and $\texttt{geom}$ for the geometric distribution.
+
+Another way to represent a probability distribution is as a cumulative sum.
+
+:::{.definition name="Cumulative distribution function"}
+Given a random variable $X$ and its probability mass function $f(x)$, the cumulative distribution function (abbreviated CDF) denoted with a capital letter $F(x)$ is defined as the sum of the probabilities less than or equal to the value $x$. That is,
+
+$$ F(x) = \text{P}(X\leq x) = \sum_{t\leq x}f(t)$$
+:::
+
+:::{.example name="another urn problem"}
+Consider the setup previously where two balls numbered $1$ through $5$ are drawn and the maximum of two numbers is taken.
+We found the probability distribution to be, 
+
+
+| $x$ |  $\text{P}(X=x)$  | 
+|:---:+:-----------------:|
+| 2   |  $\frac{1}{10}$   |
+| 3   | $\frac{2}{10}$    |
+| 4   |  $\frac{3}{10}$   |
+| 5   |   $\frac{4}{10}$  |
+
+Work out the CDF $F(x)$.
+
+_solution_
+
+If $x<2$ we have $F(x)=0$.
+If $2\leq x < 3$ we have $F(x) = \frac{1}{10}$.
+If $3\leq x < 4$ we have $F(x) = \frac{1}{10} + \frac{2}{10}$.
+If $4\leq x < 5$ we have $$F(x) = \frac{1}{10} + \frac{2}{10} + \frac{3}{10}.$$
+If $5\leq x$ we have $$F(x) = \frac{1}{10} + \frac{2}{10} + \frac{3}{10} + \frac{4}{10}.$$
+
+Altogether,
+
+\begin{equation*}
+  F(x)=\begin{cases}
+  0  \ \ \ \ \ \ \ \ \ \ \   x<2 \\
+  \frac{1}{10} \  \  2\leq x < 3 \\
+  \frac{3}{10} \ \  3\leq x < 4 \\
+  \frac{6}{10} \ \ \ 4\leq x < 5 \\
+  1 \ \ \  \ \ \  5\leq x
+  \end{cases}
+\end{equation*}
+
+:::
+
+:::{.example}
+The CDF of a geometric distribution is given by
+$$F(x) = 1- (1-\pi)^{x}.$$
+:::
+
+
+_solution_ 
+
+$$F(x) = \sum_{t\leq x}f(t)$$
+Sum from $t=1$ to $t=x$.
+
+$$  = \pi + \pi(1-\pi) + \pi(1-\pi)^2 + \dots +  \pi(1-\pi)^{x-1} $$
+You might recognise a geometric series here, with $a=\pi$ and $r=(1-\pi)$, so this can be collected as:
+
+$$F(x) = \frac{\pi (1-(1-\pi)^x)}{1-(1-\pi)} $$
+Evaluating the denominator and cancelling gives the result.
+
+
+The CDF is more useful than the mass function since if we are given the CDF we can calculate the mass function directly as the difference. 
+
+$$f(x) = F(x)-F(x-1)$$
+
+:::{.example}
+Calculate $f(4)$ given the CDF
+
+\begin{equation*}
+  F(x)=\begin{cases}
+  0  \ \ \ \ \ \ \ \ \ \ \   x<2 \\
+  \frac{1}{10} \  \  2\leq x < 3 \\
+  \frac{3}{10} \ \  3\leq x < 4 \\
+  \frac{6}{10} \ \ \ 4\leq x < 5 \\
+  1 \ \ \  \ \ \  5\leq x
+  \end{cases}
+\end{equation*}
+
+_solution_
+
+$f(4) = F(4)-F(3) = \frac{6}{10}-\frac{3}{10} = \frac{3}{10}$
+:::
+
+Due to the fact that the mass function can be calculated from the CDF, statistical tables often prioritise tabulating the CDF for various different types of distribution.
+
+We finish this section with an example of how this theory may be used in applied calculations.
+
+:::{.example}
+Assuming the archer's attempts to hit a target follows a geometric distribution with success parameter $\frac{1}{4}$ calculate the probability that he
+
+1. Hits on the $10^{\text{th}}$ attempt.
+
+2. Takes fewer than $4$ attempts to hit the target.
+
+3. Takes at least $8$ attempts to hit the target.
+
+4. Takes between $4$ and $8$ attempts inclusive. 
+:::
+
+
+_solution_ 
+
+Let $Y$ be the number of attempts to hit the target. We know that 
+
+$$f(y) = \left( \frac{3}{4} \right) ^{y-1}\frac{1}{4}$$ 
+
+and
+
+$$ F(y) = 1- \left(1-\frac{1}{4}\right)^y = 1-\left( \frac{3}{4}\right)^y.$$
+
+1. $\text{P}(Y=10) = f(10) = \left( \frac{3}{4}\right)^9\times \frac{1}{4} = 0.0188$ ($3$ s.f.).
+
+2. $\text{P}(Y<4) = \text{P}(Y\leq 3) = F(3) =1 - \left( \frac{3}{4}\right)^3 = 0.578$, ($3$ s.f.).
+
+3. Using the complement, $\text{P}(Y\geq 8) = 1 - \text{P}(Y\leq 7)$. Now using the CDF:
+
+$$1-F(7) = 1- \left( 1-\left(\frac{3}{4}\right)^7\right) = 0.134.$$
+
+4. Rewrite the required range as a difference of two CDF values as follows:
+
+$$\text{P}(4\leq Y\leq 8) = \text{P}(Y\leq 8) - \text{P}(Y\leq 3)$$
+
+$$ = F(8) - F(3)$$
+
+$$ = \left[ 1-\left(\frac{3}{4}\right)^8\right] -  \left[ 1-\left(\frac{3}{4}\right)^3\right]$$
+$$ = 0.322$$
+You should be careful when evaluating the CDF to ensure that you have the correct values in the given inequality. A small diagram or list can be invaluable here.
+
+## Mean, variance and moments
+
+The mean and variance of a random variable essentially mirror the definitions of mean and variance for samples.The mean or expected value is the _average_ value of the variable if it were observed repeatedly. The variance indicates the likely spread of values of the variable.
+
+:::{.example}
+If you toss a coin $2$ times how many heads would you expect to turn up?
+
+_solution_
+
+Your would expect $1$ intuitively. Let $X$ be the number of heads. 
+The outcomes are $(T,T),(H,T),(T,H),(H,H)$. The average number of heads is then
+
+$$ \frac{0+1+1+2}{4} = 1$$
+We can relate this to the probability of each number of heads. We have,
+
+$$\text{P}(X=0) = \frac{1}{4}$$
+$$\text{P}(X=1) = \frac{2}{4}$$
+$$\text{P}(X=2) = \frac{1}{4}$$
+
+The sum of the possible $x$ values weighted by the probability is:
+$$0\times \frac{1}{4} + 1\times \frac{2}{4} + 2\times \frac{1}{4} = 1.$$
+
+:::
+
+:::{.definition}
+The ***expectation***, or ***expected value*** of a random variable $X$ is defined as the sum of the possible values of the random variable weighted by the probability of that value.
+
+$$ \text{E}[X] = \sum_x x\times\text{P}(X=x)$$
+This is just a number once it is calculated is called the ***mean***, and so is written as a constant $\text{E}[X]=\mu$ to omit the random quantity $X$.
+
+The expected value of any function of a discrete random variable $g(X)$ is defined similarly by
+$$ \text{E}[X] = \sum_x g(x)\times\text{P}(X=x)$$
+
+:::
+
+
+
+
+
+:::{.definition}
+The ***variance*** of a random variable $X$ is defined as:
+
+$$ \text{Var}[X] = \text{E}[(X-\mu)^2]$$
+
+:::
+
+
+The following is a very useful in practice for actually computing the variance.
+
+:::{.theorem}
+Given a random variable $X$ we have that the variance is equal to the difference between the expectation of $X^2$ and the squared expectation of $X$. That is,
+
+$$ \text{Var}[X]=\text{E}[X^2]-\text{E}[X]^2 $$
+:::
+
+We omit the proof for now and see some examples, leaving this for the interested reader.
+
+
+:::{.proof}
+The expectation is a sum, so behaves linearly. By definition,
+
+$$\text{Var}[X] = \text{E}[(X-\mu)^2]$$
+Expanding out the bracket on the inside gives,
+$$ = \text{E}[X^2 - 2\mu X +\mu^2] $$
+Using linearity,
+
+$$= \text{E}[X^2]-2\mu\text{E}[X]+\mu^2.$$
+$$= \text{E}[X^2]-2\mu^2+\mu^2.$$
+Hence the result.
+:::
+
+:::{.example}
+A discrete random variable $X$ representing the score on a loaded die has the following probability mass function.
+
+|    $x$    | 1 | 2 | 3 | 4 | 5 | 6 |
+|:-----------:+:---+:---+:---+:---+:---+:---|
+| $\text{P}(X=x)$  | $\frac{1}{21}$  | $\frac{2}{21}$ |  $\frac{3}{21}$  | $\frac{4}{21}$ | $\frac{5}{21}$  | $\frac{6}{21}$ |
+
+Calculate:
+
+a) $\text{E}[X]$
+
+b) $\text{E}[X^2]$
+
+c) $\text{Var}[X]$
+
+d) $\text{E}[e^X]$
+
+:::
+
+_solution_
+
+a) Using the definition of expectation:
+
+$$ \text{E}[X] = 1\times \frac{1}{21}+2\times \frac{2}{21}+3\times \frac{3}{21}+4\times \frac{4}{21}+5\times \frac{5}{21}+6\times \frac{6}{21},$$
+$$ = 4.33 \ \ \ (3 \ \text{s. f.})$$
+Compared to a fair die, the mean of the loaded die is higher.
+
+b) 
+$$ \text{E}[X^2] = 1^2\times \frac{1}{21}+2^2\times \frac{2}{21}+3^2\times \frac{3}{21}+4^2\times \frac{4}{21}+5^2\times \frac{5}{21}+6^2\times \frac{6}{21},$$
+
+$$ = 21$$
+
+3. The variance is then,
+
+$$\text{Var}[X]=\text{E}[X^2]-\mu^2 = 21-(4.33\dots)^2= 2.22 \ \ \ (3 \ \text{s. f.})$$
+4. $e^X$ is just a function of $X$. 
+
+$$ \text{E}[X] = e^1\times \frac{1}{21}+e^2\times \frac{2}{21}+e^3\times \frac{3}{21}+e^4\times \frac{4}{21}+e^5\times \frac{5}{21}+e^6\times \frac{6}{21},$$
+
+$$ = 164.622 \ (3 \ \text{d. p.}) $$
+
+:::{.example name="expected profit"}
+Consider the following game. A spinning wheel is divided into three equal sections numbered $1$, $2$ and $3$. You pay £$1$ to play the game, and you have to guess the number that will show when the wheel is spun. If you guess correctly, you get £$2$. If you do not then you get nothing. What is the expected profit from playing the game?
+
+_solution_
+
+The profit is the winnings minus the stake. Let the profit be the random variable $X$. The distribution of $X$ is:
+
+|    $x$    | -1 | 1 | 
+|:-----------:+:---+:---+:---+:---+:---+:---|
+| $\text{P}(X=x)$  | $\frac{2}{3}$  | $\frac{1}{3}$ |
+
+$$\text{E}[X] = -1 \times \frac{2}{3} + 1 \times \frac{1}{3} = -\frac{1}{3}$$
+So we would expect on average to make a loss playing this game. For any gambling game to be profitable for the house, it is necessary that the expectation of the players winnings be negative. 
+:::
+
+:::{.example}
+Let $X$ be a random variable whose value is a constant, that is the particular values it can take are all the same, $x=a$. Show that $\text{E}[X]=a$ and $\text{Var}[X]=0$
+
+_solution_
+
+$$\text{E}[X]=\sum_{x}x\times\text{P}(X=x)= \sum a\times\text{P}(X=a)=a\times \sum \text{P}(X=a) = a \times 1 = a$$
+
+For the variance,
+
+$$ \text{Var}[X] = \text{E}[(X-\mu)^2]=\text{E}[(a-a)^2]=0 $$
+:::
+
+We will now proceed to find the mean and variance of a Geometric distribution. We will need a fact about series first.
+
+:::{.proposition}
+Suppose $|r|<1$ and recall the infinite geometric series is given by the following formula:
+
+$$g(r) = \sum_{k=0}^{\infty}ar^{k} = \frac{a}{1-r}$$
+For a convergent series such as this we can differentiate term by term with respect to $r$, and equate this to what we would get from differentiating the RHS likewise. Doing so results in the following two formulae:
+
+$$g'(r) = \sum_{k=0}^{\infty}akr^{k-1} = \frac{a}{(1-r)^2}$$
+
+$$g''(r) = \sum_{k=0}^{\infty}ak(k-1)r^{k-2} = \frac{2a}{(1-r)^3}$$
+:::
+
+
+:::{.theorem}
+Let $X$ be a random variable which follows a geometric distribution, $X \thicksim \text{Geom}(\pi)$, then we have:
+
+$$\text{E}[X] = \frac{1}{\pi}$$
+and 
+$$ \text{Var}[X]=\frac{1-\pi}{\pi^2}$$
+:::
+
+:::{.proof}
+By definition,
+$$\text{E}[X] = \sum_{x=1}^{\infty}x(1-\pi)^{x-1}\pi$$
+$$ = \pi + 2\pi(1-\pi) + 3\pi(1-\pi)^2+4\pi(1-\pi)^3+ \dots $$
+The latter sum can be seen as $g'(1-\pi)$, with $a=\pi$. Using the RHS result from the previous proposition we have,
+$$\text{E}[X] = \frac{\pi}{[1-(1-\pi)]^2} = \frac{1}{\pi}$$
+For the variance we first find the expectation of a function of $X$ called a factorial moment.
+
+$$\text{E}[X(X-1)] = \sum_{x=1}^{\infty}x(x-1)\pi(1-\pi)^{x-1}$$
+$$ = (1-\pi)\sum_{x=2}^{\infty}x(x-1)\pi(1-\pi)^{x-2}$$
+The infinite series turns out to be $g''(1-\pi)$ with $a=\pi$. Substituting this in gives, 
+
+$$\text{E}[X(X-1)]=(1-\pi)\frac{2\pi}{[1-(1-\pi)]^3} = \frac{2(1-\pi)}{\pi^2}.$$
+Now we can use this to find the variance as follows,
+
+$$\text{Var}[X] = \text{E}[X^2]-\text{E}[X]^2 $$
+$$ = \text{E}[X(X-1)]+\text{E}[X]-\text{E}[X]^2 $$
+$$ = \frac{2(1-\pi)}{\pi^2} + \frac{1}{\pi} - \frac{1}{\pi^2} $$
+$$ = \frac{1-\pi}{\pi^2}$$
+as required.
+
+:::
+
+If you are given two random variables $X$ and $Y$ a _linear combination_ means an expression of the form $aX+bY$.  
+
+:::{.theorem name="Linear Combinations"}
+For any random variables $X$ and $Y$ and constants $a$ and $b$ we have that the expectation of a linear combination is a linear combination of the expectations.
+
+$$\text{E}[aX\pm bY] = a\text{E}[X]\pm b\text{E}[Y]$$
+However the variance is a nonlinear sum of the variances.  
+$$\text{Var}[aX\pm bY] = a^2\text{Var}[X]+b^2\text{Var}[Y] $$
+:::
+
+:::{.proof}
+This is omitted, but follows from properties of summations and mass functions.
+:::
+
+:::{.example}
+Recall the loaded die had mass function given by,
+
+|    $x$    | 1 | 2 | 3 | 4 | 5 | 6 |
+|:-----------:+:---+:---+:---+:---+:---+:---|
+| $\text{P}(X=x)$  | $\frac{1}{21}$  | $\frac{2}{21}$ |  $\frac{3}{21}$  | $\frac{4}{21}$ | $\frac{5}{21}$  | $\frac{6}{21}$ |
+
+
+Suppose you win $W$ is an amount depending on the number that you roll on the loaded die.
+
+If $W = 3X-10$ find $\text{E}[W]$ and $\text{Var}[W]$
+
+_solution_
+
+$$\text{E}[W] = 3\times (4.333\dots) -10 = £3$$
+
+$$\text{Var}[W] = 3^2\times(2.22\dots) = 19.99\dots = 20.0 \  (3 \ \text{s.f.})$$
+
+:::
+
+## Exercises Week 3 
+:::{.exercise}
+An urn contains two yellow balls and three red balls. Three balls are drawn at random from the urn without replacement.
+
+a) Draw a tree diagram to represent the sample space for this experiment and find the probabilities of each outcome. 
+
+b) Let the random variable $X$ denote the number of red balls drawn.
+ i) Write down the probability distribtion of $X$. 
+ ii) Find the mean and variance of $X$.
+:::
+
+
+
+:::{.exercise}
+Let $X$ be the value observed from rolling an $8$-sided die
+
+a) What is the probability distribution of $X$. 
+
+b) Draw a graph of the probability distribution.
+
+c) Find the mean and variance of $X$.
+
+d) Find the expected value of:
+  i) $3X+5$
+  ii) $\ln(X)$
+:::
+
+
+:::{.exercise}
+A game consists of tossing a coin until the first head appears. The score recorded is the number of tosses required.
+
+a) If the random variable $Y$ is the number of tosses, what is the distribution of $Y$? 
+
+b) Write down the first $6$ values of the probability distribution, and draw a sketch.
+
+c) Find the mean and variance of $Y$.
+
+:::
+
+
+:::{.exercise}
+Two fair dice are rolled and the _total_ score observed. 
+
+a) Write down the probability distribution of the total score.
+
+b) Find the mean and variance of the total score. 
+:::
+
+:::{.exercise}
+Two fair dice are rolled and the _maximum_ score observed. 
+
+a) Write down the probability distribution of the maximum score.
+
+b) Find the mean and variance of the maximum score. 
+:::
+
+:::{.exercise}
+A fair coin is tossed three times. Let $X$ be the number of heads in the tosses minus the number of tails.
+a) Find the probability distribution of $X$
+
+b) Find the mean and variance of $X$.
+:::
+
+:::{.exercise}
+The game of simple _Chuck-a-luck_ is played by a single player against the house. The game is conducted as follows:
+
+The player chooses any number between $1$ and $6$ inclusive and places a bet of £$1$. The banker then rolls $2$ fair dice. If the player's number occurs $1$ or $2$ times, he wins £$1$ or £$2$ respectively. If the player's numberdoes not appear on any of the dice, he loses his £$1$ stake. Let the random variable $X$ denote the player's winnings in the game. 
+
+a) Find the probability mass function of $X$.
+
+b) Find the expected value of the winnings, $\text{E}[X]$.
+:::
+
+:::{.exercise}
+The random variable $X$ has the following probability mass function:
+
+| $x$ | 1 | 2 | 3 | 4 | 5 |
+|:---:+:-:+:-:+:-:+:-:+:-:|
+| $\text{P}(X=x)$ | $7c$ | $5c$ | $4c$ | $3c$ | $c$ |
+
+a) Find the value of $c$ which makes this a valid probability mass function.
+
+b) Find $\text{E}[X]$ and $\text{Var}[X]$.
+:::
+
+:::{.exercise}
+The random variable $X$ has the following probability mass function:
+
+| $y$ | 2 | 3 | 5 | 7 | 11 |
+|:---:+:-:+:-:+:-:+:-:+:-:|
+| $\text{P}(Y=y)$ | $\frac{1}{6}$ | $\frac{1}{3}$ | $\frac{1}{4}$ | $a$ | $b$ |
+
+and $\text{E}[Y]=\frac{14}{3}$
+
+a) Find the values of $a$ and $b$.
+
+b) Find $\text{Var}[Y]$.
+:::
+
+:::{.exercise}
+A fair six-sided die has '$1$' on one face, '$2$' on two faces and '$3$' on the remaining three faces.
+
+a) Let $Y$ denote the score on a single roll of the die. Tabulate the mass function and calculate the mean and variance of $Y$.
+
+b) Let $X$ be the total score on two rolls of the die. Tabulate the mass function and calculate the mean and variance of $X$.
+:::
+
+
+:::{.exercise}
+An urn contains $n$ balls numbered $1$ to $n$ from which two balls are drawn simultaneously. Find the probability distribution of $X$, the larger of the two numbers drawn. Calculate the expected value of $X$.
+:::
+
+:::{.exercise}
+$A$ and $B$ play a game that involves each rolling a fair die simultaneously. Let $X$ be the absolute difference in their scores. 
+
+a) Tabulate the probability mass function of $X$.
+
+b) Find the mean and variance of $X$.
+
+c) If the value of $X$ is $1$ or $2$ then $A$ wins. If $X$ is $3$,$4$ or $5$ then $B$ wins. If $X$ is zero then they roll again. Find the probability that $A$ wins on the first go. Find the probability that $A$ wins on the second go. Find the probability that $A$ wins on the $r^{\text{th}}$ go. 
+
+d) Find the probability that $A$ wins. 
+:::
+
+:::{.exercise}
+A discrete random variable has the following mass function
+
+\begin{equation*}
+  f(y)=\begin{cases}
+    \pi \ \ \ \ \ \ \ \ \ \  y = 1 \\
+    1-\pi \ \  \ y = 0 .
+  \end{cases}
+\end{equation*}
+
+Where $0<\pi<1$.This is known as the Bernoulli distribution.Find $\text{E}[Y]$ and $\text{Var}[Y]$
+:::
+
+### Exercises for feedback
+
+
+:::{.exercise}
+Scrabble tiles for the letters of the word EXERCISES are in a bag. 
+
+a) A random tile is drawn, what is the probability that it is the letter is E? 
+
+b) Given that the letter that is drawn from the bag is a vowel, what is the probability that it is an E? 
+
+c) Explain how the two questions are different in your own words, and compare the size of the probabilities in either part. 
+:::
+
+:::{.exercise}
+There are $40$ students in a Maths class, and each are given a number $1$ to $40$. Separately the numbers $1-40$ are placed in a hat and mixed randomly. The teacher will give three random students a prize. Three numbers are selected from the hat without replacement. Before the numbers are drawn the teacher guesses three numbers and writes them on the board.
+
+- Work out the probability of the teacher matching $0$, $1$, $2$ or $3$ of the numbers that are drawn from the hat.
+
+On a different occasion, the teacher has $5$ students in his tutor group. He wants to give two prizes to the Maths students, and one to his tutor group. He will draw two numbers from his hat, and separately he will draw one of the numbers $1-5$ from his shoe (he only has one hat). Again he writes his prediction on the board before the selection.
+
+- Work out the probability of the teacher predicting $0$, $1$ or $2$ Maths students, but not getting the tutee correct, and the probability of predicting $0$, $1$ or $2$ Maths students and getting the tutee correct.
+:::
+
+
+:::{.exercise}
+A fairground game is played with $5$ dice. The player pays £1 to play, and for every $6$ that appears on the dice the player is rewarded with £$6$. 
+
+a) Work out the probabilities of getting $0$,$1$,$2$,$\dots$,$5$ sixes when rolling the five dice.
+
+b) If $X$ is the profit of for the player of this game, work out the expected profit $\text{E}[X]$.
+
+c) Work out also the variance $\text{Var}[X]$.
+
+d) Explain if you think this is a good game or not.
+:::
+
+:::{.exercise name="Extension / Challenge"}
+You play a game with a standard pack of $52$ cards. You are dealt a hand of $3$ cards. If your hand contains a pair, you get $3$ points. If your hand contains $3$ of a kind, you get $10$ points. If your hand contains neither a pair nor $3$ of a kind you lose a point. What is the expected number of points you will score in this game?
+:::
+
+
+
+
+<!--chapter:end:02-drvs.Rmd-->
+
+# Special discrete random variables {#binpois}
+
+
+In this chapter you should be able to recognise contexts in which Binomial distributions arise. Calculate binomial probabilities using formulae. Use binomial tables, calculators and R to look up probabilities.
+
+## The Binomial Distribution
+
+The binomial distribution is one of the most important discrete distributions and finds application in a wide number of areas. 
+
+The example to have in mind is the following:
+
+:::{.example name="coin tossing"}
+Suppose you toss a coin $10$ times and count the number of heads that are observed. 
+
+- There is fixed number of trials, here $10$, and so a maximal number of heads we can observe.
+
+- The coin is the same, and so the probability of heads is the same throughout the process. For a fair coin this is $\frac{1}{2}$.
+
+- The coin tosses are independent. There is no physical reason why any previous outcome may make heads more or less likely on subsequent tosses.
+
+- There are only two outcomes for a coin toss: heads or tails.
+:::
+
+
+The binomial distribution can be used to find probabilities whenever the following conditions are met:
+
+- The probability of observing a success in a single experiment is a fixed quantity, that is the probability is a constant $\text{P}(\text{success}) = \pi$. (P for constant probability)
+
+- The trials are independent. (I)
+
+- The number of experiments, or trials, is a fixed number and so there is a maximum value attainable. (N for maximum number)
+
+- There are only two outcomes.(T for two outcomes)
+
+The list of assumptions underlying the binomial model above can be summarised in the mnemonic PINT.
+
+Although you can check the mnemonic is satisfied, it may in practicebe easier in a given situation to make an analogy with the coin tossing example. In a particular context the number could well vary, as could the definition of 'success'. For example, suppose you are considering how many out of a number of men over $50$, will suffer a heart attack in the next year. Then a 'success' is a heart attack!
+
+## The binomial mass function
+
+:::{.example}
+You throw five drawing pins in the air and note if they land pin up or pin down. How many ways can two of the pins land facing up and the others land face down?
+
+Suppose the probability a single pin lands facing up is $0.3$, what is the probability that exactly two land facing up?
+
+_solution_ 
+
+Consider this problem as a word UUDDD, how many different words can be obtained by rearrangement? The number of ways of rearranging this is $\frac{5!}{2!}{3!} = 10$. 
+
+Note that this is one of the choice numbers $^5C_2$. We are choosing from $5$ things, two to be face up and so the remaining ones to be face down.
+
+For any choice of two pins we have the same calculation for the probability. That is, $0.3^2 \times 0.7^3$.
+
+Altogether the probability is $^5C_2 \times 0.3^2 \times 0.7^3$.
+:::
+
+We can derive the binomial mass function in a similar way as this example.
+
+:::{.theorem}
+Suppose the random variable $X$ satisfies the conditions of a binomial random variable, so that there are $n$ trials with success probability $\pi$. The mass function is given by:
+$$\text{P}(X=x) = {}^nC_x \pi^{x}(1-\pi)^{n-x}$$
+:::
+
+
+:::{.proof}
+If the $n$ trials result in $x$ successes, each with probability $\pi$, there must have also been $n-x$ failures each with probability $(1-\pi)$. Using independence, the probability of this happening is 
+
+$$\pi ^x (1-\pi)^{n-x} $$
+There are a number of ways this can happen, equal to $^nC_x$. Hence result.
+:::
+
+:::{.example #fourfairdice}
+Suppose a fair die is rolled four times. What is the probability of getting,
+
+a) exactly one six?
+
+b) at most $1$ six?
+
+_solution_
+
+a) A common mistake is $\frac{1}{6}\times \left( \frac{5}{6} \right)^3$. This is not correct - why? Because it can happen in $^4C_1=4$ ways,
+
+$$4\times \frac{1}{6}\times \left( \frac{5}{6} \right)^3 = 0.386 \text{ (3 s.f.)}$$
+
+
+b) if $X$ is the number of sixes, at most one means $X \leq 1$. You could work this out by adding the two cases $X=0$ and $X=1$ together. One could calculate directly from the mass function as follows:
+
+$$^4C_0 \times \left( \frac{1}{6} \right)^0 \times \left( \frac{5}{6} \right)^4+ ^4C_1 \times \left( \frac{1}{6} \right)^1 \times \left( \frac{5}{6} \right)^3$$
+Obtaining $0.868\text{ (3 s.f.)}$.
+:::
+
+Some examples of binomial probability distributions are given in the following figures. 
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/binomial1} 
+
+}
+
+\caption{Probability mass function for B(9,0.2)}(\#fig:bin1)
+\end{figure}
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/binomial2} 
+
+}
+
+\caption{Probability mass function for B(8,0.5)}(\#fig:bin2)
+\end{figure}
+
+How can we account for the seemingly different shape?
+
+If the success probability is close to $0.5$ the distribution has a symmetrical shape, otherwise it is skewed. 
+
+
+:::{.example}
+A train station has $5$ self-service ticket machines. The probability of a machine not working at any time is $0.15$. Let $X$ be the number of machines not working.
+
+a) Comment on whether a binomial distribution is a suitable model for $X$.
+
+Assuming a binomial distribution for X, evaluate the probability of the following number of machines not working. 
+
+b) exactly $2$.
+
+c) at least $4$.
+
+d) at most $2$.
+
+_solution_
+
+a) Checking the mnemonic PINT here works. Here a 'success' is a ticket machine not working. Independence might not hold if for example one machine not working caused the others to also fail somehow, but here the probability is the same _at any time_ including at a time when others have failed.
+
+b) $\text{P}(X=2) = ^5C_2 \times 0.15^2 \times (1-0.15)^{5-2} = 0.138$.
+
+c) $\text{P}(X\geq 4) = \text{P}(X=4) + \text{P}(X=5)$. Evaluating the formulae gives:
+
+$$= {}^5C_4 \times 0.15^4 \times (1-0.15)^{5-4}+ ^5C_5 \times 0.15^5 \times (1-0.15)^{5-5}$$
+$$= 0.0022$$
+
+d) $\text{P}(X\leq 2) = \text{P}(X=0) + \text{P}(X=1) + \text{P}(X=2)$. Again evaluating the formula for each term in the sum gives:
+
+$$= {}^5C_0 \times 0.15^0 \times (1-0.15)^{5-0}+ {}^5C_1 \times 0.15^1 \times (1-0.15)^{5-1}+ {}^5C_2 \times 0.15^2 \times (1-0.15)^{5-2}$$
+$$ = 0.973 $$
+:::
+
+
+Alternatively, if the number of cases to add is large enough to be tedious by hand calculation (here we only need to add a few cases together), one may consult statistical tables of the CDF.
+
+Because the binomial distribution is so widely applied and is so important, almost every book of statistical tables will contain some pages of the binomial CDF. The tables used at MMU give probabilities for selected values of $n$ and $\pi$ in the form $\text{P}(X\leq x)$. Any probability can be calculated from these tables using rules like the following:
+
+- $\text{P}(X\leq x)$, directly from table.
+
+- $\text{P}(X\geq x) = 1- \text{P}(X\leq x-1)$, using complements.
+
+- $\text{P}(X = x) = \text{P}(X\leq x) - \text{P}(X\leq x-1)$, as with getting the mass function from the CDF in the usual way.
+
+You can the probability of $X$ lying in a range too, but one must be careful about whether the inequality is strict or not.
+
+- $\text{P}(a\leq X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a-1)$
+
+- $\text{P}(a< X\leq b) = \text{P}(X\leq b) - \text{P}(X\leq a)$
+
+- $\text{P}(a\leq X < b) = \text{P}(X\leq b-1) - \text{P}(X\leq a-1)$
+
+- $\text{P}(a< X < b) = \text{P}(X\leq b-1) - \text{P}(X\leq a)$
+
+Graphing the inequality or listing the required values of $X$ helps improve accuracy here, and I would not recommend learning just the rules here. 
+
+In modern times we more commonly would consult a calculator, which has the tables recorded in its memory. For example, in R we can do the calculation for \@ref(exm:fourfairdice) using the following commands.
+
+
+```r
+y <- dbinom(x=0:1, size = 4, prob = 1/6 ) # putting x=0:1 makes y take the two values we want
+sum(y) # working out the sum is easy now
+```
+
+```
+## [1] 0.8680556
+```
+
+As with the geometric distribution, the binomial distribution function is called in R by $\texttt{dbinom()}$, the $\texttt{d}$  stands for distribution and $\texttt{binom}$ for the binomial distribution.
+
+## Mean and variance
+
+The goal here is to find simple expressions for the mean and variance of a binomial distribution. We choose to do this directly, though there are other methods which you may see next year.
+
+:::{.theorem}
+For a binomially distributed random variable $X\sim \text{Bin}(n,\pi)$ we have the mean is the product of the number of trials and the success probability. That is,
+
+$$\text{E}[X] = n\pi $$
+
+And the variance of $X$ is the product of the mean and the failure probability. That is,
+
+$$ \text{Var}[X] = n\pi (1-\pi)$$
+:::
+
+
+:::{.proof}
+Starting with the definition,
+
+$$ \text{E}[X] = \sum_{x=0}^{n}x\times \text{P}(X=x)$$
+Combining this with the mass function gives
+
+$$ \text{E}[X] = \sum_{x=0}^{n}x\times ^{n}C_{x} \pi^x (1-\pi)^{n-x} $$
+And then the definition of the numbers $^{n}C_{x}$,
+
+$$ \text{E}[X] = \sum_{x=0}^{n}x\times \frac{n!}{x!\times(n-x)!} \pi^x (1-\pi)^{n-x} $$
+Now the first term of the sum $x=0$, but $x$ is a factor of this so the sum actually starts from $x=1$. 
+$$  = \sum_{x=1}^{n} \frac{n!}{(x-1)!\times(n-x)!} \pi^x (1-\pi)^{n-x} $$
+$$  = n\pi\sum_{x=1}^{n} \frac{(n-1)!}{(x-1)!\times(n-x)!} \pi^{x-1} (1-\pi)^{n-x} $$
+Now letting $m=n-1$ and $y=x-1$ the sum becomes,
+
+$$  = n\pi\sum_{y=0}^{m} \frac{m!}{y!\times(m-y)!} \pi^{y} (1-\pi)^{m-y} $$
+Each term in the sum is a binomial probability for some $Y\sim \text{Bin}(m,\pi)$, and so altogether their sum will be equal to $1$.
+
+Hence $\text{E}[X] = n\pi$.
+
+For the variance we omit this proof as it is no longer instructive. 
+
+The interested reader could consider $\text{E}[X(X-1)]$ and $\text{E}[X^2]$, and the manipulations with the sums is similar to above.
+:::
+
+## The Poisson distribution
+
+This distribution was invented by the French mathematician Simeon Poisson, and as the distribution bears his namesake it appears capitalised unlike the binomial distribution. 
+
+The Poisson distribution can be applied in a remarkable number of areas involving counting processes. Some examples include.
+
+- The number of 'goals' scored in a sports game.
+
+- The number of sales per week.
+
+- The number of Website visitors per hour.
+
+- The number of arrivals to the A&E of Manchester Royal Infirmary in a day.
+
+- The number of bacterial growths in a given area, such as on a Petri dish.
+
+
+The Poisson distribution may be applied whenever the random variable of interest counts the number of events in a given interval, which could be any number without bound (though larger counts are less likely). The events occur one at a time, independently and randomly in the given interval. The events occur uniformly in a given interval, such that the mean number of events is proportional to the size of the interval - the events occur at a constant average rate. 
+
+The mnemonic SIR/MR can be used to summarise this paragraph. 
+
+S - not ***simultaneously***
+
+I - Independent
+
+R - Randomly
+
+M - no ***maximum*** number of events
+
+R - at a constant average ***rate***
+
+
+
+:::{.example name="telephone calls"}
+Let the number of telephone calls arriving at a switchboard in a minute be the random variable $X$. Then $X$ satisfies the assumptions to be modelled with a Poisson distribution.
+:::
+
+A Poisson distribution depends on one parameter only - its mean rate $\lambda$. Here are some pictures of Poisson distribution functions for different values of the mean rate.
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/poisson1} 
+
+}
+
+\caption{Probability mass function for Pois(3)}(\#fig:pois1)
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/poisson2} 
+
+}
+
+\caption{Probability mass function for Pois(6)}(\#fig:pois2)
+\end{figure}
+
+:::{.definition}
+Given a random variable following a Poisson distribution $X\sim \text{Pois}(\lambda)$ has mass function given by:
+
+$$\text{P}(X=x) = \frac{\lambda^x e^{-\lambda}}{x!} $$
+where $x=0,1,2, \dots$, and $\lambda>0$.
+:::
+
+Although the probabilities attached to higher values of $x$ are positive, they quickly become very small. The mean rate $\lambda$ does not need to be a whole number, even though the count in any given interval does need to be a whole number. As with the binomial distribution, tables are given of the CDF of the Poisson distribution.
+
+:::{.example}
+A company operates a helpdesk hotline service. Incoming calls to the hotline arrive at a mean rate of $3.5$ per minute and outgoing calls are made at a rate of $4.2$ per minute. Find the probability that
+
+a) at least five calls arrive in one minute.
+
+b) exactly five calls arrive in one minute.
+
+c) at most 7 calls are outgoing in one minute.
+
+d) between $4$ and $9$ calls inclusive are outgoing in one minute.
+
+
+_solution_ 
+
+a) $\text{P}(X\geq 5) = 1 - \text{P}(X\leq 4) = 1-0.7254 = 0.2746$
+
+b) $\text{P}(X=5) = \text{P}(X\leq 5) - \text{P}(X\leq 4) = 0.8576 - 0.7254 = 0.1322$
+
+c) $\text{P}(Y\leq 7) = 0.9361$
+
+d) $\text{P}(4\leq Y \leq 9 ) = \text{P}(Y\leq 9) - \text{P}(Y\leq 3) = 0.9889 - 0.3954 = 0.5935$.
+
+:::
+
+### Further properties
+
+An important aspect of the Poisson model is the uniform average rate. This means that we assume events occur at the same rate over the interval. If the size of the interval changes, then we must change the mean rate in direct proportion with that change of size. 
+
+:::{.example name="hotline continued"}
+Again assume calls to the hotline are incoming with rate $3.5$ per minute. Find the probability that
+
+a) at least $20$ calls arrive at the exchange in a $4$ minute period.
+
+b) at most $1$ call arrives in a $12$ second period.
+
+_solution_
+
+a) If there are $3.5$ calls per minute, then in a $4$ minute period one expects a rate of $3.5\times 4=14$ calls.
+
+Let $W$ be the number of calls in a $4$ minute period. Then $W\sim\text{Pois}(14)$. Then,
+
+$$\text{P}(W\geq 20) = 1- \text{P}(W\leq 19) = 1-0.9235 = 0.0765.$$
+
+b) As $12$ seconds is one fifth of a minute, so we would expect a rate of $3.5\div 5 = 0.7$ calls.
+
+Let $Z$ be the number of calls in a $12$ second period. Then,
+
+$$\text{P}(Z\leq 1) = 0.8442$$
+:::
+
+The second useful property is that different Poisson variables can be added together and yield another Poisson distribution whose rate parameter is the sum of the individual rates. 
+
+:::{.theorem}
+That is, if $X\sim \text{Pois}(\lambda)$ and $Y\sim \text{Pois}(\mu)$ then 
+$$X+Y \sim \text{Pois}(\lambda+\mu)$$
+:::
+
+:::{.proof}
+Omitted for now. In your second year course you will learn moment generating functions which makes the proof very easy.
+:::
+
+:::{.example}
+Suppose in a game of football the home team scores goals at a rate of $2$ per match, and the away team scores goals at a rate of $3$ per match. Then you would expect the total number of goals between these two teams to occur at a rate of $5$ per match. 
+
+In this context for a particular pair of teams this may not be a realistic model. Why?
+:::
+
+## Mean and Variance
+
+In this section we consider the mean and variance of the Poisson distribution. 
+
+We need a few Mathematical preliminaries from Calculus. 
+
+:::{.proposition name="characterisations of Euler's number"}
+A) For any real number $x \in \mathbb{R}$ we have 
+
+$$e^x = \sum_{k=0}^{\infty} \frac{x^k}{k!}$$
+
+B) 
+$$ \lim_{n\to \infty} \left( 1+\frac{x}{n} \right)^n = e^x$$
+:::
+
+:::{.theorem}
+Let $X$ be a Poisson distributed random variable with rate $\lambda$, that is $X\sim \text{Pois}(\lambda)$. Then 
+
+$$\text{E}[X]  = \lambda$$
+and 
+$$\text{Var}[X] = \lambda$$
+:::
+
+:::{.proof}
+$$\text{E}[X] = \sum_{x=0}^{\infty}x\frac{\lambda^x e^{-\lambda}}{x!}$$
+$$ =\lambda e^{-\lambda} \sum_{x=1}^{\infty}\frac{\lambda^{(x-1)}}{(x-1)!} $$
+$$=\lambda e^{-\lambda} \sum_{y=0}^{\infty}\frac{\lambda^{y}}{y!} $$
+$$=\lambda e^{-\lambda} e^{\lambda}  $$
+$$ = \lambda .$$
+For the variance consider 
+
+$$\text{E}[X(X-1)] = \sum_{x=0}^{\infty}x(x-1)\frac{\lambda^x e^{-\lambda}}{x!}$$
+$$ =\lambda^2e^{-\lambda} \sum_{x=2}^{\infty}\frac{\lambda^{x-2}}{(x-2)!}$$
+$$ =\lambda^2e^{-\lambda} \sum_{y=0}^{\infty}\frac{\lambda^y}{y!}$$
+$$ =\lambda^2e^{-\lambda} e^{\lambda}$$
+$$ =\lambda^2$$
+As $\text{E}[X(X-1)] = \text{E}[X^2] - \text{E}[X]$, we can rearrange and find that 
+
+$$\text{E}[X^2] = \lambda^2 + \lambda $$ 
+
+And as the variance $\text{Var}[X] = \text{E}[X^2] - \text{E}[X]^2$, we have:
+
+$$\text{Var}[X] = \lambda^2 + \lambda - \lambda ^2 = \lambda .$$ 
+:::
+
+## Deriving the Poisson mass function
+
+The Poisson distribution is intimately linked to the binomial distribution. The aim of this section is to show you why the mass function has the form given in the definition.
+
+Suppose events occur as a result of a Poisson process independently and at a uniform rate $\lambda$ in a given time interval. Divide up the time period into a large number of smaller intervals, $n$ say, such that the chance of two events happening in one interval in negligible. The probability of an event happening in one of the small intervals is $\lambda / n$.
+
+Letting $X$ be the random variable representing the number of small intervals that contain an event, then we can see that this is on the one hand binomially distributed for fixed $n$. We have
+
+$$ \text{P}(X=x) = {}^nC_{x} \left(\frac{\lambda}{n}\right)^x \left( 1- \frac{\lambda}{n}\right)^{n-x}$$
+
+$$ = \lambda^{x} \underbrace{\frac{^nC_{x}}{n^x}}_{1} \underbrace{\left( 1- \frac{\lambda}{n}\right)^{n}}_{2}\underbrace{\left( 1- \frac{\lambda}{n}\right)^{-x}}_{3} $$
+
+We consider what happens when we increase $n$, and consider each term separately (which we are allowed to do for convergent sequences).
+
+For term $2$, as $n$ gets larger the number inside the bracket gets close to $1$, and so overall the limit is $1$. 
+
+For term $3$ this can be seen to be equal to $e^{-\lambda}$ by the proposition (B).
+
+The first term $1$, can be manipulated as follows:
+
+$$\lim_{n\to \infty}\frac{^nC_{x}}{n^x} = \lim_{n\to \infty} \frac{n!}{(n-x)!x!n^x}$$
+
+$$ =\frac{1}{x!}  \lim_{n\to \infty} \frac{n(n-1)(n-2)\dots(n-x+1)}{n^x}$$
+
+$$ =\frac{1}{x!}  \lim_{n\to \infty} \frac{n}{n}\frac{(n-1)}{n}\frac{(n-2)}{n}\dots \frac{(n-x+1)}{n}$$
+$$ =\frac{1}{x!}  \lim_{n\to \infty} \frac{n}{n}\frac{(n-1)}{n}\frac{(n-2)}{n}\dots \frac{(n-x+1)}{n}$$
+$$ =\frac{1}{x!}  \lim_{n\to \infty} \frac{(n-1)}{n}\frac{(n-2)}{n}\dots \frac{(n-x+1)}{n}$$
+$$ =\frac{1}{x!}  \lim_{n\to \infty} \left(1 - \frac{1}{n}\right)\lim_{n\to \infty}\left(1 - \frac{2}{n}\right)\dots \lim_{n\to \infty} \left(1 - \frac{x-1}{n}\right)$$
+And all of these limits are $1$. 
+
+Altogether then, 
+
+$$lim_{n\to \infty} {}^nC_{x} \left(\frac{\lambda}{n}\right)^x \left( 1- \frac{\lambda}{n}\right)^{n-x}  = \lambda^x \times \frac{1}{x!} \times e^{-\lambda}\times 1 = \frac{\lambda^xe^{-\lambda}}{x!}.$$
+This is the probability of observing $x$ events in the whole time interval. 
+
+
+The other side of this relationship is that a Poisson distribution can be used to approximate the binomial distribution. 
+
+:::{.theorem}
+If $\pi$ is small and $n$ is large then, a binomial distribution can be approximated by a Poisson distribution with rate parameter equal to the mean of the binomial distribution.
+
+$$\text{Binom}(n,\pi) \approx \text{Pois} (\lambda)$$
+Where we set $\lambda = n\pi.$ 
+
+_proof_
+Omitted.
+:::
+
+## Exercises week 4
+
+:::{.exercise}
+Ropes are tested at a certain breaking strain. According to past experience a quarter of all ropes break at this strain. If $4$ identical ropes are tested, write down the probability distribution of the number of ropes breaking.
+:::
+
+
+:::{.exercise}
+If it estimated that $20\%$ of all individuals carry anibodies to a particular virus. What is the probability that in a group of $20$ randomly selected individuals:
+
+a) More than $8$ have antibodies.
+
+b) Exactly $6$ have antibodies.
+
+c) Fewer than $4$ have antibodies.
+
+d) Between $3$ and $6$ inclusive have antibodies.
+
+:::
+
+:::{.exercise}
+A car salesperson knows from past experience that she will make a sale to $30\%$ of her customers. Find the probability that in $20$ randomly selected sales pitches she makes a sale to
+
+a) More than 4 customers
+
+b) Fewer than $7$ customers
+
+c) Exactly $6$ customers
+
+d) between $4$ and $10$ exclusive.
+:::
+
+:::{.exercise}
+A footballer takes a free kick and scores a goal on $10\%$ of occasions. Find the probability that in a match in which $10$ free kicks are taken
+
+a) She scores at least two goals
+
+b) She scores exactly two goals
+
+c) She scores $3$ goals or fewer. 
+
+
+These are goals from free kicks alone. What assumptions do you need to make, and to what extent do you think these are reasonable?
+:::
+
+:::{.exercise}
+A statistics lecturer sets a test involving $20$ multiple choice questions, where there are four possible answers for each question. They want to choose a pass mark so that the chance of passing a student who guesses every question is less than $5\%$. What should the pass mark be?
+:::
+
+:::{.exercise}
+The game of _advanced Chuck-a-luck_ is an extension of the simple game from last week's exercises. The banker rolls $n$ dice and the player wins £$x$ if the number that the player guesses appears on $x$ of the $n$ dice. As before he loses his £$1$ stake if the number does not come up on any of the dice. 
+
+a) Write down the probability mass function of $X$.
+
+b) Show that $\text{E}[X] = \frac{n}{6} - \left(\frac{5}{6}\right)^n$
+
+(Hint you might want to build up to part (a) in particular by picking values of $n=1,2,3,\dots$ and pattern spotting.)
+:::
+
+:::{.exercise}
+A biologist on a field trip is studying biodiversity and has found that the number of plant species in a $1 \  \text{m}^2$ quadrat follows a Poisson distribution with mean $6$.
+
+a) Find the probability that the number of plant species in any given $1 \  \text{m}^2$ quadrat is;
+  
+  (i) at least 8
+  
+  (ii) less than or equal to $8$
+  
+  (iii) exactly $8$
+  
+  (iv) between $6$ and $12$ inclusive
+  
+b) Find the probability that in a quadrat of area $0.5 \  \text{m}^2$, the number of plant species is
+  
+  (i) at least $3$
+  
+  (ii) fewer than $5$
+  
+  (iii) exactly $4$
+  
+  (iv) between $3$ and $6$ inclusive
+:::
+
+:::{.exercise}
+ When a car leaves a production line it is carefully examined for any signs of imperfection in the paintwork. Previous experience has shown the number of blemishes per car follows a Poisson distribution with mean $0.4$. 
+a) Find the probability that a car has
+
+  (i) at least one blemish
+  
+  (ii) more than one blemish
+  
+  (iii) exactly one blemish
+  
+  (iv) no blemishes
+  
+b) In $1$ hour an inspector can examine $20$ cars. Assuming that blemishes occur independently, find the probability that the inspector finds
+
+  (i) fewer than $5$ blemishes
+  
+  (ii) exactly five blemishes
+  
+  (iii) at least one blemish
+:::
+
+
+:::{.exercise}
+A traffic survey found that buses pass a checkpoint at an average rate of $4.5$ per hour. Lorries pass the same checkpoint at the rate $5$ per hour and coaches at the rate of $1.5$ per hour. 
+
+a) Find the probability that in $1$ hour
+
+  (i) $5$ or more buses pass the checkpoint
+  
+  (ii) between $10$ and $15$ lorries inclusive pass the checkpoint
+  
+  (iii) fewer than $3$ buses pass the checkpoint
+
+b) (i) At least $8$ buses or coaches pass the checkpoint in an hour
+
+  (ii) exactly $15$ buses or coaches will pass the checkpoint in an hour
+  
+  (iii) ten or fewer buses, lorries or coaches will pass the checkpoint in half an hour. 
+:::
+
+:::{.exercise}
+The numbers of emissions per minute from two radioactive rocks $A$ and $B$ are independent Poisson variables with means $0.65$ and $0.45$ respectively. Find the probability that
+
+(a) In a period of three minutes there are at least three emissions from $A$.
+
+(b) In a period of two minutes there is a total of less than four emissions from $A$ and $B$ combined.
+:::
+
+
+:::{.exercise}
+In a particular form of cancer, deformed blood corpuscles occur at random at the rate of $10$ per $1000$ corpuscles. 
+
+a) Use an appropriate approximation to determine the probability that a random sample of $200$ corpuscles taken from a cancerous area will contain no deformed corpuscles. 
+
+
+b) How large a sample should be taken in order to be $99\%$ certain of there being at least one deformed corpuscle in the sample?
+:::
+
+
+:::{.exercise name="counting practice"}
+A box contains $12$ golf balls, $3$ of which are substandard. A random sample of $4$ balls is selected, without replacement, from the box.  The random variable $R$ denotes the number of balls in the sample that are substandard.
+
+a) 
+  (i) Show that the probability mass function of $R$ satisfies
+
+$$\text{P}(R=r) = \frac{{}^3C_r \times {}^9C_{4-r}}{^{12}C_{4}} $$
+  (ii) Determine the probability that $R=0$
+  
+  (iii) Determine the probability that there are fewer than two substandard balls. 
+  
+b) A large bin contains $5000$ used golf balls, $1500$ of which are defective. The random variable $X$ denotes the number of defective balls in a random sample of 20balls selected, without replacement,from the bin. Explain why $X$ may be approximated as a binomial variable with parameters $20$ and $0.3$. Using the binomial model, calculate the probability that this sample contains
+  
+  (i) fewer than $5$ defective balls
+  
+  (ii) at least $7$ defective balls
+  
+c) The random variable $Y$ denotes the number of defective golf balls in a sample of $2000$, selected from a batch of $200,000$ and of which $3250$ are defective. Completely specify an approximate distribution for $Y$ other than a binomial model. 
+
+:::
+
+:::{.exercise}
+The independent random variables $X$ and $Y$have means $2.5$ and $1.5$ respectively. Obtain the mean and variance of the random variables below, and hence give a reason why they are not Poisson.
+a) $X-Y$
+b) $2X+5$
+:::
+
+<!--chapter:end:03-special_drvs.Rmd-->
+
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# Continuous random variables {#cont}
+
+In this chapter we will learn about continuous random variables. Here the random variable may arise from a measurement process. 
+
+In real life many observations are assumed to take real numbered values. We could in principle observe any value on a _continuum_. For example:
+
+- The lifetime of a lithium-ion battery
+
+- The weight of a baby
+
+- The height of a random person
+
+In practice we are constrained by the accuracy of our measuring device (heights are often quoted to the nearest inch, or centimeter) and the distinction between discrete and continuous is sometimes blurred. 
+
+:::{.example}
+Consider a class of undergraduates at MMU. Each of the following is a measurement of age:
+
+a. Age to the nearest decade
+
+b. Age in years
+
+c. Age in months
+
+d. Age in days
+
+e. Age in seconds
+:::
+
+Although none of the variables is strictly measured on a continuous scale, we would measure these variables differently. The decades would only take at most a few particular values and could be modelled as discrete, whereas age in seconds could take so many different values it's almost continuous.
+
+## Relation to histograms
+
+Given some actual continuous data, one could make a plot how frequently the data lies within certain intervals. The resulting plot is called a histogram. These intervals need not be equal, but in modern practice they are. In most computer implementations the intervals are called bins and the interval size the bin width. 
+
+A classic example built into R is the Old Faithful geyser data. Here the waiting times between eruptions and the duration of the eruption were recorded for the Old Faithful geyser in Yellowstone National Park, Wyoming, USA.
+
+Suppose you want to estimate a proportion or probability of a particularly long waiting time. Then instead of the bar height being equal to the frequency we can set the area to be proportional to the frequency. This can be done in such a way as to make the total area under the histogram equal to $1$.
+
+![(\#fig:faithful)Waiting time between eruptions, one sees the data in more precision with smaller bin width](6G4Z3008-notes_files/figure-latex/faithful-1.pdf) 
+
+To find the proportion between two values one could total the area of the bars. One can see the limit of this idea, perhaps for a very large sample is that we would have a smooth curve like the plot titled 'estimated density', and find the area under the curve.  
+
+## Two students 
+
+Consider two students who have an appointment with their tutor at $12$-noon. 
+
+The first student makes an effort to get there on time, so is more likely to be a little late than very late, as they live far from the university. They may be late but will certainly be there before $1$ o'clock. 
+The second student has forgotten the appointment, but lives close to the university, so may arrive at any time before $1$ o'clock, as soon as they remember.
+
+What is the sample space here?
+
+Take $\Omega = [0,1]$ to be the delay measured in hours. An event here is an interval in which the student arrives. For example $[0,\frac{1}{2}]$ is the event that the student is no more than half an hour late. 
+
+The probability of arriving in a given interval is the area under the curve $$f(x) = 2-2x \ ,\ \text{for all } x\in[0,1].$$
+
+This is shown in the image below:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/student1} 
+
+}
+
+\caption{density function for first student}(\#fig:student1)
+\end{figure}
+
+The probability of the student arriving in the first half an hour, between $12:00$ and $12:30$, is $\frac{3}{4}$, whereas the probability of arriving in the last half an hour, between $12:30$ and $13:00$, is $\frac{1}{4}$.
+
+
+The time until the second student arrives may be modelled by the function
+
+$$f(x) = 1\ ,\ \text{for all } x\in[0,1].$$
+
+This is called a _uniform density_ and reflects the fact that any time is equally likely.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/student2} 
+
+}
+
+\caption{density function for second student}(\#fig:student2)
+\end{figure}
+
+The probability related to this function is $\text{P}([a,b]) = b-a$.
+
+
+Can you find an expression for $\text{P}([a,b])$ for the first student?
+
+
+
+## The probability density function
+
+For continuous  random variables the equivalent of the probability mass function is called the ***probability density function***.
+
+While for discrete random variables it makes sense to ask what is the probability that $X$ takes some particular value $\text{P}(X=x)$, this is always zero in the continuous setting. Instead we as what is the probability of $X$ lying in an interval $\text{P}(a<X<b)$.
+
+:::{.definition}
+The ***probability density function***of a continuous random variable $X$ is a function such that
+
+- The function is everywhere non-negative
+$$f(x) \geq 0 \text{ for all } \ x\in \mathbb{R}$$
+
+- The probability of $X$ taking a value in the interval $(a,b)$ is given by the corresponding integral of that curve with respect to $x$.
+
+$$\text{P}(a<X<b) = \int_{a}^{b} f(x) \  dx$$
+
+- The total area under the graph over the domain of $f(x)$ is unity. Let the domain of $f(x)$ be $x\in (c,d)$.
+
+$$ \int_{c}^{d} f(x) \  dx = 1$$
+:::
+
+:::{.example}
+The continuous random variable $X$ has probability density function given by 
+
+\begin{equation*}
+  f(x)=\begin{cases}
+    \frac{1}{2}x, &  0< x < 2\\
+    0 & \text{otherwise}.
+  \end{cases}
+\end{equation*}
+
+Calculate $\text{P}(X>1)$.
+
+_solution_ 
+
+you should do a sketch to get an intuition for whether the probability will be more than a half. 
+
+You could use calculus here, but if you draw a picture the area required is a trapezium. 
+
+The area is therefore $\frac{(\frac{1}{2}+1)\times 1}{2}=\frac{3}{4}$.
+
+:::
+
+:::{.example}
+A continuous random variable has probability density function $f(x) = kx^2$ for $0\leq x\leq 4$. 
+
+a) Find the value of the constant $k$
+
+b) Find $\text{P}(1\leq X \leq 3)$
+
+_solution_
+
+a) 
+
+We need to use calculus here as we have a curve. 
+
+To find $k$, we use the fact that $f$ integrates to $1$ over the domain. 
+
+$$ \int_{0}^{4}kx^2 \ dx = \left[ \frac{kx^3}{3}\right]^{x=4}_{x=0}$$
+
+$$ 1= \frac{k}{3} (64-0)$$
+$$ 1= \frac{64k}{3} $$
+Hence $k=\frac{3}{64}$.
+
+
+b) 
+$$\text{P}(1\leq X \leq 3) = \int_{1}^{3} \frac{3}{64}x^2 \ dx$$
+
+Evaluating this numerically gives $0.406$ to $3$ significant figures.
+:::
+
+Notice that if the inequality were $1<X<3$ or any combination of $<$ and $\leq$ the calculation would be the same, so we do not need to worry about the inequality being strict or not for continuous random variables.
+
+This is because the area at a single $x$ value has zero width, so does not contribute to the integral. 
+
+## Expectation and variance
+
+The expectation is defined similarly to the case of discrete random variables, but here we use the integral rather than a sum.
+
+:::{.definition}
+The ***expectation***, or ***expected value*** or ***mean value*** of a continuous random variable $X$ is given by 
+
+$$ \text{E}[X] = \int_{-\infty}^{\infty}x f(x) \ dx$$
+Where the limits indicate that the integral is over the smallest and largest attainable values of $X$. The mean value is often denotes $\text{E}[X] = \mu$.
+
+More generally we define
+
+$$ \text{E}[g(X)] = \int_{-\infty}^{\infty}g(x) f(x) \ dx$$
+:::
+
+:::{.definition}
+The variance of a continuous random variable is given by
+
+$$\text{Var}[X] = \text{E}[(X-\mu)^2] = \text{E}[X^2]-\mu^2$$
+The standard deviation $\sigma$ of $X$ is the square root of the variance. That is
+
+$$\sigma = \sqrt{\text{Var}[X]}$$
+:::
+
+:::{.example name="marathon times"}
+The times in excess of $2$ hours taken to complete a marathon road race are modelled by the continuous random variable $T$ hours, where $T$ has the probability density function
+
+\begin{equation*}
+  f(t)=\begin{cases}
+    \frac{4}{27}t^2(3-t), &  0< x < 3\\
+    0 & \ \ \ \  \text{otherwise}.
+  \end{cases}
+\end{equation*}
+
+Find the _mean_ and _standard deviation_ of the times taken to complete the race.
+:::
+
+_solution_
+
+For the mean
+
+$$ \text{E}[T] = \int_{0}^{3} t\times \frac{4}{27}t^2(3-t) \ dt$$
+
+This can be evaluated (for example numerically) as $\frac{9}{5}$. This can be interpreted as $1$ hour and $48$ minutes excess of $2$ hours, so the mean time is $3$ hours and $48$ minutes.
+
+The variance use $\text{Var}[T]=\text{E}[X^2]-\text{E}[X]^2 = \frac{18}{5} - (\frac{9}{5})^2 =\frac{9}{25}$. The interpretation is $21.6$ minutes variance, and so $\sigma = \sqrt{21.6} = 4.65$ minutes ($3$ s.f.) standard deviation
+
+## Mode 
+
+If the probability density function has a unique maximum then the value of $X$ at the maximum is called the mode. To locate the mode it is a good idea to draw a sketch. Sometimes the mode can be deduced immediately. Other times one may need to differentiate.
+
+
+:::{.example}
+Deduce the mode in the following cases
+
+a) $$f(x) = \frac{1}{8}x , 0\leq x \leq 4$$
+
+b) \begin{equation*}
+  f(x)=\begin{cases}
+    \frac{1}{4}x, &  0< x \leq 2 \\
+    1-\frac{1}{4}x & \ \  2< x \leq 4 \\
+    0& \ \ \ \ \  \ \ \text{otherwise}
+  \end{cases}
+\end{equation*}
+
+
+c) $$f(x) = \frac{3}{80}(2+x)(4-x) , \ \  0\leq x \leq 4.$$
+
+_solution_
+
+a) mode is 4
+
+b) mode is 2
+
+c) One could differentiate or complete the square here to show the mode is $1$.
+:::
+
+
+:::{.example name="marathon times"}
+The times in excess of $2$ hours taken to complete a marathon road race are modelled by the continuous random variable $T$ hours, where $T$ has the probability density function
+
+\begin{equation*}
+  f(t)=\begin{cases}
+    \frac{4}{27}t^2(3-t), &  0< t < 3\\
+    0 & \ \ \ \  \text{otherwise}.
+  \end{cases}
+\end{equation*}
+
+Find the modal time taken to complete the race.
+:::
+
+_solution_
+
+Differentiating gives
+
+$$f'(t) = \frac{4}{27}(2t \times(3-t) + t^2\times(-1)) = \frac{4}{27}(6t -3t^2)$$
+
+Setting $f'(t)=0$ yields
+
+$$0 = 3t(2 - t) $$
+So either$t=0$ or $2$. So the modal excess is $2$ hours, and the modal total time is $2+2=4$ hours.
+
+## CDF
+
+The cumulative distribution function can be defined in a similar way to discrete random variables.
+
+
+:::{.definition}
+The ***distribution function*** or more simply the ***CDF*** of a continuous random variable is the function defined by 
+
+$$F(x) = \text{P}(X\leq x) = \text{P}(X< x).$$
+
+The function $F$ is related to the density via
+
+$$F(x) = \int_{-\infty}^{x}f(u) \ du$$
+Where the lower limit $-\infty$ is in practice the lowest attainable value of $X$.
+
+On the other hand,
+
+$$ f(x) = \frac{d}{dx} F(x)$$
+:::
+
+These are some facts about the CDF.
+
+- Since it is always impossible to have a value smaller than $-\infty$ or larger than $\infty$ we have $F(-\infty)=0$ and $F(\infty)=1$
+
+
+- $F$ is called _monotonically increasing_ which means it either increases or remains constant but never decreases.
+
+
+- $F$ is a continuous function, even if $f$ is not.
+
+
+- Useful relations are 
+$$\text{P}(c<X<d) = F(d) - F(c)$$
+
+and 
+
+$$ \text{P}(X>x) = 1-F(x)$$
+
+
+:::{.example}
+For a continuous random variable $X$ with density
+
+$$f(x) = \frac{1}{8}x, \ 0\leq x\leq 4$$
+a) Find the distribution function $F(x)$ and sketch it.
+
+b) Evaluate $\text{P}(0.3\leq X\leq 1.8)$
+
+_solution_
+
+For values between $0$ and $4$ we have
+
+$$F(t) = \int_{0}^{t} \frac{1}{8}x \ dx = \left[ \frac{x^2}{16}\right]^{t}_{0}= \frac{t^2}{16}$$ 
+
+Altogether 
+
+\begin{equation*}
+  F(x)=\begin{cases}
+        0 \ \ \ \ x\leq 0 \\
+        \frac{x^2}{16} \ \ \   0\leq x \leq 4\\
+        1 \ \ \ \ x\geq 4
+  \end{cases}
+\end{equation*}
+:::
+
+
+:::{.example}
+For a continuous random variable $X$ with density
+
+\begin{equation*}
+  f(x)=\begin{cases}
+        \frac{x}{3} \ \ \ \ \ \ \ \ \ \ \ \ 0\leq x\leq 2  \\
+        -\frac{2}{3}x+2 \ \ \   2\leq x \leq 3\\
+        0 \ \ \ \ \ \ \ \ \ \ \ \  \ \ \ \text{otherwise}
+  \end{cases}
+\end{equation*}
+
+
+a) Find the CDF F(x) and sketch it.
+
+_solution_
+
+The CDF must be found in two stages as $f$ is a piecewise function. 
+
+Integrating over the interval $0\leq x\leq 2$ gives $\frac{x^2}{6}$
+
+Integrating over the interval $2\leq x \leq 3$, and adding the integral over the previous interval, gives $-\frac{x^2}{3} +2x -2$
+
+Altogether 
+
+\begin{equation*}
+  F(x)=\begin{cases}
+        \frac{x^2}{6} \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\leq x\leq 2  \\
+        -\frac{x^2}{3} +2x -2 \ \ \   2\leq x \leq 3\\
+        1 \ \ \ \ \ \ \ \ \ \  \ \ \ \ \  \ \ \ x\geq 3
+  \end{cases}
+\end{equation*}
+
+:::
+
+Generally speaking a plot or sketch of $F$ will look vaguely S-shaped. 
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/cum1} 
+
+}
+
+\caption{cumulative distribution function is S shaped}(\#fig:cum1)
+\end{figure}
+
+For discrete random variables we sometimes called $f$ the distribution function and called $F$ the cumulative distribution function. However for continuous random variables $f$ is never called the distribution function, and only called the density function, and $F$ is called the distribution function exclusively. 
+
+
+
+## median, quartiles and percentiles
+
+The median, quartiles and percentiles are best expressed in terms of the CDF.
+
+The median is the value $50\%$ of the way through the distribution. It splits the area under the curve $y=f(x)$ into two halves. 
+
+:::{.definition}
+The ***median*** of a continuous random variable $X$ is the value $m$ that satisfies either of
+
+$$F(m) = 0.5 , \ \ \ \ \int_{-\infty}^{m}f(x) \ dx = 0.5$$
+:::
+
+:::{.definition}
+The ***lower quartile*** $Q_1$ satisfies $F(Q_1) = 0.25$.
+The ***upper quartile*** $Q_3$ satisfies $F(Q_3) = 0.75$.
+The median is the second quartile $m=Q_2$.
+:::
+
+:::{.definition}
+More generally one may define a ***percentile*** $P_{\alpha}$ at $\alpha \%$ to be the value such that $F(P_{\alpha})= \alpha \%$. The median is the $50^{\text{th}}$ percentile $m = P_{50}$, and $Q_1 = P_{25}$, $Q_3 = P_{75}$
+:::
+
+:::{.definition}
+More generally still is the ***quantile*** which is the value $q$ such that $F(q)=p$ for any $p\in(0,1)$
+:::
+
+:::{.example}
+Let's find the median for the marathon example.
+
+\begin{equation*}
+  f(t)=\begin{cases}
+    \frac{4}{27}t^2(3-t), &  0< t < 3\\
+    0 & \ \ \ \  \text{otherwise}.
+  \end{cases}
+\end{equation*}
+
+First find the CDF. 
+
+In the range $0< t < 3$
+$$F(t) = \frac{4}{27}\int_{0}^{t} u^2(3-u) \ du$$
+
+
+$$= \frac{4}{27}\left[\frac{3u^3}{3}-\frac{u^4}{4}\right]^{t}_{0} =\frac{4}{27}\left( t^3 - \frac{t^4}{4} \right)$$
+
+Then solving $F(t)=0.5$,
+
+$$\frac{4}{27}\left(t^3 - \frac{t^4}{4} \right)= 0.5$$
+this can be evaluated numerically and there are two values $t=3.74$ and $t= 1.84$ the first one is outside the range of $0< t < 3$ so is discarded. And so the median time is $2+1.84 = 3.84$ hours to complete the marathon. This is just under the mean.
+
+:::
+
+
+The marathon example shows that mode, median and mean are not the same number usually. The mode was $4$, the median was $3.84$ and the mean was $3.8$ hours. 
+
+
+## Uniform distribution
+
+We encountered a uniform random variable in the example of the forgetful student. Its characteristic is that for its entire domain of values of $X$ the density is constant.
+
+If the density is a constant on some interval, that means $f(x) = k$ for $a\leq x \leq b$. What is the value of $k$?
+
+
+:::{.definition}
+A continuous random variable follows a continuous ***uniform distribution*** (sometimes called ***rectangular***) with support $[a,b]$, denoted $X\sim U(a,b)$ has probability density function given by
+
+\begin{equation*}
+  f(x)=\begin{cases}
+    \frac{1}{b-a}, &  a< x < b\\
+    0 & \ \ \ \  \text{otherwise}.
+  \end{cases}
+\end{equation*}
+:::
+
+The uniform distribution is symmetrical so the mean is equal to the median, but there is no mode here.
+
+:::{.theorem}
+For a continuous uniform distribution $X\sim U(a,b)$
+
+$$\text{E}[X] = \frac{a+b}{2}$$
+
+and 
+
+$$\text{Var}[X]= \frac{(b-a)^2}{12}$$
+:::
+
+:::{.proof}
+
+
+$$\text{E}[X] = \int_a^b x \times \frac{1}{b-a} dx  =\frac{1}{b-a} \left[ \frac{x^2}{2} \right]^{b}_{a}$$
+
+Now 
+
+$$= \frac{1}{b-a} \left( \frac{b^2-a^2}{2} \right)$$
+And using the difference of two squares
+
+$$= \frac{1}{b-a} \left( \frac{(b-a)(b+a)}{2} \right)$$
+Hence the result, upon cancelling $(b-a)$.
+
+For the variance consider
+
+$$\text{E}[X^2] = \int_a^b x^2 \times \frac{1}{b-a} dx  =\frac{1}{b-a} \left[ \frac{x^3}{3} \right]^{b}_{a}$$
+
+$$= \frac{1}{b-a} \left( \frac{b^3-a^3}{3} \right)$$
+
+And using the difference of cubes 
+
+$$= \frac{1}{b-a} \left( \frac{(b-a)(b^2+ab+a^2)}{3} \right)$$
+
+Hence $\text{E}[X^2] = \frac{b^2+ab+a^2}{3}$.
+
+Now 
+
+$$\text{Var}[X] = \text{E}[X^2] - \text{E}[X]^2 = \frac{b^2+ab+a^2}{3} - \left(\frac{a+b}{2} \right)^2$$
+
+$$ = \frac{4(b^2+ab+a^2)- 3(a^2 + 2ab +b^2)}{12}$$
+$$= \frac{a^2-2ab +b^2}{12}$$
+Hence result by factorising the numerator.
+:::
+
+The CDF of the continuous uniform distribution can also be found.
+
+:::{.proposition}
+The CDF of a continuous uniform distribution $X\sim U(a,b)$ has the form 
+
+\begin{equation*}
+  F(x)=\begin{cases}
+        0 & x \leq a \\
+    \frac{x-a}{b-a}, &  a< x < b\\
+    1 & \ \ x \geq b.
+  \end{cases}
+\end{equation*}
+
+:::
+
+_proof_ 
+
+Find the equation of the line between $(a,0)$ and $(b,1)$.
+
+
+
+## Exponential distribution
+
+The exponential distribution is like the continuous version of a geometric distribution. Instead of counting how many attempts until some event happens, we instead measure the time until an event occurs that would ordinarily occur at some rate.
+
+Consider a sequence of independent events occuring at random points in time at a rate $\lambda$. We learned last week how the number of events that occur could be modelled by a discrete random variable called a Poisson distribution.
+
+Instead of counting how many events occur, we could consider measuring how long we wait until the next event.
+
+We set a starting time $x=0$ and denote the random variable 'the time to the first event' by $X$.
+
+$$\text{P}(X>x) = \text{P}( \{\text{No events occur in the time interval (0,x)}\})$$
+
+The mean number of events that occur per unit interval is $\lambda$. So the number of events that occur in the interval $(0,x)$ of length $x-0 = x$ is scaled proportionally so equals $\lambda \times x$.
+
+The probability of obtaining $0$ events from a Poisson distribution with mean $\lambda x$ is 
+
+$$\frac{(\lambda x)^0 e^{-\lambda x}}{0!} = e^{-\lambda x}$$
+So 
+
+$$\text{P}(X>x) =  e^{-\lambda x}$$
+And the cumulative distribution equals
+
+$$F(x) = 1-\text{P(X>x)}=1-e^{-\lambda x}$$
+
+Differentiating this with respect to $x$ we obtain
+
+$$f(x) = \lambda e^{-\lambda x}$$
+
+:::{.definition}
+A continuous random variable $X$ is said to have an ***exponential distribution***, denoted $X\sim \text{Exp}(\lambda)$ if it has the density function
+
+$$f(x) = \lambda e^{-\lambda x} , x >0$$
+:::
+
+Now we will consider the shape of the exponential distribution.
+
+:::{.theorem}
+For an exponential distribution $X\sim \text{Exp}(\lambda)$, we have 
+
+$$\text{E}[X] = \frac{1}{\lambda}$$
+and
+
+$$\text{Var}[X] = \frac{1}{\lambda ^2}$$
+:::
+
+:::{.proof}
+This can be verified by using integration.
+:::
+
+
+## Exercises week 5
+
+:::{.exercise}
+A random variable $Y$ has density function
+
+\begin{equation*}
+  f(x)=\begin{cases}
+        ky & 0 \leq y \leq 4 \\
+        0 &  \text{     Otherwise}
+  \end{cases}
+\end{equation*}
+
+a) Show that $k = \frac{1}{8}$ that makes this a valid density function
+
+b) Find the cumulative distribution function $F(y)$
+
+c) Sketch the density $f$ and $F$ on the same axes
+
+d) Calculate $\text{P}(1\leq Y \leq 3)$ in two ways, one with $f$ and one with $F$.
+
+e) Calculate the mean $\text{E}[Y]$ and variance $\text{Var}[Y]$ of $Y$.
+
+:::
+
+:::{.exercise}
+The length of time in minutes to serve a customer at a fast food restaurant is a random variable $T$ with density
+
+\begin{equation*}
+  f(t)=\begin{cases}
+        k(3t^2 + t) & 0 \leq t \leq 2 \\
+        0 &  \text{     Otherwise}
+  \end{cases}
+\end{equation*}
+
+a) Show that $k = \frac{1}{10}$ that makes this a valid density function
+
+b) Find the cumulative distribution function $F(t)$
+
+c) Sketch the density $f$ and the distribution $F$.
+
+d) Use the graph of $F$ to find the median.
+
+e) Calculate the probability that the time to serve a customer is one minute or less.
+
+f) Calculate the mean $\text{E}[T]$ and variance $\text{Var}[T]$ of the serving times.
+
+:::
+
+:::{.exercise}
+Suppose the profit that a certain contractor will make on any one job, in thousands of pounds, is a random variable $X$ with density function given by
+
+\begin{equation*}
+  f(x)=\begin{cases}
+        c(4x -x^3) & 0 \leq x \leq 2 \\
+        0 &  \text{     Otherwise}
+  \end{cases}
+\end{equation*}
+
+a) Show that $k =\frac{1}{4}$ that makes this a valid density function
+
+b) Find the expected profit and the variance of the profit per contract.
+
+c) Find the cumulative distribution function $F(x)$ and hence the median profit level.
+
+d) What is the probability that the contractor makes a profit of less than £$600$ on a contract?
+
+e) Assuming that the profit levels for each contract are independent, what is the probability that the profit level is less than  £$600$ on
+        i) each of the next $10$ jobs?
+        ii) exactly $4$ of the next $10$ jobs?
+        
+(Hint: for part (e) you should use your answer from (d) and an appropriate binomial distribution)
+
+:::
+
+:::{.exercise}
+The lifetime of a mobile phone batters (in hundreds of hours) is a random variable $X$ with density function
+
+\begin{equation*}
+  f(x)=\begin{cases}
+        2xe^{-x^2} &  x \geq 0 \\
+        0 &  \text{     Otherwise}
+  \end{cases}
+\end{equation*}
+
+a) Show that this is a valid density function (integrate by substitution)
+
+b) Find the cumulative distribution function.
+
+c) Find the median lifetime of the battery
+
+d) Evaluate $\text{P}(X\geq 2)$
+
+:::
+
+:::{.exercise}
+Bacteria grow on a Petri dish in a circular disk. The radius of a circle $R$ can be modelled by a uniform distribution in the interval between $1$ and $3$ cm. 
+
+a) Write down the density and distribution functions of $R$
+
+b) Work out the expected value of R and the variance of $R$.
+
+c) If the area of the circle is the random variable $A$, determine the distribution function of $A$.
+(Start by considering what $\text{P}(A\leq a)$ means in terms of $R$.)
+
+d) Determine the density function of $A$. 
+
+e) Calculate the expected value of the area $A$.
+
+:::
+
+
+
+### Exercises for feedback week 5
+
+1.  An archer continues to shoot at a target until he hits the bullseye.
+
+a) Give a reason why it may be possible to model X with a geometric
+distribution.
+
+The archer shoots the target around $100$ times and $5\%$ of the shots hit the bullseye.
+Suppose $X \sim Geom(p)$ with $p =5\%$. 
+
+b) Calculate the probability that he shoots the target in at least ten attempts.
+
+c) Give a reason why a geometric distribution may not be appropriate here, and how you could improve the model.
+
+
+2. 
+A continuous random variable $X$ has the density function 
+
+\begin{equation*}
+  f(x)=\begin{cases}
+        kx(1-x^2) & 0\leq x \leq 1 \\
+        0 , &  \text{   otherwise}\\
+  \end{cases}
+\end{equation*}
+
+a) Find the value of the constant $k$
+
+b) Calculate the mean and variance of $X$.
+
+c) Find an expression for the cumulative distribution $F_X(x)$ and sketch this function.
+
+d) Hence or otherwise calculate $\text{P}(X\leq \frac{1}{3})$.
+
+
+3. (counting practice)
+
+A box contains $12$ golf balls, $3$ of which are substandard. A random sample of $4$ balls is selected, without replacement, from the box.  The random variable $R$ denotes the number of balls in the sample that are substandard.
+
+a) 
+  (i) Show that the probability mass function of $R$ satisfies
+
+$$\text{P}(R=r) = \frac{{}^3C_r \times {}^9C_{4-r}}{^{12}C_{4}}$$
+
+(hint: count the number of choices out of the total number of ways. You may find it helpful to do the cases $r=0,1,2,3$ separately.)
+
+  (ii) Determine the probability that $R=0$
+  
+  (iii) Determine the probability that there are fewer than two substandard balls. 
+
+
+<!--chapter:end:04-cont-rvs.Rmd-->
+
+# Normal distribution {#norm}
+
+We have already seen some examples of continuous random variables including the _uniform_ distribution and the _exponential_ distribution. From one point of view, the normal distribution is just another example of a continuous random variable. However the normal distribution is the most important distribution in all of probability and statistics. 
+
+## Relation to data
+
+Suppose we weighed $1000$ apples at harvest. The average weight may be $100$ grams, and the apples may have a relatively small spread about this value with a standard deviation of $10$ grams. 
+
+We know how to draw a histogram of such data in R. One can imagine that with a larger sample the histogram may resemble more closely the _bell curve_ in the left plot.
+
+![(\#fig:rnormhist)A bell-shaped curve](6G4Z3008-notes_files/figure-latex/rnormhist-1.pdf) 
+
+## Cauchy density
+
+To study curves like the normal distribution it can be useful to consider what kinds of graphs could produce a curve with a single peak (unimodal) which are zero asymptotically. 
+
+Consider the curve
+
+$$f(x) = \frac{1}{x^2+1}$$
+Note $f(0)=1$, and the square ensures it is everywhere positive. Notice the denominator cannot be zero, for $x^2+1=0$ has no real roots.
+
+When $x\to \infty$, we divide by a larger and larger denominator so $f(x)\to 0$. Similarly for $x\to -\infty$.
+
+People thought this curve looked like a witch's hat and is named after Italian Mathematician Maria Agnesi. The curve is called the 'Witch of Agnesi'. Here is a graph of this curve:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/cauchy} 
+
+}
+
+\caption{The Cauchy distribution}(\#fig:cauchy)
+\end{figure}
+
+However for this to be a density we need the integral to equal $1$. 
+
+We can consider the integral
+
+$$\int_{\mathbb{R}}\frac{1}{x^2+1} \ dx$$
+You can use a trigonometric substitution here, for example $x=\tan \theta$. Then
+
+$$\frac{dx}{d\theta} = \sec^2\theta,$$
+and $1+x^2 = 1+\tan^2\theta = \sec^2 \theta$.
+
+Then
+
+$$\int_{\mathbb{R}}\frac{1}{x^2+1} \ dx = \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}1 \ d\theta $$
+
+$$ = \left[\frac{\pi}{2} - \left(- \frac{\pi}{2}\right)\right] = \pi$$
+
+The point of this example is that unexpectedly the number $\pi$ crops up and we must divide by this _normalising constant_ so that the function 
+
+$$f(x) = \frac{1}{\pi(x^2+1)} ,$$
+is a valid density function as it has integral $1$.
+
+## Normal density
+
+We will consider a function similar in shape to the above, namely
+
+$$f(x) = e^{-\frac{1}{2}x^2} $$
+It turns out that 
+
+$$\int _{-\infty}^{\infty} e^{-\frac{1}{2}x^2} \ dx = \sqrt{2\pi}$$ 
+A Mathematical curiosity is that you can integrate $e^{-\frac{1}{2}x^2}$ over the whole real line and get this result, but there exists no closed form (without integrals) antiderivative.
+
+The upshot is that the integral involves $\pi$ and so to make this a valid density we must have a factor involving $1/{\sqrt{\pi}}.$ This should give you some intuition for the following definition.
+
+:::{.definition}
+A continuous random variable $X$ is said to have a normal distribution with mean $\mu$ and variance $\sigma^2$, written $X\sim \text{N}(\mu,\sigma^2)$ if it has the density function given by
+
+$$ f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}\text{exp}\left\{ -\frac{(x-\mu)^2}{2\sigma^2}\right\}, $$
+where $x, \mu\in \mathbb{R}$ and $\sigma^2 > 0$.
+:::
+
+The density $f(x)$ is a valid density, with the fraction $\frac{1}{\sqrt{2\pi}\sigma}$ called the _normalising constant_ to ensure that the integral is $1$ over the real line. The mean $\text{E}(X)$ of this distribution is $\mu$. The variance $\text{Var}(X)$ is $\sigma^2$. These three facts can be shown after studying ***multi-variable calculus*** in second year.
+
+The density of a normal distribution is a bell-shaped curve which is symmetric about the mean value $\mu$. Most of the area under the curve is concentrated about the mean value with a relatively small amount at values a long way from $\mu$. In general the density looks like the following picture, with a bell-shaped bump which tails off the zero at infinity either side. The curve is symmetrical about the line $x=\mu$.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/norm1} 
+
+}
+
+\caption{a normal density curve is bell shaped}(\#fig:norm1)
+\end{figure}
+
+Changing the value of $\mu$, will perform a translation along the $x$ axis, and thereby the position of the centre of the curve.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/norm2} 
+
+}
+
+\caption{three normal densities with the same standard deviation = 10, but means 90, 100 and 115}(\#fig:norm2)
+\end{figure}
+
+Changing the value of the standard deviation, or equivalently the variance, parameter determines how spread out the curve is about the mean. A smaller standard deviation results in a higher peak, as the model is less spread out and so is more mass around the mean value.
+
+Conversely a larger standard deviation results in a lower peak, and more mass is spread out from the mean value towards the tails of the density.
+
+We can view the 
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/norm3} 
+
+}
+
+\caption{three normal densities with the same mean, but standard deviations equal to 7.5, 10 and 15}(\#fig:norm3)
+\end{figure}
+
+One can access the normal density in R with the function $\texttt{dnorm}()$, which we will see in labs.
+
+## Standard normal 
+
+
+
+:::{.definition}
+The normal distribution with $\mu=0$ and $\sigma =1$ is called the standard normal distribution and is denoted by the letter $Z$. Instead of $f$ the density is denoted with the letter $\phi$ and we have
+
+$$\phi (z) = \frac{1}{\sqrt{2\pi}} \exp \left( -\frac{1}{2}z^2 \right) , z\in \mathbb{R}$$
+
+The cumulative distribution function of the normal distribution is denoted with the capital $\Phi(z) = \text{P}(Z\leq z)$.
+:::
+
+A graph of the density of the standard normal distribution $Z$ is given below.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/znorm} 
+
+}
+
+\caption{the standard normal density}(\#fig:norm4)
+\end{figure}
+
+Notice that the majority of the area is between $-3$ and $3$. The distribution function of the standard normal is given in all statistical tables. We will see how problems involving any normal distribution can be recast in terms of the standard normal distribution. 
+
+## Evaluating the standard normal distribution
+
+The MMU tables give areas, i.e. probabilities, in the _tail_ of the distribution for $z>0$. Tables vary, some giving the left tail $\text{P}(Z\leq z)$ (cumulative distribution $\Phi$), others give the upper tail $\text{P}(Z\geq z)$, and if you are using tables you should read carefully the top-matter that describes the tabulation. The tables will only display the positive values of $z$ in either format.
+
+However, using tables we can find any area by observing:
+
+1. The area under the whole graph is 1. The law of complements applies so that $\text{P}(Z\geq z)= 1-\text{P}(Z\leq z)$.
+
+2. The graph is symmetric about $0$. Lower tail areas with negative $z$ value, are equal to the corresponding upper tail area with positive $z$ value. In particular this implies that the areas above and below $0$ are both $0.5$.
+
+
+It is generally advised to draw a sketch of the density which shows the values required for the particular problem and the areas representing the probabilities. 
+
+:::{.example}
+Use tables to find the following probabilities for a standard Normal random variable $Z$.
+
+1. $\text{P}(Z\geq 2.45)$
+
+2. $\text{P}(Z\leq -2.45)$
+
+3. $\text{P}(Z\leq 1.73)$
+
+4. $\text{P}(Z\geq -0.5)$
+
+5. $\text{P}(0.35\leq Z\leq 1.68)$
+:::
+
+_solutions_
+
+1. If the upper tail values are tabulated, we find this directly. 
+$\text{P}(Z\geq 2.45) = 0.0071$
+
+2. By symmetry we can argue that this is the same as the previous value.
+$\text{P}(Z\geq 2.45) = 0.0071$
+
+3. Using complements $\text{P}(Z\leq 1.73)= 1-\text{P}(Z\geq 1.73)$. From tables $\text{P}(Z\geq 1.73)= 0.0418$, so $\text{P}(Z\leq 1.73)= 1- 0.0418 = 0.9582$.
+
+4. We have $\text{P}(Z\geq -0.5) = 1 - \text{P}(Z\leq -0.5)$ by complements. Now also we have $\text{P}(Z\leq -0.5) = \text{P}(Z\geq 0.5) = 0.3085$ by symmetry. Hence $$\text{P}(Z\geq -0.5) = 1 - 0.3085 = 0.6915 $$
+
+5. We have $\text{P}(0.35\leq Z\leq 1.68) = \text{P}(Z\geq 0.35)-\text{P}(Z\geq 1.68)$, looking up the latter two values gives $0.3632 - 0.0465 = 0.3167.$
+
+It is an important skill to be able to use statistical tables, and to familiarise yourself with their format. There may be other means of getting these numbers for particular distributions, for example using R or a calculator. 
+
+However later in the course some distributions will only appear in tables and you will be expected to use the tables in an exam.
+
+## Standardising
+
+In the previous section we only considered the special case of a standard normal distribution (with mean $0$ and variance $1$) for evaluating probabilities. We know that a normal distribution can be defined in general for any mean $\mu$ and variance $\sigma^2$. It is not possible to produce a table of values for every possible value of $\mu$ and $\sigma$. Fortunately it is also unnecessary.
+
+
+:::{.theorem}
+Suppose $X$ follows a normal distribution with some mean and variance, so that $X\sim \text{N}(\mu,\sigma^2)$, then subtracting the mean and dividing by the standard deviation results in a standard normal distrbution. That is,
+
+$$\frac{X-\mu}{\sigma} \sim \text{N}(0,1) $$
+Because of this result we write $Z=\frac{X-\mu}{\sigma}$.
+:::
+
+_intuition_
+
+$$\text{E}\left(\frac{X-\mu}{\sigma}\right)=\frac{1}{\sigma}\text{E}(X-\mu) $$
+by linearity of the expectation, and,
+
+$$ = \frac{1}{\sigma}(\text{E}(X) - \text{E}(\mu)) = \frac{1}{\sigma}(\mu-\mu)=0$$
+as the expectation of a contant is just that constant. 
+
+For the variance,
+
+$$ \text{Var} \left( \frac{X-\mu}{\sigma} \right) = \frac{1}{\sigma^2}\text{Var}(X-\mu)$$
+By the the rule $\text{Var}(aX)=a^2\text{Var}(X)$. Now the variance of a constant is zero so we have,
+
+$$= \frac{1}{\sigma^2}\left( \text{Var}(X) - \text{Var}(\mu) \right) = \frac{1}{\sigma^2}\left( \sigma^2 - 0\right) = 1$$
+Hence $\frac{X-\mu}{\sigma}$ has the correct mean and variance. It remains to formally show it has the same density function as $Z$, and so is normal.
+
+An important consequence of the theorem which enables us to work out any probability is the following corollary.
+
+:::{.corollary}
+Suppose $X$ follows a normal distribution with some mean and variance, so that $X\sim \text{N}(\mu,\sigma^2)$ then
+
+$$\text{P}(a\leq X \leq b) = \Phi\left(\frac{b-\mu}{\sigma}\right) - \Phi\left(\frac{a-\mu}{\sigma}\right)$$
+:::
+
+_proof_
+$$\text{P}(a\leq X \leq b) = \text{P}\left(\frac{a-\mu}{\sigma} \leq \frac{X-\mu}{\sigma}  \leq  \frac{b-\mu}{\sigma}\right) = \text{P}\left(\frac{a-\mu}{\sigma} \leq Z  \leq  \frac{b-\mu}{\sigma}\right) $$
+Where the last equality is by the theorem. Now recall $\Phi$ is the CDF of $Z$, so the result follows. 
+
+This formula  has a very simple geometric interpretation. Recall that we can represent probabilities for continuous random variables as the area, between specified limits, under the distribution curve. This theorem just says that the area under _any_ Normal curve between limits $a$ and $b$ is always the same as the area under the standard Normal
+curve between the _transformed_ limits $\frac{a-\mu}{\sigma}$ and $\frac{b-\mu}{\sigma}$.
+
+:::{.example}
+Suppose that the weight of a particular grade of apples is Normally distributed with mean 100g and standard deviation 8g. Let $X$ denote the weight of a randomly selected apple, i.e. $X\sim\text{N}(100,{8^2})$, find:
+
+1. $P(X>115)$
+
+2. $P(X< 80)$
+
+3. $P(105<X<112)$
+
+4. $P(95<X<112)$
+
+
+:::
+
+_solution_
+
+1.
+$$P(X>115)  =  P\left(Z>\frac{115-100}{8}\right)
+          =  P(Z>1.88)$$
+
+This quantity can be found directly from tables, i.e.
+$P(Z>1.88)=0.0301$.
+
+
+2.
+$$P(X<80)  =  P\left(Z<\frac{80-100}{8}\right)
+          =  P(Z<-2.5)
+          =  P(Z>2.5)$$
+
+From tables, $P(Z>2.5)=0.0062$
+
+3.
+
+$$P(105<X<112)  =  P\left(\frac{105-100}{8}<Z<\frac{112-100}{8}\right)$$
+
+$$= P(0.63<Z<1.5)$$
+$$=P(Z>0.63)-P(Z>1.5)$$
+$$= 0.2643-0.0668=0.1975$$
+4.
+There are several ways in which this problem could be approached - a sketch or diagram will help. We have,
+
+$$P(95<X<112) =  P\left(\frac{95-100}{8}<Z<\frac{112-100}{8}\right)
+          =  P(-0.63<Z<1.5)$$
+
+But, 
+
+$$P(Z<-0.63)+P(-0.63<Z<1.5)+P(Z>1.5)=1$$ 
+
+- the three areas comprise the whole distribution. We also have,
+$$P(Z<-0.63)=P(Z>0.63)$$
+by symmetry, so that
+
+$$P(-0.63<Z<1.5) =  1-P(Z>0.63)-P(Z>1.5)$$
+
+   $$=  1-0.2643-0.0668=0.6689$$
+
+
+## Inverse CDF
+
+
+We saw how to solve problems which involved finding the probability that a Normally distributed
+random variable lay in a certain range. The solution to this problem consisted of two steps:
+
+- standardising the the value of the original variable to get a standard Normal variable.
+- using tables of the standard Normal distribution to find the required probability, recognising that the process of
+standardisation preserves areas, i.e. probabilities.
+
+We may think of the process as follows:
+\[ \mbox{Original Value,
+}X\stackrel{\frac{x-\mu}{\sigma}}{\longrightarrow} Z
+\longrightarrow \mbox{Probability ?}
+\]
+The inverse problem, as the name suggests, is simply the same
+process but applied backwards. We start out with a probability and seek to find
+the value of the random variable corresponding to that probability. Thus, since
+
+$$Z  =  \frac{X-\mu}{\sigma} $$
+$$\Rightarrow \sigma Z = X-\mu $$
+$$\Rightarrow X  =  \mu+\sigma Z$$
+
+The inverse problem can be thought of as working through
+the following process,
+\[ \mbox{Original Value,
+}X\mbox{? }\stackrel{\sigma Z+\mu}{\longleftarrow} Z
+\longleftarrow \mbox{Probability}
+\]
+As before a simple sketch graph of the problem is invaluable. 
+
+:::{.example}
+The weights of eggs laid by a particular breed of hens are
+Normally distributed with mean $50$g and standard deviation $5$g. An
+egg producer wants to classify eggs so that the heaviest $10$\% are
+classified as large and the lightest $30$\% classified as small. The
+remaining $60$\% are classified as medium. What weights should be
+used to distinguish the three classes?
+:::
+
+
+If we let the random variable $X$ denote the weight of an egg,
+we need to find the values of $x_1$ and $x_2$ indicated in the
+following diagram,
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/eggs} 
+
+}
+
+\caption{proportions of eggs by weight}(\#fig:eggs)
+\end{figure}
+
+
+Common sense, and our knowledge of the Normal distribution, tells us that the value of $x_1$ is a _little_ below the mean value of $50$g and the value of $x_2$ somewhat higher than the mean value of $50$g. In fact, we can usually make a reasonably accurate guess if we use the result that virtually all the curve (99.7\%) is contained within the limits $\pm$ 3 standard deviations either side of the mean. In case, virtually all the eggs will lie in the range $[50-3\times 5,50+3\times5]$=$[35,65]$g.
+
+
+In order to solve the problem, we have to find the values of a standard normal variable corresponding to the same probabilities indicated on the diagram above. 
+
+The $z$ value exceeded with a probability 0.1 is found to be 1.2816, i.e. $$P(Z\geq 1.2816)=0.1$$.
+
+At the other end of the distribution we find the probability a $Z$ value is less than 0.3 is -0.5244, i.e. 
+$$P(Z\leq -0.5244)=0.3$$.
+
+Note that this last value was found using the symmetry of the distribution. You should check that these are the $z$ values you would have obtained if you had been working the other way round.
+
+Note that, if the required probability is not in the _inverse_ tables, you have to use the main table backwards. To do this, look for the required probability (or as close as you can get to it) in the body of the table, and then read off the corresponding $z$-value.
+
+For example, scanning through the body of the table, we find that a probability of 0.1003 corresponds to a $z$ value of 1.28 and a probability of 0.0985 corresponds to a z-value of 1.29. Clearly, the actual value corresponding to a probability of 0.10 (which we know is 1.2816) is somewhere between 1.28 and 1.29. In practice, a good estimate can be found using interpolation.
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/inverseeggs} 
+
+}
+
+\caption{Standardised values of the egg weight distribution give the same area in the tails}(\#fig:inveggs)
+\end{figure}
+
+The final stage of the problem is to apply the inverse transformation to get the appropriate values on the original
+scale. Recall, the inverse transformation is, $X=\sigma Z+\mu$.
+Thus we, have,
+
+a)
+The weight which will be exceeded by the largest 10\% of eggs is given
+by, $X  =  5\times 1.2816+50 = 56.41$g.
+
+
+b) The weight which the smallest 30\% of eggs will lie below is
+given by, $X = 5\times -0.5244+50 =  47.38$g
+
+
+
+:::{.example}
+A vending machine discharges hot chocolate. The volume of liquid the machine discharges may be modelled by a normal distribution. With probability $5\%$, the volume discharged is greater than $475$ml. While the probability of the volume being less than $460$ml is one percent.
+
+a) Sketch a picture to show this information
+
+b) Find $\mu$ and $\sigma$.
+:::
+
+## Sampling Total
+
+\subsection{Distribution of Sample Total}
+
+
+Suppose we have an independent random sample of size $n$ from a Normal distribution,
+e.g. $X_1,\ldots,X_n\sim \text{N}(\mu,\sigma^2)$. 
+
+Define the random variable $T=\sum_{i=1}^n X_i$, then,
+\[ T \sim \text{N}(n\mu,n\sigma^2). \]
+
+That is, the _sampling distribution_ of the total, $T$,  is also Normally distributed with $\text{E}(T)=n\mu$ and $\text{Var}(T)=n\sigma^2$.
+
+
+:::{.example name="apples revisited"}
+Earlier we assumed that the weight of
+individual apples sold by a supermarket were Normally distributed
+with mean 100g and standard deviation 8g, i.e. if the random variable $X$
+represents the weight then $X \sim \text{N}(100,{8^2})$.
+
+Let the random variable $T$ denote the total weight of a carton of 4 apples. Find the probability that the total weight of a carton is, 
+
+a) more than 450g
+
+b) between 375g and 425g
+:::
+
+_solution_
+
+Here $n=4$, $\mu=100$ and $\sigma=8$ so that, the total weight,
+\[ T\sim \text{N}({4\times 100},{4\times 8^2})\sim \text{N}({400},{16^2}) \]
+We answer the problem by converting to a standard Normal as before,
+
+a) We have,
+
+$$P(T>450)  =  P\left(Z>\frac{450-400}{16}\right)$$
+         $$=  P(Z>3.13)$$
+         $$ =  0.0009$$
+
+b) We have,
+
+$$P(375<T<425)  =  P\left(\frac{375-400}{16}<Z<\frac{425-400}{16}\right) $$
+     $$=  P(-1.56<Z<1.56)=1-2\times P(Z>1.56)$$
+      $$=  1-2\times 0.0594=0.8812$$
+
+
+## Sampling distribution of the mean
+
+All the problems considered so far have supposed that a single
+measurement is randomly drawn from some population in which the
+possible values of the measurement follow a Normal distribution.
+We now consider what happens if we,
+
+- Take a random sample of size $n$ from a population whose
+values follow a Normal distribution. We will denote the random sample of
+values by $X_1,X_2,\ldots,X_n$. For example, we might
+randomly select $n=10$ people and measure their height.
+
+
+- Calculate the ***mean*** value of the sample, i.e. 
+$$\bar{X}=\frac{X_1+X_2+\ldots+X_n}{n}=\frac{1}{n}\sum_i X_i$$
+
+- Calculate the ***total*** value of the sample, i.e. 
+$$T = X_1+X_2+\ldots+X_n =\sum_i X_i$$
+
+
+Now, since each member of the sample is a random variable, the sample mean must also be a random variable.
+
+:::{.example}
+The heights of two randomly selected MMU students are $X_1$ and $X_2$. Given a particular sample, i.e. two actual students say $x_1=170$cm and $x_2=158$cm, we can calculate their mean $\bar{x}=164$cm. However until we pick the sample, the quantity $(X_1+X_2)/2$ is random. So we can treat this mean as a random variable and denote it with a capital letter $\bar{X}$.
+:::
+
+:::{.definition}
+A ***statistic*** is a random variable whose particular values can be calculated from a particular sample. For example the statistic $\bar{X}$ is calculated as  $\frac{X_1+X_2+\ldots+X_n}{n}$.
+:::
+
+Given a random variable one can always ask 'what is its distribution?'.
+
+
+The following result can only be quoted.
+
+:::{.theorem}
+Suppose that random variables $X_1,X_2,\ldots,X_n$ each follow a
+Normal distribution with mean $\mu$ and variance $\sigma^2$, i.e.
+$X_i\sim \text{N}({\mu},{\sigma^2})$. Then, for the sample mean $\bar{X}$, we
+have the  _sampling distribution_ of that statistic is
+ $$\bar{X}\sim \text{N}(\mu,\frac{\sigma^2}{n})$$
+:::
+_proof_
+This proof is beyond the scope of the course, however we can check the mean and variance are as described.
+ 
+ 
+What this result says is that the sample mean has the same theoretical population mean, $\mu$, as any single value drawn from the population, but that its variance is reduced by a factor $n$. Given our knowledge of the role of the variance in the Normal distribution, the result suggests that sample mean ought to lie closer to the true population mean $\mu$ as the sample size increases.
+
+:::{.example}
+Suppose I take $10$ samples of bamboo shoots and measure their lengths. The length of these particular bamboo shoots are normally distributed with mean $74$mm and standard deviation $5$mm.
+
+
+| Sample | Shoot lengths(mm)  | Sample mean |
+|:------:|:------------------:|:-----------:|
+|   1    | 76,73,75,73,74,74,74,74,74,77 | 74.4   |
+|   2    | 74,72,75,76,73,71,73,80,75,75 | 74.4   |
+|   3    | 68,72,78,74,75,74,69,77,77,72 | 73.6   |
+|   4    | 72,76,76,77,70,77,72,74,77,76 | 74.7   |
+|   5    | 78,72,70,74,76,72,73,71,74,74 | 73.4   |
+|   6    | 75,79,75,74,75,74,71,73,75,73 | 74.4   |
+|   7    | 75,70,73,75,70,72,72,71,76,73 | 72.7   |
+|   8    | 74,76,74,75,74,76,75,75,73,73 | 74.5   |
+|   9    | 78,74,73,75,74,73,72,76,73,76 | 74.4   |
+|   10   | 74,71,72,71,79,78,69,77,73,71 | 73.5   |
+
+The range in values of the shoot lengths is from $68$ to $80$. The values of the statistic $\bar{X}$ vary noticably less, are close to the original mean value of $74$mm.
+:::
+
+Now we have two variances $\sigma^2$ and $\sigma^2/n$ or equivalently standard deviations $\sigma$ and $\sigma / \sqrt{n}$ we need to be clear which one we are talking about.
+
+:::{.definition}
+The quantity $\sigma/\sqrt{n}$ is called the ***standard error of the
+mean***. This is the standard deviation of $\bar{X}$ - the sampling distribution of the mean. It is essentially the same as the standard deviation for a single observation but reflects the fact that the variance of
+the mean depends on the sample size $n$.
+:::
+
+
+
+As $n$ gets larger and larger, the distribution of the sample mean
+gets more and more concentrated around the value of the population
+mean $\mu$.In practice, this suggests that, if the true
+population mean were unknown, the sample mean ought to be a good
+estimate of its value.
+
+:::{.example}
+Apple weights (revisited)
+Recall we assumed that the weight of individual apples sold by a supermarket were Normally distributed
+with mean 100g and standard deviation 8g, i.e. if the random variable $X$
+represents the weight then $X \sim \text{N}({100},{8^2})$.
+
+The supermarket also sells apples in cartons of four. What is the
+probability that the mean weight of the apples in a randomly
+selected carton is,
+
+a) more than 105g
+b)  less than 98g
+c) between 98 and 102g
+:::
+_solution_
+Here $n=4$, $\mu=100$ and $\sigma=8$. If we denote the mean weight
+of the apples in a carton by $\bar{X}$, then,
+\[ \bar{X} \sim \text{N}({100},8^2/4) \sim \text{N}(100,16)\]
+
+In this case the standard error of the mean is
+$8/\sqrt{4}=\sqrt{16}=4$. Having calculated the standard error, we
+answer such problems in the same way as before by converting the
+problem to one involving the standard Normal distribution.
+
+a)
+$$P(\bar{X} \geq 105)  =  P\left ( Z \geq \dfrac{105-100}{4}\right) $$
+$$=  P(Z\geq 1.25)$$
+$$=  0.1056$$
+
+b)
+
+$$P(\bar{X} \leq 98)  =  P\left ( Z \leq \dfrac{98-100}{4}\right)$$
+
+$$=  P(Z\leq -0.5)=P(Z\geq 0.5)$$
+$$= 0.3085$$
+
+c)
+$$P(98\leq \bar{X} \leq 102)  = P\left (\dfrac{98-100}{4} \leq Z \leq \dfrac{102-100}{4}\right)$$
+
+$$=  P(-0.5\leq Z\leq 0.5)=1-2\times P(Z\geq 0.5)$$
+$$=  0.3830$$
+
+
+
+
+
+## Exercises week 6
+
+:::{.exercise}
+ Suppose the lifetime of an electrical component follows
+a uniform distribution on the range $[0,2000]$ hours.
+
+a) Draw a sketch of the distribution.
+
+b) Find the probability that the lifetime will be,
+
+(i) at least 1000 hours
+(ii) less than 250 hours
+(iii) between 500 and 1500 hours
+
+(draw a sketch of the distribution and the area under the
+distribution representing the probability)
+:::
+
+:::{.exercise} 
+The time taken (in minutes) to serve a customer in a fast food
+restaurant is a continuous random variable, $X$, with probability
+distribution,
+\[ f(x) = \left \{\begin{array}{ll}
+  \dfrac{x}{2}& 0\leq x \leq 2 \\
+  0 & \mbox{otherwise}
+\end{array} \right .
+\]
+
+- Sketch the density.
+- Show that the area under the distribution is one.
+- You only need to use the areas of triangles to answer these
+questions. Find the probability that the time taken to serve a
+customer will be,
+i. less than one minute
+ii. more than one minute
+iii. more than 30 seconds
+iv. between 30 seconds and 1 minute.
+:::
+
+:::{.exercise} 
+Use standard Normal tables to find the following
+probabilities, (draw a sketch diagram in each case)
+
+
+i. $P(Z>1.7)$
+
+ii. $P(Z>2.35)$
+
+iii. $P(Z<-0.92)$
+
+iv. $P(Z<-2.33)$
+
+v. $P(0.78<Z<2.56)$
+
+vi. $P(-1.99<Z<-0.34)$
+
+vii. $P(-1.67<Z<2.58)$
+:::
+
+:::{.exercise} 
+The lifetime of a certain brand of lightbulb is Normally distributed with
+mean 2000 hours and standard deviation 75 hours. Find the probability that a
+randomly selected bulb will have lifetime,
+
+a. greater than 2100 hours
+
+b. greater than 2200 hours
+
+c. less than 2050 hours
+
+d. less than 1950 hours
+
+e. between 1950 and 2100 hours
+
+f. between 2050 and 2200 hours
+
+g. between  1900 and 1950 hours
+:::
+
+
+:::{.exercise} 
+Bags of sugar packed by a machine have a mean weight of 2kg and a
+standard deviation of 0.02kg. Find the probability that the weight of a
+bag will be
+
+i. greater than 2.05kg
+
+ii. less than 1.96kg
+
+iii. between 1.95 and 2.05kg
+
+iv. less than 2.03kg
+
+v. between 1.95 and 1.98 kg
+
+vi. between 2.01 and 2.05 kg
+:::
+
+
+:::{.exercise} 
+A type of laboratory mouse has weight which is Normally distributed with mean
+30g and standard deviation 2.5g. Find the probability that the weight of a randomly
+selected mouse is,
+
+a. at least 33g
+
+b. less than 33.5g
+
+c. more than 29g
+
+d. less than 28g
+
+e. between 27g and 33g
+
+f. between 31g and 33.5g
+
+:::
+
+:::{.exercise}
+Eggs are classified as standard, if they weigh less than
+46.0g, medium if they weigh between 46.0g and 56.0g, or large if
+they weigh over 56.0g. Suppose the eggs laid by a particular
+breed of hen have weight which is Normally distributed with mean
+50.0g and standard deviation 5.0g. What percentage of eggs laid by
+these hens falls into the three classes?
+:::
+
+:::{.exercise} 
+A manufactured item requires a fuse which can be supplied by one
+of two suppliers. Supplier 1's fuses have a lifetime which is Normally distributed
+with mean 1000 hours and standard deviation 30 hours. Supplier 2's fuses have a
+lifetime which is Normally distributed with mean 990 hours and standard deviation
+10 hours. Your product specification requires that fuses should last at least 980
+hours. Which of the two suppliers would you choose and why.
+:::
+
+
+
+
+:::{.exercise} 
+Marks in a statistics examination are Normally
+distributed with mean 50 and standard deviation 10. What is the
+probability that
+
+i) the mean mark of a group of 5 students will be above 60?
+
+ii) the mean mark of a group of 20 students will be between 44
+and 48?
+:::
+
+
+
+:::{.exercise}
+A ski-lift is designed with a load limit of 18,000lbs and claims a
+capacity of 100 people. If the weight of people using the lift is Normally
+distributed with mean 175lbs and standard deviation 30lbs, what is the
+probability that a group of 100 randomly selected people will exceed the load
+limit of the lift? Would you be willing to use the lift?
+:::
+
+
+:::{.exercise}
+ Lengths of bicycle chain links are Normally distributed with mean
+0.5cm and standard deviation 0.04cm. The finished chains must be between 49
+and 50cm long.
+
+a) If the chains are made of 100 links, what proportion meets the
+standard?
+
+b) If chains are made instead of 99 links what proportion meets the
+standard?
+
+c) Using 99 links, to what value must the standard deviation be reduced in
+order to have the following percentages meet the standard?
+ i) 90\%  
+ ii) 95\%  
+ iii) 99\%  
+:::
+
+
+:::{.exercise} 
+Bags of sugar packed by a machine have a mean weight of 2kg and a standard
+deviation of 0.02kg. What weights will 
+
+a) be exceeded by 15\% of bags
+
+b) be exceeded by 90\% of bags
+
+c) 20\% of bags contain less than
+
+d) 90\% of bags be between
+
+e) A multipack contains 5 bags of sugar. What is the probability that
+
+ i) All the bags contain less than 1.992 kg
+ 
+ ii) Exactly four bags contain less than 1.992kg
+
+(Hint: Consider using the normal distribution and then the Binomial
+with the appropriate probability.)
+:::
+
+:::{.exercise}
+The weight of a child can be modelled as normally distributed with mean $30$kg and standard deviation $5$kg.
+
+A fairground ride has a total carrying capacity of $2.8$ metric tons (thousand kilograms). 
+
+$k$ children are admitted to the ride and their total weight $X_1+X_2+ \ldots +  X_k$.
+
+What is the maximum number of children that could be admitted to the ride, to ensure that the total weight is within the carrying capacity with probability $99\%$?
+:::
+
+:::{.exercise}
+The masses of penguins on an island are found to be normally distributed with mean $\mu$ and standard deviation $\sigma$. Given that $10\%$ of the penguins have mass less than $18$kg and $5\%$ have mass greater than $30$kg,
+
+a) Sketch a diagram to represent this information
+
+b) Find $\mu$ and $\sigma$.
+:::
+
+<!--chapter:end:05-norm.Rmd-->
+
+# Sampling and confidence intervals 
+
+
+This week we begin the Statistical applications of the theory we have learned so far.
+
+We will learn the basis of (Frequentist) statistical inference. We will construct and interpret confidence intervals for a mean and a proportion. We will then introduce hypothesis testing.
+
+If Mathematics is a deductive process, Statistics is an inferential one. Given imperfect information (usually data), we make (sensible) inferences about models of the real world.
+
+Most modelling situations involve estimating the value of a population parameter or characteristic, and one of the main tasks in Statistics is to estimate the values of the parameters from sample data. 
+
+:::{.example}
+Suppose we are interested in the average height of an adult man in the UK. The ***population*** of interest is then all UK adult men (approximately $33$ million). A _model_ for the height of men may be a normal distribution:
+
+$$X\sim \text{N}(\mu,\sigma^2),$$
+
+where $\mu$ and $\sigma^2$ are the ***population parameters*** of the distribution.
+
+Why might it not be possible to measure the height of every UK man? Instead we take a smaller number of men to measure, say $100$ or $1000$. This is called a ***sample***.
+
+From the sample we can calculate the sample mean $\bar{x}$ and the sample standard deviation $s$.
+:::
+
+Population parameters like $\mu$ are in practice unknowable with certainty. Typically in statistics we may specifically want to 
+
+- Estimate the value of $\mu$.
+
+- Determine a range or interval of plausible values for $\mu$.
+
+- Decide whether a particular value of $\mu$ appears to be reasonable. 
+
+We distinguish between real world, or population parameters, and sample statistics in the following table:
+
+| Characteristic | Population parameter   | Sample statistic / estimator |
+|---+----+----|
+| Mean | $\mu$ | $\bar{x}$ |
+| Standard deviation | $\sigma$ | $s$ |
+| Proportion | $\pi$ | $\hat{p}$,$p$ |
+
+It is intuitively obvious that we can use the sample mean to estimate the true value of the population mean. However we must recognise that when drawing a random sample, from a normal distribution in this case, any statistic calculated from the sample will also have a probability distribution. 
+
+Recall ***Theorem 6.2*** from last week. The sampling distribution of the mean $\bar{X}$ is normally distributed with the same mean but with variance divided by a factor given by the sample size $n$. That is
+
+$$\overline{X} \sim \text{N} (\mu, \sigma^2/{n})$$
+
+With larger values of $n$ we can compare the proportion of the density about the mean. 
+
+:::{.example}
+Suppose we assume the percentage of glucose in bars of toffee is normally distributed with mean $20\%$ and standard deviation $2\%$. Find the probability that:
+
+a) One bar of toffee selected at random has glucose level between $19.5\%$ and $20.5\%$.
+
+b) The mean percentage glucose in $20$ randomly selected toffee bars is between $19.5\%$ and $20.5\%$.
+
+c) The mean percentage glucose in $100$ randomly selected toffee bars is between $19.5\%$ and $20.5\%$.
+:::
+
+_solution_
+
+a) $$\text{P}(19.5<X<20.5)= \text{P}\left(\frac{19.5-20}{2}<Z<\frac{20.5-20}{2}\right)$$
+
+$$= \text{P}(-0.25<Z<0.25)=1-2\times\text{P}(Z>0.25)$$
+
+$$=1-2\times 0.4013=0.20$$
+
+b) $$\text{P}(19.5<\overline{X}<20.5)= \text{P}\left(\frac{19.5-20}{\sqrt{2^2 / 20}}<Z<\frac{20.5-20}{\sqrt{2^2 / 20}}\right)$$
+
+$$= \text{P}(-1.12<Z<1.12)=1-2\times\text{P}(Z>1.12)$$
+
+$$=1-2\times 0.1314=0.74 \approx 75\%$$
+
+c) $$\text{P}(19.5<\overline{X}<20.5)= \text{P}\left(\frac{19.5-20}{\sqrt{2^2 / 100}}<Z<\frac{20.5-20}{\sqrt{2^2 / 100}}\right)$$
+
+$$= \text{P}(-2.5<Z<2.5)=1-2\times\text{P}(Z>2.5)$$
+
+$$=1-2\times 0.0062=0.99\ldots \approx 99\%$$
+
+We can summarise this example with the following table:
+
+| Sample size $n$ | $\text{P}(19.5 <\overline{X} < 20.5)$ |
+|:---:+:--------:|
+| 1 | $20$ |
+| 20 | $75\%$ |
+| 100 | $99\%$ | 
+
+
+We can use the sampling distribution in various ways to make inferences about the true population mean glucose content. For example, in a samle of $100$ toffee bars, and assuming the true mean is $\mu=20\%$, a value of $\bar{x}$ outside the range $19.5 - 20.5\%$ would appear very unusual. 
+
+## Confidence Intervals
+
+This specifies a range of plausible values for the parameter of interest.
+
+Recall we can find a particular value of $Z\sim \text{N}(0,1)$ within which the distribution has a specified probability - using the inverse CDF of the normal distribution. 
+
+:::{.example}
+Calculate the $z$-value containing the middle $95\%$ of density. In other words find $z$ such that $\text{P}(|Z|\leq z)=0.95$.
+
+_solution_
+
+ Recall $|x|<1$ means $-1<x<1$.
+ 
+ The inequality $|Z|\leq z$ means $-z\leq Z\leq z$.
+ 
+$$\text{P}(-z\leq Z \leq z)=0.95$$
+$$\iff  \text{P}(Z\geq z) = P(Z\leq -z) =0.025$$
+From tables:
+
+$$\Phi^{-1}(0.025) = -1.96$$
+Or alternatively $$\Phi^{-1}(0.975) = 1.96$$
+
+So $z=1.96$, and $\text{P}(|Z|<1.96) =0.95$
+:::
+
+Note that $95\% = 100(1-0.05)\%$. The $z$ value we calculated corresponded to $\alpha / 2$.
+
+
+:::{.definition}
+A confidence interval for the population mean $\mu$ of level $100(1-\alpha)\%$ is given by the following expression.
+
+$$\left( \bar{x}-z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}},\bar{x}+z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} \right)$$
+:::
+
+The confidence interval is derived from standardisation of the sampling distribution of the mean. That is,
+
+$$\overline{X} \sim \text{N} (\mu, \sigma^2/{n}),$$
+implies
+
+$$Z = \frac{\overline{X} - \mu}{\sigma / \sqrt{n}} \sim \text{N}(0,1).$$
+
+$$\text{P}\left( |Z| <z_{\frac{1}{2}\alpha} \right) = 1-\alpha$$
+
+Now by standardisation replace $Z$ with the expression involving $\overline{X}$.
+
+$$\text{P}\left( \left|\frac{\overline{X} - \mu}{\sigma / \sqrt{n}} \right| <z_{\frac{1}{2}\alpha} \right) = 1-\alpha$$
+The denominator is positive so this is equivalent to:
+$$\text{P}\left( |\overline{X} - \mu| <z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}}  \right) = 1-\alpha$$
+
+$$\text{P}\left( |\mu - \overline{X} | <z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}}  \right) = 1-\alpha$$
+
+$$\text{P}\left(z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}} < \mu - \overline{X} <z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}}  \right) =1-\alpha$$
+$$\text{P}\left( \overline{X}+ z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}} < \mu <\overline{X} + z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}}  \right) =1-\alpha$$
+
+:::{.example}
+The milligrams of fat in a sample of hotdogs were measured as 
+$$25.2, \ 21.3,\ 22.8,\ 17.0,\ 29.8,\ 21.0,\ 25.5,\ 16.0,\ 20.9, \ 19.5$$
+Supposing that the fat content is normally distributed, that this is a random sample of hotdogs, and the population standard deviation $\sigma = 5$, calculate a $90/%$ confidence interval for the mean fat content $\mu$.
+:::
+
+_solution_
+
+With $90\%$ centrally, we must have $5\%$ in either tail. One can look up the $z$ value as $z_{0.95}= 1.6449$.
+
+In R we could get this value with the quantile command $\texttt{qnorm(0.95,mean=0,sd=1)}$.
+
+Then, 
+$$\bar{x} \ \pm \ z\frac{\sigma}{\sqrt{n}} = 21.9 \ \pm 1.6449\times\frac{5}{\sqrt{10}}$$
+
+$$=[19.3 , 24.5] \text{   (to 3 s.f.)}$$
+
+
+
+Warning - there are many incorrect interpretations of confidence intervals, and it is contentious how meaningful such an interval is.
+
+Note that while $\mu$ is unknown, it is a constant rather than a random quantity. We cannot say "with $95/%$ chance $\mu$ will lie inside the interval", because there is no chance associated to a constant quantity. 
+
+The random part of the interval comes from $\overline{X}$, so rather we must say that with repeated samples, and in the long run, approximately $95/%$ of intervals will contain $\mu$. 
+
+Another misconception is to say that if there were 100 such intervals, exactly 95 would contain the interval, but this is a general error about the interpretation of probability. 
+
+Below is some R code to simulate this process.
+
+
+```r
+library(plotrix)
+```
+
+```
+## Warning: package 'plotrix' was built under R version 4.0.5
+```
+
+```r
+z<-qnorm(0.975,0,1) # this is the z-value 
+sigma <- 5
+x<- 1:100
+
+set.seed(1234) #ensures the code is reproducible
+
+#100 samples of 10 hotdogs each
+hotdogs <- replicate(100, rnorm(10,mean=20,sd=5))
+
+#Calculate the mean of each sample
+xbar <- vector(length = 100)
+for (i in 1:100){
+xbar[i] <- mean(hotdogs[seq(10*(i-1),10*i,1)])
+}
+
+#lower end of interval L
+L <- xbar - z*sigma/sqrt(10)
+
+#upper end of interval U
+U <- xbar + z*sigma/sqrt(10)
+
+plotCI(x, xbar, ui=U, li=L,ylab="hotdog fat content")
+abline(a=20, b=0,col="red", lwd=3, lty=2)
+```
+
+
+\includegraphics[width=0.75\linewidth]{6G4Z3008-notes_files/figure-latex/ci_sim-1} 
+
+In this example it turns out that $5\%$ of intervals did not contain the mean. However setting a different seed shows this is not fixed, just a long term probability.
+
+In many scientific studies all the data is pooled in a single sample, and one calculates a single confidence interval. There is no way of knowing if the interval contains the mean. What 'confidence' do we really have here? 
+
+If $\bar{x}$ is a single-valued or _point estimate_, the C.I. is just by convention just an _interval estimate_.
+
+## Unknown variance
+
+What do we do if we do not know $\sigma$? Well we have to estimate it.
+
+### Estimating the variance
+
+Recall we estimate the population parameters such as $\mu$ with statistics like $\bar{X}$. 
+
+We can ask what the expected value of a statistic is
+
+$$\text{E}(\overline{X})= \text{E}\left( \frac{1}{n}\sum_{i=1}^{n}X_i \right)$$
+
+$$=\frac{1}{n}\sum_{i=1}^{n}\text{E}(X_i) = \frac{1}{n}\sum_{i=1}^{n}\mu =\frac{1}{n}n\mu=\mu$$
+
+We can see that $\text{E}(\bar{X})=\mu$. 
+
+:::{.definition}
+When a statistic is used to estimate a parameter, if the expectation of the estimator is equal to the parameter, then the statistic is called ***unbiased***. 
+
+Hence $\bar{X}$ is an unbiased estimator for $\mu$.
+:::
+
+It turns out that the obvious choice to estimate $\sigma^2$ is not unbiased. 
+
+$$\text{E}\left( \frac{1}{n}\sum_{i=1}^{n}(X_i-\bar{X})^2 \right) = \frac{1}{n}\text{E}\left( \sum_{i=1}^n (X_i^2-2\bar{X} X_i +\bar{X}^2)\right) $$
+
+
+$$=\frac{1}{n}\text{E}\left( \sum_{i=1}^n X_i^2 -2\bar{X}\sum_{i=1}^n{X_i} +\sum_{i=1}^n \bar{X}^2 \right) $$
+
+
+$$=\frac{1}{n}\text{E}\left( \sum_{i=1}^n X_i^2 -2n\bar{X}^2 +n \bar{X}^2 \right) =\frac{1}{n}\text{E}\left( \sum_{i=1}^n X_i^2 -n\bar{X}^2  \right)  $$
+
+$$=\frac{1}{n}\left( \sum_{i=1}^n \text{E}(X_i^2) -n\text{E}(\bar{X}^2)  \right) $$
+Using the identity $\text{Var}(X)= \text{E}(X^2)=\text{E}(X)^2$ gives:
+
+$$=\frac{1}{n}\left( \sum_{i=1}^n [\text{Var}(X_i)+\text{E}(X_i)^2] -n[\text{Var}(\bar{X})+\text{E}(\bar{X})^2]  \right) $$
+And now we have $\text{Var}(X_i) = \sigma^2$, $\text{E}(X_i)^2 = \mu^2$, $\text{E}(\bar{X}) = \mu$, and  $\text{Var}(\bar{X})=\frac{\sigma^2}{n}$. Putting this together gives.
+
+$$=\frac{1}{n}\left( \sum_{i=1}^n [\sigma^2+\mu^2] -n\left[\frac{\sigma^2}{n}+\mu^2\right]  \right) =\frac{1}{n}\left( n\sigma^2+n\mu^2-n\left[\frac{\sigma^2}{n}+\mu^2\right]\right)$$
+
+Altogether
+
+$$\text{E}\left( \frac{1}{n}\sum_{i=1}^{n}(X_i-\bar{X})^2 \right) = \frac{(n-1)\sigma^2}{n} $$
+
+To make a statistic that is an unbiased estimator for $\sigma^2$, we could rescale by multiplying by $n$ and dividing by $(n-1)$.
+
+If the variance $\sigma$ is unknown, an unbiased estimate of $\sigma$ is 
+
+$$s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i-\bar{x})^2$$
+
+This has the property that $\text{E}(S^2) = \sigma^2$.
+
+
+It may in practice be easier to compute:
+
+$$s^2= \frac{1}{n-1}\left(\sum_{i=1}^n x_i^2 - n\bar{x}^2\right) = \frac{1}{n-1}\left(\sum x_i^2 - \frac{(\sum x_i)^2}{n}\right).$$
+Check which appears in the formula booklet.
+
+### The t distribution
+
+When we do not know the population variance $\sigma^2$, we have more uncertainty. The more data we have the less uncertainty we have, but for small samples we need to account for this and use a distribution with more mass in the tails.
+
+
+
+To deal with this we use the quantiles of the $t$-distribution instead of the quantiles of the $Z\sim \text{N}(0,1)$. Below is a picture of a $t$-distribution,
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/tdist} 
+
+}
+
+\caption{fat tails of the t-distribution}(\#fig:t1)
+\end{figure}
+
+The $t$-distribution has a number of degrees of freedom to account for the decreased uncertainty in the tails with more data. As the number of degrees of freedom increases we can see the distribution approaches the standard normal density.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/df} 
+
+}
+
+\caption{t distributions with 1, 5 and 20 degrees of freedom}(\#fig:t2)
+\end{figure}
+
+:::{.definition}
+For the $t$-distribution, the number of ***degrees of freedom*** $\nu$ is one less than the number of data points.
+
+$$\nu = n-1$$
+:::
+
+:::{.definition}
+Given a random sample of size $n$ from a normally distributed population with unknown population variance a $100(1-\alpha)\%$ confidence interval for the population mean $\mu$ is given by 
+
+$$\left( \bar{x} - t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}\right)$$
+The quantiles of the $t$-distribution need to be obtained from the table in the formula booklet, or from the R function $\texttt{qt()}$.
+:::
+
+:::{.example}
+A sample of $6$ trout taken from a fish farm were caught and their lengths in centimetres were measured. the lengths of the fish were as follows:
+
+$$ 26.8, \ 26.0, \ 25.8, \ 25.5, \ 24.3, \ 24.6 $$
+
+Assuming the lengths of the trout are normally distributed:
+
+- Calculate unbiased estimates for the mean and variance. 
+
+- Find a $90\%$ confidence interval for the mean length of trout in the fish farm. 
+:::
+
+_solution_
+Using a calculator gives $\bar{x}=25.5$ and $s^2 = 0.8560$.
+
+The $90\%$ confidence limits for $\bar{x}$ are:
+
+$$\bar{x} \pm t_{5}(5\%)\frac{s}{\sqrt{n}} = 25.5 \pm 2.015\times \frac{0.9252}{\sqrt{6}}$$
+
+$$=(24.7,26.3)$$
+
+:::{.example name="exam-style"}
+The masses in grams of ten packets of biscuits of a particular brand were weighed. The results are summarised by a computerised weighing machine as:
+
+$$\sum x_i = 3978.8 \ , \ \sum x_i^2 = 1583098.3 $$
+
+a) What assumptions and requirements are necessary to produce a
+confidence interval for the mean weight of a packet of biscuits? Explain these in context.
+
+b) Calculate unbiased estimates for the mean and variance.
+
+c) Calculate a $95\%$ confidence interval.
+
+d) The weight on the packet says $400$g, does the data support this labelling?
+:::
+
+
+_solution_
+
+a) The sample is assumed to be random. The weights are assumed to follow a normal distribution.
+
+b) 
+$$\bar{x} = 3978.8/10 = 397.88\text{g}$$
+$$s^2 = \frac{1}{10-1}\left(1583098.3-\frac{3978.8^2}{10}\right) =1.484\text{g}$$
+
+c) The required interval is:
+
+$$\bar{x} \pm t_{9}(2.5\%)\frac{s}{\sqrt{n}} = 397.88 \pm 2.2622\times \frac{1.484}{\sqrt{10}}$$
+$$(396.8,398.9 ) $$
+
+d) As $400$ lies outside the interval, this sample does not support the labelling. 
+
+## Required sample sizes
+
+Note that the width of the confidence interval is determined by the required level of confidence and the sample size as long as we know or can estimate the standard deviation. We can use this to decide in advance how many observations are needed to estimate the mean with of a given degree of precision.
+
+
+:::{.example name="Ikea"}
+From time to time a firm manufacturing pre-packed furniture needs to check the mean distance between pairs of holes drilled by a machine in pieces of chipboard to ensure that no change has occurred. It is known from experience that the standard deviation of the distance is $0.43$mm. The first intends to take a random sample of size $n$, and to calculate a $99\%$ confidence interval for the mean of the population. The width of this interval must be no more than $0.60$mm. Calculate the minimum value of $n$.
+:::
+
+_solution_
+
+The width is the difference between the end points of the interval, and so is twice the term that is added (and subtracted) from $\bar{x}$ in the formula.
+
+$$2z\frac{\sigma}{\sqrt{n}} <0.6$$
+$$2\times 2.576\times \frac{0.43}{\sqrt{n}}<0.6$$
+$$2\times 2.576\times {0.43}<0.6\sqrt{n}$$
+$$\frac{2\times 2.576\times {0.43}}{0.6}<\sqrt{n}$$
+$$\sqrt{n} > 3.69\ldots $$
+$$n > 13.6\ldots $$
+The smallest value of $n$ is therefore $14$.
+
+
+## Interval for a population variance
+
+We have shown earlier that the sampling distribution of the sample variance has expectation $\sigma^2$. That is, the random variable $S^2$ given by:
+
+$$S^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X})^2 ,$$ 
+
+is such that,
+
+$$\text{E}(S^2) = \sigma^2$$
+But as yet we do not know the distribution of $S^2$.
+
+We introduce the relevant distributions, prove a proposition and derive use this to derive a confidence interval for the variance.
+
+:::{.definition}
+A random variable $Y$ is said to have a ***chi-squared distribution*** with one degree of freedom, written $Y\sim\chi^2(1)$ if it has density function:
+
+$$f_Y(y) = \frac{1}{\sqrt{2\pi y}}e^{-y/2} $$
+:::
+
+
+
+:::{.proposition}
+The square of a standard normal distribution $Z^2$ follows a $\chi^2(1)$ distribution. That is, if $Z\sim N(0,1)$ then $Z^2\sim \chi^2(1)$
+:::
+
+_proof_
+
+Recall the density and distribution functions of the standard normal are written in greek letters $f_Z = \phi$ and $F_Z = \Phi$. We will also need to remember from last week that $\phi$ takes the form
+
+$$\phi(z) =  \frac{1}{\sqrt{2\pi}} \exp \left( -\frac{1}{2}z^2 \right)$$
+
+Consider the distribution function of $Y=Z^2$.
+$$ F_Y(z) = \text{P}(Z^2<z)$$
+$$= \text{P}\left(-\sqrt{z}<Z<\sqrt{z}\right)$$
+$$=\int_{-\sqrt{z}}^{\sqrt{z}}\phi(x) \ dx $$
+
+$$=\int_{-\infty}^{\sqrt{z}}\phi(x) \ dx - \int_{\infty}^{-\sqrt{z}}\phi(x) \ dx$$
+$$=\Phi(\sqrt{z})- \Phi(-\sqrt{z})$$
+$$=\Phi(\sqrt{z})-(1-\Phi(\sqrt{z})), \text{ by symmetry}$$
+
+$$=2\Phi(\sqrt{z})-1. $$
+
+So $F_Y(z) = 2\Phi(\sqrt{z})-1$. We can find the density by differentiating,
+
+$$f_Y (z)= \frac{d}{dz}F_Y(z)$$
+$$=\frac{d}{dz}\left[2\Phi(\sqrt{z})-1\right] $$
+
+$$=2\Phi'(\sqrt{z})\times\frac{1}{2}z^{-\frac{1}{2}} , \text{by the chain rule}$$
+$$=\Phi'(\sqrt{z})\times\frac{1}{\sqrt{z}}$$
+But differentiating a distribution gives you the density, that is $\Phi' = \phi$. Hence
+
+$$=\phi(\sqrt{z})\times\frac{1}{\sqrt{z}}$$
+$$=\frac{1}{\sqrt{2\pi}} \exp \left( -\frac{1}{2}(\sqrt{z})^2 \right) \times \frac{1}{\sqrt{z}}$$
+$$=\frac{1}{2\pi z} e^{-z/2}. $$
+But this is the density function of $\chi^2(1)$, and if two random variables have the same density they must be equal, so we must have 
+$$Z^2 = \chi^2(1).$$
+With this result it will not be hard to believe the following
+
+:::{.proposition}
+If $Z_1 ,Z_2, \ldots, Z_k$ are independent standard normal random variables then a sum of squares these random variables is a chi-squared distribution with $k$ degrees of freedom.
+
+$$Z_1^2+Z_2^2+\ldots+ Z_k^2 \sim \chi^2(k) $$
+:::
+
+proof: omitted.
+
+:::{.theorem}
+We can scale the sampling distribution of the sample variance to be a chi-squared distribution on $n-1$ degrees of freedom.
+
+$$\frac{(n-1)S^2}{\sigma^2} \sim\chi^2_{n-1}$$
+:::
+
+_proof_
+
+$$S^2 =\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X})^2 $$
+
+$$(n-1)S^2 =\sum_{i=1}^n(X_i-\overline{X})^2 $$
+$$\frac{(n-1)S^2}{\sigma^2} =\frac{1}{\sigma^2}\sum_{i=1}^n(X_i-\overline{X})^2 $$
+\begin{equation}
+\frac{(n-1)S^2}{\sigma^2} =\sum_{i=1}^n\left(\frac{X_i-\overline{X}}{\sigma}\right)^2
+(\#eq:var)
+\end{equation}
+If $\bar{X}$ were $\mu$ we could view the RHS as a sum of squares of standardised variables. Let $Q$ be the expression we wanted it to be
+
+$$Q = \sum_{i=1}^n\left(\frac{X_i-\mu}{\sigma}\right)^2 $$
+
+Then $Q\sim \chi^2(n)$. Now we can manipulate
+
+$$Q=\sum_{i=1}^n\left(\frac{(X_i- \bar{X}) + (\bar{X}-\mu)}{\sigma}\right)^2$$
+Splitting this up gives:
+$$=\sum_{i=1}^n\left(\frac{X_i - \bar{X}}{\sigma}\right)^2+2\left(\frac{\bar{X}-\mu}{\sigma}\right)\sum_{i=1}^n \left(\frac{X_i-\bar{X}}{\sigma}\right) + \sum_{i=1}^n\left(\frac{\bar{X} - \mu}{\sigma}\right)^2$$
+
+$$=\underbrace{\sum_{i=1}^n\left(\frac{X_i - \bar{X}}{\sigma}\right)^2}_{(7.1)}+2\left(\frac{\bar{X}-\mu}{\sigma^2}\right)\underbrace{\sum_{i=1}^n \left(X_i-\bar{X}\right)}_{=0} + n\left(\frac{\bar{X} - \mu}{\sigma}\right)^2$$
+\begin{equation}
+Q =\frac{(n-1)S^2}{\sigma^2}+n\left(\frac{\bar{X} - \mu}{\sigma}\right)^2
+(\#eq:Q)
+\end{equation}
+
+We now think about the latter term on the RHS. Last week we learned that 
+
+$$\bar{X}\sim N(\mu,\sigma^2/n)$$
+Which is equivalent to 
+
+$$\frac{\bar{X}-\mu}{\sigma / \sqrt{n}} \sim \text{N}(0,1),$$
+squaring this gives
+
+$$n\left(\frac{\bar{X} - \mu}{\sigma}\right)^2 \sim\chi^2(1) $$
+
+So equation (7.2) yields
+
+$$\chi^2(n) = \frac{(n-1)S^2}{\sigma^2}+\chi^2(1)$$
+And the result is shown. 
+
+This will all be a lot cleaner with the theory of moment generating functions and transformations of random variables in your second year course. I have included this derivation for the interested reader.
+
+:::{.definition}
+If $x_1,\ldots,x_n$ is a random sample of observations from a normal distribution with mean $\mu$ and variance $\sigma^2$, both of which unknown. Then a confidence interval for the variance is given by 
+
+$$\left[ \frac{(n-1)s^2}{\chi^2_{n-1}(\alpha / 2)},\frac{(n-1)s^2}{\chi^2_{n-1}(1-\alpha / 2)}\right]$$
+:::
+
+_proof_
+
+$$\text{P}\left( \chi^2(\alpha / 2)<\frac{(n-1)S^2}{\sigma^2} < \chi^2(1-\alpha/2) \right) = 1-\alpha $$
+Rearranging the inequality gives:
+
+$$\text{P}\left( \frac{(n-1)S^2}{\chi^2_{n-1}(\alpha / 2)}<\sigma^2 < \frac{(n-1)S^2}{\chi^2_{n-1}(1-\alpha / 2)} \right) = 1-\alpha $$
+
+:::{.example}
+In order to determine the accuracy of a new rifle, $8$ marksmen were selected at random to fire the
+rifle at a target. The distances $x$, in mm, of the $8$ shots from the centre of the target were as follows:
+$$10, \ \ 14, \ \ 12,\ \ 8, \\ 6,  \ \ 11,  \ \ 18, \ 14.$$
+Assuming that the distances are normally distributed, find a 95% confidence interval for the variance.
+:::
+
+_solution_
+
+Calculating the unbiased estimators gives $\bar{x}=11.625$ and $s^2 = 14.2679$.
+
+There are $8$ data, so $\nu = 7$. For $95\%$ in the middle, we require 
+
+$$\chi^2_7 (0.975) = 1.690 \ \ \ ,\ \ \ \chi^2_7(0.025)=16.013$$
+Calculating the endpoints gives,
+$$\frac{(n-1)s^2}{\chi^2_{n-1}(0.025)}= \frac{7\times 14.2679}{16.013} = 6.2371\ldots$$
+
+and,
+
+$$\frac{(n-1)s^2}{\chi^2_{n-1}(0.025)}= \frac{7\times 14.2679}{16.013} = 6.2371\ldots$$
+## Interval for a proportion
+
+We will derive an approximate confidence interval for an unknown population proportion $\pi$ based on using a suitable normal distribution.
+
+### Approximating the binomial distribution.
+
+The normal distribution is really so important in statistics because under very mild conditions the distribution of the sample mean $\overline{X}$ is a normal distribution, for ***any*** distribution of the original $X_i$ (in particular, not necessarily normal themselves). This result is called the Central Limit Theorem (CLT).
+
+Due to the CLT a normal distribution can be used to approximate various discrete distributions, the most important is the binomial distribution.
+
+This result shows that even in a world full of chaotic randomness there is some underlying statistical order.
+
+:::{.theorem}
+If $X\sim \text{Bin}(n,\pi)$ then $X\approx N(n\pi,n\pi(1-\pi))$. 
+
+The approximation is better for sufficiently large $n$, and $\pi$ close to $\frac{1}{2}$.
+:::
+
+_intuitive idea_
+
+Recall the mean of a binomial distribution $ \text{E}(X)=n\pi$, and the variance is $\text{Var}(X)=n\pi(1-\pi)$. The theorem says one can approximate the discrete distribution for the normal distribution with the same mean and variance. 
+
+In the image below one can see the pmf of a $\text{Bin}(20,0.5)$ distribution (red) and a normal approximation (green). As the probabilities are calculated as the area under the curve, adding the probabilities corresponds to adding the areas of the rectangles. For this reason the convention is to apply a continuity correction when using the normal approximation to calculate probabilities. The red rectangles extend $0.5$ in either direction from the particular value of $x$. 
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/normapprox} 
+
+}
+
+\caption{t distributions with 1, 5 and 20 degrees of freedom}(\#fig:napprox)
+\end{figure}
+
+:::{.example}
+Approximate the probability of getting between $8$ and $12$ heads when tossing $20$ fair coins. 
+
+_solution_
+$$Y \sim \text{Bin}(20,0.5) \approx X\sim \text{N}(10,0.5)$$
+
+The exact probability is $\text{P}(Y\leq 12) - \text{P}(Y\leq 7) = 0.7368$
+
+With a continuity correction: 
+
+$$\text{P}(8\leq X\leq12) = \text{P}\left(\frac{8-0.5-10}{\sqrt{5}} \leq Z \leq \frac{12+0.5-10}{\sqrt{5}} \right) $$
+$$=\text{P}(-1.118\leq Z \leq 1.118)$$
+$$=0.7364$$
+:::
+
+:::{.example}
+A galton board has small ball bearings that are released from an internal cavity to roll down a board. The board has small pins and when the ball bearing hits a pin, it will move to the left or the right of that pin. The distribution of the pins at the base of the instrument can be seen to follow a bell-curve empirically.
+:::
+
+
+
+### Proportions
+
+Rather than using the normal approximation for $X$ directly, we often want to estimate a proportion. This is the number out of the total number $\frac{X}{n}$.
+
+If $X\sim \text{Bin}(n,\pi)$ is approximated by $\text{N}(n\pi,n\pi(1-\pi))$, then what happens to the mean and variance if we want an approximation for $X/n$?
+
+$$\text{E}\left(\frac{X}{n}\right) = \frac{1}{n}\text{E}(X)=\frac{1}{n}\times n\pi = \pi$$
+
+$$\text{Var}\left(\frac{X}{n}\right) = \frac{1}{n^2}\text{Var}(X)$$
+
+$$= \frac{1}{n^2}\times n\pi(1-\pi) = \frac{\pi(1-\pi)}{n}$$
+So to approximate a proportion we use $\text{N}(\pi,\frac{\pi(1-\pi)}{n})$
+
+:::{.definition}
+A confidence interval for the population proportion $\pi$ is given by the following expression
+
+$$\left(p - z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}, p + z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}\right)$$
+Where $p$ is the observed proportion.
+:::
+
+This can be seen as 
+
+:::{.example}
+An importer has ordered a large consignment of tomatoes. When it arrives he examines a randomly chosen sample of $50$ boxes and finds that $12$ contain at least one bad tomato. Assuming that these boxes may be regarded as being a random sample from the boxes in the consignment, obtain an approximate $99\%$ confidence interval for the proportion of boxes containing at least one bad tomato, giving your confidence limits to three decimal places.
+:::
+
+_solution_
+
+We have $p=0.24$ and $1-p = 0.76$. The relevant quantile is $2.576$, so the confidence interval is 
+
+$$0.24 \pm 2.576\sqrt{\frac{0.24\times 0.76}{50}} = (0.084,0.396) $$
+
+So approximately $8\%$ to $40\%$.
+
+
+
+## Summary
+
+
+A confidence interval can be constructed from a sample or summary statistics. There are four types of confidence interval we have considered this week:
+
+1) confidence interval for the mean with variance known.
+$$\left( \bar{x}-z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}},\bar{x}+z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} \right) $$
+
+2) confidence interval for the mean with variance _unknown_.
+$$\left( \bar{x} - t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}\right)  $$
+
+3) confidence interval for an unknown variance.
+$$\left( \frac{(n-1)s^2}{\chi^2_{n-1}(\alpha / 2)} \ , \ \frac{(n-1)s^2}{\chi^2_{n-1}(1-\alpha / 2)}\right) $$
+
+You can take the square root endpoints for standard deviation.
+
+4) confidence interval for a population proportion.
+
+$$\left(p - z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}, p + z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}\right)$$
+
+We used _unbiased estimates_ for the mean and variance
+
+1. $$\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$$
+
+2. $$s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2 $$
+
+$$=\frac{1}{n-1}\left\{\sum_{i=1}^nx_i^2 - \frac{\left(\sum_{i=1}^n x_i\right)^2}{n} \right\} $$
+- A binomial distribution $\text{Bin}(n,p) \approx \text{N}(np, np(1-p))$.
+
+<!--chapter:end:06-samp-ci.Rmd-->
+

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Sampling and confidence intervals | Probability Theory and Statistics</title>
+  <meta name="description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Sampling and confidence intervals | Probability Theory and Statistics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  <meta name="github-repo" content="6G4Z3008" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Sampling and confidence intervals | Probability Theory and Statistics" />
+  
+  <meta name="twitter:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  
+
+<meta name="author" content="Malcolm Connolly" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="cards.ico" type="image/x-icon" />
+<link rel="prev" href="norm.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><a href="./"><img src="logo.svg"></a></li>
+<li><a href="https://moodle.mmu.ac.uk/course/view.php?id=157842" target="blank" > 6G4Z3008 course notes </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#frequentist-perspective"><i class="fa fa-check"></i><b>1.1</b> Frequentist perspective</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#naive-probability"><i class="fa fa-check"></i><b>1.2</b> Naive probability</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#complements-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Complements and mutual exclusivity</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#outcomes-and-counting"><i class="fa fa-check"></i><b>1.4</b> Outcomes and counting</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#factorials"><i class="fa fa-check"></i><b>1.4.1</b> Factorials</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#permutations"><i class="fa fa-check"></i><b>1.4.2</b> Permutations</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#combinations"><i class="fa fa-check"></i><b>1.4.3</b> Combinations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#exercises-week-1"><i class="fa fa-check"></i><b>1.5</b> Exercises Week 1</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#tutorial-exercises"><i class="fa fa-check"></i><b>1.5.1</b> Tutorial exercises</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#exercises-for-feedback"><i class="fa fa-check"></i><b>1.5.2</b> Exercises for feedback</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cond.html"><a href="cond.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
+<li class="chapter" data-level="2.1" data-path="cond.html"><a href="cond.html#independence"><i class="fa fa-check"></i><b>2.1</b> Independence</a></li>
+<li class="chapter" data-level="2.2" data-path="cond.html"><a href="cond.html#conditional-probability"><i class="fa fa-check"></i><b>2.2</b> Conditional Probability</a></li>
+<li class="chapter" data-level="2.3" data-path="cond.html"><a href="cond.html#bayes-theorem"><i class="fa fa-check"></i><b>2.3</b> Bayes Theorem</a></li>
+<li class="chapter" data-level="2.4" data-path="cond.html"><a href="cond.html#exercises-week-2"><i class="fa fa-check"></i><b>2.4</b> Exercises Week 2</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="drv.html"><a href="drv.html"><i class="fa fa-check"></i><b>3</b> Discrete Random Variables</a><ul>
+<li class="chapter" data-level="3.1" data-path="drv.html"><a href="drv.html#random-variables"><i class="fa fa-check"></i><b>3.1</b> Random Variables</a></li>
+<li class="chapter" data-level="3.2" data-path="drv.html"><a href="drv.html#discrete-probability-distributions"><i class="fa fa-check"></i><b>3.2</b> Discrete probability distributions</a></li>
+<li class="chapter" data-level="3.3" data-path="drv.html"><a href="drv.html#properties-of-probability-mass-functions"><i class="fa fa-check"></i><b>3.3</b> Properties of probability mass functions</a></li>
+<li class="chapter" data-level="3.4" data-path="drv.html"><a href="drv.html#mean-variance-and-moments"><i class="fa fa-check"></i><b>3.4</b> Mean, variance and moments</a></li>
+<li class="chapter" data-level="3.5" data-path="drv.html"><a href="drv.html#exercises-week-3"><i class="fa fa-check"></i><b>3.5</b> Exercises Week 3</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="drv.html"><a href="drv.html#exercises-for-feedback-1"><i class="fa fa-check"></i><b>3.5.1</b> Exercises for feedback</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="binpois.html"><a href="binpois.html"><i class="fa fa-check"></i><b>4</b> Special discrete random variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="binpois.html"><a href="binpois.html#the-binomial-distribution"><i class="fa fa-check"></i><b>4.1</b> The Binomial Distribution</a></li>
+<li class="chapter" data-level="4.2" data-path="binpois.html"><a href="binpois.html#the-binomial-mass-function"><i class="fa fa-check"></i><b>4.2</b> The binomial mass function</a></li>
+<li class="chapter" data-level="4.3" data-path="binpois.html"><a href="binpois.html#mean-and-variance"><i class="fa fa-check"></i><b>4.3</b> Mean and variance</a></li>
+<li class="chapter" data-level="4.4" data-path="binpois.html"><a href="binpois.html#the-poisson-distribution"><i class="fa fa-check"></i><b>4.4</b> The Poisson distribution</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="binpois.html"><a href="binpois.html#further-properties"><i class="fa fa-check"></i><b>4.4.1</b> Further properties</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="binpois.html"><a href="binpois.html#mean-and-variance-1"><i class="fa fa-check"></i><b>4.5</b> Mean and Variance</a></li>
+<li class="chapter" data-level="4.6" data-path="binpois.html"><a href="binpois.html#deriving-the-poisson-mass-function"><i class="fa fa-check"></i><b>4.6</b> Deriving the Poisson mass function</a></li>
+<li class="chapter" data-level="4.7" data-path="binpois.html"><a href="binpois.html#exercises-week-4"><i class="fa fa-check"></i><b>4.7</b> Exercises week 4</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cont.html"><a href="cont.html"><i class="fa fa-check"></i><b>5</b> Continuous random variables</a><ul>
+<li class="chapter" data-level="5.1" data-path="cont.html"><a href="cont.html#relation-to-histograms"><i class="fa fa-check"></i><b>5.1</b> Relation to histograms</a></li>
+<li class="chapter" data-level="5.2" data-path="cont.html"><a href="cont.html#two-students"><i class="fa fa-check"></i><b>5.2</b> Two students</a></li>
+<li class="chapter" data-level="5.3" data-path="cont.html"><a href="cont.html#the-probability-density-function"><i class="fa fa-check"></i><b>5.3</b> The probability density function</a></li>
+<li class="chapter" data-level="5.4" data-path="cont.html"><a href="cont.html#expectation-and-variance"><i class="fa fa-check"></i><b>5.4</b> Expectation and variance</a></li>
+<li class="chapter" data-level="5.5" data-path="cont.html"><a href="cont.html#mode"><i class="fa fa-check"></i><b>5.5</b> Mode</a></li>
+<li class="chapter" data-level="5.6" data-path="cont.html"><a href="cont.html#cdf"><i class="fa fa-check"></i><b>5.6</b> CDF</a></li>
+<li class="chapter" data-level="5.7" data-path="cont.html"><a href="cont.html#median-quartiles-and-percentiles"><i class="fa fa-check"></i><b>5.7</b> median, quartiles and percentiles</a></li>
+<li class="chapter" data-level="5.8" data-path="cont.html"><a href="cont.html#uniform-distribution"><i class="fa fa-check"></i><b>5.8</b> Uniform distribution</a></li>
+<li class="chapter" data-level="5.9" data-path="cont.html"><a href="cont.html#exponential-distribution"><i class="fa fa-check"></i><b>5.9</b> Exponential distribution</a></li>
+<li class="chapter" data-level="5.10" data-path="cont.html"><a href="cont.html#exercises-week-5"><i class="fa fa-check"></i><b>5.10</b> Exercises week 5</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="cont.html"><a href="cont.html#exercises-for-feedback-week-5"><i class="fa fa-check"></i><b>5.10.1</b> Exercises for feedback week 5</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="norm.html"><a href="norm.html"><i class="fa fa-check"></i><b>6</b> Normal distribution</a><ul>
+<li class="chapter" data-level="6.1" data-path="norm.html"><a href="norm.html#relation-to-data"><i class="fa fa-check"></i><b>6.1</b> Relation to data</a></li>
+<li class="chapter" data-level="6.2" data-path="norm.html"><a href="norm.html#cauchy-density"><i class="fa fa-check"></i><b>6.2</b> Cauchy density</a></li>
+<li class="chapter" data-level="6.3" data-path="norm.html"><a href="norm.html#normal-density"><i class="fa fa-check"></i><b>6.3</b> Normal density</a></li>
+<li class="chapter" data-level="6.4" data-path="norm.html"><a href="norm.html#standard-normal"><i class="fa fa-check"></i><b>6.4</b> Standard normal</a></li>
+<li class="chapter" data-level="6.5" data-path="norm.html"><a href="norm.html#evaluating-the-standard-normal-distribution"><i class="fa fa-check"></i><b>6.5</b> Evaluating the standard normal distribution</a></li>
+<li class="chapter" data-level="6.6" data-path="norm.html"><a href="norm.html#standardising"><i class="fa fa-check"></i><b>6.6</b> Standardising</a></li>
+<li class="chapter" data-level="6.7" data-path="norm.html"><a href="norm.html#inverse-cdf"><i class="fa fa-check"></i><b>6.7</b> Inverse CDF</a></li>
+<li class="chapter" data-level="6.8" data-path="norm.html"><a href="norm.html#sampling-total"><i class="fa fa-check"></i><b>6.8</b> Sampling Total</a></li>
+<li class="chapter" data-level="6.9" data-path="norm.html"><a href="norm.html#sampling-distribution-of-the-mean"><i class="fa fa-check"></i><b>6.9</b> Sampling distribution of the mean</a></li>
+<li class="chapter" data-level="6.10" data-path="norm.html"><a href="norm.html#exercises-week-6"><i class="fa fa-check"></i><b>6.10</b> Exercises week 6</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html"><i class="fa fa-check"></i><b>7</b> Sampling and confidence intervals</a><ul>
+<li class="chapter" data-level="7.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#confidence-intervals"><i class="fa fa-check"></i><b>7.1</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="7.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#unknown-variance"><i class="fa fa-check"></i><b>7.2</b> Unknown variance</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#estimating-the-variance"><i class="fa fa-check"></i><b>7.2.1</b> Estimating the variance</a></li>
+<li class="chapter" data-level="7.2.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#the-t-distribution"><i class="fa fa-check"></i><b>7.2.2</b> The t distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#required-sample-sizes"><i class="fa fa-check"></i><b>7.3</b> Required sample sizes</a></li>
+<li class="chapter" data-level="7.4" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#interval-for-a-population-variance"><i class="fa fa-check"></i><b>7.4</b> Interval for a population variance</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#approximating-the-binomial-distribution."><i class="fa fa-check"></i><b>7.4.1</b> Approximating the binomial distribution.</a></li>
+<li class="chapter" data-level="7.4.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#proportions"><i class="fa fa-check"></i><b>7.4.2</b> Proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability Theory and Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sampling-and-confidence-intervals" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 7</span> Sampling and confidence intervals<a href="sampling-and-confidence-intervals.html#sampling-and-confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This week we begin the Statistical applications of the theory we have learned so far.</p>
+<p>We will learn the basis of (Frequentist) statistical inference. We will construct and interpret confidence intervals for a mean and a proportion. We will then introduce hypothesis testing.</p>
+<p>If Mathematics is a deductive process, Statistics is an inferential one. Given imperfect information (usually data), we make (sensible) inferences about models of the real world.</p>
+<p>Most modelling situations involve estimating the value of a population parameter or characteristic, and one of the main tasks in Statistics is to estimate the values of the parameters from sample data.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-212" class="example"><strong>Example 7.1  </strong></span>Suppose we are interested in the average height of an adult man in the UK. The <strong><em>population</em></strong> of interest is then all UK adult men (approximately <span class="math inline">\(33\)</span> million). A <em>model</em> for the height of men may be a normal distribution:</p>
+<p><span class="math display">\[X\sim \text{N}(\mu,\sigma^2),\]</span></p>
+<p>where <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> are the <strong><em>population parameters</em></strong> of the distribution.</p>
+<p>Why might it not be possible to measure the height of every UK man? Instead we take a smaller number of men to measure, say <span class="math inline">\(100\)</span> or <span class="math inline">\(1000\)</span>. This is called a <strong><em>sample</em></strong>.</p>
+<p>From the sample we can calculate the sample mean <span class="math inline">\(\bar{x}\)</span> and the sample standard deviation <span class="math inline">\(s\)</span>.</p>
+</div>
+<p>Population parameters like <span class="math inline">\(\mu\)</span> are in practice unknowable with certainty. Typically in statistics we may specifically want to</p>
+<ul>
+<li><p>Estimate the value of <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>Determine a range or interval of plausible values for <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>Decide whether a particular value of <span class="math inline">\(\mu\)</span> appears to be reasonable.</p></li>
+</ul>
+<p>We distinguish between real world, or population parameters, and sample statistics in the following table:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Characteristic</th>
+<th>Population parameter</th>
+<th>Sample statistic / estimator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td><span class="math inline">\(\mu\)</span></td>
+<td><span class="math inline">\(\bar{x}\)</span></td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td><span class="math inline">\(\sigma\)</span></td>
+<td><span class="math inline">\(s\)</span></td>
+</tr>
+<tr class="odd">
+<td>Proportion</td>
+<td><span class="math inline">\(\pi\)</span></td>
+<td><span class="math inline">\(\hat{p}\)</span>,<span class="math inline">\(p\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>It is intuitively obvious that we can use the sample mean to estimate the true value of the population mean. However we must recognise that when drawing a random sample, from a normal distribution in this case, any statistic calculated from the sample will also have a probability distribution.</p>
+<p>Recall <strong><em>Theorem 6.2</em></strong> from last week. The sampling distribution of the mean <span class="math inline">\(\bar{X}\)</span> is normally distributed with the same mean but with variance divided by a factor given by the sample size <span class="math inline">\(n\)</span>. That is</p>
+<p><span class="math display">\[\overline{X} \sim \text{N} (\mu, \sigma^2/{n})\]</span></p>
+<p>With larger values of <span class="math inline">\(n\)</span> we can compare the proportion of the density about the mean.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-213" class="example"><strong>Example 7.2  </strong></span>Suppose we assume the percentage of glucose in bars of toffee is normally distributed with mean <span class="math inline">\(20\%\)</span> and standard deviation <span class="math inline">\(2\%\)</span>. Find the probability that:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>One bar of toffee selected at random has glucose level between <span class="math inline">\(19.5\%\)</span> and <span class="math inline">\(20.5\%\)</span>.</p></li>
+<li><p>The mean percentage glucose in <span class="math inline">\(20\)</span> randomly selected toffee bars is between <span class="math inline">\(19.5\%\)</span> and <span class="math inline">\(20.5\%\)</span>.</p></li>
+<li><p>The mean percentage glucose in <span class="math inline">\(100\)</span> randomly selected toffee bars is between <span class="math inline">\(19.5\%\)</span> and <span class="math inline">\(20.5\%\)</span>.</p></li>
+</ol>
+</div>
+<p><em>solution</em></p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math display">\[\text{P}(19.5&lt;X&lt;20.5)= \text{P}\left(\frac{19.5-20}{2}&lt;Z&lt;\frac{20.5-20}{2}\right)\]</span></li>
+</ol>
+<p><span class="math display">\[= \text{P}(-0.25&lt;Z&lt;0.25)=1-2\times\text{P}(Z&gt;0.25)\]</span></p>
+<p><span class="math display">\[=1-2\times 0.4013=0.20\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><span class="math display">\[\text{P}(19.5&lt;\overline{X}&lt;20.5)= \text{P}\left(\frac{19.5-20}{\sqrt{2^2 / 20}}&lt;Z&lt;\frac{20.5-20}{\sqrt{2^2 / 20}}\right)\]</span></li>
+</ol>
+<p><span class="math display">\[= \text{P}(-1.12&lt;Z&lt;1.12)=1-2\times\text{P}(Z&gt;1.12)\]</span></p>
+<p><span class="math display">\[=1-2\times 0.1314=0.74 \approx 75\%\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><span class="math display">\[\text{P}(19.5&lt;\overline{X}&lt;20.5)= \text{P}\left(\frac{19.5-20}{\sqrt{2^2 / 100}}&lt;Z&lt;\frac{20.5-20}{\sqrt{2^2 / 100}}\right)\]</span></li>
+</ol>
+<p><span class="math display">\[= \text{P}(-2.5&lt;Z&lt;2.5)=1-2\times\text{P}(Z&gt;2.5)\]</span></p>
+<p><span class="math display">\[=1-2\times 0.0062=0.99\ldots \approx 99\%\]</span></p>
+<p>We can summarise this example with the following table:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Sample size <span class="math inline">\(n\)</span></th>
+<th align="center"><span class="math inline">\(\text{P}(19.5 &lt;\overline{X} &lt; 20.5)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(20\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">20</td>
+<td align="center"><span class="math inline">\(75\%\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">100</td>
+<td align="center"><span class="math inline">\(99\%\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>We can use the sampling distribution in various ways to make inferences about the true population mean glucose content. For example, in a samle of <span class="math inline">\(100\)</span> toffee bars, and assuming the true mean is <span class="math inline">\(\mu=20\%\)</span>, a value of <span class="math inline">\(\bar{x}\)</span> outside the range <span class="math inline">\(19.5 - 20.5\%\)</span> would appear very unusual.</p>
+<div id="confidence-intervals" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.1</span> Confidence Intervals<a href="sampling-and-confidence-intervals.html#confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This specifies a range of plausible values for the parameter of interest.</p>
+<p>Recall we can find a particular value of <span class="math inline">\(Z\sim \text{N}(0,1)\)</span> within which the distribution has a specified probability - using the inverse CDF of the normal distribution.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-214" class="example"><strong>Example 7.3  </strong></span>Calculate the <span class="math inline">\(z\)</span>-value containing the middle <span class="math inline">\(95\%\)</span> of density. In other words find <span class="math inline">\(z\)</span> such that <span class="math inline">\(\text{P}(|Z|\leq z)=0.95\)</span>.</p>
+<p><em>solution</em></p>
+<p>Recall <span class="math inline">\(|x|&lt;1\)</span> means <span class="math inline">\(-1&lt;x&lt;1\)</span>.</p>
+<p>The inequality <span class="math inline">\(|Z|\leq z\)</span> means <span class="math inline">\(-z\leq Z\leq z\)</span>.</p>
+<p><span class="math display">\[\text{P}(-z\leq Z \leq z)=0.95\]</span>
+<span class="math display">\[\iff  \text{P}(Z\geq z) = P(Z\leq -z) =0.025\]</span>
+From tables:</p>
+<p><span class="math display">\[\Phi^{-1}(0.025) = -1.96\]</span>
+Or alternatively <span class="math display">\[\Phi^{-1}(0.975) = 1.96\]</span></p>
+<p>So <span class="math inline">\(z=1.96\)</span>, and <span class="math inline">\(\text{P}(|Z|&lt;1.96) =0.95\)</span></p>
+</div>
+<p>Note that <span class="math inline">\(95\% = 100(1-0.05)\%\)</span>. The <span class="math inline">\(z\)</span> value we calculated corresponded to <span class="math inline">\(\alpha / 2\)</span>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-215" class="definition"><strong>Definition 7.1  </strong></span>A confidence interval for the population mean <span class="math inline">\(\mu\)</span> of level <span class="math inline">\(100(1-\alpha)\%\)</span> is given by the following expression.</p>
+<p><span class="math display">\[\left( \bar{x}-z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}},\bar{x}+z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} \right)\]</span></p>
+</div>
+<p>The confidence interval is derived from standardisation of the sampling distribution of the mean. That is,</p>
+<p><span class="math display">\[\overline{X} \sim \text{N} (\mu, \sigma^2/{n}),\]</span>
+implies</p>
+<p><span class="math display">\[Z = \frac{\overline{X} - \mu}{\sigma / \sqrt{n}} \sim \text{N}(0,1).\]</span></p>
+<p><span class="math display">\[\text{P}\left( |Z| &lt;z_{\frac{1}{2}\alpha} \right) = 1-\alpha\]</span></p>
+<p>Now by standardisation replace <span class="math inline">\(Z\)</span> with the expression involving <span class="math inline">\(\overline{X}\)</span>.</p>
+<p><span class="math display">\[\text{P}\left( \left|\frac{\overline{X} - \mu}{\sigma / \sqrt{n}} \right| &lt;z_{\frac{1}{2}\alpha} \right) = 1-\alpha\]</span>
+The denominator is positive so this is equivalent to:
+<span class="math display">\[\text{P}\left( |\overline{X} - \mu| &lt;z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}}  \right) = 1-\alpha\]</span></p>
+<p><span class="math display">\[\text{P}\left( |\mu - \overline{X} | &lt;z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}}  \right) = 1-\alpha\]</span></p>
+<p><span class="math display">\[\text{P}\left(z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}} &lt; \mu - \overline{X} &lt;z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}}  \right) =1-\alpha\]</span>
+<span class="math display">\[\text{P}\left( \overline{X}+ z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}} &lt; \mu &lt;\overline{X} + z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}}  \right) =1-\alpha\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-216" class="example"><strong>Example 7.4  </strong></span>The milligrams of fat in a sample of hotdogs were measured as
+<span class="math display">\[25.2, \ 21.3,\ 22.8,\ 17.0,\ 29.8,\ 21.0,\ 25.5,\ 16.0,\ 20.9, \ 19.5\]</span>
+Supposing that the fat content is normally distributed, that this is a random sample of hotdogs, and the population standard deviation <span class="math inline">\(\sigma = 5\)</span>, calculate a <span class="math inline">\(90/%\)</span> confidence interval for the mean fat content <span class="math inline">\(\mu\)</span>.</p>
+</div>
+<p><em>solution</em></p>
+<p>With <span class="math inline">\(90\%\)</span> centrally, we must have <span class="math inline">\(5\%\)</span> in either tail. One can look up the <span class="math inline">\(z\)</span> value as <span class="math inline">\(z_{0.95}= 1.6449\)</span>.</p>
+<p>In R we could get this value with the quantile command <span class="math inline">\(\texttt{qnorm(0.95,mean=0,sd=1)}\)</span>.</p>
+<p>Then,
+<span class="math display">\[\bar{x} \ \pm \ z\frac{\sigma}{\sqrt{n}} = 21.9 \ \pm 1.6449\times\frac{5}{\sqrt{10}}\]</span></p>
+<p><span class="math display">\[=[19.3 , 24.5] \text{   (to 3 s.f.)}\]</span></p>
+<p>Warning - there are many incorrect interpretations of confidence intervals, and it is contentious how meaningful such an interval is.</p>
+<p>Note that while <span class="math inline">\(\mu\)</span> is unknown, it is a constant rather than a random quantity. We cannot say “with <span class="math inline">\(95/%\)</span> chance <span class="math inline">\(\mu\)</span> will lie inside the interval”, because there is no chance associated to a constant quantity.</p>
+<p>The random part of the interval comes from <span class="math inline">\(\overline{X}\)</span>, so rather we must say that with repeated samples, and in the long run, approximately <span class="math inline">\(95/%\)</span> of intervals will contain <span class="math inline">\(\mu\)</span>.</p>
+<p>Another misconception is to say that if there were 100 such intervals, exactly 95 would contain the interval, but this is a general error about the interpretation of probability.</p>
+<p>Below is some R code to simulate this process.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="sampling-and-confidence-intervals.html#cb9-1"></a><span class="kw">library</span>(plotrix)</span></code></pre></div>
+<pre><code>## Warning: package &#39;plotrix&#39; was built under R version 4.0.5</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="sampling-and-confidence-intervals.html#cb11-1"></a>z&lt;-<span class="kw">qnorm</span>(<span class="fl">0.975</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># this is the z-value </span></span>
+<span id="cb11-2"><a href="sampling-and-confidence-intervals.html#cb11-2"></a>sigma &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb11-3"><a href="sampling-and-confidence-intervals.html#cb11-3"></a>x&lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span></span>
+<span id="cb11-4"><a href="sampling-and-confidence-intervals.html#cb11-4"></a></span>
+<span id="cb11-5"><a href="sampling-and-confidence-intervals.html#cb11-5"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>) <span class="co">#ensures the code is reproducible</span></span>
+<span id="cb11-6"><a href="sampling-and-confidence-intervals.html#cb11-6"></a></span>
+<span id="cb11-7"><a href="sampling-and-confidence-intervals.html#cb11-7"></a><span class="co">#100 samples of 10 hotdogs each</span></span>
+<span id="cb11-8"><a href="sampling-and-confidence-intervals.html#cb11-8"></a>hotdogs &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">100</span>, <span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean=</span><span class="dv">20</span>,<span class="dt">sd=</span><span class="dv">5</span>))</span>
+<span id="cb11-9"><a href="sampling-and-confidence-intervals.html#cb11-9"></a></span>
+<span id="cb11-10"><a href="sampling-and-confidence-intervals.html#cb11-10"></a><span class="co">#Calculate the mean of each sample</span></span>
+<span id="cb11-11"><a href="sampling-and-confidence-intervals.html#cb11-11"></a>xbar &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">length =</span> <span class="dv">100</span>)</span>
+<span id="cb11-12"><a href="sampling-and-confidence-intervals.html#cb11-12"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>){</span>
+<span id="cb11-13"><a href="sampling-and-confidence-intervals.html#cb11-13"></a>xbar[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(hotdogs[<span class="kw">seq</span>(<span class="dv">10</span><span class="op">*</span>(i<span class="dv">-1</span>),<span class="dv">10</span><span class="op">*</span>i,<span class="dv">1</span>)])</span>
+<span id="cb11-14"><a href="sampling-and-confidence-intervals.html#cb11-14"></a>}</span>
+<span id="cb11-15"><a href="sampling-and-confidence-intervals.html#cb11-15"></a></span>
+<span id="cb11-16"><a href="sampling-and-confidence-intervals.html#cb11-16"></a><span class="co">#lower end of interval L</span></span>
+<span id="cb11-17"><a href="sampling-and-confidence-intervals.html#cb11-17"></a>L &lt;-<span class="st"> </span>xbar <span class="op">-</span><span class="st"> </span>z<span class="op">*</span>sigma<span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">10</span>)</span>
+<span id="cb11-18"><a href="sampling-and-confidence-intervals.html#cb11-18"></a></span>
+<span id="cb11-19"><a href="sampling-and-confidence-intervals.html#cb11-19"></a><span class="co">#upper end of interval U</span></span>
+<span id="cb11-20"><a href="sampling-and-confidence-intervals.html#cb11-20"></a>U &lt;-<span class="st"> </span>xbar <span class="op">+</span><span class="st"> </span>z<span class="op">*</span>sigma<span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">10</span>)</span>
+<span id="cb11-21"><a href="sampling-and-confidence-intervals.html#cb11-21"></a></span>
+<span id="cb11-22"><a href="sampling-and-confidence-intervals.html#cb11-22"></a><span class="kw">plotCI</span>(x, xbar, <span class="dt">ui=</span>U, <span class="dt">li=</span>L,<span class="dt">ylab=</span><span class="st">&quot;hotdog fat content&quot;</span>)</span>
+<span id="cb11-23"><a href="sampling-and-confidence-intervals.html#cb11-23"></a><span class="kw">abline</span>(<span class="dt">a=</span><span class="dv">20</span>, <span class="dt">b=</span><span class="dv">0</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>, <span class="dt">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="6G4Z3008-notes_files/figure-html/ci_sim-1.png" width="75%" /></p>
+<p>In this example it turns out that <span class="math inline">\(5\%\)</span> of intervals did not contain the mean. However setting a different seed shows this is not fixed, just a long term probability.</p>
+<p>In many scientific studies all the data is pooled in a single sample, and one calculates a single confidence interval. There is no way of knowing if the interval contains the mean. What ‘confidence’ do we really have here?</p>
+<p>If <span class="math inline">\(\bar{x}\)</span> is a single-valued or <em>point estimate</em>, the C.I. is just by convention just an <em>interval estimate</em>.</p>
+</div>
+<div id="unknown-variance" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.2</span> Unknown variance<a href="sampling-and-confidence-intervals.html#unknown-variance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>What do we do if we do not know <span class="math inline">\(\sigma\)</span>? Well we have to estimate it.</p>
+<div id="estimating-the-variance" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.2.1</span> Estimating the variance<a href="sampling-and-confidence-intervals.html#estimating-the-variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recall we estimate the population parameters such as <span class="math inline">\(\mu\)</span> with statistics like <span class="math inline">\(\bar{X}\)</span>.</p>
+<p>We can ask what the expected value of a statistic is</p>
+<p><span class="math display">\[\text{E}(\overline{X})= \text{E}\left( \frac{1}{n}\sum_{i=1}^{n}X_i \right)\]</span></p>
+<p><span class="math display">\[=\frac{1}{n}\sum_{i=1}^{n}\text{E}(X_i) = \frac{1}{n}\sum_{i=1}^{n}\mu =\frac{1}{n}n\mu=\mu\]</span></p>
+<p>We can see that <span class="math inline">\(\text{E}(\bar{X})=\mu\)</span>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-217" class="definition"><strong>Definition 7.2  </strong></span>When a statistic is used to estimate a parameter, if the expectation of the estimator is equal to the parameter, then the statistic is called <strong><em>unbiased</em></strong>.</p>
+<p>Hence <span class="math inline">\(\bar{X}\)</span> is an unbiased estimator for <span class="math inline">\(\mu\)</span>.</p>
+</div>
+<p>It turns out that the obvious choice to estimate <span class="math inline">\(\sigma^2\)</span> is not unbiased.</p>
+<p><span class="math display">\[\text{E}\left( \frac{1}{n}\sum_{i=1}^{n}(X_i-\bar{X})^2 \right) = \frac{1}{n}\text{E}\left( \sum_{i=1}^n (X_i^2-2\bar{X} X_i +\bar{X}^2)\right) \]</span></p>
+<p><span class="math display">\[=\frac{1}{n}\text{E}\left( \sum_{i=1}^n X_i^2 -2\bar{X}\sum_{i=1}^n{X_i} +\sum_{i=1}^n \bar{X}^2 \right) \]</span></p>
+<p><span class="math display">\[=\frac{1}{n}\text{E}\left( \sum_{i=1}^n X_i^2 -2n\bar{X}^2 +n \bar{X}^2 \right) =\frac{1}{n}\text{E}\left( \sum_{i=1}^n X_i^2 -n\bar{X}^2  \right)  \]</span></p>
+<p><span class="math display">\[=\frac{1}{n}\left( \sum_{i=1}^n \text{E}(X_i^2) -n\text{E}(\bar{X}^2)  \right) \]</span>
+Using the identity <span class="math inline">\(\text{Var}(X)= \text{E}(X^2)=\text{E}(X)^2\)</span> gives:</p>
+<p><span class="math display">\[=\frac{1}{n}\left( \sum_{i=1}^n [\text{Var}(X_i)+\text{E}(X_i)^2] -n[\text{Var}(\bar{X})+\text{E}(\bar{X})^2]  \right) \]</span>
+And now we have <span class="math inline">\(\text{Var}(X_i) = \sigma^2\)</span>, <span class="math inline">\(\text{E}(X_i)^2 = \mu^2\)</span>, <span class="math inline">\(\text{E}(\bar{X}) = \mu\)</span>, and <span class="math inline">\(\text{Var}(\bar{X})=\frac{\sigma^2}{n}\)</span>. Putting this together gives.</p>
+<p><span class="math display">\[=\frac{1}{n}\left( \sum_{i=1}^n [\sigma^2+\mu^2] -n\left[\frac{\sigma^2}{n}+\mu^2\right]  \right) =\frac{1}{n}\left( n\sigma^2+n\mu^2-n\left[\frac{\sigma^2}{n}+\mu^2\right]\right)\]</span></p>
+<p>Altogether</p>
+<p><span class="math display">\[\text{E}\left( \frac{1}{n}\sum_{i=1}^{n}(X_i-\bar{X})^2 \right) = \frac{(n-1)\sigma^2}{n} \]</span></p>
+<p>To make a statistic that is an unbiased estimator for <span class="math inline">\(\sigma^2\)</span>, we could rescale by multiplying by <span class="math inline">\(n\)</span> and dividing by <span class="math inline">\((n-1)\)</span>.</p>
+<p>If the variance <span class="math inline">\(\sigma\)</span> is unknown, an unbiased estimate of <span class="math inline">\(\sigma\)</span> is</p>
+<p><span class="math display">\[s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i-\bar{x})^2\]</span></p>
+<p>This has the property that <span class="math inline">\(\text{E}(S^2) = \sigma^2\)</span>.</p>
+<p>It may in practice be easier to compute:</p>
+<p><span class="math display">\[s^2= \frac{1}{n-1}\left(\sum_{i=1}^n x_i^2 - n\bar{x}^2\right) = \frac{1}{n-1}\left(\sum x_i^2 - \frac{(\sum x_i)^2}{n}\right).\]</span>
+Check which appears in the formula booklet.</p>
+</div>
+<div id="the-t-distribution" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.2.2</span> The t distribution<a href="sampling-and-confidence-intervals.html#the-t-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When we do not know the population variance <span class="math inline">\(\sigma^2\)</span>, we have more uncertainty. The more data we have the less uncertainty we have, but for small samples we need to account for this and use a distribution with more mass in the tails.</p>
+<p>To deal with this we use the quantiles of the <span class="math inline">\(t\)</span>-distribution instead of the quantiles of the <span class="math inline">\(Z\sim \text{N}(0,1)\)</span>. Below is a picture of a <span class="math inline">\(t\)</span>-distribution,</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:t1"></span>
+<img src="figures/tdist.JPG" alt="fat tails of the t-distribution" width="75%" />
+<p class="caption">
+Figure 7.1: fat tails of the t-distribution
+</p>
+</div>
+<p>The <span class="math inline">\(t\)</span>-distribution has a number of degrees of freedom to account for the decreased uncertainty in the tails with more data. As the number of degrees of freedom increases we can see the distribution approaches the standard normal density.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:t2"></span>
+<img src="figures/df.JPG" alt="t distributions with 1, 5 and 20 degrees of freedom" width="75%" />
+<p class="caption">
+Figure 7.2: t distributions with 1, 5 and 20 degrees of freedom
+</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-218" class="definition"><strong>Definition 7.3  </strong></span>For the <span class="math inline">\(t\)</span>-distribution, the number of <strong><em>degrees of freedom</em></strong> <span class="math inline">\(\nu\)</span> is one less than the number of data points.</p>
+<p><span class="math display">\[\nu = n-1\]</span></p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-219" class="definition"><strong>Definition 7.4  </strong></span>Given a random sample of size <span class="math inline">\(n\)</span> from a normally distributed population with unknown population variance a <span class="math inline">\(100(1-\alpha)\%\)</span> confidence interval for the population mean <span class="math inline">\(\mu\)</span> is given by</p>
+<p><span class="math display">\[\left( \bar{x} - t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}\right)\]</span>
+The quantiles of the <span class="math inline">\(t\)</span>-distribution need to be obtained from the table in the formula booklet, or from the R function <span class="math inline">\(\texttt{qt()}\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-220" class="example"><strong>Example 7.5  </strong></span>A sample of <span class="math inline">\(6\)</span> trout taken from a fish farm were caught and their lengths in centimetres were measured. the lengths of the fish were as follows:</p>
+<p><span class="math display">\[ 26.8, \ 26.0, \ 25.8, \ 25.5, \ 24.3, \ 24.6 \]</span></p>
+<p>Assuming the lengths of the trout are normally distributed:</p>
+<ul>
+<li><p>Calculate unbiased estimates for the mean and variance.</p></li>
+<li><p>Find a <span class="math inline">\(90\%\)</span> confidence interval for the mean length of trout in the fish farm.</p></li>
+</ul>
+</div>
+<p><em>solution</em>
+Using a calculator gives <span class="math inline">\(\bar{x}=25.5\)</span> and <span class="math inline">\(s^2 = 0.8560\)</span>.</p>
+<p>The <span class="math inline">\(90\%\)</span> confidence limits for <span class="math inline">\(\bar{x}\)</span> are:</p>
+<p><span class="math display">\[\bar{x} \pm t_{5}(5\%)\frac{s}{\sqrt{n}} = 25.5 \pm 2.015\times \frac{0.9252}{\sqrt{6}}\]</span></p>
+<p><span class="math display">\[=(24.7,26.3)\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-221" class="example"><strong>Example 7.6  (exam-style) </strong></span>The masses in grams of ten packets of biscuits of a particular brand were weighed. The results are summarised by a computerised weighing machine as:</p>
+<p><span class="math display">\[\sum x_i = 3978.8 \ , \ \sum x_i^2 = 1583098.3 \]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>What assumptions and requirements are necessary to produce a
+confidence interval for the mean weight of a packet of biscuits? Explain these in context.</p></li>
+<li><p>Calculate unbiased estimates for the mean and variance.</p></li>
+<li><p>Calculate a <span class="math inline">\(95\%\)</span> confidence interval.</p></li>
+<li><p>The weight on the packet says <span class="math inline">\(400\)</span>g, does the data support this labelling?</p></li>
+</ol>
+</div>
+<p><em>solution</em></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>The sample is assumed to be random. The weights are assumed to follow a normal distribution.</p></li>
+<li><p><span class="math display">\[\bar{x} = 3978.8/10 = 397.88\text{g}\]</span>
+<span class="math display">\[s^2 = \frac{1}{10-1}\left(1583098.3-\frac{3978.8^2}{10}\right) =1.484\text{g}\]</span></p></li>
+<li><p>The required interval is:</p></li>
+</ol>
+<p><span class="math display">\[\bar{x} \pm t_{9}(2.5\%)\frac{s}{\sqrt{n}} = 397.88 \pm 2.2622\times \frac{1.484}{\sqrt{10}}\]</span>
+<span class="math display">\[(396.8,398.9 ) \]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>As <span class="math inline">\(400\)</span> lies outside the interval, this sample does not support the labelling.</li>
+</ol>
+</div>
+</div>
+<div id="required-sample-sizes" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.3</span> Required sample sizes<a href="sampling-and-confidence-intervals.html#required-sample-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Note that the width of the confidence interval is determined by the required level of confidence and the sample size as long as we know or can estimate the standard deviation. We can use this to decide in advance how many observations are needed to estimate the mean with of a given degree of precision.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-222" class="example"><strong>Example 7.7  (Ikea) </strong></span>From time to time a firm manufacturing pre-packed furniture needs to check the mean distance between pairs of holes drilled by a machine in pieces of chipboard to ensure that no change has occurred. It is known from experience that the standard deviation of the distance is <span class="math inline">\(0.43\)</span>mm. The first intends to take a random sample of size <span class="math inline">\(n\)</span>, and to calculate a <span class="math inline">\(99\%\)</span> confidence interval for the mean of the population. The width of this interval must be no more than <span class="math inline">\(0.60\)</span>mm. Calculate the minimum value of <span class="math inline">\(n\)</span>.</p>
+</div>
+<p><em>solution</em></p>
+<p>The width is the difference between the end points of the interval, and so is twice the term that is added (and subtracted) from <span class="math inline">\(\bar{x}\)</span> in the formula.</p>
+<p><span class="math display">\[2z\frac{\sigma}{\sqrt{n}} &lt;0.6\]</span>
+<span class="math display">\[2\times 2.576\times \frac{0.43}{\sqrt{n}}&lt;0.6\]</span>
+<span class="math display">\[2\times 2.576\times {0.43}&lt;0.6\sqrt{n}\]</span>
+<span class="math display">\[\frac{2\times 2.576\times {0.43}}{0.6}&lt;\sqrt{n}\]</span>
+<span class="math display">\[\sqrt{n} &gt; 3.69\ldots \]</span>
+<span class="math display">\[n &gt; 13.6\ldots \]</span>
+The smallest value of <span class="math inline">\(n\)</span> is therefore <span class="math inline">\(14\)</span>.</p>
+</div>
+<div id="interval-for-a-population-variance" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.4</span> Interval for a population variance<a href="sampling-and-confidence-intervals.html#interval-for-a-population-variance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We have shown earlier that the sampling distribution of the sample variance has expectation <span class="math inline">\(\sigma^2\)</span>. That is, the random variable <span class="math inline">\(S^2\)</span> given by:</p>
+<p><span class="math display">\[S^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X})^2 ,\]</span></p>
+<p>is such that,</p>
+<p><span class="math display">\[\text{E}(S^2) = \sigma^2\]</span>
+But as yet we do not know the distribution of <span class="math inline">\(S^2\)</span>.</p>
+<p>We introduce the relevant distributions, prove a proposition and derive use this to derive a confidence interval for the variance.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-223" class="definition"><strong>Definition 7.5  </strong></span>A random variable <span class="math inline">\(Y\)</span> is said to have a <strong><em>chi-squared distribution</em></strong> with one degree of freedom, written <span class="math inline">\(Y\sim\chi^2(1)\)</span> if it has density function:</p>
+<p><span class="math display">\[f_Y(y) = \frac{1}{\sqrt{2\pi y}}e^{-y/2} \]</span></p>
+</div>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-224" class="proposition"><strong>Proposition 7.1  </strong></span>The square of a standard normal distribution <span class="math inline">\(Z^2\)</span> follows a <span class="math inline">\(\chi^2(1)\)</span> distribution. That is, if <span class="math inline">\(Z\sim N(0,1)\)</span> then <span class="math inline">\(Z^2\sim \chi^2(1)\)</span></p>
+</div>
+<p><em>proof</em></p>
+<p>Recall the density and distribution functions of the standard normal are written in greek letters <span class="math inline">\(f_Z = \phi\)</span> and <span class="math inline">\(F_Z = \Phi\)</span>. We will also need to remember from last week that <span class="math inline">\(\phi\)</span> takes the form</p>
+<p><span class="math display">\[\phi(z) =  \frac{1}{\sqrt{2\pi}} \exp \left( -\frac{1}{2}z^2 \right)\]</span></p>
+<p>Consider the distribution function of <span class="math inline">\(Y=Z^2\)</span>.
+<span class="math display">\[ F_Y(z) = \text{P}(Z^2&lt;z)\]</span>
+<span class="math display">\[= \text{P}\left(-\sqrt{z}&lt;Z&lt;\sqrt{z}\right)\]</span>
+<span class="math display">\[=\int_{-\sqrt{z}}^{\sqrt{z}}\phi(x) \ dx \]</span></p>
+<p><span class="math display">\[=\int_{-\infty}^{\sqrt{z}}\phi(x) \ dx - \int_{\infty}^{-\sqrt{z}}\phi(x) \ dx\]</span>
+<span class="math display">\[=\Phi(\sqrt{z})- \Phi(-\sqrt{z})\]</span>
+<span class="math display">\[=\Phi(\sqrt{z})-(1-\Phi(\sqrt{z})), \text{ by symmetry}\]</span></p>
+<p><span class="math display">\[=2\Phi(\sqrt{z})-1. \]</span></p>
+<p>So <span class="math inline">\(F_Y(z) = 2\Phi(\sqrt{z})-1\)</span>. We can find the density by differentiating,</p>
+<p><span class="math display">\[f_Y (z)= \frac{d}{dz}F_Y(z)\]</span>
+<span class="math display">\[=\frac{d}{dz}\left[2\Phi(\sqrt{z})-1\right] \]</span></p>
+<p><span class="math display">\[=2\Phi&#39;(\sqrt{z})\times\frac{1}{2}z^{-\frac{1}{2}} , \text{by the chain rule}\]</span>
+<span class="math display">\[=\Phi&#39;(\sqrt{z})\times\frac{1}{\sqrt{z}}\]</span>
+But differentiating a distribution gives you the density, that is <span class="math inline">\(\Phi&#39; = \phi\)</span>. Hence</p>
+<p><span class="math display">\[=\phi(\sqrt{z})\times\frac{1}{\sqrt{z}}\]</span>
+<span class="math display">\[=\frac{1}{\sqrt{2\pi}} \exp \left( -\frac{1}{2}(\sqrt{z})^2 \right) \times \frac{1}{\sqrt{z}}\]</span>
+<span class="math display">\[=\frac{1}{2\pi z} e^{-z/2}. \]</span>
+But this is the density function of <span class="math inline">\(\chi^2(1)\)</span>, and if two random variables have the same density they must be equal, so we must have
+<span class="math display">\[Z^2 = \chi^2(1).\]</span>
+With this result it will not be hard to believe the following</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-225" class="proposition"><strong>Proposition 7.2  </strong></span>If <span class="math inline">\(Z_1 ,Z_2, \ldots, Z_k\)</span> are independent standard normal random variables then a sum of squares these random variables is a chi-squared distribution with <span class="math inline">\(k\)</span> degrees of freedom.</p>
+<p><span class="math display">\[Z_1^2+Z_2^2+\ldots+ Z_k^2 \sim \chi^2(k) \]</span></p>
+</div>
+<p>proof: omitted.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-226" class="theorem"><strong>Theorem 7.1  </strong></span>We can scale the sampling distribution of the sample variance to be a chi-squared distribution on <span class="math inline">\(n-1\)</span> degrees of freedom.</p>
+<p><span class="math display">\[\frac{(n-1)S^2}{\sigma^2} \sim\chi^2_{n-1}\]</span></p>
+</div>
+<p><em>proof</em></p>
+<p><span class="math display">\[S^2 =\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X})^2 \]</span></p>
+<p><span class="math display">\[(n-1)S^2 =\sum_{i=1}^n(X_i-\overline{X})^2 \]</span>
+<span class="math display">\[\frac{(n-1)S^2}{\sigma^2} =\frac{1}{\sigma^2}\sum_{i=1}^n(X_i-\overline{X})^2 \]</span>
+<span class="math display" id="eq:var">\[\begin{equation}
+\frac{(n-1)S^2}{\sigma^2} =\sum_{i=1}^n\left(\frac{X_i-\overline{X}}{\sigma}\right)^2
+\tag{7.1}
+\end{equation}\]</span>
+If <span class="math inline">\(\bar{X}\)</span> were <span class="math inline">\(\mu\)</span> we could view the RHS as a sum of squares of standardised variables. Let <span class="math inline">\(Q\)</span> be the expression we wanted it to be</p>
+<p><span class="math display">\[Q = \sum_{i=1}^n\left(\frac{X_i-\mu}{\sigma}\right)^2 \]</span></p>
+<p>Then <span class="math inline">\(Q\sim \chi^2(n)\)</span>. Now we can manipulate</p>
+<p><span class="math display">\[Q=\sum_{i=1}^n\left(\frac{(X_i- \bar{X}) + (\bar{X}-\mu)}{\sigma}\right)^2\]</span>
+Splitting this up gives:
+<span class="math display">\[=\sum_{i=1}^n\left(\frac{X_i - \bar{X}}{\sigma}\right)^2+2\left(\frac{\bar{X}-\mu}{\sigma}\right)\sum_{i=1}^n \left(\frac{X_i-\bar{X}}{\sigma}\right) + \sum_{i=1}^n\left(\frac{\bar{X} - \mu}{\sigma}\right)^2\]</span></p>
+<p><span class="math display">\[=\underbrace{\sum_{i=1}^n\left(\frac{X_i - \bar{X}}{\sigma}\right)^2}_{(7.1)}+2\left(\frac{\bar{X}-\mu}{\sigma^2}\right)\underbrace{\sum_{i=1}^n \left(X_i-\bar{X}\right)}_{=0} + n\left(\frac{\bar{X} - \mu}{\sigma}\right)^2\]</span>
+<span class="math display" id="eq:Q">\[\begin{equation}
+Q =\frac{(n-1)S^2}{\sigma^2}+n\left(\frac{\bar{X} - \mu}{\sigma}\right)^2
+\tag{7.2}
+\end{equation}\]</span></p>
+<p>We now think about the latter term on the RHS. Last week we learned that</p>
+<p><span class="math display">\[\bar{X}\sim N(\mu,\sigma^2/n)\]</span>
+Which is equivalent to</p>
+<p><span class="math display">\[\frac{\bar{X}-\mu}{\sigma / \sqrt{n}} \sim \text{N}(0,1),\]</span>
+squaring this gives</p>
+<p><span class="math display">\[n\left(\frac{\bar{X} - \mu}{\sigma}\right)^2 \sim\chi^2(1) \]</span></p>
+<p>So equation (7.2) yields</p>
+<p><span class="math display">\[\chi^2(n) = \frac{(n-1)S^2}{\sigma^2}+\chi^2(1)\]</span>
+And the result is shown.</p>
+<p>This will all be a lot cleaner with the theory of moment generating functions and transformations of random variables in your second year course. I have included this derivation for the interested reader.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-227" class="definition"><strong>Definition 7.6  </strong></span>If <span class="math inline">\(x_1,\ldots,x_n\)</span> is a random sample of observations from a normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, both of which unknown. Then a confidence interval for the variance is given by</p>
+<p><span class="math display">\[\left[ \frac{(n-1)s^2}{\chi^2_{n-1}(\alpha / 2)},\frac{(n-1)s^2}{\chi^2_{n-1}(1-\alpha / 2)}\right]\]</span></p>
+</div>
+<p><em>proof</em></p>
+<p><span class="math display">\[\text{P}\left( \chi^2(\alpha / 2)&lt;\frac{(n-1)S^2}{\sigma^2} &lt; \chi^2(1-\alpha/2) \right) = 1-\alpha \]</span>
+Rearranging the inequality gives:</p>
+<p><span class="math display">\[\text{P}\left( \frac{(n-1)S^2}{\chi^2_{n-1}(\alpha / 2)}&lt;\sigma^2 &lt; \frac{(n-1)S^2}{\chi^2_{n-1}(1-\alpha / 2)} \right) = 1-\alpha \]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-228" class="example"><strong>Example 7.8  </strong></span>In order to determine the accuracy of a new rifle, <span class="math inline">\(8\)</span> marksmen were selected at random to fire the
+rifle at a target. The distances <span class="math inline">\(x\)</span>, in mm, of the <span class="math inline">\(8\)</span> shots from the centre of the target were as follows:
+<span class="math display">\[10, \ \ 14, \ \ 12,\ \ 8, \\ 6,  \ \ 11,  \ \ 18, \ 14.\]</span>
+Assuming that the distances are normally distributed, find a 95% confidence interval for the variance.</p>
+</div>
+<p><em>solution</em></p>
+<p>Calculating the unbiased estimators gives <span class="math inline">\(\bar{x}=11.625\)</span> and <span class="math inline">\(s^2 = 14.2679\)</span>.</p>
+<p>There are <span class="math inline">\(8\)</span> data, so <span class="math inline">\(\nu = 7\)</span>. For <span class="math inline">\(95\%\)</span> in the middle, we require</p>
+<p><span class="math display">\[\chi^2_7 (0.975) = 1.690 \ \ \ ,\ \ \ \chi^2_7(0.025)=16.013\]</span>
+Calculating the endpoints gives,
+<span class="math display">\[\frac{(n-1)s^2}{\chi^2_{n-1}(0.025)}= \frac{7\times 14.2679}{16.013} = 6.2371\ldots\]</span></p>
+<p>and,</p>
+<p><span class="math display">\[\frac{(n-1)s^2}{\chi^2_{n-1}(0.025)}= \frac{7\times 14.2679}{16.013} = 6.2371\ldots\]</span>
+## Interval for a proportion</p>
+<p>We will derive an approximate confidence interval for an unknown population proportion <span class="math inline">\(\pi\)</span> based on using a suitable normal distribution.</p>
+<div id="approximating-the-binomial-distribution." class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.4.1</span> Approximating the binomial distribution.<a href="sampling-and-confidence-intervals.html#approximating-the-binomial-distribution." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The normal distribution is really so important in statistics because under very mild conditions the distribution of the sample mean <span class="math inline">\(\overline{X}\)</span> is a normal distribution, for <strong><em>any</em></strong> distribution of the original <span class="math inline">\(X_i\)</span> (in particular, not necessarily normal themselves). This result is called the Central Limit Theorem (CLT).</p>
+<p>Due to the CLT a normal distribution can be used to approximate various discrete distributions, the most important is the binomial distribution.</p>
+<p>This result shows that even in a world full of chaotic randomness there is some underlying statistical order.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-229" class="theorem"><strong>Theorem 7.2  </strong></span>If <span class="math inline">\(X\sim \text{Bin}(n,\pi)\)</span> then <span class="math inline">\(X\approx N(n\pi,n\pi(1-\pi))\)</span>.</p>
+<p>The approximation is better for sufficiently large <span class="math inline">\(n\)</span>, and <span class="math inline">\(\pi\)</span> close to <span class="math inline">\(\frac{1}{2}\)</span>.</p>
+</div>
+<p><em>intuitive idea</em></p>
+<p>Recall the mean of a binomial distribution <span class="math inline">\(\text{E}(X)=n\pi\)</span>, and the variance is <span class="math inline">\(\text{Var}(X)=n\pi(1-\pi)\)</span>. The theorem says one can approximate the discrete distribution for the normal distribution with the same mean and variance.</p>
+<p>In the image below one can see the pmf of a <span class="math inline">\(\text{Bin}(20,0.5)\)</span> distribution (red) and a normal approximation (green). As the probabilities are calculated as the area under the curve, adding the probabilities corresponds to adding the areas of the rectangles. For this reason the convention is to apply a continuity correction when using the normal approximation to calculate probabilities. The red rectangles extend <span class="math inline">\(0.5\)</span> in either direction from the particular value of <span class="math inline">\(x\)</span>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:napprox"></span>
+<img src="figures/normapprox.JPG" alt="t distributions with 1, 5 and 20 degrees of freedom" width="75%" />
+<p class="caption">
+Figure 7.3: t distributions with 1, 5 and 20 degrees of freedom
+</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-230" class="example"><strong>Example 7.9  </strong></span>Approximate the probability of getting between <span class="math inline">\(8\)</span> and <span class="math inline">\(12\)</span> heads when tossing <span class="math inline">\(20\)</span> fair coins.</p>
+<p><em>solution</em>
+<span class="math display">\[Y \sim \text{Bin}(20,0.5) \approx X\sim \text{N}(10,0.5)\]</span></p>
+<p>The exact probability is <span class="math inline">\(\text{P}(Y\leq 12) - \text{P}(Y\leq 7) = 0.7368\)</span></p>
+<p>With a continuity correction:</p>
+<p><span class="math display">\[\text{P}(8\leq X\leq12) = \text{P}\left(\frac{8-0.5-10}{\sqrt{5}} \leq Z \leq \frac{12+0.5-10}{\sqrt{5}} \right) \]</span>
+<span class="math display">\[=\text{P}(-1.118\leq Z \leq 1.118)\]</span>
+<span class="math display">\[=0.7364\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-231" class="example"><strong>Example 7.10  </strong></span>A galton board has small ball bearings that are released from an internal cavity to roll down a board. The board has small pins and when the ball bearing hits a pin, it will move to the left or the right of that pin. The distribution of the pins at the base of the instrument can be seen to follow a bell-curve empirically.</p>
+</div>
+</div>
+<div id="proportions" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.4.2</span> Proportions<a href="sampling-and-confidence-intervals.html#proportions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Rather than using the normal approximation for <span class="math inline">\(X\)</span> directly, we often want to estimate a proportion. This is the number out of the total number <span class="math inline">\(\frac{X}{n}\)</span>.</p>
+<p>If <span class="math inline">\(X\sim \text{Bin}(n,\pi)\)</span> is approximated by <span class="math inline">\(\text{N}(n\pi,n\pi(1-\pi))\)</span>, then what happens to the mean and variance if we want an approximation for <span class="math inline">\(X/n\)</span>?</p>
+<p><span class="math display">\[\text{E}\left(\frac{X}{n}\right) = \frac{1}{n}\text{E}(X)=\frac{1}{n}\times n\pi = \pi\]</span></p>
+<p><span class="math display">\[\text{Var}\left(\frac{X}{n}\right) = \frac{1}{n^2}\text{Var}(X)\]</span></p>
+<p><span class="math display">\[= \frac{1}{n^2}\times n\pi(1-\pi) = \frac{\pi(1-\pi)}{n}\]</span>
+So to approximate a proportion we use <span class="math inline">\(\text{N}(\pi,\frac{\pi(1-\pi)}{n})\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-232" class="definition"><strong>Definition 7.7  </strong></span>A confidence interval for the population proportion <span class="math inline">\(\pi\)</span> is given by the following expression</p>
+<p><span class="math display">\[\left(p - z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}, p + z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}\right)\]</span>
+Where <span class="math inline">\(p\)</span> is the observed proportion.</p>
+</div>
+<p>This can be seen as</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-233" class="example"><strong>Example 7.11  </strong></span>An importer has ordered a large consignment of tomatoes. When it arrives he examines a randomly chosen sample of <span class="math inline">\(50\)</span> boxes and finds that <span class="math inline">\(12\)</span> contain at least one bad tomato. Assuming that these boxes may be regarded as being a random sample from the boxes in the consignment, obtain an approximate <span class="math inline">\(99\%\)</span> confidence interval for the proportion of boxes containing at least one bad tomato, giving your confidence limits to three decimal places.</p>
+</div>
+<p><em>solution</em></p>
+<p>We have <span class="math inline">\(p=0.24\)</span> and <span class="math inline">\(1-p = 0.76\)</span>. The relevant quantile is <span class="math inline">\(2.576\)</span>, so the confidence interval is</p>
+<p><span class="math display">\[0.24 \pm 2.576\sqrt{\frac{0.24\times 0.76}{50}} = (0.084,0.396) \]</span></p>
+<p>So approximately <span class="math inline">\(8\%\)</span> to <span class="math inline">\(40\%\)</span>.</p>
+</div>
+</div>
+<div id="summary" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.5</span> Summary<a href="sampling-and-confidence-intervals.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A confidence interval can be constructed from a sample or summary statistics. There are four types of confidence interval we have considered this week:</p>
+<ol style="list-style-type: decimal">
+<li><p>confidence interval for the mean with variance known.
+<span class="math display">\[\left( \bar{x}-z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}},\bar{x}+z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} \right) \]</span></p></li>
+<li><p>confidence interval for the mean with variance <em>unknown</em>.
+<span class="math display">\[\left( \bar{x} - t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}\right)  \]</span></p></li>
+<li><p>confidence interval for an unknown variance.
+<span class="math display">\[\left( \frac{(n-1)s^2}{\chi^2_{n-1}(\alpha / 2)} \ , \ \frac{(n-1)s^2}{\chi^2_{n-1}(1-\alpha / 2)}\right) \]</span></p></li>
+</ol>
+<p>You can take the square root endpoints for standard deviation.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>confidence interval for a population proportion.</li>
+</ol>
+<p><span class="math display">\[\left(p - z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}, p + z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}\right)\]</span></p>
+<p>We used <em>unbiased estimates</em> for the mean and variance</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math display">\[\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i\]</span></p></li>
+<li><p><span class="math display">\[s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2 \]</span></p></li>
+</ol>
+<p><span class="math display">\[=\frac{1}{n-1}\left\{\sum_{i=1}^nx_i^2 - \frac{\left(\sum_{i=1}^n x_i\right)^2}{n} \right\} \]</span>
+- A binomial distribution <span class="math inline">\(\text{Bin}(n,p) \approx \text{N}(np, np(1-p))\)</span>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="norm.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["6G4Z3008-notes.pdf", "6G4Z3008-notes.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
