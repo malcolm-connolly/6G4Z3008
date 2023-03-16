@@ -216,6 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#proportions"><i class="fa fa-check"></i><b>7.5.2</b> Proportions</a></li>
 </ul></li>
 <li class="chapter" data-level="7.6" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#summary"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
+<li class="chapter" data-level="7.7" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#exercises-week-7"><i class="fa fa-check"></i><b>7.7</b> Exercises week 7</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -371,7 +372,7 @@ The denominator is positive so this is equivalent to:
 <div class="example">
 <p><span id="exm:unlabeled-div-5" class="example"><strong>Example 7.4  </strong></span>The milligrams of fat in a sample of hotdogs were measured as
 <span class="math display">\[25.2, \ 21.3,\ 22.8,\ 17.0,\ 29.8,\ 21.0,\ 25.5,\ 16.0,\ 20.9, \ 19.5\]</span>
-Supposing that the fat content is normally distributed, that this is a random sample of hotdogs, and the population standard deviation <span class="math inline">\(\sigma = 5\)</span>, calculate a <span class="math inline">\(90/%\)</span> confidence interval for the mean fat content <span class="math inline">\(\mu\)</span>.</p>
+Supposing that the fat content is normally distributed, that this is a random sample of hotdogs, and the population standard deviation <span class="math inline">\(\sigma = 5\)</span>, calculate a <span class="math inline">\(90\%\)</span> confidence interval for the mean fat content <span class="math inline">\(\mu\)</span>.</p>
 </div>
 <p><em>solution</em></p>
 <p>With <span class="math inline">\(90\%\)</span> centrally, we must have <span class="math inline">\(5\%\)</span> in either tail. One can look up the <span class="math inline">\(z\)</span> value as <span class="math inline">\(z_{0.95}= 1.6449\)</span>.</p>
@@ -380,8 +381,8 @@ Supposing that the fat content is normally distributed, that this is a random sa
 <span class="math display">\[\bar{x} \ \pm \ z\frac{\sigma}{\sqrt{n}} = 21.9 \ \pm 1.6449\times\frac{5}{\sqrt{10}}\]</span></p>
 <p><span class="math display">\[=[19.3 , 24.5] \text{   (to 3 s.f.)}\]</span></p>
 <p>Warning - there are many incorrect interpretations of confidence intervals, and it is contentious how meaningful such an interval is.</p>
-<p>Note that while <span class="math inline">\(\mu\)</span> is unknown, it is a constant rather than a random quantity. We cannot say “with <span class="math inline">\(95/%\)</span> chance <span class="math inline">\(\mu\)</span> will lie inside the interval”, because there is no chance associated to a constant quantity.</p>
-<p>The random part of the interval comes from <span class="math inline">\(\overline{X}\)</span>, so rather we must say that with repeated samples, and in the long run, approximately <span class="math inline">\(95/%\)</span> of intervals will contain <span class="math inline">\(\mu\)</span>.</p>
+<p>Note that while <span class="math inline">\(\mu\)</span> is unknown, it is a constant rather than a random quantity. We cannot say “with <span class="math inline">\(95\%\)</span> chance <span class="math inline">\(\mu\)</span> will lie inside the interval”, because there is no chance associated to a constant quantity.</p>
+<p>The random part of the interval comes from <span class="math inline">\(\overline{X}\)</span>, so rather we must say that with repeated samples, and in the long run, approximately <span class="math inline">\(95\%\)</span> of intervals will contain <span class="math inline">\(\mu\)</span>.</p>
 <p>Another misconception is to say that if there were 100 such intervals, exactly 95 would contain the interval, but this is a general error about the interpretation of probability.</p>
 <p>Below is some R code to simulate this process.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="sampling-and-confidence-intervals.html#cb1-1"></a><span class="kw">library</span>(plotrix)</span></code></pre></div>
@@ -505,8 +506,8 @@ confidence interval for the mean weight of a packet of biscuits? Explain these i
 <span class="math display">\[s^2 = \frac{1}{10-1}\left(1583098.3-\frac{3978.8^2}{10}\right) =1.484\text{g}\]</span></p></li>
 <li><p>The required interval is:</p></li>
 </ol>
-<p><span class="math display">\[\bar{x} \pm t_{9}(2.5\%)\frac{s}{\sqrt{n}} = 397.88 \pm 2.2622\times \frac{1.484}{\sqrt{10}}\]</span>
-<span class="math display">\[(396.8,398.9 ) \]</span></p>
+<p><span class="math display">\[\bar{x} \pm t_{9}(2.5\%)\frac{s}{\sqrt{n}} = 397.88 \pm 2.2622\times \frac{\sqrt{1.484}}{\sqrt{10}}\]</span>
+<span class="math display">\[(397.0,398.8 ) \]</span></p>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>As <span class="math inline">\(400\)</span> lies outside the interval, this sample does not support the labelling.</li>
 </ol>
@@ -710,6 +711,117 @@ Where <span class="math inline">\(p\)</span> is the observed proportion.</p>
 </ol>
 <p><span class="math display">\[=\frac{1}{n-1}\left\{\sum_{i=1}^nx_i^2 - \frac{\left(\sum_{i=1}^n x_i\right)^2}{n} \right\} \]</span>
 - A binomial distribution <span class="math inline">\(\text{Bin}(n,p) \approx \text{N}(np, np(1-p))\)</span>.</p>
+</div>
+<div id="exercises-week-7" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.7</span> Exercises week 7<a href="sampling-and-confidence-intervals.html#exercises-week-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-23" class="exercise"><strong>Exercise 7.1  </strong></span>A random sample of size <span class="math inline">\(25\)</span> is taken from a normal distribution with standard deviation <span class="math inline">\(4\)</span>. The sample mean is <span class="math inline">\(85\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find a 90% confidence interval for the mean of the distribution.</p></li>
+<li><p>Find a 95% confidence interval for the mean of the distribution.</p></li>
+<li><p>Find a 99% confidence interval for the mean of the distribution.</p></li>
+<li><p>Compare the intervals you calculated in a-c.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-24" class="exercise"><strong>Exercise 7.2  </strong></span>A random sample of <span class="math inline">\(20\)</span> lobster traps gave the following results:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Weights (lb)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(17.4, \ \ \ \  18.9, \ \ \ \ 39.6, \ \ \ \ 34.4, \ \ \ \  19.6\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(33.7 , \ \ \ \  37.2, \ \ \ \  43.4, \ \ \ \  41.7, \ \ \ \  27.5\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(24.1, \ \ \ \  39.6, \ \ \ \  12.2, \ \ \ \  25.5, \ \ \ \  22.1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(29.3, \ \ \ \  21.1, \ \ \ \  23.8, \ \ \ \  43.2, \ \ \ \  24.4\)</span></td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Construct a <span class="math inline">\(95\%\)</span> confidence interval for the mean weight of a catch.</p></li>
+<li><p>What assumptions are necessary for the interval to be valid, one distributional and one otherwise.</p></li>
+<li><p>Give an example of how these assumptions may not be valid in context.</p></li>
+<li><p>The government have made some policies to reduce over-fishing. Historical records have that the mean catch is <span class="math inline">\(30.31\)</span>lb. Is there evidence that the government policy has been effective?</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-25" class="exercise"><strong>Exercise 7.3  </strong></span>Human body temperature can be modelled by a normal distibution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Emily, a medical student measured the body temperature of a random sample of <span class="math inline">\(20\)</span> patients in a hospital.</p>
+<p>She calculated a <span class="math inline">\(90\%\)</span> confidence interval to be <span class="math inline">\((35.2,41.8)\)</span>.</p>
+<p>Using Emily’s sample and interval, calculate a <span class="math inline">\(99\%\)</span> confidence interval.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-26" class="exercise"><strong>Exercise 7.4  </strong></span>A random sample of size <span class="math inline">\(25\)</span> is taken from a normal population with standard deviation <span class="math inline">\(2.5\)</span>.
+The mean of the sample is <span class="math inline">\(17.8\)</span>.
+a. Find a <span class="math inline">\(99\%\)</span> C.I. for the population mean <span class="math inline">\(\mu\)</span>.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>What size sample is required to obtain a <span class="math inline">\(99\%\)</span> C.I. of width of at most <span class="math inline">\(1.5\)</span>?</p></li>
+<li><p>What confidence level would be associated with the interval based on the above sample of <span class="math inline">\(25\)</span> but of width <span class="math inline">\(1.5\)</span>, i.e. <span class="math inline">\((17.05, 18.55)\)</span>?</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-27" class="exercise"><strong>Exercise 7.5  </strong></span>The masses (in grams) of <span class="math inline">\(10\)</span> nails selected at random from a bin of <span class="math inline">\(90\)</span> mm long nails were:
+<span class="math display">\[9.7, \ \ 10.2, \ \  11.2, \ \  9.4, \ \  11.0, \ \  11.2, \ \  9.8, \ \  9.8, \ \  10.0, \ \  11.3\]</span>
+a. Calculate a 98% confidence interval for the mean mass of the nails in the bin.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>State one assumption you have made in your calculation.</li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-28" class="exercise"><strong>Exercise 7.6  </strong></span>A random sample of the feet of <span class="math inline">\(8\)</span> adult males gave the following summary
+statistics of length <span class="math inline">\(x\)</span> (in cm):</p>
+<p><span class="math display">\[\sum x = 224.1 , \ \ \ \ \ \ \sum x^2 = 6337.39 \]</span>
+Assuming that the length of men’s feet is normally distributed, calculate a <span class="math inline">\(99\%\)</span>
+confidence interval for the mean length of men’s feet based upon these results.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-29" class="exercise"><strong>Exercise 7.7  </strong></span>A random sample of <span class="math inline">\(50\)</span> one pound coins were weighed at the Royal Mint. It was found that the weights in grams were summarised by:</p>
+<p><span class="math display">\[\sum x = 474.51 , \ \ \ \ \ \ \sum x^2 = 4503.8276 \]</span>
+a) Calculate unbiased estimates for the mean and variance.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Find a <span class="math inline">\(t\)</span>-distribution value and a <span class="math inline">\(z\)</span>-value. Compare these.</p></li>
+<li><p>Calculate a <span class="math inline">\(90\%\)</span> confidence interval for the mean weight of a pound coin.</p></li>
+<li><p>Estimate the size of a random sample required to give an interval of half the width of that calculated in the previous question.</p></li>
+<li><p>It was later found that the scales were consistently underweighing by <span class="math inline">\(0.05\)</span> grams. Which of the results of a), b) and d) will need amending, and which will be the same? Calculate the amended values.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-30" class="exercise"><strong>Exercise 7.8  </strong></span>A new variety of small daffodil is grown in the trial ground of a nursery. During the flowering period, a random sample of <span class="math inline">\(10\)</span> flowers was taken and the lengths, in millimetres, of their stalks were measured. The results were as follows:
+<span class="math display">\[266, \ \ 254, \ \  215, \ \  220, \ \  253, \ \  230, \ \  216, \ \  248,  \ \ 234, \ \  244\]</span>
+Assuming that the lengths are normally distributed, calculate a <span class="math inline">\(95\%\)</span> confidence interval for the variance of the lengths.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-31" class="exercise"><strong>Exercise 7.9  </strong></span>A random sample of <span class="math inline">\(1000\)</span> voters are interviewed, of whom <span class="math inline">\(349\)</span> state they support the Conservative party. Determine an approximate <span class="math inline">\(98\%\)</span> confidence interval for hte proportion of Conservative supporters in the population.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-32" class="exercise"><strong>Exercise 7.10  </strong></span>A market researcher performs a survey in order to determine the popularity of the washing powder brand “SUDZ”. He visits every house on a large housing estate in the Manchester area and asks the question “Do you use SUDZ washing powder?”. Of <span class="math inline">\(235\)</span> people questioned, <span class="math inline">\(75\)</span> responded in the positive.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Calculate a <span class="math inline">\(95\%\)</span> confidence interval for the proportion of households in the Manchester area that use SUDZ.</p></li>
+<li><p>Comment on the sampling methodology, and how this may impact the validity of the interval.</p></li>
+<li><p>Comment on whether the interview question is effective.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-33" class="exercise"><strong>Exercise 7.11  </strong></span>When a biased cubical die is rolled the probability that a six will be obtained is an unknown constant <span class="math inline">\(p\)</span>. The die is rolled <span class="math inline">\(40\)</span> times and the number <span class="math inline">\(X\)</span> of sixes obtained is recorded. The number <span class="math inline">\(Y\)</span> of sixes obtained when the die is rolled a further <span class="math inline">\(60\)</span> times is also recorded.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Show that</li>
+</ol>
+<p><span class="math display">\[T_1 = \frac{3X+2Y}{240} \ \ \ \text{    and  } \ \ \ \ T_2 = \frac{X+Y}{100} \]</span>
+are both unbiased estimators for <span class="math inline">\(p\)</span>.
+(Hint: find <span class="math inline">\(\text{E}(T_1)\)</span> and <span class="math inline">\(\text{E}(T_2)\)</span>)</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Find in terms of <span class="math inline">\(p\)</span> the standard errors of <span class="math inline">\(T_1\)</span> and <span class="math inline">\(T_2\)</span></p></li>
+<li><p>Reflecting on your previous answer, which of these estimators do you consider better?</p></li>
+</ol>
+</div>
 
 </div>
 </div>

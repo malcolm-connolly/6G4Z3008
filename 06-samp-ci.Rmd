@@ -143,7 +143,7 @@ $$\text{P}\left( \overline{X}+ z_{\frac{1}{2}\alpha} \frac{\sigma}{\sqrt{n}} < \
 :::{.example}
 The milligrams of fat in a sample of hotdogs were measured as 
 $$25.2, \ 21.3,\ 22.8,\ 17.0,\ 29.8,\ 21.0,\ 25.5,\ 16.0,\ 20.9, \ 19.5$$
-Supposing that the fat content is normally distributed, that this is a random sample of hotdogs, and the population standard deviation $\sigma = 5$, calculate a $90/%$ confidence interval for the mean fat content $\mu$.
+Supposing that the fat content is normally distributed, that this is a random sample of hotdogs, and the population standard deviation $\sigma = 5$, calculate a $90\%$ confidence interval for the mean fat content $\mu$.
 :::
 
 _solution_
@@ -161,9 +161,9 @@ $$=[19.3 , 24.5] \text{   (to 3 s.f.)}$$
 
 Warning - there are many incorrect interpretations of confidence intervals, and it is contentious how meaningful such an interval is.
 
-Note that while $\mu$ is unknown, it is a constant rather than a random quantity. We cannot say "with $95/%$ chance $\mu$ will lie inside the interval", because there is no chance associated to a constant quantity. 
+Note that while $\mu$ is unknown, it is a constant rather than a random quantity. We cannot say "with $95\%$ chance $\mu$ will lie inside the interval", because there is no chance associated to a constant quantity. 
 
-The random part of the interval comes from $\overline{X}$, so rather we must say that with repeated samples, and in the long run, approximately $95/%$ of intervals will contain $\mu$. 
+The random part of the interval comes from $\overline{X}$, so rather we must say that with repeated samples, and in the long run, approximately $95\%$ of intervals will contain $\mu$. 
 
 Another misconception is to say that if there were 100 such intervals, exactly 95 would contain the interval, but this is a general error about the interpretation of probability. 
 
@@ -341,8 +341,8 @@ $$s^2 = \frac{1}{10-1}\left(1583098.3-\frac{3978.8^2}{10}\right) =1.484\text{g}$
 
 c) The required interval is:
 
-$$\bar{x} \pm t_{9}(2.5\%)\frac{s}{\sqrt{n}} = 397.88 \pm 2.2622\times \frac{1.484}{\sqrt{10}}$$
-$$(396.8,398.9 ) $$
+$$\bar{x} \pm t_{9}(2.5\%)\frac{s}{\sqrt{n}} = 397.88 \pm 2.2622\times \frac{\sqrt{1.484}}{\sqrt{10}}$$
+$$(397.0,398.8 ) $$
 
 d) As $400$ lies outside the interval, this sample does not support the labelling. 
 
@@ -633,3 +633,130 @@ We used _unbiased estimates_ for the mean and variance
 
 $$=\frac{1}{n-1}\left\{\sum_{i=1}^nx_i^2 - \frac{\left(\sum_{i=1}^n x_i\right)^2}{n} \right\} $$
 - A binomial distribution $\text{Bin}(n,p) \approx \text{N}(np, np(1-p))$.
+
+
+## Exercises week 7
+
+:::{.exercise}
+A random sample of size $25$ is taken from a normal distribution with standard deviation $4$. The sample mean is $85$.
+
+a. Find a 90% confidence interval for the mean of the distribution.
+
+b. Find a 95% confidence interval for the mean of the distribution.
+
+c. Find a 99% confidence interval for the mean of the distribution.
+
+d. Compare the intervals you calculated in a-c.
+:::
+
+
+:::{.exercise}
+A random sample of $20$ lobster traps gave the following results:
+
+| Weights (lb) |
+|:----:|
+| $17.4, \ \ \ \  18.9, \ \ \ \ 39.6, \ \ \ \ 34.4, \ \ \ \  19.6$ |
+| $33.7 , \ \ \ \   37.2, \ \ \ \   43.4, \ \ \ \   41.7, \ \ \ \   27.5$ |
+| $24.1, \ \ \ \  39.6, \ \ \ \  12.2, \ \ \ \  25.5, \ \ \ \  22.1$ |
+| $29.3, \ \ \ \   21.1, \ \ \ \  23.8, \ \ \ \  43.2, \ \ \ \  24.4$ |
+
+a) Construct a $95\%$ confidence interval for the mean weight of a catch.
+
+b) What assumptions are necessary for the interval to be valid, one distributional and one otherwise.
+
+c) Give an example of how these assumptions may not be valid in context.
+
+d) The government have made some policies to reduce over-fishing. Historical records have that the mean catch is $30.31$lb. Is there evidence that the government policy has been effective?
+:::
+
+:::{.exercise}
+Human body temperature can be modelled by a normal distibution with mean $\mu$ and variance $\sigma^2$. Emily, a medical student measured the body temperature of a random sample of $20$ patients in a hospital.
+
+She calculated a $90\%$ confidence interval to be $(35.2,41.8)$. 
+
+Using Emily's sample and interval, calculate a $99\%$ confidence interval.
+:::
+
+:::{.exercise}
+A random sample of size $25$ is taken from a normal population with standard deviation $2.5$.
+The mean of the sample is $17.8$.
+a. Find a $99\%$ C.I. for the population mean $\mu$.
+
+b. What size sample is required to obtain a $99\%$ C.I. of width of at most $1.5$?
+
+c. What confidence level would be associated with the interval based on the above sample of $25$ but of width $1.5$, i.e. $(17.05, 18.55)$?
+:::
+
+
+:::{.exercise}
+The masses (in grams) of $10$ nails selected at random from a bin of $90$ mm long nails were:
+$$9.7, \ \ 10.2, \ \  11.2, \ \  9.4, \ \  11.0, \ \  11.2, \ \  9.8, \ \  9.8, \ \  10.0, \ \  11.3$$
+a. Calculate a 98% confidence interval for the mean mass of the nails in the bin.
+
+b. State one assumption you have made in your calculation.
+:::
+
+:::{.exercise}
+A random sample of the feet of $8$ adult males gave the following summary
+statistics of length $x$ (in cm):
+
+$$\sum x = 224.1 , \ \ \ \ \ \ \sum x^2 = 6337.39 $$
+Assuming that the length of men’s feet is normally distributed, calculate a $99\%$
+confidence interval for the mean length of men’s feet based upon these results.
+:::
+
+:::{.exercise}
+A random sample of $50$ one pound coins were weighed at the Royal Mint. It was found that the weights in grams were summarised by:
+
+$$\sum x = 474.51 , \ \ \ \ \ \ \sum x^2 = 4503.8276 $$
+a) Calculate unbiased estimates for the mean and variance.
+
+b) Find a $t$-distribution value and a $z$-value. Compare these.
+
+c) Calculate a $90\%$ confidence interval for the mean weight of a pound coin.
+
+d) Estimate the size of a random sample required to give an interval of half the width of that calculated in the previous question.
+
+e) It was later found that the scales were consistently underweighing by $0.05$ grams. Which of the results of a), b) and d) will need amending, and which will be the same? Calculate the amended values.
+
+:::
+
+
+:::{.exercise}
+A new variety of small daffodil is grown in the trial ground of a nursery. During the flowering period, a random sample of $10$ flowers was taken and the lengths, in millimetres, of their stalks were measured. The results were as follows:
+$$266, \ \ 254, \ \  215, \ \  220, \ \  253, \ \  230, \ \  216, \ \  248,  \ \ 234, \ \  244$$
+Assuming that the lengths are normally distributed, calculate a $95\%$ confidence interval for the variance of the lengths.
+:::
+
+:::{.exercise}
+ A random sample of $1000$ voters are interviewed, of whom $349$ state they support the Conservative party. Determine an approximate $98\%$ confidence interval for hte proportion of Conservative supporters in the population.
+:::
+
+
+:::{.exercise}
+A market researcher performs a survey in order to determine the popularity of the washing powder brand "SUDZ". He visits every house on a large housing estate in the Manchester area and asks the question "Do you use SUDZ washing powder?". Of $235$ people questioned, $75$ responded in the positive. 
+
+a) Calculate a $95\%$ confidence interval for the proportion of households in the Manchester area that use SUDZ.
+
+b) Comment on the sampling methodology, and how this may impact the validity of the interval.
+
+c) Comment on whether the interview question is effective.
+:::
+
+:::{.exercise}
+When a biased cubical die is rolled the probability that a six will be obtained is an unknown constant $p$. The die is rolled $40$ times and the number $X$ of sixes obtained is recorded. The number $Y$ of sixes obtained when the die is rolled a further $60$ times is also recorded. 
+
+a) Show that 
+
+$$T_1 = \frac{3X+2Y}{240} \ \ \ \text{    and  } \ \ \ \ T_2 = \frac{X+Y}{100} $$
+are both unbiased estimators for $p$. 
+(Hint: find $\text{E}(T_1)$ and $\text{E}(T_2)$)
+
+b) Find in terms of $p$ the standard errors of $T_1$ and $T_2$
+
+c) Reflecting on your previous answer, which of these estimators do you consider better?
+:::
+
+
+
+

@@ -143,3 +143,4 @@ exr:unlabeled-div-37
 exr:unlabeled-div-38
 exr:unlabeled-div-39
 exr:unlabeled-div-40
+exercises-week-7
