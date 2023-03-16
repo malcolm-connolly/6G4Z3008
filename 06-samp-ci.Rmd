@@ -680,6 +680,7 @@ Using Emily's sample and interval, calculate a $99\%$ confidence interval.
 :::{.exercise}
 A random sample of size $25$ is taken from a normal population with standard deviation $2.5$.
 The mean of the sample is $17.8$.
+
 a. Find a $99\%$ C.I. for the population mean $\mu$.
 
 b. What size sample is required to obtain a $99\%$ C.I. of width of at most $1.5$?
@@ -729,7 +730,7 @@ Assuming that the lengths are normally distributed, calculate a $95\%$ confidenc
 :::
 
 :::{.exercise}
- A random sample of $1000$ voters are interviewed, of whom $349$ state they support the Conservative party. Determine an approximate $98\%$ confidence interval for hte proportion of Conservative supporters in the population.
+ A random sample of $1000$ voters are interviewed, of whom $349$ state they support the Conservative party. Determine an approximate $98\%$ confidence interval for the proportion of Conservative supporters in the population.
 :::
 
 
