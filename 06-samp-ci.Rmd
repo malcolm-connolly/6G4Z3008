@@ -290,7 +290,7 @@ $$\nu = n-1$$
 :::{.definition}
 Given a random sample of size $n$ from a normally distributed population with unknown population variance a $100(1-\alpha)\%$ confidence interval for the population mean $\mu$ is given by 
 
-$$\left( \bar{x} - t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}\right)$$
+$$\left( \bar{x} - t_{n-1,\alpha /2} \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1,\alpha /2} \frac{s}{\sqrt{n}}\right)$$
 The quantiles of the $t$-distribution need to be obtained from the table in the formula booklet, or from the R function $\texttt{qt()}$.
 :::
 
@@ -311,7 +311,7 @@ Using a calculator gives $\bar{x}=25.5$ and $s^2 = 0.8560$.
 
 The $90\%$ confidence limits for $\bar{x}$ are:
 
-$$\bar{x} \pm t_{5}(5\%)\frac{s}{\sqrt{n}} = 25.5 \pm 2.015\times \frac{0.9252}{\sqrt{6}}$$
+$$\bar{x} \pm t_{5,5\%}\frac{s}{\sqrt{n}} = 25.5 \pm 2.015\times \frac{0.9252}{\sqrt{6}}$$
 
 $$=(24.7,26.3)$$
 
@@ -486,7 +486,7 @@ This will all be a lot cleaner with the theory of moment generating functions an
 :::{.definition}
 If $x_1,\ldots,x_n$ is a random sample of observations from a normal distribution with mean $\mu$ and variance $\sigma^2$, both of which unknown. Then a confidence interval for the variance is given by 
 
-$$\left[ \frac{(n-1)s^2}{\chi^2_{n-1}(\alpha / 2)},\frac{(n-1)s^2}{\chi^2_{n-1}(1-\alpha / 2)}\right]$$
+$$\left[ \frac{(n-1)s^2}{\chi^2_{n-1,\alpha / 2}},\frac{(n-1)s^2}{\chi^2_{n-1,1-\alpha / 2}}\right]$$
 :::
 
 _proof_
@@ -614,10 +614,10 @@ A confidence interval can be constructed from a sample or summary statistics. Th
 $$\left( \bar{x}-z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}},\bar{x}+z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} \right) $$
 
 2) confidence interval for the mean with variance _unknown_.
-$$\left( \bar{x} - t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}\right)  $$
+$$\left( \bar{x} - t_{n-1,\alpha /2} \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1,\alpha /2} \frac{s}{\sqrt{n}}\right)  $$
 
 3) confidence interval for an unknown variance.
-$$\left( \frac{(n-1)s^2}{\chi^2_{n-1}(\alpha / 2)} \ , \ \frac{(n-1)s^2}{\chi^2_{n-1}(1-\alpha / 2)}\right) $$
+$$\left( \frac{(n-1)s^2}{\chi^2_{n-1,\alpha / 2}} \ , \ \frac{(n-1)s^2}{\chi^2_{n-1,1-\alpha / 2}}\right) $$
 
 You can take the square root endpoints for standard deviation.
 

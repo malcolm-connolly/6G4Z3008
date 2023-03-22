@@ -1,0 +1,577 @@
+# Hypothesis testing
+
+This week we will introduce the main method of statistical inference - the hypothesis test. We will formulate hypothesis tests, interpret and report the results of hypothesis tests for a mean, variance and proportion. 
+
+We will also understand how to test comparisons between population parameters.
+
+## One sample tests
+
+The operation of a hypothesis tests can be summarised in the following steps:
+
+1) Summarise competing ideas about population parameters in terms of two hypotheses, called ***null*** and ***alternative*** hypotheses. The null hypothesis represents your default position, and the alternative is what you wish to test.
+
+2) Choose a suitable test statistic, which assuming the null hypothesis should have a known distribution. Calculate the value of this test statistic, comparing it to a critical value of the known distribution. Or calculate the probability of the test statistic at least as extreme as that observed in the sample (p-value).
+
+3) On the basis of this probability, decide whether there is evidence to reject the null hypothesis. 
+
+Because of step (2) the conclusion of a hypothesis test is never $100\%$ true. Statistical inference does not involve black and white absolute truths, but is rather more subtle.
+
+### test for mean (known variance)
+
+In this section we will test hypotheses about the population mean $\mu$ of a normal distribution. 
+
+How we implement the test depends on the hypotheses that we are testing.
+
+:::{.example}
+Each year trainees throughout the country sit a test. Over a period of time it has been established that the number of marks can be modelled by a normal distribution with mean $70$ and standard deviation $6$ marks.
+
+This year it was thought that trainees from Greater Manchester performed better than expected.
+
+A random sample of $25$ trainees from Manchester had an average mark of $\bar{x}=73.2$.
+
+Does this provide evidence, at the $5\%$ significance level, that the trainees from Greater Manchester did better than the national average?
+:::
+
+_solution_
+
+1. _State your hypotheses_
+
+$$\text{H}_0: \ \mu = 70 \\  \text{H}_A: \ \mu > 70$$
+
+2. _Choose test statistic_
+
+Here the statistic is $\bar{X}$ and recall $\bar{X}\sim\text{N}(\mu,6^2/25)$. Assuming $\text{H}_{0}$, then $\mu=70$. So we have the distribution: $$\bar{X}\sim\text{N}(70,1.44)$$
+
+We calculate the standardised value of the observed sample mean 
+
+$$\frac{\bar{x} - 70}{\sigma /\sqrt{ n}}=\frac{73.2 - 70}{1.2} = 2.67$$
+And compare this to the $z$-value with $5\%$ in the upper tail, which you can find in the inverse normal tables. (Why the upper tail? Because $H_{A}$ has a $>$ in). See picture below.
+
+```{r crit1, fig.align="center",out.width = "75%", fig.cap="critical region", echo=FALSE}
+knitr::include_graphics("./figures/criticalregion.jpg")
+```
+
+3. _Decision_ 
+Now $2.6667 > 1.6449$, this value of the sample mean is in the critical region. The interpretation is that a value as extreme as this or worse is sufficiently unlikely ($<5\%$), so we are able to reject $\text{H}_{0}$.
+
+
+It is important that the sample is random, as otherwise this invalidates the conclusion. For example if these $25$ were particularly high attainers, then it would not be representative of the distribution, and $\bar{x}$ may have been smaller in a representative sample.
+
+In the example above we compare positive values, and the critical region is in the left tail of the distribution. 
+
+:::{.definition}
+We say a hypothesis test is ***left-tailed*** if it is of the form: 
+$$\text{H}_A: \ \mu > \mu_0$$
+A hypothesis is ***right-tailed*** if it is of the form:
+
+$$\text{H}_A: \ \mu < \mu_0$$
+
+And ***two-tailed*** if it is of the form:
+$$\text{H}_A: \ \mu \neq \mu_0$$
+:::
+
+This is a table for the decision process
+
+| $\text{H}_{A}$ | Reject $H_{0}$ if |
+|:--------------:|:-----------------:|
+| $H_{A}: \mu > \mu_0$ | $Z>z_{\alpha}$ |
+| $H_{A}: \mu > \mu_0$ | $Z<-z_{\alpha}$ |
+| $H_{A}: \mu \neq \mu_0$ | $|Z|>z_{\frac{1}{2}\alpha}$ |
+
+
+:::{.example}
+In the testing example suppose the sample mean had been $\bar{x}=69.5$, and we wished to test at the $5\%$ level if the mean is different from $70$. That is:
+
+$$\text{H}_0: \ \mu = 70 \\  \text{H}_A: \ \mu \neq 70$$
+_solution_
+
+
+We calculate the test statistic as before:
+
+$$\frac{\bar{x}-\mu_0}{\sigma / \sqrt{n}} =\frac{69.5-70}{1.2}=-0.4167  $$
+The alternative hypothesis $\neq$ includes left $>$ and right $<$ tails. Now $5\%$ is in both tails, so $5\% / 2 =2.5\%$ in either tail. 
+
+Using tables we find that $z_{2.5\%} = 1.960$. We would reject if the test statistic were greater than $1.96$ or if the test statistic were smaller than $-1.96$. Equivalently we would reject $\text{H}_0$ if the modulus exceeds 1.96, that is $$|\text{ test statistic}|>1.96.$$
+
+Here 
+$$|-0.4167| = 0.4167 \ngtr 1.96,$$
+so there is insufficient evidence to reject $text{H}_0$.
+:::
+
+Recall the interpretation of this conclusion is never definitive. We never accept the null hypothesis, but rather fail to reject it. It may be that with further data we pass the threshold of the critical value and are able to reject the null hypothesis. 
+
+A two-sided alternative hypothesis is similar to a confidence interval.
+
+If a confidence interval with confidence level $c\%$ excludes the population value of interest, then the null hypothesis that teh population parameter takes this value will be rejected at the $100(1-c)\%$ level. 
+
+:::{.example}
+Suppose a $95\%$ confidence interval for the mean $\mu$ is $(83.0,85.1)$, then the null hypothesis that $\mu=85.2$ will be rejected at the $5\%$ level since the interval excludes $85.2$. Indeed any hypothesised value outside the interval will be rejected at the $5\%$ level.
+:::
+
+### test for mean (unknown variance)
+
+When the population variance ($\sigma^2$), or equivalently the population standard deviation $\sigma$, is _unknown_ we must estimate it from the sample.
+
+For small samples the distribution of the test statistic follows a $t$-distribution. 
+
+If the null hypothesis is given by $\text{H}_0: \mu = \mu_0$, the test statistic is given by
+
+$$T = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}\sim t_{n-1}$$
+The decision rules are essentially the same but with $z_\alpha$ and $z_{\alpha/2}$ replaced by the same quantiles of the t-distribution $t_{n-1,\alpha}$ and $t_{n-1,\alpha}$, respectively. Further $\sigma$ is estimated by $s$.
+
+
+| $\text{H}_{A}$ | Reject $H_{0}$ if |
+|:--------------:|:-----------------:|
+| $H_{A}: \mu > \mu_0$ | $T>t_{\alpha}$ |
+| $H_{A}: \mu > \mu_0$ | $T<-t_{\alpha}$ |
+| $H_{A}: \mu \neq \mu_0$ | $|T|>t_{\frac{1}{2}\alpha}$ |
+
+
+Where  $t_{\alpha}$ and  $t_{\alpha/2}$ are obtained from $t$-tables with degrees of freedom $\nu = n-1$, and the sample variance is given by, for example,
+
+$$s^2 =\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})^2.$$
+
+
+:::{.example}
+A shopkeeper sells jars of jam. The weights of the jars of jam are normally distributed with a mean of $150$g. A customer complains that the mean weight of a pack of$8$ jars she had bought was only $147$g. An estimate for the standard deviation of the weights of the $8$ jars of jam calculated from the $8$ observations was $2$g.
+
+a) Test at the $5\%$ significance level whether $147$g is significantly less than the quoted mean.
+
+b) Discuss whether the customer has cause for complaint.
+
+_solution_
+
+a) 
+
+$$H_{0}: \mu = 150 \\ \text{H}_A: \mu<150$$
+
+Significance level $=0.05$, left-tailed test.
+
+Degrees of freedom $\nu = 8-1 = 7$.
+
+From tables $t_{7, \ 5\%} = -1.895$
+
+We reject $H_0$ if the statistic is less than $-1.895$
+
+$$T =\frac{\bar{x}-\mu}{s/\sqrt{n}}=\frac{147-150}{2/\sqrt{8}}=-4.2426 $$
+Now $-4.2426 < -1.895$, the result is significant and $H_0$ is rejected.
+
+b) There is evidence to suggest that the mean weight is less than $150$g, supporting the customer complaint. However one pack is not a random sample, so it could be a bad batch not that all the jars are being under-filled.
+:::
+
+
+The distribution of $T$ is only a $t$-distribution when we assume a normally distributed population.
+
+If the sample is large and so the degrees of freedom are increased, we still need to estimate and calculate $s$, but often a $z$-value can be used in practice. Strictly speaking a $t$-value should be used in place of a $z$-value whenever $s$ is used in place of $\sigma$ and not just because $n$ is small.
+
+
+### test for variance
+
+If you have a random sample of observations from a normal distribution with mean $\mu$ and standard deviation $\sigma$ where both are unknown, the sample variance is given by (for example) the formula
+
+$$S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})^2$$
+
+Recall it can be shown that 
+
+$$\frac{(n-1)S^2}{\sigma^2}\sim\chi^2_{n-1}$$
+
+To test against the null hypothesis that the variance is some particular value, that is
+$$\text{H}_0: \sigma^2 = \sigma_0^2$$ 
+We can just compare the expression $\frac{(n-1)S^2}{\sigma^2}$, with the hypothesised population variance, to the relevant quantile of some chi-squared distribution. This gives the following decision rules:
+
+| $\text{H}_{A}$ | Reject $H_{0}$ if |
+|:--------------:|:-----------------:|
+| $H_{A}: \sigma^2 > \sigma^2_0$ | $\frac{(n-1)S^2}{\sigma^2}>\chi^2_{\alpha, \ n-1}$ |
+| $H_{A}: \sigma^2 \neq \sigma^2_0$ | $\frac{(n-1)S^2}{\sigma^2}<\chi^2_{1-\frac{1}{2}\alpha, \ n-1}$ or $\frac{(n-1)S^2}{\sigma^2}>\chi^2_{\frac{1}{2}\alpha, \ n-1}$ |
+
+:::{.example}
+A bus company is trying to improve their reliability, and so the consistency  with respect to the schedule is monitored. The company wants the arrival time to have standard deviation $2$ minutes or less. A sample of $10$ arrival times shows a sample variance of $5$. Using a $5\%$ signifiance level, does the data suggest that the variance in arrival times is meeting the company standard?
+
+_solution_
+Our hypotheses are:
+$$\text{H}_0: \sigma^2=4 \ \ \ , \ \ \ \text{H}_A: \sigma^2 >4$$
+The test statistic is:
+$$\frac{(n-1)S^2}{\sigma^2}=\frac{9\times5}{4} = 11.25$$
+Our critical value is 
+$$\chi^2_{\alpha,n-1}=\chi^2_{0.05,9}=16.92$$
+Since $11.25\ngtr16.92$ we have insufficient evidence to reject $\text{H}_0$. Therefore we are unable to conclude that the variance in bus arrival times is not meeting the company standard.
+:::
+
+
+### p-value approach
+
+There are two ways of looking at the comparison involved to reject a null hypothesis, via the critical region or via p-values. The critical region is rather blunt and uninformative - we either reject or do not reject the null. However, the p-value allows us to quantify the weight of evidence against the null hypothesis given by the sample data. For many tests exact p-values can be calculated in R.
+
+:::{.definition}
+A ***p-value*** is the probability of a observing the value of a statistic at least as extreme as that of the particular value of that statistic in the observed sample. 
+
+For example if a sample gives sample mean $\bar{x}=101.3$ then the p-value would be $$p  =\text{P}(\bar{X}\geq101.3)$$.
+:::
+
+We will illustrate an example with a right tailed test.
+
+:::{.example}
+Suppose we want to test the following:
+$$\text{H}_0:\mu = 26.3 \ \ \ , \ \ \ \text{H}_A: \mu >26.3$$
+Where:
+| $n$ | $\bar{x}$| $\sigma$ | $\alpha$|
+|:---:|:--------:|:--------:|:-------:|
+| 10 | 27 | 1.2 | $5\%$ |
+
+a) Perform the test
+
+b) Calculate the p-value
+
+Here we can work out the $z$-value tobe $1.6449$. The statistic is
+
+$$\frac{27 - 26.3}{1.2/\sqrt{10}} = 1.845$$
+And we would reject $\text{H}_0$ as $1.845 > 1.6449$. 
+
+b) 
+
+We know under the null hypothesis that $\bar{X} \sim \text{N}(26.3, 1.2^2/10)$.
+
+The p-value is the probability of observing a particular value at least as extreme as $\bar{x}=27$.
+
+You could use the distribution of $\bar{X}$ directly or the already standardised value above and find $$p = \text{P}(\bar{X} >27) = \text{P}(Z>1.845) = 0.0325 $$
+:::
+
+In the example above the p-value is $0.0325$ and the significance level was $5\%$. The p-value can be compared to the significance level directly to conclude a hypothesis test. If the p-value is lower than the significance level, then we can reject the null hypothesis. 
+
+The statistic is _greater_ than the critical value only when the p-value (tail probability) is _less_ than the significance level. See the following picture:
+
+```{r pval, fig.align="center",out.width = "75%", fig.cap="critical region", echo=FALSE}
+knitr::include_graphics("./figures/p-value.jpg")
+```
+
+For tests involving the t-distribution or the chi-squared distribution, the p-value is in practice obtained via software such as R, and we will see this in labs this week.
+
+Usually the p-value is compared to $5\%$ however, there are standard interpretations of p-values which quantify the evidence against $\text{H}_0$.
+
+| p-value range | interpretation |
+|:-------------:|:--------------:|
+| $p>0.1$ | No evidence against H$_0$, or data consistent with H$_0$ | 
+| $0.05 < p < 0.1$ | Weak evidence against H$_0$ |
+| $0.01 < p < 0.05$ | Some evidence against H$_0$ |
+| $0.001 < p < 0.01$ | Strong evidence against H$_0$ |
+| $0.001 < p < 0.01$ | very strong evidence against H$_0$ |
+
+In formal reports if a significant effect is found, quantify the effect with a confidence interval. Phrasing of conclusions is important, always set in context (without jargon e.g. H$_0$).
+
+### types of error
+
+Any decision relying on imperfect information has to allow for the fact that there is uncertainty so the decision cannot be certain. There are two types of systematic uncertainty that arise from hypothesis testing, or types of error.
+
+:::{.example}
+Suppose a man is in court accused of murder. The decision that the judge or jury come to is separate from the truth of the guilt or innocence of the man.
+
+$$\ \ \ \ \text{H}_0: \text{the man is innocent} \\ \text{H}_1: \text{the man is guilty}$$
+The trial process is like an hypothesis test in which the evidence presented is equivalent to the data. The possible decisions are summarised in the table below:
+
+| | Innocent | Not innocent |
+|:-:|:-:|:-:|
+| Accept innocence |  | x |
+| Reject innocence | x|  |
+
+It would be undesirable to sentence an innocent man, or to find set a guilty man loose.
+:::
+
+:::{.definition} 
+There are two types of error which are systematic to hypotheis testing. 
+
+A ***type I error*** is to reject the null hypothesis when it is, in fact true.
+
+A ***type II error*** is to accept the null hypothesis when it is in fact false.
+
+| | H$_0$ true | H$_0$ false |
+|:-:|:-:|:-:|
+| Accept $H_0$ |  | II |
+| Reject $H_0$ | I|  |
+:::
+
+The probabilities of each type of error are important, we would seek to minimise both if possible.
+
+:::{.definition}
+The ***significance level*** of the test is the probability of type I error.
+$$\text{P}(\text{Type I error}) = \text{P}(\text{H}_0 \text{ rejected} | \text{H}_0 \text{ is true})$$
+If you are given the significance level for example $5\%$, then this is the probability of type I error. However this may not always be stated in a question and you may have to work it out.
+:::
+
+:::{.example}
+A random variable has a normal distribution with mean µ and standard deviation $3$. 
+The null hypothesis $\mu=20$ is to be tested against the alternative hypothesis $\mu>20$ using a random sample of $25$. 
+It is decided that the null hypothesis will be rejected if the sample mean is greater than $21.4$.
+Calculate the probability of making a type I error.
+
+_solution_ 
+
+$$\text{P}(\text{Type I error}) = \text{P}(\text{H}_0 \text{ rejected} | \text{H}_0 \text{ is true})$$
+$$=\text{P}(\bar{X} > 21.4 \ | \ \mu = 20)$$
+This can be obtained, for example by standardising from tables,
+$$=\text{P}\left(\frac{\bar{X}-20}{3/\sqrt{25}}>\frac{21.4-20}{3/\sqrt{25}} \right)$$
+$$=\text{P}(Z>2.33) = 9.9\times 10^{-3} \approx 1\%$$
+:::
+
+:::{.example}
+The weight of jam in a jar, measured in grams, is distributed normally with a mean of $150$g and a standard deviation of $6$g. The production process occasionally leads to a change in the mean weight of jam per jar but the standard deviation remains unaltered. The manager monitors the production process and for every new batch takes a random sample of $25$ jars and weighs their contents to see if there has been any _reduction_ in the mean weight of jam per jar.
+Find the critical values for the test statistic $\bar{X}$, the mean weight of jam in a sample of $25$ jars, using
+
+a) 5% level of significance
+
+b) 1% level of significance
+
+c) Given that the true value of µ for the new batch is in fact 147g. Find the probability of a type II error for each of the above critical regions
+
+_solution_
+a) $z_{5\%} = -1.6449$, so we would reject $H_0$ if
+
+$$\frac{\bar{x}-150}{6/\sqrt{25}}<-1.6449 $$
+Rearranging this inequality gives $\bar{x} < 148.03$
+
+b) $z_{1\%} = -2.326$ , rearranging a similar inequality gives $\bar{x} < 147.208\ldots$ 
+
+c) Here you use the distribution $\bar{X}\sim\text{N}(147, 6^2/\sqrt{25})$. Type II error is where we do not reject $H_0$ so we reverse the inequalities from the regions above and evaluate the probabilities:
+
+$$\text{P}(\bar{x} \geq 148.03 | \ \mu = 147) = 0.195 \approx 20\%$$
+
+$$\text{P}(\bar{x} \geq 147.2 | \ \mu = 147) = 0.4309\ldots \approx 43\%$$
+:::
+
+When we reduce the P(Type I error) from 5% to 1%, P(Type II error) increased from $\approx 20\%$ to $43\%$. So just reducing the probability of one type of error is not a cure-all.
+
+
+<!-- ### test for population proportion -->
+
+## Two sample tests
+
+We may wish to use hypothesis testing to compare two populations. The two populations may be the distributions of heights of males and females separately. Or we may wish to compare average the weights of babies born in one region to another. 
+
+Supposing we have two distributions $X$ and $Y$, we write the population parameters with a subscript to indicate to which distribution they correspond. The basic setup is as follows 
+
+| Parameter | Population 1 | Population 2 |
+|:-:|:-:|:-:|
+| Mean | $\mu_X$ | $\mu_Y$ |
+| Variance | $\sigma^2_X$ | $\sigma^2_Y$ |
+
+The main hypotheses of interest are whether or not the means are different. That is:
+
+$$\text{H}_0: \mu_X = \mu_Y \ \ \ \ \ \ , \ \ \ \ \ \text{H}_A:\mu_X \neq \mu_Y$$
+
+Though one-sided alternatives, or specified differences can also be used. 
+
+We will assume both populations are normally distributed and consider three different situations:
+
+a) The population variances are known
+
+b) The population variances are unknown, but known to be or are assumed to be equal.
+
+c) The population variances are unknown and cannot be assumed to be equal.
+
+### known variance
+
+Assume we have a random sample $x_1,x_2,\ldots,x_{n_1}$ of $n_1$ observations from the first population, and another random sample $y_1,y_2,\ldots, y_{n_2}$ of $n_2$ observations from the second population.
+
+The test statistic here is $\bar{X}-\bar{Y}$.
+
+Recall that the sampling distribution of the mean takes the form:
+$$\bar{X} \sim \text{N}(\mu_X, \sigma^2_X / n_1) \ \ \ \ \ \ , \ \ \ \ \bar{Y} \sim \text{N}(\mu_Y, \sigma^2_Y / n_2)$$
+Then, as the difference of normal distributions is again normal, with linearity of the expectation and variance the sum of the variances we have:
+
+$$\bar{X}-\bar{Y} \sim \text{N}\left(\mu_X-\mu_Y , \frac{\sigma_X^2}{n_1} + \frac{\sigma_Y^2}{n_2}\right)$$
+ The test statistic is the standardised value of this statistic:
+
+$$Z = \frac{\bar{X} - \bar{Y} - (\mu_X-\mu_Y)}{\sqrt{\frac{\sigma_X^2}{n_1} + \frac{\sigma_Y^2}{n_2}}}$$
+$$\sim\text{N}(0,1).$$
+Now under the null hypothesis $\mu_X-\mu_Y = 0$, so this simplifies to:
+
+$$\frac{\bar{X} - \bar{Y}}{\sqrt{\frac{\sigma_X^2}{n_1} + \frac{\sigma_Y^2}{n_2}}}$$
+And we have the same decision rules as before. 
+
+:::{.example}
+The weights of boys and girls of a particular age are known to be normally distributed with standard deviations $5$kg and $8$kg respectively. In a particular school, a random sample of $25$ boys had mean weight $48$kg and a random sample of $30$ girls had mean weight $45$kg. 
+
+
+Test, at the $5\%$ significance level, whether there is evidence that the mean weight of the boys is greater than that of the girls.
+
+_solution_
+
+$$\text{H}_0: \mu_B = \mu_G \ \ \ \ \ \ , \ \ \ \ \ \text{H}_A:\mu_B > \mu_G$$
+
+We have 
+$$\frac{\bar{B}-\bar{G}}{\sqrt{\frac{\sigma_B^2}{n_1} + \frac{\sigma_G^2}{n_2}}}= \frac{48-45}{\sqrt{\frac{5^2}{25}+\frac{8^2}{30}}}= 1.69747\ldots $$
+The critical value is $1.6449$
+Hence here we reject the null hypothesis and conclude there is sufficient evidence to say that the boys weigh more than the girls on average.
+:::
+
+### unknown equal variance
+
+In this section we know or can assume that the variances are equal. We may know outright that the variances are equal, even if they are unknown. For example, if I take a sample of men's heights from Manchester and compare to a sample of men's heights in London. It may be that there are average height differences, but as both are UK adult men they come from the same containing population, can be assumed to be just as variable as each other.
+
+In this case we do not know $\sigma_X^2$ or $\sigma_Y^2$, so we will have to estimate each of these from actual data. We can estimate each by
+
+$$s_x^2 = \frac{1}{n_1}\sum_{i=1}^n(x_i-\bar{x})^2 \ \ \ \ , \ \ \ \ s_y^2 = \frac{1}{n_2}\sum_{j=1}^n(y_j-\bar{y})^2 $$
+
+But now we have two estimates for the unknown population variances $\sigma_x^2, \ \sigma_y^2$. But we know, or can assume,  these are equal to a common population variance $\sigma_x^2=\sigma_y^2=\sigma^2$. The solution to this is to 'pool' the variance using the formula:
+
+$$s_p^2  = \frac{(n_1-1)s_x^2+(n_2-1)s_y^2}{n_1+n_2-2}$$
+The test statistic is then calculated as,
+
+$$T = \frac{\bar{X}-\bar{Y}}{s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} \sim t_{n_1+n_2-2} $$ 
+which follows a t distribution on $n_1+n_2-2$ degrees of freedom. 
+
+
+:::{.example}
+The heights (measured to the nearest centimetre) of a random sample of six policement from a certain force in Wales were found to be 
+$$176, \ 180, \ 179, \ 181, \ 183, \ 179.$$
+The heights of a random sample of $11$ policemen from Scotland gave the following data
+
+$$\sum y =1991  \ \ \ \ , \ \ \ \sum(y-\bar{y})^2 = 54$$
+a) Test at the $5\%$ level the hypothesis that the Welsh policemen are shorter than the Scottish policemen. 
+
+b) What assumptions are necessary for part (a)?
+:::
+
+_solution_
+
+The hypotheses are
+$$\text{H}_0: \mu_{x} = \mu_{y} \ \ \ \ , \ \ \ \text{H}_A: \mu_{x}< \mu_{y}$$
+From the question:
+
+$$\bar{x}=179.66667, \ \ s^2_x =5.46667 $$
+
+$$\bar{y}= 1991/11 = 181, \ \ \ s^2_y = 54/10 = 5.4 $$
+We observe that 5.4 and 5.47 are approximately equal, so it is reasonable to pool these.
+
+$$s^2_p = \frac{(6-1)\times5.46667 +(11-1)\times5.4 }{6+11-2} =5.422\ldots$$
+Giving a pooled standard deviation of $\sqrt{5.422} = 2.329$.
+(you want to work a bit more accurately than the accuracy of the critical value you will be comparing to)
+
+Now evaluating the test statistic:
+
+$$\frac{179.66 - 181}{2.329\sqrt{\frac{1}{6}+\frac{1}{11}}} =  -1.128$$
+We compare this to $t_{15, 0.05} = 1.7531$
+
+Comparison: $|-1.128|\ngtr 1.7531$
+
+There is insufficient evidence based on these samples to conclude that the population of Welsh officers are shorter than the population of Scottish officers.
+
+### testing for equal variance
+
+In this situation we have two sample variances $S^2_x$ and $S^2_y$, and we want to determine by means of a hypothesis test if these are equal or not. Of course the conclusion is not definite, but in practice this informs whether we will pool the variances or not. 
+
+The null hypothesis is that the variances are equal, with the usual alternatives.
+
+$$\text{H}_0: \sigma^2_x = \sigma^2_y\ $$
+
+First a recap. We know that when scaled, sample variances follow a $\chi^2$-distribution. That is,
+
+$$\frac{(n_1-1)S^2_x}{\sigma^2_x}\sim \chi^2_{n_1-1} \ \ \ , \ \ \  \frac{(n_2-1)S^2_y}{\sigma^2_y}\sim \chi^2_{n_2-1}$$
+
+There is another distribution we must define, and this will be the last for the statistical tables.
+
+:::{.definition}
+Let $X\sim \chi^2_n$ and $Y\sim \chi^2_m$ then the following ratio defines an F-distribution with degrees of freedom $n$ and $m$. That is:
+
+$$\frac{\left(\frac{X}{n}\right)}{\left(\frac{Y}{m}\right)}\sim \text{F}_{n,m}$$
+:::
+
+In our situation this tells us that under the null hypothesis we have 
+
+$$\frac{S^2_x}{S^2_y}\sim \text{F}_{n_1 - 1,n_2-1} $$
+:::{.example}
+A manufacturer of wooden furniture stores some of its wood outside and some inside a special
+store. It is believed that the wood stored inside should have less variable hardness properties than that stored outside. Some $25$ pieces of wood stored outside was taken and compared to $21$ similar pieces taken from the inside store, with the following results:
+
+| Value | Outside | Inside |
+|:------:|:------:|:-------:|
+| sample size | 25 | 21 |
+| Mean hardness | 110 | 122 |
+| $\sum(x-\bar{x})^2$ | 5190 | 3972 | 
+
+
+a) Test at the $5\%$ significance level whether the manufacturer's belief is correct.
+
+b) State two assumptions necessary to carry out this test.
+
+_solution_
+
+a) We wish to test
+
+$$\text{H}_0: \sigma^2_x=\sigma^2_y \ \ \ , \ \ \ \text{H}_A: \sigma^2_x>\sigma^2_y$$
+Working out the sample variances gives
+
+$$s^2_x = \frac{5190}{25}=216.25, \ \ \ s^2_y = \frac{3972}{20} = 198.6$$
+The test statistic is then
+
+$$216.25/198.6 = 1.089,$$
+which we compare to $\text{F}_{24,20} = 2.08$.
+
+Now, $1.089 < 2.08$ so there is insufficient evidence to reject $\text{H}_0$. So the wood from outside is just as variable as the wood inside. 
+
+b) The assumption is that both populations are normal, and that the samples are independent and random.
+:::
+
+### unknown unequal variances (non-examinable)
+
+If we want to carry out a $2$ sample $t$-test without assuming equal population variances we can use $$T = \frac{\bar{X} - \bar{Y}}{\sqrt{\frac{S_X^2}{n_1} + \frac{S_Y^2}{n_2}}}$$
+
+However the distribution of this quantity is in general not of a convenient closed-form (analytic). As such it is actually a famous an unsolved problem generally, called the Behrens–Fisher problem. However it is approximately a $t_\nu$-distribution with degrees of freedom $\nu$ given by the integer part of the following expression. 
+
+$$\frac{\left[\frac{S^2_x}{n_1}+\frac{S^2_y}{n_2} \right]^2}{\frac{1}{(n_1-1)}\left[\frac{S_x^2}{n_1}\right]^2+\frac{1}{(n_2-1)}\left[\frac{S_y^2}{n_2}\right]^2} $$
+
+The above expression is known as the Welch approximation. 
+
+:::{.example}
+A market inspector randomly samples the produce on two market stalls. A sample of $80$ apples from Rufus Russett's stall had masses (in grams) having sample mean $74.2$ and sample variance $43.23$. 
+An independent random sample of $100$ apples sold my Granny Smith had a sample mean of $68.6$ and a sample variance of $43.34$.
+
+Test at the $5\%$ significance level if there is evidence that the apples on Smith's stall have a lower average mass than Russett's stall.
+:::
+
+_solution_
+
+We are testing
+$$\text{H}_0: \mu_x = \mu_y \ \ \ , \ \ \text{H}_A:\mu_x>\mu_y$$
+The test statistic is
+
+$$ \frac{74.2 - 68.8}{\sqrt{\frac{24.21}{80}+\frac{43.23}{100}}} = 6.299$$
+We want to compare this to $t_\nu$. Let's evaluate the degrees of freedom here:
+
+$$\frac{\left[\frac{24.21}{80}+\frac{43.23}{100} \right]^2}{\frac{1}{79}\left[\frac{24.21}{80}\right]^2+\frac{1}{99}\left[\frac{43.23}{100}\right]^2} = 177.26 $$
+The integer value of this is $177$, so we would check the critical value of a $t_177$ distribution. 
+
+However $177$ is a large number of degrees of freedom, so we use $t_{\infty}=1.6448$ or  $z$-value essentially, and the null is overwhelmingly rejected, as $6.299 >1.6448$.
+
+
+### Summary
+
+- A hypothesis test is a decision process about population parameters. 
+
+One sample tests we have learned about include:
+
+- one sample $z$-test for the mean, known variance
+$$ \frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}\sim \text{N}(0,1) $$
+
+- one sample $t$-test, for the mean, unknown variance
+$$T = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}\sim t_{n-1}$$
+
+- one sample test for variance
+
+$$\frac{(n-1)S^2}{\sigma^2}\sim\chi^2_{n-1} $$
+
+There are two types of systematic errors that occur when we test hypotheses, we typically limit the _type I_ error by setting the significance level. 
+
+We can compare two independent samples with:
+
+- two sample $z$-test (known variances)
+
+$$\frac{\bar{X} - \bar{Y}}{\sqrt{\frac{\sigma_X^2}{n_1} + \frac{\sigma_Y^2}{n_2}}}\sim \text{N}(0,1)$$
+
+- two sample $t$-test (unknown equal variances) require pooled variance estimate:
+
+$$T = \frac{\bar{X}-\bar{Y}}{s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} \sim t_{n_1+n_2-2}$$
+$$s_p = \frac{(n_1-1)s_x^2+(n_2-1)s_y^2}{n_1+n_2-2}$$
+
+We can often assume the variances are equal. There is also a test for equality of variances.
+
+<!-- ### Tutorial exercises week 8 -->

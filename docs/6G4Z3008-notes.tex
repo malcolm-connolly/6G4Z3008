@@ -209,8 +209,8 @@ In this course we will learn some R programming. R is a free open-source softwar
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "Tails" "Tails" "Tails" "Tails" "Heads" "Tails" "Heads" "Heads" "Tails"
-## [10] "Heads"
+##  [1] "Tails" "Tails" "Heads" "Heads" "Heads" "Tails" "Tails" "Tails" "Tails"
+## [10] "Tails"
 \end{verbatim}
 
 \begin{definition}
@@ -5581,8 +5581,7 @@ The denominator is positive so this is equivalent to:
 \begin{example}
 The milligrams of fat in a sample of hotdogs were measured as
 \[25.2, \ 21.3,\ 22.8,\ 17.0,\ 29.8,\ 21.0,\ 25.5,\ 16.0,\ 20.9, \ 19.5\]
-Supposing that the fat content is normally distributed, that this is a random sample of hotdogs, and the population standard deviation \(\sigma = 5\), calculate a \(90/%
-\) confidence interval for the mean fat content \(\mu\).
+Supposing that the fat content is normally distributed, that this is a random sample of hotdogs, and the population standard deviation \(\sigma = 5\), calculate a \(90\%\) confidence interval for the mean fat content \(\mu\).
 \end{example}
 
 \emph{solution}
@@ -5598,11 +5597,9 @@ Then,
 
 Warning - there are many incorrect interpretations of confidence intervals, and it is contentious how meaningful such an interval is.
 
-Note that while \(\mu\) is unknown, it is a constant rather than a random quantity. We cannot say ``with \(95/%
-\) chance \(\mu\) will lie inside the interval'', because there is no chance associated to a constant quantity.
+Note that while \(\mu\) is unknown, it is a constant rather than a random quantity. We cannot say ``with \(95\%\) chance \(\mu\) will lie inside the interval'', because there is no chance associated to a constant quantity.
 
-The random part of the interval comes from \(\overline{X}\), so rather we must say that with repeated samples, and in the long run, approximately \(95/%
-\) of intervals will contain \(\mu\).
+The random part of the interval comes from \(\overline{X}\), so rather we must say that with repeated samples, and in the long run, approximately \(95\%\) of intervals will contain \(\mu\).
 
 Another misconception is to say that if there were 100 such intervals, exactly 95 would contain the interval, but this is a general error about the interpretation of probability.
 
@@ -5747,7 +5744,7 @@ For the \(t\)-distribution, the number of \textbf{\emph{degrees of freedom}} \(\
 \begin{definition}
 Given a random sample of size \(n\) from a normally distributed population with unknown population variance a \(100(1-\alpha)\%\) confidence interval for the population mean \(\mu\) is given by
 
-\[\left( \bar{x} - t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}\right)\]
+\[\left( \bar{x} - t_{n-1,\alpha /2} \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1,\alpha /2} \frac{s}{\sqrt{n}}\right)\]
 The quantiles of the \(t\)-distribution need to be obtained from the table in the formula booklet, or from the R function \(\texttt{qt()}\).
 \end{definition}
 
@@ -5773,7 +5770,7 @@ Using a calculator gives \(\bar{x}=25.5\) and \(s^2 = 0.8560\).
 
 The \(90\%\) confidence limits for \(\bar{x}\) are:
 
-\[\bar{x} \pm t_{5}(5\%)\frac{s}{\sqrt{n}} = 25.5 \pm 2.015\times \frac{0.9252}{\sqrt{6}}\]
+\[\bar{x} \pm t_{5,5\%}\frac{s}{\sqrt{n}} = 25.5 \pm 2.015\times \frac{0.9252}{\sqrt{6}}\]
 
 \[=(24.7,26.3)\]
 
@@ -5811,8 +5808,8 @@ The masses in grams of ten packets of biscuits of a particular brand were weighe
   The required interval is:
 \end{enumerate}
 
-\[\bar{x} \pm t_{9}(2.5\%)\frac{s}{\sqrt{n}} = 397.88 \pm 2.2622\times \frac{1.484}{\sqrt{10}}\]
-\[(396.8,398.9 ) \]
+\[\bar{x} \pm t_{9}(2.5\%)\frac{s}{\sqrt{n}} = 397.88 \pm 2.2622\times \frac{\sqrt{1.484}}{\sqrt{10}}\]
+\[(397.0,398.8 ) \]
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
@@ -5960,7 +5957,7 @@ This will all be a lot cleaner with the theory of moment generating functions an
 \begin{definition}
 If \(x_1,\ldots,x_n\) is a random sample of observations from a normal distribution with mean \(\mu\) and variance \(\sigma^2\), both of which unknown. Then a confidence interval for the variance is given by
 
-\[\left[ \frac{(n-1)s^2}{\chi^2_{n-1}(\alpha / 2)},\frac{(n-1)s^2}{\chi^2_{n-1}(1-\alpha / 2)}\right]\]
+\[\left[ \frac{(n-1)s^2}{\chi^2_{n-1,\alpha / 2}},\frac{(n-1)s^2}{\chi^2_{n-1,1-\alpha / 2}}\right]\]
 \end{definition}
 
 \emph{proof}
@@ -5989,8 +5986,12 @@ Calculating the endpoints gives,
 
 and,
 
-\[\frac{(n-1)s^2}{\chi^2_{n-1}(0.025)}= \frac{7\times 14.2679}{16.013} = 6.2371\ldots\]
-\#\# Interval for a proportion
+\[\frac{(n-1)s^2}{\chi^2_{n-1}(0.025)}= \frac{7\times 14.2679}{1.690} = 59.097\ldots\]
+\[(6.24,59.1)\]
+To get an interval for the standard deviation we may take the square root of the end points.
+
+\hypertarget{interval-for-a-proportion}{%
+\section{Interval for a proportion}\label{interval-for-a-proportion}}
 
 We will derive an approximate confidence interval for an unknown population proportion \(\pi\) based on using a suitable normal distribution.
 
@@ -6090,10 +6091,10 @@ A confidence interval can be constructed from a sample or summary statistics. Th
   \[\left( \bar{x}-z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}},\bar{x}+z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} \right) \]
 \item
   confidence interval for the mean with variance \emph{unknown}.
-  \[\left( \bar{x} - t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1}(\alpha /2) \frac{s}{\sqrt{n}}\right)  \]
+  \[\left( \bar{x} - t_{n-1,\alpha /2} \frac{s}{\sqrt{n}}, \bar{x} + t_{n-1,\alpha /2} \frac{s}{\sqrt{n}}\right)  \]
 \item
   confidence interval for an unknown variance.
-  \[\left( \frac{(n-1)s^2}{\chi^2_{n-1}(\alpha / 2)} \ , \ \frac{(n-1)s^2}{\chi^2_{n-1}(1-\alpha / 2)}\right) \]
+  \[\left( \frac{(n-1)s^2}{\chi^2_{n-1,\alpha / 2}} \ , \ \frac{(n-1)s^2}{\chi^2_{n-1,1-\alpha / 2}}\right) \]
 \end{enumerate}
 
 You can take the square root endpoints for standard deviation.
@@ -6120,6 +6121,913 @@ We used \emph{unbiased estimates} for the mean and variance
 
 \[=\frac{1}{n-1}\left\{\sum_{i=1}^nx_i^2 - \frac{\left(\sum_{i=1}^n x_i\right)^2}{n} \right\} \]
 - A binomial distribution \(\text{Bin}(n,p) \approx \text{N}(np, np(1-p))\).
+
+\hypertarget{exercises-week-7}{%
+\section{Exercises week 7}\label{exercises-week-7}}
+
+\begin{exercise}
+
+A random sample of size \(25\) is taken from a normal distribution with standard deviation \(4\). The sample mean is \(85\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  Find a 90\% confidence interval for the mean of the distribution.
+\item
+  Find a 95\% confidence interval for the mean of the distribution.
+\item
+  Find a 99\% confidence interval for the mean of the distribution.
+\item
+  Compare the intervals you calculated in a-c.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+A random sample of \(20\) lobster traps gave the following results:
+
+\begin{longtable}[]{@{}c@{}}
+\toprule
+Weights (lb)\tabularnewline
+\midrule
+\endhead
+\(17.4, \ \ \ \  18.9, \ \ \ \ 39.6, \ \ \ \ 34.4, \ \ \ \  19.6\)\tabularnewline
+\(33.7 , \ \ \ \  37.2, \ \ \ \  43.4, \ \ \ \  41.7, \ \ \ \  27.5\)\tabularnewline
+\(24.1, \ \ \ \  39.6, \ \ \ \  12.2, \ \ \ \  25.5, \ \ \ \  22.1\)\tabularnewline
+\(29.3, \ \ \ \  21.1, \ \ \ \  23.8, \ \ \ \  43.2, \ \ \ \  24.4\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Construct a \(95\%\) confidence interval for the mean weight of a catch.
+\item
+  What assumptions are necessary for the interval to be valid, one distributional and one otherwise.
+\item
+  Give an example of how these assumptions may not be valid in context.
+\item
+  The government have made some policies to reduce over-fishing. Historical records have that the mean catch is \(30.31\)lb. Is there evidence that the government policy has been effective?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+Human body temperature can be modelled by a normal distibution with mean \(\mu\) and variance \(\sigma^2\). Emily, a medical student measured the body temperature of a random sample of \(20\) patients in a hospital.
+
+She calculated a \(90\%\) confidence interval to be \((35.2,41.8)\).
+
+Using Emily's sample and interval, calculate a \(99\%\) confidence interval.
+\end{exercise}
+
+\begin{exercise}
+
+A random sample of size \(25\) is taken from a normal population with standard deviation \(2.5\).
+The mean of the sample is \(17.8\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  Find a \(99\%\) C.I. for the population mean \(\mu\).
+\item
+  What size sample is required to obtain a \(99\%\) C.I. of width of at most \(1.5\)?
+\item
+  What confidence level would be associated with the interval based on the above sample of \(25\) but of width \(1.5\), i.e.~\((17.05, 18.55)\)?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+The masses (in grams) of \(10\) nails selected at random from a bin of \(90\) mm long nails were:
+\[9.7, \ \ 10.2, \ \  11.2, \ \  9.4, \ \  11.0, \ \  11.2, \ \  9.8, \ \  9.8, \ \  10.0, \ \  11.3\]
+a. Calculate a 98\% confidence interval for the mean mass of the nails in the bin.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  State one assumption you have made in your calculation.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+A random sample of the feet of \(8\) adult males gave the following summary
+statistics of length \(x\) (in cm):
+
+\[\sum x = 224.1 , \ \ \ \ \ \ \sum x^2 = 6337.39 \]
+Assuming that the length of men's feet is normally distributed, calculate a \(99\%\)
+confidence interval for the mean length of men's feet based upon these results.
+\end{exercise}
+
+\begin{exercise}
+
+A random sample of \(50\) one pound coins were weighed at the Royal Mint. It was found that the weights in grams were summarised by:
+
+\[\sum x = 474.51 , \ \ \ \ \ \ \sum x^2 = 4503.8276 \]
+a) Calculate unbiased estimates for the mean and variance.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\item
+  Find a \(t\)-distribution value and a \(z\)-value. Compare these.
+\item
+  Calculate a \(90\%\) confidence interval for the mean weight of a pound coin.
+\item
+  Estimate the size of a random sample required to give an interval of half the width of that calculated in the previous question.
+\item
+  It was later found that the scales were consistently underweighing by \(0.05\) grams. Which of the results of a), b) and d) will need amending, and which will be the same? Calculate the amended values.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+A new variety of small daffodil is grown in the trial ground of a nursery. During the flowering period, a random sample of \(10\) flowers was taken and the lengths, in millimetres, of their stalks were measured. The results were as follows:
+\[266, \ \ 254, \ \  215, \ \  220, \ \  253, \ \  230, \ \  216, \ \  248,  \ \ 234, \ \  244\]
+Assuming that the lengths are normally distributed, calculate a \(95\%\) confidence interval for the variance of the lengths.
+\end{exercise}
+
+\begin{exercise}
+A random sample of \(1000\) voters are interviewed, of whom \(349\) state they support the Conservative party. Determine an approximate \(98\%\) confidence interval for the proportion of Conservative supporters in the population.
+\end{exercise}
+
+\begin{exercise}
+
+A market researcher performs a survey in order to determine the popularity of the washing powder brand ``SUDZ''. He visits every house on a large housing estate in the Manchester area and asks the question ``Do you use SUDZ washing powder?''. Of \(235\) people questioned, \(75\) responded in the positive.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Calculate a \(95\%\) confidence interval for the proportion of households in the Manchester area that use SUDZ.
+\item
+  Comment on the sampling methodology, and how this may impact the validity of the interval.
+\item
+  Comment on whether the interview question is effective.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+When a biased cubical die is rolled the probability that a six will be obtained is an unknown constant \(p\). The die is rolled \(40\) times and the number \(X\) of sixes obtained is recorded. The number \(Y\) of sixes obtained when the die is rolled a further \(60\) times is also recorded.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Show that
+\end{enumerate}
+
+\[T_1 = \frac{3X+2Y}{240} \ \ \ \text{    and  } \ \ \ \ T_2 = \frac{X+Y}{100} \]
+are both unbiased estimators for \(p\).
+(Hint: find \(\text{E}(T_1)\) and \(\text{E}(T_2)\))
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\item
+  Find in terms of \(p\) the standard errors of \(T_1\) and \(T_2\)
+\item
+  Reflecting on your previous answer, which of these estimators do you consider better?
+\end{enumerate}
+
+\end{exercise}
+
+\hypertarget{hypothesis-testing}{%
+\chapter{Hypothesis testing}\label{hypothesis-testing}}
+
+This week we will introduce the main method of statistical inference - the hypothesis test. We will formulate hypothesis tests, interpret and report the results of hypothesis tests for a mean, variance and proportion.
+
+We will also understand how to test comparisons between population parameters.
+
+\hypertarget{one-sample-tests}{%
+\section{One sample tests}\label{one-sample-tests}}
+
+The operation of a hypothesis tests can be summarised in the following steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Summarise competing ideas about population parameters in terms of two hypotheses, called \textbf{\emph{null}} and \textbf{\emph{alternative}} hypotheses. The null hypothesis represents your default position, and the alternative is what you wish to test.
+\item
+  Choose a suitable test statistic, which assuming the null hypothesis should have a known distribution. Calculate the value of this test statistic, comparing it to a critical value of the known distribution. Or calculate the probability of the test statistic at least as extreme as that observed in the sample (p-value).
+\item
+  On the basis of this probability, decide whether there is evidence to reject the null hypothesis.
+\end{enumerate}
+
+Because of step (2) the conclusion of a hypothesis test is never \(100\%\) true. Statistical inference does not involve black and white absolute truths, but is rather more subtle.
+
+\hypertarget{test-for-mean-known-variance}{%
+\subsection{test for mean (known variance)}\label{test-for-mean-known-variance}}
+
+In this section we will test hypotheses about the population mean \(\mu\) of a normal distribution.
+
+How we implement the test depends on the hypotheses that we are testing.
+
+\begin{example}
+Each year trainees throughout the country sit a test. Over a period of time it has been established that the number of marks can be modelled by a normal distribution with mean \(70\) and standard deviation \(6\) marks.
+
+This year it was thought that trainees from Greater Manchester performed better than expected.
+
+A random sample of \(25\) trainees from Manchester had an average mark of \(\bar{x}=73.2\).
+
+Does this provide evidence, at the \(5\%\) significance level, that the trainees from Greater Manchester did better than the national average?
+\end{example}
+
+\emph{solution}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{State your hypotheses}
+\end{enumerate}
+
+\[\text{H}_0: \ \mu = 70 \\  \text{H}_A: \ \mu > 70\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \emph{Choose test statistic}
+\end{enumerate}
+
+Here the statistic is \(\bar{X}\) and recall \(\bar{X}\sim\text{N}(\mu,6^2/25)\). Assuming \(\text{H}_{0}\), then \(\mu=70\). So we have the distribution: \[\bar{X}\sim\text{N}(70,1.44)\]
+
+We calculate the standardised value of the observed sample mean
+
+\[\frac{\bar{x} - 70}{\sigma /\sqrt{ n}}=\frac{73.2 - 70}{1.2} = 2.67\]
+And compare this to the \(z\)-value with \(5\%\) in the upper tail, which you can find in the inverse normal tables. (Why the upper tail? Because \(H_{A}\) has a \(>\) in). See picture below.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/criticalregion} 
+
+}
+
+\caption{critical region}\label{fig:crit1}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \emph{Decision}
+  Now \(2.6667 > 1.6449\), this value of the sample mean is in the critical region. The interpretation is that a value as extreme as this or worse is sufficiently unlikely (\(<5\%\)), so we are able to reject \(\text{H}_{0}\).
+\end{enumerate}
+
+It is important that the sample is random, as otherwise this invalidates the conclusion. For example if these \(25\) were particularly high attainers, then it would not be representative of the distribution, and \(\bar{x}\) may have been smaller in a representative sample.
+
+In the example above we compare positive values, and the critical region is in the left tail of the distribution.
+
+\begin{definition}
+We say a hypothesis test is \textbf{\emph{left-tailed}} if it is of the form:
+\[\text{H}_A: \ \mu > \mu_0\]
+A hypothesis is \textbf{\emph{right-tailed}} if it is of the form:
+
+\[\text{H}_A: \ \mu < \mu_0\]
+
+And \textbf{\emph{two-tailed}} if it is of the form:
+\[\text{H}_A: \ \mu \neq \mu_0\]
+\end{definition}
+
+This is a table for the decision process
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\(\text{H}_{A}\) & Reject \(H_{0}\) if\tabularnewline
+\midrule
+\endhead
+\(H_{A}: \mu > \mu_0\) & \(Z>z_{\alpha}\)\tabularnewline
+\(H_{A}: \mu > \mu_0\) & \(Z<-z_{\alpha}\)\tabularnewline
+\(H_{A}: \mu \neq \mu_0\) & \(|Z|>z_{\frac{1}{2}\alpha}\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{example}
+In the testing example suppose the sample mean had been \(\bar{x}=69.5\), and we wished to test at the \(5\%\) level if the mean is different from \(70\). That is:
+
+\[\text{H}_0: \ \mu = 70 \\  \text{H}_A: \ \mu \neq 70\]
+\emph{solution}
+
+We calculate the test statistic as before:
+
+\[\frac{\bar{x}-\mu_0}{\sigma / \sqrt{n}} =\frac{69.5-70}{1.2}=-0.4167  \]
+The alternative hypothesis \(\neq\) includes left \(>\) and right \(<\) tails. Now \(5\%\) is in both tails, so \(5\% / 2 =2.5\%\) in either tail.
+
+Using tables we find that \(z_{2.5\%} = 1.960\). We would reject if the test statistic were greater than \(1.96\) or if the test statistic were smaller than \(-1.96\). Equivalently we would reject \(\text{H}_0\) if the modulus exceeds 1.96, that is \[|\text{ test statistic}|>1.96.\]
+
+Here
+\[|-0.4167| = 0.4167 \ngtr 1.96,\]
+so there is insufficient evidence to reject \(text{H}_0\).
+\end{example}
+
+Recall the interpretation of this conclusion is never definitive. We never accept the null hypothesis, but rather fail to reject it. It may be that with further data we pass the threshold of the critical value and are able to reject the null hypothesis.
+
+A two-sided alternative hypothesis is similar to a confidence interval.
+
+If a confidence interval with confidence level \(c\%\) excludes the population value of interest, then the null hypothesis that teh population parameter takes this value will be rejected at the \(100(1-c)\%\) level.
+
+\begin{example}
+Suppose a \(95\%\) confidence interval for the mean \(\mu\) is \((83.0,85.1)\), then the null hypothesis that \(\mu=85.2\) will be rejected at the \(5\%\) level since the interval excludes \(85.2\). Indeed any hypothesised value outside the interval will be rejected at the \(5\%\) level.
+\end{example}
+
+\hypertarget{test-for-mean-unknown-variance}{%
+\subsection{test for mean (unknown variance)}\label{test-for-mean-unknown-variance}}
+
+When the population variance (\(\sigma^2\)), or equivalently the population standard deviation \(\sigma\), is \emph{unknown} we must estimate it from the sample.
+
+For small samples the distribution of the test statistic follows a \(t\)-distribution.
+
+If the null hypothesis is given by \(\text{H}_0: \mu = \mu_0\), the test statistic is given by
+
+\[T = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}\sim t_{n-1}\]
+The decision rules are essentially the same but with \(z_\alpha\) and \(z_{\alpha/2}\) replaced by the same quantiles of the t-distribution \(t_{n-1,\alpha}\) and \(t_{n-1,\alpha}\), respectively. Further \(\sigma\) is estimated by \(s\).
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\(\text{H}_{A}\) & Reject \(H_{0}\) if\tabularnewline
+\midrule
+\endhead
+\(H_{A}: \mu > \mu_0\) & \(T>t_{\alpha}\)\tabularnewline
+\(H_{A}: \mu > \mu_0\) & \(T<-t_{\alpha}\)\tabularnewline
+\(H_{A}: \mu \neq \mu_0\) & \(|T|>t_{\frac{1}{2}\alpha}\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+Where \(t_{\alpha}\) and \(t_{\alpha/2}\) are obtained from \(t\)-tables with degrees of freedom \(\nu = n-1\), and the sample variance is given by, for example,
+
+\[s^2 =\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})^2.\]
+
+\begin{example}
+
+A shopkeeper sells jars of jam. The weights of the jars of jam are normally distributed with a mean of \(150\)g. A customer complains that the mean weight of a pack of\(8\) jars she had bought was only \(147\)g. An estimate for the standard deviation of the weights of the \(8\) jars of jam calculated from the \(8\) observations was \(2\)g.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Test at the \(5\%\) significance level whether \(147\)g is significantly less than the quoted mean.
+\item
+  Discuss whether the customer has cause for complaint.
+\end{enumerate}
+
+\emph{solution}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+\end{enumerate}
+
+\[H_{0}: \mu = 150 \\ \text{H}_A: \mu<150\]
+
+Significance level \(=0.05\), left-tailed test.
+
+Degrees of freedom \(\nu = 8-1 = 7\).
+
+From tables \(t_{7, \ 5\%} = -1.895\)
+
+We reject \(H_0\) if the statistic is less than \(-1.895\)
+
+\[T =\frac{\bar{x}-\mu}{s/\sqrt{n}}=\frac{147-150}{2/\sqrt{8}}=-4.2426 \]
+Now \(-4.2426 < -1.895\), the result is significant and \(H_0\) is rejected.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  There is evidence to suggest that the mean weight is less than \(150\)g, supporting the customer complaint. However one pack is not a random sample, so it could be a bad batch not that all the jars are being under-filled.
+\end{enumerate}
+
+\end{example}
+
+The distribution of \(T\) is only a \(t\)-distribution when we assume a normally distributed population.
+
+If the sample is large and so the degrees of freedom are increased, we still need to estimate and calculate \(s\), but often a \(z\)-value can be used in practice. Strictly speaking a \(t\)-value should be used in place of a \(z\)-value whenever \(s\) is used in place of \(\sigma\) and not just because \(n\) is small.
+
+\hypertarget{test-for-variance}{%
+\subsection{test for variance}\label{test-for-variance}}
+
+If you have a random sample of observations from a normal distribution with mean \(\mu\) and standard deviation \(\sigma\) where both are unknown, the sample variance is given by (for example) the formula
+
+\[S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})^2\]
+
+Recall it can be shown that
+
+\[\frac{(n-1)S^2}{\sigma^2}\sim\chi^2_{n-1}\]
+
+To test against the null hypothesis that the variance is some particular value, that is
+\[\text{H}_0: \sigma^2 = \sigma_0^2\]
+We can just compare the expression \(\frac{(n-1)S^2}{\sigma^2}\), with the hypothesised population variance, to the relevant quantile of some chi-squared distribution. This gives the following decision rules:
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\begin{minipage}[b]{0.43\columnwidth}\centering
+\(\text{H}_{A}\)\strut
+\end{minipage} & \begin{minipage}[b]{0.51\columnwidth}\centering
+Reject \(H_{0}\) if\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.43\columnwidth}\centering
+\(H_{A}: \sigma^2 > \sigma^2_0\)\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\centering
+\(\frac{(n-1)S^2}{\sigma^2}>\chi^2_{\alpha, \ n-1}\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.43\columnwidth}\centering
+\(H_{A}: \sigma^2 \neq \sigma^2_0\)\strut
+\end{minipage} & \begin{minipage}[t]{0.51\columnwidth}\centering
+\(\frac{(n-1)S^2}{\sigma^2}<\chi^2_{1-\frac{1}{2}\alpha, \ n-1}\) or \(\frac{(n-1)S^2}{\sigma^2}>\chi^2_{\frac{1}{2}\alpha, \ n-1}\)\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{example}
+A bus company is trying to improve their reliability, and so the consistency with respect to the schedule is monitored. The company wants the arrival time to have standard deviation \(2\) minutes or less. A sample of \(10\) arrival times shows a sample variance of \(5\). Using a \(5\%\) signifiance level, does the data suggest that the variance in arrival times is meeting the company standard?
+
+\emph{solution}
+Our hypotheses are:
+\[\text{H}_0: \sigma^2=4 \ \ \ , \ \ \ \text{H}_A: \sigma^2 >4\]
+The test statistic is:
+\[\frac{(n-1)S^2}{\sigma^2}=\frac{9\times5}{4} = 11.25\]
+Our critical value is
+\[\chi^2_{\alpha,n-1}=\chi^2_{0.05,9}=16.92\]
+Since \(11.25\ngtr16.92\) we have insufficient evidence to reject \(\text{H}_0\). Therefore we are unable to conclude that the variance in bus arrival times is not meeting the company standard.
+\end{example}
+
+\hypertarget{p-value-approach}{%
+\subsection{p-value approach}\label{p-value-approach}}
+
+There are two ways of looking at the comparison involved to reject a null hypothesis, via the critical region or via p-values. The critical region is rather blunt and uninformative - we either reject or do not reject the null. However, the p-value allows us to quantify the weight of evidence against the null hypothesis given by the sample data. For many tests exact p-values can be calculated in R.
+
+\begin{definition}
+A \textbf{\emph{p-value}} is the probability of a observing the value of a statistic at least as extreme as that of the particular value of that statistic in the observed sample.
+
+For example if a sample gives sample mean \(\bar{x}=101.3\) then the p-value would be \[p  =\text{P}(\bar{X}\geq101.3)\].
+\end{definition}
+
+We will illustrate an example with a right tailed test.
+
+\begin{example}
+Suppose we want to test the following:
+\[\text{H}_0:\mu = 26.3 \ \ \ , \ \ \ \text{H}_A: \mu >26.3\]
+Where:
+\textbar{} \(n\) \textbar{} \(\bar{x}\)\textbar{} \(\sigma\) \textbar{} \(\alpha\)\textbar{}
+\textbar:---:\textbar:--------:\textbar:--------:\textbar:-------:\textbar{}
+\textbar{} 10 \textbar{} 27 \textbar{} 1.2 \textbar{} \(5\%\) \textbar{}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Perform the test
+\item
+  Calculate the p-value
+\end{enumerate}
+
+Here we can work out the \(z\)-value tobe \(1.6449\). The statistic is
+
+\[\frac{27 - 26.3}{1.2/\sqrt{10}} = 1.845\]
+And we would reject \(\text{H}_0\) as \(1.845 > 1.6449\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\item
+\end{enumerate}
+
+We know under the null hypothesis that \(\bar{X} \sim \text{N}(26.3, 1.2^2/10)\).
+
+The p-value is the probability of observing a particular value at least as extreme as \(\bar{x}=27\).
+
+You could use the distribution of \(\bar{X}\) directly or the already standardised value above and find \[p = \text{P}(\bar{X} >27) = \text{P}(Z>1.845) = 0.0325 \]
+\end{example}
+
+In the example above the p-value is \(0.0325\) and the significance level was \(5\%\). The p-value can be compared to the significance level directly to conclude a hypothesis test. If the p-value is lower than the significance level, then we can reject the null hypothesis.
+
+The statistic is \emph{greater} than the critical value only when the p-value (tail probability) is \emph{less} than the significance level. See the following picture:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/p-value} 
+
+}
+
+\caption{critical region}\label{fig:pval}
+\end{figure}
+
+For tests involving the t-distribution or the chi-squared distribution, the p-value is in practice obtained via software such as R, and we will see this in labs this week.
+
+Usually the p-value is compared to \(5\%\) however, there are standard interpretations of p-values which quantify the evidence against \(\text{H}_0\).
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+p-value range & interpretation\tabularnewline
+\midrule
+\endhead
+\(p>0.1\) & No evidence against H\(_0\), or data consistent with H\(_0\)\tabularnewline
+\(0.05 < p < 0.1\) & Weak evidence against H\(_0\)\tabularnewline
+\(0.01 < p < 0.05\) & Some evidence against H\(_0\)\tabularnewline
+\(0.001 < p < 0.01\) & Strong evidence against H\(_0\)\tabularnewline
+\(0.001 < p < 0.01\) & very strong evidence against H\(_0\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+In formal reports if a significant effect is found, quantify the effect with a confidence interval. Phrasing of conclusions is important, always set in context (without jargon e.g.~H\(_0\)).
+
+\hypertarget{types-of-error}{%
+\subsection{types of error}\label{types-of-error}}
+
+Any decision relying on imperfect information has to allow for the fact that there is uncertainty so the decision cannot be certain. There are two types of systematic uncertainty that arise from hypothesis testing, or types of error.
+
+\begin{example}
+Suppose a man is in court accused of murder. The decision that the judge or jury come to is separate from the truth of the guilt or innocence of the man.
+
+\[\ \ \ \ \text{H}_0: \text{the man is innocent} \\ \text{H}_1: \text{the man is guilty}\]
+The trial process is like an hypothesis test in which the evidence presented is equivalent to the data. The possible decisions are summarised in the table below:
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+& Innocent & Not innocent\tabularnewline
+\midrule
+\endhead
+Accept innocence & & x\tabularnewline
+Reject innocence & x &\tabularnewline
+\bottomrule
+\end{longtable}
+
+It would be undesirable to sentence an innocent man, or to find set a guilty man loose.
+\end{example}
+
+\begin{definition}
+
+There are two types of error which are systematic to hypotheis testing.
+
+A \textbf{\emph{type I error}} is to reject the null hypothesis when it is, in fact true.
+
+A \textbf{\emph{type II error}} is to accept the null hypothesis when it is in fact false.
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+& H\(_0\) true & H\(_0\) false\tabularnewline
+\midrule
+\endhead
+Accept \(H_0\) & & II\tabularnewline
+Reject \(H_0\) & I &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\end{definition}
+
+The probabilities of each type of error are important, we would seek to minimise both if possible.
+
+\begin{definition}
+The \textbf{\emph{significance level}} of the test is the probability of type I error.
+\[\text{P}(\text{Type I error}) = \text{P}(\text{H}_0 \text{ rejected} | \text{H}_0 \text{ is true})\]
+If you are given the significance level for example \(5\%\), then this is the probability of type I error. However this may not always be stated in a question and you may have to work it out.
+\end{definition}
+
+\begin{example}
+A random variable has a normal distribution with mean µ and standard deviation \(3\).
+The null hypothesis \(\mu=20\) is to be tested against the alternative hypothesis \(\mu>20\) using a random sample of \(25\).
+It is decided that the null hypothesis will be rejected if the sample mean is greater than \(21.4\).
+Calculate the probability of making a type I error.
+
+\emph{solution}
+
+\[\text{P}(\text{Type I error}) = \text{P}(\text{H}_0 \text{ rejected} | \text{H}_0 \text{ is true})\]
+\[=\text{P}(\bar{X} > 21.4 \ | \ \mu = 20)\]
+This can be obtained, for example by standardising from tables,
+\[=\text{P}\left(\frac{\bar{X}-20}{3/\sqrt{25}}>\frac{21.4-20}{3/\sqrt{25}} \right)\]
+\[=\text{P}(Z>2.33) = 9.9\times 10^{-3} \approx 1\%\]
+\end{example}
+
+\begin{example}
+The weight of jam in a jar, measured in grams, is distributed normally with a mean of \(150\)g and a standard deviation of \(6\)g. The production process occasionally leads to a change in the mean weight of jam per jar but the standard deviation remains unaltered. The manager monitors the production process and for every new batch takes a random sample of \(25\) jars and weighs their contents to see if there has been any \emph{reduction} in the mean weight of jam per jar.
+Find the critical values for the test statistic \(\bar{X}\), the mean weight of jam in a sample of \(25\) jars, using
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  5\% level of significance
+\item
+  1\% level of significance
+\item
+  Given that the true value of µ for the new batch is in fact 147g. Find the probability of a type II error for each of the above critical regions
+\end{enumerate}
+
+\emph{solution}
+a) \(z_{5\%} = -1.6449\), so we would reject \(H_0\) if
+
+\[\frac{\bar{x}-150}{6/\sqrt{25}}<-1.6449 \]
+Rearranging this inequality gives \(\bar{x} < 148.03\)
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\item
+  \(z_{1\%} = -2.326\) , rearranging a similar inequality gives \(\bar{x} < 147.208\ldots\)
+\item
+  Here you use the distribution \(\bar{X}\sim\text{N}(147, 6^2/\sqrt{25})\). Type II error is where we do not reject \(H_0\) so we reverse the inequalities from the regions above and evaluate the probabilities:
+\end{enumerate}
+
+\[\text{P}(\bar{x} \geq 148.03 | \ \mu = 147) = 0.195 \approx 20\%\]
+
+\[\text{P}(\bar{x} \geq 147.2 | \ \mu = 147) = 0.4309\ldots \approx 43\%\]
+\end{example}
+
+When we reduce the P(Type I error) from 5\% to 1\%, P(Type II error) increased from \(\approx 20\%\) to \(43\%\). So just reducing the probability of one type of error is not a cure-all.
+
+\hypertarget{two-sample-tests}{%
+\section{Two sample tests}\label{two-sample-tests}}
+
+We may wish to use hypothesis testing to compare two populations. The two populations may be the distributions of heights of males and females separately. Or we may wish to compare average the weights of babies born in one region to another.
+
+Supposing we have two distributions \(X\) and \(Y\), we write the population parameters with a subscript to indicate to which distribution they correspond. The basic setup is as follows
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Parameter & Population 1 & Population 2\tabularnewline
+\midrule
+\endhead
+Mean & \(\mu_X\) & \(\mu_Y\)\tabularnewline
+Variance & \(\sigma^2_X\) & \(\sigma^2_Y\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+The main hypotheses of interest are whether or not the means are different. That is:
+
+\[\text{H}_0: \mu_X = \mu_Y \ \ \ \ \ \ , \ \ \ \ \ \text{H}_A:\mu_X \neq \mu_Y\]
+
+Though one-sided alternatives, or specified differences can also be used.
+
+We will assume both populations are normally distributed and consider three different situations:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  The population variances are known
+\item
+  The population variances are unknown, but known to be or are assumed to be equal.
+\item
+  The population variances are unknown and cannot be assumed to be equal.
+\end{enumerate}
+
+\hypertarget{known-variance}{%
+\subsection{known variance}\label{known-variance}}
+
+Assume we have a random sample \(x_1,x_2,\ldots,x_{n_1}\) of \(n_1\) observations from the first population, and another random sample \(y_1,y_2,\ldots, y_{n_2}\) of \(n_2\) observations from the second population.
+
+The test statistic here is \(\bar{X}-\bar{Y}\).
+
+Recall that the sampling distribution of the mean takes the form:
+\[\bar{X} \sim \text{N}(\mu_X, \sigma^2_X / n_1) \ \ \ \ \ \ , \ \ \ \ \bar{Y} \sim \text{N}(\mu_Y, \sigma^2_Y / n_2)\]
+Then, as the difference of normal distributions is again normal, with linearity of the expectation and variance the sum of the variances we have:
+
+\[\bar{X}-\bar{Y} \sim \text{N}\left(\mu_X-\mu_Y , \frac{\sigma_X^2}{n_1} + \frac{\sigma_Y^2}{n_2}\right)\]
+The test statistic is the standardised value of this statistic:
+
+\[Z = \frac{\bar{X} - \bar{Y} - (\mu_X-\mu_Y)}{\sqrt{\frac{\sigma_X^2}{n_1} + \frac{\sigma_Y^2}{n_2}}}\]
+\[\sim\text{N}(0,1).\]
+Now under the null hypothesis \(\mu_X-\mu_Y = 0\), so this simplifies to:
+
+\[\frac{\bar{X} - \bar{Y}}{\sqrt{\frac{\sigma_X^2}{n_1} + \frac{\sigma_Y^2}{n_2}}}\]
+And we have the same decision rules as before.
+
+\begin{example}
+The weights of boys and girls of a particular age are known to be normally distributed with standard deviations \(5\)kg and \(8\)kg respectively. In a particular school, a random sample of \(25\) boys had mean weight \(48\)kg and a random sample of \(30\) girls had mean weight \(45\)kg.
+
+Test, at the \(5\%\) significance level, whether there is evidence that the mean weight of the boys is greater than that of the girls.
+
+\emph{solution}
+
+\[\text{H}_0: \mu_B = \mu_G \ \ \ \ \ \ , \ \ \ \ \ \text{H}_A:\mu_B > \mu_G\]
+
+We have
+\[\frac{\bar{B}-\bar{G}}{\sqrt{\frac{\sigma_B^2}{n_1} + \frac{\sigma_G^2}{n_2}}}= \frac{48-45}{\sqrt{\frac{5^2}{25}+\frac{8^2}{30}}}= 1.69747\ldots \]
+The critical value is \(1.6449\)
+Hence here we reject the null hypothesis and conclude there is sufficient evidence to say that the boys weigh more than the girls on average.
+\end{example}
+
+\hypertarget{unknown-equal-variance}{%
+\subsection{unknown equal variance}\label{unknown-equal-variance}}
+
+In this section we know or can assume that the variances are equal. We may know outright that the variances are equal, even if they are unknown. For example, if I take a sample of men's heights from Manchester and compare to a sample of men's heights in London. It may be that there are average height differences, but as both are UK adult men they come from the same containing population, can be assumed to be just as variable as each other.
+
+In this case we do not know \(\sigma_X^2\) or \(\sigma_Y^2\), so we will have to estimate each of these from actual data. We can estimate each by
+
+\[s_x^2 = \frac{1}{n_1}\sum_{i=1}^n(x_i-\bar{x})^2 \ \ \ \ , \ \ \ \ s_y^2 = \frac{1}{n_2}\sum_{j=1}^n(y_j-\bar{y})^2 \]
+
+But now we have two estimates for the unknown population variances \(\sigma_x^2, \ \sigma_y^2\). But we know, or can assume, these are equal to a common population variance \(\sigma_x^2=\sigma_y^2=\sigma^2\). The solution to this is to `pool' the variance using the formula:
+
+\[s_p^2  = \frac{(n_1-1)s_x^2+(n_2-1)s_y^2}{n_1+n_2-2}\]
+The test statistic is then calculated as,
+
+\[T = \frac{\bar{X}-\bar{Y}}{s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} \sim t_{n_1+n_2-2} \]
+which follows a t distribution on \(n_1+n_2-2\) degrees of freedom.
+
+\begin{example}
+
+The heights (measured to the nearest centimetre) of a random sample of six policement from a certain force in Wales were found to be
+\[176, \ 180, \ 179, \ 181, \ 183, \ 179.\]
+The heights of a random sample of \(11\) policemen from Scotland gave the following data
+
+\[\sum y =1991  \ \ \ \ , \ \ \ \sum(y-\bar{y})^2 = 54\]
+a) Test at the \(5\%\) level the hypothesis that the Welsh policemen are shorter than the Scottish policemen.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  What assumptions are necessary for part (a)?
+\end{enumerate}
+
+\end{example}
+
+\emph{solution}
+
+The hypotheses are
+\[\text{H}_0: \mu_{x} = \mu_{y} \ \ \ \ , \ \ \ \text{H}_A: \mu_{x}< \mu_{y}\]
+From the question:
+
+\[\bar{x}=179.66667, \ \ s^2_x =5.46667 \]
+
+\[\bar{y}= 1991/11 = 181, \ \ \ s^2_y = 54/10 = 5.4 \]
+We observe that 5.4 and 5.47 are approximately equal, so it is reasonable to pool these.
+
+\[s^2_p = \frac{(6-1)\times5.46667 +(11-1)\times5.4 }{6+11-2} =5.422\ldots\]
+Giving a pooled standard deviation of \(\sqrt{5.422} = 2.329\).
+(you want to work a bit more accurately than the accuracy of the critical value you will be comparing to)
+
+Now evaluating the test statistic:
+
+\[\frac{179.66 - 181}{2.329\sqrt{\frac{1}{6}+\frac{1}{11}}} =  -1.128\]
+We compare this to \(t_{15, 0.05} = 1.7531\)
+
+Comparison: \(|-1.128|\ngtr 1.7531\)
+
+There is insufficient evidence based on these samples to conclude that the population of Welsh officers are shorter than the population of Scottish officers.
+
+\hypertarget{testing-for-equal-variance}{%
+\subsection{testing for equal variance}\label{testing-for-equal-variance}}
+
+In this situation we have two sample variances \(S^2_x\) and \(S^2_y\), and we want to determine by means of a hypothesis test if these are equal or not. Of course the conclusion is not definite, but in practice this informs whether we will pool the variances or not.
+
+The null hypothesis is that the variances are equal, with the usual alternatives.
+
+\[\text{H}_0: \sigma^2_x = \sigma^2_y\ \]
+
+First a recap. We know that when scaled, sample variances follow a \(\chi^2\)-distribution. That is,
+
+\[\frac{(n_1-1)S^2_x}{\sigma^2_x}\sim \chi^2_{n_1-1} \ \ \ , \ \ \  \frac{(n_2-1)S^2_y}{\sigma^2_y}\sim \chi^2_{n_2-1}\]
+
+There is another distribution we must define, and this will be the last for the statistical tables.
+
+\begin{definition}
+Let \(X\sim \chi^2_n\) and \(Y\sim \chi^2_m\) then the following ratio defines an F-distribution with degrees of freedom \(n\) and \(m\). That is:
+
+\[\frac{\left(\frac{X}{n}\right)}{\left(\frac{Y}{m}\right)}\sim \text{F}_{n,m}\]
+\end{definition}
+
+In our situation this tells us that under the null hypothesis we have
+
+\[\frac{S^2_x}{S^2_y}\sim \text{F}_{n_1 - 1,n_2-1} \]
+:::\{.example\}
+A manufacturer of wooden furniture stores some of its wood outside and some inside a special
+store. It is believed that the wood stored inside should have less variable hardness properties than that stored outside. Some \(25\) pieces of wood stored outside was taken and compared to \(21\) similar pieces taken from the inside store, with the following results:
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Value & Outside & Inside\tabularnewline
+\midrule
+\endhead
+sample size & 25 & 21\tabularnewline
+Mean hardness & 110 & 122\tabularnewline
+\(\sum(x-\bar{x})^2\) & 5190 & 3972\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Test at the \(5\%\) significance level whether the manufacturer's belief is correct.
+\item
+  State two assumptions necessary to carry out this test.
+\end{enumerate}
+
+\emph{solution}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  We wish to test
+\end{enumerate}
+
+\[\text{H}_0: \sigma^2_x=\sigma^2_y \ \ \ , \ \ \ \text{H}_A: \sigma^2_x>\sigma^2_y\]
+Working out the sample variances gives
+
+\[s^2_x = \frac{5190}{25}=216.25, \ \ \ s^2_y = \frac{3972}{20} = 198.6\]
+The test statistic is then
+
+\[216.25/198.6 = 1.089,\]
+which we compare to \(\text{F}_{24,20} = 2.08\).
+
+Now, \(1.089 < 2.08\) so there is insufficient evidence to reject \(\text{H}_0\). So the wood from outside is just as variable as the wood inside.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  The assumption is that both populations are normal, and that the samples are independent and random.
+  :::
+\end{enumerate}
+
+\hypertarget{unknown-unequal-variances-non-examinable}{%
+\subsection{unknown unequal variances (non-examinable)}\label{unknown-unequal-variances-non-examinable}}
+
+If we want to carry out a \(2\) sample \(t\)-test without assuming equal population variances we can use \[T = \frac{\bar{X} - \bar{Y}}{\sqrt{\frac{S_X^2}{n_1} + \frac{S_Y^2}{n_2}}}\]
+
+However the distribution of this quantity is in general not of a convenient closed-form (analytic). As such it is actually a famous an unsolved problem generally, called the Behrens--Fisher problem. However it is approximately a \(t_\nu\)-distribution with degrees of freedom \(\nu\) given by the integer part of the following expression.
+
+\[\frac{\left[\frac{S^2_x}{n_1}+\frac{S^2_y}{n_2} \right]^2}{\frac{1}{(n_1-1)}\left[\frac{S_x^2}{n_1}\right]^2+\frac{1}{(n_2-1)}\left[\frac{S_y^2}{n_2}\right]^2} \]
+
+The above expression is known as the Welch approximation.
+
+\begin{example}
+A market inspector randomly samples the produce on two market stalls. A sample of \(80\) apples from Rufus Russett's stall had masses (in grams) having sample mean \(74.2\) and sample variance \(43.23\).
+An independent random sample of \(100\) apples sold my Granny Smith had a sample mean of \(68.6\) and a sample variance of \(43.34\).
+
+Test at the \(5\%\) significance level if there is evidence that the apples on Smith's stall have a lower average mass than Russett's stall.
+\end{example}
+
+\emph{solution}
+
+We are testing
+\[\text{H}_0: \mu_x = \mu_y \ \ \ , \ \ \text{H}_A:\mu_x>\mu_y\]
+The test statistic is
+
+\[ \frac{74.2 - 68.8}{\sqrt{\frac{24.21}{80}+\frac{43.23}{100}}} = 6.299\]
+We want to compare this to \(t_\nu\). Let's evaluate the degrees of freedom here:
+
+\[\frac{\left[\frac{24.21}{80}+\frac{43.23}{100} \right]^2}{\frac{1}{79}\left[\frac{24.21}{80}\right]^2+\frac{1}{99}\left[\frac{43.23}{100}\right]^2} = 177.26 \]
+The integer value of this is \(177\), so we would check the critical value of a \(t_177\) distribution.
+
+However \(177\) is a large number of degrees of freedom, so we use \(t_{\infty}=1.6448\) or \(z\)-value essentially, and the null is overwhelmingly rejected, as \(6.299 >1.6448\).
+
+\hypertarget{summary-1}{%
+\subsection{Summary}\label{summary-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  A hypothesis test is a decision process about population parameters.
+\end{itemize}
+
+One sample tests we have learned about include:
+
+\begin{itemize}
+\item
+  one sample \(z\)-test for the mean, known variance
+  \[ \frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}\sim \text{N}(0,1) \]
+\item
+  one sample \(t\)-test, for the mean, unknown variance
+  \[T = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}\sim t_{n-1}\]
+\item
+  one sample test for variance
+\end{itemize}
+
+\[\frac{(n-1)S^2}{\sigma^2}\sim\chi^2_{n-1} \]
+
+There are two types of systematic errors that occur when we test hypotheses, we typically limit the \emph{type I} error by setting the significance level.
+
+We can compare two independent samples with:
+
+\begin{itemize}
+\tightlist
+\item
+  two sample \(z\)-test (known variances)
+\end{itemize}
+
+\[\frac{\bar{X} - \bar{Y}}{\sqrt{\frac{\sigma_X^2}{n_1} + \frac{\sigma_Y^2}{n_2}}}\sim \text{N}(0,1)\]
+
+\begin{itemize}
+\tightlist
+\item
+  two sample \(t\)-test (unknown equal variances) require pooled variance estimate:
+\end{itemize}
+
+\[T = \frac{\bar{X}-\bar{Y}}{s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} \sim t_{n_1+n_2-2}\]
+\[s_p = \frac{(n_1-1)s_x^2+(n_2-1)s_y^2}{n_1+n_2-2}\]
+
+We can often assume the variances are equal. There is also a test for equality of variances.
 
   \bibliography{book.bib,packages.bib}
 
