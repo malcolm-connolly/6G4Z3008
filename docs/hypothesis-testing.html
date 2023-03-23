@@ -169,6 +169,7 @@
 <li class="chapter" data-level="8.2.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#unknown-unequal-variances-non-examinable"><i class="fa fa-check"></i><b>8.2.4</b> unknown unequal variances (non-examinable)</a></li>
 <li class="chapter" data-level="8.2.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#summary-1"><i class="fa fa-check"></i><b>8.2.5</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="8.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#exercises-week-8"><i class="fa fa-check"></i><b>8.3</b> Exercises week 8</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -192,7 +193,7 @@
             <section class="normal" id="section-">
 <div id="hypothesis-testing" class="section level1 hasAnchor">
 <h1><span class="header-section-number">Chapter 8</span> Hypothesis testing<a href="hypothesis-testing.html#hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This week we will introduce the main method of statistical inference - the hypothesis test. We will formulate hypothesis tests, interpret and report the results of hypothesis tests for a mean, variance and proportion.</p>
+<p>This week we will introduce the main method of statistical inference - the hypothesis test. We will formulate hypothesis tests, interpret and report the results of hypothesis tests for a mean and variance.</p>
 <p>We will also understand how to test comparisons between population parameters.</p>
 <div id="one-sample-tests" class="section level2 hasAnchor">
 <h2><span class="header-section-number">8.1</span> One sample tests<a href="hypothesis-testing.html#one-sample-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -758,9 +759,93 @@ The integer value of this is <span class="math inline">\(177\)</span>, so we wou
 <p><span class="math display">\[T = \frac{\bar{X}-\bar{Y}}{s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} \sim t_{n_1+n_2-2}\]</span>
 <span class="math display">\[s_p = \frac{(n_1-1)s_x^2+(n_2-1)s_y^2}{n_1+n_2-2}\]</span></p>
 <p>We can often assume the variances are equal. There is also a test for equality of variances.</p>
-<!-- ### Tutorial exercises week 8 -->
-
 </div>
+</div>
+<div id="exercises-week-8" class="section level2 hasAnchor">
+<h2><span class="header-section-number">8.3</span> Exercises week 8<a href="hypothesis-testing.html#exercises-week-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-18" class="exercise"><strong>Exercise 8.1  </strong></span>Jars of honey are filled by a machine. Over the lifetime of the machine, it has been found the quantity of honey has mean <span class="math inline">\(460.3\)</span>g and standard deviation <span class="math inline">\(3.2\)</span>g. It is believed that the machine has been altered so that the mean may have changed. <span class="math inline">\(60\)</span> jars are taken and the mean quantity of honey per jar is found to be <span class="math inline">\(461.2\)</span>g</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>State suitable null and alternative hypotheses</p></li>
+<li><p>Carry out a test using a <span class="math inline">\(5\%\)</span> level of significance.</p></li>
+<li><p>State two assumptions required for this test, and give an example of how each may not hold true.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-19" class="exercise"><strong>Exercise 8.2  </strong></span>The distance driven by a long distance lorry driver in a week is a normally distributed variable with mean <span class="math inline">\(1130\)</span>km and standard deviation <span class="math inline">\(106\)</span>km. New driving regulations are introduced and, in the first <span class="math inline">\(20\)</span> weeks he drives a total of <span class="math inline">\(21900\)</span>km. Assuming the standard deviation has not changed since the new regulations, test at the <span class="math inline">\(10\%\)</span> level of significance whether the mean weekly distance has reduced. State clearly your null and alternative hypotheses.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-20" class="exercise"><strong>Exercise 8.3  </strong></span>After a nuclear accident,government scientists measured radiation levelsat <span class="math inline">\(20\)</span> randomly chosen sites in a small area. The measuring instrument used is calibrated so as to measure the ratio of present radiation to the previous known average radiation in that area. The measurements are summarised by</p>
+<p><span class="math display">\[\sum x = 22.8 \ \ , \ \ \sum x^2 = 27.55\]</span>
+Making suitable assumptions test, at the <span class="math inline">\(5\%\)</span> level, the hypothesis that there has been no increase in the radiation level.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-21" class="exercise"><strong>Exercise 8.4  </strong></span>Bottles of wine are supposed to contain <span class="math inline">\(75\)</span>cl of wine. An inspector takes a sample of six bottles and determines the volumes of their contents, correct to the nearest half millilitre. Her results are:</p>
+<p><span class="math display">\[747.0, \ \  ,751.5, \ \ 752.0, \  \ 747.5, \ \ 748.0, \ \ 748.0 \]</span>
+Determine whether these results provide evidence at the <span class="math inline">\(5\%\)</span> significance level that the population mean is less than <span class="math inline">\(75\)</span>cl.</p>
+<p>What assumption about the distribution of the volumes is necessary?</p>
+<p>What distribution about the sample is necessary?</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-22" class="exercise"><strong>Exercise 8.5  </strong></span>It is given that <span class="math inline">\(X\sim\text{N}(\mu,16)\)</span>. It is desired to test the null hypothesis <span class="math inline">\(\mu=12\)</span> against the alternative <span class="math inline">\(\mu&gt;12\)</span>, with the probability of type I error being <span class="math inline">\(1\%\)</span>. A random sample of <span class="math inline">\(15\)</span> observations of <span class="math inline">\(X\)</span> is taken and the sample mean <span class="math inline">\(\bar{X}\)</span> is taken to be the test statistic.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Find the range of values for <span class="math inline">\(\bar{X}\)</span> that would lead to</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li>rejecting the null hypothesis</li>
+<li>not rejecting the null hypothesis</li>
+</ol>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Given that <span class="math inline">\(\mu = 15\)</span>, calculate the probability of type II error.</li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-23" class="exercise"><strong>Exercise 8.6  </strong></span>The mean of a random sample of <span class="math inline">\(10\)</span> observations from a population distributed as <span class="math inline">\(\text{N}(\mu_1,25)\)</span> is <span class="math inline">\(97.3\)</span>. The mean of a random sample of <span class="math inline">\(15\)</span> observations from a population distributed as <span class="math inline">\(\text{N}(\mu_2,36)\)</span> is <span class="math inline">\(101.2\)</span>. Test at the <span class="math inline">\(5\%\)</span> level</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Whether <span class="math inline">\(\mu_1 &lt; \mu_2\)</span></p></li>
+<li><p>Whether <span class="math inline">\(\mu_1\neq\mu_2\)</span></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-24" class="exercise"><strong>Exercise 8.7  </strong></span>A machine assesses the life of a ball-point pen by measuring the length of a continuous line drawn using the pen. A random sample of <span class="math inline">\(80\)</span> pens from brand A have a total writing length of <span class="math inline">\(96.84\)</span>km. A random sample of <span class="math inline">\(75\)</span> ens of brand B have a total writing length of <span class="math inline">\(93.75\)</span>km.
+Given that the standard deviation of the writing length of a single pen is <span class="math inline">\(0.15\)</span>km for both brands,test at the <span class="math inline">\(5\%\)</span> level, whether writing lengths of the two brands differ significantly.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-25" class="exercise"><strong>Exercise 8.8  </strong></span>A random sample of <span class="math inline">\(10\)</span> yellow grapefruit is weighed and the average weight is found to be <span class="math inline">\(\bar{x}=201.4\)</span>g. The value of an unbiased estimate for the population variance is <span class="math inline">\(s^2_x=234.1\)</span>. The corresponding figures for a random sample of <span class="math inline">\(8\)</span> pink grapefruit are <span class="math inline">\(\bar{y}=221.8\)</span>g and <span class="math inline">\(s^2_y=281.9\)</span>. Determine at the <span class="math inline">\(1\%\)</span> level of significance, whether there is a difference in the mean weights of the two kinds of grapefruit.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-26" class="exercise"><strong>Exercise 8.9  </strong></span>The volume of beer in a random sample of <span class="math inline">\(7\)</span> pints bought at ‘The Sensible Statistician’ are measured in litres and the results are summarised by:
+<span class="math display">\[\sum x = 4.15, \ \ \sum x^2 = 2.4638\]</span>
+The results for a random sample of <span class="math inline">\(5\)</span> pints from ‘The Mad Mathematician’ are summarised by:
+<span class="math display">\[\sum y = 2.79 , \ \ \sum y^2 = 1.5585\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Assuming the population variances are equal, find a pooled estimate of the common variance.</p></li>
+<li><p>Test at the <span class="math inline">\(5\%\)</span> significance level whether there is more beer in a pint from ‘The Sensible Statistician’ than ‘The Mad Mathematician’.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-27" class="exercise"><strong>Exercise 8.10  </strong></span>A machine saws logs of wood into lengths that are supposed to have a standard deviation of <span class="math inline">\(3\)</span>cm. If the machine goes wrong then the standard deviation increases. A random sample of <span class="math inline">\(10\)</span> logs have lengths in cm as follows:</p>
+<p><span class="math display">\[997, \ \ , 1004, \ \ 1009, \ \ 999, \ \ 1006, \ \, 1014, \ \ 998, \ \ 999, \ \ 1001, \ \ 1000 \]</span></p>
+<p>Determine whether there is evidence at the <span class="math inline">\(1\%\)</span> significance level that the machine has gone wrong.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-28" class="exercise"><strong>Exercise 8.11  </strong></span>The following observations are taken from a normal distribution that is believed to have unit variance.
+<span class="math display">\[16.2, \ \ 14.4, \ \ 17.9, \ \ 11.6, \ \ 18.3, \ \ 15.5, \ \ 17.2, \ \ 16.6\]</span></p>
+<p>Determine whether there is evidence that the population variance is not equal to 1.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-29" class="exercise"><strong>Exercise 8.12  </strong></span>The cellulose contents of the leaves of a tree are determined from random samples of leaves taken from two different locations. The results are shown below:</p>
+<p>Location 1:
+<span class="math display">\[15.4, \ \ 13.9, \ \ 15.1, \ \ 14.8, \ \ 14.4, \ \ 14.8, \ \ 15.0, \ \  13.9, \ \ 15.4, \ \ 14.6, \ \ 14.8 \]</span>
+Location 2:
+<span class="math display">\[13.8, \ \ 14.4, \ \ 13.0, \ \ 15.3, \ \ 14.7, \ \ 14.3, \ \ 14.1, \ \ 12.9, \ \ 14.9 \]</span>
+Let the population variances for the two locations be denoted <span class="math inline">\(\sigma_1^2\)</span> and <span class="math inline">\(\sigma_2^2\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Obtain unbiased estimates for <span class="math inline">\(\sigma_1^2\)</span> and <span class="math inline">\(\sigma_2^2\)</span>.</p></li>
+<li><p>Test the hypothesis that <span class="math inline">\(\sigma_1^2=\sigma_2^2\)</span>.</p></li>
+</ol>
+</div>
+
 </div>
 </div>
             </section>

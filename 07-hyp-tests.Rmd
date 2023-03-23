@@ -1,6 +1,11 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
 # Hypothesis testing
 
-This week we will introduce the main method of statistical inference - the hypothesis test. We will formulate hypothesis tests, interpret and report the results of hypothesis tests for a mean, variance and proportion. 
+This week we will introduce the main method of statistical inference - the hypothesis test. We will formulate hypothesis tests, interpret and report the results of hypothesis tests for a mean and variance. 
 
 We will also understand how to test comparisons between population parameters.
 
@@ -574,4 +579,107 @@ $$s_p = \frac{(n_1-1)s_x^2+(n_2-1)s_y^2}{n_1+n_2-2}$$
 
 We can often assume the variances are equal. There is also a test for equality of variances.
 
-<!-- ### Tutorial exercises week 8 -->
+## Exercises week 8
+
+:::{.exercise}
+Jars of honey are filled by a machine. Over the lifetime of the machine, it has been found the quantity of honey has mean $460.3$g and standard deviation $3.2$g. It is believed that the machine has been altered so that the mean may have changed. $60$ jars are taken and the mean quantity of honey per jar is found to be $461.2$g
+
+a) State suitable null and alternative hypotheses
+
+b) Carry out a test using a $5\%$ level of significance. 
+
+c) State two assumptions required for this test, and give an example of how each may not hold true.
+:::
+
+:::{.exercise}
+The distance driven by a long distance lorry driver in a week is a normally distributed variable with mean $1130$km and standard deviation $106$km. New driving regulations are introduced and, in the first $20$ weeks he drives a total of $21900$km. Assuming the standard deviation has not changed since the new regulations, test at the $10\%$ level of significance whether the mean weekly distance has reduced. State clearly your null and alternative hypotheses.
+:::
+
+:::{.exercise}
+After a nuclear accident,government scientists measured radiation levels at $20$ randomly chosen sites in a small area. The measuring instrument used is calibrated so as to measure the ratio of present radiation to the previous known average radiation in that area. The measurements are summarised by
+
+$$\sum x = 22.8 \ \ , \ \ \sum x^2 = 27.55$$
+Making suitable assumptions test, at the $5\%$ level, the hypothesis that there has been an increase in the radiation level. 
+:::
+
+:::{.exercise}
+Bottles of wine are supposed to contain $75$cl of wine. An inspector takes a sample of six bottles and determines the volumes of their contents, correct to the nearest half millilitre. Her results are:
+
+$$747.0, \ \  ,751.5, \ \ 752.0, \  \ 747.5, \ \ 748.0, \ \ 748.0 $$
+Determine whether these results provide evidence at the $5\%$ significance level that the population mean is less than $75$cl.
+
+What assumption about the distribution of the volumes is necessary?
+
+What distribution about the sample is necessary?
+:::
+
+:::{.exercise}
+It is given that $X\sim\text{N}(\mu,16)$. It is desired to test the null hypothesis $\mu=12$ against the alternative $\mu>12$, with the probability of type I error being $1\%$. A random sample of $15$ observations of $X$ is taken and the sample mean $\bar{X}$ is taken to be the test statistic.
+
+a) Find the range of values for $\bar{X}$ that would lead to
+  i. rejecting the null hypothesis
+  ii. not rejecting the null hypothesis
+  
+b) Given that $\mu = 15$, calculate the probability of type II error.
+:::
+
+:::{.exercise}
+The mean of a random sample of $10$ observations from a population distributed as $\text{N}(\mu_1,25)$ is $97.3$. The mean of a random sample of $15$ observations from a population distributed as $\text{N}(\mu_2,36)$ is $101.2$. Test at the $5\%$ level 
+
+(i) Whether $\mu_1 < \mu_2$
+
+(ii) Whether $\mu_1\neq\mu_2$
+:::
+
+:::{.exercise}
+A machine assesses the life of a ball-point pen by measuring the length of a continuous line drawn using the pen. A random sample of $80$ pens from brand A have a total writing length of $96.84$km. A random sample of $75$ ens of brand B have a total writing length of $93.75$km. 
+Given that the standard deviation of the writing length of a single pen is $0.15$km for both brands,test at the $5\%$ level, whether writing lengths of the two brands differ significantly.
+:::
+
+
+:::{.exercise}
+A random sample of $10$ yellow grapefruit is weighed and the average weight is found to be $\bar{x}=201.4$g. The value of an unbiased estimate for the population variance is $s^2_x=234.1$. The corresponding figures for a random sample of $8$ pink grapefruit are $\bar{y}=221.8$g and $s^2_y=281.9$. Determine at the $1\%$ level of significance, whether there is a difference in the mean weights of the two kinds of grapefruit.
+:::
+
+:::{.exercise}
+The volume of beer in a random sample of $7$ pints bought at 'The Sensible Statistician' are measured in litres and the results are summarised by:
+$$\sum x = 4.15, \ \ \sum x^2 = 2.4638$$
+The results for a random sample of $5$ pints from 'The Mad Mathematician' are summarised by:
+$$\sum y = 2.79 , \ \ \sum y^2 = 1.5585$$
+
+(a) Assuming the population variances are equal, find a pooled estimate of the common variance.
+
+
+(b) Test at the $5\%$ significance level whether there is more beer in a pint from 'The Sensible Statistician' than 'The Mad Mathematician'. 
+:::
+
+:::{.exercise}
+A machine saws logs of wood into lengths that are supposed to have a standard deviation of $3$cm. If the machine goes wrong then the standard deviation increases. A random sample of $10$ logs have lengths in cm as follows:
+
+$$997, \ \ , 1004, \ \ 1009, \ \ 999, \ \ 1006, \ \, 1014, \ \ 998, \ \ 999, \ \ 1001, \ \ 1000 $$
+
+Determine whether there is evidence at the $1\%$ significance level that the machine has gone wrong.
+:::
+
+:::{.exercise}
+The following observations are taken from a normal distribution that is believed to have unit variance.
+$$16.2, \ \ 14.4, \ \ 17.9, \ \ 11.6, \ \ 18.3, \ \ 15.5, \ \ 17.2, \ \ 16.6$$
+
+Determine whether there is evidence that the population variance is not equal to 1.
+:::
+
+:::{.exercise}
+The cellulose contents of the leaves of a tree are determined from random samples of leaves taken from two different locations. The results are shown below:
+
+Location 1:
+$$15.4, \ \ 13.9, \ \ 15.1, \ \ 14.8, \ \ 14.4, \ \ 14.8, \ \ 15.0, \ \  13.9, \ \ 15.4, \ \ 14.6, \ \ 14.8 $$
+Location 2:
+$$13.8, \ \ 14.4, \ \ 13.0, \ \ 15.3, \ \ 14.7, \ \ 14.3, \ \ 14.1, \ \ 12.9, \ \ 14.9 $$
+Let the population variances for the two locations be denoted $\sigma_1^2$ and $\sigma_2^2$.
+
+a) Obtain unbiased estimates for $\sigma_1^2$ and $\sigma_2^2$.
+
+b) Test the hypothesis that $\sigma_1^2=\sigma_2^2$.
+:::
+
+
