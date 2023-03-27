@@ -65,9 +65,9 @@ It is important that the sample is random, as otherwise this invalidates the con
 In the example above we compare positive values, and the critical region is in the left tail of the distribution. 
 
 :::{.definition}
-We say a hypothesis test is ***left-tailed*** if it is of the form: 
+We say a hypothesis test is ***right-tailed*** if it is of the form: 
 $$\text{H}_A: \ \mu > \mu_0$$
-A hypothesis is ***right-tailed*** if it is of the form:
+A hypothesis is ***left-tailed*** if it is of the form:
 
 $$\text{H}_A: \ \mu < \mu_0$$
 
@@ -100,7 +100,7 @@ Using tables we find that $z_{2.5\%} = 1.960$. We would reject if the test stati
 
 Here 
 $$|-0.4167| = 0.4167 \ngtr 1.96,$$
-so there is insufficient evidence to reject $text{H}_0$.
+so there is insufficient evidence to reject $\text{H}_0$.
 :::
 
 Recall the interpretation of this conclusion is never definitive. We never accept the null hypothesis, but rather fail to reject it. It may be that with further data we pass the threshold of the critical value and are able to reject the null hypothesis. 
@@ -210,7 +210,7 @@ There are two ways of looking at the comparison involved to reject a null hypoth
 :::{.definition}
 A ***p-value*** is the probability of a observing the value of a statistic at least as extreme as that of the particular value of that statistic in the observed sample. 
 
-For example if a sample gives sample mean $\bar{x}=101.3$ then the p-value would be $$p  =\text{P}(\bar{X}\geq101.3)$$.
+For example if a sample gives sample mean $\bar{x}=101.3$ then the p-value would be $$p  =\text{P}(\bar{X}\geq101.3).$$
 :::
 
 We will illustrate an example with a right tailed test.
@@ -218,7 +218,9 @@ We will illustrate an example with a right tailed test.
 :::{.example}
 Suppose we want to test the following:
 $$\text{H}_0:\mu = 26.3 \ \ \ , \ \ \ \text{H}_A: \mu >26.3$$
+
 Where:
+
 | $n$ | $\bar{x}$| $\sigma$ | $\alpha$|
 |:---:|:--------:|:--------:|:-------:|
 | 10 | 27 | 1.2 | $5\%$ |
