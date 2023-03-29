@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Goodness of fit and association | Probability Theory and Statistics</title>
+  <meta name="description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Goodness of fit and association | Probability Theory and Statistics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  <meta name="github-repo" content="6G4Z3008" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Goodness of fit and association | Probability Theory and Statistics" />
+  
+  <meta name="twitter:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
+  
+
+<meta name="author" content="Malcolm Connolly" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="cards.ico" type="image/x-icon" />
+<link rel="prev" href="hypothesis-testing.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><a href="./"><img src="logo.svg"></a></li>
+<li><a href="https://moodle.mmu.ac.uk/course/view.php?id=157842" target="blank" > 6G4Z3008 course notes </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#frequentist-perspective"><i class="fa fa-check"></i><b>1.1</b> Frequentist perspective</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#naive-probability"><i class="fa fa-check"></i><b>1.2</b> Naive probability</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#complements-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Complements and mutual exclusivity</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#outcomes-and-counting"><i class="fa fa-check"></i><b>1.4</b> Outcomes and counting</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#factorials"><i class="fa fa-check"></i><b>1.4.1</b> Factorials</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#permutations"><i class="fa fa-check"></i><b>1.4.2</b> Permutations</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#combinations"><i class="fa fa-check"></i><b>1.4.3</b> Combinations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#exercises-week-1"><i class="fa fa-check"></i><b>1.5</b> Exercises Week 1</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#tutorial-exercises"><i class="fa fa-check"></i><b>1.5.1</b> Tutorial exercises</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#exercises-for-feedback"><i class="fa fa-check"></i><b>1.5.2</b> Exercises for feedback</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cond.html"><a href="cond.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
+<li class="chapter" data-level="2.1" data-path="cond.html"><a href="cond.html#independence"><i class="fa fa-check"></i><b>2.1</b> Independence</a></li>
+<li class="chapter" data-level="2.2" data-path="cond.html"><a href="cond.html#conditional-probability"><i class="fa fa-check"></i><b>2.2</b> Conditional Probability</a></li>
+<li class="chapter" data-level="2.3" data-path="cond.html"><a href="cond.html#bayes-theorem"><i class="fa fa-check"></i><b>2.3</b> Bayes Theorem</a></li>
+<li class="chapter" data-level="2.4" data-path="cond.html"><a href="cond.html#exercises-week-2"><i class="fa fa-check"></i><b>2.4</b> Exercises Week 2</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="drv.html"><a href="drv.html"><i class="fa fa-check"></i><b>3</b> Discrete Random Variables</a><ul>
+<li class="chapter" data-level="3.1" data-path="drv.html"><a href="drv.html#random-variables"><i class="fa fa-check"></i><b>3.1</b> Random Variables</a></li>
+<li class="chapter" data-level="3.2" data-path="drv.html"><a href="drv.html#discrete-probability-distributions"><i class="fa fa-check"></i><b>3.2</b> Discrete probability distributions</a></li>
+<li class="chapter" data-level="3.3" data-path="drv.html"><a href="drv.html#properties-of-probability-mass-functions"><i class="fa fa-check"></i><b>3.3</b> Properties of probability mass functions</a></li>
+<li class="chapter" data-level="3.4" data-path="drv.html"><a href="drv.html#mean-variance-and-moments"><i class="fa fa-check"></i><b>3.4</b> Mean, variance and moments</a></li>
+<li class="chapter" data-level="3.5" data-path="drv.html"><a href="drv.html#exercises-week-3"><i class="fa fa-check"></i><b>3.5</b> Exercises Week 3</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="drv.html"><a href="drv.html#exercises-for-feedback-1"><i class="fa fa-check"></i><b>3.5.1</b> Exercises for feedback</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="binpois.html"><a href="binpois.html"><i class="fa fa-check"></i><b>4</b> Special discrete random variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="binpois.html"><a href="binpois.html#the-binomial-distribution"><i class="fa fa-check"></i><b>4.1</b> The Binomial Distribution</a></li>
+<li class="chapter" data-level="4.2" data-path="binpois.html"><a href="binpois.html#the-binomial-mass-function"><i class="fa fa-check"></i><b>4.2</b> The binomial mass function</a></li>
+<li class="chapter" data-level="4.3" data-path="binpois.html"><a href="binpois.html#mean-and-variance"><i class="fa fa-check"></i><b>4.3</b> Mean and variance</a></li>
+<li class="chapter" data-level="4.4" data-path="binpois.html"><a href="binpois.html#the-poisson-distribution"><i class="fa fa-check"></i><b>4.4</b> The Poisson distribution</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="binpois.html"><a href="binpois.html#further-properties"><i class="fa fa-check"></i><b>4.4.1</b> Further properties</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="binpois.html"><a href="binpois.html#mean-and-variance-1"><i class="fa fa-check"></i><b>4.5</b> Mean and Variance</a></li>
+<li class="chapter" data-level="4.6" data-path="binpois.html"><a href="binpois.html#deriving-the-poisson-mass-function"><i class="fa fa-check"></i><b>4.6</b> Deriving the Poisson mass function</a></li>
+<li class="chapter" data-level="4.7" data-path="binpois.html"><a href="binpois.html#exercises-week-4"><i class="fa fa-check"></i><b>4.7</b> Exercises week 4</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cont.html"><a href="cont.html"><i class="fa fa-check"></i><b>5</b> Continuous random variables</a><ul>
+<li class="chapter" data-level="5.1" data-path="cont.html"><a href="cont.html#relation-to-histograms"><i class="fa fa-check"></i><b>5.1</b> Relation to histograms</a></li>
+<li class="chapter" data-level="5.2" data-path="cont.html"><a href="cont.html#two-students"><i class="fa fa-check"></i><b>5.2</b> Two students</a></li>
+<li class="chapter" data-level="5.3" data-path="cont.html"><a href="cont.html#the-probability-density-function"><i class="fa fa-check"></i><b>5.3</b> The probability density function</a></li>
+<li class="chapter" data-level="5.4" data-path="cont.html"><a href="cont.html#expectation-and-variance"><i class="fa fa-check"></i><b>5.4</b> Expectation and variance</a></li>
+<li class="chapter" data-level="5.5" data-path="cont.html"><a href="cont.html#mode"><i class="fa fa-check"></i><b>5.5</b> Mode</a></li>
+<li class="chapter" data-level="5.6" data-path="cont.html"><a href="cont.html#cdf"><i class="fa fa-check"></i><b>5.6</b> CDF</a></li>
+<li class="chapter" data-level="5.7" data-path="cont.html"><a href="cont.html#median-quartiles-and-percentiles"><i class="fa fa-check"></i><b>5.7</b> median, quartiles and percentiles</a></li>
+<li class="chapter" data-level="5.8" data-path="cont.html"><a href="cont.html#uniform-distribution"><i class="fa fa-check"></i><b>5.8</b> Uniform distribution</a></li>
+<li class="chapter" data-level="5.9" data-path="cont.html"><a href="cont.html#exponential-distribution"><i class="fa fa-check"></i><b>5.9</b> Exponential distribution</a></li>
+<li class="chapter" data-level="5.10" data-path="cont.html"><a href="cont.html#exercises-week-5"><i class="fa fa-check"></i><b>5.10</b> Exercises week 5</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="cont.html"><a href="cont.html#exercises-for-feedback-week-5"><i class="fa fa-check"></i><b>5.10.1</b> Exercises for feedback week 5</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="norm.html"><a href="norm.html"><i class="fa fa-check"></i><b>6</b> Normal distribution</a><ul>
+<li class="chapter" data-level="6.1" data-path="norm.html"><a href="norm.html#relation-to-data"><i class="fa fa-check"></i><b>6.1</b> Relation to data</a></li>
+<li class="chapter" data-level="6.2" data-path="norm.html"><a href="norm.html#cauchy-density"><i class="fa fa-check"></i><b>6.2</b> Cauchy density</a></li>
+<li class="chapter" data-level="6.3" data-path="norm.html"><a href="norm.html#normal-density"><i class="fa fa-check"></i><b>6.3</b> Normal density</a></li>
+<li class="chapter" data-level="6.4" data-path="norm.html"><a href="norm.html#standard-normal"><i class="fa fa-check"></i><b>6.4</b> Standard normal</a></li>
+<li class="chapter" data-level="6.5" data-path="norm.html"><a href="norm.html#evaluating-the-standard-normal-distribution"><i class="fa fa-check"></i><b>6.5</b> Evaluating the standard normal distribution</a></li>
+<li class="chapter" data-level="6.6" data-path="norm.html"><a href="norm.html#standardising"><i class="fa fa-check"></i><b>6.6</b> Standardising</a></li>
+<li class="chapter" data-level="6.7" data-path="norm.html"><a href="norm.html#inverse-cdf"><i class="fa fa-check"></i><b>6.7</b> Inverse CDF</a></li>
+<li class="chapter" data-level="6.8" data-path="norm.html"><a href="norm.html#sampling-total"><i class="fa fa-check"></i><b>6.8</b> Sampling Total</a></li>
+<li class="chapter" data-level="6.9" data-path="norm.html"><a href="norm.html#sampling-distribution-of-the-mean"><i class="fa fa-check"></i><b>6.9</b> Sampling distribution of the mean</a></li>
+<li class="chapter" data-level="6.10" data-path="norm.html"><a href="norm.html#exercises-week-6"><i class="fa fa-check"></i><b>6.10</b> Exercises week 6</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html"><i class="fa fa-check"></i><b>7</b> Sampling and confidence intervals</a><ul>
+<li class="chapter" data-level="7.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#confidence-intervals"><i class="fa fa-check"></i><b>7.1</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="7.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#unknown-variance"><i class="fa fa-check"></i><b>7.2</b> Unknown variance</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#estimating-the-variance"><i class="fa fa-check"></i><b>7.2.1</b> Estimating the variance</a></li>
+<li class="chapter" data-level="7.2.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#the-t-distribution"><i class="fa fa-check"></i><b>7.2.2</b> The t distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#required-sample-sizes"><i class="fa fa-check"></i><b>7.3</b> Required sample sizes</a></li>
+<li class="chapter" data-level="7.4" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#interval-for-a-population-variance"><i class="fa fa-check"></i><b>7.4</b> Interval for a population variance</a></li>
+<li class="chapter" data-level="7.5" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#interval-for-a-proportion"><i class="fa fa-check"></i><b>7.5</b> Interval for a proportion</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#approximating-the-binomial-distribution."><i class="fa fa-check"></i><b>7.5.1</b> Approximating the binomial distribution.</a></li>
+<li class="chapter" data-level="7.5.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#proportions"><i class="fa fa-check"></i><b>7.5.2</b> Proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#summary"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
+<li class="chapter" data-level="7.7" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#exercises-week-7"><i class="fa fa-check"></i><b>7.7</b> Exercises week 7</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis testing</a><ul>
+<li class="chapter" data-level="8.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#one-sample-tests"><i class="fa fa-check"></i><b>8.1</b> One sample tests</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-mean-known-variance"><i class="fa fa-check"></i><b>8.1.1</b> test for mean (known variance)</a></li>
+<li class="chapter" data-level="8.1.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-mean-unknown-variance"><i class="fa fa-check"></i><b>8.1.2</b> test for mean (unknown variance)</a></li>
+<li class="chapter" data-level="8.1.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-variance"><i class="fa fa-check"></i><b>8.1.3</b> test for variance</a></li>
+<li class="chapter" data-level="8.1.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#p-value-approach"><i class="fa fa-check"></i><b>8.1.4</b> p-value approach</a></li>
+<li class="chapter" data-level="8.1.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#types-of-error"><i class="fa fa-check"></i><b>8.1.5</b> types of error</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#two-sample-tests"><i class="fa fa-check"></i><b>8.2</b> Two sample tests</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#known-variance"><i class="fa fa-check"></i><b>8.2.1</b> known variance</a></li>
+<li class="chapter" data-level="8.2.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#unknown-equal-variance"><i class="fa fa-check"></i><b>8.2.2</b> unknown equal variance</a></li>
+<li class="chapter" data-level="8.2.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#testing-for-equal-variance"><i class="fa fa-check"></i><b>8.2.3</b> testing for equal variance</a></li>
+<li class="chapter" data-level="8.2.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#unknown-unequal-variances-non-examinable"><i class="fa fa-check"></i><b>8.2.4</b> unknown unequal variances (non-examinable)</a></li>
+<li class="chapter" data-level="8.2.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#summary-1"><i class="fa fa-check"></i><b>8.2.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#exercises-week-8"><i class="fa fa-check"></i><b>8.3</b> Exercises week 8</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html"><i class="fa fa-check"></i><b>9</b> Goodness of fit and association</a><ul>
+<li class="chapter" data-level="9.1" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#measuring-discrepancy"><i class="fa fa-check"></i><b>9.1.1</b> Measuring discrepancy</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#contingency-tables-and-association"><i class="fa fa-check"></i><b>9.2</b> Contingency tables and association</a></li>
+<li class="chapter" data-level="9.3" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#goodness-of-fit"><i class="fa fa-check"></i><b>9.3</b> Goodness of fit</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#discrete-uniform-test"><i class="fa fa-check"></i><b>9.3.1</b> Discrete uniform test</a></li>
+<li class="chapter" data-level="9.3.2" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#prescribed-probabilities"><i class="fa fa-check"></i><b>9.3.2</b> Prescribed probabilities</a></li>
+<li class="chapter" data-level="9.3.3" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#small-expected-values"><i class="fa fa-check"></i><b>9.3.3</b> Small expected values</a></li>
+<li class="chapter" data-level="9.3.4" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#goodness-of-fit-tests-to-discrete-distributions"><i class="fa fa-check"></i><b>9.3.4</b> Goodness of fit tests to discrete distributions</a></li>
+<li class="chapter" data-level="9.3.5" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#goodness-of-fit-tests-to-continuous-distributions"><i class="fa fa-check"></i><b>9.3.5</b> Goodness of fit tests to continuous distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#explanation-of-statistic-x2-non-examinable"><i class="fa fa-check"></i><b>9.4</b> Explanation of Statistic <span class="math inline">\(X^2\)</span> (non-examinable)</a></li>
+<li class="chapter" data-level="9.5" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#summary-2"><i class="fa fa-check"></i><b>9.5</b> Summary</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>9.5.1</b> Goodness of fit tests</a></li>
+<li class="chapter" data-level="9.5.2" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#contingency-tables"><i class="fa fa-check"></i><b>9.5.2</b> Contingency tables</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability Theory and Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="goodness-of-fit-and-association" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 9</span> Goodness of fit and association<a href="goodness-of-fit-and-association.html#goodness-of-fit-and-association" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.1</span> Introduction<a href="goodness-of-fit-and-association.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This week we formulate hypothesis tests for association or to evaluate model fit. We will interpret the results of any such test and describe the nature of any association between two factors defining a contingency table. We will recognise the form of a multinomial distribution and compare this to known discrete distributions. In further work we will carry out a chi-squared goodness of fit test for most of the distributions we have learned about previously.</p>
+<p>There are two main situations when a <span class="math inline">\(\chi^2\)</span> significance test is used:</p>
+<ol style="list-style-type: decimal">
+<li>A <span class="math inline">\(\chi^2\)</span> goodness-of-fit test</li>
+</ol>
+<p>In this test we may have some practical data and you want to know how well a particular statistical distribution, such as a binomial or a normal, models that data. The null hypothesis will be to assume the data follows that particular distribution.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>A <span class="math inline">\(\chi^2\)</span> test for association (or independence)</li>
+</ol>
+<p>This is used when you have some practical data concerning two variables and you want to know whether they are independent or whether an association exists between the two. The null hypothesis here will be that the factors are independent.</p>
+<p>Following the process of hypothesis tests previously established, we will assume a null hypothesis and calculate the expected frequencies which are then compared to that which is observed in the data. A test statistic involving the expected and observed frequencies is calculated and compared to an appropriate critical value of a <span class="math inline">\(\chi^2\)</span> distribution.</p>
+<div id="measuring-discrepancy" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.1.1</span> Measuring discrepancy<a href="goodness-of-fit-and-association.html#measuring-discrepancy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose we roll an apparently normal and fair six-sided die <span class="math inline">\(60\)</span> times, and obtain the following frequencies:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Outcome</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Observed frequency</td>
+<td align="center">4</td>
+<td align="center">7</td>
+<td align="center">16</td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center">17</td>
+</tr>
+</tbody>
+</table>
+<p>What do you notice about these numbers?</p>
+<p>In this sample (of possible results from rolling the die) there seems to be a rather large number of <span class="math inline">\(3\)</span>s and <span class="math inline">\(6\)</span>s. Is the die fair or is it biased?</p>
+<p>With a fair die the probability of each outcome is <span class="math inline">\(\frac{1}{6}\)</span>. With <span class="math inline">\(60\)</span> tosses the expected frequencies would each be <span class="math inline">\(\frac{1}{6}\times 60=10\)</span>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Outcome</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Expected frequency</td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">10</td>
+</tr>
+</tbody>
+</table>
+<p>The question is whether the observed frequencies and the expected frequencies are reasonably close or unreasonably different. We add the differences to our table:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Observed frequency, <span class="math inline">\(O\)</span></th>
+<th align="center">4</th>
+<th align="center">7</th>
+<th align="center">16</th>
+<th align="center">8</th>
+<th align="center">8</th>
+<th align="center">17</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Expected frequency, <span class="math inline">\(E\)</span></td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">10</td>
+</tr>
+<tr class="even">
+<td align="center">Difference <span class="math inline">\(O-E\)</span></td>
+<td align="center">-6</td>
+<td align="center">-3</td>
+<td align="center">6</td>
+<td align="center">-2</td>
+<td align="center">-2</td>
+<td align="center">7</td>
+</tr>
+</tbody>
+</table>
+<p>The larger the magnitude of the differences, the more the observed data differs from that expected from the model (a fair die).</p>
+<p>Suppose now we roll a second die <span class="math inline">\(660\)</span> times. What would be the expected here? Suppose we obtain the following results:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Outcome</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Observed frequency</td>
+<td align="center">104</td>
+<td align="center">107</td>
+<td align="center">116</td>
+<td align="center">108</td>
+<td align="center">108</td>
+<td align="center">117</td>
+</tr>
+<tr class="even">
+<td align="center">Expected frequency</td>
+<td align="center">110</td>
+<td align="center">110</td>
+<td align="center">110</td>
+<td align="center">110</td>
+<td align="center">110</td>
+<td align="center">110</td>
+</tr>
+<tr class="odd">
+<td align="center">Difference <span class="math inline">\(O-E\)</span></td>
+<td align="center">-6</td>
+<td align="center">-3</td>
+<td align="center">6</td>
+<td align="center">-2</td>
+<td align="center">-2</td>
+<td align="center">7</td>
+</tr>
+</tbody>
+</table>
+<p>This time the observed values seem remarkably close, yet the difference <span class="math inline">\(O-E\)</span> values are the same as before.
+It is not just the sizeof <span class="math inline">\(O-E\)</span> that matters, but also its size relative to the expected frequency:</p>
+<p><span class="math display">\[\frac{O-E}{E}\]</span>
+Combining the ideas that both the absolute ‘difference’ and the ‘relative size’ matter suggests using the product</p>
+<p><span class="math display">\[(O-E)\times\frac{(O-E)}{E} = \frac{(O-E)^2}{E}.\]</span>
+An aggregate measure of the goodness of fit is the measure</p>
+<p><span class="math display">\[X^2 = \sum_{i=1}^m \frac{(O_i-E_i)^2}{E_i}\]</span></p>
+<p>where <span class="math inline">\(m\)</span> is the number of different outcomes.</p>
+</div>
+</div>
+<div id="contingency-tables-and-association" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.2</span> Contingency tables and association<a href="goodness-of-fit-and-association.html#contingency-tables-and-association" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In its simplest form a contingency table consists of a two-way table of counts or frequencies. The rows and columns of the table are often referred to as <strong><em>factors</em></strong>. We begin by revising independent events for two way tables.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 9.1  </strong></span>We have taken a random sample of <span class="math inline">\(310\)</span> graduates six months after graduation and information on their course (Bachelor of Arts BA, or Bachelor of Science BSc) and employment status is presented below.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">Full-time employed</th>
+<th align="center">Postgraduate studies</th>
+<th align="center">Temporary employment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">BSc</td>
+<td align="center">100</td>
+<td align="center">33</td>
+<td align="center">25</td>
+</tr>
+<tr class="even">
+<td align="center">BA</td>
+<td align="center">90</td>
+<td align="center">40</td>
+<td align="center">22</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Work out <span class="math inline">\(\text{P}(\text{Full-time employed})\)</span></p></li>
+<li><p>Work out <span class="math inline">\(\text{P}(\text{earned a BSc})\)</span></p></li>
+<li><p>Are the events <span class="math inline">\(\{\text{Full-time employed}\}\)</span> and <span class="math inline">\(\{\text{earned a BSc} \}\)</span> independent?</p></li>
+</ol>
+</div>
+<p><em>solution</em></p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(190/310=0.613\)</span></li>
+<li><span class="math inline">\(158/310 = 0.510\)</span></li>
+<li>For independence of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> we would require
+<span class="math display">\[\text{P}(A\cap B)=\text{P}(A)\times\text{P}(B).\]</span>
+The intersection has probability <span class="math inline">\(100/310 = 0.323\)</span>. The product of the answers in (a) and (b) give
+<span class="math display">\[\frac{190}{310}\times\frac{158}{310}= 0.313\]</span>.</li>
+</ol>
+<p>The answer is that they are not independent, but it is quite close!</p>
+<p>Instead of testing if each event in the columns is independent of each event in the rows we can do a test to see if the column factor as a whole is independent of, or <em>associated to</em>, the row factor.</p>
+<p>The test statistic used in this situation is known as the chi-squared statistic and we test between the hypotheses.</p>
+<p><span class="math display">\[\text{H}_0: \text{ There is no association between employment status and degree type}\]</span>
+<span class="math display">\[\text{H}_A: \text{There is an association between employment status and degree type}\]</span></p>
+<p>It will be helpful to consider the table with totals in:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">Full-time employed</th>
+<th align="center">Postgraduate studies</th>
+<th align="center">Temporary employment</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">BSc</td>
+<td align="center">100</td>
+<td align="center">33</td>
+<td align="center">25</td>
+<td align="center">158</td>
+</tr>
+<tr class="even">
+<td align="center">BA</td>
+<td align="center">90</td>
+<td align="center">40</td>
+<td align="center">22</td>
+<td align="center">152</td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center">190</td>
+<td align="center">73</td>
+<td align="center">47</td>
+<td align="center">310</td>
+</tr>
+</tbody>
+</table>
+<p>We need to consider what we would expect the counts to be would be if there were indeed no association between the two factors. Recall the following about expected totals.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-2" class="example"><strong>Example 9.2  </strong></span>If I toss a fair coin <span class="math inline">\(100\)</span> times, how many do I expect to be tails?</p>
+<p><em>solution</em></p>
+<p><span class="math inline">\(100 \times 0.5=50\)</span></p>
+</div>
+<p>In the example above,
+<span class="math display">\[\text{Expected number} = \text{Total} \times \text{Probability}.\]</span></p>
+<p>Suppose my table is like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">Full-time employed</th>
+<th align="center">Postgraduate studies</th>
+<th align="center">Temporary employment</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">BSc</td>
+<td align="center"><span class="math inline">\(E\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Row Total</td>
+</tr>
+<tr class="even">
+<td align="center">BA</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center">Column Total</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Grand Total</td>
+</tr>
+</tbody>
+</table>
+<p>If the events <span class="math inline">\(\{\text{Full-time employed}\}\)</span> and <span class="math inline">\(\{\text{earned a BSc} \}\)</span> are independent then what can be said about <span class="math inline">\(E\)</span>? Well, it is the grand total multiplied by the probability of being in this cell. Assuming independence we get:</p>
+<p><span class="math display">\[E = \text{Grand Total} \times \frac{\text{Row Total}}{\text{Grand Total}}\times \frac{\text{Column Total}}{\text{Grand Total}}\]</span>
+<span class="math display">\[= \frac{\text{Row Total}\times\text{Column Total}}{\text{Grand Total}}\]</span>
+Using this formula we can work out the expected (E) values for every entry in the table</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">Full-time employed</th>
+<th align="center">Postgraduate studies</th>
+<th align="center">Temporary employment</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">BSc</td>
+<td align="center">96.84</td>
+<td align="center">37.21</td>
+<td align="center">23.95</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">BA</td>
+<td align="center">93.16</td>
+<td align="center">35.79</td>
+<td align="center">23.05</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>We then calculate the statistic:</p>
+<p><span class="math display">\[X^2 = \frac{(100-96.84)^2}{96.84}+\frac{(33-37.21)^2}{37.21} + \frac{(25-23.95)^2}{23.95}+\ldots+\frac{(22-23.05)^2}{23.05}\]</span>
+<span class="math display">\[=0.103 + 0.476 + 0.046 + 0.107 + 0.494 + 0.047\]</span>
+<span class="math display">\[=1.273\]</span>
+We need to compare this test statistic to the <span class="math inline">\(95^{\text{th}}\)</span> percentile of a suitable <span class="math inline">\(\chi^2\)</span> distribution.</p>
+<p>As the column sums and row sums are constrained, the number of <strong><em>degrees of freedom</em></strong> is given by, number of columns minus one multiplied by the number of rows minus one. That is</p>
+<p><span class="math display">\[\nu = (r-1)\times(c-1)\]</span>
+Here that is <span class="math inline">\(\nu = (2-1)\times(3-1) = 2\)</span>. The critical value is then <span class="math inline">\(\chi^2_{2, 95\%}=5.99\)</span>.
+We have <span class="math inline">\(1.273 \ngtr 5.99\)</span>, so there is insufficient evidence to say that there is an association between the degree type and employment status.</p>
+</div>
+<div id="goodness-of-fit" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.3</span> Goodness of fit<a href="goodness-of-fit-and-association.html#goodness-of-fit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="discrete-uniform-test" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.3.1</span> Discrete uniform test<a href="goodness-of-fit-and-association.html#discrete-uniform-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can formally test when all the outcomes are equally likely using a chi-squared test as in the following example.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-3" class="example"><strong>Example 9.3  </strong></span>The table shows the number of employees absent for just one day during a particular period of time in a large company.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Weekday</th>
+<th align="center">Mon</th>
+<th align="center">Tues</th>
+<th align="center">Wed</th>
+<th align="center">Thurs</th>
+<th align="center">Fri</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of absentees</td>
+<td align="center">121</td>
+<td align="center">87</td>
+<td align="center">87</td>
+<td align="center">91</td>
+<td align="center">114</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Calculate the expected frequencies according to the hypothesis that the number of absentees is independent of the day of the week.</p></li>
+<li><p>Test at the <span class="math inline">\(5\%\)</span> significance level whether teh differences in the observed and expected data are significant.</p></li>
+</ol>
+</div>
+<p><em>solution</em></p>
+<ol style="list-style-type: lower-alpha">
+<li>The hypotheses are</li>
+</ol>
+<p><span class="math display">\[\text{H}_0: \text{The number of absentees is independent of the day of the week}\]</span>
+<span class="math display">\[\text{H}_A: \text{The number of absentees is not independent of the day of the week}\]</span>
+If <span class="math inline">\(\text{H}_0\)</span>, then the chance of being absent on any given weekday is <span class="math inline">\(\frac{1}{5}\)</span>. The total number of days absent in the table is <span class="math inline">\(500\)</span>. Therefore the expected number of absentees on any given day is
+<span class="math display">\[\frac{1}{5}\times 500 = 100.\]</span>
+b) The number of degrees of freedom is the number of classes minus the number of restrictions on the numbers in the table (one restriction <span class="math inline">\(\sum E= 500\)</span>)
+<span class="math display">\[\nu=5-1=4\]</span>
+So we will get the critical value from
+<span class="math display">\[\chi^2_{n-1, \ 95\%} =9.488\]</span>
+Now calculate the test statistic <span class="math inline">\(X^2\)</span>, via tabulating the contributions.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(O\)</span></th>
+<th align="center"><span class="math inline">\(E\)</span></th>
+<th align="center"><span class="math inline">\(\frac{(O-E)^2}{E}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">121</td>
+<td align="center">100</td>
+<td align="center">4.41</td>
+</tr>
+<tr class="even">
+<td align="center">87</td>
+<td align="center">100</td>
+<td align="center">1.69</td>
+</tr>
+<tr class="odd">
+<td align="center">87</td>
+<td align="center">100</td>
+<td align="center">1.69</td>
+</tr>
+<tr class="even">
+<td align="center">91</td>
+<td align="center">100</td>
+<td align="center">0.81</td>
+</tr>
+<tr class="odd">
+<td align="center">114</td>
+<td align="center">100</td>
+<td align="center">1.96</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[X^2 = 10.56\]</span>
+<span class="math display">\[X^2 = 10.56 &gt; 9.488\]</span>
+Reject <span class="math inline">\(\text{H}_0\)</span>, and conclude that there is sufficient evidence that the number of absentees on a day is not independent of the day of the week.</p>
+<p>Note the test does not tell us the nature of the failure of independence.</p>
+<p>What are the biggest contributions to the statistic, and what do they tell us?</p>
+<p>Notes:
+- The <span class="math inline">\(O_i\)</span> are observed frequencies and are always whole numbers.
+- the <span class="math inline">\(E_i\)</span> will not usually be whole numbers.
+- Rounding errors can accumulate so it is advisable to use more decimal places than usual in <span class="math inline">\(X^2\)</span> calculations.
+- A <span class="math inline">\(\chi^2\)</span> test is always right tailed. We add up positive contributions until over the critical threshold, where we reject <span class="math inline">\(\text{H}_0\)</span>.</p>
+</div>
+<div id="prescribed-probabilities" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.3.2</span> Prescribed probabilities<a href="goodness-of-fit-and-association.html#prescribed-probabilities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When we tested the digits were random, we used the discrete uniform probabilities to calculate the expected numbers. However, we can perform a chi-squared test when the probabilities are specified in any number of categories.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-4" class="example"><strong>Example 9.4  </strong></span>In experiments in pea breeding Gregor Mendel (the father of modern genetic theory) obtained the following data relating to <span class="math inline">\(556\)</span> pea plants.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Round and Yellow</th>
+<th align="center">Wrinkled and Yellow</th>
+<th align="center">Round and Green</th>
+<th align="center">Wrinkled and Green</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">315</td>
+<td align="center">101</td>
+<td align="center">108</td>
+<td align="center">32</td>
+</tr>
+</tbody>
+</table>
+<p>According to Mendel’s theory, the expected figures should be in the ratio <span class="math inline">\(9:3:3:1\)</span>.</p>
+<p>Test at the <span class="math inline">\(10\%\)</span> significance level whether the theory is contradicted.</p>
+</div>
+<p><em>solution</em></p>
+<p><span class="math display">\[\text{H}_0: \text{The different types of peas occur in the ratio 9:3:3:1}\]</span>
+<span class="math display">\[\text{H}_A: \text{The different types of peas do not occur in this ratio}\]</span></p>
+<p>Calculate the table</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">Round and Yellow</th>
+<th align="center">Wrinkled and Yellow</th>
+<th align="center">Round and Green</th>
+<th align="center">Wrinkled and Green</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Observed (O)</td>
+<td align="center">315</td>
+<td align="center">101</td>
+<td align="center">108</td>
+<td align="center">32</td>
+</tr>
+<tr class="even">
+<td align="center">Exected (E)</td>
+<td align="center">312.5</td>
+<td align="center">104.25</td>
+<td align="center">104.25</td>
+<td align="center">34.75</td>
+</tr>
+</tbody>
+</table>
+<p>There are four classes and one restriction so
+<span class="math display">\[\nu = 4-1=3\]</span>
+And the critical value is</p>
+<p><span class="math display">\[\chi^2_{3, \ 90\%} = 6.251\]</span>
+A table of contributions is:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(O\)</span></th>
+<th align="center"><span class="math inline">\(E\)</span></th>
+<th align="center"><span class="math inline">\(\frac{(O-E)^2}{E}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">315</td>
+<td align="center">312.75</td>
+<td align="center"><span class="math inline">\(0.161\ldots\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">101</td>
+<td align="center">104.25</td>
+<td align="center"><span class="math inline">\(0.101\ldots\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">108</td>
+<td align="center">104.25</td>
+<td align="center"><span class="math inline">\(0.134\ldots\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">32</td>
+<td align="center">34.75</td>
+<td align="center"><span class="math inline">\(0.217\ldots\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The total <span class="math inline">\(X^2 = 0.470\)</span></p>
+<p><span class="math display">\[0.47 &lt; 6.251\]</span>
+Insufficient evidence to reject <span class="math inline">\(\text{H}_0\)</span>, or the data is consistent with <span class="math inline">\(\text{H}_0\)</span>. Therefore we can conclude that the observed frequencies are consistent with the ratio given by genetic theory. The calculated value of <span class="math inline">\(X^2\)</span> is very small indeed, suggesting very little discrepancy.</p>
+<p>We have already seen in labs that we can do some hypothesis tests easily in R. You can do a <span class="math inline">\(\chi^2\)</span> test in R using the command <span class="math inline">\(\texttt{chisq.test()}\)</span></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="goodness-of-fit-and-association.html#cb1-1"></a>peas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">315</span>, <span class="dv">101</span>,<span class="dv">108</span>,<span class="dv">32</span>)</span>
+<span id="cb1-2"><a href="goodness-of-fit-and-association.html#cb1-2"></a></span>
+<span id="cb1-3"><a href="goodness-of-fit-and-association.html#cb1-3"></a><span class="kw">chisq.test</span>(peas, <span class="dt">p=</span><span class="kw">c</span>(<span class="dv">9</span><span class="op">/</span><span class="dv">16</span>,<span class="dv">3</span><span class="op">/</span><span class="dv">16</span>,<span class="dv">3</span><span class="op">/</span><span class="dv">16</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">16</span>))</span></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  peas
+## X-squared = 0.47002, df = 3, p-value = 0.9254</code></pre>
+<p>Which is the result we obtained previously. Recall we would reject if the p-value were lower than the significance level. Note the p-value is (very much) larger than <span class="math inline">\(5\%\)</span>, and so there is no evidence against then null hypothesis.</p>
+</div>
+<div id="small-expected-values" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.3.3</span> Small expected values<a href="goodness-of-fit-and-association.html#small-expected-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The distribution of our test statistic <span class="math inline">\(X^2\)</span> is discrete as the numbers in any table could appear in a finite number of ways constrained by their sum.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 9.5  </strong></span>How many ways can I have a sum of three whole numbers <span class="math inline">\(n_1,n_2,n_3\)</span> whose sum is <span class="math inline">\(5\)</span>?</p>
+<p><em>solution</em>
+<span class="math inline">\((1,1,3)\)</span> in <span class="math inline">\(3\)</span> possible orders
+<span class="math inline">\((1,2,2)\)</span> in <span class="math inline">\(3\)</span> possible orders
+Altogether there are only <span class="math inline">\(6\)</span> ways this can happen.</p>
+</div>
+<p>The <span class="math inline">\(\chi^2\)</span> distribution is continuous, and the approximation becomes less and less accurate as the expected frequencies become smaller. The rule often stated for deciding whether the approximation is valid is <strong><em>All the expected frequencies must be greater than or equal to 5</em></strong>. If the original chosen categories lead to the expected numbers being less than <span class="math inline">\(5\)</span>, then it is necessary to combine categories together. With numerical data adjacent categories are combined in this way.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-6" class="example"><strong>Example 9.6  </strong></span>A test of a random number generator is provided by studying the lengths of ‘runs’ of digits.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Work out the probability of a run of length <span class="math inline">\(k\)</span> (i.e. that a random particular digit is followed by exactly <span class="math inline">\(k-1\)</span> digits of the same).</p></li>
+<li><p>If <span class="math inline">\(X\)</span> is a random variable equal to the length of a run, what distribution does <span class="math inline">\(X\)</span> follow?</p></li>
+<li><p>A sequence of supposedly random numbers are generated and the following table is obtained:</p></li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Length of run</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6 or more</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Frequency</td>
+<td align="center">8083</td>
+<td align="center">825</td>
+<td align="center">75</td>
+<td align="center">9</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<p>Use a <span class="math inline">\(10\%\)</span> significance level to test whether these results suggest there is anything wrong with the random number generator.</p>
+</div>
+<p><em>solution</em></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>A run of length <span class="math inline">\(k\)</span>, a given digit must must be followed by <span class="math inline">\(k-1\)</span> digits each has probability <span class="math inline">\(0.1\)</span>. The final digit is different from the previous <span class="math inline">\(k\)</span>, so has probability <span class="math inline">\(0.9\)</span>. Altogether
+<span class="math display">\[ \text{P}(X=k) = 0.9\times 0.1^{k-1}\]</span></p></li>
+<li><p>This is a geometric distribution with success probability <span class="math inline">\(0.1\)</span>.</p></li>
+<li><p>We need to work out the probability of each category in the table first.</p></li>
+</ol>
+<p><span class="math display">\[\text{P}(X=1) = 0.9\]</span>
+<span class="math display">\[\text{P}(X=2) = 0.9\times0.1 = 0.09 \]</span>
+<span class="math display">\[\text{P}(X=3) = 0.009\]</span>
+<span class="math display">\[\text{P}(X=4) = 0.0009\]</span>
+<span class="math display">\[\text{P}(X=5) = 0.00009\]</span>
+<span class="math display">\[\text{P}(X&gt;6) = 1- (0.9+0.09+0.009+0.0009+0.00009) = 1\times10^{-5}\]</span>
+The total frequency is <span class="math inline">\(8993\)</span>. To work out the expected we multiply the probability by this total frequency.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Length of run</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6 or more</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Probability</td>
+<td align="center">0.9</td>
+<td align="center">0.09</td>
+<td align="center">0.009</td>
+<td align="center">0.0009</td>
+<td align="center">0.00009</td>
+<td align="center">10^{-5}</td>
+</tr>
+<tr class="even">
+<td align="center">Expected</td>
+<td align="center">8093.700</td>
+<td align="center">809.370</td>
+<td align="center">80.937</td>
+<td align="center">8.094</td>
+<td align="center">0.809</td>
+<td align="center">0.090</td>
+</tr>
+</tbody>
+</table>
+<p>The last three categories must be combined here:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Length of run</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4 or more</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Probability</td>
+<td align="center">0.9</td>
+<td align="center">0.09</td>
+<td align="center">0.009</td>
+<td align="center">0.001</td>
+</tr>
+<tr class="even">
+<td align="center">Expected</td>
+<td align="center">8093.700</td>
+<td align="center">809.370</td>
+<td align="center">80.937</td>
+<td align="center">8.993</td>
+</tr>
+</tbody>
+</table>
+<p>Now we use the number of categories after combining is <span class="math inline">\(4\)</span>, so <span class="math inline">\(\nu = 4-1=3\)</span> and we will use the critical value
+<span class="math display">\[\chi^2_{3 , \ 90\%}= 6.251\]</span>
+A table of contributions is:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(O\)</span></th>
+<th align="center"><span class="math inline">\(E\)</span></th>
+<th align="center"><span class="math inline">\(\frac{(O-E)^2}{E}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">8083</td>
+<td align="center">8093.700</td>
+<td align="center">0.014</td>
+</tr>
+<tr class="even">
+<td align="center">825</td>
+<td align="center">809.370</td>
+<td align="center">0.302</td>
+</tr>
+<tr class="odd">
+<td align="center">75</td>
+<td align="center">80.937</td>
+<td align="center">0.435</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">8.993</td>
+<td align="center">0.113</td>
+</tr>
+</tbody>
+</table>
+<p>The total is <span class="math inline">\(X^2 = 0.864\)</span></p>
+<p>Comparison: <span class="math inline">\(0.864\ngtr 6.251\)</span>.</p>
+<p>There is no significant evidence for rejecting the null hypothesis here.</p>
+</div>
+<div id="goodness-of-fit-tests-to-discrete-distributions" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.3.4</span> Goodness of fit tests to discrete distributions<a href="goodness-of-fit-and-association.html#goodness-of-fit-tests-to-discrete-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We have already seen how we can test if data fits a distribution of outcomes being equally likely, a discrete uniform distribution, or if the data fits a distribution with some outcomes being more likely than others according to some mass function. Here we will test for some named distributions from earlier sections.</p>
+<p>If we have to estimate a parameter of the distribution this is a further constraint from the data, so in general <strong><em>we subtract one degree of freedom for each parameter we estimate</em></strong>. If we do not have to estimate a parameter, then it is one less than the number of categories (after possibly combining where expected is less than <span class="math inline">\(5\)</span>).</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-7" class="example"><strong>Example 9.7  </strong></span>Eggs are packed in boxes of <span class="math inline">\(6\)</span>. On arrival at a supermarket each pack is inspected by a robot with lasers to make sure that no eggs are broken. The robot records the number of broken eggs in a pack. After examining <span class="math inline">\(5000\)</span> egg packets the data is tabulated as follows:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Number of broken eggs</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of packs</td>
+<td align="center">4704</td>
+<td align="center">273</td>
+<td align="center">22</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Let <span class="math inline">\(X\)</span> be the number of broken eggs in a box. Explain why it may be suitable to model <span class="math inline">\(X\)</span> with a binomial distribution.</p></li>
+<li><p>Test whether these results are consistent with the data being modelled by a binomial distribution <span class="math inline">\(\text{Bin}(6,p)\)</span> where <span class="math inline">\(p\)</span> is estimated from the data.</p></li>
+</ol>
+</div>
+<p><em>solution</em></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>PINT</p></li>
+<li><p>The hypotheses are
+<span class="math display">\[\text{H}_0: \text{Bin}(6,p) \text{ is a good fit}\]</span>
+<span class="math display">\[\text{H}_A: \text{Bin}(6,p) \text{ is not a good fit}\]</span></p></li>
+</ol>
+<p>We can estimate the probability of a single egg being broken in two ways. One way is to note there are <span class="math inline">\(5000\times 6 = 30000\)</span> eggs of which <span class="math inline">\(322\)</span> are recorded as broken, hence <span class="math display">\[\hat{\pi}=322/30000=0.01703\ldots\]</span></p>
+<p>Another way is to use the null hypothesis, the mean of the Binomial distribution is <span class="math inline">\(n\pi = 6p\)</span> on the other hand the mean from the table is <span class="math inline">\(\bar{x}= 0.0644\)</span>, equating the two gives:</p>
+<p><span class="math display">\[6p=0.0644\]</span>
+which gives the same answer. Once we have the parameter <span class="math inline">\(p\)</span> we can evaluate <span class="math inline">\(\text{P}(X=0),\text{P}(X=1)\ldots ,\text{P}(X=6)\)</span> using the pmf of the binomial distribution.</p>
+<p>The <span class="math inline">\(X^2\)</span> calculations proceed as usual. In this case the last five categories combine to ‘2 or more’.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Broken</th>
+<th align="center"><span class="math inline">\(O_i\)</span></th>
+<th align="center">Probability</th>
+<th align="center"><span class="math inline">\(E_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">4704</td>
+<td align="center">0.93730</td>
+<td align="center">4686.518</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">273</td>
+<td align="center">0.06102</td>
+<td align="center">305.086</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\geq 2\)</span></td>
+<td align="center">23</td>
+<td align="center">0.00168</td>
+<td align="center">8.396</td>
+</tr>
+</tbody>
+</table>
+<p>After combining we have <span class="math inline">\(3\)</span> categories. We also estimated one parameter.</p>
+<p>The degrees of freedom are then <span class="math inline">\(\nu = 3-1-1 = 1\)</span>.</p>
+<p>The critical value is from a <span class="math inline">\(\chi^2_1\)</span> distribution. It can be seen from tables that the p-value is less than <span class="math inline">\(0.1\%\)</span>. Here we reject <span class="math inline">\(H_0\)</span> and conclude a binomial distribution is not a good fit to the data.</p>
+<p>From the contributions to the <span class="math inline">\(X^2\)</span> statistic, can you elaborate as to why?</p>
+<p>There were far more than expected packs containing two or more broken eggs, it is likely that egg breakages are not independent, but may be caused by whole packs being dropped or other accidents.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 9.8  </strong></span>An analysis of the number of goals scored by the local football team in their last <span class="math inline">\(100\)</span> matches gave the following results:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Goals per match</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of matches</td>
+<td align="center">14</td>
+<td align="center">18</td>
+<td align="center">29</td>
+<td align="center">18</td>
+<td align="center">10</td>
+<td align="center">7</td>
+<td align="center">3</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>State the assumptions of modelling this data with a Poisson distribution</p></li>
+<li><p>Carry out a <span class="math inline">\(\chi^2\)</span> goodness of fit test at the <span class="math inline">\(10\%\)</span> significance level to determine whether or not the above distribution can be reasonably modelled by a Poisson distribution with parameter <span class="math inline">\(2\)</span>.</p></li>
+</ol>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li><p>SIR,MR</p></li>
+<li></li>
+</ol>
+<p>If <span class="math inline">\(X\)</span> is the number of goals scored in a match:</p>
+<p><span class="math display">\[\text{H}_0: \text{Pois(2)} \text{ is a good fit}\]</span>
+<span class="math display">\[\text{H}_A: \text{Pois(2)} \text{ is not a good fit}\]</span>
+To calculate the probabilities <span class="math inline">\(\text{P}(X=x)\)</span> for <span class="math inline">\(x=0,1,2,\ldots\)</span> we can use the PD function for most of these.</p>
+<p>For a Poisson distribution there is no theoretical maximum number of goals, even though <span class="math inline">\(7\)</span> was the observed largest number, so we must account for this uncertainty in the tail of the distribution. Hence only for the last one we use the CDF function and calculate <span class="math inline">\(\text{P}(X\geq 7)\)</span> (and we know to use the CDF as <span class="math inline">\(1-\text{P}(X\leq 6)\)</span>).</p>
+<p>The table is as follows:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Probability</th>
+<th align="center">Expected <span class="math inline">\(= 100 \times\)</span>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\text{P}(X=0) = 0.1353\)</span></td>
+<td align="center">13.53</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\text{P}(X=1) = 0.2707\)</span></td>
+<td align="center">27.07</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\text{P}(X=2) = 0.2707\)</span></td>
+<td align="center">27.07</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\text{P}(X=3) = 0.1804\)</span></td>
+<td align="center">18.04</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\text{P}(X=4) = 0.0902\)</span></td>
+<td align="center">9.02</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\text{P}(X=5) = 0.0361\)</span></td>
+<td align="center">3.61</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\text{P}(X=6) = 0.0121\)</span></td>
+<td align="center">1.21</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\text{P}(X\geq7) = 1- 0.9955 = 0.0045\)</span></td>
+<td align="center">0.45</td>
+</tr>
+</tbody>
+</table>
+<p>We must combine the last three categories to be ‘<span class="math inline">\(5\)</span> or more’. The revised table for observed and expected is:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(O\)</span></th>
+<th align="center"><span class="math inline">\(E\)</span></th>
+<th align="center"><span class="math inline">\(\frac{(O-E)^2}{E}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">14</td>
+<td align="center">13.53</td>
+<td align="center">0.016</td>
+</tr>
+<tr class="even">
+<td align="center">18</td>
+<td align="center">27.07</td>
+<td align="center">3.038</td>
+</tr>
+<tr class="odd">
+<td align="center">29</td>
+<td align="center">27.07</td>
+<td align="center">0.137</td>
+</tr>
+<tr class="even">
+<td align="center">18</td>
+<td align="center">18.04</td>
+<td align="center">0.000<span class="math inline">\(\ldots\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">10</td>
+<td align="center">9.02</td>
+<td align="center">0.106</td>
+</tr>
+<tr class="even">
+<td align="center">11</td>
+<td align="center">5.27</td>
+<td align="center">6.23</td>
+</tr>
+</tbody>
+</table>
+<p>Finding the sum gives <span class="math inline">\(X^2 = 9.529\)</span></p>
+<p>There are <span class="math inline">\(6\)</span> classes after combining, so the degrees of freedom <span class="math inline">\(\nu = 6-1 =5\)</span>. The critical value is therefore <span class="math inline">\(\chi^2_{5, \ 90\%} = 9.236\)</span>.</p>
+<p>Here we have <span class="math inline">\(X^2 = 9.529 &gt; 9.236\)</span>, so we reject the null hypothesis. We conclude the number of goals per match cannot be modelled by a Poisson distribution with parameter <span class="math inline">\(2\)</span>.</p>
+<p>Was it far off? How could we improve the model?</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 9.9  </strong></span>Can the data from the previous example be modelled by a Poisson distrubtion with some appropriate parameter?</p>
+</div>
+<p>Recall for a Poisson distribution the mean is equal to the rate parameter. That is if <span class="math inline">\(X\sim \text{Pois}(\lambda)\)</span> then <span class="math inline">\(\text{E}(X)=\lambda\)</span>. The estimate of the mean is <span class="math inline">\(\bar{x} = 2.3\)</span> from the table (can be found by putting the original table into a calculator).</p>
+<p><span class="math display">\[\text{H}_0: \text{Pois(2.3)} \text{ is a good fit}\]</span>
+<span class="math display">\[\text{H}_A: \text{Pois(2.3)} \text{ is not a good fit}\]</span>
+The table of probabilities and expected values becomes:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Probability</th>
+<th align="center">Expected <span class="math inline">\(= 100 \times\)</span>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\text{P}(X=0) = 0.10025\)</span></td>
+<td align="center">10.03</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\text{P}(X=1) = 0.2306\)</span></td>
+<td align="center">23.06</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\text{P}(X=2) = 0.2652\)</span></td>
+<td align="center">26.52</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\text{P}(X=3) = 0.2033\)</span></td>
+<td align="center">20.33</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\text{P}(X=4) = 0.1169\)</span></td>
+<td align="center">11.69</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\text{P}(X=5) = 0.0538\)</span></td>
+<td align="center">5.38</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\text{P}(X=6) = 0.0206\)</span></td>
+<td align="center">2.06</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\text{P}(X\geq7) = 0.0099\)</span></td>
+<td align="center">0.99</td>
+</tr>
+</tbody>
+</table>
+<p>We can combine the last three classes, and proceed to calculate <span class="math inline">\(X^2\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(O\)</span></th>
+<th align="center"><span class="math inline">\(E\)</span></th>
+<th align="center"><span class="math inline">\(\frac{(O-E)^2}{E}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">14</td>
+<td align="center">10.03</td>
+<td align="center">1.571</td>
+</tr>
+<tr class="even">
+<td align="center">18</td>
+<td align="center">23.06</td>
+<td align="center">1.110</td>
+</tr>
+<tr class="odd">
+<td align="center">29</td>
+<td align="center">26.52</td>
+<td align="center">0.231</td>
+</tr>
+<tr class="even">
+<td align="center">18</td>
+<td align="center">20.33</td>
+<td align="center">0.267</td>
+</tr>
+<tr class="odd">
+<td align="center">10</td>
+<td align="center">11.69</td>
+<td align="center">0.244</td>
+</tr>
+<tr class="even">
+<td align="center">11</td>
+<td align="center">8.43</td>
+<td align="center">0.783</td>
+</tr>
+</tbody>
+</table>
+<p>Then the sum is <span class="math inline">\(X^2 = 4.208\)</span>.</p>
+<p>The number of classes after combining is <span class="math inline">\(6\)</span> and we estimated <span class="math inline">\(1\)</span> parameter so we have the number of degrees of freedom as <span class="math inline">\(\nu=6-1-1 = 4\)</span>.</p>
+</div>
+<div id="goodness-of-fit-tests-to-continuous-distributions" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.3.5</span> Goodness of fit tests to continuous distributions<a href="goodness-of-fit-and-association.html#goodness-of-fit-tests-to-continuous-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As the chi-squared test uses counts, the data must be grouped in order to do a chi-squared test on continuous distributions,i.e. count how many data items lie inside a given interval. As such, there is a loss of accuracy, and in another course you may learn better tests to show data follow a particular distribution.</p>
+<p>Suppose you have some data and you would like to test if this data follows a normal distribution. In order to summarise the data we will need to group it somehow, for example a histogram counts the number of data values that lie within an interval. There are a number of steps to follow:</p>
+<ul>
+<li><p>Calculate (or estimate for grouped data) the sample mean <span class="math inline">\(\bar{x}\)</span> and standard deviation <span class="math inline">\(s_x\)</span> from the data. These become our estimated parameters for the normal distribution.</p></li>
+<li><p>Standardise the endpoints of the intervals.</p></li>
+<li><p>Evaluate the probability of lying within the standardised intervals using Z</p></li>
+<li><p>Calculate the expected values by multiplying the total frequency by the probability of lying within the interval.</p></li>
+<li><p>Perform the chi-squared test on these values</p></li>
+<li><p>Ensure you subtract 2 from the degrees of freedom for having estimated two parameters of the normal distribution.</p></li>
+</ul>
+<p>We will do an example in R.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 9.10  </strong></span>Recall the body temperature data from labs, which recorded the body temperature of <span class="math inline">\(223\)</span> individuals in degrees Farenheit. Test at the <span class="math inline">\(5\%\)</span> level whether the data can be modelled by a suitable normal distribution.</p>
+</div>
+<p>We first calculate the sample mean and standard deviation to hypothesise a distribution.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="goodness-of-fit-and-association.html#cb3-1"></a>data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Bodytemp.csv&quot;</span>)</span>
+<span id="cb3-2"><a href="goodness-of-fit-and-association.html#cb3-2"></a></span>
+<span id="cb3-3"><a href="goodness-of-fit-and-association.html#cb3-3"></a>xbar &lt;-<span class="st"> </span><span class="kw">mean</span>(data<span class="op">$</span>Body_temp)</span>
+<span id="cb3-4"><a href="goodness-of-fit-and-association.html#cb3-4"></a>xbar</span></code></pre></div>
+<pre><code>## [1] 98.16502</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="goodness-of-fit-and-association.html#cb5-1"></a>sx &lt;-<span class="st"> </span><span class="kw">sd</span>(data<span class="op">$</span>Body_temp)</span>
+<span id="cb5-2"><a href="goodness-of-fit-and-association.html#cb5-2"></a>sx</span></code></pre></div>
+<pre><code>## [1] 0.5273048</code></pre>
+<p>So our hypotheses are</p>
+<p><span class="math display">\[\text{H}_0: \text{N}(98.2,0.527^2) \text{ is a good fit}, \ \ \ \ \ \text{H}_A: \text{N}(98.2,0.527^2) \text{ is not a good fit}\]</span></p>
+<p>We do not have intervals yet, but we can make some by getting R to draw a histogram. We could set our own intervals, or use the ones R gives us.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="goodness-of-fit-and-association.html#cb7-1"></a>data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Bodytemp.csv&quot;</span>)</span>
+<span id="cb7-2"><a href="goodness-of-fit-and-association.html#cb7-2"></a></span>
+<span id="cb7-3"><a href="goodness-of-fit-and-association.html#cb7-3"></a>h &lt;-<span class="st"> </span><span class="kw">hist</span>(data<span class="op">$</span>Body_temp, </span>
+<span id="cb7-4"><a href="goodness-of-fit-and-association.html#cb7-4"></a>          <span class="dt">main =</span> <span class="st">&quot;Histogram of human body temperatures&quot;</span>,</span>
+<span id="cb7-5"><a href="goodness-of-fit-and-association.html#cb7-5"></a>          <span class="dt">xlab =</span> <span class="st">&quot;Temperature (°F)&quot;</span>)</span></code></pre></div>
+<p><img src="6G4Z3008-notes_files/figure-html/hist-1.png" width="672" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="goodness-of-fit-and-association.html#cb8-1"></a><span class="co"># These are the endpoints of the intervals</span></span>
+<span id="cb8-2"><a href="goodness-of-fit-and-association.html#cb8-2"></a>h<span class="op">$</span>breaks</span></code></pre></div>
+<pre><code>## [1]  96.5  97.0  97.5  98.0  98.5  99.0  99.5 100.0</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="goodness-of-fit-and-association.html#cb10-1"></a><span class="co"># These are the observed frequencies</span></span>
+<span id="cb10-2"><a href="goodness-of-fit-and-association.html#cb10-2"></a>h<span class="op">$</span>counts </span></code></pre></div>
+<pre><code>## [1]  5 23 64 80 43  7  1</code></pre>
+<p>So we can summarise the histogram as a table:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Interval</th>
+<th align="center">Observed frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(96.5\leq x &lt; 97\)</span></td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(97\leq x &lt; 97.5\)</span></td>
+<td align="center">23</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(97.5\leq x &lt; 98\)</span></td>
+<td align="center">64</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(98\leq x &lt; 98.5\)</span></td>
+<td align="center">80</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(98.5\leq x &lt; 99\)</span></td>
+<td align="center">43</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(99\leq x &lt; 99.5\)</span></td>
+<td align="center">7</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(99.5\leq x &lt; 100\)</span></td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<p>Now this table is for the distribution of body temperatures in question. We want to compare this to a normal distribution, and one way of doing so is to standardise the intervals and work out the areas of the standard normal between the standardised endpoints.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="goodness-of-fit-and-association.html#cb12-1"></a><span class="co">#standardising the endpoints</span></span>
+<span id="cb12-2"><a href="goodness-of-fit-and-association.html#cb12-2"></a>st_breaks &lt;-<span class="st"> </span>(h<span class="op">$</span>breaks <span class="op">-</span><span class="st"> </span>xbar)<span class="op">/</span>sx</span>
+<span id="cb12-3"><a href="goodness-of-fit-and-association.html#cb12-3"></a></span>
+<span id="cb12-4"><a href="goodness-of-fit-and-association.html#cb12-4"></a><span class="co"># creating a vector to store the probabilities in</span></span>
+<span id="cb12-5"><a href="goodness-of-fit-and-association.html#cb12-5"></a>probs &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">length =</span> <span class="kw">length</span>(st_breaks)<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb12-6"><a href="goodness-of-fit-and-association.html#cb12-6"></a></span>
+<span id="cb12-7"><a href="goodness-of-fit-and-association.html#cb12-7"></a><span class="co"># A loop to calculate the probability between endpoints</span></span>
+<span id="cb12-8"><a href="goodness-of-fit-and-association.html#cb12-8"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(probs)){</span>
+<span id="cb12-9"><a href="goodness-of-fit-and-association.html#cb12-9"></a>probs[i] &lt;-<span class="st"> </span><span class="kw">pnorm</span>(st_breaks[i<span class="op">+</span><span class="dv">1</span>])<span class="op">-</span><span class="kw">pnorm</span>(st_breaks[i])</span>
+<span id="cb12-10"><a href="goodness-of-fit-and-association.html#cb12-10"></a>}</span>
+<span id="cb12-11"><a href="goodness-of-fit-and-association.html#cb12-11"></a></span>
+<span id="cb12-12"><a href="goodness-of-fit-and-association.html#cb12-12"></a></span>
+<span id="cb12-13"><a href="goodness-of-fit-and-association.html#cb12-13"></a><span class="co">#changing the end probabilities to account for the tails</span></span>
+<span id="cb12-14"><a href="goodness-of-fit-and-association.html#cb12-14"></a><span class="co">#see comment below</span></span>
+<span id="cb12-15"><a href="goodness-of-fit-and-association.html#cb12-15"></a>probs[<span class="dv">1</span>] &lt;-<span class="st"> </span>probs[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="kw">pnorm</span>(st_breaks[<span class="dv">1</span>])</span>
+<span id="cb12-16"><a href="goodness-of-fit-and-association.html#cb12-16"></a>probs[<span class="kw">length</span>(probs)] &lt;-<span class="st">  </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(st_breaks[<span class="kw">length</span>(probs)])</span>
+<span id="cb12-17"><a href="goodness-of-fit-and-association.html#cb12-17"></a></span>
+<span id="cb12-18"><a href="goodness-of-fit-and-association.html#cb12-18"></a>probs</span></code></pre></div>
+<pre><code>## [1] 0.013573730 0.090049579 0.273534295 0.360214167 0.205972393 0.050980284
+## [7] 0.005675552</code></pre>
+<p>However the intervals at either end must also account for the tail probabilities (just because the data ended there, does not mean that a smaller or larger value could not be observed in another sample, so it affects our expected calculation).</p>
+<p>We get the following table of probabilities:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Interval</th>
+<th align="center">Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(96.5\leq x &lt; 97\)</span></td>
+<td align="center">0.01357</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(97\leq x &lt; 97.5\)</span></td>
+<td align="center">0.09005</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(97.5\leq x &lt; 98\)</span></td>
+<td align="center">0.27353</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(98\leq x &lt; 98.5\)</span></td>
+<td align="center">0.36021</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(98.5\leq x &lt; 99\)</span></td>
+<td align="center">0.20597</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(99\leq x &lt; 99.5\)</span></td>
+<td align="center">0.05098</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(99.5\leq x &lt; 100\)</span></td>
+<td align="center">0.00568</td>
+</tr>
+</tbody>
+</table>
+<p>We then work out the expected numbers by multiplying by the total frequency:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="goodness-of-fit-and-association.html#cb14-1"></a>E &lt;-<span class="st"> </span>probs<span class="op">*</span><span class="kw">sum</span>(h<span class="op">$</span>counts)</span>
+<span id="cb14-2"><a href="goodness-of-fit-and-association.html#cb14-2"></a>E</span></code></pre></div>
+<pre><code>## [1]  3.026942 20.081056 60.998148 80.327759 45.931844 11.368603  1.265648</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Probability</th>
+<th align="center">Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0.01357</td>
+<td align="center">3.026</td>
+</tr>
+<tr class="even">
+<td align="center">0.09005</td>
+<td align="center">20.081</td>
+</tr>
+<tr class="odd">
+<td align="center">0.27353</td>
+<td align="center">60.998</td>
+</tr>
+<tr class="even">
+<td align="center">0.36021</td>
+<td align="center">80.328</td>
+</tr>
+<tr class="odd">
+<td align="center">0.20597</td>
+<td align="center">45.932</td>
+</tr>
+<tr class="even">
+<td align="center">0.05098</td>
+<td align="center">11.369</td>
+</tr>
+<tr class="odd">
+<td align="center">0.01110</td>
+<td align="center">1.266</td>
+</tr>
+</tbody>
+</table>
+<p>Then we combine the categories where the expected is less than <span class="math inline">\(5\)</span>. You may have to do this ‘manually’:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="goodness-of-fit-and-association.html#cb16-1"></a>E[<span class="dv">2</span>] &lt;-<span class="st"> </span>E[<span class="dv">1</span>]<span class="op">+</span>E[<span class="dv">2</span>] <span class="co">#combine 1st and 2nd expected no.s</span></span>
+<span id="cb16-2"><a href="goodness-of-fit-and-association.html#cb16-2"></a></span>
+<span id="cb16-3"><a href="goodness-of-fit-and-association.html#cb16-3"></a>E[<span class="dv">6</span>] &lt;-<span class="st"> </span>E[<span class="dv">7</span>]<span class="op">+</span>E[<span class="dv">6</span>] <span class="co">#combine 6th and last expected no.s</span></span>
+<span id="cb16-4"><a href="goodness-of-fit-and-association.html#cb16-4"></a></span>
+<span id="cb16-5"><a href="goodness-of-fit-and-association.html#cb16-5"></a><span class="co">#Overwrite our E vector</span></span>
+<span id="cb16-6"><a href="goodness-of-fit-and-association.html#cb16-6"></a>E &lt;-<span class="st"> </span>E[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">7</span>)] <span class="co">#get rid of 1st &amp; last entries</span></span>
+<span id="cb16-7"><a href="goodness-of-fit-and-association.html#cb16-7"></a>E</span></code></pre></div>
+<pre><code>## [1] 23.10800 60.99815 80.32776 45.93184 12.63425</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="goodness-of-fit-and-association.html#cb18-1"></a><span class="co"># Do the same for the observed frequencies:</span></span>
+<span id="cb18-2"><a href="goodness-of-fit-and-association.html#cb18-2"></a>O &lt;-<span class="st"> </span>h<span class="op">$</span>counts</span>
+<span id="cb18-3"><a href="goodness-of-fit-and-association.html#cb18-3"></a></span>
+<span id="cb18-4"><a href="goodness-of-fit-and-association.html#cb18-4"></a><span class="co">#same combining as for expected categories</span></span>
+<span id="cb18-5"><a href="goodness-of-fit-and-association.html#cb18-5"></a>O[<span class="dv">2</span>] &lt;-<span class="st"> </span>O[<span class="dv">1</span>]<span class="op">+</span>O[<span class="dv">2</span>] <span class="co">#combine 1st and 2nd expected no.s</span></span>
+<span id="cb18-6"><a href="goodness-of-fit-and-association.html#cb18-6"></a></span>
+<span id="cb18-7"><a href="goodness-of-fit-and-association.html#cb18-7"></a>O[<span class="dv">6</span>] &lt;-<span class="st"> </span>O[<span class="dv">7</span>]<span class="op">+</span>O[<span class="dv">6</span>] <span class="co">#combine 6th and last expected no.s</span></span>
+<span id="cb18-8"><a href="goodness-of-fit-and-association.html#cb18-8"></a></span>
+<span id="cb18-9"><a href="goodness-of-fit-and-association.html#cb18-9"></a><span class="co">#Overwrite our E vector</span></span>
+<span id="cb18-10"><a href="goodness-of-fit-and-association.html#cb18-10"></a>O &lt;-<span class="st"> </span>O[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">7</span>)] <span class="co">#get rid of 1st &amp; last entries</span></span>
+<span id="cb18-11"><a href="goodness-of-fit-and-association.html#cb18-11"></a>O</span></code></pre></div>
+<pre><code>## [1] 28 64 80 43  8</code></pre>
+<p>Now we redraw the combined table with the observed numbers to calculate the test statistic <span class="math inline">\(X^2\)</span>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">0</th>
+<th align="center">E</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">28</td>
+<td align="center">23.108</td>
+</tr>
+<tr class="even">
+<td align="center">64</td>
+<td align="center">60.998</td>
+</tr>
+<tr class="odd">
+<td align="center">80</td>
+<td align="center">80.328</td>
+</tr>
+<tr class="even">
+<td align="center">43</td>
+<td align="center">45.932</td>
+</tr>
+<tr class="odd">
+<td align="center">8</td>
+<td align="center">12.634</td>
+</tr>
+</tbody>
+</table>
+<p>We can do this calculation using vectors in R. You may also find using a spreadsheet helps.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="goodness-of-fit-and-association.html#cb20-1"></a>X_sq &lt;-<span class="st"> </span><span class="kw">sum</span>((O<span class="op">-</span>E)<span class="op">^</span><span class="dv">2</span><span class="op">/</span>E) </span>
+<span id="cb20-2"><a href="goodness-of-fit-and-association.html#cb20-2"></a>X_sq</span></code></pre></div>
+<pre><code>## [1] 3.071697</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="goodness-of-fit-and-association.html#cb22-1"></a><span class="kw">qchisq</span>(<span class="fl">0.95</span>,<span class="dt">df =</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 5.991465</code></pre>
+<p>Here there are <span class="math inline">\(5\)</span> categories after combining, and we estimated <span class="math inline">\(2\)</span> parameters, so the degrees of freedom are given by <span class="math inline">\(\nu = 5-1-2=2\)</span>.
+Here the critical value is <span class="math inline">\(5.991465\)</span>. The test statistic has value 3.071697, so here we do not reject <span class="math inline">\(\text{H}_0\)</span> and conclude that the data is consistent with a <span class="math inline">\(\text{N}(98.2,0.527^2)\)</span> distribution.</p>
+<p>Note if we combine the categories in the probability vector then R can do our test quickly as:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="goodness-of-fit-and-association.html#cb24-1"></a><span class="co">#same combining as for probability categories</span></span>
+<span id="cb24-2"><a href="goodness-of-fit-and-association.html#cb24-2"></a>probs[<span class="dv">2</span>] &lt;-<span class="st"> </span>probs[<span class="dv">1</span>]<span class="op">+</span>probs[<span class="dv">2</span>] <span class="co">#combine 1st and 2nd expected no.s</span></span>
+<span id="cb24-3"><a href="goodness-of-fit-and-association.html#cb24-3"></a></span>
+<span id="cb24-4"><a href="goodness-of-fit-and-association.html#cb24-4"></a>probs[<span class="dv">6</span>] &lt;-<span class="st"> </span>probs[<span class="dv">7</span>]<span class="op">+</span>probs[<span class="dv">6</span>] <span class="co">#combine 6th and last expected no.s</span></span>
+<span id="cb24-5"><a href="goodness-of-fit-and-association.html#cb24-5"></a></span>
+<span id="cb24-6"><a href="goodness-of-fit-and-association.html#cb24-6"></a><span class="co">#Overwrite our E vector</span></span>
+<span id="cb24-7"><a href="goodness-of-fit-and-association.html#cb24-7"></a>probs &lt;-<span class="st"> </span>probs[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">7</span>)] <span class="co">#get rid of 1st &amp; last entries</span></span>
+<span id="cb24-8"><a href="goodness-of-fit-and-association.html#cb24-8"></a>probs</span></code></pre></div>
+<pre><code>## [1] 0.10362331 0.27353429 0.36021417 0.20597239 0.05665584</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="goodness-of-fit-and-association.html#cb26-1"></a><span class="kw">chisq.test</span>(<span class="dt">x =</span> O, <span class="dt">p =</span> probs)</span></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  O
+## X-squared = 3.0717, df = 4, p-value = 0.5459</code></pre>
+<p>This is a good check of our test statistic, however R does not know we combined the categories so the df are incorrect and so is the p-value.</p>
+</div>
+</div>
+<div id="explanation-of-statistic-x2-non-examinable" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.4</span> Explanation of Statistic <span class="math inline">\(X^2\)</span> (non-examinable)<a href="goodness-of-fit-and-association.html#explanation-of-statistic-x2-non-examinable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section aims to give some intuition for the question: why is the statistic <span class="math inline">\(X^2 = \sum_{i=1}^m \frac{(O_i-E_i)^2}{E_i}\)</span> a <span class="math inline">\(\chi^2\)</span> distribution?</p>
+<p>Suppose in the simplest case we have just two outcomes to observe rather than many so we have a binomial distribution <span class="math inline">\(Y_1 \sim \text{Bin}(n,\pi_1)\)</span> and <span class="math inline">\(Y_2 = n - Y_1\)</span>. Also <span class="math inline">\(\pi_2 = 1-\pi_1\)</span>.</p>
+<p>The observed numbers of the two outcomes are <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span>, and their expected numbers are <span class="math inline">\(n\pi_1\)</span> and <span class="math inline">\(n\pi_2\)</span>. We consider the quantity:</p>
+<p><span class="math display">\[X^2 = \frac{(Y_1-n\pi_1)^2}{n\pi_1} + \frac{(Y_2-n\pi_2)^2}{n\pi_2}\]</span>
+Using <span class="math inline">\(Y_2 = n - Y_1\)</span> and <span class="math inline">\(\pi_2 = 1-\pi_1\)</span> gives:</p>
+<p><span class="math display">\[= \frac{(Y_1-n\pi_1)^2}{n\pi_1} + \frac{(n-Y_1-n(1-\pi_1))^2}{n(1-\pi_1)}\]</span></p>
+<p><span class="math display">\[=\frac{(Y_1-n\pi_1)^2}{n\pi_1} + \frac{(Y_1-n\pi_1)^2}{n(1-\pi_1)}\]</span>
+Collecting as a single fraction:
+<span class="math display">\[=\frac{(Y_1-n\pi_1)^2(1-\pi_1)+(Y_1-n\pi_1)^2\pi_1}{n\pi_1(1-\pi_1)}\]</span>
+<span class="math display">\[=\frac{(Y_1-n\pi_1)^2}{n\pi_1(1-\pi_1)}\]</span>
+Now we have</p>
+<p><span class="math display">\[X^2 = \left( \frac{Y_1 - n\pi_1}{\sqrt{n\pi_1(1-\pi_1)}}\right)^2\]</span>
+Recall for a binomial distribution that the mean is <span class="math inline">\(n\pi\)</span> and the variance is <span class="math inline">\(n\pi(1-\pi)\)</span>. Here this means that inside the brackets we have a standardised distribution - that is, we have subtracted the mean and divided by the standard deviation. By the Normal approximation to the binomial distribution, we know that this will be approximately a normal distribution, but because it is standardised it will be <span class="math inline">\(\text{N}(0,1)\)</span>.</p>
+<p>Also recall that the square of a standard normal <span class="math inline">\(Z^2 \sim \chi^2_1\)</span>. Therefore we have</p>
+<p><span class="math display">\[X^2 = Z^2 \sim \chi^2_1\]</span>
+When we had <em>two</em> outcomes and the statistic <span class="math inline">\(X^2\)</span> followed a <span class="math inline">\(\chi^2_1\)</span> distribution. For a distribution with <span class="math inline">\(k\)</span> categories, when there are <span class="math inline">\(k\)</span> outcomes, <span class="math inline">\(X^2\)</span> will follow a <span class="math inline">\(\chi^2_{k-1}\)</span> distribution.</p>
+</div>
+<div id="summary-2" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.5</span> Summary<a href="goodness-of-fit-and-association.html#summary-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="goodness-of-fit-tests" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.5.1</span> Goodness of fit tests<a href="goodness-of-fit-and-association.html#goodness-of-fit-tests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>A chi-squared test is always a right tailed test</p></li>
+<li><p>The null hypothesis is always that the distribution is a good fit</p></li>
+<li><p>Work out expected numbers by multiplying the probability by the total frequency.</p></li>
+</ul>
+<p><span class="math display">\[E = \text{total}\times \text{P}(X=x)\]</span></p>
+<ul>
+<li><p>you have to combine categories where the expected numbers are less than <span class="math inline">\(5\)</span>.</p></li>
+<li><p>The number of degrees of freedom <span class="math inline">\(\nu = \text{no. categories after combining} - 1\)</span></p></li>
+<li><p>If you have to estimate a parameter you need to subtract one from the degrees of freedom.</p></li>
+</ul>
+<p><span class="math display">\[\nu = \text{no. categories after combining} - 1 - \text{no. parameters estimated}\]</span></p>
+</div>
+<div id="contingency-tables" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.5.2</span> Contingency tables<a href="goodness-of-fit-and-association.html#contingency-tables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Here the null hypothesis is that there is no association.</p></li>
+<li><p>The degrees of freedom is the one less than the number of columns multiplied by one less than the number of rows, after combining classes where <span class="math inline">\(E&lt;5\)</span>.
+<span class="math display">\[\nu =  (c-1)(r-1)\]</span></p></li>
+<li><p>To work out the expected you multiply row and column totals and divide by the grand total.</p></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="hypothesis-testing.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["6G4Z3008-notes.pdf", "6G4Z3008-notes.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
