@@ -252,6 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5.1" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>9.5.1</b> Goodness of fit tests</a></li>
 <li class="chapter" data-level="9.5.2" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#contingency-tables"><i class="fa fa-check"></i><b>9.5.2</b> Contingency tables</a></li>
 </ul></li>
+<li class="chapter" data-level="9.6" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#exercises-week-9"><i class="fa fa-check"></i><b>9.6</b> Exercises Week 9</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -855,7 +856,7 @@ Altogether there are only <span class="math inline">\(6\)</span> ways this can h
 <span class="math display">\[\text{P}(X=3) = 0.009\]</span>
 <span class="math display">\[\text{P}(X=4) = 0.0009\]</span>
 <span class="math display">\[\text{P}(X=5) = 0.00009\]</span>
-<span class="math display">\[\text{P}(X&gt;6) = 1- (0.9+0.09+0.009+0.0009+0.00009) = 1\times10^{-5}\]</span>
+<span class="math display">\[\text{P}(X\geq 6) = 1- (0.9+0.09+0.009+0.0009+0.00009) = 1\times10^{-5}\]</span>
 The total frequency is <span class="math inline">\(8993\)</span>. To work out the expected we multiply the probability by this total frequency.</p>
 <table>
 <thead>
@@ -1033,7 +1034,8 @@ which gives the same answer. Once we have the parameter <span class="math inline
 </tr>
 </tbody>
 </table>
-<p>After combining we have <span class="math inline">\(3\)</span> categories. We also estimated one parameter.</p>
+<p>Giving <span class="math inline">\(X^2 = 28.841\)</span>.
+After combining we have <span class="math inline">\(3\)</span> categories. We also estimated one parameter.</p>
 <p>The degrees of freedom are then <span class="math inline">\(\nu = 3-1-1 = 1\)</span>.</p>
 <p>The critical value is from a <span class="math inline">\(\chi^2_1\)</span> distribution. It can be seen from tables that the p-value is less than <span class="math inline">\(0.1\%\)</span>. Here we reject <span class="math inline">\(H_0\)</span> and conclude a binomial distribution is not a good fit to the data.</p>
 <p>From the contributions to the <span class="math inline">\(X^2\)</span> statistic, can you elaborate as to why?</p>
@@ -1570,8 +1572,315 @@ When we had <em>two</em> outcomes and the statistic <span class="math inline">\(
 <span class="math display">\[\nu =  (c-1)(r-1)\]</span></p></li>
 <li><p>To work out the expected you multiply row and column totals and divide by the grand total.</p></li>
 </ul>
-
 </div>
+</div>
+<div id="exercises-week-9" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.6</span> Exercises Week 9<a href="goodness-of-fit-and-association.html#exercises-week-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-11" class="exercise"><strong>Exercise 9.1  </strong></span>A tetrahedral die is thrown <span class="math inline">\(120\)</span> times and the number on which it lands is noted</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Number</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Frequency</td>
+<td align="center">35</td>
+<td align="center">32</td>
+<td align="center">25</td>
+<td align="center">28</td>
+</tr>
+</tbody>
+</table>
+<p>Test at the <span class="math inline">\(5\%\)</span> significance level whether the die is fair.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-12" class="exercise"><strong>Exercise 9.2  </strong></span>A new Fly spray is applied to <span class="math inline">\(50\)</span> samples each of five flies in an air-tight box, and the number of living flies is counted after one hour. The results were:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Number</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Frequency</td>
+<td align="center">7</td>
+<td align="center">20</td>
+<td align="center">12</td>
+<td align="center">9</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Under what circumstances would you expect to be able to model a variable <span class="math inline">\(X\)</span> with a binomial distribution?</p></li>
+<li><p>i)What is the mean of a Binomial distribution if it has parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>?</p>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Calculate the mean number of living flies per sample.</li>
+</ol></li>
+<li><p>Calculate the expected values and perform a <span class="math inline">\(\chi^2\)</span> test at the <span class="math inline">\(5\%\)</span> significance level.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-13" class="exercise"><strong>Exercise 9.3  </strong></span>A group of students are performing an experiment where they drop <span class="math inline">\(20\)</span> drawing pins on the ground and the number landing pointing down is counted. The experiment was carried out until the students had <span class="math inline">\(50\)</span> observations. The results are in the table:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Number landing down</th>
+<th align="center">Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">7</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">17</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">6</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">2</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Calculate the mean number landing point down. Hence show an estimate for the probability of a pin landing facing down is <span class="math inline">\(0.35\)</span></p></li>
+<li><p>What are the parameters of the appropriate binomial distribution for this data? Calculate the probability of exactly <span class="math inline">\(8\)</span> landing point down, and hence work out its expected frequency.</p></li>
+<li><p>Calculate the expected number of times five or fewer pins would land point down.</p></li>
+<li><p>The goodness of fit test is partially complete below. By grouping the data appropriately, evaluate the missing expected or observed frequencies. Hence calculate the value of <span class="math inline">\(X^2\)</span> for this data.</p></li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Number of pins</th>
+<th align="center"><span class="math inline">\(\leq 5\)</span></th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center"><span class="math inline">\(\geq 9\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Expected</td>
+<td align="center"></td>
+<td align="center">8.6</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">11.8</td>
+</tr>
+<tr class="even">
+<td align="center">Observed</td>
+<td align="center">9</td>
+<td align="center">7</td>
+<td align="center">17</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>How many degrees of freedom does the test have? Carry out the test making your findings clear.</li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-14" class="exercise"><strong>Exercise 9.4  </strong></span>A local council has a record of the number of children and the number of households in its area. The council calculates the average number of children per household is <span class="math inline">\(1.4\)</span>. It is suggested that the number of children per household may be modelled by a Poisson distribution with parameter <span class="math inline">\(1.4\)</span>. In order to test this a random sample of <span class="math inline">\(1000\)</span> households is taken, giving the following data.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Number of children</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center"><span class="math inline">\(\geq 5\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Number of households</td>
+<td align="center">273</td>
+<td align="center">361</td>
+<td align="center">263</td>
+<td align="center">78</td>
+<td align="center">21</td>
+<td align="center">4</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Calculate the corresponding expected frequencies obtained from the Poisson distribution with parameter <span class="math inline">\(1.4\)</span>.</p></li>
+<li><p>Carry out a <span class="math inline">\(5\%\)</span> significance test to show the proposed model should not be accepted.</p></li>
+<li><p>With reference to relevant figures, give a reason in context for the lack of fit to the proposed model.</p></li>
+<li><p>Which of the assumptions of a Poisson model may not be valid in this example?</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-15" class="exercise"><strong>Exercise 9.5  </strong></span>The number of heavy rainstorms reported by <span class="math inline">\(330\)</span> weather stations in the US over a one-year period are as follows:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Number of rainstorms (x)</th>
+<th align="center">Number of stations (f)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">102</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">114</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">74</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">28</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">10</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(&gt; 5\)</span></td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find the expected frequencies of rainstorms given by the Poisson distribution having the same mean and total as the observed data.</p></li>
+<li><p>Carry out a <span class="math inline">\(\chi^2\)</span> test for the adequacy of the Poisson distribution as a model for these data.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-16" class="exercise"><strong>Exercise 9.6  </strong></span>A farmer’s cooperative decided to test three new fertilisers A, B and C. They allocated them at random to <span class="math inline">\(75\)</span> plots. The yield of the crop was then classified as high, medium or low. The results are summarised below:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">High</td>
+<td align="center">12</td>
+<td align="center">15</td>
+<td align="center">3</td>
+<td align="center">30</td>
+</tr>
+<tr class="even">
+<td align="center">Medium</td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center">24</td>
+</tr>
+<tr class="odd">
+<td align="center">Low</td>
+<td align="center">5</td>
+<td align="center">7</td>
+<td align="center">9</td>
+<td align="center">21</td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center">25</td>
+<td align="center">30</td>
+<td align="center">20</td>
+<td align="center">75</td>
+</tr>
+</tbody>
+</table>
+<p>Test at the <span class="math inline">\(5\%\)</span> level of significance whether there is any evidence of an association between brand of fertiliser and crop yield.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-17" class="exercise"><strong>Exercise 9.7  </strong></span>A survey of the effectiveness of three hospitals A, B and C in treating a particular illness revealed the following:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">Complete recovery</th>
+<th align="center">Partial recovery</th>
+<th align="center">Died</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">A</td>
+<td align="center">37</td>
+<td align="center">23</td>
+<td align="center">7</td>
+</tr>
+<tr class="even">
+<td align="center">B</td>
+<td align="center">52</td>
+<td align="center">44</td>
+<td align="center">12</td>
+</tr>
+<tr class="odd">
+<td align="center">C</td>
+<td align="center">22</td>
+<td align="center">30</td>
+<td align="center">13</td>
+</tr>
+</tbody>
+</table>
+<p>Do the data reveal significant evidence of differences in the effectiveness of the hospitals?</p>
+</div>
+
 </div>
 </div>
             </section>

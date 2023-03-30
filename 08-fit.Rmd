@@ -324,7 +324,7 @@ $$\text{P}(X=2) = 0.9\times0.1 = 0.09 $$
 $$\text{P}(X=3) = 0.009$$
 $$\text{P}(X=4) = 0.0009$$
 $$\text{P}(X=5) = 0.00009$$
-$$\text{P}(X>6) = 1- (0.9+0.09+0.009+0.0009+0.00009) = 1\times10^{-5}$$
+$$\text{P}(X\geq 6) = 1- (0.9+0.09+0.009+0.0009+0.00009) = 1\times10^{-5}$$
 The total frequency is $8993$. To work out the expected we multiply the probability by this total frequency.
 
 | Length of run | 1|2 |3 |4 |5 |6 or more |
@@ -403,6 +403,7 @@ The $X^2$ calculations proceed as usual. In this case the last five categories c
 | 1 | 273  | 0.06102 | 305.086 | 3.374 |
 | $\geq 2$  | 23   | 0.00168 | 8.396 | 25.402 |
 
+Giving $X^2 = 28.841$.
 After combining we have $3$ categories. We also estimated one parameter. 
 
 The degrees of freedom are then $\nu = 3-1-1 = 1$.
@@ -758,4 +759,128 @@ $$\nu = \text{no. categories after combining} - 1 - \text{no. parameters estimat
 $$\nu =  (c-1)(r-1)$$
 
 - To work out the expected you multiply row and column totals and divide by the grand total. 
+
+
+## Exercises Week 9
+
+:::{.exercise}
+A tetrahedral die is thrown $120$ times and the number on which it lands is noted
+
+| Number | 1 | 2 | 3 | 4 |
+|:-:|:-:|:-:|:-:|:-:|
+| Frequency | 35 | 32 | 25 | 28 |
+
+Test at the $5\%$ significance level whether the die is fair.
+:::
+
+:::{.exercise}
+A new Fly spray is  applied to $50$ samples each of five flies in an air-tight box, and the number of living flies is counted after one hour. The results were:
+
+| Number | 0 | 1 | 2 | 3 | 4 | 5 |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Frequency | 7 | 20 | 12 | 9 | 1 | 1 |
+
+a) Under what circumstances would you expect to be able to model a variable $X$ with a binomial distribution?
+
+b)
+
+  i)What is the mean of a Binomial distribution if it has parameters $n$ and $p$?
+  
+  ii) Calculate the mean number of living flies per sample.
+  
+c) Calculate the expected values and perform a $\chi^2$ test at the $5\%$ significance level.
+:::
+
+:::{.exercise}
+A group of students are performing an experiment where they drop $20$ drawing pins on the ground and the number landing pointing down is counted. The experiment was carried out until the students had $50$ observations. The results are in the table:
+
+| Number landing down | Frequency |
+|:-:|:-:|
+| 3 | 2 |
+| 4 | 2 |
+| 5 | 5 |
+| 6 | 7 |
+| 7 | 17 |
+| 8  | 8 |
+| 9  | 6 |
+| 10 | 1 |
+| 11 | 2 |
+
+a) Calculate the mean number landing point down. Hence show an estimate for the probability of a pin landing facing down is $0.35$
+
+b) What are the parameters of the appropriate binomial distribution for this data? Calculate the probability of exactly $8$ landing point down, and hence work out its expected frequency.
+
+c) Calculate the expected number of times five or fewer pins would land point down.
+
+d) The goodness of fit test is partially complete below. By grouping the data appropriately, evaluate the missing expected or observed frequencies. Hence calculate the value of $X^2$ for this data.
+
+| Number of pins | $\leq 5$ | 6 | 7 | 8 | $\geq 9$ |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+| Expected |  | 8.6 | | | 11.8 |
+| Observed | 9 | 7 | 17 | | |
+
+e) How many degrees of freedom does the test have? Carry out the test making your findings clear.
+:::
+
+:::{.exercise}
+A local council has a record of the number of children and the number of households in its area. The council calculates the average number of children per household is $1.4$. It is suggested that the number of children per household may be modelled by a Poisson distribution with parameter $1.4$. In order to test this a random sample of $1000$ households is taken, giving the following data.
+
+| Number of children | 0 | 1 | 2 | 3 | 4 | $\geq 5$ |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Number of households | 273 | 361 | 263 | 78 | 21 | 4|
+
+a) Calculate the corresponding expected frequencies obtained from the Poisson distribution with parameter $1.4$.
+
+b) Carry out a $5\%$ significance test to show the proposed model should not be accepted. 
+
+c) With reference to relevant figures, give a reason in context for the lack of fit to the proposed model.
+
+d) Which of the assumptions of a Poisson model may not be valid in this example?
+:::
+
+:::{.exercise}
+ The number of heavy rainstorms reported by $330$ weather stations in the US over a one-year period are as follows:
+ 
+| Number of rainstorms (x) | Number of stations (f) |
+|:-:|:-:|
+|0 | 102 |
+|1 | 114 |
+|2 | 74 |
+|3 | 28 |
+|4 | 10 | 
+| 5 | 2 |
+| $> 5$ | 0 |
+
+a) Find the expected frequencies of rainstorms given by the Poisson distribution having the same mean and total as the observed data. 
+
+b) Carry out a $\chi^2$ test for the adequacy of the Poisson distribution as a model for these data.
+:::
+
+
+:::{.exercise}
+A farmer's cooperative decided to test three new fertilisers A, B and C. They allocated them at random to $75$ plots. The yield of the crop was then classified as high, medium or low. The results are summarised below:
+
+| | A| B | C| Total | 
+|:-:|:-:|:-:|:-:|:-:|
+| High | 12 |15| 3| 30 |
+| Medium | 8 | 8 | 8 | 24 |
+|Low | 5 | 7 | 9 | 21|
+| Total | 25 | 30 | 20 | 75 |
+
+Test at the $5\%$ level of significance whether there is any evidence of an association between brand of fertiliser and crop yield. 
+:::
+
+
+:::{.exercise}
+ A survey of the effectiveness of three hospitals A, B and C in treating a particular illness revealed the following:
+ 
+ | | Complete recovery | Partial recovery | Died |
+ |:-:|:-:|:-:|:-:|
+ | A | 37 | 23 | 7 |
+ | B | 52 | 44 | 12 |
+ | C | 22 | 30 | 13 |
+ 
+ Do the data reveal significant evidence of differences in the effectiveness of the hospitals?
+:::
+
 
