@@ -585,12 +585,11 @@ b) A large bin contains $5000$ used golf balls, $1500$ of which are defective. T
   
   (ii) at least $7$ defective balls
   
-c) The random variable $Y$ denotes the number of defective golf balls in a sample of $2000$, selected from a batch of $200,000$ and of which $3250$ are defective. Completely specify an approximate distribution for $Y$ other than a binomial model. 
 
 :::
 
 :::{.exercise}
-The independent random variables $X$ and $Y$have means $2.5$ and $1.5$ respectively. Obtain the mean and variance of the random variables below, and hence give a reason why they are not Poisson.
+The independent Poisson random variables $X$ and $Y$have means $2.5$ and $1.5$ respectively. Obtain the mean and variance of the random variables below, and hence give a reason why they are or are not Poisson.
 a) $X-Y$
 b) $2X+5$
 :::
