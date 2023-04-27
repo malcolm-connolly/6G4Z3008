@@ -215,3 +215,4 @@ def:unlabeled-div-17
 exm:unlabeled-div-19
 pitfalls
 summary-3
+exercises-week-10

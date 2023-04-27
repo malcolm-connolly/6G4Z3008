@@ -264,6 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.6" data-path="linear-modelling-and-correlation.html"><a href="linear-modelling-and-correlation.html#hypothesis-tests-for-correlation"><i class="fa fa-check"></i><b>10.6</b> Hypothesis tests for correlation</a></li>
 <li class="chapter" data-level="10.7" data-path="linear-modelling-and-correlation.html"><a href="linear-modelling-and-correlation.html#summary-3"><i class="fa fa-check"></i><b>10.7</b> Summary</a></li>
+<li class="chapter" data-level="10.8" data-path="linear-modelling-and-correlation.html"><a href="linear-modelling-and-correlation.html#exercises-week-10"><i class="fa fa-check"></i><b>10.8</b> Exercises week 10</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1010,6 +1011,276 @@ If the sample correlation coefficient <span class="math inline">\(r\)</span>, in
 <span class="math display">\[r = \frac{s_{xy}}{\sqrt{s_{xx}s_{yy}}}\]</span></p></li>
 <li><p>There is a hypothesis test to detect if there is a correlation or not.</p></li>
 </ul>
+</div>
+<div id="exercises-week-10" class="section level2 hasAnchor">
+<h2><span class="header-section-number">10.8</span> Exercises week 10<a href="linear-modelling-and-correlation.html#exercises-week-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-20" class="exercise"><strong>Exercise 10.1  </strong></span>Eight pairs of observations on the variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are given below.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">x</th>
+<th align="center">1.2</th>
+<th align="center">0.5</th>
+<th align="center">0.8</th>
+<th align="center">0.1</th>
+<th align="center">2.3</th>
+<th align="center">1.1</th>
+<th align="center">1.8</th>
+<th align="center">2.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">y</td>
+<td align="center">8.1</td>
+<td align="center">4.3</td>
+<td align="center">7.1</td>
+<td align="center">3.5</td>
+<td align="center">12.8</td>
+<td align="center">8.4</td>
+<td align="center">9.9</td>
+<td align="center">11.4</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Calculate <span class="math inline">\(\sum x\)</span>, <span class="math inline">\(\sum x^2\)</span>, <span class="math inline">\(\sum y\)</span>, <span class="math inline">\(\sum y^2\)</span>, <span class="math inline">\(\sum xy\)</span>.</p></li>
+<li><p>Find <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(\bar{y}\)</span>, <span class="math inline">\(s_{xx}\)</span>, <span class="math inline">\(s_{yy}\)</span> and <span class="math inline">\(s_{xy}\)</span></p></li>
+<li><p>Find the values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> for the regression line <span class="math inline">\(y=a+bx\)</span>.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-21" class="exercise"><strong>Exercise 10.2  </strong></span>Six pairs of observations on the variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are given below.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">x</th>
+<th align="center">55.7</th>
+<th align="center">10.4</th>
+<th align="center">67.1</th>
+<th align="center">91.2</th>
+<th align="center">30.8</th>
+<th align="center">72.1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">y</td>
+<td align="center">21.2</td>
+<td align="center">45.9</td>
+<td align="center">88.3</td>
+<td align="center">11.4</td>
+<td align="center">75.4</td>
+<td align="center">21.4</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Calculate <span class="math inline">\(\sum x\)</span>, <span class="math inline">\(\sum x^2\)</span>, <span class="math inline">\(\sum y\)</span>, <span class="math inline">\(\sum y^2\)</span>, <span class="math inline">\(\sum xy\)</span>.</p></li>
+<li><p>Find <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(\bar{y}\)</span>.</p></li>
+<li><p>Find the values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> for the regression line <span class="math inline">\(y=a+bx\)</span>.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-22" class="exercise"><strong>Exercise 10.3  </strong></span>Five pairs of observations on the variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are given below.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">y</th>
+<th align="center">357.2</th>
+<th align="center">284.3</th>
+<th align="center">435.8</th>
+<th align="center">571.9</th>
+<th align="center">101.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">x</td>
+<td align="center">0.0149</td>
+<td align="center">0.0375</td>
+<td align="center">-0.0172</td>
+<td align="center">-0.0345</td>
+<td align="center">0.0651</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Calculate <span class="math inline">\(\sum x\)</span>, <span class="math inline">\(\sum x^2\)</span>, <span class="math inline">\(\sum y\)</span>, <span class="math inline">\(\sum y^2\)</span>, <span class="math inline">\(\sum xy\)</span>.</p></li>
+<li><p>Find <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(\bar{y}\)</span>.</p></li>
+<li><p>Find the values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> for the regression line <span class="math inline">\(y=a+bx\)</span>.</p></li>
+<li><p>Estimate the value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x=0.0572\)</span>.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-23" class="exercise"><strong>Exercise 10.4  </strong></span>When a car isdriven under specified conditionsofload, tyre pressure and surrounding temperature, the temperature <span class="math inline">\(T^{o}C\)</span>, generated in the shoulder of the tyre varieswith the speed <span class="math inline">\(V \ \text{km}/\text{h}\)</span>, according to a linear model <span class="math inline">\(T=a+bV\)</span>. Measurements of <span class="math inline">\(T\)</span> were made at eight different values of <span class="math inline">\(V\)</span> with the following results.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">v</th>
+<th align="center">20</th>
+<th align="center">30</th>
+<th align="center">40</th>
+<th align="center">50</th>
+<th align="center">60</th>
+<th align="center">70</th>
+<th align="center">80</th>
+<th align="center">90</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">t</td>
+<td align="center">45</td>
+<td align="center">52</td>
+<td align="center">64</td>
+<td align="center">66</td>
+<td align="center">91</td>
+<td align="center">86</td>
+<td align="center">98</td>
+<td align="center">104</td>
+</tr>
+</tbody>
+</table>
+<p>Given the following</p>
+<p><span class="math display">\[\sum v = 440, \ \sum v^2 = 28400, \ \sum t =606, \ \sum t^2 = 49278, \ \sum vt = 37000 \]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Calculate the estimated regression line of <span class="math inline">\(T\)</span> on <span class="math inline">\(V\)</span>.</p></li>
+<li><p>Estimate the value of <span class="math inline">\(T\)</span> when <span class="math inline">\(V=60\)</span>.</p></li>
+<li><p>Calculate the ANOVA table for the data.</p></li>
+<li><p>Test the hypothesis <span class="math inline">\(\text{H}_0: b=0\)</span>.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-24" class="exercise"><strong>Exercise 10.5  </strong></span>An anemometer is used to estimate wind speed by observing the rotational speed of its vanes. This speed is converted to wind speed by means of an equation obtained from calibrating the instrument in a wind tunnel. In this calibration the wind speed is fixed precisely and the resulting anemometer seed is noted. For a particular anemometer this process produced the following set of data.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Actual speed (m/s)</th>
+<th align="center">Anemometer revs (rev/min)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1.0</td>
+<td align="center">30</td>
+</tr>
+<tr class="even">
+<td align="center">1.1</td>
+<td align="center">38</td>
+</tr>
+<tr class="odd">
+<td align="center">1.2</td>
+<td align="center">48</td>
+</tr>
+<tr class="even">
+<td align="center">1.3</td>
+<td align="center">58</td>
+</tr>
+<tr class="odd">
+<td align="center">1.4</td>
+<td align="center">68</td>
+</tr>
+<tr class="even">
+<td align="center">1.5</td>
+<td align="center">80</td>
+</tr>
+<tr class="odd">
+<td align="center">1.6</td>
+<td align="center">92</td>
+</tr>
+<tr class="even">
+<td align="center">1.7</td>
+<td align="center">106</td>
+</tr>
+<tr class="odd">
+<td align="center">1.8</td>
+<td align="center">120</td>
+</tr>
+<tr class="even">
+<td align="center">1.9</td>
+<td align="center">134</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Obtain the least squares regression line for these data</p></li>
+<li><p>Calculate an ANOVA table for these data</p></li>
+<li><p>Test the hypothesis <span class="math inline">\(\text{H}_0: b=0\)</span>.</p></li>
+<li><p>Calculate a <span class="math inline">\(95\%\)</span> prediction interval for when the actual wind speed is <span class="math inline">\(1.65 m/s\)</span></p></li>
+<li><p>Give an example using a relevant calculation with the regression line, that it is unwise to extrapolate outside the range of this data.</p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-25" class="exercise"><strong>Exercise 10.6  </strong></span>A hospital doctor was interested in the percentage of a certain drug absorbed by patients. She obtained the following data on <span class="math inline">\(10\)</span> patients taking the drug on two separate days.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Patient</th>
+<th align="center">Day 1, x</th>
+<th align="center">Day 2, y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">35.5</td>
+<td align="center">27.6</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">16.6</td>
+<td align="center">15.1</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">13.6</td>
+<td align="center">12.9</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">42.5</td>
+<td align="center">34.1</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">28.5</td>
+<td align="center">35.5</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">30.3</td>
+<td align="center">32.5</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">8.7</td>
+<td align="center">84.3</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">21.5</td>
+<td align="center">21.5</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">16.4</td>
+<td align="center">11.1</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">32.3</td>
+<td align="center">36.4</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Calculate the product moment correlation coefficient <span class="math inline">\(r\)</span> for this data.</p></li>
+<li><p>Test at the <span class="math inline">\(5\%\)</span> significance level whether or not there is no correlation. That is <span class="math inline">\(H_0:\rho = 0\)</span>.</p></li>
+<li><p>After examining a plot of the data, the doctor found one of the points was surprising. This result was an anomaly and excluded from the analysis. The <span class="math inline">\(r\)</span> value for the remaining <span class="math inline">\(9\)</span> points is <span class="math inline">\(0.863\)</span>. Which point was omitted?</p></li>
+</ol>
+</div>
 
 </div>
 </div>

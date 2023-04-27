@@ -590,3 +590,126 @@ $$b = \frac{s_{xy}}{s_{xx}}$$
 $$r = \frac{s_{xy}}{\sqrt{s_{xx}s_{yy}}}$$
 
 - There is a hypothesis test to detect if there is a correlation or not. 
+
+
+## Exercises week 10
+
+:::{.exercise}
+Eight pairs of observations on the variables $x$ and $y$ are given below.
+
+| x | 1.2 | 0.5 | 0.8 | 0.1 | 2.3 | 1.1 | 1.8 | 2.2 |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| y | 8.1 | 4.3 | 7.1 | 3.5 | 12.8 | 8.4 | 9.9 | 11.4 |
+
+a) Calculate $\sum x$, $\sum x^2$, $\sum y$, $\sum y^2$, $\sum xy$.
+
+b) Find $\bar{x}$, $\bar{y}$, $s_{xx}$, $s_{yy}$ and $s_{xy}$
+
+c) Find the values of $a$ and $b$ for the regression line $y=a+bx$.
+:::
+
+
+:::{.exercise}
+Six pairs of observations on the variables $x$ and $y$ are given below.
+
+| x | 55.7 | 10.4 | 67.1 | 91.2 | 30.8 | 72.1 | 
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| y | 21.2 | 45.9 | 88.3 | 11.4 | 75.4 | 21.4 | 
+
+a) Calculate $\sum x$, $\sum x^2$, $\sum y$, $\sum y^2$, $\sum xy$.
+
+b) Find $\bar{x}$, $\bar{y}$.
+
+c) Find the values of $a$ and $b$ for the regression line $y=a+bx$.
+:::
+
+
+:::{.exercise}
+Five pairs of observations on the variables $x$ and $y$ are given below.
+
+| y | 357.2 | 284.3 | 435.8 | 571.9 | 101.2 |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+| x | 0.0149 | 0.0375 | -0.0172 | -0.0345 | 0.0651 | 
+
+a) Calculate $\sum x$, $\sum x^2$, $\sum y$, $\sum y^2$, $\sum xy$.
+
+b) Find $\bar{x}$, $\bar{y}$.
+
+c) Find the values of $a$ and $b$ for the regression line $y=a+bx$.
+
+d) Estimate the value of $y$ when $x=0.0572$.
+:::
+
+
+:::{.exercise}
+When a car isdriven under specified conditionsofload, tyre pressure and surrounding temperature, the temperature $T^{o}C$, generated in the shoulder of the tyre varieswith the speed $V \ \text{km}/\text{h}$, according to a linear model $T=a+bV$. Measurements of $T$ were made at eight different values of $V$ with the following results.
+
+| v | 20 | 30 | 40 | 50 | 60 | 70| 80 | 90 |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| t | 45 | 52 | 64 | 66 | 91 | 86 | 98 | 104 |
+
+Given the following 
+
+$$\sum v = 440, \ \sum v^2 = 28400, \ \sum t =606, \ \sum t^2 = 49278, \ \sum vt = 37000 $$
+
+a) Calculate the estimated regression line of $T$ on $V$. 
+
+b) Estimate the value of $T$ when $V=60$.
+
+c) Calculate the ANOVA table for the data. 
+
+d) Test the hypothesis $\text{H}_0: b=0$.
+:::
+
+
+:::{.exercise}
+An anemometer is used to estimate wind speed by observing the rotational speed of its vanes. This speed is converted to wind speed by means of an equation obtained from calibrating the instrument in a wind tunnel. In this calibration the wind speed is fixed precisely and the resulting anemometer seed is noted. For a particular anemometer this process produced the following set of data.
+
+| Actual speed (m/s) | Anemometer revs (rev/min) |
+|:-:|:-:|
+|1.0| 30|
+|1.1| 38|
+|1.2| 48|
+|1.3 |58|
+|1.4| 68|
+|1.5| 80|
+|1.6 |92|
+|1.7 |106|
+|1.8| 120|
+|1.9 |134|
+
+a) Obtain the least squares regression line for these data
+
+b) Calculate an ANOVA table for these data
+
+c) Test the hypothesis $\text{H}_0: b=0$.
+
+d) Calculate a $95\%$ prediction interval for when the actual wind speed is $1.65 m/s$
+
+e) Give an example using a relevant calculation with the regression line, that it is unwise to extrapolate outside the range of this data.
+:::
+
+:::{.exercise}
+A hospital doctor was interested in the percentage of a certain drug absorbed by patients. She obtained the following data on $10$ patients taking the drug on two separate days.
+
+| Patient | Day 1, x | Day 2, y |
+|:-:|:-:|:-:|
+|1 | 35.5 | 27.6|
+|2 | 16.6 | 15.1|
+|3 | 13.6 | 12.9|
+|4 | 42.5 | 34.1|
+|5 | 28.5 | 35.5|
+|6 | 30.3 | 32.5|
+|7 | 8.7  | 84.3|
+|8 | 21.5 | 21.5|
+|9 | 16.4 | 11.1|
+|10| 32.3 | 36.4 |
+
+a) Calculate the product moment correlation coefficient $r$ for this data.
+
+b) Test at the $5\%$ significance level whether or not there is no correlation. That is $H_0:\rho = 0$.
+
+c) After examining a plot of the data, the doctor found one of the points was surprising. This result was an anomaly and excluded from the analysis. The $r$ value for the remaining $9$ points is $0.863$. Which point was omitted?
+
+:::
+
