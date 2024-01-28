@@ -1,350 +1,84 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Probability Theory and Statistics</title>
-  <meta name="description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Page not found | Probability Theory and Statistics" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  <meta name="github-repo" content="6G4Z3008" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Probability Theory and Statistics" />
-  
-  <meta name="twitter:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  
-
-<meta name="author" content="Malcolm Connolly" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  <link rel="shortcut icon" href="cards.ico" type="image/x-icon" />
-
-
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-<style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Page not found | Probability Theory and Statistics</title>
+<meta name="author" content="Malcolm Connolly">
+<meta name="description" content="The page you requested cannot be found (perhaps it was moved or renamed). You may want to try searching to find the page's new location, or use the table of contents to find the page you are...">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
+<meta property="og:title" content="Page not found | Probability Theory and Statistics">
+<meta property="og:type" content="book">
+<meta property="og:description" content="The page you requested cannot be found (perhaps it was moved or renamed). You may want to try searching to find the page's new location, or use the table of contents to find the page you are...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Page not found | Probability Theory and Statistics">
+<meta name="twitter:description" content="The page you requested cannot be found (perhaps it was moved or renamed). You may want to try searching to find the page's new location, or use the table of contents to find the page you are...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="toc-logo"><a href="./"><img src="logo.svg"></a></li>
-<li><a href="https://moodle.mmu.ac.uk/course/view.php?id=157842" target="blank" > 6G4Z3008 course notes </a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#frequentist-perspective"><i class="fa fa-check"></i><b>1.1</b> Frequentist perspective</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#naive-probability"><i class="fa fa-check"></i><b>1.2</b> Naive probability</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#complements-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Complements and mutual exclusivity</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#outcomes-and-counting"><i class="fa fa-check"></i><b>1.4</b> Outcomes and counting</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#factorials"><i class="fa fa-check"></i><b>1.4.1</b> Factorials</a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#permutations"><i class="fa fa-check"></i><b>1.4.2</b> Permutations</a></li>
-<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#combinations"><i class="fa fa-check"></i><b>1.4.3</b> Combinations</a></li>
-</ul></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#exercises-week-1"><i class="fa fa-check"></i><b>1.5</b> Exercises Week 1</a><ul>
-<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#tutorial-exercises"><i class="fa fa-check"></i><b>1.5.1</b> Tutorial exercises</a></li>
-<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#exercises-for-feedback"><i class="fa fa-check"></i><b>1.5.2</b> Exercises for feedback</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="cond.html"><a href="cond.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
-<li class="chapter" data-level="2.1" data-path="cond.html"><a href="cond.html#independence"><i class="fa fa-check"></i><b>2.1</b> Independence</a></li>
-<li class="chapter" data-level="2.2" data-path="cond.html"><a href="cond.html#conditional-probability"><i class="fa fa-check"></i><b>2.2</b> Conditional Probability</a></li>
-<li class="chapter" data-level="2.3" data-path="cond.html"><a href="cond.html#bayes-theorem"><i class="fa fa-check"></i><b>2.3</b> Bayes Theorem</a></li>
-<li class="chapter" data-level="2.4" data-path="cond.html"><a href="cond.html#exercises-week-2"><i class="fa fa-check"></i><b>2.4</b> Exercises Week 2</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="drv.html"><a href="drv.html"><i class="fa fa-check"></i><b>3</b> Discrete Random Variables</a><ul>
-<li class="chapter" data-level="3.1" data-path="drv.html"><a href="drv.html#random-variables"><i class="fa fa-check"></i><b>3.1</b> Random Variables</a></li>
-<li class="chapter" data-level="3.2" data-path="drv.html"><a href="drv.html#discrete-probability-distributions"><i class="fa fa-check"></i><b>3.2</b> Discrete probability distributions</a></li>
-<li class="chapter" data-level="3.3" data-path="drv.html"><a href="drv.html#properties-of-probability-mass-functions"><i class="fa fa-check"></i><b>3.3</b> Properties of probability mass functions</a></li>
-<li class="chapter" data-level="3.4" data-path="drv.html"><a href="drv.html#mean-variance-and-moments"><i class="fa fa-check"></i><b>3.4</b> Mean, variance and moments</a></li>
-<li class="chapter" data-level="3.5" data-path="drv.html"><a href="drv.html#exercises-week-3"><i class="fa fa-check"></i><b>3.5</b> Exercises Week 3</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="drv.html"><a href="drv.html#exercises-for-feedback-1"><i class="fa fa-check"></i><b>3.5.1</b> Exercises for feedback</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="binpois.html"><a href="binpois.html"><i class="fa fa-check"></i><b>4</b> Special discrete random variables</a><ul>
-<li class="chapter" data-level="4.1" data-path="binpois.html"><a href="binpois.html#the-binomial-distribution"><i class="fa fa-check"></i><b>4.1</b> The Binomial Distribution</a></li>
-<li class="chapter" data-level="4.2" data-path="binpois.html"><a href="binpois.html#the-binomial-mass-function"><i class="fa fa-check"></i><b>4.2</b> The binomial mass function</a></li>
-<li class="chapter" data-level="4.3" data-path="binpois.html"><a href="binpois.html#mean-and-variance"><i class="fa fa-check"></i><b>4.3</b> Mean and variance</a></li>
-<li class="chapter" data-level="4.4" data-path="binpois.html"><a href="binpois.html#the-poisson-distribution"><i class="fa fa-check"></i><b>4.4</b> The Poisson distribution</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="binpois.html"><a href="binpois.html#further-properties"><i class="fa fa-check"></i><b>4.4.1</b> Further properties</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="binpois.html"><a href="binpois.html#mean-and-variance-1"><i class="fa fa-check"></i><b>4.5</b> Mean and Variance</a></li>
-<li class="chapter" data-level="4.6" data-path="binpois.html"><a href="binpois.html#deriving-the-poisson-mass-function"><i class="fa fa-check"></i><b>4.6</b> Deriving the Poisson mass function</a></li>
-<li class="chapter" data-level="4.7" data-path="binpois.html"><a href="binpois.html#exercises-week-4"><i class="fa fa-check"></i><b>4.7</b> Exercises week 4</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="cont.html"><a href="cont.html"><i class="fa fa-check"></i><b>5</b> Continuous random variables</a><ul>
-<li class="chapter" data-level="5.1" data-path="cont.html"><a href="cont.html#relation-to-histograms"><i class="fa fa-check"></i><b>5.1</b> Relation to histograms</a></li>
-<li class="chapter" data-level="5.2" data-path="cont.html"><a href="cont.html#two-students"><i class="fa fa-check"></i><b>5.2</b> Two students</a></li>
-<li class="chapter" data-level="5.3" data-path="cont.html"><a href="cont.html#the-probability-density-function"><i class="fa fa-check"></i><b>5.3</b> The probability density function</a></li>
-<li class="chapter" data-level="5.4" data-path="cont.html"><a href="cont.html#expectation-and-variance"><i class="fa fa-check"></i><b>5.4</b> Expectation and variance</a></li>
-<li class="chapter" data-level="5.5" data-path="cont.html"><a href="cont.html#mode"><i class="fa fa-check"></i><b>5.5</b> Mode</a></li>
-<li class="chapter" data-level="5.6" data-path="cont.html"><a href="cont.html#cdf"><i class="fa fa-check"></i><b>5.6</b> CDF</a></li>
-<li class="chapter" data-level="5.7" data-path="cont.html"><a href="cont.html#median-quartiles-and-percentiles"><i class="fa fa-check"></i><b>5.7</b> median, quartiles and percentiles</a></li>
-<li class="chapter" data-level="5.8" data-path="cont.html"><a href="cont.html#uniform-distribution"><i class="fa fa-check"></i><b>5.8</b> Uniform distribution</a></li>
-<li class="chapter" data-level="5.9" data-path="cont.html"><a href="cont.html#exponential-distribution"><i class="fa fa-check"></i><b>5.9</b> Exponential distribution</a></li>
-<li class="chapter" data-level="5.10" data-path="cont.html"><a href="cont.html#exercises-week-5"><i class="fa fa-check"></i><b>5.10</b> Exercises week 5</a><ul>
-<li class="chapter" data-level="5.10.1" data-path="cont.html"><a href="cont.html#exercises-for-feedback-week-5"><i class="fa fa-check"></i><b>5.10.1</b> Exercises for feedback week 5</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="norm.html"><a href="norm.html"><i class="fa fa-check"></i><b>6</b> Normal distribution</a><ul>
-<li class="chapter" data-level="6.1" data-path="norm.html"><a href="norm.html#relation-to-data"><i class="fa fa-check"></i><b>6.1</b> Relation to data</a></li>
-<li class="chapter" data-level="6.2" data-path="norm.html"><a href="norm.html#cauchy-density"><i class="fa fa-check"></i><b>6.2</b> Cauchy density</a></li>
-<li class="chapter" data-level="6.3" data-path="norm.html"><a href="norm.html#normal-density"><i class="fa fa-check"></i><b>6.3</b> Normal density</a></li>
-<li class="chapter" data-level="6.4" data-path="norm.html"><a href="norm.html#standard-normal"><i class="fa fa-check"></i><b>6.4</b> Standard normal</a></li>
-<li class="chapter" data-level="6.5" data-path="norm.html"><a href="norm.html#evaluating-the-standard-normal-distribution"><i class="fa fa-check"></i><b>6.5</b> Evaluating the standard normal distribution</a></li>
-<li class="chapter" data-level="6.6" data-path="norm.html"><a href="norm.html#standardising"><i class="fa fa-check"></i><b>6.6</b> Standardising</a></li>
-<li class="chapter" data-level="6.7" data-path="norm.html"><a href="norm.html#inverse-cdf"><i class="fa fa-check"></i><b>6.7</b> Inverse CDF</a></li>
-<li class="chapter" data-level="6.8" data-path="norm.html"><a href="norm.html#sampling-total"><i class="fa fa-check"></i><b>6.8</b> Sampling Total</a></li>
-<li class="chapter" data-level="6.9" data-path="norm.html"><a href="norm.html#sampling-distribution-of-the-mean"><i class="fa fa-check"></i><b>6.9</b> Sampling distribution of the mean</a></li>
-<li class="chapter" data-level="6.10" data-path="norm.html"><a href="norm.html#exercises-week-6"><i class="fa fa-check"></i><b>6.10</b> Exercises week 6</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html"><i class="fa fa-check"></i><b>7</b> Sampling and confidence intervals</a><ul>
-<li class="chapter" data-level="7.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#confidence-intervals"><i class="fa fa-check"></i><b>7.1</b> Confidence Intervals</a></li>
-<li class="chapter" data-level="7.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#unknown-variance"><i class="fa fa-check"></i><b>7.2</b> Unknown variance</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#estimating-the-variance"><i class="fa fa-check"></i><b>7.2.1</b> Estimating the variance</a></li>
-<li class="chapter" data-level="7.2.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#the-t-distribution"><i class="fa fa-check"></i><b>7.2.2</b> The t distribution</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#required-sample-sizes"><i class="fa fa-check"></i><b>7.3</b> Required sample sizes</a></li>
-<li class="chapter" data-level="7.4" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#interval-for-a-population-variance"><i class="fa fa-check"></i><b>7.4</b> Interval for a population variance</a></li>
-<li class="chapter" data-level="7.5" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#interval-for-a-proportion"><i class="fa fa-check"></i><b>7.5</b> Interval for a proportion</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#approximating-the-binomial-distribution."><i class="fa fa-check"></i><b>7.5.1</b> Approximating the binomial distribution.</a></li>
-<li class="chapter" data-level="7.5.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#proportions"><i class="fa fa-check"></i><b>7.5.2</b> Proportions</a></li>
-</ul></li>
-<li class="chapter" data-level="7.6" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#summary"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
-<li class="chapter" data-level="7.7" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#exercises-week-7"><i class="fa fa-check"></i><b>7.7</b> Exercises week 7</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis testing</a><ul>
-<li class="chapter" data-level="8.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#one-sample-tests"><i class="fa fa-check"></i><b>8.1</b> One sample tests</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-mean-known-variance"><i class="fa fa-check"></i><b>8.1.1</b> test for mean (known variance)</a></li>
-<li class="chapter" data-level="8.1.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-mean-unknown-variance"><i class="fa fa-check"></i><b>8.1.2</b> test for mean (unknown variance)</a></li>
-<li class="chapter" data-level="8.1.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-variance"><i class="fa fa-check"></i><b>8.1.3</b> test for variance</a></li>
-<li class="chapter" data-level="8.1.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#p-value-approach"><i class="fa fa-check"></i><b>8.1.4</b> p-value approach</a></li>
-<li class="chapter" data-level="8.1.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#types-of-error"><i class="fa fa-check"></i><b>8.1.5</b> types of error</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#two-sample-tests"><i class="fa fa-check"></i><b>8.2</b> Two sample tests</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#known-variance"><i class="fa fa-check"></i><b>8.2.1</b> known variance</a></li>
-<li class="chapter" data-level="8.2.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#unknown-equal-variance"><i class="fa fa-check"></i><b>8.2.2</b> unknown equal variance</a></li>
-<li class="chapter" data-level="8.2.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#testing-for-equal-variance"><i class="fa fa-check"></i><b>8.2.3</b> testing for equal variance</a></li>
-<li class="chapter" data-level="8.2.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#unknown-unequal-variances-non-examinable"><i class="fa fa-check"></i><b>8.2.4</b> unknown unequal variances (non-examinable)</a></li>
-<li class="chapter" data-level="8.2.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#summary-1"><i class="fa fa-check"></i><b>8.2.5</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#exercises-week-8"><i class="fa fa-check"></i><b>8.3</b> Exercises week 8</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html"><i class="fa fa-check"></i><b>9</b> Goodness of fit and association</a><ul>
-<li class="chapter" data-level="9.1" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#measuring-discrepancy"><i class="fa fa-check"></i><b>9.1.1</b> Measuring discrepancy</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#contingency-tables-and-association"><i class="fa fa-check"></i><b>9.2</b> Contingency tables and association</a></li>
-<li class="chapter" data-level="9.3" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#goodness-of-fit"><i class="fa fa-check"></i><b>9.3</b> Goodness of fit</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#discrete-uniform-test"><i class="fa fa-check"></i><b>9.3.1</b> Discrete uniform test</a></li>
-<li class="chapter" data-level="9.3.2" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#prescribed-probabilities"><i class="fa fa-check"></i><b>9.3.2</b> Prescribed probabilities</a></li>
-<li class="chapter" data-level="9.3.3" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#small-expected-values"><i class="fa fa-check"></i><b>9.3.3</b> Small expected values</a></li>
-<li class="chapter" data-level="9.3.4" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#goodness-of-fit-tests-to-discrete-distributions"><i class="fa fa-check"></i><b>9.3.4</b> Goodness of fit tests to discrete distributions</a></li>
-<li class="chapter" data-level="9.3.5" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#goodness-of-fit-tests-to-continuous-distributions"><i class="fa fa-check"></i><b>9.3.5</b> Goodness of fit tests to continuous distributions</a></li>
-</ul></li>
-<li class="chapter" data-level="9.4" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#explanation-of-statistic-x2-non-examinable"><i class="fa fa-check"></i><b>9.4</b> Explanation of Statistic <span class="math inline">\(X^2\)</span> (non-examinable)</a></li>
-<li class="chapter" data-level="9.5" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#summary-2"><i class="fa fa-check"></i><b>9.5</b> Summary</a><ul>
-<li class="chapter" data-level="9.5.1" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>9.5.1</b> Goodness of fit tests</a></li>
-<li class="chapter" data-level="9.5.2" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#contingency-tables"><i class="fa fa-check"></i><b>9.5.2</b> Contingency tables</a></li>
-</ul></li>
-<li class="chapter" data-level="9.6" data-path="goodness-of-fit-and-association.html"><a href="goodness-of-fit-and-association.html#exercises-week-9"><i class="fa fa-check"></i><b>9.6</b> Exercises Week 9</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="linear-modelling-and-correlation.html"><a href="linear-modelling-and-correlation.html"><i class="fa fa-check"></i><b>10</b> Linear modelling and correlation</a><ul>
-<li class="chapter" data-level="10.1" data-path="linear-modelling-and-correlation.html"><a href="linear-modelling-and-correlation.html#linear-regression"><i class="fa fa-check"></i><b>10.1</b> Linear regression</a></li>
-<li class="chapter" data-level="10.2" data-path="linear-modelling-and-correlation.html"><a href="linear-modelling-and-correlation.html#residual-analysis"><i class="fa fa-check"></i><b>10.2</b> Residual analysis</a></li>
-<li class="chapter" data-level="10.3" data-path="linear-modelling-and-correlation.html"><a href="linear-modelling-and-correlation.html#analysis-of-variance"><i class="fa fa-check"></i><b>10.3</b> Analysis of Variance</a></li>
-<li class="chapter" data-level="10.4" data-path="linear-modelling-and-correlation.html"><a href="linear-modelling-and-correlation.html#confidence-and-prediction-intervals"><i class="fa fa-check"></i><b>10.4</b> Confidence and prediction intervals</a></li>
-<li class="chapter" data-level="10.5" data-path="linear-modelling-and-correlation.html"><a href="linear-modelling-and-correlation.html#pmcc"><i class="fa fa-check"></i><b>10.5</b> PMCC</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="linear-modelling-and-correlation.html"><a href="linear-modelling-and-correlation.html#pitfalls"><i class="fa fa-check"></i><b>10.5.1</b> Pitfalls</a></li>
-</ul></li>
-<li class="chapter" data-level="10.6" data-path="linear-modelling-and-correlation.html"><a href="linear-modelling-and-correlation.html#hypothesis-tests-for-correlation"><i class="fa fa-check"></i><b>10.6</b> Hypothesis tests for correlation</a></li>
-<li class="chapter" data-level="10.7" data-path="linear-modelling-and-correlation.html"><a href="linear-modelling-and-correlation.html#summary-3"><i class="fa fa-check"></i><b>10.7</b> Summary</a></li>
-<li class="chapter" data-level="10.8" data-path="linear-modelling-and-correlation.html"><a href="linear-modelling-and-correlation.html#exercises-week-10"><i class="fa fa-check"></i><b>10.8</b> Exercises week 10</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Probability Theory and Statistics</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability Theory and Statistics</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Introduction to Probability</a></li>
+<li><a class="" href="cond.html"><span class="header-section-number">2</span> Conditional Probability</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="page-not-found" class="section level1">
+<h1>Page not found<a class="anchor" aria-label="anchor" href="#page-not-found"><i class="fas fa-link"></i></a>
+</h1>
 <p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
 <p>You may want to try searching to find the page's new location, or use
 the table of contents to find the page you are looking for.</p>
 </div>
-            </section>
-
-          </div>
-        </div>
-      </div>
-
-
+  <div class="chapter-nav">
+<div class="empty"></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     </div>
-  </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": null,
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["6G4Z3008-notes.pdf", "6G4Z3008-notes.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-},
-"info": false
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Probability Theory and Statistics</strong>" was written by Malcolm Connolly. It was last built on Semester 2, 2023.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -356,7 +90,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

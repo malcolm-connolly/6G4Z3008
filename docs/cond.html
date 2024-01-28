@@ -1,246 +1,65 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Conditional Probability | Probability Theory and Statistics</title>
-  <meta name="description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 2 Conditional Probability | Probability Theory and Statistics" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  <meta name="github-repo" content="6G4Z3008" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Conditional Probability | Probability Theory and Statistics" />
-  
-  <meta name="twitter:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  
-
-<meta name="author" content="Malcolm Connolly" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  <link rel="shortcut icon" href="cards.ico" type="image/x-icon" />
-<link rel="prev" href="index.html"/>
-<link rel="next" href="drv.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-<style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 2 Conditional Probability | Probability Theory and Statistics</title>
+<meta name="author" content="Malcolm Connolly">
+<meta name="description" content="In this chapter we will learn about conditional probability. This is the probability of an event, in the context of another event having happened or potentially happening.  2.1 Independence...">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
+<meta property="og:title" content="Chapter 2 Conditional Probability | Probability Theory and Statistics">
+<meta property="og:type" content="book">
+<meta property="og:description" content="In this chapter we will learn about conditional probability. This is the probability of an event, in the context of another event having happened or potentially happening.  2.1 Independence...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 2 Conditional Probability | Probability Theory and Statistics">
+<meta name="twitter:description" content="In this chapter we will learn about conditional probability. This is the probability of an event, in the context of another event having happened or potentially happening.  2.1 Independence...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="toc-logo"><a href="./"><img src="logo.svg"></a></li>
-<li><a href="https://moodle.mmu.ac.uk/course/view.php?id=157842" target="blank" > 6G4Z3008 course notes </a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#frequentist-perspective"><i class="fa fa-check"></i><b>1.1</b> Frequentist perspective</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#naive-probability"><i class="fa fa-check"></i><b>1.2</b> Naive probability</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#complements-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Complements and mutual exclusivity</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#outcomes-and-counting"><i class="fa fa-check"></i><b>1.4</b> Outcomes and counting</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#factorials"><i class="fa fa-check"></i><b>1.4.1</b> Factorials</a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#permutations"><i class="fa fa-check"></i><b>1.4.2</b> Permutations</a></li>
-<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#combinations"><i class="fa fa-check"></i><b>1.4.3</b> Combinations</a></li>
-</ul></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#exercises-week-1"><i class="fa fa-check"></i><b>1.5</b> Exercises Week 1</a><ul>
-<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#tutorial-exercises"><i class="fa fa-check"></i><b>1.5.1</b> Tutorial exercises</a></li>
-<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#exercises-for-feedback"><i class="fa fa-check"></i><b>1.5.2</b> Exercises for feedback</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="cond.html"><a href="cond.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
-<li class="chapter" data-level="2.1" data-path="cond.html"><a href="cond.html#independence"><i class="fa fa-check"></i><b>2.1</b> Independence</a></li>
-<li class="chapter" data-level="2.2" data-path="cond.html"><a href="cond.html#conditional-probability"><i class="fa fa-check"></i><b>2.2</b> Conditional Probability</a></li>
-<li class="chapter" data-level="2.3" data-path="cond.html"><a href="cond.html#bayes-theorem"><i class="fa fa-check"></i><b>2.3</b> Bayes Theorem</a></li>
-<li class="chapter" data-level="2.4" data-path="cond.html"><a href="cond.html#exercises-week-2"><i class="fa fa-check"></i><b>2.4</b> Exercises Week 2</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="drv.html"><a href="drv.html"><i class="fa fa-check"></i><b>3</b> Discrete Random Variables</a><ul>
-<li class="chapter" data-level="3.1" data-path="drv.html"><a href="drv.html#random-variables"><i class="fa fa-check"></i><b>3.1</b> Random Variables</a></li>
-<li class="chapter" data-level="3.2" data-path="drv.html"><a href="drv.html#discrete-probability-distributions"><i class="fa fa-check"></i><b>3.2</b> Discrete probability distributions</a></li>
-<li class="chapter" data-level="3.3" data-path="drv.html"><a href="drv.html#properties-of-probability-mass-functions"><i class="fa fa-check"></i><b>3.3</b> Properties of probability mass functions</a></li>
-<li class="chapter" data-level="3.4" data-path="drv.html"><a href="drv.html#mean-variance-and-moments"><i class="fa fa-check"></i><b>3.4</b> Mean, variance and moments</a></li>
-<li class="chapter" data-level="3.5" data-path="drv.html"><a href="drv.html#exercises-week-3"><i class="fa fa-check"></i><b>3.5</b> Exercises Week 3</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="drv.html"><a href="drv.html#exercises-for-feedback-1"><i class="fa fa-check"></i><b>3.5.1</b> Exercises for feedback</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="binpois.html"><a href="binpois.html"><i class="fa fa-check"></i><b>4</b> Special discrete random variables</a><ul>
-<li class="chapter" data-level="4.1" data-path="binpois.html"><a href="binpois.html#the-binomial-distribution"><i class="fa fa-check"></i><b>4.1</b> The Binomial Distribution</a></li>
-<li class="chapter" data-level="4.2" data-path="binpois.html"><a href="binpois.html#the-binomial-mass-function"><i class="fa fa-check"></i><b>4.2</b> The binomial mass function</a></li>
-<li class="chapter" data-level="4.3" data-path="binpois.html"><a href="binpois.html#mean-and-variance"><i class="fa fa-check"></i><b>4.3</b> Mean and variance</a></li>
-<li class="chapter" data-level="4.4" data-path="binpois.html"><a href="binpois.html#the-poisson-distribution"><i class="fa fa-check"></i><b>4.4</b> The Poisson distribution</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="binpois.html"><a href="binpois.html#further-properties"><i class="fa fa-check"></i><b>4.4.1</b> Further properties</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="binpois.html"><a href="binpois.html#mean-and-variance-1"><i class="fa fa-check"></i><b>4.5</b> Mean and Variance</a></li>
-<li class="chapter" data-level="4.6" data-path="binpois.html"><a href="binpois.html#deriving-the-poisson-mass-function"><i class="fa fa-check"></i><b>4.6</b> Deriving the Poisson mass function</a></li>
-<li class="chapter" data-level="4.7" data-path="binpois.html"><a href="binpois.html#exercises-week-4"><i class="fa fa-check"></i><b>4.7</b> Exercises week 4</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="cont.html"><a href="cont.html"><i class="fa fa-check"></i><b>5</b> Continuous random variables</a><ul>
-<li class="chapter" data-level="5.1" data-path="cont.html"><a href="cont.html#relation-to-histograms"><i class="fa fa-check"></i><b>5.1</b> Relation to histograms</a></li>
-<li class="chapter" data-level="5.2" data-path="cont.html"><a href="cont.html#two-students"><i class="fa fa-check"></i><b>5.2</b> Two students</a></li>
-<li class="chapter" data-level="5.3" data-path="cont.html"><a href="cont.html#the-probability-density-function"><i class="fa fa-check"></i><b>5.3</b> The probability density function</a></li>
-<li class="chapter" data-level="5.4" data-path="cont.html"><a href="cont.html#expectation-and-variance"><i class="fa fa-check"></i><b>5.4</b> Expectation and variance</a></li>
-<li class="chapter" data-level="5.5" data-path="cont.html"><a href="cont.html#mode"><i class="fa fa-check"></i><b>5.5</b> Mode</a></li>
-<li class="chapter" data-level="5.6" data-path="cont.html"><a href="cont.html#cdf"><i class="fa fa-check"></i><b>5.6</b> CDF</a></li>
-<li class="chapter" data-level="5.7" data-path="cont.html"><a href="cont.html#median-quartiles-and-percentiles"><i class="fa fa-check"></i><b>5.7</b> median, quartiles and percentiles</a></li>
-<li class="chapter" data-level="5.8" data-path="cont.html"><a href="cont.html#uniform-distribution"><i class="fa fa-check"></i><b>5.8</b> Uniform distribution</a></li>
-<li class="chapter" data-level="5.9" data-path="cont.html"><a href="cont.html#exponential-distribution"><i class="fa fa-check"></i><b>5.9</b> Exponential distribution</a></li>
-<li class="chapter" data-level="5.10" data-path="cont.html"><a href="cont.html#exercises-week-5"><i class="fa fa-check"></i><b>5.10</b> Exercises week 5</a><ul>
-<li class="chapter" data-level="5.10.1" data-path="cont.html"><a href="cont.html#exercises-for-feedback-week-5"><i class="fa fa-check"></i><b>5.10.1</b> Exercises for feedback week 5</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="norm.html"><a href="norm.html"><i class="fa fa-check"></i><b>6</b> Normal distribution</a><ul>
-<li class="chapter" data-level="6.1" data-path="norm.html"><a href="norm.html#relation-to-data"><i class="fa fa-check"></i><b>6.1</b> Relation to data</a></li>
-<li class="chapter" data-level="6.2" data-path="norm.html"><a href="norm.html#cauchy-density"><i class="fa fa-check"></i><b>6.2</b> Cauchy density</a></li>
-<li class="chapter" data-level="6.3" data-path="norm.html"><a href="norm.html#normal-density"><i class="fa fa-check"></i><b>6.3</b> Normal density</a></li>
-<li class="chapter" data-level="6.4" data-path="norm.html"><a href="norm.html#standard-normal"><i class="fa fa-check"></i><b>6.4</b> Standard normal</a></li>
-<li class="chapter" data-level="6.5" data-path="norm.html"><a href="norm.html#evaluating-the-standard-normal-distribution"><i class="fa fa-check"></i><b>6.5</b> Evaluating the standard normal distribution</a></li>
-<li class="chapter" data-level="6.6" data-path="norm.html"><a href="norm.html#standardising"><i class="fa fa-check"></i><b>6.6</b> Standardising</a></li>
-<li class="chapter" data-level="6.7" data-path="norm.html"><a href="norm.html#inverse-cdf"><i class="fa fa-check"></i><b>6.7</b> Inverse CDF</a></li>
-<li class="chapter" data-level="6.8" data-path="norm.html"><a href="norm.html#sampling-total"><i class="fa fa-check"></i><b>6.8</b> Sampling Total</a></li>
-<li class="chapter" data-level="6.9" data-path="norm.html"><a href="norm.html#sampling-distribution-of-the-mean"><i class="fa fa-check"></i><b>6.9</b> Sampling distribution of the mean</a></li>
-<li class="chapter" data-level="6.10" data-path="norm.html"><a href="norm.html#exercises-week-6"><i class="fa fa-check"></i><b>6.10</b> Exercises week 6</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html"><i class="fa fa-check"></i><b>7</b> Sampling and confidence intervals</a><ul>
-<li class="chapter" data-level="7.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#confidence-intervals"><i class="fa fa-check"></i><b>7.1</b> Confidence Intervals</a></li>
-<li class="chapter" data-level="7.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#unknown-variance"><i class="fa fa-check"></i><b>7.2</b> Unknown variance</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#estimating-the-variance"><i class="fa fa-check"></i><b>7.2.1</b> Estimating the variance</a></li>
-<li class="chapter" data-level="7.2.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#the-t-distribution"><i class="fa fa-check"></i><b>7.2.2</b> The t distribution</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#required-sample-sizes"><i class="fa fa-check"></i><b>7.3</b> Required sample sizes</a></li>
-<li class="chapter" data-level="7.4" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#interval-for-a-population-variance"><i class="fa fa-check"></i><b>7.4</b> Interval for a population variance</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#approximating-the-binomial-distribution."><i class="fa fa-check"></i><b>7.4.1</b> Approximating the binomial distribution.</a></li>
-<li class="chapter" data-level="7.4.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#proportions"><i class="fa fa-check"></i><b>7.4.2</b> Proportions</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Probability Theory and Statistics</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability Theory and Statistics</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Introduction to Probability</a></li>
+<li><a class="active" href="cond.html"><span class="header-section-number">2</span> Conditional Probability</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="cond" class="section level1 hasAnchor">
-<h1><span class="header-section-number">Chapter 2</span> Conditional Probability<a href="cond.html#cond" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="cond" class="section level1">
+<h1>
+<span class="header-section-number">2</span> Conditional Probability<a class="anchor" aria-label="anchor" href="#cond"><i class="fas fa-link"></i></a>
+</h1>
 <p>In this chapter we will learn about conditional probability. This is the probability of an event, in the context of another event having happened or potentially happening.</p>
-<div id="independence" class="section level2 hasAnchor">
-<h2><span class="header-section-number">2.1</span> Independence<a href="cond.html#independence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="independence" class="section level2">
+<h2>
+<span class="header-section-number">2.1</span> Independence<a class="anchor" aria-label="anchor" href="#independence"><i class="fas fa-link"></i></a>
+</h2>
 <p>Independence is a very important concept in Statistics, but one that is sometimes misused when it is assumed without justification. The basic idea is as follows:</p>
 <div class="definition">
 <p><span id="def:unlabeled-div-41" class="definition"><strong>Definition 2.1  (Independence) </strong></span>Two events <span class="math inline">\(\text{A}\)</span> and <span class="math inline">\(\text{B}\)</span> are <strong><em>independent</em></strong> exactly when
@@ -292,9 +111,9 @@ Notice that the order does not matter as
 </ol>
 </div>
 <p><em>solution</em></p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tree"></span>
-<img src="figures/vehicles.JPG" alt="A tree diagram representing the choices for the three vehicles" width="442" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:tree"></span>
+<img src="figures/vehicles.JPG" alt="A tree diagram representing the choices for the three vehicles" width="442"><p class="caption">
 Figure 2.1: A tree diagram representing the choices for the three vehicles
 </p>
 </div>
@@ -306,20 +125,20 @@ Figure 2.1: A tree diagram representing the choices for the three vehicles
 <li><p>LLR or LLS. Each can be rearranged in <span class="math inline">\(3\)</span> ways, then these are mutually exclusive outcomes so we can add the probabilities. <span class="math display">\[3\times 0.45^2 \times 0.2 + 3\times 0.45^2 \times 0.35\]</span>.</p></li>
 </ol>
 </div>
-<div id="conditional-probability" class="section level2 hasAnchor">
-<h2><span class="header-section-number">2.2</span> Conditional Probability<a href="cond.html#conditional-probability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conditional-probability" class="section level2">
+<h2>
+<span class="header-section-number">2.2</span> Conditional Probability<a class="anchor" aria-label="anchor" href="#conditional-probability"><i class="fas fa-link"></i></a>
+</h2>
 <p>We will consider the following examples to motivate the definition of conditional probability.</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-46" class="example"><strong>Example 2.5  </strong></span>The number of insurance claims in the previous <span class="math inline">\(12\)</span> months is cross tabulated with whether the driver involved was a young driver.</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"></th>
 <th align="right">Under 25</th>
 <th align="right">25 and over</th>
 <th align="right">Total</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center">No claim</td>
@@ -340,7 +159,7 @@ Figure 2.1: A tree diagram representing the choices for the three vehicles
 <td align="right">1000</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
 <p>The insurance company is interested in the claim rate. Overall the claim rate is,</p>
 <p><span class="math display">\[\text{P}(\text{Claim})=\frac{50}{1000} = 0.05\]</span></p>
@@ -353,15 +172,13 @@ Whereas for the <span class="math inline">\(750\)</span> older drivers we have,<
 <p>The notation <span class="math inline">\(|\)</span> is read ‘given that’ and is a conditional statement. The conditional probabilities show that the claim rate is much higher for the younger drivers. One can compute the ratio of these probabilities to see how many times higher it is, <span class="math inline">\(0.1/0.03 \approx 3.3\)</span>, so this is just over three times higher. This relative risk scoring is common in medical statistics.</p>
 <div class="example">
 <p><span id="exm:cancer" class="example"><strong>Example 2.6  </strong></span>Consider the following data from a study on male lung cancer patients carried out in <span class="math inline">\(1950\)</span> in the UK. This was one of the earliest applications of epidemiology - the use of statistics to study disease patterns in populations.</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"></th>
 <th align="right">Non-smoker</th>
 <th align="right">Smoker</th>
 <th align="right">Total</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center">Lung cancer</td>
@@ -382,7 +199,7 @@ Whereas for the <span class="math inline">\(750\)</span> older drivers we have,<
 <td align="right">1296</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Calculate the relative risk of having lung cancer for a smoker compared to a non-smoker.</p>
 <p><em>solution</em></p>
 <p><span class="math display">\[\text{P}(\text{Lung cancer}|\text{Smoker}) = \frac{647}{1267}\]</span></p>
@@ -416,15 +233,13 @@ P(A_1\cup A_2 |B) &amp;= \frac{P((A_1\cup A_2)\cap B)}{P(B)} \\
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-50" class="example"><strong>Example 2.7  </strong></span>Note that <span class="math inline">\(P(A|B) \neq P(B|A)\)</span>. Revisiting the driver’s example gives,</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"></th>
 <th align="right">Under 25</th>
 <th align="right">25 and over</th>
 <th align="right">Total</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center">No claim</td>
@@ -445,7 +260,7 @@ P(A_1\cup A_2 |B) &amp;= \frac{P((A_1\cup A_2)\cap B)}{P(B)} \\
 <td align="right">1000</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><span class="math display">\[\text{P}(\text{Claim}|\text{Under}\ 25)=0.1.\]</span>
 However,
 <span class="math display">\[\text{P}(\text{Under}\ 25|\text{Claim})=\frac{25}{50} = 0.5\]</span></p>
@@ -468,9 +283,9 @@ Conversely if two events are independent, we have
 and likewise for <span class="math inline">\(\text{P}(B|A)\)</span>.</p>
 </div>
 <p>When constructing tree diagrams the probabilities involved are usually conditional probabilities as there is a natural progression through the tree from left to right conditioning on what happened previously. In the diagram below, the events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> may not be independent.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tree2"></span>
-<img src="figures/condtree.JPG" alt="The second level of branches represent the conditional probabilities of B given A or its complement, which may be different numbers" width="407" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:tree2"></span>
+<img src="figures/condtree.JPG" alt="The second level of branches represent the conditional probabilities of B given A or its complement, which may be different numbers" width="407"><p class="caption">
 Figure 2.2: The second level of branches represent the conditional probabilities of B given A or its complement, which may be different numbers
 </p>
 </div>
@@ -494,9 +309,9 @@ Assume that ages are randomly distributed so that the chance of an even or odd n
 </div>
 <p><em>solution</em></p>
 <p>One can draw a tree diagram.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tree3"></span>
-<img src="figures/survey.JPG" alt="The outcomes of the survey." width="416" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:tree3"></span>
+<img src="figures/survey.JPG" alt="The outcomes of the survey." width="416"><p class="caption">
 Figure 2.3: The outcomes of the survey.
 </p>
 </div>
@@ -504,8 +319,10 @@ Figure 2.3: The outcomes of the survey.
 <p><span class="math display">\[0.25+0.5p = 0.4, \]</span>
 and hence <span class="math inline">\(p=0.3\)</span>. This means we can estimate that <span class="math inline">\(30\%\)</span> of employees have taken a day of when they were not supposed to.</p>
 </div>
-<div id="bayes-theorem" class="section level2 hasAnchor">
-<h2><span class="header-section-number">2.3</span> Bayes Theorem<a href="cond.html#bayes-theorem" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="bayes-theorem" class="section level2">
+<h2>
+<span class="header-section-number">2.3</span> Bayes Theorem<a class="anchor" aria-label="anchor" href="#bayes-theorem"><i class="fas fa-link"></i></a>
+</h2>
 <div class="example">
 <p><span id="exm:unlabeled-div-55" class="example"><strong>Example 2.10  </strong></span>There are two coins in a bag. One coin is fair, while the other has heads on both sides (a double-header).</p>
 <p>A coin is selected from the bag at random, and the selected coin is flipped three times. Unfortunately the coin which was selected is unknown to us.</p>
@@ -516,17 +333,17 @@ and hence <span class="math inline">\(p=0.3\)</span>. This means we can estimate
 <p>Let
 <span class="math inline">\(A =\left\{ \text{The double-header is selected} \right\}\)</span> and
 <span class="math inline">\(B =\left\{ \text{The coin lands heads up three times in a row} \right\}\)</span></p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tree4"></span>
-<img src="figures/doubleheader.JPG" alt="A tree diagram for the double headed coin example." width="446" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:tree4"></span>
+<img src="figures/doubleheader.JPG" alt="A tree diagram for the double headed coin example." width="446"><p class="caption">
 Figure 2.4: A tree diagram for the double headed coin example.
 </p>
 </div>
 <p>One can use the tree diagram to find <span class="math inline">\(8/9\)</span>.</p>
 <p>We can generalise this picture and come up with a formula for the conditional probability called Bayes’ formula.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tree5"></span>
-<img src="figures/condtree.JPG" alt="Tree showing Bayes' formula" width="407" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:tree5"></span>
+<img src="figures/condtree.JPG" alt="Tree showing Bayes' formula" width="407"><p class="caption">
 Figure 2.5: Tree showing Bayes’ formula
 </p>
 </div>
@@ -542,9 +359,9 @@ Figure 2.5: Tree showing Bayes’ formula
 <p>Any event and its complement form a partition.</p>
 </div>
 <p>Here is a picture of a partition:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:partition"></span>
-<img src="figures/partition.JPG" alt="An example partition with six sets." width="335" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:partition"></span>
+<img src="figures/partition.JPG" alt="An example partition with six sets." width="335"><p class="caption">
 Figure 2.6: An example partition with six sets.
 </p>
 </div>
@@ -605,8 +422,10 @@ So we would still believe Gary to be <span class="math inline">\(0\%\)</span> gu
 </div>
 <p>As educated people we should always consider the opposing opinion and update our own beliefs according to the evidence available. If you have a strong opinion about something, consider what would change your mind. Always leave some room to doubt yourself, because you could be wrong.</p>
 </div>
-<div id="exercises-week-2" class="section level2 hasAnchor">
-<h2><span class="header-section-number">2.4</span> Exercises Week 2<a href="cond.html#exercises-week-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercises-week-2" class="section level2">
+<h2>
+<span class="header-section-number">2.4</span> Exercises Week 2<a class="anchor" aria-label="anchor" href="#exercises-week-2"><i class="fas fa-link"></i></a>
+</h2>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-63" class="exercise"><strong>Exercise 2.1  </strong></span>I toss a fair coin and roll a die.
 a) Are these events independent?</p>
@@ -627,15 +446,13 @@ a) Are these events independent?</p>
 </div>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-66" class="exercise"><strong>Exercise 2.4  </strong></span>The following data shows the distribution of male and female students on various degree courses at a university.</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"></th>
 <th align="center">Accountancy</th>
 <th align="center">Economics</th>
 <th align="center">Finance</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center">Male</td>
@@ -650,7 +467,7 @@ a) Are these events independent?</p>
 <td align="center">60</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Suppose a student is selected at random. Find the probability that they are,</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>female</p></li>
@@ -664,15 +481,13 @@ a) Are these events independent?</p>
 </div>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-67" class="exercise"><strong>Exercise 2.5  </strong></span>The following table shows the lung cancer data for females in the same <span class="math inline">\(1950\)</span> study given in example <a href="cond.html#exm:cancer">2.6</a>.</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"></th>
 <th align="right">Non-smoker</th>
 <th align="right">Smoker</th>
 <th align="right">Total</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center">Lung cancer</td>
@@ -693,7 +508,7 @@ a) Are these events independent?</p>
 <td align="right">120</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>Calculate the relative risk for female smokers compared to non-smokers.</p></li>
 <li><p>Can you suggest any reason for the difference in the figures between males and females?</p></li>
@@ -713,7 +528,8 @@ a) Are these events independent?</p>
 <li>Suppose that <span class="math inline">\(D_1\)</span> works, find the probability that;</li>
 </ol>
 <ol style="list-style-type: lower-roman">
-<li><span class="math inline">\(X\)</span> is working.</li>
+<li>
+<span class="math inline">\(X\)</span> is working.</li>
 <li>Only <span class="math inline">\(X\)</span> is working.</li>
 <li>both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are working.</li>
 </ol>
@@ -721,7 +537,8 @@ a) Are these events independent?</p>
 <li>Suppose that <span class="math inline">\(D_2\)</span> works, find the probability that;</li>
 </ol>
 <ol style="list-style-type: lower-roman">
-<li><span class="math inline">\(X\)</span> is working.</li>
+<li>
+<span class="math inline">\(X\)</span> is working.</li>
 <li>Only <span class="math inline">\(X\)</span> is working.</li>
 <li>both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are working.</li>
 </ol>
@@ -735,15 +552,13 @@ a) Are these events independent?</p>
 </div>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-70" class="exercise"><strong>Exercise 2.8  </strong></span>The following table shows the <em>fear factor</em> for children attending the dentist, cross tabulated with the School age of the child.</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="left"></th>
 <th align="center">Infant</th>
 <th align="center">Primary</th>
 <th align="center">Secondary</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">Afraid</td>
@@ -758,7 +573,7 @@ a) Are these events independent?</p>
 <td align="center">0.22</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>For a child selected at random define the events; <span class="math inline">\(A = \{ \text{The child is afraid} \}\)</span>,</p>
 <p>with <span class="math inline">\(N\)</span> being not afraid, and <span class="math inline">\(I\)</span>,<span class="math inline">\(P\)</span> and <span class="math inline">\(S\)</span> being the School age in the obvious fashion.</p>
 <p>Calculate the following probabilities,</p>
@@ -826,59 +641,42 @@ a) Are these events independent?</p>
 
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html"><span class="header-section-number">1</span> Introduction to Probability</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#cond"><span class="header-section-number">2</span> Conditional Probability</a></li>
+<li><a class="nav-link" href="#independence"><span class="header-section-number">2.1</span> Independence</a></li>
+<li><a class="nav-link" href="#conditional-probability"><span class="header-section-number">2.2</span> Conditional Probability</a></li>
+<li><a class="nav-link" href="#bayes-theorem"><span class="header-section-number">2.3</span> Bayes Theorem</a></li>
+<li><a class="nav-link" href="#exercises-week-2"><span class="header-section-number">2.4</span> Exercises Week 2</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="drv.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Probability Theory and Statistics</strong>" was written by Malcolm Connolly. It was last built on Semester 2, 2023.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": null,
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["6G4Z3008-notes.pdf", "6G4Z3008-notes.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-},
-"info": false
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -890,7 +688,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>
