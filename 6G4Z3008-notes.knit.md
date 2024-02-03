@@ -15,16 +15,9 @@ description: "These are the course notes for the first year BSc Mathematics cour
 
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
+
+
 
 # Introduction to Probability {#intro}
 
@@ -50,14 +43,10 @@ An ***experiment*** is any procedure which happens at random with at least two d
 
 By calculating the number of times an event occurs divided by the number of runs one can estimate the theoretical probability. The idea is that the relative cumulative frequency of outcomes will tend to the actual probability in the long run. This is perspective of probability is called _Frequentist_, and is incredibly useful in practice.
 
-```{r freq, echo=FALSE, fig.align = 'center', fig.cap = "The result of simulating rolling a die 6000 times, and counting how many times 6 occures. The cumulative relative frequency tends to the theoretical 1/6 (in red)."}
-if (knitr:::is_latex_output()) {
-  knitr::asis_output('gganim_plot0100.png')
-} else {
-  knitr::include_graphics("FileName.gif")
-}
-
-```
+<div class="figure" style="text-align: center">
+<img src="FileName.gif" alt="The result of simulating rolling a die 6000 times, and counting how many times 6 occures. The cumulative relative frequency tends to the theoretical 1/6 (in red)."  />
+<p class="caption">(\#fig:freq)The result of simulating rolling a die 6000 times, and counting how many times 6 occures. The cumulative relative frequency tends to the theoretical 1/6 (in red).</p>
+</div>
 
 We will recreate a plot like this in labs. 
 
@@ -79,10 +68,15 @@ The cumulative relative frequencies are calculated as the cumulative number of f
 
 In this course we will learn some R programming. R is a free open-source software language suitable for doing many probability and statistical calculations. The following R code will make a list of two outcomes Heads or Tails and create a sample of $10$ random outcomes. 
 
-```{r sample, fig.cap="Using the sample command to simulate random events."}
+
+```r
 outcomes <- c("Heads","Tails")
 sample(outcomes, 10, replace=TRUE)
+```
 
+```
+##  [1] "Tails" "Tails" "Tails" "Heads" "Heads" "Heads" "Tails" "Heads" "Tails"
+## [10] "Tails"
 ```
 
 
@@ -749,3 +743,19 @@ d) Using a) and c), describe in words why the following equality holds.
 $$2^n = \sum_{k=0}^n {^n}C_k$$
 
 5. Five office workers write their names on a piece of paper, fold the paper and put them in a hat. The names are mixed up and each person then selects a piece of paper from the hat. After everyone has selected a piece of paper from the hat, the staff look at the names drawn. What is the probability that no member of staff selected their own name?
+
+<!--chapter:end:index.Rmd-->
+
+
+# Conditional Probability {#cond}
+
+Placeholder
+
+
+## Independence
+## Conditional Probability
+## Bayes Theorem
+## Exercises Week 2
+
+<!--chapter:end:01-cond-prob.Rmd-->
+
