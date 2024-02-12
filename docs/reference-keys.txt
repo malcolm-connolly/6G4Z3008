@@ -117,3 +117,10 @@ independence
 conditional-probability
 bayes-theorem
 exercises-week-2
+drv
+random-variables
+discrete-probability-distributions
+properties-of-probability-mass-functions
+mean-variance-and-moments
+exercises-week-3
+exercises-for-feedback-1
