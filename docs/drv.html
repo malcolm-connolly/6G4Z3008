@@ -1,246 +1,66 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Discrete Random Variables | Probability Theory and Statistics</title>
-  <meta name="description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 3 Discrete Random Variables | Probability Theory and Statistics" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  <meta name="github-repo" content="6G4Z3008" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Discrete Random Variables | Probability Theory and Statistics" />
-  
-  <meta name="twitter:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  
-
-<meta name="author" content="Malcolm Connolly" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  <link rel="shortcut icon" href="cards.ico" type="image/x-icon" />
-<link rel="prev" href="cond.html"/>
-<link rel="next" href="binpois.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-<style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 3 Discrete Random Variables | Probability Theory and Statistics</title>
+<meta name="author" content="Malcolm Connolly">
+<meta name="description" content="In most practical situations in which we encounter uncertainty, the random outcome of interest is a numerical quantity. This could be the number of minutes you end up waiting for that bus, how...">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
+<meta property="og:title" content="Chapter 3 Discrete Random Variables | Probability Theory and Statistics">
+<meta property="og:type" content="book">
+<meta property="og:description" content="In most practical situations in which we encounter uncertainty, the random outcome of interest is a numerical quantity. This could be the number of minutes you end up waiting for that bus, how...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 3 Discrete Random Variables | Probability Theory and Statistics">
+<meta name="twitter:description" content="In most practical situations in which we encounter uncertainty, the random outcome of interest is a numerical quantity. This could be the number of minutes you end up waiting for that bus, how...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="toc-logo"><a href="./"><img src="logo.svg"></a></li>
-<li><a href="https://moodle.mmu.ac.uk/course/view.php?id=157842" target="blank" > 6G4Z3008 course notes </a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#frequentist-perspective"><i class="fa fa-check"></i><b>1.1</b> Frequentist perspective</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#naive-probability"><i class="fa fa-check"></i><b>1.2</b> Naive probability</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#complements-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Complements and mutual exclusivity</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#outcomes-and-counting"><i class="fa fa-check"></i><b>1.4</b> Outcomes and counting</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#factorials"><i class="fa fa-check"></i><b>1.4.1</b> Factorials</a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#permutations"><i class="fa fa-check"></i><b>1.4.2</b> Permutations</a></li>
-<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#combinations"><i class="fa fa-check"></i><b>1.4.3</b> Combinations</a></li>
-</ul></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#exercises-week-1"><i class="fa fa-check"></i><b>1.5</b> Exercises Week 1</a><ul>
-<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#tutorial-exercises"><i class="fa fa-check"></i><b>1.5.1</b> Tutorial exercises</a></li>
-<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#exercises-for-feedback"><i class="fa fa-check"></i><b>1.5.2</b> Exercises for feedback</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="cond.html"><a href="cond.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
-<li class="chapter" data-level="2.1" data-path="cond.html"><a href="cond.html#independence"><i class="fa fa-check"></i><b>2.1</b> Independence</a></li>
-<li class="chapter" data-level="2.2" data-path="cond.html"><a href="cond.html#conditional-probability"><i class="fa fa-check"></i><b>2.2</b> Conditional Probability</a></li>
-<li class="chapter" data-level="2.3" data-path="cond.html"><a href="cond.html#bayes-theorem"><i class="fa fa-check"></i><b>2.3</b> Bayes Theorem</a></li>
-<li class="chapter" data-level="2.4" data-path="cond.html"><a href="cond.html#exercises-week-2"><i class="fa fa-check"></i><b>2.4</b> Exercises Week 2</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="drv.html"><a href="drv.html"><i class="fa fa-check"></i><b>3</b> Discrete Random Variables</a><ul>
-<li class="chapter" data-level="3.1" data-path="drv.html"><a href="drv.html#random-variables"><i class="fa fa-check"></i><b>3.1</b> Random Variables</a></li>
-<li class="chapter" data-level="3.2" data-path="drv.html"><a href="drv.html#discrete-probability-distributions"><i class="fa fa-check"></i><b>3.2</b> Discrete probability distributions</a></li>
-<li class="chapter" data-level="3.3" data-path="drv.html"><a href="drv.html#properties-of-probability-mass-functions"><i class="fa fa-check"></i><b>3.3</b> Properties of probability mass functions</a></li>
-<li class="chapter" data-level="3.4" data-path="drv.html"><a href="drv.html#mean-variance-and-moments"><i class="fa fa-check"></i><b>3.4</b> Mean, variance and moments</a></li>
-<li class="chapter" data-level="3.5" data-path="drv.html"><a href="drv.html#exercises-week-3"><i class="fa fa-check"></i><b>3.5</b> Exercises Week 3</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="drv.html"><a href="drv.html#exercises-for-feedback-1"><i class="fa fa-check"></i><b>3.5.1</b> Exercises for feedback</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="binpois.html"><a href="binpois.html"><i class="fa fa-check"></i><b>4</b> Special discrete random variables</a><ul>
-<li class="chapter" data-level="4.1" data-path="binpois.html"><a href="binpois.html#the-binomial-distribution"><i class="fa fa-check"></i><b>4.1</b> The Binomial Distribution</a></li>
-<li class="chapter" data-level="4.2" data-path="binpois.html"><a href="binpois.html#the-binomial-mass-function"><i class="fa fa-check"></i><b>4.2</b> The binomial mass function</a></li>
-<li class="chapter" data-level="4.3" data-path="binpois.html"><a href="binpois.html#mean-and-variance"><i class="fa fa-check"></i><b>4.3</b> Mean and variance</a></li>
-<li class="chapter" data-level="4.4" data-path="binpois.html"><a href="binpois.html#the-poisson-distribution"><i class="fa fa-check"></i><b>4.4</b> The Poisson distribution</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="binpois.html"><a href="binpois.html#further-properties"><i class="fa fa-check"></i><b>4.4.1</b> Further properties</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="binpois.html"><a href="binpois.html#mean-and-variance-1"><i class="fa fa-check"></i><b>4.5</b> Mean and Variance</a></li>
-<li class="chapter" data-level="4.6" data-path="binpois.html"><a href="binpois.html#deriving-the-poisson-mass-function"><i class="fa fa-check"></i><b>4.6</b> Deriving the Poisson mass function</a></li>
-<li class="chapter" data-level="4.7" data-path="binpois.html"><a href="binpois.html#exercises-week-4"><i class="fa fa-check"></i><b>4.7</b> Exercises week 4</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="cont.html"><a href="cont.html"><i class="fa fa-check"></i><b>5</b> Continuous random variables</a><ul>
-<li class="chapter" data-level="5.1" data-path="cont.html"><a href="cont.html#relation-to-histograms"><i class="fa fa-check"></i><b>5.1</b> Relation to histograms</a></li>
-<li class="chapter" data-level="5.2" data-path="cont.html"><a href="cont.html#two-students"><i class="fa fa-check"></i><b>5.2</b> Two students</a></li>
-<li class="chapter" data-level="5.3" data-path="cont.html"><a href="cont.html#the-probability-density-function"><i class="fa fa-check"></i><b>5.3</b> The probability density function</a></li>
-<li class="chapter" data-level="5.4" data-path="cont.html"><a href="cont.html#expectation-and-variance"><i class="fa fa-check"></i><b>5.4</b> Expectation and variance</a></li>
-<li class="chapter" data-level="5.5" data-path="cont.html"><a href="cont.html#mode"><i class="fa fa-check"></i><b>5.5</b> Mode</a></li>
-<li class="chapter" data-level="5.6" data-path="cont.html"><a href="cont.html#cdf"><i class="fa fa-check"></i><b>5.6</b> CDF</a></li>
-<li class="chapter" data-level="5.7" data-path="cont.html"><a href="cont.html#median-quartiles-and-percentiles"><i class="fa fa-check"></i><b>5.7</b> median, quartiles and percentiles</a></li>
-<li class="chapter" data-level="5.8" data-path="cont.html"><a href="cont.html#uniform-distribution"><i class="fa fa-check"></i><b>5.8</b> Uniform distribution</a></li>
-<li class="chapter" data-level="5.9" data-path="cont.html"><a href="cont.html#exponential-distribution"><i class="fa fa-check"></i><b>5.9</b> Exponential distribution</a></li>
-<li class="chapter" data-level="5.10" data-path="cont.html"><a href="cont.html#exercises-week-5"><i class="fa fa-check"></i><b>5.10</b> Exercises week 5</a><ul>
-<li class="chapter" data-level="5.10.1" data-path="cont.html"><a href="cont.html#exercises-for-feedback-week-5"><i class="fa fa-check"></i><b>5.10.1</b> Exercises for feedback week 5</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="norm.html"><a href="norm.html"><i class="fa fa-check"></i><b>6</b> Normal distribution</a><ul>
-<li class="chapter" data-level="6.1" data-path="norm.html"><a href="norm.html#relation-to-data"><i class="fa fa-check"></i><b>6.1</b> Relation to data</a></li>
-<li class="chapter" data-level="6.2" data-path="norm.html"><a href="norm.html#cauchy-density"><i class="fa fa-check"></i><b>6.2</b> Cauchy density</a></li>
-<li class="chapter" data-level="6.3" data-path="norm.html"><a href="norm.html#normal-density"><i class="fa fa-check"></i><b>6.3</b> Normal density</a></li>
-<li class="chapter" data-level="6.4" data-path="norm.html"><a href="norm.html#standard-normal"><i class="fa fa-check"></i><b>6.4</b> Standard normal</a></li>
-<li class="chapter" data-level="6.5" data-path="norm.html"><a href="norm.html#evaluating-the-standard-normal-distribution"><i class="fa fa-check"></i><b>6.5</b> Evaluating the standard normal distribution</a></li>
-<li class="chapter" data-level="6.6" data-path="norm.html"><a href="norm.html#standardising"><i class="fa fa-check"></i><b>6.6</b> Standardising</a></li>
-<li class="chapter" data-level="6.7" data-path="norm.html"><a href="norm.html#inverse-cdf"><i class="fa fa-check"></i><b>6.7</b> Inverse CDF</a></li>
-<li class="chapter" data-level="6.8" data-path="norm.html"><a href="norm.html#sampling-total"><i class="fa fa-check"></i><b>6.8</b> Sampling Total</a></li>
-<li class="chapter" data-level="6.9" data-path="norm.html"><a href="norm.html#sampling-distribution-of-the-mean"><i class="fa fa-check"></i><b>6.9</b> Sampling distribution of the mean</a></li>
-<li class="chapter" data-level="6.10" data-path="norm.html"><a href="norm.html#exercises-week-6"><i class="fa fa-check"></i><b>6.10</b> Exercises week 6</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html"><i class="fa fa-check"></i><b>7</b> Sampling and confidence intervals</a><ul>
-<li class="chapter" data-level="7.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#confidence-intervals"><i class="fa fa-check"></i><b>7.1</b> Confidence Intervals</a></li>
-<li class="chapter" data-level="7.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#unknown-variance"><i class="fa fa-check"></i><b>7.2</b> Unknown variance</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#estimating-the-variance"><i class="fa fa-check"></i><b>7.2.1</b> Estimating the variance</a></li>
-<li class="chapter" data-level="7.2.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#the-t-distribution"><i class="fa fa-check"></i><b>7.2.2</b> The t distribution</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#required-sample-sizes"><i class="fa fa-check"></i><b>7.3</b> Required sample sizes</a></li>
-<li class="chapter" data-level="7.4" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#interval-for-a-population-variance"><i class="fa fa-check"></i><b>7.4</b> Interval for a population variance</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#approximating-the-binomial-distribution."><i class="fa fa-check"></i><b>7.4.1</b> Approximating the binomial distribution.</a></li>
-<li class="chapter" data-level="7.4.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#proportions"><i class="fa fa-check"></i><b>7.4.2</b> Proportions</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Probability Theory and Statistics</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability Theory and Statistics</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Introduction to Probability</a></li>
+<li><a class="" href="cond.html"><span class="header-section-number">2</span> Conditional Probability</a></li>
+<li><a class="active" href="drv.html"><span class="header-section-number">3</span> Discrete Random Variables</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="drv" class="section level1 hasAnchor">
-<h1><span class="header-section-number">Chapter 3</span> Discrete Random Variables<a href="drv.html#drv" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="drv" class="section level1">
+<h1>
+<span class="header-section-number">3</span> Discrete Random Variables<a class="anchor" aria-label="anchor" href="#drv"><i class="fas fa-link"></i></a>
+</h1>
 <p>In most practical situations in which we encounter uncertainty, the random outcome of interest is a numerical quantity. This could be the number of minutes you end up waiting for that bus, how much you win on the lottery this week, or even the number of times you try to catch a fly with chopsticks before you eventually manage to do so.</p>
-<div id="random-variables" class="section level2 hasAnchor">
-<h2><span class="header-section-number">3.1</span> Random Variables<a href="drv.html#random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="random-variables" class="section level2">
+<h2>
+<span class="header-section-number">3.1</span> Random Variables<a class="anchor" aria-label="anchor" href="#random-variables"><i class="fas fa-link"></i></a>
+</h2>
 <p>In this chapter you will learn the concept of a discrete random variable.</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-80" class="example"><strong>Example 3.1  </strong></span>Suppose we roll two dice and find the sum of the numbers on the two dice. Let <span class="math inline">\(X\)</span> be the sum of the numbers on the two dice. We know the sample space here is:
@@ -260,8 +80,10 @@ In number ranges from 1 to 10 and 19 to 28, odd numbers are red and even are bla
 </div>
 <p>We will consider discrete random variables first, but will study both types in this course.</p>
 </div>
-<div id="discrete-probability-distributions" class="section level2 hasAnchor">
-<h2><span class="header-section-number">3.2</span> Discrete probability distributions<a href="drv.html#discrete-probability-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="discrete-probability-distributions" class="section level2">
+<h2>
+<span class="header-section-number">3.2</span> Discrete probability distributions<a class="anchor" aria-label="anchor" href="#discrete-probability-distributions"><i class="fas fa-link"></i></a>
+</h2>
 <p>In order to understand how a random variable is likely to behave, and thus be able to predict its possible future values, we clearly need to consider the probability with which it will take on particular values. This set of probability values is known as a probability distribution. We will develop the theory with some examples.</p>
 <div class="definition">
 <p><span id="def:unlabeled-div-83" class="definition"><strong>Definition 3.2  </strong></span>The <strong><em>distribution</em></strong> function, also known as a <strong><em>probability mass function</em></strong>, of a random variable <span class="math inline">\(X\)</span> is the function that outputs the probability of <span class="math inline">\(X\)</span> attaining any particular value. That is,</p>
@@ -270,18 +92,17 @@ In some texts, or if there are two variables in play, we may also write the vari
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-84" class="example"><strong>Example 3.3  (discrete uniform distribution) </strong></span>Consider rolling a fair die and let the discrete random variable <span class="math inline">\(X\)</span> be the score observed on the die. We know that the probability of getting any of the particular values in the set <span class="math inline">\(\{1,2, \dots 6\}\)</span> is <span class="math inline">\(\frac{1}{6}\)</span> and this is the probability distribution. We may tabulate the values as follows</p>
-<table>
+<div class="inline-table"><table class="table table-sm">
 <colgroup>
-<col width="35%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
+<col width="35%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th align="center"><span class="math inline">\(x\)</span></th>
 <th align="left">1</th>
 <th align="left">2</th>
@@ -289,10 +110,8 @@ In some texts, or if there are two variables in play, we may also write the vari
 <th align="left">4</th>
 <th align="left">5</th>
 <th align="left">6</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
+</tr></thead>
+<tbody><tr class="odd">
 <td align="center"><span class="math inline">\(\text{P}(X=x)\)</span></td>
 <td align="left"><span class="math inline">\(\frac{1}{6}\)</span></td>
 <td align="left"><span class="math inline">\(\frac{1}{6}\)</span></td>
@@ -300,9 +119,8 @@ In some texts, or if there are two variables in play, we may also write the vari
 <td align="left"><span class="math inline">\(\frac{1}{6}\)</span></td>
 <td align="left"><span class="math inline">\(\frac{1}{6}\)</span></td>
 <td align="left"><span class="math inline">\(\frac{1}{6}\)</span></td>
-</tr>
-</tbody>
-</table>
+</tr></tbody>
+</table></div>
 </div>
 <p>Alternatively we may use a formula:
 <span class="math display">\[\begin{equation*}
@@ -312,9 +130,9 @@ In some texts, or if there are two variables in play, we may also write the vari
   \end{cases}
 \end{equation*}\]</span></p>
 <p>Or a graph:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:uniformdice"></span>
-<img src="figures/uni_pdf.JPG" alt="Probability mass function for a fair die" width="75%" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:uniformdice"></span>
+<img src="figures/uni_pdf.JPG" alt="Probability mass function for a fair die" width="75%"><p class="caption">
 Figure 3.1: Probability mass function for a fair die
 </p>
 </div>
@@ -336,17 +154,15 @@ Figure 3.1: Probability mass function for a fair die
 <li>We proceed as follows by enumerating all the possibilities and noting that there are <span class="math inline">\(^5C_2=10\)</span> ways of drawing the balls from the urn. Note here that as the balls are drawn simultaneously, order does not matter here.</li>
 </ol>
 <p>To find the distribution of <span class="math inline">\(X\)</span> one can list the outcomes systematically by the largest value.</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"><span class="math inline">\(x\)</span></th>
 <th align="center"></th>
 <th align="center"></th>
 <th align="center"></th>
 <th align="center"></th>
 <th align="center"><span class="math inline">\(\text{P}(X=x)\)</span></th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center">2</td>
@@ -381,19 +197,17 @@ Figure 3.1: Probability mass function for a fair die
 <td align="center"><span class="math inline">\(\frac{4}{10}\)</span></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <ol start="2" style="list-style-type: decimal">
 <li>To find the distribution of <span class="math inline">\(Y\)</span> one can list the outcomes systematically by the sum.</li>
 </ol>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"><span class="math inline">\(y\)</span></th>
 <th align="center"></th>
 <th align="center"></th>
 <th align="center"><span class="math inline">\(\text{P}(Y=y)\)</span></th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center">3</td>
@@ -438,7 +252,7 @@ Figure 3.1: Probability mass function for a fair die
 <td align="center"><span class="math inline">\(\frac{1}{10}\)</span></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>In either case you should check that each individual probability is between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> and that over all possible particular values the sum is <span class="math inline">\(1\)</span>.</p>
 </div>
 <div class="example">
@@ -463,9 +277,9 @@ And so on.</p>
 \end{equation*}\]</span></p>
 <p>Clearly these probabilities are quickly getting very small - you may recognise these terms as being in a geometric sequence with common ration <span class="math inline">\(\frac{3}{4}\)</span>.</p>
 <p>A graph of this distribution looks like:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:geomdriving"></span>
-<img src="figures/geo_pdf.JPG" alt="A geometric distribution" width="75%" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:geomdriving"></span>
+<img src="figures/geo_pdf.JPG" alt="A geometric distribution" width="75%"><p class="caption">
 Figure 3.2: A geometric distribution
 </p>
 </div>
@@ -481,8 +295,10 @@ Figure 3.2: A geometric distribution
 </div>
 <p>Of course the trials for the archer are arguably not independent - why?</p>
 </div>
-<div id="properties-of-probability-mass-functions" class="section level2 hasAnchor">
-<h2><span class="header-section-number">3.3</span> Properties of probability mass functions<a href="drv.html#properties-of-probability-mass-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="properties-of-probability-mass-functions" class="section level2">
+<h2>
+<span class="header-section-number">3.3</span> Properties of probability mass functions<a class="anchor" aria-label="anchor" href="#properties-of-probability-mass-functions"><i class="fas fa-link"></i></a>
+</h2>
 <p>For a random variable <span class="math inline">\(X\)</span> with probability distribution <span class="math inline">\(f(x)\)</span> we have the following two properties:</p>
 <ol style="list-style-type: decimal">
 <li><p>The probability of any particular value is between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>. That is,
@@ -492,12 +308,14 @@ Figure 3.2: A geometric distribution
 <p><span class="math display">\[ \sum_{x} f(x)= 1\]</span></p>
 <p>Probability distributions can be represented in a variety of different ways. In practice we use tables of distributions or use computer functions to evaluate them.</p>
 <p>In R we can use the following functions to evaluate the probabilities from example <a href="drv.html#exm:archer">3.5</a>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="drv.html#cb3-1"></a>y &lt;-<span class="st"> </span><span class="kw">dgeom</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="co">#these are the particular values 1,2,3 and 4</span></span>
-<span id="cb3-2"><a href="drv.html#cb3-2"></a>           <span class="dt">prob =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">4</span> ) <span class="co">#This is the probability of success</span></span>
-<span id="cb3-3"><a href="drv.html#cb3-3"></a>y</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Geometric.html">dgeom</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="co">#these are the particular values 1,2,3 and 4</span></span>
+<span>           prob <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">4</span> <span class="op">)</span> <span class="co">#This is the probability of success</span></span>
+<span><span class="va">y</span></span></code></pre></div>
 <pre><code>## [1] 0.18750000 0.14062500 0.10546875 0.07910156</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="drv.html#cb5-1"></a><span class="co">#You can output these as fractions using the MASS library</span></span>
-<span id="cb5-2"><a href="drv.html#cb5-2"></a>MASS<span class="op">::</span><span class="kw">fractions</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#You can output these as fractions using the MASS library</span></span>
+<span><span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/fractions.html">fractions</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1]    3/16    9/64  27/256 81/1024</code></pre>
 <p>The important function is <span class="math inline">\(\texttt{dgeom()}\)</span>, the <span class="math inline">\(\texttt{d}\)</span> stands for distribution and <span class="math inline">\(\texttt{geom}\)</span> for the geometric distribution.</p>
 <p>Another way to represent a probability distribution is as a cumulative sum.</p>
@@ -508,13 +326,11 @@ Figure 3.2: A geometric distribution
 <div class="example">
 <p><span id="exm:unlabeled-div-88" class="example"><strong>Example 3.6  (another urn problem) </strong></span>Consider the setup previously where two balls numbered <span class="math inline">\(1\)</span> through <span class="math inline">\(5\)</span> are drawn and the maximum of two numbers is taken.
 We found the probability distribution to be,</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"><span class="math inline">\(x\)</span></th>
 <th align="center"><span class="math inline">\(\text{P}(X=x)\)</span></th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center">2</td>
@@ -533,7 +349,7 @@ We found the probability distribution to be,</p>
 <td align="center"><span class="math inline">\(\frac{4}{10}\)</span></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Work out the CDF <span class="math inline">\(F(x)\)</span>.</p>
 <p><em>solution</em></p>
 <p>If <span class="math inline">\(x&lt;2\)</span> we have <span class="math inline">\(F(x)=0\)</span>.
@@ -610,8 +426,10 @@ Evaluating the denominator and cancelling gives the result.</p>
 <span class="math display">\[ = 0.322\]</span>
 You should be careful when evaluating the CDF to ensure that you have the correct values in the given inequality. A small diagram or list can be invaluable here.</p>
 </div>
-<div id="mean-variance-and-moments" class="section level2 hasAnchor">
-<h2><span class="header-section-number">3.4</span> Mean, variance and moments<a href="drv.html#mean-variance-and-moments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="mean-variance-and-moments" class="section level2">
+<h2>
+<span class="header-section-number">3.4</span> Mean, variance and moments<a class="anchor" aria-label="anchor" href="#mean-variance-and-moments"><i class="fas fa-link"></i></a>
+</h2>
 <p>The mean and variance of a random variable essentially mirror the definitions of mean and variance for samples.The mean or expected value is the <em>average</em> value of the variable if it were observed repeatedly. The variance indicates the likely spread of values of the variable.</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-92" class="example"><strong>Example 3.10  </strong></span>If you toss a coin <span class="math inline">\(2\)</span> times how many heads would you expect to turn up?</p>
@@ -655,18 +473,17 @@ Hence the result.</p>
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-97" class="example"><strong>Example 3.11  </strong></span>A discrete random variable <span class="math inline">\(X\)</span> representing the score on a loaded die has the following probability mass function.</p>
-<table>
+<div class="inline-table"><table class="table table-sm">
 <colgroup>
-<col width="35%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
+<col width="35%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th align="center"><span class="math inline">\(x\)</span></th>
 <th align="left">1</th>
 <th align="left">2</th>
@@ -674,10 +491,8 @@ Hence the result.</p>
 <th align="left">4</th>
 <th align="left">5</th>
 <th align="left">6</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
+</tr></thead>
+<tbody><tr class="odd">
 <td align="center"><span class="math inline">\(\text{P}(X=x)\)</span></td>
 <td align="left"><span class="math inline">\(\frac{1}{21}\)</span></td>
 <td align="left"><span class="math inline">\(\frac{2}{21}\)</span></td>
@@ -685,9 +500,8 @@ Hence the result.</p>
 <td align="left"><span class="math inline">\(\frac{4}{21}\)</span></td>
 <td align="left"><span class="math inline">\(\frac{5}{21}\)</span></td>
 <td align="left"><span class="math inline">\(\frac{6}{21}\)</span></td>
-</tr>
-</tbody>
-</table>
+</tr></tbody>
+</table></div>
 <p>Calculate:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(\text{E}[X]\)</span></p></li>
@@ -718,9 +532,8 @@ Compared to a fair die, the mean of the loaded die is higher.</p>
 <p><span id="exm:unlabeled-div-98" class="example"><strong>Example 3.12  (expected profit) </strong></span>Consider the following game. A spinning wheel is divided into three equal sections numbered <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span> and <span class="math inline">\(3\)</span>. You pay £<span class="math inline">\(1\)</span> to play the game, and you have to guess the number that will show when the wheel is spun. If you guess correctly, you get £<span class="math inline">\(2\)</span>. If you do not then you get nothing. What is the expected profit from playing the game?</p>
 <p><em>solution</em></p>
 <p>The profit is the winnings minus the stake. Let the profit be the random variable <span class="math inline">\(X\)</span>. The distribution of <span class="math inline">\(X\)</span> is:</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"><span class="math inline">\(x\)</span></th>
 <th align="left">-1</th>
 <th align="left">1</th>
@@ -728,10 +541,8 @@ Compared to a fair die, the mean of the loaded die is higher.</p>
 <th align="left"></th>
 <th align="left"></th>
 <th align="left"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
+</tr></thead>
+<tbody><tr class="odd">
 <td align="center"><span class="math inline">\(\text{P}(X=x)\)</span></td>
 <td align="left"><span class="math inline">\(\frac{2}{3}\)</span></td>
 <td align="left"><span class="math inline">\(\frac{1}{3}\)</span></td>
@@ -739,9 +550,8 @@ Compared to a fair die, the mean of the loaded die is higher.</p>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
-</tr>
-</tbody>
-</table>
+</tr></tbody>
+</table></div>
 <p><span class="math display">\[\text{E}[X] = -1 \times \frac{2}{3} + 1 \times \frac{1}{3} = -\frac{1}{3}\]</span>
 So we would expect on average to make a loss playing this game. For any gambling game to be profitable for the house, it is necessary that the expectation of the players winnings be negative.</p>
 </div>
@@ -757,8 +567,8 @@ So we would expect on average to make a loss playing this game. For any gambling
 <p><span id="prp:unlabeled-div-100" class="proposition"><strong>Proposition 3.1  </strong></span>Suppose <span class="math inline">\(|r|&lt;1\)</span> and recall the infinite geometric series is given by the following formula:</p>
 <p><span class="math display">\[g(r) = \sum_{k=0}^{\infty}ar^{k} = \frac{a}{1-r}\]</span>
 For a convergent series such as this we can differentiate term by term with respect to <span class="math inline">\(r\)</span>, and equate this to what we would get from differentiating the RHS likewise. Doing so results in the following two formulae:</p>
-<p><span class="math display">\[g&#39;(r) = \sum_{k=0}^{\infty}akr^{k-1} = \frac{a}{(1-r)^2}\]</span></p>
-<p><span class="math display">\[g&#39;&#39;(r) = \sum_{k=0}^{\infty}ak(k-1)r^{k-2} = \frac{2a}{(1-r)^3}\]</span></p>
+<p><span class="math display">\[g'(r) = \sum_{k=0}^{\infty}akr^{k-1} = \frac{a}{(1-r)^2}\]</span></p>
+<p><span class="math display">\[g''(r) = \sum_{k=0}^{\infty}ak(k-1)r^{k-2} = \frac{2a}{(1-r)^3}\]</span></p>
 </div>
 <div class="theorem">
 <p><span id="thm:unlabeled-div-101" class="theorem"><strong>Theorem 3.2  </strong></span>Let <span class="math inline">\(X\)</span> be a random variable which follows a geometric distribution, <span class="math inline">\(X \thicksim \text{Geom}(\pi)\)</span>, then we have:</p>
@@ -770,12 +580,12 @@ and
 <p><span id="unlabeled-div-102" class="proof"><em>Proof</em>. </span>By definition,
 <span class="math display">\[\text{E}[X] = \sum_{x=1}^{\infty}x(1-\pi)^{x-1}\pi\]</span>
 <span class="math display">\[ = \pi + 2\pi(1-\pi) + 3\pi(1-\pi)^2+4\pi(1-\pi)^3+ \dots \]</span>
-The latter sum can be seen as <span class="math inline">\(g&#39;(1-\pi)\)</span>, with <span class="math inline">\(a=\pi\)</span>. Using the RHS result from the previous proposition we have,
+The latter sum can be seen as <span class="math inline">\(g'(1-\pi)\)</span>, with <span class="math inline">\(a=\pi\)</span>. Using the RHS result from the previous proposition we have,
 <span class="math display">\[\text{E}[X] = \frac{\pi}{[1-(1-\pi)]^2} = \frac{1}{\pi}\]</span>
 For the variance we first find the expectation of a function of <span class="math inline">\(X\)</span> called a factorial moment.</p>
 <p><span class="math display">\[\text{E}[X(X-1)] = \sum_{x=1}^{\infty}x(x-1)\pi(1-\pi)^{x-1}\]</span>
 <span class="math display">\[ = (1-\pi)\sum_{x=2}^{\infty}x(x-1)\pi(1-\pi)^{x-2}\]</span>
-The infinite series turns out to be <span class="math inline">\(g&#39;&#39;(1-\pi)\)</span> with <span class="math inline">\(a=\pi\)</span>. Substituting this in gives,</p>
+The infinite series turns out to be <span class="math inline">\(g''(1-\pi)\)</span> with <span class="math inline">\(a=\pi\)</span>. Substituting this in gives,</p>
 <p><span class="math display">\[\text{E}[X(X-1)]=(1-\pi)\frac{2\pi}{[1-(1-\pi)]^3} = \frac{2(1-\pi)}{\pi^2}.\]</span>
 Now we can use this to find the variance as follows,</p>
 <p><span class="math display">\[\text{Var}[X] = \text{E}[X^2]-\text{E}[X]^2 \]</span>
@@ -788,26 +598,24 @@ as required.</p>
 <div class="theorem">
 <p><span id="thm:unlabeled-div-103" class="theorem"><strong>Theorem 3.3  (Linear Combinations) </strong></span>For any random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> we have that the expectation of a linear combination is a linear combination of the expectations.</p>
 <p><span class="math display">\[\text{E}[aX\pm bY] = a\text{E}[X]\pm b\text{E}[Y]\]</span>
-However the variance is a nonlinear sum of the variances.<br />
-<span class="math display">\[\text{Var}[aX\pm bY] = a^2\text{Var}[X]+b^2\text{Var}[Y] \]</span></p>
+However the variance is a nonlinear sum of the variances.<br><span class="math display">\[\text{Var}[aX\pm bY] = a^2\text{Var}[X]+b^2\text{Var}[Y] \]</span></p>
 </div>
 <div class="proof">
 <p><span id="unlabeled-div-104" class="proof"><em>Proof</em>. </span>This is omitted, but follows from properties of summations and mass functions.</p>
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-105" class="example"><strong>Example 3.14  </strong></span>Recall the loaded die had mass function given by,</p>
-<table>
+<div class="inline-table"><table class="table table-sm">
 <colgroup>
-<col width="35%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
+<col width="35%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th align="center"><span class="math inline">\(x\)</span></th>
 <th align="left">1</th>
 <th align="left">2</th>
@@ -815,10 +623,8 @@ However the variance is a nonlinear sum of the variances.<br />
 <th align="left">4</th>
 <th align="left">5</th>
 <th align="left">6</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
+</tr></thead>
+<tbody><tr class="odd">
 <td align="center"><span class="math inline">\(\text{P}(X=x)\)</span></td>
 <td align="left"><span class="math inline">\(\frac{1}{21}\)</span></td>
 <td align="left"><span class="math inline">\(\frac{2}{21}\)</span></td>
@@ -826,9 +632,8 @@ However the variance is a nonlinear sum of the variances.<br />
 <td align="left"><span class="math inline">\(\frac{4}{21}\)</span></td>
 <td align="left"><span class="math inline">\(\frac{5}{21}\)</span></td>
 <td align="left"><span class="math inline">\(\frac{6}{21}\)</span></td>
-</tr>
-</tbody>
-</table>
+</tr></tbody>
+</table></div>
 <p>Suppose you win <span class="math inline">\(W\)</span> is an amount depending on the number that you roll on the loaded die.</p>
 <p>If <span class="math inline">\(W = 3X-10\)</span> find <span class="math inline">\(\text{E}[W]\)</span> and <span class="math inline">\(\text{Var}[W]\)</span></p>
 <p><em>solution</em></p>
@@ -836,8 +641,10 @@ However the variance is a nonlinear sum of the variances.<br />
 <p><span class="math display">\[\text{Var}[W] = 3^2\times(2.22\dots) = 19.99\dots = 20.0 \  (3 \ \text{s.f.})\]</span></p>
 </div>
 </div>
-<div id="exercises-week-3" class="section level2 hasAnchor">
-<h2><span class="header-section-number">3.5</span> Exercises Week 3<a href="drv.html#exercises-week-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercises-week-3" class="section level2">
+<h2>
+<span class="header-section-number">3.5</span> Exercises Week 3<a class="anchor" aria-label="anchor" href="#exercises-week-3"><i class="fas fa-link"></i></a>
+</h2>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-106" class="exercise"><strong>Exercise 3.1  </strong></span>An urn contains two yellow balls and three red balls. Three balls are drawn at random from the urn without replacement.</p>
 <ol style="list-style-type: lower-alpha">
@@ -901,28 +708,24 @@ a) Find the probability distribution of <span class="math inline">\(X\)</span></
 </div>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-113" class="exercise"><strong>Exercise 3.8  </strong></span>The random variable <span class="math inline">\(X\)</span> has the following probability mass function:</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"><span class="math inline">\(x\)</span></th>
 <th align="center">1</th>
 <th align="center">2</th>
 <th align="center">3</th>
 <th align="center">4</th>
 <th align="center">5</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
+</tr></thead>
+<tbody><tr class="odd">
 <td align="center"><span class="math inline">\(\text{P}(X=x)\)</span></td>
 <td align="center"><span class="math inline">\(7c\)</span></td>
 <td align="center"><span class="math inline">\(5c\)</span></td>
 <td align="center"><span class="math inline">\(4c\)</span></td>
 <td align="center"><span class="math inline">\(3c\)</span></td>
 <td align="center"><span class="math inline">\(c\)</span></td>
-</tr>
-</tbody>
-</table>
+</tr></tbody>
+</table></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>Find the value of <span class="math inline">\(c\)</span> which makes this a valid probability mass function.</p></li>
 <li><p>Find <span class="math inline">\(\text{E}[X]\)</span> and <span class="math inline">\(\text{Var}[X]\)</span>.</p></li>
@@ -930,28 +733,24 @@ a) Find the probability distribution of <span class="math inline">\(X\)</span></
 </div>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-114" class="exercise"><strong>Exercise 3.9  </strong></span>The random variable <span class="math inline">\(X\)</span> has the following probability mass function:</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"><span class="math inline">\(y\)</span></th>
 <th align="center">2</th>
 <th align="center">3</th>
 <th align="center">5</th>
 <th align="center">7</th>
 <th align="center">11</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
+</tr></thead>
+<tbody><tr class="odd">
 <td align="center"><span class="math inline">\(\text{P}(Y=y)\)</span></td>
 <td align="center"><span class="math inline">\(\frac{1}{6}\)</span></td>
 <td align="center"><span class="math inline">\(\frac{1}{3}\)</span></td>
 <td align="center"><span class="math inline">\(\frac{1}{4}\)</span></td>
 <td align="center"><span class="math inline">\(a\)</span></td>
 <td align="center"><span class="math inline">\(b\)</span></td>
-</tr>
-</tbody>
-</table>
+</tr></tbody>
+</table></div>
 <p>and <span class="math inline">\(\text{E}[Y]=\frac{14}{3}\)</span></p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Find the values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</p></li>
@@ -987,8 +786,10 @@ a) Find the probability distribution of <span class="math inline">\(X\)</span></
 \end{equation*}\]</span></p>
 <p>Where <span class="math inline">\(0&lt;\pi&lt;1\)</span>.This is known as the Bernoulli distribution.Find <span class="math inline">\(\text{E}[Y]\)</span> and <span class="math inline">\(\text{Var}[Y]\)</span></p>
 </div>
-<div id="exercises-for-feedback-1" class="section level3 hasAnchor">
-<h3><span class="header-section-number">3.5.1</span> Exercises for feedback<a href="drv.html#exercises-for-feedback-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="exercises-for-feedback-1" class="section level3">
+<h3>
+<span class="header-section-number">3.5.1</span> Exercises for feedback<a class="anchor" aria-label="anchor" href="#exercises-for-feedback-1"><i class="fas fa-link"></i></a>
+</h3>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-119" class="exercise"><strong>Exercise 3.14  </strong></span>Scrabble tiles for the letters of the word EXERCISES are in a bag.</p>
 <ol style="list-style-type: lower-alpha">
@@ -1023,59 +824,45 @@ a) Find the probability distribution of <span class="math inline">\(X\)</span></
 </div>
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="cond.html"><span class="header-section-number">2</span> Conditional Probability</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#drv"><span class="header-section-number">3</span> Discrete Random Variables</a></li>
+<li><a class="nav-link" href="#random-variables"><span class="header-section-number">3.1</span> Random Variables</a></li>
+<li><a class="nav-link" href="#discrete-probability-distributions"><span class="header-section-number">3.2</span> Discrete probability distributions</a></li>
+<li><a class="nav-link" href="#properties-of-probability-mass-functions"><span class="header-section-number">3.3</span> Properties of probability mass functions</a></li>
+<li><a class="nav-link" href="#mean-variance-and-moments"><span class="header-section-number">3.4</span> Mean, variance and moments</a></li>
+<li>
+<a class="nav-link" href="#exercises-week-3"><span class="header-section-number">3.5</span> Exercises Week 3</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#exercises-for-feedback-1"><span class="header-section-number">3.5.1</span> Exercises for feedback</a></li></ul>
+</li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="cond.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="binpois.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Probability Theory and Statistics</strong>" was written by Malcolm Connolly. It was last built on Semester 2, 2023.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": null,
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["6G4Z3008-notes.pdf", "6G4Z3008-notes.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-},
-"info": false
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -1087,7 +874,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>
