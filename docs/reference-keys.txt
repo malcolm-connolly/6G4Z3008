@@ -167,3 +167,12 @@ properties-of-probability-mass-functions
 mean-variance-and-moments
 exercises-week-3
 exercises-for-feedback-1
+binpois
+the-binomial-distribution
+the-binomial-mass-function
+mean-and-variance
+the-poisson-distribution
+further-properties
+mean-and-variance-1
+deriving-the-poisson-mass-function
+exercises-week-4
