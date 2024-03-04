@@ -209,7 +209,7 @@ In this course we will learn some R programming. R is a free open-source softwar
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "Tails" "Heads" "Heads" "Tails" "Heads" "Tails" "Tails" "Tails" "Tails"
+##  [1] "Heads" "Heads" "Heads" "Heads" "Tails" "Heads" "Tails" "Tails" "Tails"
 ## [10] "Heads"
 \end{verbatim}
 
@@ -4451,6 +4451,947 @@ A box contains \(12\) golf balls, \(3\) of which are substandard. A random sampl
 \item
   Determine the probability that there are fewer than two substandard balls.
 \end{enumerate}
+
+\hypertarget{norm}{%
+\chapter{Normal distribution}\label{norm}}
+
+We have already seen some examples of continuous random variables including the \emph{uniform} distribution and the \emph{exponential} distribution. From one point of view, the normal distribution is just another example of a continuous random variable. However the normal distribution is the most important distribution in all of probability and statistics.
+
+\hypertarget{relation-to-data}{%
+\section{Relation to data}\label{relation-to-data}}
+
+Suppose we weighed \(1000\) apples at harvest. The average weight may be \(100\) grams, and the apples may have a relatively small spread about this value with a standard deviation of \(10\) grams.
+
+We know how to draw a histogram of such data in R. One can imagine that with a larger sample the histogram may resemble more closely the \emph{bell curve} in the left plot.
+
+\begin{figure}
+\centering
+\includegraphics{6G4Z3008-notes_files/figure-latex/rnormhist-1.pdf}
+\caption{\label{fig:rnormhist}A bell-shaped curve}
+\end{figure}
+
+\hypertarget{cauchy-density}{%
+\section{Cauchy density}\label{cauchy-density}}
+
+To study curves like the normal distribution it can be useful to consider what kinds of graphs could produce a curve with a single peak (unimodal) which are zero asymptotically.
+
+Consider the curve
+
+\[f(x) = \frac{1}{x^2+1}\]
+Note \(f(0)=1\), and the square ensures it is everywhere positive. Notice the denominator cannot be zero, for \(x^2+1=0\) has no real roots.
+
+When \(x\to \infty\), we divide by a larger and larger denominator so \(f(x)\to 0\). Similarly for \(x\to -\infty\).
+
+People thought this curve looked like a witch's hat and is named after Italian Mathematician Maria Agnesi. The curve is called the `Witch of Agnesi'. Here is a graph of this curve:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/cauchy} 
+
+}
+
+\caption{The Cauchy distribution}\label{fig:cauchy}
+\end{figure}
+
+However for this to be a density we need the integral to equal \(1\).
+
+We can consider the integral
+
+\[\int_{\mathbb{R}}\frac{1}{x^2+1} \ dx\]
+You can use a trigonometric substitution here, for example \(x=\tan \theta\). Then
+
+\[\frac{dx}{d\theta} = \sec^2\theta,\]
+and \(1+x^2 = 1+\tan^2\theta = \sec^2 \theta\).
+
+Then
+
+\[\int_{\mathbb{R}}\frac{1}{x^2+1} \ dx = \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}1 \ d\theta \]
+
+\[ = \left[\frac{\pi}{2} - \left(- \frac{\pi}{2}\right)\right] = \pi\]
+
+The point of this example is that unexpectedly the number \(\pi\) crops up and we must divide by this \emph{normalising constant} so that the function
+
+\[f(x) = \frac{1}{\pi(x^2+1)} ,\]
+is a valid density function as it has integral \(1\).
+
+\hypertarget{normal-density}{%
+\section{Normal density}\label{normal-density}}
+
+We will consider a function similar in shape to the above, namely
+
+\[f(x) = e^{-\frac{1}{2}x^2} \]
+It turns out that
+
+\[\int _{-\infty}^{\infty} e^{-\frac{1}{2}x^2} \ dx = \sqrt{2\pi}\]
+A Mathematical curiosity is that you can integrate \(e^{-\frac{1}{2}x^2}\) over the whole real line and get this result, but there exists no closed form (without integrals) antiderivative.
+
+The upshot is that the integral involves \(\pi\) and so to make this a valid density we must have a factor involving \(1/{\sqrt{\pi}}.\) This should give you some intuition for the following definition.
+
+\begin{definition}
+A continuous random variable \(X\) is said to have a normal distribution with mean \(\mu\) and variance \(\sigma^2\), written \(X\sim \text{N}(\mu,\sigma^2)\) if it has the density function given by
+
+\[ f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}\text{exp}\left\{ -\frac{(x-\mu)^2}{2\sigma^2}\right\}, \]
+where \(x, \mu\in \mathbb{R}\) and \(\sigma^2 > 0\).
+\end{definition}
+
+The density \(f(x)\) is a valid density, with the fraction \(\frac{1}{\sqrt{2\pi}\sigma}\) called the \emph{normalising constant} to ensure that the integral is \(1\) over the real line. The mean \(\text{E}(X)\) of this distribution is \(\mu\). The variance \(\text{Var}(X)\) is \(\sigma^2\). These three facts can be shown after studying \textbf{\emph{multi-variable calculus}} in second year.
+
+The density of a normal distribution is a bell-shaped curve which is symmetric about the mean value \(\mu\). Most of the area under the curve is concentrated about the mean value with a relatively small amount at values a long way from \(\mu\). In general the density looks like the following picture, with a bell-shaped bump which tails off the zero at infinity either side. The curve is symmetrical about the line \(x=\mu\).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/norm1} 
+
+}
+
+\caption{a normal density curve is bell shaped}\label{fig:norm1}
+\end{figure}
+
+Changing the value of \(\mu\), will perform a translation along the \(x\) axis, and thereby the position of the centre of the curve.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/norm2} 
+
+}
+
+\caption{three normal densities with the same standard deviation = 10, but means 90, 100 and 115}\label{fig:norm2}
+\end{figure}
+
+Changing the value of the standard deviation, or equivalently the variance, parameter determines how spread out the curve is about the mean. A smaller standard deviation results in a higher peak, as the model is less spread out and so is more mass around the mean value.
+
+Conversely a larger standard deviation results in a lower peak, and more mass is spread out from the mean value towards the tails of the density.
+
+We can view the
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/norm3} 
+
+}
+
+\caption{three normal densities with the same mean, but standard deviations equal to 7.5, 10 and 15}\label{fig:norm3}
+\end{figure}
+
+One can access the normal density in R with the function \(\texttt{dnorm}()\), which we will see in labs.
+
+\hypertarget{standard-normal}{%
+\section{Standard normal}\label{standard-normal}}
+
+\begin{definition}
+The normal distribution with \(\mu=0\) and \(\sigma =1\) is called the standard normal distribution and is denoted by the letter \(Z\). Instead of \(f\) the density is denoted with the letter \(\phi\) and we have
+
+\[\phi (z) = \frac{1}{\sqrt{2\pi}} \exp \left( -\frac{1}{2}z^2 \right) , z\in \mathbb{R}\]
+
+The cumulative distribution function of the normal distribution is denoted with the capital \(\Phi(z) = \text{P}(Z\leq z)\).
+\end{definition}
+
+A graph of the density of the standard normal distribution \(Z\) is given below.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/znorm} 
+
+}
+
+\caption{the standard normal density}\label{fig:norm4}
+\end{figure}
+
+Notice that the majority of the area is between \(-3\) and \(3\). The distribution function of the standard normal is given in all statistical tables. We will see how problems involving any normal distribution can be recast in terms of the standard normal distribution.
+
+\hypertarget{evaluating-the-standard-normal-distribution}{%
+\section{Evaluating the standard normal distribution}\label{evaluating-the-standard-normal-distribution}}
+
+The MMU tables give areas, i.e.~probabilities, in the \emph{tail} of the distribution for \(z>0\). Tables vary, some giving the left tail \(\text{P}(Z\leq z)\) (cumulative distribution \(\Phi\)), others give the upper tail \(\text{P}(Z\geq z)\), and if you are using tables you should read carefully the top-matter that describes the tabulation. The tables will only display the positive values of \(z\) in either format.
+
+However, using tables we can find any area by observing:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The area under the whole graph is 1. The law of complements applies so that \(\text{P}(Z\geq z)= 1-\text{P}(Z\leq z)\).
+\item
+  The graph is symmetric about \(0\). Lower tail areas with negative \(z\) value, are equal to the corresponding upper tail area with positive \(z\) value. In particular this implies that the areas above and below \(0\) are both \(0.5\).
+\end{enumerate}
+
+It is generally advised to draw a sketch of the density which shows the values required for the particular problem and the areas representing the probabilities.
+
+\begin{example}
+
+Use tables to find the following probabilities for a standard Normal random variable \(Z\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\text{P}(Z\geq 2.45)\)
+\item
+  \(\text{P}(Z\leq -2.45)\)
+\item
+  \(\text{P}(Z\leq 1.73)\)
+\item
+  \(\text{P}(Z\geq -0.5)\)
+\item
+  \(\text{P}(0.35\leq Z\leq 1.68)\)
+\end{enumerate}
+
+\end{example}
+
+\emph{solutions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  If the upper tail values are tabulated, we find this directly.
+  \(\text{P}(Z\geq 2.45) = 0.0071\)
+\item
+  By symmetry we can argue that this is the same as the previous value.
+  \(\text{P}(Z\geq 2.45) = 0.0071\)
+\item
+  Using complements \(\text{P}(Z\leq 1.73)= 1-\text{P}(Z\geq 1.73)\). From tables \(\text{P}(Z\geq 1.73)= 0.0418\), so \(\text{P}(Z\leq 1.73)= 1- 0.0418 = 0.9582\).
+\item
+  We have \(\text{P}(Z\geq -0.5) = 1 - \text{P}(Z\leq -0.5)\) by complements. Now also we have \(\text{P}(Z\leq -0.5) = \text{P}(Z\geq 0.5) = 0.3085\) by symmetry. Hence \[\text{P}(Z\geq -0.5) = 1 - 0.3085 = 0.6915 \]
+\item
+  We have \(\text{P}(0.35\leq Z\leq 1.68) = \text{P}(Z\geq 0.35)-\text{P}(Z\geq 1.68)\), looking up the latter two values gives \(0.3632 - 0.0465 = 0.3167.\)
+\end{enumerate}
+
+It is an important skill to be able to use statistical tables, and to familiarise yourself with their format. There may be other means of getting these numbers for particular distributions, for example using R or a calculator.
+
+However later in the course some distributions will only appear in tables and you will be expected to use the tables in an exam.
+
+\hypertarget{standardising}{%
+\section{Standardising}\label{standardising}}
+
+In the previous section we only considered the special case of a standard normal distribution (with mean \(0\) and variance \(1\)) for evaluating probabilities. We know that a normal distribution can be defined in general for any mean \(\mu\) and variance \(\sigma^2\). It is not possible to produce a table of values for every possible value of \(\mu\) and \(\sigma\). Fortunately it is also unnecessary.
+
+\begin{theorem}
+Suppose \(X\) follows a normal distribution with some mean and variance, so that \(X\sim \text{N}(\mu,\sigma^2)\), then subtracting the mean and dividing by the standard deviation results in a standard normal distrbution. That is,
+
+\[\frac{X-\mu}{\sigma} \sim \text{N}(0,1) \]
+Because of this result we write \(Z=\frac{X-\mu}{\sigma}\).
+\end{theorem}
+
+\emph{intuition}
+
+\[\text{E}\left(\frac{X-\mu}{\sigma}\right)=\frac{1}{\sigma}\text{E}(X-\mu) \]
+by linearity of the expectation, and,
+
+\[ = \frac{1}{\sigma}(\text{E}(X) - \text{E}(\mu)) = \frac{1}{\sigma}(\mu-\mu)=0\]
+as the expectation of a contant is just that constant.
+
+For the variance,
+
+\[ \text{Var} \left( \frac{X-\mu}{\sigma} \right) = \frac{1}{\sigma^2}\text{Var}(X-\mu)\]
+By the the rule \(\text{Var}(aX)=a^2\text{Var}(X)\). Now the variance of a constant is zero so we have,
+
+\[= \frac{1}{\sigma^2}\left( \text{Var}(X) - \text{Var}(\mu) \right) = \frac{1}{\sigma^2}\left( \sigma^2 - 0\right) = 1\]
+Hence \(\frac{X-\mu}{\sigma}\) has the correct mean and variance. It remains to formally show it has the same density function as \(Z\), and so is normal.
+
+An important consequence of the theorem which enables us to work out any probability is the following corollary.
+
+\begin{corollary}
+Suppose \(X\) follows a normal distribution with some mean and variance, so that \(X\sim \text{N}(\mu,\sigma^2)\) then
+
+\[\text{P}(a\leq X \leq b) = \Phi\left(\frac{b-\mu}{\sigma}\right) - \Phi\left(\frac{a-\mu}{\sigma}\right)\]
+\end{corollary}
+
+\emph{proof}
+\[\text{P}(a\leq X \leq b) = \text{P}\left(\frac{a-\mu}{\sigma} \leq \frac{X-\mu}{\sigma}  \leq  \frac{b-\mu}{\sigma}\right) = \text{P}\left(\frac{a-\mu}{\sigma} \leq Z  \leq  \frac{b-\mu}{\sigma}\right) \]
+Where the last equality is by the theorem. Now recall \(\Phi\) is the CDF of \(Z\), so the result follows.
+
+This formula has a very simple geometric interpretation. Recall that we can represent probabilities for continuous random variables as the area, between specified limits, under the distribution curve. This theorem just says that the area under \emph{any} Normal curve between limits \(a\) and \(b\) is always the same as the area under the standard Normal
+curve between the \emph{transformed} limits \(\frac{a-\mu}{\sigma}\) and \(\frac{b-\mu}{\sigma}\).
+
+\begin{example}
+
+Suppose that the weight of a particular grade of apples is Normally distributed with mean 100g and standard deviation 8g. Let \(X\) denote the weight of a randomly selected apple, i.e.~\(X\sim\text{N}(100,{8^2})\), find:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(P(X>115)\)
+\item
+  \(P(X< 80)\)
+\item
+  \(P(105<X<112)\)
+\item
+  \(P(95<X<112)\)
+\end{enumerate}
+
+\end{example}
+
+\emph{solution}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \[P(X>115)  =  P\left(Z>\frac{115-100}{8}\right)
+          =  P(Z>1.88)\]
+\end{enumerate}
+
+This quantity can be found directly from tables, i.e.
+\(P(Z>1.88)=0.0301\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \[P(X<80)  =  P\left(Z<\frac{80-100}{8}\right)
+          =  P(Z<-2.5)
+          =  P(Z>2.5)\]
+\end{enumerate}
+
+From tables, \(P(Z>2.5)=0.0062\)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+\end{enumerate}
+
+\[P(105<X<112)  =  P\left(\frac{105-100}{8}<Z<\frac{112-100}{8}\right)\]
+
+\[= P(0.63<Z<1.5)\]
+\[=P(Z>0.63)-P(Z>1.5)\]
+\[= 0.2643-0.0668=0.1975\]
+4.
+There are several ways in which this problem could be approached - a sketch or diagram will help. We have,
+
+\[P(95<X<112) =  P\left(\frac{95-100}{8}<Z<\frac{112-100}{8}\right)
+          =  P(-0.63<Z<1.5)\]
+
+But,
+
+\[P(Z<-0.63)+P(-0.63<Z<1.5)+P(Z>1.5)=1\]
+
+\begin{itemize}
+\tightlist
+\item
+  the three areas comprise the whole distribution. We also have,
+  \[P(Z<-0.63)=P(Z>0.63)\]
+  by symmetry, so that
+\end{itemize}
+
+\[P(-0.63<Z<1.5) =  1-P(Z>0.63)-P(Z>1.5)\]
+
+\[=  1-0.2643-0.0668=0.6689\]
+
+\hypertarget{inverse-cdf}{%
+\section{Inverse CDF}\label{inverse-cdf}}
+
+We saw how to solve problems which involved finding the probability that a Normally distributed
+random variable lay in a certain range. The solution to this problem consisted of two steps:
+
+\begin{itemize}
+\tightlist
+\item
+  standardising the the value of the original variable to get a standard Normal variable.
+\item
+  using tables of the standard Normal distribution to find the required probability, recognising that the process of
+  standardisation preserves areas, i.e.~probabilities.
+\end{itemize}
+
+We may think of the process as follows:
+\[ \mbox{Original Value,
+}X\stackrel{\frac{x-\mu}{\sigma}}{\longrightarrow} Z
+\longrightarrow \mbox{Probability ?}
+\]
+The inverse problem, as the name suggests, is simply the same
+process but applied backwards. We start out with a probability and seek to find
+the value of the random variable corresponding to that probability. Thus, since
+
+\[Z  =  \frac{X-\mu}{\sigma} \]
+\[\Rightarrow \sigma Z = X-\mu \]
+\[\Rightarrow X  =  \mu+\sigma Z\]
+
+The inverse problem can be thought of as working through
+the following process,
+\[ \mbox{Original Value,
+}X\mbox{? }\stackrel{\sigma Z+\mu}{\longleftarrow} Z
+\longleftarrow \mbox{Probability}
+\]
+As before a simple sketch graph of the problem is invaluable.
+
+\begin{example}
+The weights of eggs laid by a particular breed of hens are
+Normally distributed with mean \(50\)g and standard deviation \(5\)g. An
+egg producer wants to classify eggs so that the heaviest \(10\)\% are
+classified as large and the lightest \(30\)\% classified as small. The
+remaining \(60\)\% are classified as medium. What weights should be
+used to distinguish the three classes?
+\end{example}
+
+If we let the random variable \(X\) denote the weight of an egg,
+we need to find the values of \(x_1\) and \(x_2\) indicated in the
+following diagram,
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/eggs} 
+
+}
+
+\caption{proportions of eggs by weight}\label{fig:eggs}
+\end{figure}
+
+Common sense, and our knowledge of the Normal distribution, tells us that the value of \(x_1\) is a \emph{little} below the mean value of \(50\)g and the value of \(x_2\) somewhat higher than the mean value of \(50\)g. In fact, we can usually make a reasonably accurate guess if we use the result that virtually all the curve (99.7\%) is contained within the limits \(\pm\) 3 standard deviations either side of the mean. In case, virtually all the eggs will lie in the range \([50-3\times 5,50+3\times5]\)=\([35,65]\)g.
+
+In order to solve the problem, we have to find the values of a standard normal variable corresponding to the same probabilities indicated on the diagram above.
+
+The \(z\) value exceeded with a probability 0.1 is found to be 1.2816, i.e.~\[P(Z\geq 1.2816)=0.1\].
+
+At the other end of the distribution we find the probability a \(Z\) value is less than 0.3 is -0.5244, i.e.~
+\[P(Z\leq -0.5244)=0.3\].
+
+Note that this last value was found using the symmetry of the distribution. You should check that these are the \(z\) values you would have obtained if you had been working the other way round.
+
+Note that, if the required probability is not in the \emph{inverse} tables, you have to use the main table backwards. To do this, look for the required probability (or as close as you can get to it) in the body of the table, and then read off the corresponding \(z\)-value.
+
+For example, scanning through the body of the table, we find that a probability of 0.1003 corresponds to a \(z\) value of 1.28 and a probability of 0.0985 corresponds to a z-value of 1.29. Clearly, the actual value corresponding to a probability of 0.10 (which we know is 1.2816) is somewhere between 1.28 and 1.29. In practice, a good estimate can be found using interpolation.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{./figures/inverseeggs} 
+
+}
+
+\caption{Standardised values of the egg weight distribution give the same area in the tails}\label{fig:inveggs}
+\end{figure}
+
+The final stage of the problem is to apply the inverse transformation to get the appropriate values on the original
+scale. Recall, the inverse transformation is, \(X=\sigma Z+\mu\).
+Thus we, have,
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  The weight which will be exceeded by the largest 10\% of eggs is given
+  by, \(X = 5\times 1.2816+50 = 56.41\)g.
+\item
+  The weight which the smallest 30\% of eggs will lie below is
+  given by, \(X = 5\times -0.5244+50 = 47.38\)g
+\end{enumerate}
+
+\begin{example}
+
+A vending machine discharges hot chocolate. The volume of liquid the machine discharges may be modelled by a normal distribution. With probability \(5\%\), the volume discharged is greater than \(475\)ml. While the probability of the volume being less than \(460\)ml is one percent.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Sketch a picture to show this information
+\item
+  Find \(\mu\) and \(\sigma\).
+\end{enumerate}
+
+\end{example}
+
+\hypertarget{sampling-total}{%
+\section{Sampling Total}\label{sampling-total}}
+
+\subsection{Distribution of Sample Total}
+
+Suppose we have an independent random sample of size \(n\) from a Normal distribution,
+e.g.~\(X_1,\ldots,X_n\sim \text{N}(\mu,\sigma^2)\).
+
+Define the random variable \(T=\sum_{i=1}^n X_i\), then,
+\[ T \sim \text{N}(n\mu,n\sigma^2). \]
+
+That is, the \emph{sampling distribution} of the total, \(T\), is also Normally distributed with \(\text{E}(T)=n\mu\) and \(\text{Var}(T)=n\sigma^2\).
+
+\begin{example}[apples revisited]
+
+Earlier we assumed that the weight of
+individual apples sold by a supermarket were Normally distributed
+with mean 100g and standard deviation 8g, i.e.~if the random variable \(X\)
+represents the weight then \(X \sim \text{N}(100,{8^2})\).
+
+Let the random variable \(T\) denote the total weight of a carton of 4 apples. Find the probability that the total weight of a carton is,
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  more than 450g
+\item
+  between 375g and 425g
+\end{enumerate}
+
+\end{example}
+
+\emph{solution}
+
+Here \(n=4\), \(\mu=100\) and \(\sigma=8\) so that, the total weight,
+\[ T\sim \text{N}({4\times 100},{4\times 8^2})\sim \text{N}({400},{16^2}) \]
+We answer the problem by converting to a standard Normal as before,
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  We have,
+\end{enumerate}
+
+\[P(T>450)  =  P\left(Z>\frac{450-400}{16}\right)\]
+\[=  P(Z>3.13)\]
+\[ =  0.0009\]
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  We have,
+\end{enumerate}
+
+\[P(375<T<425)  =  P\left(\frac{375-400}{16}<Z<\frac{425-400}{16}\right) \]
+\[=  P(-1.56<Z<1.56)=1-2\times P(Z>1.56)\]
+\[=  1-2\times 0.0594=0.8812\]
+
+\hypertarget{sampling-distribution-of-the-mean}{%
+\section{Sampling distribution of the mean}\label{sampling-distribution-of-the-mean}}
+
+All the problems considered so far have supposed that a single
+measurement is randomly drawn from some population in which the
+possible values of the measurement follow a Normal distribution.
+We now consider what happens if we,
+
+\begin{itemize}
+\item
+  Take a random sample of size \(n\) from a population whose
+  values follow a Normal distribution. We will denote the random sample of
+  values by \(X_1,X_2,\ldots,X_n\). For example, we might
+  randomly select \(n=10\) people and measure their height.
+\item
+  Calculate the \textbf{\emph{mean}} value of the sample, i.e.~
+  \[\bar{X}=\frac{X_1+X_2+\ldots+X_n}{n}=\frac{1}{n}\sum_i X_i\]
+\item
+  Calculate the \textbf{\emph{total}} value of the sample, i.e.~
+  \[T = X_1+X_2+\ldots+X_n =\sum_i X_i\]
+\end{itemize}
+
+Now, since each member of the sample is a random variable, the sample mean must also be a random variable.
+
+\begin{example}
+The heights of two randomly selected MMU students are \(X_1\) and \(X_2\). Given a particular sample, i.e.~two actual students say \(x_1=170\)cm and \(x_2=158\)cm, we can calculate their mean \(\bar{x}=164\)cm. However until we pick the sample, the quantity \((X_1+X_2)/2\) is random. So we can treat this mean as a random variable and denote it with a capital letter \(\bar{X}\).
+\end{example}
+
+\begin{definition}
+A \textbf{\emph{statistic}} is a random variable whose particular values can be calculated from a particular sample. For example the statistic \(\bar{X}\) is calculated as \(\frac{X_1+X_2+\ldots+X_n}{n}\).
+\end{definition}
+
+Given a random variable one can always ask `what is its distribution?'.
+
+The following result can only be quoted.
+
+\begin{theorem}
+Suppose that random variables \(X_1,X_2,\ldots,X_n\) each follow a
+Normal distribution with mean \(\mu\) and variance \(\sigma^2\), i.e.
+\(X_i\sim \text{N}({\mu},{\sigma^2})\). Then, for the sample mean \(\bar{X}\), we
+have the \emph{sampling distribution} of that statistic is
+\[\bar{X}\sim \text{N}(\mu,\frac{\sigma^2}{n})\]
+\end{theorem}
+
+\emph{proof}
+This proof is beyond the scope of the course, however we can check the mean and variance are as described.
+
+What this result says is that the sample mean has the same theoretical population mean, \(\mu\), as any single value drawn from the population, but that its variance is reduced by a factor \(n\). Given our knowledge of the role of the variance in the Normal distribution, the result suggests that sample mean ought to lie closer to the true population mean \(\mu\) as the sample size increases.
+
+\begin{example}
+Suppose I take \(10\) samples of bamboo shoots and measure their lengths. The length of these particular bamboo shoots are normally distributed with mean \(74\)mm and standard deviation \(5\)mm.
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Sample & Shoot lengths(mm) & Sample mean\tabularnewline
+\midrule
+\endhead
+1 & 76,73,75,73,74,74,74,74,74,77 & 74.4\tabularnewline
+2 & 74,72,75,76,73,71,73,80,75,75 & 74.4\tabularnewline
+3 & 68,72,78,74,75,74,69,77,77,72 & 73.6\tabularnewline
+4 & 72,76,76,77,70,77,72,74,77,76 & 74.7\tabularnewline
+5 & 78,72,70,74,76,72,73,71,74,74 & 73.4\tabularnewline
+6 & 75,79,75,74,75,74,71,73,75,73 & 74.4\tabularnewline
+7 & 75,70,73,75,70,72,72,71,76,73 & 72.7\tabularnewline
+8 & 74,76,74,75,74,76,75,75,73,73 & 74.5\tabularnewline
+9 & 78,74,73,75,74,73,72,76,73,76 & 74.4\tabularnewline
+10 & 74,71,72,71,79,78,69,77,73,71 & 73.5\tabularnewline
+\bottomrule
+\end{longtable}
+
+The range in values of the shoot lengths is from \(68\) to \(80\). The values of the statistic \(\bar{X}\) vary noticably less, are close to the original mean value of \(74\)mm.
+\end{example}
+
+Now we have two variances \(\sigma^2\) and \(\sigma^2/n\) or equivalently standard deviations \(\sigma\) and \(\sigma / \sqrt{n}\) we need to be clear which one we are talking about.
+
+\begin{definition}
+The quantity \(\sigma/\sqrt{n}\) is called the \textbf{\emph{standard error of the
+mean}}. This is the standard deviation of \(\bar{X}\) - the sampling distribution of the mean. It is essentially the same as the standard deviation for a single observation but reflects the fact that the variance of
+the mean depends on the sample size \(n\).
+\end{definition}
+
+As \(n\) gets larger and larger, the distribution of the sample mean
+gets more and more concentrated around the value of the population
+mean \(\mu\).In practice, this suggests that, if the true
+population mean were unknown, the sample mean ought to be a good
+estimate of its value.
+
+\begin{example}
+
+Apple weights (revisited)
+Recall we assumed that the weight of individual apples sold by a supermarket were Normally distributed
+with mean 100g and standard deviation 8g, i.e.~if the random variable \(X\)
+represents the weight then \(X \sim \text{N}({100},{8^2})\).
+
+The supermarket also sells apples in cartons of four. What is the
+probability that the mean weight of the apples in a randomly
+selected carton is,
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  more than 105g
+\item
+  less than 98g
+\item
+  between 98 and 102g
+\end{enumerate}
+
+\end{example}
+
+\emph{solution}
+Here \(n=4\), \(\mu=100\) and \(\sigma=8\). If we denote the mean weight
+of the apples in a carton by \(\bar{X}\), then,
+\[ \bar{X} \sim \text{N}({100},8^2/4) \sim \text{N}(100,16)\]
+
+In this case the standard error of the mean is
+\(8/\sqrt{4}=\sqrt{16}=4\). Having calculated the standard error, we
+answer such problems in the same way as before by converting the
+problem to one involving the standard Normal distribution.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \[P(\bar{X} \geq 105)  =  P\left ( Z \geq \dfrac{105-100}{4}\right) \]
+  \[=  P(Z\geq 1.25)\]
+  \[=  0.1056\]
+\item
+\end{enumerate}
+
+\[P(\bar{X} \leq 98)  =  P\left ( Z \leq \dfrac{98-100}{4}\right)\]
+
+\[=  P(Z\leq -0.5)=P(Z\geq 0.5)\]
+\[= 0.3085\]
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \[P(98\leq \bar{X} \leq 102)  = P\left (\dfrac{98-100}{4} \leq Z \leq \dfrac{102-100}{4}\right)\]
+\end{enumerate}
+
+\[=  P(-0.5\leq Z\leq 0.5)=1-2\times P(Z\geq 0.5)\]
+\[=  0.3830\]
+
+\hypertarget{exercises-week-6}{%
+\section{Exercises week 6}\label{exercises-week-6}}
+
+\begin{exercise}
+Suppose the lifetime of an electrical component follows
+a uniform distribution on the range \([0,2000]\) hours.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Draw a sketch of the distribution.
+\item
+  Find the probability that the lifetime will be,
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\tightlist
+\item
+  at least 1000 hours
+\item
+  less than 250 hours
+\item
+  between 500 and 1500 hours
+\end{enumerate}
+
+(draw a sketch of the distribution and the area under the
+distribution representing the probability)
+\end{exercise}
+
+\begin{exercise}
+
+The time taken (in minutes) to serve a customer in a fast food
+restaurant is a continuous random variable, \(X\), with probability
+distribution,
+\[ f(x) = \left \{\begin{array}{ll}
+  \dfrac{x}{2}& 0\leq x \leq 2 \\
+  0 & \mbox{otherwise}
+\end{array} \right .
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  Sketch the density.
+\item
+  Show that the area under the distribution is one.
+\item
+  You only need to use the areas of triangles to answer these
+  questions. Find the probability that the time taken to serve a
+  customer will be,
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\tightlist
+\item
+  less than one minute
+\item
+  more than one minute
+\item
+  more than 30 seconds
+\item
+  between 30 seconds and 1 minute.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+Use standard Normal tables to find the following
+probabilities, (draw a sketch diagram in each case)
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\item
+  \(P(Z>1.7)\)
+\item
+  \(P(Z>2.35)\)
+\item
+  \(P(Z<-0.92)\)
+\item
+  \(P(Z<-2.33)\)
+\item
+  \(P(0.78<Z<2.56)\)
+\item
+  \(P(-1.99<Z<-0.34)\)
+\item
+  \(P(-1.67<Z<2.58)\)
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+The lifetime of a certain brand of lightbulb is Normally distributed with
+mean 2000 hours and standard deviation 75 hours. Find the probability that a
+randomly selected bulb will have lifetime,
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  greater than 2100 hours
+\item
+  greater than 2200 hours
+\item
+  less than 2050 hours
+\item
+  less than 1950 hours
+\item
+  between 1950 and 2100 hours
+\item
+  between 2050 and 2200 hours
+\item
+  between 1900 and 1950 hours
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+Bags of sugar packed by a machine have a mean weight of 2kg and a
+standard deviation of 0.02kg. Find the probability that the weight of a
+bag will be
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\item
+  greater than 2.05kg
+\item
+  less than 1.96kg
+\item
+  between 1.95 and 2.05kg
+\item
+  less than 2.03kg
+\item
+  between 1.95 and 1.98 kg
+\item
+  between 2.01 and 2.05 kg
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+
+A type of laboratory mouse has weight which is Normally distributed with mean
+30g and standard deviation 2.5g. Find the probability that the weight of a randomly
+selected mouse is,
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  at least 33g
+\item
+  less than 33.5g
+\item
+  more than 29g
+\item
+  less than 28g
+\item
+  between 27g and 33g
+\item
+  between 31g and 33.5g
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+Eggs are classified as standard, if they weigh less than
+46.0g, medium if they weigh between 46.0g and 56.0g, or large if
+they weigh over 56.0g. Suppose the eggs laid by a particular
+breed of hen have weight which is Normally distributed with mean
+50.0g and standard deviation 5.0g. What percentage of eggs laid by
+these hens falls into the three classes?
+\end{exercise}
+
+\begin{exercise}
+A manufactured item requires a fuse which can be supplied by one
+of two suppliers. Supplier 1's fuses have a lifetime which is Normally distributed
+with mean 1000 hours and standard deviation 30 hours. Supplier 2's fuses have a
+lifetime which is Normally distributed with mean 990 hours and standard deviation
+10 hours. Your product specification requires that fuses should last at least 980
+hours. Which of the two suppliers would you choose and why.
+\end{exercise}
+
+\begin{exercise}
+
+Marks in a statistics examination are Normally
+distributed with mean 50 and standard deviation 10. What is the
+probability that
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\item
+  the mean mark of a group of 5 students will be above 60?
+\item
+  the mean mark of a group of 20 students will be between 44
+  and 48?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+A ski-lift is designed with a load limit of 18,000lbs and claims a
+capacity of 100 people. If the weight of people using the lift is Normally
+distributed with mean 175lbs and standard deviation 30lbs, what is the
+probability that a group of 100 randomly selected people will exceed the load
+limit of the lift? Would you be willing to use the lift?
+\end{exercise}
+
+\begin{exercise}
+
+Lengths of bicycle chain links are Normally distributed with mean
+0.5cm and standard deviation 0.04cm. The finished chains must be between 49
+and 50cm long.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  If the chains are made of 100 links, what proportion meets the
+  standard?
+\item
+  If chains are made instead of 99 links what proportion meets the
+  standard?
+\item
+  Using 99 links, to what value must the standard deviation be reduced in
+  order to have the following percentages meet the standard?
+\item
+  90\%\\
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  95\%\\
+\item
+  99\%\\
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+Bags of sugar packed by a machine have a mean weight of 2kg and a standard
+deviation of 0.02kg. What weights will
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  be exceeded by 15\% of bags
+\item
+  be exceeded by 90\% of bags
+\item
+  20\% of bags contain less than
+\item
+  90\% of bags be between
+\item
+  A multipack contains 5 bags of sugar. What is the probability that
+\item
+  All the bags contain less than 1.992 kg
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Exactly four bags contain less than 1.992kg
+\end{enumerate}
+
+(Hint: Consider using the normal distribution and then the Binomial
+with the appropriate probability.)
+\end{exercise}
+
+\begin{exercise}
+The weight of a child can be modelled as normally distributed with mean \(30\)kg and standard deviation \(5\)kg.
+
+A fairground ride has a total carrying capacity of \(2.8\) metric tons (thousand kilograms).
+
+\(k\) children are admitted to the ride and their total weight \(X_1+X_2+ \ldots + X_k\).
+
+What is the maximum number of children that could be admitted to the ride, to ensure that the total weight is within the carrying capacity with probability \(99\%\)?
+\end{exercise}
+
+\begin{exercise}
+
+The masses of penguins on an island are found to be normally distributed with mean \(\mu\) and standard deviation \(\sigma\). Given that \(10\%\) of the penguins have mass less than \(18\)kg and \(5\%\) have mass greater than \(30\)kg,
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Sketch a diagram to represent this information
+\item
+  Find \(\mu\) and \(\sigma\).
+\end{enumerate}
+
+\end{exercise}
 
   \bibliography{book.bib,packages.bib}
 

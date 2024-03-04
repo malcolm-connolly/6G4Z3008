@@ -1,266 +1,91 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Normal distribution | Probability Theory and Statistics</title>
-  <meta name="description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 6 Normal distribution | Probability Theory and Statistics" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  <meta name="github-repo" content="6G4Z3008" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Normal distribution | Probability Theory and Statistics" />
-  
-  <meta name="twitter:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  
-
-<meta name="author" content="Malcolm Connolly" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  <link rel="shortcut icon" href="cards.ico" type="image/x-icon" />
-<link rel="prev" href="cont.html"/>
-<link rel="next" href="sampling-and-confidence-intervals.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-<style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 6 Normal distribution | Probability Theory and Statistics</title>
+<meta name="author" content="Malcolm Connolly">
+<meta name="description" content="We have already seen some examples of continuous random variables including the uniform distribution and the exponential distribution. From one point of view, the normal distribution is just...">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
+<meta property="og:title" content="Chapter 6 Normal distribution | Probability Theory and Statistics">
+<meta property="og:type" content="book">
+<meta property="og:description" content="We have already seen some examples of continuous random variables including the uniform distribution and the exponential distribution. From one point of view, the normal distribution is just...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 6 Normal distribution | Probability Theory and Statistics">
+<meta name="twitter:description" content="We have already seen some examples of continuous random variables including the uniform distribution and the exponential distribution. From one point of view, the normal distribution is just...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="toc-logo"><a href="./"><img src="logo.svg"></a></li>
-<li><a href="https://moodle.mmu.ac.uk/course/view.php?id=157842" target="blank" > 6G4Z3008 course notes </a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#frequentist-perspective"><i class="fa fa-check"></i><b>1.1</b> Frequentist perspective</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#naive-probability"><i class="fa fa-check"></i><b>1.2</b> Naive probability</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#complements-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Complements and mutual exclusivity</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#outcomes-and-counting"><i class="fa fa-check"></i><b>1.4</b> Outcomes and counting</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#factorials"><i class="fa fa-check"></i><b>1.4.1</b> Factorials</a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#permutations"><i class="fa fa-check"></i><b>1.4.2</b> Permutations</a></li>
-<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#combinations"><i class="fa fa-check"></i><b>1.4.3</b> Combinations</a></li>
-</ul></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#exercises-week-1"><i class="fa fa-check"></i><b>1.5</b> Exercises Week 1</a><ul>
-<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#tutorial-exercises"><i class="fa fa-check"></i><b>1.5.1</b> Tutorial exercises</a></li>
-<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#exercises-for-feedback"><i class="fa fa-check"></i><b>1.5.2</b> Exercises for feedback</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="cond.html"><a href="cond.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
-<li class="chapter" data-level="2.1" data-path="cond.html"><a href="cond.html#independence"><i class="fa fa-check"></i><b>2.1</b> Independence</a></li>
-<li class="chapter" data-level="2.2" data-path="cond.html"><a href="cond.html#conditional-probability"><i class="fa fa-check"></i><b>2.2</b> Conditional Probability</a></li>
-<li class="chapter" data-level="2.3" data-path="cond.html"><a href="cond.html#bayes-theorem"><i class="fa fa-check"></i><b>2.3</b> Bayes Theorem</a></li>
-<li class="chapter" data-level="2.4" data-path="cond.html"><a href="cond.html#exercises-week-2"><i class="fa fa-check"></i><b>2.4</b> Exercises Week 2</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="drv.html"><a href="drv.html"><i class="fa fa-check"></i><b>3</b> Discrete Random Variables</a><ul>
-<li class="chapter" data-level="3.1" data-path="drv.html"><a href="drv.html#random-variables"><i class="fa fa-check"></i><b>3.1</b> Random Variables</a></li>
-<li class="chapter" data-level="3.2" data-path="drv.html"><a href="drv.html#discrete-probability-distributions"><i class="fa fa-check"></i><b>3.2</b> Discrete probability distributions</a></li>
-<li class="chapter" data-level="3.3" data-path="drv.html"><a href="drv.html#properties-of-probability-mass-functions"><i class="fa fa-check"></i><b>3.3</b> Properties of probability mass functions</a></li>
-<li class="chapter" data-level="3.4" data-path="drv.html"><a href="drv.html#mean-variance-and-moments"><i class="fa fa-check"></i><b>3.4</b> Mean, variance and moments</a></li>
-<li class="chapter" data-level="3.5" data-path="drv.html"><a href="drv.html#exercises-week-3"><i class="fa fa-check"></i><b>3.5</b> Exercises Week 3</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="drv.html"><a href="drv.html#exercises-for-feedback-1"><i class="fa fa-check"></i><b>3.5.1</b> Exercises for feedback</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="binpois.html"><a href="binpois.html"><i class="fa fa-check"></i><b>4</b> Special discrete random variables</a><ul>
-<li class="chapter" data-level="4.1" data-path="binpois.html"><a href="binpois.html#the-binomial-distribution"><i class="fa fa-check"></i><b>4.1</b> The Binomial Distribution</a></li>
-<li class="chapter" data-level="4.2" data-path="binpois.html"><a href="binpois.html#the-binomial-mass-function"><i class="fa fa-check"></i><b>4.2</b> The binomial mass function</a></li>
-<li class="chapter" data-level="4.3" data-path="binpois.html"><a href="binpois.html#mean-and-variance"><i class="fa fa-check"></i><b>4.3</b> Mean and variance</a></li>
-<li class="chapter" data-level="4.4" data-path="binpois.html"><a href="binpois.html#the-poisson-distribution"><i class="fa fa-check"></i><b>4.4</b> The Poisson distribution</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="binpois.html"><a href="binpois.html#further-properties"><i class="fa fa-check"></i><b>4.4.1</b> Further properties</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="binpois.html"><a href="binpois.html#mean-and-variance-1"><i class="fa fa-check"></i><b>4.5</b> Mean and Variance</a></li>
-<li class="chapter" data-level="4.6" data-path="binpois.html"><a href="binpois.html#deriving-the-poisson-mass-function"><i class="fa fa-check"></i><b>4.6</b> Deriving the Poisson mass function</a></li>
-<li class="chapter" data-level="4.7" data-path="binpois.html"><a href="binpois.html#exercises-week-4"><i class="fa fa-check"></i><b>4.7</b> Exercises week 4</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="cont.html"><a href="cont.html"><i class="fa fa-check"></i><b>5</b> Continuous random variables</a><ul>
-<li class="chapter" data-level="5.1" data-path="cont.html"><a href="cont.html#relation-to-histograms"><i class="fa fa-check"></i><b>5.1</b> Relation to histograms</a></li>
-<li class="chapter" data-level="5.2" data-path="cont.html"><a href="cont.html#two-students"><i class="fa fa-check"></i><b>5.2</b> Two students</a></li>
-<li class="chapter" data-level="5.3" data-path="cont.html"><a href="cont.html#the-probability-density-function"><i class="fa fa-check"></i><b>5.3</b> The probability density function</a></li>
-<li class="chapter" data-level="5.4" data-path="cont.html"><a href="cont.html#expectation-and-variance"><i class="fa fa-check"></i><b>5.4</b> Expectation and variance</a></li>
-<li class="chapter" data-level="5.5" data-path="cont.html"><a href="cont.html#mode"><i class="fa fa-check"></i><b>5.5</b> Mode</a></li>
-<li class="chapter" data-level="5.6" data-path="cont.html"><a href="cont.html#cdf"><i class="fa fa-check"></i><b>5.6</b> CDF</a></li>
-<li class="chapter" data-level="5.7" data-path="cont.html"><a href="cont.html#median-quartiles-and-percentiles"><i class="fa fa-check"></i><b>5.7</b> median, quartiles and percentiles</a></li>
-<li class="chapter" data-level="5.8" data-path="cont.html"><a href="cont.html#uniform-distribution"><i class="fa fa-check"></i><b>5.8</b> Uniform distribution</a></li>
-<li class="chapter" data-level="5.9" data-path="cont.html"><a href="cont.html#exponential-distribution"><i class="fa fa-check"></i><b>5.9</b> Exponential distribution</a></li>
-<li class="chapter" data-level="5.10" data-path="cont.html"><a href="cont.html#exercises-week-5"><i class="fa fa-check"></i><b>5.10</b> Exercises week 5</a><ul>
-<li class="chapter" data-level="5.10.1" data-path="cont.html"><a href="cont.html#exercises-for-feedback-week-5"><i class="fa fa-check"></i><b>5.10.1</b> Exercises for feedback week 5</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="norm.html"><a href="norm.html"><i class="fa fa-check"></i><b>6</b> Normal distribution</a><ul>
-<li class="chapter" data-level="6.1" data-path="norm.html"><a href="norm.html#relation-to-data"><i class="fa fa-check"></i><b>6.1</b> Relation to data</a></li>
-<li class="chapter" data-level="6.2" data-path="norm.html"><a href="norm.html#cauchy-density"><i class="fa fa-check"></i><b>6.2</b> Cauchy density</a></li>
-<li class="chapter" data-level="6.3" data-path="norm.html"><a href="norm.html#normal-density"><i class="fa fa-check"></i><b>6.3</b> Normal density</a></li>
-<li class="chapter" data-level="6.4" data-path="norm.html"><a href="norm.html#standard-normal"><i class="fa fa-check"></i><b>6.4</b> Standard normal</a></li>
-<li class="chapter" data-level="6.5" data-path="norm.html"><a href="norm.html#evaluating-the-standard-normal-distribution"><i class="fa fa-check"></i><b>6.5</b> Evaluating the standard normal distribution</a></li>
-<li class="chapter" data-level="6.6" data-path="norm.html"><a href="norm.html#standardising"><i class="fa fa-check"></i><b>6.6</b> Standardising</a></li>
-<li class="chapter" data-level="6.7" data-path="norm.html"><a href="norm.html#inverse-cdf"><i class="fa fa-check"></i><b>6.7</b> Inverse CDF</a></li>
-<li class="chapter" data-level="6.8" data-path="norm.html"><a href="norm.html#sampling-total"><i class="fa fa-check"></i><b>6.8</b> Sampling Total</a></li>
-<li class="chapter" data-level="6.9" data-path="norm.html"><a href="norm.html#sampling-distribution-of-the-mean"><i class="fa fa-check"></i><b>6.9</b> Sampling distribution of the mean</a></li>
-<li class="chapter" data-level="6.10" data-path="norm.html"><a href="norm.html#exercises-week-6"><i class="fa fa-check"></i><b>6.10</b> Exercises week 6</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html"><i class="fa fa-check"></i><b>7</b> Sampling and confidence intervals</a><ul>
-<li class="chapter" data-level="7.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#confidence-intervals"><i class="fa fa-check"></i><b>7.1</b> Confidence Intervals</a></li>
-<li class="chapter" data-level="7.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#unknown-variance"><i class="fa fa-check"></i><b>7.2</b> Unknown variance</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#estimating-the-variance"><i class="fa fa-check"></i><b>7.2.1</b> Estimating the variance</a></li>
-<li class="chapter" data-level="7.2.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#the-t-distribution"><i class="fa fa-check"></i><b>7.2.2</b> The t distribution</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#required-sample-sizes"><i class="fa fa-check"></i><b>7.3</b> Required sample sizes</a></li>
-<li class="chapter" data-level="7.4" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#interval-for-a-population-variance"><i class="fa fa-check"></i><b>7.4</b> Interval for a population variance</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#approximating-the-binomial-distribution."><i class="fa fa-check"></i><b>7.4.1</b> Approximating the binomial distribution.</a></li>
-<li class="chapter" data-level="7.4.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#proportions"><i class="fa fa-check"></i><b>7.4.2</b> Proportions</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Probability Theory and Statistics</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability Theory and Statistics</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Introduction to Probability</a></li>
+<li><a class="" href="cond.html"><span class="header-section-number">2</span> Conditional Probability</a></li>
+<li><a class="" href="drv.html"><span class="header-section-number">3</span> Discrete Random Variables</a></li>
+<li><a class="" href="binpois.html"><span class="header-section-number">4</span> Special discrete random variables</a></li>
+<li><a class="" href="cont.html"><span class="header-section-number">5</span> Continuous random variables</a></li>
+<li><a class="active" href="norm.html"><span class="header-section-number">6</span> Normal distribution</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="norm" class="section level1 hasAnchor">
-<h1><span class="header-section-number">Chapter 6</span> Normal distribution<a href="norm.html#norm" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="norm" class="section level1">
+<h1>
+<span class="header-section-number">6</span> Normal distribution<a class="anchor" aria-label="anchor" href="#norm"><i class="fas fa-link"></i></a>
+</h1>
 <p>We have already seen some examples of continuous random variables including the <em>uniform</em> distribution and the <em>exponential</em> distribution. From one point of view, the normal distribution is just another example of a continuous random variable. However the normal distribution is the most important distribution in all of probability and statistics.</p>
-<div id="relation-to-data" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.1</span> Relation to data<a href="norm.html#relation-to-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="relation-to-data" class="section level2">
+<h2>
+<span class="header-section-number">6.1</span> Relation to data<a class="anchor" aria-label="anchor" href="#relation-to-data"><i class="fas fa-link"></i></a>
+</h2>
 <p>Suppose we weighed <span class="math inline">\(1000\)</span> apples at harvest. The average weight may be <span class="math inline">\(100\)</span> grams, and the apples may have a relatively small spread about this value with a standard deviation of <span class="math inline">\(10\)</span> grams.</p>
 <p>We know how to draw a histogram of such data in R. One can imagine that with a larger sample the histogram may resemble more closely the <em>bell curve</em> in the left plot.</p>
-<div class="figure"><span style="display:block;" id="fig:rnormhist"></span>
-<img src="6G4Z3008-notes_files/figure-html/rnormhist-1.png" alt="A bell-shaped curve" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:rnormhist"></span>
+<img src="6G4Z3008-notes_files/figure-html/rnormhist-1.png" alt="A bell-shaped curve" width="672"><p class="caption">
 Figure 6.1: A bell-shaped curve
 </p>
 </div>
 </div>
-<div id="cauchy-density" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.2</span> Cauchy density<a href="norm.html#cauchy-density" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="cauchy-density" class="section level2">
+<h2>
+<span class="header-section-number">6.2</span> Cauchy density<a class="anchor" aria-label="anchor" href="#cauchy-density"><i class="fas fa-link"></i></a>
+</h2>
 <p>To study curves like the normal distribution it can be useful to consider what kinds of graphs could produce a curve with a single peak (unimodal) which are zero asymptotically.</p>
 <p>Consider the curve</p>
 <p><span class="math display">\[f(x) = \frac{1}{x^2+1}\]</span>
 Note <span class="math inline">\(f(0)=1\)</span>, and the square ensures it is everywhere positive. Notice the denominator cannot be zero, for <span class="math inline">\(x^2+1=0\)</span> has no real roots.</p>
 <p>When <span class="math inline">\(x\to \infty\)</span>, we divide by a larger and larger denominator so <span class="math inline">\(f(x)\to 0\)</span>. Similarly for <span class="math inline">\(x\to -\infty\)</span>.</p>
 <p>People thought this curve looked like a witch’s hat and is named after Italian Mathematician Maria Agnesi. The curve is called the ‘Witch of Agnesi’. Here is a graph of this curve:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cauchy"></span>
-<img src="figures/cauchy.JPG" alt="The Cauchy distribution" width="75%" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:cauchy"></span>
+<img src="figures/cauchy.JPG" alt="The Cauchy distribution" width="75%"><p class="caption">
 Figure 6.2: The Cauchy distribution
 </p>
 </div>
@@ -277,8 +102,10 @@ and <span class="math inline">\(1+x^2 = 1+\tan^2\theta = \sec^2 \theta\)</span>.
 <p><span class="math display">\[f(x) = \frac{1}{\pi(x^2+1)} ,\]</span>
 is a valid density function as it has integral <span class="math inline">\(1\)</span>.</p>
 </div>
-<div id="normal-density" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.3</span> Normal density<a href="norm.html#normal-density" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="normal-density" class="section level2">
+<h2>
+<span class="header-section-number">6.3</span> Normal density<a class="anchor" aria-label="anchor" href="#normal-density"><i class="fas fa-link"></i></a>
+</h2>
 <p>We will consider a function similar in shape to the above, namely</p>
 <p><span class="math display">\[f(x) = e^{-\frac{1}{2}x^2} \]</span>
 It turns out that</p>
@@ -292,48 +119,52 @@ where <span class="math inline">\(x, \mu\in \mathbb{R}\)</span> and <span class=
 </div>
 <p>The density <span class="math inline">\(f(x)\)</span> is a valid density, with the fraction <span class="math inline">\(\frac{1}{\sqrt{2\pi}\sigma}\)</span> called the <em>normalising constant</em> to ensure that the integral is <span class="math inline">\(1\)</span> over the real line. The mean <span class="math inline">\(\text{E}(X)\)</span> of this distribution is <span class="math inline">\(\mu\)</span>. The variance <span class="math inline">\(\text{Var}(X)\)</span> is <span class="math inline">\(\sigma^2\)</span>. These three facts can be shown after studying <strong><em>multi-variable calculus</em></strong> in second year.</p>
 <p>The density of a normal distribution is a bell-shaped curve which is symmetric about the mean value <span class="math inline">\(\mu\)</span>. Most of the area under the curve is concentrated about the mean value with a relatively small amount at values a long way from <span class="math inline">\(\mu\)</span>. In general the density looks like the following picture, with a bell-shaped bump which tails off the zero at infinity either side. The curve is symmetrical about the line <span class="math inline">\(x=\mu\)</span>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:norm1"></span>
-<img src="figures/norm1.JPG" alt="a normal density curve is bell shaped" width="75%" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:norm1"></span>
+<img src="figures/norm1.JPG" alt="a normal density curve is bell shaped" width="75%"><p class="caption">
 Figure 6.3: a normal density curve is bell shaped
 </p>
 </div>
 <p>Changing the value of <span class="math inline">\(\mu\)</span>, will perform a translation along the <span class="math inline">\(x\)</span> axis, and thereby the position of the centre of the curve.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:norm2"></span>
-<img src="figures/norm2.JPG" alt="three normal densities with the same standard deviation = 10, but means 90, 100 and 115" width="75%" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:norm2"></span>
+<img src="figures/norm2.JPG" alt="three normal densities with the same standard deviation = 10, but means 90, 100 and 115" width="75%"><p class="caption">
 Figure 6.4: three normal densities with the same standard deviation = 10, but means 90, 100 and 115
 </p>
 </div>
 <p>Changing the value of the standard deviation, or equivalently the variance, parameter determines how spread out the curve is about the mean. A smaller standard deviation results in a higher peak, as the model is less spread out and so is more mass around the mean value.</p>
 <p>Conversely a larger standard deviation results in a lower peak, and more mass is spread out from the mean value towards the tails of the density.</p>
 <p>We can view the</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:norm3"></span>
-<img src="figures/norm3.JPG" alt="three normal densities with the same mean, but standard deviations equal to 7.5, 10 and 15" width="75%" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:norm3"></span>
+<img src="figures/norm3.JPG" alt="three normal densities with the same mean, but standard deviations equal to 7.5, 10 and 15" width="75%"><p class="caption">
 Figure 6.5: three normal densities with the same mean, but standard deviations equal to 7.5, 10 and 15
 </p>
 </div>
 <p>One can access the normal density in R with the function <span class="math inline">\(\texttt{dnorm}()\)</span>, which we will see in labs.</p>
 </div>
-<div id="standard-normal" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.4</span> Standard normal<a href="norm.html#standard-normal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="standard-normal" class="section level2">
+<h2>
+<span class="header-section-number">6.4</span> Standard normal<a class="anchor" aria-label="anchor" href="#standard-normal"><i class="fas fa-link"></i></a>
+</h2>
 <div class="definition">
 <p><span id="def:unlabeled-div-184" class="definition"><strong>Definition 6.2  </strong></span>The normal distribution with <span class="math inline">\(\mu=0\)</span> and <span class="math inline">\(\sigma =1\)</span> is called the standard normal distribution and is denoted by the letter <span class="math inline">\(Z\)</span>. Instead of <span class="math inline">\(f\)</span> the density is denoted with the letter <span class="math inline">\(\phi\)</span> and we have</p>
 <p><span class="math display">\[\phi (z) = \frac{1}{\sqrt{2\pi}} \exp \left( -\frac{1}{2}z^2 \right) , z\in \mathbb{R}\]</span></p>
 <p>The cumulative distribution function of the normal distribution is denoted with the capital <span class="math inline">\(\Phi(z) = \text{P}(Z\leq z)\)</span>.</p>
 </div>
 <p>A graph of the density of the standard normal distribution <span class="math inline">\(Z\)</span> is given below.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:norm4"></span>
-<img src="figures/znorm.JPG" alt="the standard normal density" width="75%" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:norm4"></span>
+<img src="figures/znorm.JPG" alt="the standard normal density" width="75%"><p class="caption">
 Figure 6.6: the standard normal density
 </p>
 </div>
 <p>Notice that the majority of the area is between <span class="math inline">\(-3\)</span> and <span class="math inline">\(3\)</span>. The distribution function of the standard normal is given in all statistical tables. We will see how problems involving any normal distribution can be recast in terms of the standard normal distribution.</p>
 </div>
-<div id="evaluating-the-standard-normal-distribution" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.5</span> Evaluating the standard normal distribution<a href="norm.html#evaluating-the-standard-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="evaluating-the-standard-normal-distribution" class="section level2">
+<h2>
+<span class="header-section-number">6.5</span> Evaluating the standard normal distribution<a class="anchor" aria-label="anchor" href="#evaluating-the-standard-normal-distribution"><i class="fas fa-link"></i></a>
+</h2>
 <p>The MMU tables give areas, i.e. probabilities, in the <em>tail</em> of the distribution for <span class="math inline">\(z&gt;0\)</span>. Tables vary, some giving the left tail <span class="math inline">\(\text{P}(Z\leq z)\)</span> (cumulative distribution <span class="math inline">\(\Phi\)</span>), others give the upper tail <span class="math inline">\(\text{P}(Z\geq z)\)</span>, and if you are using tables you should read carefully the top-matter that describes the tabulation. The tables will only display the positive values of <span class="math inline">\(z\)</span> in either format.</p>
 <p>However, using tables we can find any area by observing:</p>
 <ol style="list-style-type: decimal">
@@ -364,8 +195,10 @@ Figure 6.6: the standard normal density
 <p>It is an important skill to be able to use statistical tables, and to familiarise yourself with their format. There may be other means of getting these numbers for particular distributions, for example using R or a calculator.</p>
 <p>However later in the course some distributions will only appear in tables and you will be expected to use the tables in an exam.</p>
 </div>
-<div id="standardising" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.6</span> Standardising<a href="norm.html#standardising" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="standardising" class="section level2">
+<h2>
+<span class="header-section-number">6.6</span> Standardising<a class="anchor" aria-label="anchor" href="#standardising"><i class="fas fa-link"></i></a>
+</h2>
 <p>In the previous section we only considered the special case of a standard normal distribution (with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(1\)</span>) for evaluating probabilities. We know that a normal distribution can be defined in general for any mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. It is not possible to produce a table of values for every possible value of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. Fortunately it is also unnecessary.</p>
 <div class="theorem">
 <p><span id="thm:unlabeled-div-186" class="theorem"><strong>Theorem 6.1  </strong></span>Suppose <span class="math inline">\(X\)</span> follows a normal distribution with some mean and variance, so that <span class="math inline">\(X\sim \text{N}(\mu,\sigma^2)\)</span>, then subtracting the mean and dividing by the standard deviation results in a standard normal distrbution. That is,</p>
@@ -415,7 +248,7 @@ curve between the <em>transformed</em> limits <span class="math inline">\(\frac{
 </ol>
 <p>From tables, <span class="math inline">\(P(Z&gt;2.5)=0.0062\)</span></p>
 <ol start="3" style="list-style-type: decimal">
-<li></li>
+<li>
 </ol>
 <p><span class="math display">\[P(105&lt;X&lt;112)  =  P\left(\frac{105-100}{8}&lt;Z&lt;\frac{112-100}{8}\right)\]</span></p>
 <p><span class="math display">\[= P(0.63&lt;Z&lt;1.5)\]</span>
@@ -435,8 +268,10 @@ by symmetry, so that</li>
 <p><span class="math display">\[P(-0.63&lt;Z&lt;1.5) =  1-P(Z&gt;0.63)-P(Z&gt;1.5)\]</span></p>
 <p><span class="math display">\[=  1-0.2643-0.0668=0.6689\]</span></p>
 </div>
-<div id="inverse-cdf" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.7</span> Inverse CDF<a href="norm.html#inverse-cdf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="inverse-cdf" class="section level2">
+<h2>
+<span class="header-section-number">6.7</span> Inverse CDF<a class="anchor" aria-label="anchor" href="#inverse-cdf"><i class="fas fa-link"></i></a>
+</h2>
 <p>We saw how to solve problems which involved finding the probability that a Normally distributed
 random variable lay in a certain range. The solution to this problem consisted of two steps:</p>
 <ul>
@@ -473,9 +308,9 @@ used to distinguish the three classes?</p>
 <p>If we let the random variable <span class="math inline">\(X\)</span> denote the weight of an egg,
 we need to find the values of <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> indicated in the
 following diagram,</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:eggs"></span>
-<img src="figures/eggs.JPG" alt="proportions of eggs by weight" width="75%" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:eggs"></span>
+<img src="figures/eggs.JPG" alt="proportions of eggs by weight" width="75%"><p class="caption">
 Figure 6.7: proportions of eggs by weight
 </p>
 </div>
@@ -487,9 +322,9 @@ Figure 6.7: proportions of eggs by weight
 <p>Note that this last value was found using the symmetry of the distribution. You should check that these are the <span class="math inline">\(z\)</span> values you would have obtained if you had been working the other way round.</p>
 <p>Note that, if the required probability is not in the <em>inverse</em> tables, you have to use the main table backwards. To do this, look for the required probability (or as close as you can get to it) in the body of the table, and then read off the corresponding <span class="math inline">\(z\)</span>-value.</p>
 <p>For example, scanning through the body of the table, we find that a probability of 0.1003 corresponds to a <span class="math inline">\(z\)</span> value of 1.28 and a probability of 0.0985 corresponds to a z-value of 1.29. Clearly, the actual value corresponding to a probability of 0.10 (which we know is 1.2816) is somewhere between 1.28 and 1.29. In practice, a good estimate can be found using interpolation.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:inveggs"></span>
-<img src="figures/inverseeggs.JPG" alt="Standardised values of the egg weight distribution give the same area in the tails" width="75%" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:inveggs"></span>
+<img src="figures/inverseeggs.JPG" alt="Standardised values of the egg weight distribution give the same area in the tails" width="75%"><p class="caption">
 Figure 6.8: Standardised values of the egg weight distribution give the same area in the tails
 </p>
 </div>
@@ -510,8 +345,10 @@ given by, <span class="math inline">\(X = 5\times -0.5244+50 = 47.38\)</span>g</
 </ol>
 </div>
 </div>
-<div id="sampling-total" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.8</span> Sampling Total<a href="norm.html#sampling-total" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sampling-total" class="section level2">
+<h2>
+<span class="header-section-number">6.8</span> Sampling Total<a class="anchor" aria-label="anchor" href="#sampling-total"><i class="fas fa-link"></i></a>
+</h2>
 
 <p>Suppose we have an independent random sample of size <span class="math inline">\(n\)</span> from a Normal distribution,
 e.g. <span class="math inline">\(X_1,\ldots,X_n\sim \text{N}(\mu,\sigma^2)\)</span>.</p>
@@ -546,8 +383,10 @@ We answer the problem by converting to a standard Normal as before,</p>
 <span class="math display">\[=  P(-1.56&lt;Z&lt;1.56)=1-2\times P(Z&gt;1.56)\]</span>
 <span class="math display">\[=  1-2\times 0.0594=0.8812\]</span></p>
 </div>
-<div id="sampling-distribution-of-the-mean" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.9</span> Sampling distribution of the mean<a href="norm.html#sampling-distribution-of-the-mean" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sampling-distribution-of-the-mean" class="section level2">
+<h2>
+<span class="header-section-number">6.9</span> Sampling distribution of the mean<a class="anchor" aria-label="anchor" href="#sampling-distribution-of-the-mean"><i class="fas fa-link"></i></a>
+</h2>
 <p>All the problems considered so far have supposed that a single
 measurement is randomly drawn from some population in which the
 possible values of the measurement follow a Normal distribution.
@@ -583,14 +422,12 @@ This proof is beyond the scope of the course, however we can check the mean and 
 <p>What this result says is that the sample mean has the same theoretical population mean, <span class="math inline">\(\mu\)</span>, as any single value drawn from the population, but that its variance is reduced by a factor <span class="math inline">\(n\)</span>. Given our knowledge of the role of the variance in the Normal distribution, the result suggests that sample mean ought to lie closer to the true population mean <span class="math inline">\(\mu\)</span> as the sample size increases.</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-195" class="example"><strong>Example 6.7  </strong></span>Suppose I take <span class="math inline">\(10\)</span> samples of bamboo shoots and measure their lengths. The length of these particular bamboo shoots are normally distributed with mean <span class="math inline">\(74\)</span>mm and standard deviation <span class="math inline">\(5\)</span>mm.</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center">Sample</th>
 <th align="center">Shoot lengths(mm)</th>
 <th align="center">Sample mean</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center">1</td>
@@ -643,7 +480,7 @@ This proof is beyond the scope of the course, however we can check the mean and 
 <td align="center">73.5</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>The range in values of the shoot lengths is from <span class="math inline">\(68\)</span> to <span class="math inline">\(80\)</span>. The values of the statistic <span class="math inline">\(\bar{X}\)</span> vary noticably less, are close to the original mean value of <span class="math inline">\(74\)</span>mm.</p>
 </div>
 <p>Now we have two variances <span class="math inline">\(\sigma^2\)</span> and <span class="math inline">\(\sigma^2/n\)</span> or equivalently standard deviations <span class="math inline">\(\sigma\)</span> and <span class="math inline">\(\sigma / \sqrt{n}\)</span> we need to be clear which one we are talking about.</p>
@@ -683,7 +520,7 @@ problem to one involving the standard Normal distribution.</p>
 <li><p><span class="math display">\[P(\bar{X} \geq 105)  =  P\left ( Z \geq \dfrac{105-100}{4}\right) \]</span>
 <span class="math display">\[=  P(Z\geq 1.25)\]</span>
 <span class="math display">\[=  0.1056\]</span></p></li>
-<li></li>
+<li>
 </ol>
 <p><span class="math display">\[P(\bar{X} \leq 98)  =  P\left ( Z \leq \dfrac{98-100}{4}\right)\]</span></p>
 <p><span class="math display">\[=  P(Z\leq -0.5)=P(Z\geq 0.5)\]</span>
@@ -694,8 +531,10 @@ problem to one involving the standard Normal distribution.</p>
 <p><span class="math display">\[=  P(-0.5\leq Z\leq 0.5)=1-2\times P(Z\geq 0.5)\]</span>
 <span class="math display">\[=  0.3830\]</span></p>
 </div>
-<div id="exercises-week-6" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.10</span> Exercises week 6<a href="norm.html#exercises-week-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercises-week-6" class="section level2">
+<h2>
+<span class="header-section-number">6.10</span> Exercises week 6<a class="anchor" aria-label="anchor" href="#exercises-week-6"><i class="fas fa-link"></i></a>
+</h2>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-198" class="exercise"><strong>Exercise 6.1  </strong></span>Suppose the lifetime of an electrical component follows
 a uniform distribution on the range <span class="math inline">\([0,2000]\)</span> hours.</p>
@@ -831,13 +670,12 @@ standard?</p></li>
 standard?</p></li>
 <li><p>Using 99 links, to what value must the standard deviation be reduced in
 order to have the following percentages meet the standard?</p></li>
-<li><p>90%<br />
-</p></li>
+<li><p>90%<br></p></li>
 </ol>
 <ol start="2" style="list-style-type: lower-roman">
-<li>95%<br />
+<li>95%<br>
 </li>
-<li>99%<br />
+<li>99%<br>
 </li>
 </ol>
 </div>
@@ -874,59 +712,48 @@ with the appropriate probability.)</p>
 
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="cont.html"><span class="header-section-number">5</span> Continuous random variables</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#norm"><span class="header-section-number">6</span> Normal distribution</a></li>
+<li><a class="nav-link" href="#relation-to-data"><span class="header-section-number">6.1</span> Relation to data</a></li>
+<li><a class="nav-link" href="#cauchy-density"><span class="header-section-number">6.2</span> Cauchy density</a></li>
+<li><a class="nav-link" href="#normal-density"><span class="header-section-number">6.3</span> Normal density</a></li>
+<li><a class="nav-link" href="#standard-normal"><span class="header-section-number">6.4</span> Standard normal</a></li>
+<li><a class="nav-link" href="#evaluating-the-standard-normal-distribution"><span class="header-section-number">6.5</span> Evaluating the standard normal distribution</a></li>
+<li><a class="nav-link" href="#standardising"><span class="header-section-number">6.6</span> Standardising</a></li>
+<li><a class="nav-link" href="#inverse-cdf"><span class="header-section-number">6.7</span> Inverse CDF</a></li>
+<li><a class="nav-link" href="#sampling-total"><span class="header-section-number">6.8</span> Sampling Total</a></li>
+<li><a class="nav-link" href="#sampling-distribution-of-the-mean"><span class="header-section-number">6.9</span> Sampling distribution of the mean</a></li>
+<li><a class="nav-link" href="#exercises-week-6"><span class="header-section-number">6.10</span> Exercises week 6</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="cont.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sampling-and-confidence-intervals.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Probability Theory and Statistics</strong>" was written by Malcolm Connolly. It was last built on Semester 2, 2023.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": null,
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["6G4Z3008-notes.pdf", "6G4Z3008-notes.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-},
-"info": false
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -938,7 +765,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>
