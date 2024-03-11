@@ -1,202 +1,71 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Hypothesis testing | Probability Theory and Statistics</title>
-  <meta name="description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 8 Hypothesis testing | Probability Theory and Statistics" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  <meta name="github-repo" content="6G4Z3008" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Hypothesis testing | Probability Theory and Statistics" />
-  
-  <meta name="twitter:description" content="These are the course notes for the first year BSc Mathematics course ‘Introduction to Probability Theory and Statistics’ at Manchester Metropolitan University" />
-  
-
-<meta name="author" content="Malcolm Connolly" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  <link rel="shortcut icon" href="cards.ico" type="image/x-icon" />
-<link rel="prev" href="sampling-and-confidence-intervals.html"/>
-
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 Hypothesis testing | Probability Theory and Statistics</title>
+<meta name="author" content="Malcolm Connolly">
+<meta name="description" content="This week we will introduce the main method of statistical inference - the hypothesis test. We will formulate hypothesis tests, interpret and report the results of hypothesis tests for a mean and...">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
+<meta property="og:title" content="Chapter 7 Hypothesis testing | Probability Theory and Statistics">
+<meta property="og:type" content="book">
+<meta property="og:description" content="This week we will introduce the main method of statistical inference - the hypothesis test. We will formulate hypothesis tests, interpret and report the results of hypothesis tests for a mean and...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 Hypothesis testing | Probability Theory and Statistics">
+<meta name="twitter:description" content="This week we will introduce the main method of statistical inference - the hypothesis test. We will formulate hypothesis tests, interpret and report the results of hypothesis tests for a mean and...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="toc-logo"><a href="./"><img src="logo.svg"></a></li>
-<li><a href="https://moodle.mmu.ac.uk/course/view.php?id=157842" target="blank" > 6G4Z3008 course notes </a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Probability</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#frequentist-perspective"><i class="fa fa-check"></i><b>1.1</b> Frequentist perspective</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#naive-probability"><i class="fa fa-check"></i><b>1.2</b> Naive probability</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#complements-and-mutual-exclusivity"><i class="fa fa-check"></i><b>1.3</b> Complements and mutual exclusivity</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#outcomes-and-counting"><i class="fa fa-check"></i><b>1.4</b> Outcomes and counting</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#factorials"><i class="fa fa-check"></i><b>1.4.1</b> Factorials</a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#permutations"><i class="fa fa-check"></i><b>1.4.2</b> Permutations</a></li>
-<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#combinations"><i class="fa fa-check"></i><b>1.4.3</b> Combinations</a></li>
-</ul></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#exercises-week-1"><i class="fa fa-check"></i><b>1.5</b> Exercises Week 1</a><ul>
-<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#tutorial-exercises"><i class="fa fa-check"></i><b>1.5.1</b> Tutorial exercises</a></li>
-<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#exercises-for-feedback"><i class="fa fa-check"></i><b>1.5.2</b> Exercises for feedback</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="cond.html"><a href="cond.html"><i class="fa fa-check"></i><b>2</b> Conditional Probability</a><ul>
-<li class="chapter" data-level="2.1" data-path="cond.html"><a href="cond.html#independence"><i class="fa fa-check"></i><b>2.1</b> Independence</a></li>
-<li class="chapter" data-level="2.2" data-path="cond.html"><a href="cond.html#conditional-probability"><i class="fa fa-check"></i><b>2.2</b> Conditional Probability</a></li>
-<li class="chapter" data-level="2.3" data-path="cond.html"><a href="cond.html#bayes-theorem"><i class="fa fa-check"></i><b>2.3</b> Bayes Theorem</a></li>
-<li class="chapter" data-level="2.4" data-path="cond.html"><a href="cond.html#exercises-week-2"><i class="fa fa-check"></i><b>2.4</b> Exercises Week 2</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="drv.html"><a href="drv.html"><i class="fa fa-check"></i><b>3</b> Discrete Random Variables</a><ul>
-<li class="chapter" data-level="3.1" data-path="drv.html"><a href="drv.html#random-variables"><i class="fa fa-check"></i><b>3.1</b> Random Variables</a></li>
-<li class="chapter" data-level="3.2" data-path="drv.html"><a href="drv.html#discrete-probability-distributions"><i class="fa fa-check"></i><b>3.2</b> Discrete probability distributions</a></li>
-<li class="chapter" data-level="3.3" data-path="drv.html"><a href="drv.html#properties-of-probability-mass-functions"><i class="fa fa-check"></i><b>3.3</b> Properties of probability mass functions</a></li>
-<li class="chapter" data-level="3.4" data-path="drv.html"><a href="drv.html#mean-variance-and-moments"><i class="fa fa-check"></i><b>3.4</b> Mean, variance and moments</a></li>
-<li class="chapter" data-level="3.5" data-path="drv.html"><a href="drv.html#exercises-week-3"><i class="fa fa-check"></i><b>3.5</b> Exercises Week 3</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="drv.html"><a href="drv.html#exercises-for-feedback-1"><i class="fa fa-check"></i><b>3.5.1</b> Exercises for feedback</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="binpois.html"><a href="binpois.html"><i class="fa fa-check"></i><b>4</b> Special discrete random variables</a><ul>
-<li class="chapter" data-level="4.1" data-path="binpois.html"><a href="binpois.html#the-binomial-distribution"><i class="fa fa-check"></i><b>4.1</b> The Binomial Distribution</a></li>
-<li class="chapter" data-level="4.2" data-path="binpois.html"><a href="binpois.html#the-binomial-mass-function"><i class="fa fa-check"></i><b>4.2</b> The binomial mass function</a></li>
-<li class="chapter" data-level="4.3" data-path="binpois.html"><a href="binpois.html#mean-and-variance"><i class="fa fa-check"></i><b>4.3</b> Mean and variance</a></li>
-<li class="chapter" data-level="4.4" data-path="binpois.html"><a href="binpois.html#the-poisson-distribution"><i class="fa fa-check"></i><b>4.4</b> The Poisson distribution</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="binpois.html"><a href="binpois.html#further-properties"><i class="fa fa-check"></i><b>4.4.1</b> Further properties</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="binpois.html"><a href="binpois.html#mean-and-variance-1"><i class="fa fa-check"></i><b>4.5</b> Mean and Variance</a></li>
-<li class="chapter" data-level="4.6" data-path="binpois.html"><a href="binpois.html#deriving-the-poisson-mass-function"><i class="fa fa-check"></i><b>4.6</b> Deriving the Poisson mass function</a></li>
-<li class="chapter" data-level="4.7" data-path="binpois.html"><a href="binpois.html#exercises-week-4"><i class="fa fa-check"></i><b>4.7</b> Exercises week 4</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="cont.html"><a href="cont.html"><i class="fa fa-check"></i><b>5</b> Continuous random variables</a><ul>
-<li class="chapter" data-level="5.1" data-path="cont.html"><a href="cont.html#relation-to-histograms"><i class="fa fa-check"></i><b>5.1</b> Relation to histograms</a></li>
-<li class="chapter" data-level="5.2" data-path="cont.html"><a href="cont.html#two-students"><i class="fa fa-check"></i><b>5.2</b> Two students</a></li>
-<li class="chapter" data-level="5.3" data-path="cont.html"><a href="cont.html#the-probability-density-function"><i class="fa fa-check"></i><b>5.3</b> The probability density function</a></li>
-<li class="chapter" data-level="5.4" data-path="cont.html"><a href="cont.html#expectation-and-variance"><i class="fa fa-check"></i><b>5.4</b> Expectation and variance</a></li>
-<li class="chapter" data-level="5.5" data-path="cont.html"><a href="cont.html#mode"><i class="fa fa-check"></i><b>5.5</b> Mode</a></li>
-<li class="chapter" data-level="5.6" data-path="cont.html"><a href="cont.html#cdf"><i class="fa fa-check"></i><b>5.6</b> CDF</a></li>
-<li class="chapter" data-level="5.7" data-path="cont.html"><a href="cont.html#median-quartiles-and-percentiles"><i class="fa fa-check"></i><b>5.7</b> median, quartiles and percentiles</a></li>
-<li class="chapter" data-level="5.8" data-path="cont.html"><a href="cont.html#uniform-distribution"><i class="fa fa-check"></i><b>5.8</b> Uniform distribution</a></li>
-<li class="chapter" data-level="5.9" data-path="cont.html"><a href="cont.html#exponential-distribution"><i class="fa fa-check"></i><b>5.9</b> Exponential distribution</a></li>
-<li class="chapter" data-level="5.10" data-path="cont.html"><a href="cont.html#exercises-week-5"><i class="fa fa-check"></i><b>5.10</b> Exercises week 5</a><ul>
-<li class="chapter" data-level="5.10.1" data-path="cont.html"><a href="cont.html#exercises-for-feedback-week-5"><i class="fa fa-check"></i><b>5.10.1</b> Exercises for feedback week 5</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="norm.html"><a href="norm.html"><i class="fa fa-check"></i><b>6</b> Normal distribution</a><ul>
-<li class="chapter" data-level="6.1" data-path="norm.html"><a href="norm.html#relation-to-data"><i class="fa fa-check"></i><b>6.1</b> Relation to data</a></li>
-<li class="chapter" data-level="6.2" data-path="norm.html"><a href="norm.html#cauchy-density"><i class="fa fa-check"></i><b>6.2</b> Cauchy density</a></li>
-<li class="chapter" data-level="6.3" data-path="norm.html"><a href="norm.html#normal-density"><i class="fa fa-check"></i><b>6.3</b> Normal density</a></li>
-<li class="chapter" data-level="6.4" data-path="norm.html"><a href="norm.html#standard-normal"><i class="fa fa-check"></i><b>6.4</b> Standard normal</a></li>
-<li class="chapter" data-level="6.5" data-path="norm.html"><a href="norm.html#evaluating-the-standard-normal-distribution"><i class="fa fa-check"></i><b>6.5</b> Evaluating the standard normal distribution</a></li>
-<li class="chapter" data-level="6.6" data-path="norm.html"><a href="norm.html#standardising"><i class="fa fa-check"></i><b>6.6</b> Standardising</a></li>
-<li class="chapter" data-level="6.7" data-path="norm.html"><a href="norm.html#inverse-cdf"><i class="fa fa-check"></i><b>6.7</b> Inverse CDF</a></li>
-<li class="chapter" data-level="6.8" data-path="norm.html"><a href="norm.html#sampling-total"><i class="fa fa-check"></i><b>6.8</b> Sampling Total</a></li>
-<li class="chapter" data-level="6.9" data-path="norm.html"><a href="norm.html#sampling-distribution-of-the-mean"><i class="fa fa-check"></i><b>6.9</b> Sampling distribution of the mean</a></li>
-<li class="chapter" data-level="6.10" data-path="norm.html"><a href="norm.html#exercises-week-6"><i class="fa fa-check"></i><b>6.10</b> Exercises week 6</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html"><i class="fa fa-check"></i><b>7</b> Sampling and confidence intervals</a><ul>
-<li class="chapter" data-level="7.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#confidence-intervals"><i class="fa fa-check"></i><b>7.1</b> Confidence Intervals</a></li>
-<li class="chapter" data-level="7.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#unknown-variance"><i class="fa fa-check"></i><b>7.2</b> Unknown variance</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#estimating-the-variance"><i class="fa fa-check"></i><b>7.2.1</b> Estimating the variance</a></li>
-<li class="chapter" data-level="7.2.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#the-t-distribution"><i class="fa fa-check"></i><b>7.2.2</b> The t distribution</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#required-sample-sizes"><i class="fa fa-check"></i><b>7.3</b> Required sample sizes</a></li>
-<li class="chapter" data-level="7.4" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#interval-for-a-population-variance"><i class="fa fa-check"></i><b>7.4</b> Interval for a population variance</a></li>
-<li class="chapter" data-level="7.5" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#interval-for-a-proportion"><i class="fa fa-check"></i><b>7.5</b> Interval for a proportion</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#approximating-the-binomial-distribution."><i class="fa fa-check"></i><b>7.5.1</b> Approximating the binomial distribution.</a></li>
-<li class="chapter" data-level="7.5.2" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#proportions"><i class="fa fa-check"></i><b>7.5.2</b> Proportions</a></li>
-</ul></li>
-<li class="chapter" data-level="7.6" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#summary"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
-<li class="chapter" data-level="7.7" data-path="sampling-and-confidence-intervals.html"><a href="sampling-and-confidence-intervals.html#exercises-week-7"><i class="fa fa-check"></i><b>7.7</b> Exercises week 7</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis testing</a><ul>
-<li class="chapter" data-level="8.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#one-sample-tests"><i class="fa fa-check"></i><b>8.1</b> One sample tests</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-mean-known-variance"><i class="fa fa-check"></i><b>8.1.1</b> test for mean (known variance)</a></li>
-<li class="chapter" data-level="8.1.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-mean-unknown-variance"><i class="fa fa-check"></i><b>8.1.2</b> test for mean (unknown variance)</a></li>
-<li class="chapter" data-level="8.1.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-variance"><i class="fa fa-check"></i><b>8.1.3</b> test for variance</a></li>
-<li class="chapter" data-level="8.1.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#p-value-approach"><i class="fa fa-check"></i><b>8.1.4</b> p-value approach</a></li>
-<li class="chapter" data-level="8.1.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#types-of-error"><i class="fa fa-check"></i><b>8.1.5</b> types of error</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#two-sample-tests"><i class="fa fa-check"></i><b>8.2</b> Two sample tests</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#known-variance"><i class="fa fa-check"></i><b>8.2.1</b> known variance</a></li>
-<li class="chapter" data-level="8.2.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#unknown-equal-variance"><i class="fa fa-check"></i><b>8.2.2</b> unknown equal variance</a></li>
-<li class="chapter" data-level="8.2.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#testing-for-equal-variance"><i class="fa fa-check"></i><b>8.2.3</b> testing for equal variance</a></li>
-<li class="chapter" data-level="8.2.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#unknown-unequal-variances-non-examinable"><i class="fa fa-check"></i><b>8.2.4</b> unknown unequal variances (non-examinable)</a></li>
-<li class="chapter" data-level="8.2.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#summary-1"><i class="fa fa-check"></i><b>8.2.5</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#exercises-week-8"><i class="fa fa-check"></i><b>8.3</b> Exercises week 8</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Probability Theory and Statistics</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability Theory and Statistics</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Introduction to Probability</a></li>
+<li><a class="" href="cond.html"><span class="header-section-number">2</span> Conditional Probability</a></li>
+<li><a class="" href="drv.html"><span class="header-section-number">3</span> Discrete Random Variables</a></li>
+<li><a class="" href="binpois.html"><span class="header-section-number">4</span> Special discrete random variables</a></li>
+<li><a class="" href="cont.html"><span class="header-section-number">5</span> Continuous random variables</a></li>
+<li><a class="" href="norm.html"><span class="header-section-number">6</span> Normal distribution</a></li>
+<li><a class="active" href="hypothesis-testing.html"><span class="header-section-number">7</span> Hypothesis testing</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="hypothesis-testing" class="section level1 hasAnchor">
-<h1><span class="header-section-number">Chapter 8</span> Hypothesis testing<a href="hypothesis-testing.html#hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="hypothesis-testing" class="section level1">
+<h1>
+<span class="header-section-number">7</span> Hypothesis testing<a class="anchor" aria-label="anchor" href="#hypothesis-testing"><i class="fas fa-link"></i></a>
+</h1>
 <p>This week we will introduce the main method of statistical inference - the hypothesis test. We will formulate hypothesis tests, interpret and report the results of hypothesis tests for a mean and variance.</p>
 <p>We will also understand how to test comparisons between population parameters.</p>
-<div id="one-sample-tests" class="section level2 hasAnchor">
-<h2><span class="header-section-number">8.1</span> One sample tests<a href="hypothesis-testing.html#one-sample-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="one-sample-tests" class="section level2">
+<h2>
+<span class="header-section-number">7.1</span> One sample tests<a class="anchor" aria-label="anchor" href="#one-sample-tests"><i class="fas fa-link"></i></a>
+</h2>
 <p>The operation of a hypothesis tests can be summarised in the following steps:</p>
 <ol style="list-style-type: decimal">
 <li><p>Summarise competing ideas about population parameters in terms of two hypotheses, called <strong><em>null</em></strong> and <strong><em>alternative</em></strong> hypotheses. The null hypothesis represents your default position, and the alternative is what you wish to test.</p></li>
@@ -204,12 +73,14 @@
 <li><p>On the basis of this probability, decide whether there is evidence to reject the null hypothesis.</p></li>
 </ol>
 <p>Because of step (2) the conclusion of a hypothesis test is never <span class="math inline">\(100\%\)</span> true. Statistical inference does not involve black and white absolute truths, but is rather more subtle.</p>
-<div id="test-for-mean-known-variance" class="section level3 hasAnchor">
-<h3><span class="header-section-number">8.1.1</span> test for mean (known variance)<a href="hypothesis-testing.html#test-for-mean-known-variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="test-for-mean-known-variance" class="section level3">
+<h3>
+<span class="header-section-number">7.1.1</span> test for mean (known variance)<a class="anchor" aria-label="anchor" href="#test-for-mean-known-variance"><i class="fas fa-link"></i></a>
+</h3>
 <p>In this section we will test hypotheses about the population mean <span class="math inline">\(\mu\)</span> of a normal distribution.</p>
 <p>How we implement the test depends on the hypotheses that we are testing.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 8.1  </strong></span>Each year trainees throughout the country sit a test. Over a period of time it has been established that the number of marks can be modelled by a normal distribution with mean <span class="math inline">\(70\)</span> and standard deviation <span class="math inline">\(6\)</span> marks.</p>
+<p><span id="exm:unlabeled-div-212" class="example"><strong>Example 7.1  </strong></span>Each year trainees throughout the country sit a test. Over a period of time it has been established that the number of marks can be modelled by a normal distribution with mean <span class="math inline">\(70\)</span> and standard deviation <span class="math inline">\(6\)</span> marks.</p>
 <p>This year it was thought that trainees from Greater Manchester performed better than expected.</p>
 <p>A random sample of <span class="math inline">\(25\)</span> trainees from Manchester had an average mark of <span class="math inline">\(\bar{x}=73.2\)</span>.</p>
 <p>Does this provide evidence, at the <span class="math inline">\(5\%\)</span> significance level, that the trainees from Greater Manchester did better than the national average?</p>
@@ -226,20 +97,21 @@
 <p>We calculate the standardised value of the observed sample mean</p>
 <p><span class="math display">\[\frac{\bar{x} - 70}{\sigma /\sqrt{ n}}=\frac{73.2 - 70}{1.2} = 2.67\]</span>
 And compare this to the <span class="math inline">\(z\)</span>-value with <span class="math inline">\(5\%\)</span> in the upper tail, which you can find in the inverse normal tables. (Why the upper tail? Because <span class="math inline">\(H_{A}\)</span> has a <span class="math inline">\(&gt;\)</span> in). See picture below.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:crit1"></span>
-<img src="figures/criticalregion.JPG" alt="critical region" width="75%" />
-<p class="caption">
-Figure 8.1: critical region
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:crit1"></span>
+<img src="figures/criticalregion.JPG" alt="critical region" width="75%"><p class="caption">
+Figure 7.1: critical region
 </p>
 </div>
 <ol start="3" style="list-style-type: decimal">
-<li><em>Decision</em>
+<li>
+<em>Decision</em>
 Now <span class="math inline">\(2.6667 &gt; 1.6449\)</span>, this value of the sample mean is in the critical region. The interpretation is that a value as extreme as this or worse is sufficiently unlikely (<span class="math inline">\(&lt;5\%\)</span>), so we are able to reject <span class="math inline">\(\text{H}_{0}\)</span>.</li>
 </ol>
 <p>It is important that the sample is random, as otherwise this invalidates the conclusion. For example if these <span class="math inline">\(25\)</span> were particularly high attainers, then it would not be representative of the distribution, and <span class="math inline">\(\bar{x}\)</span> may have been smaller in a representative sample.</p>
 <p>In the example above we compare positive values, and the critical region is in the left tail of the distribution.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-2" class="definition"><strong>Definition 8.1  </strong></span>We say a hypothesis test is <strong><em>right-tailed</em></strong> if it is of the form:
+<p><span id="def:unlabeled-div-213" class="definition"><strong>Definition 7.1  </strong></span>We say a hypothesis test is <strong><em>right-tailed</em></strong> if it is of the form:
 <span class="math display">\[\text{H}_A: \ \mu &gt; \mu_0\]</span>
 A hypothesis is <strong><em>left-tailed</em></strong> if it is of the form:</p>
 <p><span class="math display">\[\text{H}_A: \ \mu &lt; \mu_0\]</span></p>
@@ -247,13 +119,11 @@ A hypothesis is <strong><em>left-tailed</em></strong> if it is of the form:</p>
 <span class="math display">\[\text{H}_A: \ \mu \neq \mu_0\]</span></p>
 </div>
 <p>This is a table for the decision process</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"><span class="math inline">\(\text{H}_{A}\)</span></th>
 <th align="center">Reject <span class="math inline">\(H_{0}\)</span> if</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center"><span class="math inline">\(H_{A}: \mu &gt; \mu_0\)</span></td>
@@ -268,9 +138,9 @@ A hypothesis is <strong><em>left-tailed</em></strong> if it is of the form:</p>
 <td align="center"><span class="math inline">\(|Z|&gt;z_{\frac{1}{2}\alpha}\)</span></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <div class="example">
-<p><span id="exm:unlabeled-div-3" class="example"><strong>Example 8.2  </strong></span>In the testing example suppose the sample mean had been <span class="math inline">\(\bar{x}=69.5\)</span>, and we wished to test at the <span class="math inline">\(5\%\)</span> level if the mean is different from <span class="math inline">\(70\)</span>. That is:</p>
+<p><span id="exm:unlabeled-div-214" class="example"><strong>Example 7.2  </strong></span>In the testing example suppose the sample mean had been <span class="math inline">\(\bar{x}=69.5\)</span>, and we wished to test at the <span class="math inline">\(5\%\)</span> level if the mean is different from <span class="math inline">\(70\)</span>. That is:</p>
 <p><span class="math display">\[\text{H}_0: \ \mu = 70 \\  \text{H}_A: \ \mu \neq 70\]</span>
 <em>solution</em></p>
 <p>We calculate the test statistic as before:</p>
@@ -285,23 +155,23 @@ so there is insufficient evidence to reject <span class="math inline">\(\text{H}
 <p>A two-sided alternative hypothesis is similar to a confidence interval.</p>
 <p>If a confidence interval with confidence level <span class="math inline">\(c\%\)</span> excludes the population value of interest, then the null hypothesis that teh population parameter takes this value will be rejected at the <span class="math inline">\(100(1-c)\%\)</span> level.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-4" class="example"><strong>Example 8.3  </strong></span>Suppose a <span class="math inline">\(95\%\)</span> confidence interval for the mean <span class="math inline">\(\mu\)</span> is <span class="math inline">\((83.0,85.1)\)</span>, then the null hypothesis that <span class="math inline">\(\mu=85.2\)</span> will be rejected at the <span class="math inline">\(5\%\)</span> level since the interval excludes <span class="math inline">\(85.2\)</span>. Indeed any hypothesised value outside the interval will be rejected at the <span class="math inline">\(5\%\)</span> level.</p>
+<p><span id="exm:unlabeled-div-215" class="example"><strong>Example 7.3  </strong></span>Suppose a <span class="math inline">\(95\%\)</span> confidence interval for the mean <span class="math inline">\(\mu\)</span> is <span class="math inline">\((83.0,85.1)\)</span>, then the null hypothesis that <span class="math inline">\(\mu=85.2\)</span> will be rejected at the <span class="math inline">\(5\%\)</span> level since the interval excludes <span class="math inline">\(85.2\)</span>. Indeed any hypothesised value outside the interval will be rejected at the <span class="math inline">\(5\%\)</span> level.</p>
 </div>
 </div>
-<div id="test-for-mean-unknown-variance" class="section level3 hasAnchor">
-<h3><span class="header-section-number">8.1.2</span> test for mean (unknown variance)<a href="hypothesis-testing.html#test-for-mean-unknown-variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="test-for-mean-unknown-variance" class="section level3">
+<h3>
+<span class="header-section-number">7.1.2</span> test for mean (unknown variance)<a class="anchor" aria-label="anchor" href="#test-for-mean-unknown-variance"><i class="fas fa-link"></i></a>
+</h3>
 <p>When the population variance (<span class="math inline">\(\sigma^2\)</span>), or equivalently the population standard deviation <span class="math inline">\(\sigma\)</span>, is <em>unknown</em> we must estimate it from the sample.</p>
 <p>For small samples the distribution of the test statistic follows a <span class="math inline">\(t\)</span>-distribution.</p>
 <p>If the null hypothesis is given by <span class="math inline">\(\text{H}_0: \mu = \mu_0\)</span>, the test statistic is given by</p>
 <p><span class="math display">\[T = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}\sim t_{n-1}\]</span>
 The decision rules are essentially the same but with <span class="math inline">\(z_\alpha\)</span> and <span class="math inline">\(z_{\alpha/2}\)</span> replaced by the same quantiles of the t-distribution <span class="math inline">\(t_{n-1,\alpha}\)</span> and <span class="math inline">\(t_{n-1,\alpha}\)</span>, respectively. Further <span class="math inline">\(\sigma\)</span> is estimated by <span class="math inline">\(s\)</span>.</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"><span class="math inline">\(\text{H}_{A}\)</span></th>
 <th align="center">Reject <span class="math inline">\(H_{0}\)</span> if</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center"><span class="math inline">\(H_{A}: \mu &gt; \mu_0\)</span></td>
@@ -316,18 +186,18 @@ The decision rules are essentially the same but with <span class="math inline">\
 <td align="center"><span class="math inline">\(|T|&gt;t_{\frac{1}{2}\alpha}\)</span></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Where <span class="math inline">\(t_{\alpha}\)</span> and <span class="math inline">\(t_{\alpha/2}\)</span> are obtained from <span class="math inline">\(t\)</span>-tables with degrees of freedom <span class="math inline">\(\nu = n-1\)</span>, and the sample variance is given by, for example,</p>
 <p><span class="math display">\[s^2 =\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})^2.\]</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 8.4  </strong></span>A shopkeeper sells jars of jam. The weights of the jars of jam are normally distributed with a mean of <span class="math inline">\(150\)</span>g. A customer complains that the mean weight of a pack of<span class="math inline">\(8\)</span> jars she had bought was only <span class="math inline">\(147\)</span>g. An estimate for the standard deviation of the weights of the <span class="math inline">\(8\)</span> jars of jam calculated from the <span class="math inline">\(8\)</span> observations was <span class="math inline">\(2\)</span>g.</p>
+<p><span id="exm:unlabeled-div-216" class="example"><strong>Example 7.4  </strong></span>A shopkeeper sells jars of jam. The weights of the jars of jam are normally distributed with a mean of <span class="math inline">\(150\)</span>g. A customer complains that the mean weight of a pack of<span class="math inline">\(8\)</span> jars she had bought was only <span class="math inline">\(147\)</span>g. An estimate for the standard deviation of the weights of the <span class="math inline">\(8\)</span> jars of jam calculated from the <span class="math inline">\(8\)</span> observations was <span class="math inline">\(2\)</span>g.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Test at the <span class="math inline">\(5\%\)</span> significance level whether <span class="math inline">\(147\)</span>g is significantly less than the quoted mean.</p></li>
 <li><p>Discuss whether the customer has cause for complaint.</p></li>
 </ol>
 <p><em>solution</em></p>
 <ol style="list-style-type: lower-alpha">
-<li></li>
+<li>
 </ol>
 <p><span class="math display">\[H_{0}: \mu = 150 \\ \text{H}_A: \mu&lt;150\]</span></p>
 <p>Significance level <span class="math inline">\(=0.05\)</span>, left-tailed test.</p>
@@ -343,8 +213,10 @@ Now <span class="math inline">\(-4.2426 &lt; -1.895\)</span>, the result is sign
 <p>The distribution of <span class="math inline">\(T\)</span> is only a <span class="math inline">\(t\)</span>-distribution when we assume a normally distributed population.</p>
 <p>If the sample is large and so the degrees of freedom are increased, we still need to estimate and calculate <span class="math inline">\(s\)</span>, but often a <span class="math inline">\(z\)</span>-value can be used in practice. Strictly speaking a <span class="math inline">\(t\)</span>-value should be used in place of a <span class="math inline">\(z\)</span>-value whenever <span class="math inline">\(s\)</span> is used in place of <span class="math inline">\(\sigma\)</span> and not just because <span class="math inline">\(n\)</span> is small.</p>
 </div>
-<div id="test-for-variance" class="section level3 hasAnchor">
-<h3><span class="header-section-number">8.1.3</span> test for variance<a href="hypothesis-testing.html#test-for-variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="test-for-variance" class="section level3">
+<h3>
+<span class="header-section-number">7.1.3</span> test for variance<a class="anchor" aria-label="anchor" href="#test-for-variance"><i class="fas fa-link"></i></a>
+</h3>
 <p>If you have a random sample of observations from a normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span> where both are unknown, the sample variance is given by (for example) the formula</p>
 <p><span class="math display">\[S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})^2\]</span></p>
 <p>Recall it can be shown that</p>
@@ -352,17 +224,15 @@ Now <span class="math inline">\(-4.2426 &lt; -1.895\)</span>, the result is sign
 <p>To test against the null hypothesis that the variance is some particular value, that is
 <span class="math display">\[\text{H}_0: \sigma^2 = \sigma_0^2\]</span>
 We can just compare the expression <span class="math inline">\(\frac{(n-1)S^2}{\sigma^2}\)</span>, with the hypothesised population variance, to the relevant quantile of some chi-squared distribution. This gives the following decision rules:</p>
-<table>
+<div class="inline-table"><table class="table table-sm">
 <colgroup>
-<col width="45%" />
-<col width="54%" />
+<col width="45%">
+<col width="54%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th align="center"><span class="math inline">\(\text{H}_{A}\)</span></th>
 <th align="center">Reject <span class="math inline">\(H_{0}\)</span> if</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center"><span class="math inline">\(H_{A}: \sigma^2 &gt; \sigma^2_0\)</span></td>
@@ -370,12 +240,14 @@ We can just compare the expression <span class="math inline">\(\frac{(n-1)S^2}{\
 </tr>
 <tr class="even">
 <td align="center"><span class="math inline">\(H_{A}: \sigma^2 \neq \sigma^2_0\)</span></td>
-<td align="center"><span class="math inline">\(\frac{(n-1)S^2}{\sigma^2}&lt;\chi^2_{1-\frac{1}{2}\alpha, \ n-1}\)</span> or <span class="math inline">\(\frac{(n-1)S^2}{\sigma^2}&gt;\chi^2_{\frac{1}{2}\alpha, \ n-1}\)</span></td>
+<td align="center">
+<span class="math inline">\(\frac{(n-1)S^2}{\sigma^2}&lt;\chi^2_{1-\frac{1}{2}\alpha, \ n-1}\)</span> or <span class="math inline">\(\frac{(n-1)S^2}{\sigma^2}&gt;\chi^2_{\frac{1}{2}\alpha, \ n-1}\)</span>
+</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <div class="example">
-<p><span id="exm:unlabeled-div-6" class="example"><strong>Example 8.5  </strong></span>A bus company is trying to improve their reliability, and so the consistency with respect to the schedule is monitored. The company wants the arrival time to have standard deviation <span class="math inline">\(2\)</span> minutes or less. A sample of <span class="math inline">\(10\)</span> arrival times shows a sample variance of <span class="math inline">\(5\)</span>. Using a <span class="math inline">\(5\%\)</span> signifiance level, does the data suggest that the variance in arrival times is meeting the company standard?</p>
+<p><span id="exm:unlabeled-div-217" class="example"><strong>Example 7.5  </strong></span>A bus company is trying to improve their reliability, and so the consistency with respect to the schedule is monitored. The company wants the arrival time to have standard deviation <span class="math inline">\(2\)</span> minutes or less. A sample of <span class="math inline">\(10\)</span> arrival times shows a sample variance of <span class="math inline">\(5\)</span>. Using a <span class="math inline">\(5\%\)</span> signifiance level, does the data suggest that the variance in arrival times is meeting the company standard?</p>
 <p><em>solution</em>
 Our hypotheses are:
 <span class="math display">\[\text{H}_0: \sigma^2=4 \ \ \ , \ \ \ \text{H}_A: \sigma^2 &gt;4\]</span>
@@ -386,36 +258,34 @@ Our critical value is
 Since <span class="math inline">\(11.25\ngtr16.92\)</span> we have insufficient evidence to reject <span class="math inline">\(\text{H}_0\)</span>. Therefore we are unable to conclude that the variance in bus arrival times is not meeting the company standard.</p>
 </div>
 </div>
-<div id="p-value-approach" class="section level3 hasAnchor">
-<h3><span class="header-section-number">8.1.4</span> p-value approach<a href="hypothesis-testing.html#p-value-approach" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="p-value-approach" class="section level3">
+<h3>
+<span class="header-section-number">7.1.4</span> p-value approach<a class="anchor" aria-label="anchor" href="#p-value-approach"><i class="fas fa-link"></i></a>
+</h3>
 <p>There are two ways of looking at the comparison involved to reject a null hypothesis, via the critical region or via p-values. The critical region is rather blunt and uninformative - we either reject or do not reject the null. However, the p-value allows us to quantify the weight of evidence against the null hypothesis given by the sample data. For many tests exact p-values can be calculated in R.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-7" class="definition"><strong>Definition 8.2  </strong></span>A <strong><em>p-value</em></strong> is the probability of a observing the value of a statistic at least as extreme as that of the particular value of that statistic in the observed sample.</p>
+<p><span id="def:unlabeled-div-218" class="definition"><strong>Definition 7.2  </strong></span>A <strong><em>p-value</em></strong> is the probability of a observing the value of a statistic at least as extreme as that of the particular value of that statistic in the observed sample.</p>
 <p>For example if a sample gives sample mean <span class="math inline">\(\bar{x}=101.3\)</span> then the p-value would be <span class="math display">\[p  =\text{P}(\bar{X}\geq101.3).\]</span></p>
 </div>
 <p>We will illustrate an example with a right tailed test.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 8.6  </strong></span>Suppose we want to test the following:
+<p><span id="exm:unlabeled-div-219" class="example"><strong>Example 7.6  </strong></span>Suppose we want to test the following:
 <span class="math display">\[\text{H}_0:\mu = 26.3 \ \ \ , \ \ \ \text{H}_A: \mu &gt;26.3\]</span></p>
 <p>Where:</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"><span class="math inline">\(n\)</span></th>
 <th align="center"><span class="math inline">\(\bar{x}\)</span></th>
 <th align="center"><span class="math inline">\(\sigma\)</span></th>
 <th align="center"><span class="math inline">\(\alpha\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
+</tr></thead>
+<tbody><tr class="odd">
 <td align="center">10</td>
 <td align="center">27</td>
 <td align="center">1.2</td>
 <td align="center"><span class="math inline">\(5\%\)</span></td>
-</tr>
-</tbody>
-</table>
+</tr></tbody>
+</table></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>Perform the test</p></li>
 <li><p>Calculate the p-value</p></li>
@@ -424,7 +294,7 @@ Since <span class="math inline">\(11.25\ngtr16.92\)</span> we have insufficient 
 <p><span class="math display">\[\frac{27 - 26.3}{1.2/\sqrt{10}} = 1.845\]</span>
 And we would reject <span class="math inline">\(\text{H}_0\)</span> as <span class="math inline">\(1.845 &gt; 1.6449\)</span>.</p>
 <ol start="2" style="list-style-type: lower-alpha">
-<li></li>
+<li>
 </ol>
 <p>We know under the null hypothesis that <span class="math inline">\(\bar{X} \sim \text{N}(26.3, 1.2^2/10)\)</span>.</p>
 <p>The p-value is the probability of observing a particular value at least as extreme as <span class="math inline">\(\bar{x}=27\)</span>.</p>
@@ -432,61 +302,64 @@ And we would reject <span class="math inline">\(\text{H}_0\)</span> as <span cla
 </div>
 <p>In the example above the p-value is <span class="math inline">\(0.0325\)</span> and the significance level was <span class="math inline">\(5\%\)</span>. The p-value can be compared to the significance level directly to conclude a hypothesis test. If the p-value is lower than the significance level, then we can reject the null hypothesis.</p>
 <p>The statistic is <em>greater</em> than the critical value only when the p-value (tail probability) is <em>less</em> than the significance level. See the following picture:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pval"></span>
-<img src="figures/p-value.JPG" alt="critical region" width="75%" />
-<p class="caption">
-Figure 8.2: critical region
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:pval"></span>
+<img src="figures/p-value.JPG" alt="critical region" width="75%"><p class="caption">
+Figure 7.2: critical region
 </p>
 </div>
 <p>For tests involving the t-distribution or the chi-squared distribution, the p-value is in practice obtained via software such as R, and we will see this in labs this week.</p>
 <p>Usually the p-value is compared to <span class="math inline">\(5\%\)</span> however, there are standard interpretations of p-values which quantify the evidence against <span class="math inline">\(\text{H}_0\)</span>.</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center">p-value range</th>
 <th align="center">interpretation</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center"><span class="math inline">\(p&gt;0.1\)</span></td>
-<td align="center">No evidence against H<span class="math inline">\(_0\)</span>, or data consistent with H<span class="math inline">\(_0\)</span></td>
+<td align="center">No evidence against H<span class="math inline">\(_0\)</span>, or data consistent with H<span class="math inline">\(_0\)</span>
+</td>
 </tr>
 <tr class="even">
 <td align="center"><span class="math inline">\(0.05 &lt; p &lt; 0.1\)</span></td>
-<td align="center">Weak evidence against H<span class="math inline">\(_0\)</span></td>
+<td align="center">Weak evidence against H<span class="math inline">\(_0\)</span>
+</td>
 </tr>
 <tr class="odd">
 <td align="center"><span class="math inline">\(0.01 &lt; p &lt; 0.05\)</span></td>
-<td align="center">Some evidence against H<span class="math inline">\(_0\)</span></td>
+<td align="center">Some evidence against H<span class="math inline">\(_0\)</span>
+</td>
 </tr>
 <tr class="even">
 <td align="center"><span class="math inline">\(0.001 &lt; p &lt; 0.01\)</span></td>
-<td align="center">Strong evidence against H<span class="math inline">\(_0\)</span></td>
+<td align="center">Strong evidence against H<span class="math inline">\(_0\)</span>
+</td>
 </tr>
 <tr class="odd">
 <td align="center"><span class="math inline">\(0.001 &lt; p &lt; 0.01\)</span></td>
-<td align="center">very strong evidence against H<span class="math inline">\(_0\)</span></td>
+<td align="center">very strong evidence against H<span class="math inline">\(_0\)</span>
+</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>In formal reports if a significant effect is found, quantify the effect with a confidence interval. Phrasing of conclusions is important, always set in context (without jargon e.g. H<span class="math inline">\(_0\)</span>).</p>
 </div>
-<div id="types-of-error" class="section level3 hasAnchor">
-<h3><span class="header-section-number">8.1.5</span> types of error<a href="hypothesis-testing.html#types-of-error" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="types-of-error" class="section level3">
+<h3>
+<span class="header-section-number">7.1.5</span> types of error<a class="anchor" aria-label="anchor" href="#types-of-error"><i class="fas fa-link"></i></a>
+</h3>
 <p>Any decision relying on imperfect information has to allow for the fact that there is uncertainty so the decision cannot be certain. There are two types of systematic uncertainty that arise from hypothesis testing, or types of error.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 8.7  </strong></span>Suppose a man is in court accused of murder. The decision that the judge or jury come to is separate from the truth of the guilt or innocence of the man.</p>
+<p><span id="exm:unlabeled-div-220" class="example"><strong>Example 7.7  </strong></span>Suppose a man is in court accused of murder. The decision that the judge or jury come to is separate from the truth of the guilt or innocence of the man.</p>
 <p><span class="math display">\[\ \ \ \ \text{H}_0: \text{the man is innocent} \\ \text{H}_1: \text{the man is guilty}\]</span>
 The trial process is like an hypothesis test in which the evidence presented is equivalent to the data. The possible decisions are summarised in the table below:</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"></th>
 <th align="center">Innocent</th>
 <th align="center">Not innocent</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center">Accept innocence</td>
@@ -499,43 +372,43 @@ The trial process is like an hypothesis test in which the evidence presented is 
 <td align="center"></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>It would be undesirable to sentence an innocent man, or to find set a guilty man loose.</p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-10" class="definition"><strong>Definition 8.3  </strong></span>There are two types of error which are systematic to hypotheis testing.</p>
+<p><span id="def:unlabeled-div-221" class="definition"><strong>Definition 7.3  </strong></span>There are two types of error which are systematic to hypotheis testing.</p>
 <p>A <strong><em>type I error</em></strong> is to reject the null hypothesis when it is, in fact true.</p>
 <p>A <strong><em>type II error</em></strong> is to accept the null hypothesis when it is in fact false.</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center"></th>
 <th align="center">H<span class="math inline">\(_0\)</span> true</th>
 <th align="center">H<span class="math inline">\(_0\)</span> false</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
-<td align="center">Accept <span class="math inline">\(H_0\)</span></td>
+<td align="center">Accept <span class="math inline">\(H_0\)</span>
+</td>
 <td align="center"></td>
 <td align="center">II</td>
 </tr>
 <tr class="even">
-<td align="center">Reject <span class="math inline">\(H_0\)</span></td>
+<td align="center">Reject <span class="math inline">\(H_0\)</span>
+</td>
 <td align="center">I</td>
 <td align="center"></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
 <p>The probabilities of each type of error are important, we would seek to minimise both if possible.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-11" class="definition"><strong>Definition 8.4  </strong></span>The <strong><em>significance level</em></strong> of the test is the probability of type I error.
+<p><span id="def:unlabeled-div-222" class="definition"><strong>Definition 7.4  </strong></span>The <strong><em>significance level</em></strong> of the test is the probability of type I error.
 <span class="math display">\[\text{P}(\text{Type I error}) = \text{P}(\text{H}_0 \text{ rejected} | \text{H}_0 \text{ is true})\]</span>
 If you are given the significance level for example <span class="math inline">\(5\%\)</span>, then this is the probability of type I error. However this may not always be stated in a question and you may have to work it out.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-12" class="example"><strong>Example 8.8  </strong></span>A random variable has a normal distribution with mean µ and standard deviation <span class="math inline">\(3\)</span>.
+<p><span id="exm:unlabeled-div-223" class="example"><strong>Example 7.8  </strong></span>A random variable has a normal distribution with mean µ and standard deviation <span class="math inline">\(3\)</span>.
 The null hypothesis <span class="math inline">\(\mu=20\)</span> is to be tested against the alternative hypothesis <span class="math inline">\(\mu&gt;20\)</span> using a random sample of <span class="math inline">\(25\)</span>.
 It is decided that the null hypothesis will be rejected if the sample mean is greater than <span class="math inline">\(21.4\)</span>.
 Calculate the probability of making a type I error.</p>
@@ -547,7 +420,7 @@ This can be obtained, for example by standardising from tables,
 <span class="math display">\[=\text{P}(Z&gt;2.33) = 9.9\times 10^{-3} \approx 1\%\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 8.9  </strong></span>The weight of jam in a jar, measured in grams, is distributed normally with a mean of <span class="math inline">\(150\)</span>g and a standard deviation of <span class="math inline">\(6\)</span>g. The production process occasionally leads to a change in the mean weight of jam per jar but the standard deviation remains unaltered. The manager monitors the production process and for every new batch takes a random sample of <span class="math inline">\(25\)</span> jars and weighs their contents to see if there has been any <em>reduction</em> in the mean weight of jam per jar.
+<p><span id="exm:unlabeled-div-224" class="example"><strong>Example 7.9  </strong></span>The weight of jam in a jar, measured in grams, is distributed normally with a mean of <span class="math inline">\(150\)</span>g and a standard deviation of <span class="math inline">\(6\)</span>g. The production process occasionally leads to a change in the mean weight of jam per jar but the standard deviation remains unaltered. The manager monitors the production process and for every new batch takes a random sample of <span class="math inline">\(25\)</span> jars and weighs their contents to see if there has been any <em>reduction</em> in the mean weight of jam per jar.
 Find the critical values for the test statistic <span class="math inline">\(\bar{X}\)</span>, the mean weight of jam in a sample of <span class="math inline">\(25\)</span> jars, using</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>5% level of significance</p></li>
@@ -569,18 +442,18 @@ Rearranging this inequality gives <span class="math inline">\(\bar{x} &lt; 148.0
 <!-- ### test for population proportion -->
 </div>
 </div>
-<div id="two-sample-tests" class="section level2 hasAnchor">
-<h2><span class="header-section-number">8.2</span> Two sample tests<a href="hypothesis-testing.html#two-sample-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="two-sample-tests" class="section level2">
+<h2>
+<span class="header-section-number">7.2</span> Two sample tests<a class="anchor" aria-label="anchor" href="#two-sample-tests"><i class="fas fa-link"></i></a>
+</h2>
 <p>We may wish to use hypothesis testing to compare two populations. The two populations may be the distributions of heights of males and females separately. Or we may wish to compare average the weights of babies born in one region to another.</p>
 <p>Supposing we have two distributions <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, we write the population parameters with a subscript to indicate to which distribution they correspond. The basic setup is as follows</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center">Parameter</th>
 <th align="center">Population 1</th>
 <th align="center">Population 2</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center">Mean</td>
@@ -593,7 +466,7 @@ Rearranging this inequality gives <span class="math inline">\(\bar{x} &lt; 148.0
 <td align="center"><span class="math inline">\(\sigma^2_Y\)</span></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>The main hypotheses of interest are whether or not the means are different. That is:</p>
 <p><span class="math display">\[\text{H}_0: \mu_X = \mu_Y \ \ \ \ \ \ , \ \ \ \ \ \text{H}_A:\mu_X \neq \mu_Y\]</span></p>
 <p>Though one-sided alternatives, or specified differences can also be used.</p>
@@ -603,8 +476,10 @@ Rearranging this inequality gives <span class="math inline">\(\bar{x} &lt; 148.0
 <li><p>The population variances are unknown, but known to be or are assumed to be equal.</p></li>
 <li><p>The population variances are unknown and cannot be assumed to be equal.</p></li>
 </ol>
-<div id="known-variance" class="section level3 hasAnchor">
-<h3><span class="header-section-number">8.2.1</span> known variance<a href="hypothesis-testing.html#known-variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="known-variance" class="section level3">
+<h3>
+<span class="header-section-number">7.2.1</span> known variance<a class="anchor" aria-label="anchor" href="#known-variance"><i class="fas fa-link"></i></a>
+</h3>
 <p>Assume we have a random sample <span class="math inline">\(x_1,x_2,\ldots,x_{n_1}\)</span> of <span class="math inline">\(n_1\)</span> observations from the first population, and another random sample <span class="math inline">\(y_1,y_2,\ldots, y_{n_2}\)</span> of <span class="math inline">\(n_2\)</span> observations from the second population.</p>
 <p>The test statistic here is <span class="math inline">\(\bar{X}-\bar{Y}\)</span>.</p>
 <p>Recall that the sampling distribution of the mean takes the form:
@@ -618,7 +493,7 @@ Now under the null hypothesis <span class="math inline">\(\mu_X-\mu_Y = 0\)</spa
 <p><span class="math display">\[\frac{\bar{X} - \bar{Y}}{\sqrt{\frac{\sigma_X^2}{n_1} + \frac{\sigma_Y^2}{n_2}}}\]</span>
 And we have the same decision rules as before.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-14" class="example"><strong>Example 8.10  </strong></span>The weights of boys and girls of a particular age are known to be normally distributed with standard deviations <span class="math inline">\(5\)</span>kg and <span class="math inline">\(8\)</span>kg respectively. In a particular school, a random sample of <span class="math inline">\(25\)</span> boys had mean weight <span class="math inline">\(48\)</span>kg and a random sample of <span class="math inline">\(30\)</span> girls had mean weight <span class="math inline">\(45\)</span>kg.</p>
+<p><span id="exm:unlabeled-div-225" class="example"><strong>Example 7.10  </strong></span>The weights of boys and girls of a particular age are known to be normally distributed with standard deviations <span class="math inline">\(5\)</span>kg and <span class="math inline">\(8\)</span>kg respectively. In a particular school, a random sample of <span class="math inline">\(25\)</span> boys had mean weight <span class="math inline">\(48\)</span>kg and a random sample of <span class="math inline">\(30\)</span> girls had mean weight <span class="math inline">\(45\)</span>kg.</p>
 <p>Test, at the <span class="math inline">\(5\%\)</span> significance level, whether there is evidence that the mean weight of the boys is greater than that of the girls.</p>
 <p><em>solution</em></p>
 <p><span class="math display">\[\text{H}_0: \mu_B = \mu_G \ \ \ \ \ \ , \ \ \ \ \ \text{H}_A:\mu_B &gt; \mu_G\]</span></p>
@@ -628,8 +503,10 @@ The critical value is <span class="math inline">\(1.6449\)</span>
 Hence here we reject the null hypothesis and conclude there is sufficient evidence to say that the boys weigh more than the girls on average.</p>
 </div>
 </div>
-<div id="unknown-equal-variance" class="section level3 hasAnchor">
-<h3><span class="header-section-number">8.2.2</span> unknown equal variance<a href="hypothesis-testing.html#unknown-equal-variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="unknown-equal-variance" class="section level3">
+<h3>
+<span class="header-section-number">7.2.2</span> unknown equal variance<a class="anchor" aria-label="anchor" href="#unknown-equal-variance"><i class="fas fa-link"></i></a>
+</h3>
 <p>In this section we know or can assume that the variances are equal. We may know outright that the variances are equal, even if they are unknown. For example, if I take a sample of men’s heights from Manchester and compare to a sample of men’s heights in London. It may be that there are average height differences, but as both are UK adult men they come from the same containing population, can be assumed to be just as variable as each other.</p>
 <p>In this case we do not know <span class="math inline">\(\sigma_X^2\)</span> or <span class="math inline">\(\sigma_Y^2\)</span>, so we will have to estimate each of these from actual data. We can estimate each by</p>
 <p><span class="math display">\[s_x^2 = \frac{1}{n_1}\sum_{i=1}^n(x_i-\bar{x})^2 \ \ \ \ , \ \ \ \ s_y^2 = \frac{1}{n_2}\sum_{j=1}^n(y_j-\bar{y})^2 \]</span></p>
@@ -639,7 +516,7 @@ The test statistic is then calculated as,</p>
 <p><span class="math display">\[T = \frac{\bar{X}-\bar{Y}}{s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} \sim t_{n_1+n_2-2} \]</span>
 which follows a t distribution on <span class="math inline">\(n_1+n_2-2\)</span> degrees of freedom.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-15" class="example"><strong>Example 8.11  </strong></span>The heights (measured to the nearest centimetre) of a random sample of six policement from a certain force in Wales were found to be
+<p><span id="exm:unlabeled-div-226" class="example"><strong>Example 7.11  </strong></span>The heights (measured to the nearest centimetre) of a random sample of six policement from a certain force in Wales were found to be
 <span class="math display">\[176, \ 180, \ 179, \ 181, \ 183, \ 179.\]</span>
 The heights of a random sample of <span class="math inline">\(11\)</span> policemen from Scotland gave the following data</p>
 <p><span class="math display">\[\sum y =1991  \ \ \ \ , \ \ \ \sum(y-\bar{y})^2 = 54\]</span>
@@ -664,8 +541,10 @@ We compare this to <span class="math inline">\(t_{15, 0.05} = 1.7531\)</span></p
 <p>Comparison: <span class="math inline">\(|-1.128|\ngtr 1.7531\)</span></p>
 <p>There is insufficient evidence based on these samples to conclude that the population of Welsh officers are shorter than the population of Scottish officers.</p>
 </div>
-<div id="testing-for-equal-variance" class="section level3 hasAnchor">
-<h3><span class="header-section-number">8.2.3</span> testing for equal variance<a href="hypothesis-testing.html#testing-for-equal-variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="testing-for-equal-variance" class="section level3">
+<h3>
+<span class="header-section-number">7.2.3</span> testing for equal variance<a class="anchor" aria-label="anchor" href="#testing-for-equal-variance"><i class="fas fa-link"></i></a>
+</h3>
 <p>In this situation we have two sample variances <span class="math inline">\(S^2_x\)</span> and <span class="math inline">\(S^2_y\)</span>, and we want to determine by means of a hypothesis test if these are equal or not. Of course the conclusion is not definite, but in practice this informs whether we will pool the variances or not.</p>
 <p>The null hypothesis is that the variances are equal, with the usual alternatives.</p>
 <p><span class="math display">\[\text{H}_0: \sigma^2_x = \sigma^2_y\ \]</span></p>
@@ -673,7 +552,7 @@ We compare this to <span class="math inline">\(t_{15, 0.05} = 1.7531\)</span></p
 <p><span class="math display">\[\frac{(n_1-1)S^2_x}{\sigma^2_x}\sim \chi^2_{n_1-1} \ \ \ , \ \ \  \frac{(n_2-1)S^2_y}{\sigma^2_y}\sim \chi^2_{n_2-1}\]</span></p>
 <p>There is another distribution we must define, and this will be the last for the statistical tables.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-16" class="definition"><strong>Definition 8.5  </strong></span>Let <span class="math inline">\(X\sim \chi^2_n\)</span> and <span class="math inline">\(Y\sim \chi^2_m\)</span> then the following ratio defines an F-distribution with degrees of freedom <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span>. That is:</p>
+<p><span id="def:unlabeled-div-227" class="definition"><strong>Definition 7.5  </strong></span>Let <span class="math inline">\(X\sim \chi^2_n\)</span> and <span class="math inline">\(Y\sim \chi^2_m\)</span> then the following ratio defines an F-distribution with degrees of freedom <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span>. That is:</p>
 <p><span class="math display">\[\frac{\left(\frac{X}{n}\right)}{\left(\frac{Y}{m}\right)}\sim \text{F}_{n,m}\]</span></p>
 </div>
 <p>In our situation this tells us that under the null hypothesis we have</p>
@@ -681,14 +560,12 @@ We compare this to <span class="math inline">\(t_{15, 0.05} = 1.7531\)</span></p
 :::{.example}
 A manufacturer of wooden furniture stores some of its wood outside and some inside a special
 store. It is believed that the wood stored inside should have less variable hardness properties than that stored outside. Some <span class="math inline">\(25\)</span> pieces of wood stored outside was taken and compared to <span class="math inline">\(21\)</span> similar pieces taken from the inside store, with the following results:</p>
-<table>
-<thead>
-<tr class="header">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="center">Value</th>
 <th align="center">Outside</th>
 <th align="center">Inside</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="center">sample size</td>
@@ -706,7 +583,7 @@ store. It is believed that the wood stored inside should have less variable hard
 <td align="center">3972</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>Test at the <span class="math inline">\(5\%\)</span> significance level whether the manufacturer’s belief is correct.</p></li>
 <li><p>State two assumptions necessary to carry out this test.</p></li>
@@ -727,14 +604,16 @@ which we compare to <span class="math inline">\(\text{F}_{24,20} = 2.08\)</span>
 :::</li>
 </ol>
 </div>
-<div id="unknown-unequal-variances-non-examinable" class="section level3 hasAnchor">
-<h3><span class="header-section-number">8.2.4</span> unknown unequal variances (non-examinable)<a href="hypothesis-testing.html#unknown-unequal-variances-non-examinable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="unknown-unequal-variances-non-examinable" class="section level3">
+<h3>
+<span class="header-section-number">7.2.4</span> unknown unequal variances (non-examinable)<a class="anchor" aria-label="anchor" href="#unknown-unequal-variances-non-examinable"><i class="fas fa-link"></i></a>
+</h3>
 <p>If we want to carry out a <span class="math inline">\(2\)</span> sample <span class="math inline">\(t\)</span>-test without assuming equal population variances we can use <span class="math display">\[T = \frac{\bar{X} - \bar{Y}}{\sqrt{\frac{S_X^2}{n_1} + \frac{S_Y^2}{n_2}}}\]</span></p>
 <p>However the distribution of this quantity is in general not of a convenient closed-form (analytic). As such it is actually a famous an unsolved problem generally, called the Behrens–Fisher problem. However it is approximately a <span class="math inline">\(t_\nu\)</span>-distribution with degrees of freedom <span class="math inline">\(\nu\)</span> given by the integer part of the following expression.</p>
 <p><span class="math display">\[\frac{\left[\frac{S^2_x}{n_1}+\frac{S^2_y}{n_2} \right]^2}{\frac{1}{(n_1-1)}\left[\frac{S_x^2}{n_1}\right]^2+\frac{1}{(n_2-1)}\left[\frac{S_y^2}{n_2}\right]^2} \]</span></p>
 <p>The above expression is known as the Welch approximation.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-17" class="example"><strong>Example 8.12  </strong></span>A market inspector randomly samples the produce on two market stalls. A sample of <span class="math inline">\(80\)</span> apples from Rufus Russett’s stall had masses (in grams) having sample mean <span class="math inline">\(74.2\)</span> and sample variance <span class="math inline">\(43.23\)</span>.
+<p><span id="exm:unlabeled-div-228" class="example"><strong>Example 7.12  </strong></span>A market inspector randomly samples the produce on two market stalls. A sample of <span class="math inline">\(80\)</span> apples from Rufus Russett’s stall had masses (in grams) having sample mean <span class="math inline">\(74.2\)</span> and sample variance <span class="math inline">\(43.23\)</span>.
 An independent random sample of <span class="math inline">\(100\)</span> apples sold my Granny Smith had a sample mean of <span class="math inline">\(68.6\)</span> and a sample variance of <span class="math inline">\(43.34\)</span>.</p>
 <p>Test at the <span class="math inline">\(5\%\)</span> significance level if there is evidence that the apples on Smith’s stall have a lower average mass than Russett’s stall.</p>
 </div>
@@ -748,8 +627,10 @@ We want to compare this to <span class="math inline">\(t_\nu\)</span>. Let’s e
 The integer value of this is <span class="math inline">\(177\)</span>, so we would check the critical value of a <span class="math inline">\(t_177\)</span> distribution.</p>
 <p>However <span class="math inline">\(177\)</span> is a large number of degrees of freedom, so we use <span class="math inline">\(t_{\infty}=1.6448\)</span> or <span class="math inline">\(z\)</span>-value essentially, and the null is overwhelmingly rejected, as <span class="math inline">\(6.299 &gt;1.6448\)</span>.</p>
 </div>
-<div id="summary-1" class="section level3 hasAnchor">
-<h3><span class="header-section-number">8.2.5</span> Summary<a href="hypothesis-testing.html#summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="summary" class="section level3">
+<h3>
+<span class="header-section-number">7.2.5</span> Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
 <li>A hypothesis test is a decision process about population parameters.</li>
 </ul>
@@ -776,10 +657,12 @@ The integer value of this is <span class="math inline">\(177\)</span>, so we wou
 <p>We can often assume the variances are equal. There is also a test for equality of variances.</p>
 </div>
 </div>
-<div id="exercises-week-8" class="section level2 hasAnchor">
-<h2><span class="header-section-number">8.3</span> Exercises week 8<a href="hypothesis-testing.html#exercises-week-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercises-week-8" class="section level2">
+<h2>
+<span class="header-section-number">7.3</span> Exercises week 8<a class="anchor" aria-label="anchor" href="#exercises-week-8"><i class="fas fa-link"></i></a>
+</h2>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-18" class="exercise"><strong>Exercise 8.1  </strong></span>Jars of honey are filled by a machine. Over the lifetime of the machine, it has been found the quantity of honey has mean <span class="math inline">\(460.3\)</span>g and standard deviation <span class="math inline">\(3.2\)</span>g. It is believed that the machine has been altered so that the mean may have changed. <span class="math inline">\(60\)</span> jars are taken and the mean quantity of honey per jar is found to be <span class="math inline">\(461.2\)</span>g</p>
+<p><span id="exr:unlabeled-div-229" class="exercise"><strong>Exercise 7.1  </strong></span>Jars of honey are filled by a machine. Over the lifetime of the machine, it has been found the quantity of honey has mean <span class="math inline">\(460.3\)</span>g and standard deviation <span class="math inline">\(3.2\)</span>g. It is believed that the machine has been altered so that the mean may have changed. <span class="math inline">\(60\)</span> jars are taken and the mean quantity of honey per jar is found to be <span class="math inline">\(461.2\)</span>g</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>State suitable null and alternative hypotheses</p></li>
 <li><p>Carry out a test using a <span class="math inline">\(5\%\)</span> level of significance.</p></li>
@@ -787,22 +670,22 @@ The integer value of this is <span class="math inline">\(177\)</span>, so we wou
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-19" class="exercise"><strong>Exercise 8.2  </strong></span>The distance driven by a long distance lorry driver in a week is a normally distributed variable with mean <span class="math inline">\(1130\)</span>km and standard deviation <span class="math inline">\(106\)</span>km. New driving regulations are introduced and, in the first <span class="math inline">\(20\)</span> weeks he drives a total of <span class="math inline">\(21900\)</span>km. Assuming the standard deviation has not changed since the new regulations, test at the <span class="math inline">\(10\%\)</span> level of significance whether the mean weekly distance has reduced. State clearly your null and alternative hypotheses.</p>
+<p><span id="exr:unlabeled-div-230" class="exercise"><strong>Exercise 7.2  </strong></span>The distance driven by a long distance lorry driver in a week is a normally distributed variable with mean <span class="math inline">\(1130\)</span>km and standard deviation <span class="math inline">\(106\)</span>km. New driving regulations are introduced and, in the first <span class="math inline">\(20\)</span> weeks he drives a total of <span class="math inline">\(21900\)</span>km. Assuming the standard deviation has not changed since the new regulations, test at the <span class="math inline">\(10\%\)</span> level of significance whether the mean weekly distance has reduced. State clearly your null and alternative hypotheses.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-20" class="exercise"><strong>Exercise 8.3  </strong></span>After a nuclear accident,government scientists measured radiation levels at <span class="math inline">\(20\)</span> randomly chosen sites in a small area. The measuring instrument used is calibrated so as to measure the ratio of present radiation to the previous known average radiation in that area. The measurements are summarised by</p>
+<p><span id="exr:unlabeled-div-231" class="exercise"><strong>Exercise 7.3  </strong></span>After a nuclear accident,government scientists measured radiation levels at <span class="math inline">\(20\)</span> randomly chosen sites in a small area. The measuring instrument used is calibrated so as to measure the ratio of present radiation to the previous known average radiation in that area. The measurements are summarised by</p>
 <p><span class="math display">\[\sum x = 22.8 \ \ , \ \ \sum x^2 = 27.55\]</span>
 Making suitable assumptions test, at the <span class="math inline">\(5\%\)</span> level, the hypothesis that there has been an increase in the radiation level.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-21" class="exercise"><strong>Exercise 8.4  </strong></span>Bottles of wine are supposed to contain <span class="math inline">\(75\)</span>cl of wine. An inspector takes a sample of six bottles and determines the volumes of their contents, correct to the nearest half millilitre. Her results are:</p>
+<p><span id="exr:unlabeled-div-232" class="exercise"><strong>Exercise 7.4  </strong></span>Bottles of wine are supposed to contain <span class="math inline">\(75\)</span>cl of wine. An inspector takes a sample of six bottles and determines the volumes of their contents, correct to the nearest half millilitre. Her results are:</p>
 <p><span class="math display">\[747.0, \ \  ,751.5, \ \ 752.0, \  \ 747.5, \ \ 748.0, \ \ 748.0 \]</span>
 Determine whether these results provide evidence at the <span class="math inline">\(5\%\)</span> significance level that the population mean is less than <span class="math inline">\(75\)</span>cl.</p>
 <p>What assumption about the distribution of the volumes is necessary?</p>
 <p>What distribution about the sample is necessary?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-22" class="exercise"><strong>Exercise 8.5  </strong></span>It is given that <span class="math inline">\(X\sim\text{N}(\mu,16)\)</span>. It is desired to test the null hypothesis <span class="math inline">\(\mu=12\)</span> against the alternative <span class="math inline">\(\mu&gt;12\)</span>, with the probability of type I error being <span class="math inline">\(1\%\)</span>. A random sample of <span class="math inline">\(15\)</span> observations of <span class="math inline">\(X\)</span> is taken and the sample mean <span class="math inline">\(\bar{X}\)</span> is taken to be the test statistic.</p>
+<p><span id="exr:unlabeled-div-233" class="exercise"><strong>Exercise 7.5  </strong></span>It is given that <span class="math inline">\(X\sim\text{N}(\mu,16)\)</span>. It is desired to test the null hypothesis <span class="math inline">\(\mu=12\)</span> against the alternative <span class="math inline">\(\mu&gt;12\)</span>, with the probability of type I error being <span class="math inline">\(1\%\)</span>. A random sample of <span class="math inline">\(15\)</span> observations of <span class="math inline">\(X\)</span> is taken and the sample mean <span class="math inline">\(\bar{X}\)</span> is taken to be the test statistic.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Find the range of values for <span class="math inline">\(\bar{X}\)</span> that would lead to</li>
 </ol>
@@ -815,21 +698,21 @@ Determine whether these results provide evidence at the <span class="math inline
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-23" class="exercise"><strong>Exercise 8.6  </strong></span>The mean of a random sample of <span class="math inline">\(10\)</span> observations from a population distributed as <span class="math inline">\(\text{N}(\mu_1,25)\)</span> is <span class="math inline">\(97.3\)</span>. The mean of a random sample of <span class="math inline">\(15\)</span> observations from a population distributed as <span class="math inline">\(\text{N}(\mu_2,36)\)</span> is <span class="math inline">\(101.2\)</span>. Test at the <span class="math inline">\(5\%\)</span> level</p>
+<p><span id="exr:unlabeled-div-234" class="exercise"><strong>Exercise 7.6  </strong></span>The mean of a random sample of <span class="math inline">\(10\)</span> observations from a population distributed as <span class="math inline">\(\text{N}(\mu_1,25)\)</span> is <span class="math inline">\(97.3\)</span>. The mean of a random sample of <span class="math inline">\(15\)</span> observations from a population distributed as <span class="math inline">\(\text{N}(\mu_2,36)\)</span> is <span class="math inline">\(101.2\)</span>. Test at the <span class="math inline">\(5\%\)</span> level</p>
 <ol style="list-style-type: lower-roman">
 <li><p>Whether <span class="math inline">\(\mu_1 &lt; \mu_2\)</span></p></li>
 <li><p>Whether <span class="math inline">\(\mu_1\neq\mu_2\)</span></p></li>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-24" class="exercise"><strong>Exercise 8.7  </strong></span>A machine assesses the life of a ball-point pen by measuring the length of a continuous line drawn using the pen. A random sample of <span class="math inline">\(80\)</span> pens from brand A have a total writing length of <span class="math inline">\(96.84\)</span>km. A random sample of <span class="math inline">\(75\)</span> ens of brand B have a total writing length of <span class="math inline">\(93.75\)</span>km.
+<p><span id="exr:unlabeled-div-235" class="exercise"><strong>Exercise 7.7  </strong></span>A machine assesses the life of a ball-point pen by measuring the length of a continuous line drawn using the pen. A random sample of <span class="math inline">\(80\)</span> pens from brand A have a total writing length of <span class="math inline">\(96.84\)</span>km. A random sample of <span class="math inline">\(75\)</span> ens of brand B have a total writing length of <span class="math inline">\(93.75\)</span>km.
 Given that the standard deviation of the writing length of a single pen is <span class="math inline">\(0.15\)</span>km for both brands,test at the <span class="math inline">\(5\%\)</span> level, whether writing lengths of the two brands differ significantly.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-25" class="exercise"><strong>Exercise 8.8  </strong></span>A random sample of <span class="math inline">\(10\)</span> yellow grapefruit is weighed and the average weight is found to be <span class="math inline">\(\bar{x}=201.4\)</span>g. The value of an unbiased estimate for the population variance is <span class="math inline">\(s^2_x=234.1\)</span>. The corresponding figures for a random sample of <span class="math inline">\(8\)</span> pink grapefruit are <span class="math inline">\(\bar{y}=221.8\)</span>g and <span class="math inline">\(s^2_y=281.9\)</span>. Determine at the <span class="math inline">\(1\%\)</span> level of significance, whether there is a difference in the mean weights of the two kinds of grapefruit.</p>
+<p><span id="exr:unlabeled-div-236" class="exercise"><strong>Exercise 7.8  </strong></span>A random sample of <span class="math inline">\(10\)</span> yellow grapefruit is weighed and the average weight is found to be <span class="math inline">\(\bar{x}=201.4\)</span>g. The value of an unbiased estimate for the population variance is <span class="math inline">\(s^2_x=234.1\)</span>. The corresponding figures for a random sample of <span class="math inline">\(8\)</span> pink grapefruit are <span class="math inline">\(\bar{y}=221.8\)</span>g and <span class="math inline">\(s^2_y=281.9\)</span>. Determine at the <span class="math inline">\(1\%\)</span> level of significance, whether there is a difference in the mean weights of the two kinds of grapefruit.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-26" class="exercise"><strong>Exercise 8.9  </strong></span>The volume of beer in a random sample of <span class="math inline">\(7\)</span> pints bought at ‘The Sensible Statistician’ are measured in litres and the results are summarised by:
+<p><span id="exr:unlabeled-div-237" class="exercise"><strong>Exercise 7.9  </strong></span>The volume of beer in a random sample of <span class="math inline">\(7\)</span> pints bought at ‘The Sensible Statistician’ are measured in litres and the results are summarised by:
 <span class="math display">\[\sum x = 4.15, \ \ \sum x^2 = 2.4638\]</span>
 The results for a random sample of <span class="math inline">\(5\)</span> pints from ‘The Mad Mathematician’ are summarised by:
 <span class="math display">\[\sum y = 2.79 , \ \ \sum y^2 = 1.5585\]</span></p>
@@ -839,17 +722,17 @@ The results for a random sample of <span class="math inline">\(5\)</span> pints 
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-27" class="exercise"><strong>Exercise 8.10  </strong></span>A machine saws logs of wood into lengths that are supposed to have a standard deviation of <span class="math inline">\(3\)</span>cm. If the machine goes wrong then the standard deviation increases. A random sample of <span class="math inline">\(10\)</span> logs have lengths in cm as follows:</p>
+<p><span id="exr:unlabeled-div-238" class="exercise"><strong>Exercise 7.10  </strong></span>A machine saws logs of wood into lengths that are supposed to have a standard deviation of <span class="math inline">\(3\)</span>cm. If the machine goes wrong then the standard deviation increases. A random sample of <span class="math inline">\(10\)</span> logs have lengths in cm as follows:</p>
 <p><span class="math display">\[997, \ \ , 1004, \ \ 1009, \ \ 999, \ \ 1006, \ \, 1014, \ \ 998, \ \ 999, \ \ 1001, \ \ 1000 \]</span></p>
 <p>Determine whether there is evidence at the <span class="math inline">\(1\%\)</span> significance level that the machine has gone wrong.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-28" class="exercise"><strong>Exercise 8.11  </strong></span>The following observations are taken from a normal distribution that is believed to have unit variance.
+<p><span id="exr:unlabeled-div-239" class="exercise"><strong>Exercise 7.11  </strong></span>The following observations are taken from a normal distribution that is believed to have unit variance.
 <span class="math display">\[16.2, \ \ 14.4, \ \ 17.9, \ \ 11.6, \ \ 18.3, \ \ 15.5, \ \ 17.2, \ \ 16.6\]</span></p>
 <p>Determine whether there is evidence that the population variance is not equal to 1.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-29" class="exercise"><strong>Exercise 8.12  </strong></span>The cellulose contents of the leaves of a tree are determined from random samples of leaves taken from two different locations. The results are shown below:</p>
+<p><span id="exr:unlabeled-div-240" class="exercise"><strong>Exercise 7.12  </strong></span>The cellulose contents of the leaves of a tree are determined from random samples of leaves taken from two different locations. The results are shown below:</p>
 <p>Location 1:
 <span class="math display">\[15.4, \ \ 13.9, \ \ 15.1, \ \ 14.8, \ \ 14.4, \ \ 14.8, \ \ 15.0, \ \  13.9, \ \ 15.4, \ \ 14.6, \ \ 14.8 \]</span>
 Location 2:
@@ -863,59 +746,57 @@ Let the population variances for the two locations be denoted <span class="math 
 
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="norm.html"><span class="header-section-number">6</span> Normal distribution</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#hypothesis-testing"><span class="header-section-number">7</span> Hypothesis testing</a></li>
+<li>
+<a class="nav-link" href="#one-sample-tests"><span class="header-section-number">7.1</span> One sample tests</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#test-for-mean-known-variance"><span class="header-section-number">7.1.1</span> test for mean (known variance)</a></li>
+<li><a class="nav-link" href="#test-for-mean-unknown-variance"><span class="header-section-number">7.1.2</span> test for mean (unknown variance)</a></li>
+<li><a class="nav-link" href="#test-for-variance"><span class="header-section-number">7.1.3</span> test for variance</a></li>
+<li><a class="nav-link" href="#p-value-approach"><span class="header-section-number">7.1.4</span> p-value approach</a></li>
+<li><a class="nav-link" href="#types-of-error"><span class="header-section-number">7.1.5</span> types of error</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#two-sample-tests"><span class="header-section-number">7.2</span> Two sample tests</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#known-variance"><span class="header-section-number">7.2.1</span> known variance</a></li>
+<li><a class="nav-link" href="#unknown-equal-variance"><span class="header-section-number">7.2.2</span> unknown equal variance</a></li>
+<li><a class="nav-link" href="#testing-for-equal-variance"><span class="header-section-number">7.2.3</span> testing for equal variance</a></li>
+<li><a class="nav-link" href="#unknown-unequal-variances-non-examinable"><span class="header-section-number">7.2.4</span> unknown unequal variances (non-examinable)</a></li>
+<li><a class="nav-link" href="#summary"><span class="header-section-number">7.2.5</span> Summary</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#exercises-week-8"><span class="header-section-number">7.3</span> Exercises week 8</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="sampling-and-confidence-intervals.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
 
-    </div>
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Probability Theory and Statistics</strong>" was written by Malcolm Connolly. It was last built on Semester 2, 2023.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": null,
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["6G4Z3008-notes.pdf", "6G4Z3008-notes.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-},
-"info": false
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -927,7 +808,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>
