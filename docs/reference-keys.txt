@@ -344,3 +344,15 @@ testing-for-equal-variance
 unknown-unequal-variances-non-examinable
 summary
 exercises-week-8
+sampling-and-confidence-intervals
+confidence-intervals
+unknown-variance
+estimating-the-variance
+the-t-distribution
+required-sample-sizes
+interval-for-a-population-variance
+interval-for-a-proportion
+approximating-the-binomial-distribution.
+proportions
+exercises-week-7
+summary-1

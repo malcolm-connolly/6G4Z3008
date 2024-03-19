@@ -80,7 +80,7 @@ This is a table for the decision process
 | $\text{H}_{A}$ | Reject $H_{0}$ if |
 |:--------------:|:-----------------:|
 | $H_{A}: \mu > \mu_0$ | $Z>z_{\alpha}$ |
-| $H_{A}: \mu > \mu_0$ | $Z<-z_{\alpha}$ |
+| $H_{A}: \mu < \mu_0$ | $Z<-z_{\alpha}$ |
 | $H_{A}: \mu \neq \mu_0$ | $|Z|>z_{\frac{1}{2}\alpha}$ |
 
 
@@ -128,7 +128,7 @@ The decision rules are essentially the same but with $z_\alpha$ and $z_{\alpha/2
 | $\text{H}_{A}$ | Reject $H_{0}$ if |
 |:--------------:|:-----------------:|
 | $H_{A}: \mu > \mu_0$ | $T>t_{\alpha}$ |
-| $H_{A}: \mu > \mu_0$ | $T<-t_{\alpha}$ |
+| $H_{A}: \mu < \mu_0$ | $T<-t_{\alpha}$ |
 | $H_{A}: \mu \neq \mu_0$ | $|T|>t_{\frac{1}{2}\alpha}$ |
 
 
